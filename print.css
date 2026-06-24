@@ -1,0 +1,105 @@
+/* Roll a Hero — printable one-page character sheet (B&W), modeled on the
+   user's reference sheet. Linked with media="print", so these rules only
+   apply when printing / "Save as PDF". */
+
+@page { size: letter portrait; margin: 0.5in; }
+
+/* Hide the whole walkthrough; show only the sheet. */
+.app-header, .app, #live { display: none !important; }
+
+.print-sheet {
+  display: block !important;
+  font-family: 'Times New Roman', Georgia, serif;
+  color: #000; background: #fff;
+  width: 100%;
+}
+
+.print-sheet * { color: #000 !important; }
+.print-sheet .icon { width: 1em; height: 1em; }
+
+/* boxes share an inky, rounded, double-edge look like the reference */
+.ps-field, .ps-stat, .ps-box, .ps-ability {
+  border: 2.5px solid #000; border-radius: 10px; background: #fff;
+}
+
+/* ---------- Top identity row ---------- */
+.ps-top {
+  display: grid; gap: 8px; margin-bottom: 10px;
+  grid-template-columns: 2fr 1.4fr 0.8fr;
+  grid-template-areas:
+    "name  race  level"
+    "class xp    level";
+}
+.ps-name { grid-area: name; }
+.ps-class { grid-area: class; }
+.ps-race { grid-area: race; }
+.ps-xp { grid-area: xp; }
+.ps-level { grid-area: level; display: flex; flex-direction: column; }
+.ps-field { padding: 6px 10px; min-height: 46px; }
+.ps-field label {
+  display: block; font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+  font-weight: bold;
+}
+.ps-field .ps-val { font-size: 17px; font-weight: bold; line-height: 1.15; padding-top: 2px; }
+.ps-level { align-items: center; justify-content: center; text-align: center; }
+.ps-level label { text-align: center; font-size: 11px; }
+.ps-level-val { font-size: 34px !important; }
+
+/* ---------- Main two-column body ---------- */
+.ps-body { display: grid; grid-template-columns: 1fr 1.25fr; gap: 12px; }
+
+/* Left: six ability boxes */
+.ps-col-left { display: grid; gap: 8px; align-content: start; }
+.ps-ability {
+  display: grid; grid-template-columns: 1fr 58px; align-items: center;
+  padding: 8px 6px 8px 12px; min-height: 64px;
+}
+.ps-ability .pa-label { display: flex; align-items: center; gap: 8px; }
+.ps-ability .pa-icon { font-size: 26px; }
+.ps-ability .pa-name { font-size: 17px; font-weight: bold; }
+.ps-ability .pa-box {
+  border: 2px solid #000; border-radius: 8px; text-align: center;
+  height: 50px; display: flex; flex-direction: column; justify-content: center;
+}
+.ps-ability .pa-mod { font-size: 22px; font-weight: bold; line-height: 1; }
+.ps-ability .pa-score { font-size: 10px; }
+
+/* Right column: HP, speed/armor, gear, spells */
+.ps-col-right { display: grid; gap: 10px; align-content: start; grid-auto-rows: min-content; }
+.ps-stat { padding: 8px 12px; min-height: 58px; }
+.ps-stat-head { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; }
+.ps-stat-val { font-size: 26px; font-weight: bold; }
+.ps-stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ps-hp .ps-stat-val { font-size: 30px; }
+
+.ps-box { padding: 8px 12px; }
+.ps-box-head { font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1.5px solid #000; padding-bottom: 4px; margin-bottom: 6px; }
+.ps-box-body { font-size: 12.5px; line-height: 1.45; }
+.ps-box-body ul { margin: 0; padding-left: 16px; }
+.ps-box-body li { margin: 1.5px 0; }
+.ps-box-body .feat-name { font-weight: bold; }
+.ps-gear { min-height: 230px; }
+.ps-spells { min-height: 230px; }
+
+/* Avoid awkward breaks */
+.ps-top, .ps-body, .ps-ability, .ps-box { break-inside: avoid; }
+
+/* ---------- Page 2+: quick-reference cheat sheet ---------- */
+.print-reference {
+  display: block !important;
+  page-break-before: always;
+  font-family: 'Times New Roman', Georgia, serif;
+  color: #000; background: #fff;
+}
+.print-reference * { color: #000 !important; }
+.pr-head { border-bottom: 2.5px solid #000; padding-bottom: 6px; margin-bottom: 10px; }
+.pr-title { font-size: 22px; font-weight: bold; }
+.pr-sub { font-size: 13px; }
+.pr-section { margin-bottom: 10px; break-inside: avoid; }
+.pr-section h3 { font-size: 15px; border-bottom: 1.5px solid #000; padding-bottom: 3px; margin: 12px 0 6px; }
+.pr-section ul { margin: 4px 0; padding-left: 18px; }
+.pr-section li { margin: 4px 0; font-size: 12px; line-height: 1.4; }
+.pr-name { font-weight: bold; }
+.pr-note { font-size: 11.5px; font-style: italic; margin: 4px 0; }
+.pr-table { width: 100%; border-collapse: collapse; margin: 4px 0; }
+.pr-table td { border: 1px solid #000; padding: 3px 8px; font-size: 12px; }

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roll a Hero — Make Your D&D Character</title>
+  <meta name="description" content="A friendly, kid-safe way to build your first Dungeons & Dragons character and learn how to play." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="print.css" media="print" />
+</head>
+<body>
+  <!-- App header -->
+  <header class="app-header" id="appHeader">
+    <div class="brand">
+      <span class="brand-mark" id="brandMark"></span>
+      <span class="brand-name">Roll&nbsp;a&nbsp;Hero</span>
+    </div>
+    <div class="progress" id="progress" hidden>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-label" id="progressLabel"></div>
+    </div>
+  </header>
+
+  <!-- The walkthrough renders here -->
+  <main id="app" class="app"></main>
+
+  <!-- Live region for dice/announcements (screen readers + polite updates) -->
+  <div id="live" class="sr-only" aria-live="polite"></div>
+
+  <!-- ===================================================================== -->
+  <!-- PRINTABLE ONE-PAGE CHARACTER SHEET (hidden on screen, shown on print)  -->
+  <!-- ===================================================================== -->
+  <section id="printSheet" class="print-sheet" aria-hidden="true">
+    <div class="ps-top">
+      <div class="ps-field ps-name"><label>Name</label><div class="ps-val" data-f="name"></div></div>
+      <div class="ps-field ps-class"><label>Class</label><div class="ps-val" data-f="class"></div></div>
+      <div class="ps-field ps-race"><label>Race</label><div class="ps-val" data-f="race"></div></div>
+      <div class="ps-field ps-xp"><label>Experience Points</label><div class="ps-val" data-f="xp"></div></div>
+      <div class="ps-field ps-level"><label>Level</label><div class="ps-val ps-level-val" data-f="level"></div></div>
+    </div>
+
+    <div class="ps-body">
+      <div class="ps-col-left" id="psAbilities"><!-- six ability boxes injected --></div>
+
+      <div class="ps-col-right">
+        <div class="ps-stat ps-hp">
+          <div class="ps-stat-head">Hit Points</div>
+          <div class="ps-stat-val" data-f="hp"></div>
+        </div>
+        <div class="ps-stat-row">
+          <div class="ps-stat ps-speed">
+            <div class="ps-stat-head">Speed</div>
+            <div class="ps-stat-val" data-f="speed"></div>
+          </div>
+          <div class="ps-stat ps-armor">
+            <div class="ps-stat-head">Armor</div>
+            <div class="ps-stat-val" data-f="ac"></div>
+          </div>
+        </div>
+        <div class="ps-box ps-gear">
+          <div class="ps-box-head">Weapons and Equipment</div>
+          <div class="ps-box-body" data-f="gear"></div>
+        </div>
+        <div class="ps-box ps-spells">
+          <div class="ps-box-head">Spells &amp; Special Abilities</div>
+          <div class="ps-box-body" data-f="spells"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- PRINTABLE QUICK-REFERENCE / CHEAT SHEET (prints as a 2nd page)         -->
+  <!-- ===================================================================== -->
+  <section id="printReference" class="print-reference" aria-hidden="true"><!-- filled by app.js --></section>
+
+  <script src="icons.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
