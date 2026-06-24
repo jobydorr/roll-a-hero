@@ -46,7 +46,8 @@
   function finalScore(key) { const b = baseScore(key); if (b == null) return null; return b + (racialBonuses()[key] || 0); }
   const dexMod = () => { const d = finalScore('dex'); return d == null ? 0 : modOf(d); };
 
-  function computeHP() { const c = getClass(); if (!c) return 0; const con = finalScore('con'); return c.hp + 3 * (con == null ? 0 : modOf(con)); }
+  // HP is always maxed: the full hit die for every level, plus Con each level.
+  function computeHP() { const c = getClass(); if (!c) return 0; const con = finalScore('con'); return c.hitDie * LEVEL + LEVEL * (con == null ? 0 : modOf(con)); }
   function weaponHasShield() { return (state.equipment.weapon || '').includes('shield'); }
   function hasShield() {
     const c = getClass(); if (!c) return false;
@@ -443,6 +444,7 @@
           <button class="btn btn-sm ${isArray ? 'btn-gold' : 'btn-ghost'}" data-method="array">Use standard scores</button>
         </div>
         <div class="dice-tray">${(state.pool || [0, 0, 0, 0, 0, 0]).map(v => `<div class="die">${rolled ? v : '?'}</div>`).join('')}</div>
+        ${rolled ? '<p style="text-align:center;color:var(--ink-soft);font-style:italic;margin:0 0 12px;">These are in no particular order for now — you’ll place each number onto an ability in a later step.</p>' : ''}
         <div style="text-align:center;">${actionHtml}</div>
         <div class="panel">
           <h3 class="spell-section-head" style="margin-top:0;">How to think about the six abilities</h3>
@@ -537,7 +539,7 @@
       const card = document.createElement('button'); card.className = 'choice-card' + (state.klass === cls.id ? ' selected' : '');
       card.innerHTML = `${isRec('class', cls.id) ? `<span class="rec-badge">${icon('star')} Match</span>` : ''}
         <div class="cc-head"><span class="cc-icon">${icon(cls.icon)}</span><span class="cc-name">${cls.name}</span></div>
-        <div class="cc-meta"><span class="tag">HP ${cls.hp}+</span><span class="tag bonus">Best: ${cls.bestAbility.split('(')[0].trim()}</span>${cls.spellcaster ? '<span class="tag magic">Magic</span>' : ''}</div>
+        <div class="cc-meta"><span class="tag">HP ${cls.hitDie * LEVEL}+</span><span class="tag bonus">Best: ${cls.bestAbility.split('(')[0].trim()}</span>${cls.spellcaster ? '<span class="tag magic">Magic</span>' : ''}</div>
         <div class="cc-desc">${cls.blurb}</div>`;
       card.onclick = () => { if (state.klass !== cls.id) { state.klass = cls.id; state.archetype = null; state.fightingStyle = null; state.spells = []; state.equipment = {}; } render(); };
       grid.appendChild(card);
@@ -698,9 +700,9 @@
           <div class="field"><label>Personality — pick a few words that fit (or none!)</label><div class="chip-row" id="traitRow"></div></div>
           <div class="field"><label>Why do you adventure? <span style="font-weight:400;color:var(--ink-soft);font-family:var(--font-body);">(pick up to 2)</span></label>
             <div class="chip-row" id="motiveRow"></div>
-            <div style="margin-top:10px;"><button type="button" class="btn btn-sm btn-ghost" id="motiveShuffle">${icon('dice')} Show me different reasons</button></div>
+            <div style="margin-top:10px;"><button type="button" class="btn btn-sm btn-ghost" id="motiveShuffle">${icon('dice')} Show me different reasons</button> <span style="color:var(--ink-soft);font-style:italic;font-size:13px;">— if you pick one now, we’ll keep it.</span></div>
           </div>
-          <div class="field"><label for="backstory">A little backstory (optional)</label><textarea id="backstory" placeholder="Where are you from? Who taught you your skills? What are you searching for?">${escapeHtml(state.story.backstory)}</textarea></div>
+          <div class="field"><label for="backstory">A little backstory (optional)</label><textarea id="backstory" placeholder="Use your adventure motives above as inspiration! Where are you from? Who taught you your skills? What are you searching for?">${escapeHtml(state.story.backstory)}</textarea></div>
         </div>
         ${footer({ nextDisabled: !storyComplete(), nextLabel: 'Next: Gear Up →' })}
       </div>`;
@@ -832,17 +834,17 @@
         <h2 class="title">${icon('scroll')} How to Play</h2>
         <p class="lead">D&D is a game of imagination. One person is the <strong>Dungeon Master (DM)</strong>, who describes the world and plays the monsters. Everyone else plays one hero. You say what you want to do, and the dice decide how it goes!</p>
 
+        <h3>Attacking a monster</h3>
+        <p>Roll a <strong>d20</strong> and add your <strong>To-Hit</strong> number. If you meet or beat the monster's <strong>Armor</strong>, you hit! Then roll your weapon's damage and add your ability modifier. The monster's Hit Points go down by that much.</p>
+
         <h3>Doing something risky — "beat this number"</h3>
-        <p>When you try something that might fail (climbing a wall, sneaking past a guard, convincing a king), the DM decides how hard it is and picks a number. You roll <strong>one d20</strong> (20-sided die), add the matching ability's modifier (usually about <strong>+2</strong>), and try to <strong>match or beat the number</strong>. This one rule also covers “saving” yourself from danger like dodging a fireball.</p>
+        <p>When you try something that might fail (climbing a wall, sneaking past a guard, convincing a king), the DM decides how hard it is and picks a number. You roll <strong>one d20</strong> (20-sided die), add the matching ability's modifier (usually <strong>+1 or +2</strong>), and try to <strong>match or beat the number</strong>. This one rule also covers “saving” yourself from danger like dodging a fireball.</p>
         <table>
           <thead><tr><th>How hard is it?</th><th>Reach this number</th><th></th></tr></thead>
           <tbody>${DC_TABLE.map(d => `<tr><td>${d.label}</td><td class="dc">${d.dc}</td><td>${d.note}</td></tr>`).join('')}</tbody>
         </table>
-        <p class="note"><strong>Example:</strong> You want to leap a chasm (Medium = 12). You roll a 10 and add your +2 modifier → that's 12, just enough. You make it!</p>
-        <p>A <strong>Very Hard (20)</strong> task is meant to be a real long shot — with a +2 you'd need to roll an 18, 19, or 20. The DM can give a bigger bonus for something your hero is truly great at, which is often the only way to pull off the impossible.</p>
-
-        <h3>Attacking a monster</h3>
-        <p>Roll a <strong>d20</strong> and add your <strong>To-Hit</strong> number. If you meet or beat the monster's <strong>Armor</strong>, you hit! Then roll your weapon's damage and add your ability modifier. The monster's Hit Points go down by that much.</p>
+        <p class="note"><strong>Example:</strong> You want to leap a chasm (Medium = 11). You roll a 9 and add your Strength modifier of +2 → that's 11, just enough. You make it!</p>
+        <p>Every difficulty can be reached with your modifier’s help — except <strong>Nearly Impossible</strong>. That one is the stuff of legends: it takes a <strong>natural 20</strong> (a perfect roll on the die), and no modifiers count toward it.</p>
 
         <h3>Your numbers</h3>
         <ul class="trait-list" style="font-size:15px;">
@@ -858,7 +860,7 @@
         <h3>${icon('book')} Dictionary — words you'll hear at the table</h3>
         <p>Not sure what a word means? Here's a quick guide to everything that won't fit on your character sheet.</p>
         <dl class="glossary">
-          ${GLOSSARY.map(g => `<dt>${g.term}</dt><dd>${g.def}</dd>`).join('')}
+          ${[...GLOSSARY].sort((a, b) => a.term.localeCompare(b.term, 'en', { sensitivity: 'base' })).map(g => `<dt>${g.term}</dt><dd>${g.def}</dd>`).join('')}
         </dl>
 
         <div class="actions"><button class="btn btn-primary" data-act="back">← Back to my hero</button></div>
@@ -932,9 +934,6 @@
       if (lev.length) sp += `<ul>${lev.map(line).join('')}</ul>`;
       html += `<div class="pr-section"><h3>Your Spells</h3>${sp}</div>`;
     }
-    html += `<div class="pr-section"><h3>“Beat This Number” — Quick Reference</h3>
-      <table class="pr-table"><tbody>${DC_TABLE.map(d => `<tr><td>${d.label}</td><td><strong>${d.dc}</strong></td><td>${d.note}</td></tr>`).join('')}</tbody></table>
-      <p class="pr-note">Roll a d20, add your ability modifier (about +2), and match or beat the number.</p></div>`;
     ref.innerHTML = html;
   }
 

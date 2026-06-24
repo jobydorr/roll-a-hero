@@ -24,16 +24,16 @@
   /* ---------------------------------------------------------------------------
      "BEAT THIS NUMBER" DIFFICULTY TABLE  (rules-as-written, jargon removed)
   --------------------------------------------------------------------------- */
-  // Single-d20 ladder: evenly spaced in steps of 4 across the die, capped at a
-  // perfect 20 for Very Hard. Players add their ability modifier (assume a base +2,
-  // more at the DM's discretion), so rolls can exceed 20 — but Very Hard still needs
-  // a near-perfect roll.
+  // Single-d20 difficulty ladder. Players add their ability modifier (about +1 or +2,
+  // more at the DM's discretion) on every tier EXCEPT the top one: Nearly Impossible
+  // can only be passed by rolling a natural 20 — modifiers don't help there.
   const DC_TABLE = [
-    { label: 'Very Easy', dc: 4, note: 'Almost anyone can do it.' },
-    { label: 'Easy', dc: 8, note: 'A simple task.' },
-    { label: 'Medium', dc: 12, note: 'Takes some real skill.' },
-    { label: 'Hard', dc: 16, note: 'Only the talented manage it.' },
-    { label: 'Very Hard', dc: 20, note: 'A heroic feat — you’ll need a great roll!' },
+    { label: 'Very Easy', dc: 3, note: 'Almost anyone can do it.' },
+    { label: 'Easy', dc: 7, note: 'A simple task.' },
+    { label: 'Medium', dc: 11, note: 'Takes some real skill.' },
+    { label: 'Hard', dc: 15, note: 'Only the talented manage it.' },
+    { label: 'Very Hard', dc: 18, note: 'A heroic feat — you’ll need a great roll!' },
+    { label: 'Nearly Impossible', dc: 20, note: 'A natural 20 only — modifiers can’t help here!' },
   ];
 
   /* ---------------------------------------------------------------------------
@@ -878,7 +878,7 @@
     { term: 'Attack Roll ("to hit")', def: 'Roll a d20, add your To-Hit number, and compare it to the target’s Armor. Equal or higher = a hit!' },
     { term: 'Damage Roll', def: 'After you hit, roll your weapon or spell’s dice (plus your modifier) to see how many Hit Points the target loses.' },
     { term: 'Saving Throw ("a save")', def: 'A roll to avoid or resist danger — dodging a blast, shaking off poison, resisting a spell. In this game it’s just “roll a d20 and beat the number.”' },
-    { term: 'Difficulty Number', def: 'The number you’re trying to reach on a risky roll. The DM picks it from Very Easy (4) up to Very Hard (20).' },
+    { term: 'Difficulty Number', def: 'The number you’re trying to reach on a risky roll. The DM picks it from Very Easy (3) up to Nearly Impossible (a natural 20).' },
     { term: 'Advantage', def: 'Things are in your favor: roll two d20s and keep the HIGHER one.' },
     { term: 'Disadvantage', def: 'Things are against you: roll two d20s and keep the LOWER one.' },
     { term: 'Critical Hit ("crit")', def: 'Rolling a natural 20 on an attack — an automatic hit, and you roll your damage dice twice!' },
