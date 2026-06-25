@@ -78,8 +78,21 @@
 .ps-box-body ul { margin: 0; padding-left: 16px; }
 .ps-box-body li { margin: 1.5px 0; }
 .ps-box-body .feat-name { font-weight: bold; }
-.ps-gear { min-height: 230px; }
-.ps-spells { min-height: 230px; }
+.ps-gear { min-height: 200px; }
+.ps-spells { min-height: 200px; }
+
+/* ---------- Daily Uses tracker (full-width, below the two columns) ---------- */
+.ps-uses { margin-top: 10px; }
+.ps-uses .ps-box-head { text-transform: none; letter-spacing: 0; }
+.ps-uses .ps-box-body { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 22px; }
+.use-row { display: flex; align-items: center; gap: 6px; font-size: 12px; padding: 2px 0; break-inside: avoid; }
+.use-name { font-weight: bold; }
+.use-boxes { display: inline-flex; gap: 3px; flex-wrap: wrap; }
+.usebox { display: inline-block; width: 11px; height: 11px; border: 1.5px solid #000; border-radius: 2px; }
+.use-pool { font-weight: bold; }
+.use-when { margin-left: auto; font-size: 9.5px; font-style: italic; white-space: nowrap; }
+.use-note { grid-column: 1 / -1; font-size: 11px; font-style: italic; margin-top: 3px; }
+.use-none { font-size: 12px; font-style: italic; }
 
 /* Avoid awkward breaks */
 .ps-top, .ps-body, .ps-ability, .ps-box { break-inside: avoid; }

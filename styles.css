@@ -300,6 +300,17 @@ h2.title { font-size: clamp(24px, 4vw, 34px); }
 .mini-ab .ma-mod { font-size: 13px; color: var(--green); font-weight: 700; }
 .mini-ab .ma-mod.neg { color: var(--red); }
 
+/* ---------- Daily Uses tracker (on-screen) ---------- */
+.uses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 4px 18px; margin-top: 4px; }
+.use-row { display: flex; align-items: center; gap: 8px; padding: 3px 0; }
+.use-name { font-family: var(--font-display); font-weight: 700; font-size: 13.5px; }
+.use-boxes { display: inline-flex; gap: 4px; flex-wrap: wrap; }
+.usebox { display: inline-block; width: 14px; height: 14px; border: 2px solid var(--brown); border-radius: 3px; background: #fffaf0; }
+.use-pool { font-weight: 700; color: var(--red); }
+.use-when { margin-left: auto; font-size: 11px; font-style: italic; color: var(--ink-soft); white-space: nowrap; }
+.use-note { grid-column: 1 / -1; font-size: 12.5px; font-style: italic; color: var(--ink-soft); margin-top: 2px; }
+.use-none { font-size: 14px; font-style: italic; color: var(--ink-soft); }
+
 /* ---------- How to Play ---------- */
 .howto table { width: 100%; border-collapse: collapse; margin: 12px 0; }
 .howto th, .howto td { border: 1px solid var(--panel-edge); padding: 8px 12px; text-align: left; }

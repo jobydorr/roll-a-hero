@@ -802,6 +802,7 @@
             <h3 class="spell-section-head" style="margin-top:0;">Special Abilities</h3>
             <ul class="trait-list" style="font-size:13.5px;">${specialAbilities().map(x => `<li><strong>${escapeHtml(x.name)}.</strong> ${x.desc}</li>`).join('')}</ul>
             ${renderFinishSpells()}
+            ${renderFinishUses()}
           </div>
         </div>
         <div class="note">${icon('check')} Saved! Your hero is stored in this browser — you can reopen it from the welcome screen any time.</div>
@@ -825,6 +826,11 @@
     return `<h3 class="spell-section-head">Spells ${sn ? `<span class="pick-counter">(to hit +${sn.atk}, dodge DC ${sn.dc})</span>` : ''}</h3>
       ${g.cant.length ? `<p style="margin:4px 0;"><strong>Cantrips:</strong> ${g.cant.join(', ')}</p>` : ''}
       ${g.lev.length ? `<p style="margin:4px 0;"><strong>Spells:</strong> ${g.lev.join(', ')}</p>` : ''}`;
+  }
+  function renderFinishUses() {
+    if (!limitedResources().length) return '';
+    return `<h3 class="spell-section-head">Daily Uses <span class="pick-counter" style="font-weight:400;font-size:12.5px;">— tick one each time you use it; refill when you rest</span></h3>
+      <div class="uses-grid">${usesRowsHTML()}</div>`;
   }
 
   RENDER.howto = (host) => {
@@ -868,6 +874,65 @@
     wireFooter(host);
   };
 
+  /* --------------------- Limited-use daily resources -------------------- */
+  // Spell slots at level 3 by caster type: full (4×L1, 2×L2), half (3×L1), third (2×L1).
+  function spellSlots() {
+    const c = getClass(); if (!c) return {};
+    if (c.spellcaster) return (c.spell.maxLevel >= 2) ? { 1: 4, 2: 2 } : { 1: 3 };
+    const a = getArchetype();
+    if (a && a.spell) return { 1: 2 };
+    return {};
+  }
+  // Everything a level-3 hero can only do a limited number of times before resting.
+  function limitedResources() {
+    const c = getClass(); if (!c) return [];
+    const out = [];
+    const slots = spellSlots();
+    if (slots[1]) out.push({ name: 'Level 1 spell slots', boxes: slots[1], per: 'long' });
+    if (slots[2]) out.push({ name: 'Level 2 spell slots', boxes: slots[2], per: 'long' });
+    const a = getArchetype();
+    const chaMod = modOf(finalScore('cha') || 10);
+    if (c.id === 'fighter') {
+      out.push({ name: 'Second Wind', boxes: 1, per: 'short' });
+      out.push({ name: 'Action Surge', boxes: 1, per: 'short' });
+      if (a && a.id === 'battlemaster') out.push({ name: 'Maneuver dice (d8)', boxes: 4, per: 'short' });
+    } else if (c.id === 'wizard') {
+      out.push({ name: 'Arcane Recovery', boxes: 1, per: 'day' });
+    } else if (c.id === 'cleric') {
+      out.push({ name: 'Channel Divinity', boxes: 1, per: 'short' });
+    } else if (c.id === 'barbarian') {
+      out.push({ name: 'Rage', boxes: 3, per: 'long' });
+    } else if (c.id === 'paladin') {
+      out.push({ name: 'Channel Divinity', boxes: 1, per: 'short' });
+      out.push({ name: 'Divine Sense', boxes: 1 + Math.max(chaMod, 0), per: 'long' });
+      out.push({ name: 'Lay on Hands', pool: '15 HP', per: 'long' });
+    } else if (c.id === 'bard') {
+      out.push({ name: 'Bardic Inspiration (d6)', boxes: Math.max(chaMod, 1), per: 'long' });
+    }
+    const r = getRace();
+    if (r) {
+      if (r.id === 'dragonborn') out.push({ name: 'Breath Weapon', boxes: 1, per: 'short' });
+      if (r.id === 'half-orc') out.push({ name: 'Relentless Endurance', boxes: 1, per: 'long' });
+      if (r.id === 'tiefling') out.push({ name: 'Hellish Rebuke spell', boxes: 1, per: 'long' });
+    }
+    return out;
+  }
+  const REST_LABEL = { long: 'per long rest', short: 'per short rest', day: 'per day' };
+  const buildHasCantrips = () => state.spells.map(getSpell).some(s => s && s.lvl === 0);
+  // Shared checkbox rows, used on both the printable sheet and the finish summary.
+  function usesRowsHTML() {
+    const res = limitedResources();
+    if (!res.length) return '<div class="use-none">No daily limits — your abilities are always ready or refresh every turn!</div>';
+    let html = res.map(rsc => {
+      const mid = rsc.pool
+        ? `<span class="use-pool">${escapeHtml(rsc.pool)}</span>`
+        : `<span class="use-boxes">${Array.from({ length: rsc.boxes }, () => '<span class="usebox"></span>').join('')}</span>`;
+      return `<div class="use-row"><span class="use-name">${escapeHtml(rsc.name)}</span>${mid}<span class="use-when">${REST_LABEL[rsc.per]}</span></div>`;
+    }).join('');
+    if (buildHasCantrips()) html += '<div class="use-note">Cantrips have no limit — cast them as often as you like!</div>';
+    return html;
+  }
+
   /* ----------------------- Printable sheet fill ------------------------- */
   function populateSheet() {
     const r = getRace(), c = getClass(), a = getArchetype();
@@ -888,6 +953,7 @@
       if (g.lev.length) sp += `<div><strong>Spells:</strong> ${g.lev.join(', ')}</div>`;
     }
     set('spells', sp);
+    set('uses', usesRowsHTML());
     document.getElementById('psAbilities').innerHTML = ABILITIES.map(ab => {
       const s = finalScore(ab.key), m = modOf(s);
       return `<div class="ps-ability"><div class="pa-label"><span class="pa-icon">${icon(ab.icon)}</span><span class="pa-name">${ab.name}</span></div>
