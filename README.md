@@ -9,9 +9,15 @@ Everything is **simplified** from the real D&D 5e rules so nobody gets overwhelm
 ## What's inside
 - **Playstyle quiz** that suggests heroes to match how you like to play (including "fight *and* cast a little magic" builds).
 - **9 races** (Human, Dwarf, Elf, Halfling, Dragonborn, Gnome, Half-Elf, Half-Orc, Tiefling), each with a simple signature ability.
-- **4 classes** (Fighter, Rogue, Wizard, Cleric), each with **2–3 specialties** — some of which grant a few spells.
+- **8 classes** (Fighter, Rogue, Wizard, Cleric, Barbarian, Paladin, Ranger, Bard), each with **2–3 specialties** — some of which grant a few spells.
 - **Simplified spell cards** in plain language.
-- A one-screen **How to Play** guide.
+- A one-screen **How to Play** guide with a glossary, and a printable per-player **cheat sheet** with a daily-use tracker.
+
+## Planning & direction
+This project is steered from three plain-language files in this folder — the "command center" (also used to manage it from a Cowork project pointed at this repo):
+- **[ROADMAP.md](ROADMAP.md)** — where it's been, where it is, what's next.
+- **[DECISIONS.md](DECISIONS.md)** — the important calls and *why*.
+- **[BACKLOG.md](BACKLOG.md)** — the running list of ideas.
 
 ## Run it locally
 It's a plain static site — no build step, no dependencies. Either:
