@@ -279,6 +279,11 @@ h2.title { font-size: clamp(24px, 4vw, 34px); }
 .saved-row .saved-name { font-family: var(--font-display); font-weight: 700; font-size: 18px; }
 .saved-row .saved-meta { color: var(--ink-soft); font-size: 14px; }
 .saved-row .spacer { flex: 1; }
+/* Hero info grows to fill; the action buttons stay clustered on one line
+   (and only drop together, as a group, on very narrow screens). */
+.saved-row .saved-info { flex: 1 1 240px; min-width: 0; }
+.saved-row .saved-actions { display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; }
+.saved-row .saved-actions .btn-sm { padding: 8px 13px; }
 
 /* ---------- Final summary sheet (on-screen) ---------- */
 .summary-grid { display: grid; gap: 16px; grid-template-columns: 1fr; margin: 16px 0; }

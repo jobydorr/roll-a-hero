@@ -529,13 +529,17 @@
         const r = RACES.find(x => x.id === snap.race), c = CLASSES.find(x => x.id === snap.klass);
         const a = c && snap.archetype ? c.archetypes.find(x => x.id === snap.archetype) : null;
         const row = document.createElement('div'); row.className = 'saved-row';
-        row.innerHTML = `<span class="saved-name">${escapeHtml((snap.story && snap.story.name) || 'Unnamed Hero')}</span>
-          <span class="saved-meta">${r ? r.name : '?'} ${c ? c.name : ''}${a ? ' · ' + a.name : ''} · Level ${LEVEL}</span>
-          <div class="spacer"></div>
-          <button class="btn btn-sm" data-open="${snap.id}">Open</button>
-          ${canShare ? `<button class="btn btn-sm btn-gold" data-share="${snap.id}">${icon('shield')} Share</button>` : ''}
-          <button class="btn btn-sm btn-ghost" data-export="${snap.id}">Export</button>
-          <button class="btn btn-sm btn-ghost" data-del="${snap.id}">Delete</button>`;
+        row.innerHTML = `
+          <div class="saved-info">
+            <span class="saved-name">${escapeHtml((snap.story && snap.story.name) || 'Unnamed Hero')}</span>
+            <span class="saved-meta">${r ? r.name : '?'} ${c ? c.name : ''}${a ? ' · ' + a.name : ''} · Level ${LEVEL}</span>
+          </div>
+          <div class="saved-actions">
+            <button class="btn btn-sm" data-open="${snap.id}">Open</button>
+            ${canShare ? `<button class="btn btn-sm btn-gold" data-share="${snap.id}">${icon('shield')} Share</button>` : ''}
+            <button class="btn btn-sm btn-ghost" data-export="${snap.id}">Export</button>
+            <button class="btn btn-sm btn-ghost" data-del="${snap.id}">Delete</button>
+          </div>`;
         list.appendChild(row);
       });
       list.querySelectorAll('[data-open]').forEach(b => b.onclick = () => { const s = loadAll().find(x => x.id === b.dataset.open); if (s) { state = s; viewCtx = null; go('finish'); } });
