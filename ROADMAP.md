@@ -2,7 +2,9 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-06-29.*
+*Last updated: 2026-07-07.*
+
+> **▶ Picking up here (2026-07-07):** The big question is **settled** — we're building **character sharing via a small backend, local-first**. Next actions in order: **(0)** build **Export/Backup** to lock in the two characters friends already made, then **(1)** profiles + Share-to-campaign, then **(2)** a live DM party page. **Waiting on Joby:** create a free **Supabase** (or Firebase) project and paste back the two keys (~5 min, one-time). Step (0) needs no backend and can start immediately. See "The big question — SETTLED" below.
 
 ---
 
@@ -54,14 +56,18 @@ Turn the one-and-done generator into a hero your friends **keep and grow**: more
 
 ---
 
-## The big question to settle first — ⚠️ not yet decided
+## The big question — ✅ SETTLED (2026-07-07): add a small backend (local-first)
 
-Today the app is a **single web page that saves to your browser** (no accounts, no server, nothing shared between people). That's perfect for "make a character," but the new pillars raise a fork:
+**Decided.** We're adding a small backend so characters can be shared. The goal: one site where users make a profile, build characters, hit **Share**, and the selected characters land on a **common page the DM can see** — so friends never have to send a PDF again. The GitHub Pages static site stays the frontend (no server to run); a free backend-as-a-service (**Supabase** preferred, **Firebase** the alternative) holds the shared data.
 
-- **Leveling** is fine staying browser-only — a character lives in that person's browser; we add export/print so it's never lost.
-- **DM campaign management** *might* stay browser-only too (just your own data) — but the dream of *"my campaign can see my players' characters"* would need people's data to meet somewhere (a save-file you share, or a real backend with accounts).
+**Design guardrails (locked in):**
+- **Local-first — nothing is ever lost.** Each browser's local save stays the source of truth; the backend only *publishes a copy*. If the backend ever vanished, every hero still lives in its owner's browser and in exported files.
+- **Existing characters are protected.** The first build step, before anything else, is **Export/Backup** to capture the two characters friends have already made.
+- **Kid-safe.** No passwords/emails for kids — profiles are display names + a shared campaign code, invite-only, zero personal info.
 
-**Decision to make before building the DM-↔-player connection in earnest:** stay client-only with shareable save-files, or add a backend so campaigns and characters can connect. (Recorded in `DECISIONS.md` once we settle it.)
+**Phased plan:** (0) Export/Backup → (1) profiles + Share-to-campaign → (2) live DM party page.
+
+*(Full reasoning in `DECISIONS.md`.)*
 
 ---
 

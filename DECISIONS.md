@@ -6,6 +6,18 @@
 
 ---
 
+### 2026-07-07 — Big question SETTLED: add a small backend (local-first) for character sharing
+The open architectural fork is **decided: we're adding a small backend.** Joby wants easy sharing — one site where users make a profile, build characters, hit **Share**, and the selected characters appear on a **common page the DM can see**, ending the "friends have to send me a PDF" problem. That requires data to meet in a shared place, so we're adding a free backend-as-a-service (**Supabase** preferred; **Firebase** the alternative) while the GitHub Pages static site stays the frontend — no server for Joby to run.
+
+**Guardrails locked in:**
+- **Local-first — nothing is ever lost.** Each browser's `localStorage` stays the source of truth; the backend only *publishes a copy*. If the backend ever vanished, every hero still lives in its owner's browser and in exported files.
+- **Existing characters are protected (the non-negotiable).** The **first** build step, before anything else, is **Export/Backup** to capture the two characters friends have already made. Migration is copy-out-then-up — never move, never delete.
+- **Kid-safe.** No passwords/emails for kids — profiles are display names + a shared **campaign code**, invite-only, zero personal info collected.
+
+**Phased plan:** (0) Export/Backup → (1) profiles + Share-to-campaign → (2) live DM party page.
+
+**One human step pending:** Joby creates a free Supabase (or Firebase) project and pastes back the two keys (~5 min, one-time). Nothing else is blocked — step (0) can start immediately with no backend at all.
+
 ### 2026-07-07 — Official D&D 5E rulebooks are reference/inspiration, not canon
 Twelve official 5E PDFs (Player's Handbook, DMG, Monster Manual, Xanathar's, Tasha's, Volo's, Mordenkainen's, Sword Coast, Ravnica, Eberron, Elemental Evil, Tortle Package) live in the repo root alongside the code and `.md` files. **How we use them:** as source material and inspiration — for stories, settings, factions, NPCs, monsters, and encounters — NOT as a rules catalogue to import wholesale. Our simplified system ("roll a d20, add your modifier, beat this number") stays the law of the land; these books supply the *spirit and flavor* of real D&D. When building campaign content, the project is encouraged to reach into them for ideas and then translate to our simplified mechanics. Note: the PDFs are large binaries sitting in the folder, so they don't show up in Cowork's "context files" sidebar — but they're readable from the repo anytime.
 
