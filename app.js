@@ -25,6 +25,7 @@
   let state = newCharacter();
   let selectedChip = null;
   let rollTimer = null;
+  let viewCtx = null; // set while the DM is viewing a shared hero read-only ({campaign}); else null
 
   /* --------------------------- Lookups & math --------------------------- */
   const getRace = () => RACES.find(r => r.id === state.race) || null;
@@ -465,7 +466,7 @@
   function updateHeader() {
     document.getElementById('brandMark').innerHTML = icon('dice');
     const prog = document.getElementById('progress');
-    if (state.step === 'welcome' || state.step === 'dm') { prog.hidden = true; return; }
+    if (state.step === 'welcome' || state.step === 'dm' || viewCtx) { prog.hidden = true; return; }
     const build = steps().filter(s => s !== 'welcome');
     let idx = build.indexOf(state.step);
     if (state.step === 'howto') { prog.hidden = true; return; }
@@ -494,8 +495,8 @@
   const RENDER = {};
 
   RENDER.welcome = (host) => {
+    viewCtx = null; // leaving any DM read-only view
     const saved = loadAll();
-    const prof = getProfile();
     const canShare = sharingAvailable();
     host.innerHTML = `
       <div class="step hero-splash">
@@ -520,7 +521,7 @@
       ${canShare ? `<div class="welcome-tools"><button class="btn btn-sm btn-ghost" id="dmViewBtn">${icon('shield')} DM: view a shared party</button></div>` : ''}
       <input type="file" id="importInput" accept="application/json,.json" hidden>
     `;
-    document.getElementById('startBtn').onclick = () => { state = newCharacter(); go('quiz'); };
+    document.getElementById('startBtn').onclick = () => { state = newCharacter(); viewCtx = null; go('quiz'); };
 
     if (saved.length) {
       const list = document.getElementById('savedList');
@@ -537,7 +538,7 @@
           <button class="btn btn-sm btn-ghost" data-del="${snap.id}">Delete</button>`;
         list.appendChild(row);
       });
-      list.querySelectorAll('[data-open]').forEach(b => b.onclick = () => { const s = loadAll().find(x => x.id === b.dataset.open); if (s) { state = s; go('finish'); } });
+      list.querySelectorAll('[data-open]').forEach(b => b.onclick = () => { const s = loadAll().find(x => x.id === b.dataset.open); if (s) { state = s; viewCtx = null; go('finish'); } });
       list.querySelectorAll('[data-export]').forEach(b => b.onclick = () => { const s = loadAll().find(x => x.id === b.dataset.export); if (s) exportCharacter(s); });
       // Share: first time opens the share dialog; once shared, opens "manage" (unshare / add page).
       list.querySelectorAll('[data-share]').forEach(b => b.onclick = () => {
@@ -626,13 +627,20 @@
             <div class="saved-meta">by ${escapeHtml(row.ownerName || 'someone')} · ${info.r ? info.r.name : '?'} ${info.c ? info.c.name : ''}${info.a ? ' · ' + info.a.name : ''} · Lvl ${LEVEL} · ${info.hp} HP · AC ${info.ac}</div>
           </div>
           <div class="spacer"></div>
-          <button class="btn btn-sm btn-primary" data-print>${icon('print')} View / Print</button>
-          <button class="btn btn-sm btn-ghost" data-copy>${icon('star')} Save a copy</button>`;
-        el.querySelector('[data-print]').onclick = () => withState(snap, () => { populateSheet(); populateReference(); window.print(); });
-        el.querySelector('[data-copy]').onclick = (ev) => {
-          importFromData({ kind: 'character', character: JSON.parse(JSON.stringify(snap)) });
-          announce('Saved a copy to this browser.');
-          ev.currentTarget.disabled = true; ev.currentTarget.innerHTML = `${icon('check')} Saved`;
+          <button class="btn btn-sm btn-primary" data-view>${icon('scroll')} View</button>
+          <button class="btn btn-sm btn-ghost" data-remove>Remove</button>`;
+        // Open the shared hero's real character page (Print + Save-a-copy live there).
+        el.querySelector('[data-view]').onclick = () => { viewCtx = { campaign: camp }; state = JSON.parse(JSON.stringify(snap)); go('finish'); };
+        // Remove this hero from the shared page (rules allow it only for its owner).
+        el.querySelector('[data-remove]').onclick = async (ev) => {
+          const nm = row.name || (snap.story && snap.story.name) || 'this hero';
+          if (!confirm(`Remove "${nm}" from this shared page? This doesn't touch the player's own saved copy.`)) return;
+          const b = ev.currentTarget; b.disabled = true; b.textContent = '…';
+          try { await RAHSync.deleteShared(camp, row._id); announce('Removed “' + nm + '” from the party.'); render(); }
+          catch (e) {
+            b.disabled = false; b.textContent = 'Remove';
+            alert('Couldn\'t remove it: ' + ((e && e.message) || e) + '\n\nA hero can normally only be removed by the player who shared it (ask them to tap Unshare). Heroes you shared yourself can always be removed here.');
+          }
         };
         list.appendChild(el);
       });
@@ -1066,7 +1074,7 @@
   };
 
   RENDER.finish = (host) => {
-    persist();
+    if (!viewCtx) persist(); // don't save a DM-viewed shared hero into this browser
     populateSheet();
     populateReference();
     const r = getRace(), c = getClass(), a = getArchetype();
@@ -1096,24 +1104,40 @@
             ${renderFinishUses()}
           </div>
         </div>
-        <div class="note">${icon('check')} Saved! Your hero is stored in this browser — you can reopen it from the welcome screen any time.</div>
-        <div class="note">${icon('print')} <strong>Print / Save PDF</strong> gives you two pages: your character sheet, plus a <strong>cheat sheet</strong> explaining every racial power, class feature, and spell in plain words.</div>
+        ${viewCtx
+          ? `<div class="note">${icon('shield')} You're viewing a hero shared to your party. Use <strong>Print / Save PDF</strong> for the full sheet, or keep a copy in your own heroes.</div>`
+          : `<div class="note">${icon('check')} Saved! Your hero is stored in this browser — you can reopen it from the welcome screen any time.</div>
+        <div class="note">${icon('print')} <strong>Print / Save PDF</strong> gives you two pages: your character sheet, plus a <strong>cheat sheet</strong> explaining every racial power, class feature, and spell in plain words.</div>`}
         <div class="actions">
-          <button class="btn btn-ghost" data-act="back">← Make changes</button>
+          ${viewCtx
+            ? `<button class="btn btn-ghost" id="backPartyBtn">← Back to party</button>
+          <div class="spacer"></div>
+          <button class="btn" id="exportBtn">${icon('book')} Save to file</button>
+          <button class="btn" id="copyLocalBtn">${icon('star')} Save to my heroes</button>
+          <button class="btn btn-primary" id="printBtn">${icon('print')} Print / Save PDF</button>`
+            : `<button class="btn btn-ghost" data-act="back">← Make changes</button>
           <div class="spacer"></div>
           <button class="btn btn-gold" id="howtoBtn">${icon('scroll')} How to Play</button>
           <button class="btn" id="newBtn">Start another hero</button>
           <button class="btn" id="exportBtn">${icon('book')} Save to file</button>
           ${sharingAvailable() ? `<button class="btn btn-gold" id="shareBtn">${icon('shield')} Share with DM</button>` : ''}
-          <button class="btn btn-primary" id="printBtn">${icon('print')} Print / Save PDF</button>
+          <button class="btn btn-primary" id="printBtn">${icon('print')} Print / Save PDF</button>`}
         </div>
       </div>`;
     document.getElementById('printBtn').onclick = () => { populateSheet(); populateReference(); window.print(); };
-    document.getElementById('howtoBtn').onclick = () => go('howto');
-    document.getElementById('newBtn').onclick = () => { state = newCharacter(); go('quiz'); };
     document.getElementById('exportBtn').onclick = () => exportCharacter(JSON.parse(JSON.stringify(state)));
+    const howtoBtn = document.getElementById('howtoBtn'); if (howtoBtn) howtoBtn.onclick = () => go('howto');
+    const newBtn = document.getElementById('newBtn'); if (newBtn) newBtn.onclick = () => { state = newCharacter(); viewCtx = null; go('quiz'); };
     const shareBtn = document.getElementById('shareBtn');
     if (shareBtn) shareBtn.onclick = () => { persist(); openShareDialog(JSON.parse(JSON.stringify(state))); };
+    const backPartyBtn = document.getElementById('backPartyBtn');
+    if (backPartyBtn) backPartyBtn.onclick = () => { viewCtx = null; go('dm'); };
+    const copyLocalBtn = document.getElementById('copyLocalBtn');
+    if (copyLocalBtn) copyLocalBtn.onclick = (ev) => {
+      importFromData({ kind: 'character', character: JSON.parse(JSON.stringify(state)) });
+      announce('Saved a copy to your heroes.');
+      ev.currentTarget.disabled = true; ev.currentTarget.innerHTML = `${icon('check')} Saved`;
+    };
     wireFooter(host);
   };
   function renderFinishSpells() {

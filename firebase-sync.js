@@ -83,10 +83,18 @@
     },
 
     // All characters shared to a campaign (newest first) — the DM party view.
+    // Each row carries its Firestore doc id under `_id` (for deleteShared).
     listCampaign: async function (campaign) {
       await authReady;
       const qs = await charCol(campaign).orderBy('sharedAt', 'desc').get();
-      return qs.docs.map(d => d.data());
+      return qs.docs.map(d => Object.assign({ _id: d.id }, d.data()));
+    },
+
+    // Delete a specific shared doc by id (used by the DM party "Remove"). The
+    // security rules still require you to own it (ownerUid == your uid).
+    deleteShared: async function (campaign, docId) {
+      await authReady;
+      await charCol(campaign).doc(docId).delete();
     },
 
     // charIds the caller has already shared to this campaign (to show Shared/Unshare).
