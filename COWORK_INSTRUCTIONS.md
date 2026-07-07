@@ -24,11 +24,7 @@ Radically simplified so a 9-year-old and a brand-new adult can play, while keepi
 **SETTING**
 High fantasy with our own homebrew touches layered on — leaning high fantasy (taverns, dungeons, dragons, but our own places, factions, and characters).
 
-**DM PRIORITIES** (in order)
-1. Story & campaign arcs  2. NPCs & monsters  3. Encounters & combat (balanced for our simplified system). Live in-session help is welcome but secondary.
+**SOURCE MATERIAL** (the official 5E rulebooks in the repo)
+Twelve official D&D 5E PDFs live in the repo root (PHB, DMG, Monster Manual, Xanathar's, Tasha's, Volo's, Mordenkainen's, Sword Coast, Ravnica, Eberron, Elemental Evil, Tortle Package). Use them as **reference and inspiration, NOT as a wholesale rules catalogue.** You're encouraged to reach into them when building stories, settings, factions, NPCs, monsters, and encounters — stay true to the *spirit* of real D&D — then translate everything to OUR simplified system ("roll a d20, add your modifier, beat this number"). Simplified mechanics always win; the books supply flavor and ideas, not the rules we play by.
 
-**HOW WE WORK**
-- The project is steered from three plain files in the repo — `ROADMAP.md`, `DECISIONS.md`, `BACKLOG.md`. Keep them updated as the human-facing record.
-- One big question is still OPEN: stay browser-only (+ shareable save files) or add a backend (needed for DM↔player sharing). Flag it; don't assume.
-- This machine is the work desk; GitHub (`jobydorr/roll-a-hero`) is the live site + backup. Commit changes and offer to push — you can deploy for me.
-- Always keep it kid-safe, simple, and committed.
+**DM PRIORITIES** (in orde
