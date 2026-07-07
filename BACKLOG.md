@@ -25,6 +25,7 @@ Status — **built & verified end-to-end on 2026-07-07** (real writes/reads agai
 - **DM tools — plan & run campaigns** 🟠 — the near-term new pillar, for you as the Dungeon Master. Likely pieces (to be shaped): a campaign + session planner, an NPC list, a simple encounter/monster builder, locations/world notes, a party tracker, and an easy initiative tracker for running a fight. Same north star as the rest of the app — simple and friendly, not a spreadsheet.
 - **Living characters — leveling up** 🟠 — ⭐ explicitly "later" (Joby's word), but the other headline. Let a saved hero advance past level 3: more HP, higher-level spells + more spell slots, ability-score bumps at the right levels, and the subclass features that unlock as they level. Edit and re-print the sheet anytime. Stays browser-only (the character lives in that person's browser); add solid export so it's never lost.
 - **Connect DM ↔ players** ✅ decided → now the **Active now** effort above. The dream where your campaign can see your players' characters. Unblocked 2026-07-07: we're adding a small backend, local-first.
+- **Private DM area / accounts** 🟠 — flagged by Joby 2026-07-07. Right now *anyone* who opens the site can reach the DM view, and any known campaign code can be read. Add a real gate: the DM signs in (Google/email via Firebase Auth) and Firestore rules restrict a campaign's reads to its owner (+ maybe a members list). Fine to stay open for a family table today; needed before this becomes more than that.
 
 ## Smaller / anytime
 
@@ -53,6 +54,7 @@ Status — **built & verified end-to-end on 2026-07-07** (real writes/reads agai
 
 ## Recently done (so you can see momentum)
 
+- ✅ Sharing UX pass — per-hero **Share** dialog (remembers your name, pick an existing share page or make a new one, multi-campaign ready), explicit **Unshare**, and **Delete now also removes the shared copy**. Dropped the clunky "Share & back up" box; Import is a small button. Verified server-side (2026-07-07)
 - ✅ Character sharing MVP — Firebase backend, local-first: Export/Import backup, Share-to-campaign, and a DM party page. Verified end-to-end (2026-07-07)
 - ✅ Shipped & deployed live to a public link (2026-06-24)
 - ✅ Daily Uses tracker — printable checkboxes for spell slots & limited-use features (2026-06-29)
