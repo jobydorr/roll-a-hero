@@ -32,6 +32,6 @@ Twelve official D&D 5E PDFs live in the repo root (PHB, DMG, Monster Manual, Xan
 
 **HOW WE WORK**
 - The project is steered from three plain files in the repo — `ROADMAP.md`, `DECISIONS.md`, `BACKLOG.md`. Keep them updated as the human-facing record.
-- One big question is still OPEN: stay browser-only (+ shareable save files) or add a backend (needed for DM↔player sharing). Flag it; don't assume.
+- The big architecture question is **settled** (2026-07-07): we added a small **Firebase** backend (local-first) so players can **Share** characters to a campaign and the DM sees them on one page — plus file Export/Import as a safety net. See `DECISIONS.md`.
 - This machine is the work desk; GitHub (`jobydorr/roll-a-hero`) is the live site + backup. Commit changes and offer to push — you can deploy for me.
 - Always keep it kid-safe, simple, and committed.
