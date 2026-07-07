@@ -1,0 +1,12 @@
+# --- Local reference material — deliberately NOT committed ---
+# The official D&D 5E rulebook PDFs live in this folder so Claude / Cowork can
+# read them as reference and inspiration. They are COPYRIGHTED and this repo is
+# PUBLIC, so they must never be pushed to GitHub (that would republish them),
+# and 600+ MB of binaries would permanently bloat the repo. They stay safe on
+# your local machine only. (See DECISIONS.md, 2026-07-07.)
+*.pdf
+
+# OS / editor junk
+Thumbs.db
+.DS_Store
+*~
