@@ -8,14 +8,15 @@
 
 ---
 
-## ▶ Active now — character sharing (small backend, local-first)
+## ▶ Active now — character sharing (Firebase, local-first)
 
-Decided 2026-07-07 (see `DECISIONS.md`). Build order:
-1. **Export/Backup** — lock in the two characters friends already made. *Do this first; nothing is lost.* 🟢
-2. **Profiles + Share-to-campaign** — pick a display name, hit Share, character publishes to a shared campaign. 🔵→now
-3. **Live DM party page** — open one page and see all shared characters. 🔵→now
+Decided 2026-07-07 (see `DECISIONS.md`). Backend chosen: **Firebase** (project "roll-a-hero").
+Status — **built & verified end-to-end on 2026-07-07** (real writes/reads against the live project, in a browser preview):
+1. ✅ **Export / Import / Back-up** — save any hero (or all heroes) to a file; import merges in and never deletes. The safety net.
+2. ✅ **Profiles + Share-to-campaign** — set a display name + campaign code on the home screen, tap **Share** on a hero → it publishes to Firestore.
+3. ✅ **DM party page** — "DM: view the shared party" lists every shared hero with live stats; each has View/Print and Save-a-copy.
 
-**Waiting on Joby:** create a free **Supabase** (or Firebase) project + paste back the two keys (~5 min, one-time). Step 1 needs no backend and can start immediately.
+**⏳ One step left, on Joby:** paste the rules from `firestore.rules` into Firebase console → Firestore Database → Rules → **Publish** (replaces the temporary 30-day "test mode"). Works today; this closes the open-database window. Then push the site live.
 
 ---
 
@@ -52,6 +53,7 @@ Decided 2026-07-07 (see `DECISIONS.md`). Build order:
 
 ## Recently done (so you can see momentum)
 
+- ✅ Character sharing MVP — Firebase backend, local-first: Export/Import backup, Share-to-campaign, and a DM party page. Verified end-to-end (2026-07-07)
 - ✅ Shipped & deployed live to a public link (2026-06-24)
 - ✅ Daily Uses tracker — printable checkboxes for spell slots & limited-use features (2026-06-29)
 - ✅ Grew to 8 classes + 9 races, each with specialties

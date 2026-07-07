@@ -122,6 +122,59 @@
     if (i >= 0) list[i] = snap; else list.push(snap);
     saveAll(list);
   }
+  // Run a function with `state` temporarily pointed at another hero's snapshot
+  // (used to compute/print a shared hero without disturbing the current one).
+  function withState(snap, fn) { const saved = state; state = snap; try { return fn(); } finally { state = saved; } }
+
+  /* --------------------- Export / Import (the safety net) --------------- */
+  // Nothing here ever deletes a saved hero — export copies out, import merges in.
+  function download(filename, text) {
+    const blob = new Blob([text], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1500);
+  }
+  const slugName = (s) => (String(s || 'hero').trim().replace(/[^a-z0-9]+/gi, '-').replace(/^-+|-+$/g, '') || 'hero').toLowerCase();
+  function exportCharacter(snap) {
+    download(`roll-a-hero-${slugName(snap.story && snap.story.name)}.json`,
+      JSON.stringify({ app: 'roll-a-hero', kind: 'character', version: 1, character: snap }, null, 2));
+  }
+  function exportAll() {
+    download(`roll-a-hero-backup-${new Date().toISOString().slice(0, 10)}.json`,
+      JSON.stringify({ app: 'roll-a-hero', kind: 'backup', version: 1, characters: loadAll() }, null, 2));
+  }
+  // Accept a single character, a full backup, a bare array, or a bare snapshot.
+  function importFromData(data) {
+    let incoming = [];
+    if (data && data.kind === 'character' && data.character) incoming = [data.character];
+    else if (data && data.kind === 'backup' && Array.isArray(data.characters)) incoming = data.characters;
+    else if (Array.isArray(data)) incoming = data;
+    else if (data && data.id && data.story) incoming = [data];
+    if (!incoming.length) throw new Error('No Roll a Hero characters found in that file.');
+    const list = loadAll();
+    let added = 0, updated = 0;
+    incoming.forEach(ch => {
+      if (!ch || typeof ch !== 'object') return;
+      if (!ch.id) ch.id = 'h' + Date.now() + Math.floor(Math.random() * 1000);
+      const i = list.findIndex(x => x.id === ch.id);
+      if (i >= 0) { list[i] = ch; updated++; } else { list.push(ch); added++; }
+    });
+    saveAll(list);
+    return { added, updated };
+  }
+  function importFromFile(file, done) {
+    const reader = new FileReader();
+    reader.onload = () => { try { done(null, importFromData(JSON.parse(reader.result))); } catch (e) { done(e); } };
+    reader.onerror = () => done(new Error('Could not read that file.'));
+    reader.readAsText(file);
+  }
+
+  /* ------------------------ Profile (name + code) ----------------------- */
+  const PROFILE_KEY = 'rollAHeroProfile';
+  function getProfile() { try { return JSON.parse(localStorage.getItem(PROFILE_KEY)) || {}; } catch (e) { return {}; } }
+  function saveProfile(p) { try { localStorage.setItem(PROFILE_KEY, JSON.stringify(p)); } catch (e) {} }
+  const sharingAvailable = () => !!(window.RAHSync && window.RAHSync.available);
 
   /* ----------------------------- Quiz logic ----------------------------- */
   const shuffle = (arr) => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -288,7 +341,7 @@
   function updateHeader() {
     document.getElementById('brandMark').innerHTML = icon('dice');
     const prog = document.getElementById('progress');
-    if (state.step === 'welcome') { prog.hidden = true; return; }
+    if (state.step === 'welcome' || state.step === 'dm') { prog.hidden = true; return; }
     const build = steps().filter(s => s !== 'welcome');
     let idx = build.indexOf(state.step);
     if (state.step === 'howto') { prog.hidden = true; return; }
@@ -318,6 +371,8 @@
 
   RENDER.welcome = (host) => {
     const saved = loadAll();
+    const prof = getProfile();
+    const canShare = sharingAvailable();
     host.innerHTML = `
       <div class="step hero-splash">
         <div class="crest">${icon('dice')}</div>
@@ -328,24 +383,169 @@
         </div>
       </div>
       ${saved.length ? `<div class="panel"><h2 class="title" style="font-size:22px;">Your Saved Heroes</h2><div class="saved-list" id="savedList"></div></div>` : ''}
+      <div class="panel">
+        <h2 class="title" style="font-size:22px;">Share &amp; back up</h2>
+        <p class="lead" style="font-size:15.5px;">Your heroes are saved in this browser. Back them up to a file so they're never lost${canShare ? ', or share them so your Dungeon Master can see them.' : '.'}</p>
+        <div class="share-tools">
+          ${saved.length ? `<button class="btn btn-sm" id="backupAllBtn">${icon('scroll')} Back up all to a file</button>` : ''}
+          <button class="btn btn-sm" id="importBtn">${icon('book')} Import from a file</button>
+          <input type="file" id="importInput" accept="application/json,.json" hidden>
+        </div>
+        ${canShare ? `
+        <div class="field" style="margin:16px 0 8px;">
+          <label>Your details for sharing</label>
+          <div class="share-inputs">
+            <input type="text" id="profName" placeholder="Display name (your DM sees this)" value="${escapeHtml(prof.name || '')}" maxlength="40">
+            <input type="text" id="profCampaign" placeholder="Campaign code (ask your DM)" value="${escapeHtml(prof.campaign || '')}" maxlength="60">
+            <button class="btn btn-sm btn-gold" id="saveProfBtn">Save</button>
+          </div>
+          <p class="note" id="profNote" style="margin:8px 0 0;display:${prof.name && prof.campaign ? 'none' : 'block'};">Set a display name and your group's campaign code, then tap <strong>Share</strong> on any hero above.</p>
+        </div>
+        <button class="btn btn-sm btn-ghost" id="dmViewBtn">${icon('shield')} DM: view the shared party</button>
+        ` : `<p class="note" style="margin-top:14px;">Online sharing is offline right now — back up / import still works. (Sharing needs an internet connection.)</p>`}
+      </div>
     `;
     document.getElementById('startBtn').onclick = () => { state = newCharacter(); go('quiz'); };
+
     if (saved.length) {
       const list = document.getElementById('savedList');
       saved.forEach(snap => {
         const r = RACES.find(x => x.id === snap.race), c = CLASSES.find(x => x.id === snap.klass);
         const a = c && snap.archetype ? c.archetypes.find(x => x.id === snap.archetype) : null;
         const row = document.createElement('div'); row.className = 'saved-row';
-        row.innerHTML = `<span class="saved-name">${escapeHtml(snap.story.name || 'Unnamed Hero')}</span>
+        row.innerHTML = `<span class="saved-name">${escapeHtml((snap.story && snap.story.name) || 'Unnamed Hero')}</span>
           <span class="saved-meta">${r ? r.name : '?'} ${c ? c.name : ''}${a ? ' · ' + a.name : ''} · Level ${LEVEL}</span>
           <div class="spacer"></div>
           <button class="btn btn-sm" data-open="${snap.id}">Open</button>
+          ${canShare ? `<button class="btn btn-sm btn-gold" data-share="${snap.id}">${icon('shield')} Share</button>` : ''}
+          <button class="btn btn-sm btn-ghost" data-export="${snap.id}">Export</button>
           <button class="btn btn-sm btn-ghost" data-del="${snap.id}">Delete</button>`;
         list.appendChild(row);
       });
       list.querySelectorAll('[data-open]').forEach(b => b.onclick = () => { const s = loadAll().find(x => x.id === b.dataset.open); if (s) { state = s; go('finish'); } });
-      list.querySelectorAll('[data-del]').forEach(b => b.onclick = () => { saveAll(loadAll().filter(x => x.id !== b.dataset.del)); render(); });
+      list.querySelectorAll('[data-export]').forEach(b => b.onclick = () => { const s = loadAll().find(x => x.id === b.dataset.export); if (s) exportCharacter(s); });
+      list.querySelectorAll('[data-del]').forEach(b => b.onclick = () => {
+        const s = loadAll().find(x => x.id === b.dataset.del);
+        if (!confirm(`Delete "${(s && s.story && s.story.name) || 'this hero'}" from this browser? Tip: Export or Back up first if you might want it later.`)) return;
+        saveAll(loadAll().filter(x => x.id !== b.dataset.del)); render();
+      });
+
+      // Sharing: mark heroes already shared to the current campaign, and wire toggles.
+      list.querySelectorAll('[data-share]').forEach(b => b.onclick = () => toggleShare(b));
+      if (canShare && prof.campaign) {
+        RAHSync.mySharedIds(prof.campaign).then(ids => {
+          const set = new Set(ids);
+          list.querySelectorAll('[data-share]').forEach(b => { if (set.has(b.dataset.share)) markShared(b); });
+        }).catch(() => {});
+      }
     }
+
+    function markShared(b) { b.dataset.shared = '1'; b.classList.remove('btn-gold'); b.classList.add('btn-ghost'); b.innerHTML = `${icon('check')} Shared`; }
+    async function toggleShare(b) {
+      const snap = loadAll().find(x => x.id === b.dataset.share); if (!snap) return;
+      const p = getProfile();
+      if (!p.name || !p.campaign) {
+        const note = document.getElementById('profNote'); if (note) note.style.display = 'block';
+        const f = document.getElementById(!p.name ? 'profName' : 'profCampaign'); if (f) f.focus();
+        announce('Add your display name and campaign code first.');
+        return;
+      }
+      const orig = b.innerHTML; b.disabled = true; b.innerHTML = 'Working…';
+      try {
+        if (b.dataset.shared === '1') { await RAHSync.unshareCharacter(snap.id, p.campaign); announce('Removed from the shared party.'); }
+        else { await RAHSync.shareCharacter(snap, p.campaign, p.name); announce('Shared with your DM.'); }
+        render();
+      } catch (e) {
+        b.disabled = false; b.innerHTML = orig;
+        alert('Sharing didn\'t work: ' + (e && e.message ? e.message : e) + '\n\nYour hero is still safe in this browser.');
+      }
+    }
+
+    const backupBtn = document.getElementById('backupAllBtn');
+    if (backupBtn) backupBtn.onclick = () => { exportAll(); announce('Backed up all heroes to a file.'); };
+    const importInput = document.getElementById('importInput');
+    document.getElementById('importBtn').onclick = () => importInput.click();
+    importInput.onchange = () => {
+      const file = importInput.files && importInput.files[0]; if (!file) return;
+      importFromFile(file, (err, res) => {
+        importInput.value = '';
+        if (err) { alert('Import failed: ' + err.message); return; }
+        alert(`Imported ${res.added} new hero${res.added === 1 ? '' : 'es'}` + (res.updated ? `, updated ${res.updated}.` : '.'));
+        render();
+      });
+    };
+
+    if (canShare) {
+      document.getElementById('saveProfBtn').onclick = () => {
+        const name = (document.getElementById('profName').value || '').trim().slice(0, 40);
+        const campaign = (document.getElementById('profCampaign').value || '').trim().slice(0, 60);
+        saveProfile({ name: name, campaign: campaign });
+        announce('Saved your sharing details.');
+        render();
+      };
+      document.getElementById('dmViewBtn').onclick = () => go('dm');
+    }
+  };
+
+  RENDER.dm = (host) => {
+    const prof = getProfile();
+    if (!sharingAvailable()) {
+      host.innerHTML = `<div class="step"><p class="eyebrow">Dungeon Master</p><h2 class="title">${icon('shield')} The shared party</h2>
+        <p class="note">Online sharing is offline right now — reconnect to the internet to view shared heroes.</p>
+        <div class="actions"><button class="btn" id="dmBack">← Back</button></div></div>`;
+      document.getElementById('dmBack').onclick = () => go('welcome');
+      return;
+    }
+    if (!prof.campaign) {
+      host.innerHTML = `<div class="step"><p class="eyebrow">Dungeon Master</p><h2 class="title">${icon('shield')} View the shared party</h2>
+        <p class="lead">Enter your group's campaign code to see every hero your players have shared. (Pick any code you like and give it to your players — they type the same one.)</p>
+        <div class="field" style="max-width:440px;"><label>Campaign code</label><input type="text" id="dmCode" placeholder="e.g. dragons-of-summer" maxlength="60"></div>
+        <div class="actions"><button class="btn btn-ghost" id="dmBack">← Back</button><div class="spacer"></div><button class="btn btn-primary" id="dmGo">Show the party →</button></div></div>`;
+      const goShow = () => { const c = (document.getElementById('dmCode').value || '').trim().slice(0, 60); if (!c) return; const p = getProfile(); p.campaign = c; saveProfile(p); render(); };
+      document.getElementById('dmGo').onclick = goShow;
+      document.getElementById('dmCode').addEventListener('keydown', e => { if (e.key === 'Enter') goShow(); });
+      document.getElementById('dmBack').onclick = () => go('welcome');
+      return;
+    }
+    host.innerHTML = `<div class="step">
+      <p class="eyebrow">Dungeon Master · campaign “${escapeHtml(prof.campaign)}”</p>
+      <h2 class="title">${icon('shield')} The shared party</h2>
+      <p class="lead" id="dmStatus">Loading shared heroes…</p>
+      <div class="saved-list" id="dmList"></div>
+      <div class="actions">
+        <button class="btn btn-ghost" id="dmBack">← Back</button>
+        <div class="spacer"></div>
+        <button class="btn btn-sm btn-ghost" id="dmChange">Change code</button>
+        <button class="btn btn-sm" id="dmRefresh">${icon('dice')} Refresh</button>
+      </div></div>`;
+    document.getElementById('dmBack').onclick = () => go('welcome');
+    document.getElementById('dmRefresh').onclick = () => render();
+    document.getElementById('dmChange').onclick = () => { const p = getProfile(); delete p.campaign; saveProfile(p); render(); };
+    const status = document.getElementById('dmStatus'); const list = document.getElementById('dmList');
+    RAHSync.listCampaign(prof.campaign).then(rows => {
+      rows = rows.filter(row => row && row.character);
+      if (!rows.length) { status.innerHTML = 'No heroes shared here yet. Give your players the campaign code <strong>“' + escapeHtml(prof.campaign) + '”</strong> and have them tap <strong>Share</strong> on a hero.'; return; }
+      status.textContent = `${rows.length} hero${rows.length === 1 ? '' : 'es'} shared with you.`;
+      rows.forEach(row => {
+        const snap = row.character;
+        const info = withState(snap, () => { const r = getRace(), c = getClass(), a = getArchetype(); return { r: r, c: c, a: a, hp: computeHP(), ac: computeAC() }; });
+        const el = document.createElement('div'); el.className = 'saved-row';
+        el.innerHTML = `<div style="min-width:0;">
+            <div class="saved-name">${escapeHtml(row.name || (snap.story && snap.story.name) || 'Unnamed Hero')}</div>
+            <div class="saved-meta">by ${escapeHtml(row.ownerName || 'someone')} · ${info.r ? info.r.name : '?'} ${info.c ? info.c.name : ''}${info.a ? ' · ' + info.a.name : ''} · Lvl ${LEVEL} · ${info.hp} HP · AC ${info.ac}</div>
+          </div>
+          <div class="spacer"></div>
+          <button class="btn btn-sm btn-primary" data-print>${icon('print')} View / Print</button>
+          <button class="btn btn-sm btn-ghost" data-copy>${icon('star')} Save a copy</button>`;
+        el.querySelector('[data-print]').onclick = () => withState(snap, () => { populateSheet(); populateReference(); window.print(); });
+        el.querySelector('[data-copy]').onclick = (ev) => {
+          importFromData({ kind: 'character', character: JSON.parse(JSON.stringify(snap)) });
+          announce('Saved a copy to this browser.');
+          ev.currentTarget.disabled = true; ev.currentTarget.innerHTML = `${icon('check')} Saved`;
+        };
+        list.appendChild(el);
+      });
+    }).catch(e => { status.innerHTML = 'Couldn\'t load the party: ' + escapeHtml(e && e.message ? e.message : String(e)); });
   };
 
   RENDER.quiz = (host) => {
@@ -812,12 +1012,29 @@
           <div class="spacer"></div>
           <button class="btn btn-gold" id="howtoBtn">${icon('scroll')} How to Play</button>
           <button class="btn" id="newBtn">Start another hero</button>
+          <button class="btn" id="exportBtn">${icon('book')} Save to file</button>
+          ${sharingAvailable() ? `<button class="btn btn-gold" id="shareBtn">${icon('shield')} Share with DM</button>` : ''}
           <button class="btn btn-primary" id="printBtn">${icon('print')} Print / Save PDF</button>
         </div>
       </div>`;
     document.getElementById('printBtn').onclick = () => { populateSheet(); populateReference(); window.print(); };
     document.getElementById('howtoBtn').onclick = () => go('howto');
     document.getElementById('newBtn').onclick = () => { state = newCharacter(); go('quiz'); };
+    document.getElementById('exportBtn').onclick = () => exportCharacter(JSON.parse(JSON.stringify(state)));
+    const shareBtn = document.getElementById('shareBtn');
+    if (shareBtn) shareBtn.onclick = async () => {
+      const p = getProfile();
+      if (!p.name || !p.campaign) { alert('First set your display name and campaign code on the home screen (the “Share & back up” panel), then come back and tap Share.'); go('welcome'); return; }
+      const orig = shareBtn.innerHTML; shareBtn.disabled = true; shareBtn.innerHTML = 'Sharing…';
+      try {
+        persist();
+        await RAHSync.shareCharacter(JSON.parse(JSON.stringify(state)), p.campaign, p.name);
+        shareBtn.innerHTML = `${icon('check')} Shared with DM`; announce('Shared with your DM.');
+      } catch (e) {
+        shareBtn.disabled = false; shareBtn.innerHTML = orig;
+        alert('Sharing didn\'t work: ' + (e && e.message ? e.message : e) + '\n\nYour hero is still safe in this browser.');
+      }
+    };
     wireFooter(host);
   };
   function renderFinishSpells() {

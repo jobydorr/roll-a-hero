@@ -4,7 +4,7 @@
 
 *Last updated: 2026-07-07.*
 
-> **▶ Picking up here (2026-07-07):** The big question is **settled** — we're building **character sharing via a small backend, local-first**. Next actions in order: **(0)** build **Export/Backup** to lock in the two characters friends already made, then **(1)** profiles + Share-to-campaign, then **(2)** a live DM party page. **Waiting on Joby:** create a free **Supabase** (or Firebase) project and paste back the two keys (~5 min, one-time). Step (0) needs no backend and can start immediately. See "The big question — SETTLED" below.
+> **▶ Picking up here (2026-07-07):** Character sharing is **built and verified end-to-end** against Firebase (project "roll-a-hero"): file **Export/Import** backup, **Share** a hero to a campaign, and a **DM party page** that lists everyone's shared heroes with stats. Local-first — nothing leaves a browser unless you Share, and existing heroes are never touched. **One step left, on Joby:** paste `firestore.rules` into the Firebase console (Firestore Database → Rules → Publish) to replace the temporary "test mode"; then push the site live. See "The big question — SETTLED" below.
 
 ---
 

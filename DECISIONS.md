@@ -6,6 +6,13 @@
 
 ---
 
+### 2026-07-07 — Character sharing MVP built on Firebase (compat SDK, anonymous auth, Firestore)
+Implemented the sharing feature end-to-end and verified it against the live project. Technical shape, chosen to fit the app's no-build, `<script>`-tag style:
+- **Firebase compat SDK** loaded from the gstatic CDN as plain `<script>` globals (not the ES-module build) — no bundler needed. Config is a global in `firebase-config.js`; `firebase-sync.js` exposes `window.RAHSync`. If the SDK/config can't load, the app **degrades gracefully to offline-only** (sharing UI hides; build/print/backup still work).
+- **Anonymous Auth** gives every browser a stable id with no passwords/emails (kid-safe). **Firestore** stores shared heroes at `campaigns/{code}/characters/{ownerUid__charId}`, with the full local snapshot under `character` so the DM prints an identical sheet.
+- **Local-first preserved:** `localStorage` stays the source of truth; Share only *publishes a copy*. New **Export/Import** (single hero or full backup) is the safety net and never deletes.
+- **Security:** `firestore.rules` (in repo) — anyone signed in can *read* a campaign (so the DM sees the party; the campaign code is the practical gate), but you can only *write/delete your own* heroes. Still needs pasting into the console to replace "test mode."
+
 ### 2026-07-07 — Big question SETTLED: add a small backend (local-first) for character sharing
 The open architectural fork is **decided: we're adding a small backend.** Joby wants easy sharing — one site where users make a profile, build characters, hit **Share**, and the selected characters appear on a **common page the DM can see**, ending the "friends have to send me a PDF" problem. That requires data to meet in a shared place, so we're adding a free backend-as-a-service (**Supabase** preferred; **Firebase** the alternative) while the GitHub Pages static site stays the frontend — no server for Joby to run.
 

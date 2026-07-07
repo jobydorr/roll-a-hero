@@ -321,5 +321,10 @@ h2.title { font-size: clamp(24px, 4vw, 34px); }
 .glossary dt { font-family: var(--font-display); font-weight: 700; color: var(--brown); margin-top: 12px; }
 .glossary dd { margin: 3px 0 0; padding: 0 0 0 14px; border-left: 3px solid var(--gold); color: var(--ink-soft); }
 
+/* ---------- Share & backup / DM view ---------- */
+.share-tools { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.share-inputs { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 4px; }
+.share-inputs input[type="text"] { width: auto; flex: 1 1 220px; min-width: 170px; }
+
 /* hide the print-only sheets on screen */
 .print-sheet, .print-reference { display: none; }
