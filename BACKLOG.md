@@ -16,7 +16,7 @@ Status — **built & verified end-to-end on 2026-07-07** (real writes/reads agai
 2. ✅ **Profiles + Share-to-campaign** — set a display name + campaign code on the home screen, tap **Share** on a hero → it publishes to Firestore.
 3. ✅ **DM party page** — "DM: view the shared party" lists every shared hero with live stats; each has View/Print and Save-a-copy.
 
-**⏳ One step left, on Joby:** paste the rules from `firestore.rules` into Firebase console → Firestore Database → Rules → **Publish** (replaces the temporary 30-day "test mode"). Works today; this closes the open-database window. Then push the site live.
+**✅ Done (2026-07-07):** Firestore database created, `firestore.rules` published, and re-verified with a forced server-side round-trip (write → server read → delete, all confirmed on the real backend under the live rules). Deployed live.
 
 ---
 

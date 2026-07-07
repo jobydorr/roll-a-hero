@@ -4,7 +4,7 @@
 
 *Last updated: 2026-07-07.*
 
-> **▶ Picking up here (2026-07-07):** Character sharing is **built and verified end-to-end** against Firebase (project "roll-a-hero"): file **Export/Import** backup, **Share** a hero to a campaign, and a **DM party page** that lists everyone's shared heroes with stats. Local-first — nothing leaves a browser unless you Share, and existing heroes are never touched. **One step left, on Joby:** paste `firestore.rules` into the Firebase console (Firestore Database → Rules → Publish) to replace the temporary "test mode"; then push the site live. See "The big question — SETTLED" below.
+> **▶ Status (2026-07-07):** Character sharing is **LIVE**. Firebase project "roll-a-hero" (Firestore + anonymous auth), security rules published and re-verified with a real server-side round-trip. Players set a display name + campaign code and tap **Share**; the DM opens **"DM: view the shared party"** with the same code and sees everyone. Local-first — nothing leaves a browser unless you Share, existing heroes are never touched, and file **Export/Import** is the safety net. See "The big question — SETTLED" below.
 
 ---
 
