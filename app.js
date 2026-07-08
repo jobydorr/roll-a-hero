@@ -626,7 +626,7 @@
   function updateHeader() {
     document.getElementById('brandMark').innerHTML = icon('dice');
     const prog = document.getElementById('progress');
-    if (state.step === 'welcome' || state.step === 'dm' || state.step === 'edit' || viewCtx) { prog.hidden = true; return; }
+    if (state.step === 'welcome' || state.step === 'dm' || state.step === 'edit' || state.step === 'writeup' || viewCtx) { prog.hidden = true; return; }
     const build = steps().filter(s => s !== 'welcome');
     let idx = build.indexOf(state.step);
     if (state.step === 'howto') { prog.hidden = true; return; }
@@ -1372,6 +1372,7 @@
           ${viewCtx
             ? `<button class="btn btn-ghost" id="backPartyBtn">← Back to party</button>
           <div class="spacer"></div>
+          <button class="btn" id="writeupBtn">${icon('book')} Full write-up</button>
           <button class="btn" id="exportBtn">${icon('book')} Save to file</button>
           <button class="btn" id="copyLocalBtn">${icon('star')} Save to my heroes</button>
           <button class="btn btn-primary" id="printBtn">${icon('print')} Print / Save PDF</button>`
@@ -1379,6 +1380,7 @@
           <div class="spacer"></div>
           <button class="btn btn-gold" id="howtoBtn">${icon('scroll')} How to Play</button>
           <button class="btn" id="newBtn">Start another hero</button>
+          <button class="btn btn-gold" id="writeupBtn">${icon('book')} Full write-up</button>
           <button class="btn" id="exportBtn">${icon('book')} Save to file</button>
           ${sharingAvailable() ? `<button class="btn btn-gold" id="shareBtn">${icon('shield')} Share with DM</button>` : ''}
           <button class="btn btn-primary" id="printBtn">${icon('print')} Print / Save PDF</button>`}
@@ -1390,6 +1392,8 @@
     const newBtn = document.getElementById('newBtn'); if (newBtn) newBtn.onclick = () => { state = newCharacter(); viewCtx = null; go('quiz'); };
     const shareBtn = document.getElementById('shareBtn');
     if (shareBtn) shareBtn.onclick = () => { persist(); openShareDialog(JSON.parse(JSON.stringify(state))); };
+    const writeupBtn = document.getElementById('writeupBtn');
+    if (writeupBtn) writeupBtn.onclick = () => go('writeup');
     const backPartyBtn = document.getElementById('backPartyBtn');
     if (backPartyBtn) backPartyBtn.onclick = () => { viewCtx = null; go('dm'); };
     const copyLocalBtn = document.getElementById('copyLocalBtn');
@@ -1425,6 +1429,69 @@
     return `<h3 class="spell-section-head">Daily Uses <span class="pick-counter" style="font-weight:400;font-size:12.5px;">— tick one each time you use it; refill when you rest</span></h3>
       <div class="uses-grid">${usesRowsHTML()}</div>`;
   }
+
+  // The complete hero, readable in the app — not just in the printed PDF.
+  // Reuses referenceHTML() for the abilities/spells text, and adds the things
+  // that previously lived nowhere on-screen: the numbers, and the story the
+  // player actually wrote (personality, motivations, backstory).
+  RENDER.writeup = (host) => {
+    const r = getRace(), c = getClass(), a = getArchetype();
+    const sn = spellNumbers();
+    const st = state.story || {};
+    const traits = (st.traits || []).filter(Boolean);
+    const motives = (st.motivations || []).filter(Boolean);
+    const backstory = (st.backstory || '').trim();
+    const hasStory = traits.length || motives.length || backstory;
+    host.innerHTML = `
+      <div class="step">
+        <p class="eyebrow">Everything about your hero</p>
+        <h2 class="title">${escapeHtml(st.name || 'Your Hero')}</h2>
+        <p class="lead">Level ${charLevel()} ${r ? escapeHtml(r.name) : ''} ${c ? escapeHtml(c.name) : ''}${a ? ` — ${escapeHtml(a.name)}` : ''}</p>
+
+        <div class="panel" style="margin-top:14px;">
+          <div class="stat-badges">
+            <div class="stat-badge"><div class="sb-icon">${icon('hp')}</div><div class="sb-val">${computeHP()}</div><div class="sb-label">Hit Points</div></div>
+            <div class="stat-badge"><div class="sb-icon">${icon('armor')}</div><div class="sb-val">${computeAC()}</div><div class="sb-label">Armor</div></div>
+            <div class="stat-badge"><div class="sb-icon">${icon('speed')}</div><div class="sb-val">${r ? r.speed : 30}</div><div class="sb-label">Speed</div></div>
+            <div class="stat-badge"><div class="sb-icon">${icon('weapon')}</div><div class="sb-val">${fmtMod(weaponAttackBonus())}</div><div class="sb-label">To Hit</div></div>
+            ${sn ? `<div class="stat-badge"><div class="sb-icon">${icon('spell')}</div><div class="sb-val">${sn.dc}</div><div class="sb-label">Spell DC</div></div>` : ''}
+          </div>
+          <div class="mini-abilities">
+            ${ABILITIES.map(ab => { const s = finalScore(ab.key), m = modOf(s); return `<div class="mini-ab"><div class="ma-name">${ab.short}</div><div class="ma-score">${s}</div><div class="ma-mod ${m < 0 ? 'neg' : ''}">${fmtMod(m)}</div></div>`; }).join('')}
+          </div>
+        </div>
+
+        ${hasStory ? `<div class="panel writeup">
+          <div class="pr-section"><h3>Who they are</h3>
+            ${traits.length ? `<p><span class="pr-name">Personality:</span> ${traits.map(escapeHtml).join(' · ')}</p>` : ''}
+            ${motives.length ? `<p><span class="pr-name">What drives them:</span> ${motives.map(escapeHtml).join(' and ')}</p>` : ''}
+            ${backstory ? `<p><span class="pr-name">Their story:</span> ${escapeHtml(backstory).replace(/\n/g, '<br>')}</p>` : ''}
+          </div>
+        </div>` : ''}
+
+        <div class="panel writeup">${referenceHTML(false)}</div>
+
+        <div class="panel writeup">
+          <div class="pr-section"><h3>Weapons &amp; Equipment</h3>
+            <ul>${resolvedEquipment().map(g => `<li>${escapeHtml(g)}</li>`).join('')}</ul>
+            <p class="pr-note">You also carry a pack: ${ADVENTURING_PACK.join(', ')}.</p>
+          </div>
+          ${limitedResources().length ? `<div class="pr-section"><h3>Daily Uses</h3>
+            <p class="pr-note">Tick one each time you use it; they all refill when you rest.</p>
+            <div class="uses-grid">${usesRowsHTML()}</div></div>` : ''}
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-ghost" id="wuBack">← Back to my hero</button>
+          <div class="spacer"></div>
+          <button class="btn btn-gold" id="wuHowto">${icon('scroll')} How to Play</button>
+          <button class="btn btn-primary" id="wuPrint">${icon('print')} Print / Save PDF</button>
+        </div>
+      </div>`;
+    document.getElementById('wuBack').onclick = () => go('finish');
+    document.getElementById('wuHowto').onclick = () => go('howto');
+    document.getElementById('wuPrint').onclick = () => { populateSheet(); populateReference(); window.print(); };
+  };
 
   RENDER.howto = (host) => {
     host.innerHTML = `
@@ -1565,12 +1632,20 @@
   // has a quick reference for what their stuff actually does.
   function populateReference() {
     const ref = document.getElementById('printReference'); if (!ref) return;
+    ref.innerHTML = referenceHTML(true);
+  }
+  // The per-character reference: full text of every racial power, class feature,
+  // specialty, companion, and spell. Shared by the printable cheat sheet (page 2)
+  // and the on-screen "Full write-up" — one source, two homes.
+  function referenceHTML(includeHead) {
     const r = getRace(), c = getClass(), a = getArchetype();
     const name = escapeHtml(state.story.name || 'Unnamed Hero');
     let raceLine = r ? r.name : '';
     if (r && r.id === 'dragonborn' && state.raceChoice.ancestry) { const anc = r.choice.options.find(o => o.id === state.raceChoice.ancestry); raceLine += ` (${anc.damage})`; }
-    let html = `<div class="pr-head"><div class="pr-title">${name} — Quick Reference</div>
-      <div class="pr-sub">Level ${LEVEL} ${raceLine} ${c ? c.name : ''}${a ? ` — ${a.name}` : ''}</div></div>`;
+    let html = includeHead
+      ? `<div class="pr-head"><div class="pr-title">${name} — Quick Reference</div>
+      <div class="pr-sub">Level ${charLevel()} ${raceLine} ${c ? c.name : ''}${a ? ` — ${a.name}` : ''}</div></div>`
+      : '';
 
     if (r) {
       let items = `<li><span class="pr-name">${escapeHtml(r.signature.name)}:</span> ${r.signature.desc}</li>`;
@@ -1616,7 +1691,7 @@
       if (lev.length) sp += `<ul>${lev.map(line).join('')}</ul>`;
       html += `<div class="pr-section"><h3>Your Spells</h3>${sp}</div>`;
     }
-    ref.innerHTML = html;
+    return html;
   }
 
   /* ------------------------------ Boot ---------------------------------- */
