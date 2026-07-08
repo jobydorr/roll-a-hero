@@ -331,14 +331,18 @@
       return { ok: false, reason: 'fetch-failed', detail: e.message };
     }
 
-    const docs = [];
-    for (const p of (Array.isArray(manifest.docs) ? manifest.docs : [])) {
+    // In parallel, and tolerating individual failures — a campaign is hundreds of
+    // small files, and awaiting them one at a time takes seconds, not milliseconds.
+    // A single unreadable doc warns and is skipped; it never fails the whole sync.
+    const paths = Array.isArray(manifest.docs) ? manifest.docs : [];
+    const fetched = await Promise.all(paths.map(async (p) => {
       try {
         const r = await fetch('campaign/' + p, { cache: 'no-store' });
-        if (!r.ok) { console.warn('[dmos] skipped', p, r.status); continue; }
-        docs.push(await r.json());
-      } catch (e) { console.warn('[dmos] skipped', p, e.message); }
-    }
+        if (!r.ok) { console.warn('[dmos] skipped', p, r.status); return null; }
+        return await r.json();
+      } catch (e) { console.warn('[dmos] skipped', p, e.message); return null; }
+    }));
+    const docs = fetched.filter(Boolean);
 
     const result = mergeIncoming(docs, new Set());
     if (manifest.campaign) ws.campaign = manifest.campaign;
