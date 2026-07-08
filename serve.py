@@ -21,7 +21,6 @@ Why this exists instead of plain `python -m http.server 8000`:
 import argparse
 import http.server
 import os
-import socketserver
 import sys
 import webbrowser
 
@@ -47,10 +46,14 @@ def main():
     args = ap.parse_args()
 
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
-    socketserver.TCPServer.allow_reuse_address = True
 
+    # ThreadingHTTPServer, NOT socketserver.TCPServer. A single-threaded server
+    # handles one connection at a time, and a browser opens several and holds
+    # them open — so the very next request hangs forever. It looks exactly like
+    # the app freezing, which is a terrible thing to discover mid-session.
+    # (This is why `python -m http.server` switched to threading in 3.7.)
     try:
-        httpd = socketserver.TCPServer((HOST, args.port), Handler)
+        httpd = http.server.ThreadingHTTPServer((HOST, args.port), Handler)
     except OSError as err:
         print(f"\n  Couldn't start on port {args.port}: {err}")
         print("  Is Roll a Hero already running in another window?\n")
