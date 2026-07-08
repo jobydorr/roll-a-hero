@@ -14,7 +14,7 @@
   function blankAssign() { return { str: null, dex: null, con: null, int: null, wis: null, cha: null }; }
   function newCharacter() {
     return {
-      id: null, step: 'welcome',
+      id: null, step: 'home',
       level: LEVEL, // per-character, so leveling up later is a data change, not a rewrite
       quizAnswers: [], quizLayout: null, recommendations: null, altRecs: null,
       rollMethod: '4d6', pool: null, lastRoll: null, rollsUsed: 0, assigned: blankAssign(),
@@ -633,7 +633,7 @@
   function updateHeader() {
     document.getElementById('brandMark').innerHTML = icon('dice');
     const prog = document.getElementById('progress');
-    if (['welcome', 'dm', 'edit', 'writeup', 'stories'].includes(state.step) || viewCtx) { prog.hidden = true; return; }
+    if (['home', 'welcome', 'dm', 'edit', 'writeup', 'stories'].includes(state.step) || viewCtx) { prog.hidden = true; return; }
     const build = steps().filter(s => s !== 'welcome');
     let idx = build.indexOf(state.step);
     if (state.step === 'howto') { prog.hidden = true; return; }
@@ -672,14 +672,35 @@
   /* ============================ RENDERERS =============================== */
   const RENDER = {};
 
+  // The RH main page — the two doors. The character builder is for everyone;
+  // the DM OS is passcode-gated and deliberately NOT linked from inside the
+  // builder, so a player on their character sheet has no path into the DM's
+  // spoilers. Both are reached from here.
+  RENDER.home = (host) => {
+    viewCtx = null; editCtx = null;
+    host.innerHTML = `
+      <div class="step hero-splash">
+        <div class="crest">${icon('dice')}</div>
+        <h1 class="title">Roll a Hero</h1>
+        <p class="lead" style="margin:0 auto 6px;">Pick where you're headed.</p>
+        <div class="actions" style="justify-content:center;">
+          <button class="btn btn-primary btn-lg" id="goBuilder">${icon('star')} Build a Hero</button>
+          <a class="btn btn-gold btn-lg" href="dm.html">${icon('scroll')} Dungeon Master OS</a>
+        </div>
+        <p class="lead" style="margin:16px auto 0;font-size:15px;color:var(--ink-soft);">The character builder is for everyone. The Dungeon Master OS is just for you — it asks for a passcode.</p>
+      </div>`;
+    document.getElementById('goBuilder').onclick = () => go('welcome');
+  };
+
   RENDER.welcome = (host) => {
     viewCtx = null; editCtx = null; // leaving any DM read-only view / edit session
     const saved = loadAll();
     const canShare = sharingAvailable();
     host.innerHTML = `
+      <div class="welcome-tools" style="margin:0 0 2px;"><button class="btn btn-sm btn-ghost" id="toHome">← Main page</button></div>
       <div class="step hero-splash">
         <div class="crest">${icon('dice')}</div>
-        <h1 class="title">Roll a Hero</h1>
+        <h1 class="title">Build a Hero</h1>
         <p class="lead" style="margin:0 auto;">Build your very own Dungeons &amp; Dragons character — step by step — and learn how to play along the way. No experience needed!</p>
         <div class="actions" style="justify-content:center;">
           <button class="btn btn-primary btn-lg" id="startBtn">${icon('star')} Start a New Hero</button>
@@ -697,12 +718,10 @@
       </div>`
       : `<div class="welcome-tools"><button class="btn btn-sm btn-ghost" id="importBtn">${icon('book')} Import a hero from a file</button></div>`}
       ${canShare ? `<div class="welcome-tools"><button class="btn btn-sm btn-ghost" id="dmViewBtn">${icon('shield')} DM: view a shared party</button></div>` : ''}
-      <!-- Outside the canShare gate on purpose: the DM OS is a local workspace and
-           works fine with Firebase blocked or offline. -->
-      <div class="welcome-tools"><a class="btn btn-sm btn-ghost" href="dm.html">${icon('scroll')} Dungeon Master OS</a></div>
       <input type="file" id="importInput" accept="application/json,.json" hidden>
     `;
     document.getElementById('startBtn').onclick = () => { state = newCharacter(); viewCtx = null; go('quiz'); };
+    document.getElementById('toHome').onclick = () => go('home');
 
     if (saved.length) {
       const list = document.getElementById('savedList');

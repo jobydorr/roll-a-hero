@@ -49,15 +49,15 @@ Decided 2026-07-07 (see `DECISIONS.md`). Backend: **Firebase** project `roll-a-h
 
 ## 🔨 Active now — the Dungeon Master OS (`dm.html`)
 
-A Scrivener-style workspace, being built in phases. Shape settled 2026-07-08 (see `DECISIONS.md`); story content is authored with Cowork and pushed into the workspace through a **review inbox** that never auto-files.
+A Scrivener-style workspace reached from the **RH main page**. Shape and the big simplification settled 2026-07-08 (see `DECISIONS.md`). Cowork authors story content directly in **`campaign.js`** (committed, public, loaded like `data.js`) — edit, commit, it appears. No server, no fetch.
 
-- ✅ **Phase 0 — safety net & docs.** `campaign/` gitignored; `window.RAH` export + guarded boot in `app.js`; DM OS link on the welcome screen.
-- ✅ **Phase 1 — shell + folder tree + story feed.** Three resizable/collapsible columns, nestable folders (folders *are* documents), continuous "Scrivenings" feed, typed docs with template fields, `[[wikilinks]]` with hover-peek, conflict handling, Export/Import, print. **Passcode is `bugbear`** — change it at the top of `dmos-boot.js`.
-- ⬜ **Phase 2 — review inbox.** Cowork pushes land in a tray with a suggested folder + confidence + reasoning. Confident items pre-file; nothing merges without a click.
-- ⬜ **Phase 3 — Sidebar B.** Tabbed rail: Initiative (one-click seed from an encounter, drag or type to order, HP/KO, survives a reload) · Party (live shared heroes) · Lookup (creatures, companions, spells, glossary).
-- ⬜ **Phase 4 — notebook + floating fast-notes.** Dated entry log that cannot lose data; "Clear notes" empties only the window. Highlight → pin to notebook.
-- ⬜ **Phase 5 — story flow chart.** Derived from beats + `leadsTo` links, so it adapts as the campaign grows. Drag to arrange; click a node to jump.
-- ⬜ **Phase 6 — print.** Print a doc, a folder, or the initiative card.
+- ✅ **Phase 0 — safety net & docs.** `window.RAH` export + guarded boot in `app.js`; hero math shared with the DM OS.
+- ✅ **Phase 1 — shell + folder tree + story feed.** Three resizable/collapsible columns, nestable folders (folders *are* documents), continuous "Scrivenings" feed, typed docs with template fields, `[[wikilinks]]` with hover-peek, conflict-safe merge, Export/Import, print. **Passcode is `bugbear`** (top of `dmos-boot.js`).
+- ✅ **Structure + simplification.** `index.html` is the RH main page (hub); DM OS link removed from the builder; campaign moved to `campaign.js`; server/launcher deleted.
+- ⬜ **Sidebar B.** Tabbed rail: Initiative (one-click seed from an encounter, drag or type to order, HP/KO, survives a reload) · Party (live shared heroes) · Lookup (creatures, companions, spells, glossary).
+- ⬜ **Notebook + floating fast-notes.** Dated entry log that cannot lose data; "Clear notes" empties only the window. Highlight → pin to notebook.
+- ⬜ **Story flow chart.** Derived from beats + `leadsTo` links, so it adapts as the campaign grows. Drag to arrange; click a node to jump.
+- 💤 **Review inbox — dropped.** Was going to stage Cowork pushes for approval. Moot now that content lands via `campaign.js`; if unsure where a doc goes, Cowork asks in chat. `mergeIncoming()` still keeps the DM's edits safe across re-pushes.
 
 ## Big rocks (major efforts)
 - **Living characters — leveling up** 🟠 — ⭐ deferred by Joby 2026-07-08: *"we can work on that when the time comes for them to actually need to level up."* Let a saved hero advance past level 3.

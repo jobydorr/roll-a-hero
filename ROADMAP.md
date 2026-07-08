@@ -4,25 +4,27 @@
 
 *Last updated: 2026-07-08.*
 
-> **▶ HANDOFF — start here (2026-07-08, later)**
+> **▶ HANDOFF — start here (2026-07-08, evening)**
 >
-> **What just shipped:** the **Dungeon Master OS** at `dm.html` — Phases 0 and 1. The week-old question *"where do DM tools live?"* is **settled: its own page** (see `DECISIONS.md`). You get a three-column Scrivener-style workspace: a nestable folder tree, a continuous story feed that stitches a folder's documents into one scrolling read, typed documents with template fields, `[[wikilinks]]` you can hover to peek at without losing your place, and Export/Import. **The passcode is `bugbear`** — change it at the top of `dmos-boot.js`. Open it from the welcome screen, or at `http://localhost:8000/dm.html`.
+> **The shape (naming, use it):** the **RH main page** (`index.html`) is a hub with two doors — **Build a Hero** (the character builder, for everyone) and **Dungeon Master OS** (`dm.html`, passcode `bugbear`, for the DM). The DM OS link lives only on the main page, never inside the builder, so a player has no path from their character sheet into the DM's spoilers.
 >
-> **⏸ PAUSED MID-REVIEW (2026-07-08).** Joby previewed the workspace and said *"looking mostly good, I have a few comments and concerns"* — **but hadn't given them yet when we stopped.** Do not start Phase 2 before asking what they were. That feedback is the highest-priority input; it may reshape the phase order.
+> **What just got much simpler (this session):** the DM OS used to load its campaign from gitignored JSON files fetched over a local server — which needed a launcher, which needed loopback hardening. All gone. **The campaign is now `campaign.js`, committed and public, loaded by a `<script>` tag like `data.js`.** No fetch, no server: the live site works and double-clicking `dm.html` works. To push content from Cowork, edit `campaign.js` and commit — same as adding a spell to `data.js`. Full reasoning (and the mistake that caused the detour) in `DECISIONS.md`, top entry.
 >
-> **Where to pick up (once the feedback is in):** **Phase 2 — the review inbox** (phases listed at the top of `BACKLOG.md`). Cowork writes pushes to `campaign/inbox/*.json`; the OS shows them in a tray with a suggested folder, a confidence score, and its reasoning. Nothing auto-files. `dmos-store.js` already has the seam: `mergeIncoming(docs, pendingIds)` deliberately refuses to create a doc whose id is in `pendingIds`, so unreviewed content waits for the tray.
+> **Still true about the workspace:** three-column Scrivener-style layout — nestable folder tree, a continuous story feed stitching a folder's docs into one read, typed documents with template fields, `[[wikilinks]]` with hover-peek, conflict-safe merge, Export/Import, print.
 >
-> **Four commits are unpushed.** `git push` deploys them to the public site. That's safe — verified that no `campaign/` file has ever been added in any commit on any branch — but it's Joby's call, so ask.
+> **⏸ Feedback still pending.** Joby has *"comments and concerns"* they haven't given yet. Ask before starting new feature work.
 >
-> **⚠ `campaign/` is the DM's only copy.** It's gitignored by design (that's what keeps the story from the players), which also means it is **not backed up anywhere**. Today it holds only throwaway seed content. Before Joby writes a real campaign in there, settle a backup: a private second repo, or a habit of *Export workspace*. Raise it; don't let it be discovered the hard way.
+> **Where to pick up:** **Sidebar B** (Initiative / Party / Lookup) is still a placeholder, and the notes window and flow chart are unbuilt (see `BACKLOG.md`). The old "review inbox" phase is now moot — content just lands via `campaign.js`. If uncertain where a pushed doc belongs, ask Joby in chat rather than building an inbox UI.
 >
-> **Six things to know before you touch it:**
-> - `dm.html` **must not link `print.css`** — its line 8 hides `.app-header, .app, #live`, and it knows nothing about `.dmos-shell`. `dmos.css` owns `@media print` for that page.
-> - `dm.html` shares a `localStorage` origin with `index.html`, and `saveAll()` (`app.js:190`) swallows quota errors. A full DM workspace could silently stop a *hero* from saving. Every DM write goes through one `write()` in `dmos-store.js` that surfaces `QuotaExceededError` and refuses to clear anything.
-> - The campaign lives in a **gitignored `campaign/`** folder. That 404 — not the passcode — is what keeps the story from the players. **Never `git add -f` a file in there.**
-> - **The feed's reconcile key is `nodeKey(d)`, not `rev`.** Conflict flags and the body-editor toggle change a node's HTML without moving a revision. Anything you add to `renderDocNode` that isn't derived from `rev` must go into `nodeKey` too, or you'll render a stale node.
-> - **Never detach the node `cursor` points at** in `PAINT.feed` without advancing `cursor` first. That bug threw `NotFoundError` on every repaint of the first document — silently, because `flush()` catches paint errors into the console.
-> - **Assert on computed style, not on the attribute you just set.** Two bugs hid behind this. `dmos.css` sets `display` on `.dmos-gate`, which outranks the browser's `[hidden]{display:none}` — so `gate.hidden = true` did nothing, while every test happily confirmed the attribute was there. Hence the blanket `[hidden]{display:none!important}` at the top of `dmos.css`. Likewise, `flush()` swallows paint errors, so a passing assertion can sit on top of a crashing paint: **watch `console.error` in UI tests.**
+> **Commits are unpushed.** `git push` deploys to the public site. Fine to do — there's nothing secret in the repo by design — but it's Joby's call.
+>
+> **Things to know before you touch it:**
+> - The campaign is **`campaign.js`** (`window.DM_CAMPAIGN`). `DMOS_STORE.loadCampaign()` reads that global; there is no fetch and no `campaign/` folder anymore.
+> - `dm.html` **must not link `print.css`** — its line 8 hides `.app-header, .app, #live`. `dmos.css` owns `@media print` for that page.
+> - `dm.html` shares a `localStorage` origin with `index.html`, and `saveAll()` (`app.js:190`) swallows quota errors. A full DM workspace could silently stop a *hero* from saving. Every DM write goes through one `write()` in `dmos-store.js` that surfaces `QuotaExceededError`.
+> - **The feed's reconcile key is `nodeKey(d)`, not `rev`.** Conflict flags and the body-editor toggle change a node's HTML without moving a revision, so they're folded into `nodeKey`. Anything you add to `renderDocNode` that isn't derived from `rev` must go there too.
+> - **Never detach the node `cursor` points at** in `PAINT.feed` without advancing `cursor` first, or it throws `NotFoundError` on every repaint of the first doc — silently, because `flush()` catches paint errors into the console.
+> - **Assert on computed style, not on the attribute you just set**, and **watch `console.error` in UI tests** (`flush()` swallows paint errors). Both traps cost real debugging this session; the `[hidden]{display:none!important}` at the top of `dmos.css` exists because an author `display` rule was beating the browser's `[hidden]`.
 >
 > ---
 >

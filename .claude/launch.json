@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "roll-a-hero",
-      "runtimeExecutable": "py",
-      "runtimeArgs": ["-3", "serve.py", "--no-browser"],
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8000"],
       "port": 8000
     }
   ]

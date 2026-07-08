@@ -293,15 +293,6 @@
   };
 
   function emptyFeedHTML() {
-    if (campaignStatus && campaignStatus.reason === 'file-protocol') {
-      return `<div class="feed-empty"><div class="note">
-        <strong>You opened this by double-clicking the file.</strong>
-        Browsers won't let a page read its own folder that way, so there's nothing to load.
-        <br><br>Start the little server — run <code>python -m http.server 8000</code> in the
-        RollAHero folder — then open <strong>http://localhost:8000/dm.html</strong>.
-        <br><br>Or drag a workspace file straight onto this window.
-      </div></div>`;
-    }
     if (campaignStatus && campaignStatus.reason === 'no-campaign') {
       return `<div class="feed-empty"><div class="note">
         <strong>No campaign content yet.</strong> Nothing has been written to the

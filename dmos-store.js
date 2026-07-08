@@ -22,7 +22,6 @@
   'use strict';
 
   const SCHEMA = 1;
-  const MANIFEST = 'campaign/manifest.json';
 
   const KEY = {
     workspace:  'rollAHeroDmWorkspace',
@@ -316,39 +315,20 @@
     return out;
   }
 
-  async function loadCampaign(loc) {
-    const protocol = (loc || location).protocol;
-    // On file:// fetch() THROWS (opaque origin) rather than 404ing. Don't try.
-    if (protocol === 'file:') return { ok: false, reason: 'file-protocol' };
-
-    let manifest;
-    try {
-      const res = await fetch(MANIFEST, { cache: 'no-store' });
-      if (res.status === 404) return { ok: false, reason: 'no-campaign' };
-      if (!res.ok) return { ok: false, reason: 'http', detail: res.status + ' ' + res.statusText };
-      manifest = await res.json();
-    } catch (e) {
-      return { ok: false, reason: 'fetch-failed', detail: e.message };
+  /* The campaign is a committed JS file (campaign.js) that sets window.DM_CAMPAIGN,
+     loaded by a <script> tag exactly like data.js. No fetch, so no server and no
+     file:// problem: dm.html works on the live site AND by double-clicking it.
+     Async only to keep the signature its callers already await. */
+  function loadCampaign() {
+    const src = window.DM_CAMPAIGN;
+    if (!src || !Array.isArray(src.docs) || !src.docs.length) {
+      return Promise.resolve({ ok: false, reason: 'no-campaign' });
     }
-
-    // In parallel, and tolerating individual failures — a campaign is hundreds of
-    // small files, and awaiting them one at a time takes seconds, not milliseconds.
-    // A single unreadable doc warns and is skipped; it never fails the whole sync.
-    const paths = Array.isArray(manifest.docs) ? manifest.docs : [];
-    const fetched = await Promise.all(paths.map(async (p) => {
-      try {
-        const r = await fetch('campaign/' + p, { cache: 'no-store' });
-        if (!r.ok) { console.warn('[dmos] skipped', p, r.status); return null; }
-        return await r.json();
-      } catch (e) { console.warn('[dmos] skipped', p, e.message); return null; }
-    }));
-    const docs = fetched.filter(Boolean);
-
-    const result = mergeIncoming(docs, new Set());
-    if (manifest.campaign) ws.campaign = manifest.campaign;
+    const result = mergeIncoming(src.docs.map(clone), new Set());
+    if (src.campaign) ws.campaign = src.campaign;
     persist();
     emit({ type: 'docs' });
-    return Object.assign({ ok: true, manifest }, result);
+    return Promise.resolve(Object.assign({ ok: true }, result));
   }
 
   /* --------------------- Export / Import (the safety net) ----------------- */
@@ -387,7 +367,7 @@
   const saveUi = () => write(KEY.ui, ui);
 
   window.DMOS_STORE = {
-    KEY, SCHEMA, DOC_TYPES, MANIFEST,
+    KEY, SCHEMA, DOC_TYPES,
     merge, clone, nowISO,
 
     subscribe: (fn) => { listeners.push(fn); return () => listeners.splice(listeners.indexOf(fn), 1); },

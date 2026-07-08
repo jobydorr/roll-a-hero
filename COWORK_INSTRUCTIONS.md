@@ -30,14 +30,13 @@ Twelve official D&D 5E PDFs live in the repo root (PHB, DMG, Monster Manual, Xan
 **DM PRIORITIES** (in order)
 1. Story & campaign arcs  2. NPCs & monsters  3. Encounters & combat (balanced for our simplified system). Live in-session help is welcome but secondary.
 
-**PUSHING STORY CONTENT INTO THE DM OS** (the `campaign/` contract)
-When we brainstorm arcs, NPCs, encounters or creatures, write them into the repo so the DM OS (`dm.html`) can pick them up. Rules, all of them load-bearing:
-- **Everything goes under `campaign/`** — never the repo root. `campaign/` is **gitignored on purpose** so the campaign never reaches the public site. **Never `git add -f` a file in there,** not even "as an example."
-- **Never `git add -A`** in this repo — it's the one command that could sweep a spoiler into a public commit. Add files by name.
-- **One push = one file:** `campaign/inbox/<ISO-timestamp>.json`, holding many items. Then rewrite `campaign/manifest.json` (it lists every `docs/` and `inbox/` path — the OS can't list a directory over HTTP).
-- **Every item carries a `confidence` (0–1), a `reasoning` string, and a `suggestedParent`.** The OS files ≥0.80 automatically-but-reviewably; below that it asks the DM where it goes. **If you're unsure where something belongs, say so in `reasoning` and drop the confidence** — a wrong guess must be annoying, never destructive.
-- **Bump `rev` on every re-push of the same `id`.** Forgetting fails *safe* (the DM's copy wins) but silently, so they'll think the push didn't land.
-- **You can never delete a doc.** `op` is `upsert` only. If a doc should go, tell the DM in chat.
+**PUSHING STORY CONTENT INTO THE DM OS** (the `campaign.js` contract)
+When we brainstorm arcs, NPCs, encounters or creatures, put them into `campaign.js` — a committed, public file loaded by `dm.html` exactly like `data.js`. It sets `window.DM_CAMPAIGN = { campaign, docs: [ … ] }`. Editing it and committing is the whole handoff; the content appears in the DM OS on next load, the same way a new spell in `data.js` appears in the builder. Rules:
+- **One document = one object** in the `docs` array. Shape: `{ schema:1, id, type, title, parent, order, rev, tags, leadsTo, fields, body }`. Types and their `fields` keys are defined in `DOC_TYPES` in `dmos-store.js`; fill those keys. `parent` is another doc's `id` (or `null` for a top-level folder).
+- **Bump `rev` on every re-push of the same `id`.** The DM's own edits inside the workspace are layered on top and are preserved across re-pushes; a higher `rev` is how a genuine update is recognized. Forgetting fails *safe* (the DM's copy wins) but silently.
+- **If you're unsure where a doc belongs, don't guess — ask Joby in chat** which folder (`parent`) it should sit under. A wrong `parent` is annoying, not destructive, but ask anyway.
+- **Never delete a doc from someone's live game silently.** Removing an object from the array won't remove it from the DM's workspace (their copy persists); if a doc should truly go, tell Joby.
+- Because `campaign.js` is committed and public, there is **nothing secret at the file level** — that's fine and intended. The passcode on `dm.html` is what keeps players out of the running workspace.
 
 **HOW WE WORK**
 - The project is steered from three plain files in the repo — `ROADMAP.md`, `DECISIONS.md`, `BACKLOG.md`. Keep them updated as the human-facing record.

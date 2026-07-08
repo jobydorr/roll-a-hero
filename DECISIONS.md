@@ -2,11 +2,24 @@
 
 *What this is:* a short record of the important calls we made and **why** — especially the moments the project changed direction. A pivot is never "lost": come back here to see what we were thinking.
 
-*Newest first. Last updated: 2026-07-07.*
+*Newest first. Last updated: 2026-07-08.*
 
 ---
 
-### 2026-07-08 — The local server binds to loopback, and there's a launcher
+### 2026-07-08 — Simplify: an RH main page, and the campaign is a committed file (no server)
+Joby's words, after previewing: *"All I wanted was a separate set of pages I can access from the front page… is this really the easiest way?"* It wasn't, and this entry **supersedes** the two below it (the gitignored `campaign/` folder and the loopback-bound local server). The mistake was mine: Joby said the campaign should be *private*, and the only thing they meant was **a player shouldn't be able to reach the DM OS from the character builder.** I heard "hidden even from someone reading the code," and that stricter reading is what forced files-fetched-over-a-server, which forced the launcher, which forced the loopback fix. All of it, gone.
+
+**What we settled instead:**
+- **Naming.** The landing page is the **RH main page** (a.k.a. *roll a hero main page*). The **hero builder** and the **DM OS** are the two things you reach from it. Use these names.
+- **`index.html` is the RH main page** — a hub with two doors (*Build a Hero*, *Dungeon Master OS*). The DM OS link was **removed from inside the builder**, which is the whole of Joby's privacy requirement: a player in the builder has no path to the DM OS. The passcode on `dm.html` is the gate; that's enough for a family table.
+- **The campaign lives in `campaign.js`, committed and public, loaded by a `<script>` tag exactly like `data.js`.** Content we build in Cowork lands there — edit, commit, done — the same way a new spell lands in `data.js`. Joby was explicit: *"I dont care at all about anyone digging through the code."* So there is nothing to hide at the file level, and therefore **no fetch, no server, no launcher, no `file://` problem.** The live site works; double-clicking `dm.html` works. Deleted: `serve.py`, `start-roll-a-hero.cmd`, the `campaign/` folder, the `campaign/` gitignore block; `.claude/launch.json` is back to plain `python -m http.server` (for local dev preview only — nobody needs it to *use* the app).
+- The DM's own edits inside the workspace still live in `localStorage` and are layered over the committed base by the existing merge rule, so re-pushing `campaign.js` never clobbers their notes. Verified: a local edit survives a re-sync.
+
+The lesson worth keeping: **when a non-technical requirement ("private") drives a heavy technical design, restate it in plain terms and check it before building.** One clarifying question here would have saved three turns.
+
+### 2026-07-08 — The local server binds to loopback, and there's a launcher *(SUPERSEDED — see above)*
+*Kept for the record. The server, launcher, and gitignored `campaign/` folder described here were all removed once the campaign became a committed `campaign.js`. The loopback-binding lesson still stands in principle, but there is no longer a local server that serves private content.*
+
 Two problems, one file. **The launcher:** the DM OS can't be opened by double-clicking `dm.html` — browsers refuse to let a `file://` page read its own folder, so it could never load `campaign/`. That made "start a server" a prerequisite for every session. `start-roll-a-hero.cmd` → `serve.py` now does it in one double-click.
 
 **The hole it closed, which matters more.** `python -m http.server 8000` binds **every network interface** by default. Verified on this machine: while the server ran, `http://192.168.1.213:8000/campaign/docs/` served a full directory listing and every story file to *anything on the home Wi-Fi* — the kids' tablets included. They'd never even load `dm.html`, so the passcode was irrelevant. We had carefully gitignored `campaign/` to keep the story off the internet while leaving it wide open on the living-room network.
