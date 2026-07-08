@@ -153,7 +153,11 @@
   function requirements(snap) {
     return withState(snap, () => {
       const reqs = [];
-      const add = (id, step, label, satisfied, level) => reqs.push({ id, step, label, satisfied: !!satisfied, level: level || 1 });
+      // `label` says what's MISSING; `editLabel` says what the row lets you CHANGE
+      // once it's satisfied (e.g. only the name is required, but that screen is
+      // also where the backstory lives).
+      const add = (id, step, label, satisfied, level, editLabel) =>
+        reqs.push({ id, step, label, satisfied: !!satisfied, level: level || 1, editLabel: editLabel || label });
       const r = getRace(), c = getClass(), a = getArchetype();
 
       add('race', 'race', 'Choose a race', r);
@@ -168,10 +172,10 @@
         const label = a.choice.kind === 'companion' ? 'Choose your animal companion' : 'Pick your ' + a.feature.name;
         add('arch-' + a.choice.key, 'class', label, (state.archetypeChoice || {})[a.choice.key], 3);
       }
-      add('abilities', 'assign', 'Place your ability numbers', assignComplete());
-      if (buildHasSpells()) add('magic', 'magic', 'Choose your spells', magicComplete());
-      add('story', 'story', 'Name your hero', storyComplete());
-      add('gear', 'gear', 'Choose your gear', gearComplete());
+      add('abilities', 'assign', 'Place your ability numbers', assignComplete(), 1, 'Ability scores');
+      if (buildHasSpells()) add('magic', 'magic', 'Choose your spells', magicComplete(), 1, 'Your spells');
+      add('story', 'story', 'Name your hero', storyComplete(), 1, 'Name, personality & backstory');
+      add('gear', 'gear', 'Choose your gear', gearComplete(), 1, 'Weapons & equipment');
       return reqs;
     });
   }
@@ -787,7 +791,7 @@
       const row = document.createElement('div');
       row.className = 'req-row' + (req.satisfied ? '' : ' missing');
       row.innerHTML = `<span class="req-mark">${req.satisfied ? icon('check') : '⚠'}</span>
-        <span class="req-label">${escapeHtml(req.label)}</span>
+        <span class="req-label">${escapeHtml(req.satisfied ? req.editLabel : req.label)}</span>
         <div class="spacer"></div>
         <button class="btn btn-sm ${req.satisfied ? 'btn-ghost' : 'btn-gold'}" data-fix="${req.step}">${req.satisfied ? 'Change' : 'Fix this →'}</button>`;
       list.appendChild(row);
