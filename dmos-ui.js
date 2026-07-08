@@ -333,8 +333,13 @@
 
   /* ============================ The tree pane ============================== */
   PAINT.tree = function () {
+    // The brand is a real link home. Before this, the ONLY route back to the
+    // player app was on the passcode gate — which disappears once you unlock.
     document.getElementById('treeHead').innerHTML = `
-      <div class="rail-title">${icon('dice')} <span>Roll a Hero</span></div>
+      <a class="rail-title" href="index.html"
+         title="Back to Roll a Hero — the player app your friends use">
+        ${icon('dice')} <span>Roll a Hero</span>
+      </a>
       <button class="rail-collapse" data-act="collapse-a" title="Hide this sidebar" aria-label="Hide sidebar">‹</button>`;
 
     const t = STORE.tree();
@@ -611,6 +616,18 @@
     ROOT.shell.classList.toggle('rail-b-closed', !u.railB);
   }
 
+  /* Under 900px the rails become fixed overlay drawers (see dmos.css). Leaving
+     them open there would bury the story feed, so close them on the way in.
+     The reopen tabs are always available, so nothing becomes unreachable. */
+  const NARROW = window.matchMedia('(max-width: 900px)');
+  function syncNarrow() {
+    if (NARROW.matches) {
+      const u = ui();
+      if (u.railA || u.railB) STORE.setUi({ railA: false, railB: false });
+    }
+    applyRails();
+  }
+
   ACT['grip:pointerdown'] = (el, e) => {
     const which = el.dataset.grip;
     const u = ui();
@@ -672,6 +689,8 @@
     on(ROOT.modal, 'click');
     on(ROOT.peek, 'click');
     on(ROOT.float, 'click');
+
+    NARROW.addEventListener('change', syncNarrow);
 
     document.addEventListener('pointermove', onPointerMove);
     document.addEventListener('pointerup', endDrag);
@@ -766,7 +785,7 @@
 
   window.DMOS_UI = {
     bind, mark, flush, isLive, ACT, ROOT, PAINT,
-    applyRails, flushPending, parseHash, feedDocs, linkify,
+    applyRails, syncNarrow, flushPending, parseHash, feedDocs, linkify,
     setCampaignStatus: (s) => { campaignStatus = s; },
     campaignStatus: () => campaignStatus,
     _dragging: () => dragging,

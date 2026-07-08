@@ -83,6 +83,14 @@ body.dmos-resizing { cursor: col-resize; user-select: none; }
   font-family: var(--font-display); font-weight: 900; font-size: 15px;
   letter-spacing: 0.6px; display: flex; align-items: center; gap: 7px;
 }
+/* Sidebar A's brand is an <a> home to the player app. Inherit the header's gold
+   rather than the browser's link blue. */
+a.rail-title {
+  color: inherit; text-decoration: none;
+  padding: 3px 6px; margin-left: -6px; border-radius: 6px;
+}
+a.rail-title:hover { background: rgba(255, 255, 255, 0.12); }
+a.rail-title:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 1px; }
 .rail-b .rail-head { justify-content: flex-start; }
 .rail-collapse {
   margin-left: auto; background: transparent; border: 0; cursor: pointer;
@@ -271,9 +279,26 @@ table.diff tbody th { width: 22%; font-family: var(--font-display); font-weight:
 }
 
 /* ------------------------------- Narrow ----------------------------------- */
+/* Below 900px the three columns don't fit. The rails become overlay drawers —
+   they must NOT simply vanish. An earlier version of this block did
+   `.dmos-rail, .dmos-grip { display: none }` AND hid the reopen tabs, which
+   deleted the folder tree with no way to bring it back: on a narrow window the
+   DM lost the whole campaign, and the only link home along with it. */
 @media (max-width: 900px) {
   .dmos-shell { grid-template-columns: 1fr; }
-  .dmos-rail, .dmos-grip { display: none; }
-  .rail-a-closed .reopen-a, .rail-b-closed .reopen-b { display: none; }
+  .dmos-grip { display: none; }
+
+  .dmos-rail {
+    position: fixed; top: 0; bottom: 0;
+    width: min(320px, 86vw); z-index: var(--z-float);
+    box-shadow: 0 0 44px var(--shadow);
+  }
+  .rail-a { left: 0; border-right: 2px solid var(--panel-edge); }
+  .rail-b { right: 0; border-left: 2px solid var(--panel-edge); }
+
+  /* The reopen tabs are the only way back in. They stay. */
+  .rail-a-closed .reopen-a { display: block; }
+  .rail-b-closed .reopen-b { display: block; }
+
   .feed-docs { padding: 18px 14px 40vh; }
 }

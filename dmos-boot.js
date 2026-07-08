@@ -32,7 +32,7 @@
   const UI = window.DMOS_UI;
 
   UI.bind();
-  UI.applyRails();
+  UI.syncNarrow();   // applyRails(), plus: on a narrow window the rails start closed
 
   function showGate() {
     gate.hidden = false;
