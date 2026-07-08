@@ -346,6 +346,8 @@
           <li><button class="tool" data-act="new-doc">${icon('star')} <span>New document</span></button></li>
           <li><button class="tool" data-act="export">${icon('print')} <span>Export workspace</span></button></li>
           <li><button class="tool" data-act="import">${icon('check')} <span>Import workspace</span></button></li>
+          <li><button class="tool tool-lock" data-act="lock"
+                      title="Lock the DM OS — the passcode will be needed again">${icon('shield')} <span>Lock</span></button></li>
         </ul>
       </div>
       <div class="rail-section">
@@ -480,6 +482,10 @@
   ACT['collapse-a'] = () => { STORE.setUi({ railA: !ui().railA }); applyRails(); };
   ACT['collapse-b'] = () => { STORE.setUi({ railB: !ui().railB }); applyRails(); };
   ACT['reload'] = () => location.reload();
+
+  // Re-gate the DM OS: clear the remembered unlock and reload, so boot shows the
+  // passcode again. Non-destructive — the workspace content stays in localStorage.
+  ACT['lock'] = () => { STORE.setUi({ passOk: false }); location.reload(); };
 
   ACT['sync'] = async () => {
     announce('Syncing from the campaign folder…');
