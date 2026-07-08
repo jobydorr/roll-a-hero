@@ -26,6 +26,12 @@
   --on-gold: #3a2a0e;
 }
 
+/* The rules below set `display` on elements we also toggle with the `hidden`
+   attribute (.dmos-gate, .dmos-shell). An author `display` beats the browser's
+   built-in [hidden]{display:none}, so `hidden` would be SILENTLY IGNORED and the
+   gate would render stacked above the workspace. Restore it once, up front. */
+[hidden] { display: none !important; }
+
 .dmos-body { height: 100vh; overflow: hidden; }
 
 /* ------------------------------- The gate -------------------------------- */
@@ -45,7 +51,6 @@
   height: 100vh;
   position: relative;
 }
-.dmos-shell[hidden] { display: none; }
 body.dmos-resizing { cursor: col-resize; user-select: none; }
 
 .dmos-rail {
