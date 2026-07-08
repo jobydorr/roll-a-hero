@@ -334,9 +334,48 @@
       spellcaster: true,
       spell: { listTag: 'ranger', ability: 'wis', cantrips: 0, leveled: 3, maxLevel: 1, forced: [] },
       features: [
-        { name: 'Favored Enemy', desc: 'Pick a kind of creature you’ve studied (beasts, undead, dragons…). You’re an expert at tracking and battling them.' },
-        { name: 'Natural Explorer', desc: 'A master of the wild — you rarely get lost, are seldom surprised, and move easily through difficult ground.' },
+        { name: 'Favored Enemy', desc: 'You have studied one kind of creature above all others — you track them and recall their secrets with ease.' },
+        { name: 'Natural Explorer', desc: 'One kind of wild place is home to you. You never get lost there, and it never slows you down.' },
         { name: 'Primeval Awareness', desc: 'You can sense whether certain creatures (like undead or beasts) are lurking in the area around you.' },
+      ],
+      // Class-level choices the PHB asks a Ranger to make. `feature` ties each one
+      // back to the class feature it customises, so the sheet reads
+      // "Favored Enemy — Dragons" rather than a bare feature name.
+      choices: [
+        {
+          key: 'favoredEnemy', feature: 'Favored Enemy', prompt: 'Choose your favored enemy',
+          note: 'You have advantage when you track them, and when you try to recall what you know about them. You also learn one language they speak.',
+          options: [
+            { id: 'beasts', name: 'Beasts', desc: 'Wolves, bears, giant spiders, and other wild creatures.' },
+            { id: 'dragons', name: 'Dragons', desc: 'The great winged serpents — young whelps and ancient tyrants alike.' },
+            { id: 'undead', name: 'Undead', desc: 'Skeletons, zombies, ghosts, and things that will not stay buried.' },
+            { id: 'fiends', name: 'Fiends', desc: 'Devils and demons from the darkest corners of the planes.' },
+            { id: 'giants', name: 'Giants', desc: 'Hill giants, ogres, trolls, and other enormous brutes.' },
+            { id: 'monstrosities', name: 'Monstrosities', desc: 'Owlbears, chimeras, and other creatures nature never intended.' },
+            { id: 'fey', name: 'Fey', desc: 'Sprites, dryads, and the tricksters of the deep wood.' },
+            { id: 'elementals', name: 'Elementals', desc: 'Living fire, water, earth, and air.' },
+            { id: 'aberrations', name: 'Aberrations', desc: 'Strange, staring things from somewhere far beyond the stars.' },
+            { id: 'constructs', name: 'Constructs', desc: 'Animated armour, golems, and tireless clockwork servants.' },
+            { id: 'oozes', name: 'Oozes', desc: 'Creeping slimes that dissolve whatever they touch.' },
+            { id: 'plants', name: 'Plants', desc: 'Walking trees, grasping vines, and shambling mounds.' },
+            { id: 'celestials', name: 'Celestials', desc: 'Angels and beings of light — rarely your enemy, but you know them.' },
+            { id: 'humanoids', name: 'Humanoids', desc: 'Bandits, cultists, goblins, and orcs — the folk who turn to cruelty.' },
+          ],
+        },
+        {
+          key: 'favoredTerrain', feature: 'Natural Explorer', prompt: 'Choose your favored terrain',
+          note: 'Here you never get lost, rough ground never slows you, you stay alert even while tracking, and you find twice as much food.',
+          options: [
+            { id: 'forest', name: 'Forest', desc: 'Deep woods, tangled roots, and dappled green light.' },
+            { id: 'mountain', name: 'Mountain', desc: 'High peaks, sheer cliffs, and thin cold air.' },
+            { id: 'swamp', name: 'Swamp', desc: 'Mud, mist, and things that lurk beneath the water.' },
+            { id: 'grassland', name: 'Grassland', desc: 'Rolling plains under an enormous open sky.' },
+            { id: 'coast', name: 'Coast', desc: 'Cliffs, tide pools, sea birds, and salt spray.' },
+            { id: 'desert', name: 'Desert', desc: 'Endless sand, blistering days, freezing nights.' },
+            { id: 'arctic', name: 'Arctic', desc: 'Ice, snow, and a wind that bites to the bone.' },
+            { id: 'underdark', name: 'Underdark', desc: 'The endless caves and black rivers far below the world.' },
+          ],
+        },
       ],
       fightingStyles: [
         { id: 'archery', name: 'Archery', desc: '+2 to hit with bows and other ranged weapons.' },

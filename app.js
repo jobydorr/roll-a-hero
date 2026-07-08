@@ -19,7 +19,7 @@
       quizAnswers: [], quizLayout: null, recommendations: null, altRecs: null,
       rollMethod: '4d6', pool: null, lastRoll: null, rollsUsed: 0, assigned: blankAssign(),
       race: null, raceChoice: {},
-      klass: null, archetype: null, fightingStyle: null, archetypeChoice: {},
+      klass: null, archetype: null, fightingStyle: null, classChoice: {}, archetypeChoice: {},
       spells: [], equipment: {}, motiveShown: null,
       story: { name: '', traits: [], backstory: '', motivations: [] },
     };
@@ -30,6 +30,7 @@
     if (!snap || typeof snap !== 'object') return snap;
     if (!snap.level) snap.level = LEVEL;
     if (!snap.archetypeChoice || typeof snap.archetypeChoice !== 'object') snap.archetypeChoice = {};
+    if (!snap.classChoice || typeof snap.classChoice !== 'object') snap.classChoice = {};
     if (!snap.raceChoice || typeof snap.raceChoice !== 'object') snap.raceChoice = {};
     if (!Array.isArray(snap.spells)) snap.spells = [];
     if (!snap.equipment || typeof snap.equipment !== 'object') snap.equipment = {};
@@ -122,6 +123,7 @@
   function classComplete() {
     const c = getClass(); if (!c || !state.archetype) return false;
     if (c.fightingStyles && !state.fightingStyle) return false;
+    if (c.choices && !c.choices.every(ch => (state.classChoice || {})[ch.key])) return false; // e.g. Ranger's favored enemy/terrain
     const a = getArchetype();
     if (a && a.choice && !(state.archetypeChoice || {})[a.choice.key]) return false; // e.g. Beast Master's companion
     return true;
@@ -168,6 +170,7 @@
       add('class', 'class', 'Choose a class', c);
       add('archetype', 'class', 'Choose your specialty', a);
       if (c && c.fightingStyles) add('fighting-style', 'class', 'Pick a Fighting Style', state.fightingStyle);
+      if (c && c.choices) c.choices.forEach(ch => add('class-' + ch.key, 'class', ch.prompt, (state.classChoice || {})[ch.key]));
       if (a && a.choice) {
         const label = a.choice.kind === 'companion' ? 'Choose your animal companion' : 'Pick your ' + a.feature.name;
         add('arch-' + a.choice.key, 'class', label, (state.archetypeChoice || {})[a.choice.key], 3);
@@ -592,7 +595,7 @@
   function specialAbilities() {
     const list = []; const r = getRace(), c = getClass(), a = getArchetype();
     if (r) list.push({ name: r.name + ': ' + r.signature.name, desc: r.signature.desc });
-    if (c) c.features.forEach(f => list.push({ name: f.name, desc: f.desc }));
+    if (c) c.features.forEach(f => list.push(classFeatureWithChoice(c, f)));
     if (c && c.fightingStyles && state.fightingStyle) { const st = c.fightingStyles.find(s => s.id === state.fightingStyle); if (st) list.push({ name: 'Fighting Style: ' + st.name, desc: st.desc }); }
     if (a && a.feature) list.push({ name: a.name + ': ' + a.feature.name, desc: a.feature.desc });
     if (a && a.choice && a.choice.kind === 'options') {
@@ -630,7 +633,7 @@
   function updateHeader() {
     document.getElementById('brandMark').innerHTML = icon('dice');
     const prog = document.getElementById('progress');
-    if (state.step === 'welcome' || state.step === 'dm' || state.step === 'edit' || state.step === 'writeup' || viewCtx) { prog.hidden = true; return; }
+    if (['welcome', 'dm', 'edit', 'writeup', 'stories'].includes(state.step) || viewCtx) { prog.hidden = true; return; }
     const build = steps().filter(s => s !== 'welcome');
     let idx = build.indexOf(state.step);
     if (state.step === 'howto') { prog.hidden = true; return; }
@@ -808,6 +811,51 @@
     };
   };
 
+  // Every shared hero's story on one page — for the DM to read while planning.
+  RENDER.stories = (host) => {
+    const prof = getProfile();
+    const camp = prof.dmCampaign;
+    if (!sharingAvailable() || !camp) { go('dm'); return; }
+    host.innerHTML = `<div class="step">
+      <p class="eyebrow">Dungeon Master · campaign “${escapeHtml(camp)}”</p>
+      <h2 class="title">${icon('book')} The party's stories</h2>
+      <p class="lead" id="stStatus">Loading…</p>
+      <div id="stList"></div>
+      <div class="actions">
+        <button class="btn btn-ghost" id="stBack">← Back to party</button>
+        <div class="spacer"></div>
+        <button class="btn btn-sm" id="stRefresh">${icon('dice')} Refresh</button>
+      </div></div>`;
+    document.getElementById('stBack').onclick = () => go('dm');
+    document.getElementById('stRefresh').onclick = () => render();
+    const status = document.getElementById('stStatus'), list = document.getElementById('stList');
+    RAHSync.listCampaign(camp).then(rows => {
+      rows = rows.filter(x => x && x.character);
+      if (!rows.length) { status.textContent = 'No heroes have been shared to this campaign yet.'; return; }
+      const withStory = rows.filter(x => ((x.character.story || {}).backstory || '').trim()).length;
+      status.textContent = `${rows.length} hero${rows.length === 1 ? '' : 'es'} · ${withStory} with a written story.`;
+      rows.forEach(row => {
+        const snap = row.character;
+        const info = withState(snap, () => ({ r: getRace(), c: getClass(), a: getArchetype() }));
+        const st = snap.story || {};
+        const traits = (st.traits || []).filter(Boolean);
+        const motives = (st.motivations || []).filter(Boolean);
+        const back = (st.backstory || '').trim();
+        const el = document.createElement('div'); el.className = 'panel writeup';
+        el.innerHTML = `<div class="pr-section">
+          <h3>${escapeHtml(row.name || st.name || 'Unnamed Hero')}
+            <span class="pick-counter" style="font-weight:400;font-size:12.5px;">— played by ${escapeHtml(row.ownerName || 'someone')}</span></h3>
+          <p class="pr-note">${info.r ? escapeHtml(info.r.name) : '?'} ${info.c ? escapeHtml(info.c.name) : ''}${info.a ? ' · ' + escapeHtml(info.a.name) : ''} · Level ${snap.level || LEVEL}</p>
+          ${traits.length ? `<p><span class="pr-name">Personality:</span> ${traits.map(escapeHtml).join(' · ')}</p>` : ''}
+          ${motives.length ? `<p><span class="pr-name">What drives them:</span> ${motives.map(escapeHtml).join(' and ')}</p>` : ''}
+          ${back ? `<p><span class="pr-name">Their story:</span> ${escapeHtml(back).replace(/\n/g, '<br>')}</p>`
+                 : `<p class="pr-note">No story written yet — nudge them to fill it in.</p>`}
+        </div>`;
+        list.appendChild(el);
+      });
+    }).catch(e => { status.textContent = "Couldn't load the stories: " + ((e && e.message) || e); });
+  };
+
   RENDER.dm = (host) => {
     const prof = getProfile();
     if (!sharingAvailable()) {
@@ -838,9 +886,11 @@
         <button class="btn btn-ghost" id="dmBack">← Back</button>
         <div class="spacer"></div>
         <button class="btn btn-sm btn-ghost" id="dmChange">Change code</button>
+        <button class="btn btn-sm btn-gold" id="dmStories">${icon('book')} Read the party's stories</button>
         <button class="btn btn-sm" id="dmRefresh">${icon('dice')} Refresh</button>
       </div></div>`;
     document.getElementById('dmBack').onclick = () => go('welcome');
+    document.getElementById('dmStories').onclick = () => go('stories');
     document.getElementById('dmRefresh').onclick = () => render();
     document.getElementById('dmChange').onclick = () => { const p = getProfile(); delete p.dmCampaign; saveProfile(p); render(); };
     const status = document.getElementById('dmStatus'); const list = document.getElementById('dmList');
@@ -1070,7 +1120,7 @@
         <div class="cc-head"><span class="cc-icon">${icon(cls.icon)}</span><span class="cc-name">${cls.name}</span></div>
         <div class="cc-meta"><span class="tag">HP ${cls.hitDie * LEVEL}+</span><span class="tag bonus">Best: ${cls.bestAbility.split('(')[0].trim()}</span>${cls.spellcaster ? '<span class="tag magic">Magic</span>' : ''}</div>
         <div class="cc-desc">${cls.blurb}</div>`;
-      card.onclick = () => { if (state.klass !== cls.id) { state.klass = cls.id; state.archetype = null; state.fightingStyle = null; state.archetypeChoice = {}; state.spells = []; state.equipment = {}; } render(); };
+      card.onclick = () => { if (state.klass !== cls.id) { state.klass = cls.id; state.archetype = null; state.fightingStyle = null; state.archetypeChoice = {}; state.classChoice = {}; state.spells = []; state.equipment = {}; } render(); };
       grid.appendChild(card);
     });
     if (c) renderClassExtra(c);
@@ -1143,6 +1193,31 @@
         fg.appendChild(card);
       });
     }
+
+    // Class-level choices (Ranger's Favored Enemy / Natural Explorer)
+    (c.choices || []).forEach(ch => {
+      const p = document.createElement('div'); p.className = 'panel';
+      p.innerHTML = `<h3 class="spell-section-head" style="margin-top:0;">${escapeHtml(ch.prompt)}</h3>
+        <p style="margin:0 0 8px;color:var(--ink-soft);">${escapeHtml(ch.note)}</p>
+        <div class="card-grid" id="cc-${ch.key}"></div>`;
+      wrap.appendChild(p);
+      const grid = p.querySelector('#cc-' + ch.key);
+      ch.options.forEach(o => {
+        const card = document.createElement('button');
+        card.className = 'choice-card' + ((state.classChoice || {})[ch.key] === o.id ? ' selected' : '');
+        card.innerHTML = `<div class="cc-name" style="font-size:16px;">${escapeHtml(o.name)}</div><div class="cc-desc">${escapeHtml(o.desc)}</div>`;
+        card.onclick = () => { state.classChoice = Object.assign({}, state.classChoice, { [ch.key]: o.id }); render(); };
+        grid.appendChild(card);
+      });
+    });
+  }
+  // "Favored Enemy" -> "Favored Enemy — Dragons", and folds the pick into the text.
+  function classFeatureWithChoice(c, f) {
+    const ch = (c.choices || []).find(x => x.feature === f.name);
+    if (!ch) return { name: f.name, desc: f.desc };
+    const pick = (ch.options || []).find(o => o.id === (state.classChoice || {})[ch.key]);
+    if (!pick) return { name: f.name, desc: f.desc };
+    return { name: `${f.name} — ${pick.name}`, desc: `${f.desc} <em>${escapeHtml(pick.desc)}</em> ${escapeHtml(ch.note)}` };
   }
 
   RENDER.assign = (host) => {
@@ -1661,7 +1736,7 @@
       html += `<div class="pr-section"><h3>Racial Abilities — ${escapeHtml(r.name)}</h3><ul>${items}</ul></div>`;
     }
     if (c) {
-      let items = c.features.map(f => `<li><span class="pr-name">${escapeHtml(f.name)}:</span> ${f.desc}</li>`).join('');
+      let items = c.features.map(f => { const x = classFeatureWithChoice(c, f); return `<li><span class="pr-name">${escapeHtml(x.name)}:</span> ${x.desc}</li>`; }).join('');
       if (c.fightingStyles && state.fightingStyle) { const st = c.fightingStyles.find(s => s.id === state.fightingStyle); if (st) items += `<li><span class="pr-name">Fighting Style — ${escapeHtml(st.name)}:</span> ${st.desc}</li>`; }
       html += `<div class="pr-section"><h3>Class Features — ${escapeHtml(c.name)}</h3><ul>${items}</ul></div>`;
     }

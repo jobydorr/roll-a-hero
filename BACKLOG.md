@@ -21,9 +21,11 @@
 - **Beast Master → Animal Companion.** Granted a companion; no data, no picker, absent from the sheet. *(fixed)*
 - **Hunter → Hunter's Prey.** Text said *"Pick a trick…"* with nothing to pick with. Now three PHB options. *(fixed)*
 
-**Flavor gaps — still open, low priority** 🟡
-- **Ranger → Favored Enemy.** PHB has you choose a creature type; we never record it.
-- **Ranger → Natural Explorer.** PHB has you choose a favored terrain; our text doesn't even mention choosing.
+**Flavor gaps — both now fixed (2026-07-08)** ✅
+- **Ranger → Favored Enemy.** Now a real choice: 14 creature types (the PHB's 13 + humanoids). *(fixed)*
+- **Ranger → Natural Explorer.** Now a real choice: the PHB's 8 terrains. *(fixed)*
+
+These are **class-level** choices, so they needed a new `class.choices` mechanism (the app only had `race.choice` and `archetype.choice`). Stored in `state.classChoice`; the sheet reads "Favored Enemy — Dragons" rather than a bare feature name. Any future class-level choice now has a home.
 
 **Intentional simplifications (not bugs, don't "fix"):** Battle Master maneuvers are a fixed set of 4 (PHB: choose 3 of ~16); spells are fixed known-lists (PHB: prepared daily).
 
@@ -89,6 +91,9 @@ Decided 2026-07-07 (see `DECISIONS.md`). Backend: **Firebase** project `roll-a-h
 
 ## Recently done (so you can see momentum)
 
+- ✅ **Ranger flavor gaps closed** — Favored Enemy (14 types) + Natural Explorer (8 terrains) via a new class-level `choices` mechanism; picks show on the sheet, cheat sheet, and write-up (2026-07-08)
+- ✅ **DM: "Read the party's stories"** — every shared hero's personality, motivations, and backstory on one page for campaign prep (2026-07-08)
+- ✅ **Edit screen labels** — rows now say what they *change* ("Name, personality & backstory") not just what's *missing* (2026-07-08)
 - ✅ **Full write-up on-site** — the complete hero readable in the app (stats, full ability/spell text, companion, gear, daily uses) plus the player's own story, which had never been displayed anywhere (2026-07-08)
 - ✅ **Beast Master companions + requirements engine** — 42 animals, a filtered/searchable picker, and a one-click **Edit / review** screen that autodetects what a hero is missing. Hunter's Prey fixed for free by the same engine. Per-character `level` field added, so leveling up is now a data change rather than a rewrite (2026-07-08)
 - ✅ Saved-hero row: Open / Share / Export / Delete now sit on one line (2026-07-07)
