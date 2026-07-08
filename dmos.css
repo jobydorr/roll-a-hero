@@ -51,6 +51,16 @@
   height: 100vh;
   position: relative;
 }
+/* Pin each child to its own column. Without this, hiding rail-a (display:none)
+   lets the remaining items auto-flow LEFT — the feed falls into the 0-width
+   rail-a track and rail-b grabs the 1fr, so closing the left rail made the right
+   rail swallow the page. Explicit columns keep the feed on 1fr no matter which
+   rails are hidden. (Reset in the narrow @media below, where rails go fixed.) */
+.dmos-shell > .rail-a { grid-column: 1; }
+.dmos-shell > .dmos-grip[data-grip="a"] { grid-column: 2; }
+.dmos-shell > .dmos-feed { grid-column: 3; }
+.dmos-shell > .dmos-grip[data-grip="b"] { grid-column: 4; }
+.dmos-shell > .rail-b { grid-column: 5; }
 body.dmos-resizing { cursor: col-resize; user-select: none; }
 
 .dmos-rail {
@@ -287,6 +297,9 @@ table.diff tbody th { width: 22%; font-family: var(--font-display); font-weight:
 @media (max-width: 900px) {
   .dmos-shell { grid-template-columns: 1fr; }
   .dmos-grip { display: none; }
+  /* Single column now: the rails are fixed overlays (out of the grid), so the
+     feed must span the one track rather than stay pinned to column 3. */
+  .dmos-shell > .dmos-feed { grid-column: 1; }
 
   .dmos-rail {
     position: fixed; top: 0; bottom: 0;

@@ -264,6 +264,17 @@
   function getShares() { try { return JSON.parse(localStorage.getItem(SHARES_KEY)) || {}; } catch (e) { return {}; } }
   function setShares(m) { try { localStorage.setItem(SHARES_KEY, JSON.stringify(m)); } catch (e) {} }
   const sharedCampaignsOf = (charId) => getShares()[charId] || [];
+
+  // Which shared docs the DM has hidden from *their own* party view, per campaign.
+  // Used when a hero can't be deleted server-side (it belongs to another browser's
+  // anonymous account) but the DM still wants it off their list. Local, reversible,
+  // and it never touches anyone else's data.
+  const HIDDEN_KEY = 'rollAHeroDmHidden';
+  function getDmHidden() { try { return JSON.parse(localStorage.getItem(HIDDEN_KEY)) || {}; } catch (e) { return {}; } }
+  function setDmHidden(m) { try { localStorage.setItem(HIDDEN_KEY, JSON.stringify(m)); } catch (e) {} }
+  const dmHiddenIds = (camp) => getDmHidden()[camp] || [];
+  function hideDmDoc(camp, docId) { const m = getDmHidden(); const set = new Set(m[camp] || []); set.add(docId); m[camp] = [...set]; setDmHidden(m); }
+  function unhideDmCampaign(camp) { const m = getDmHidden(); delete m[camp]; setDmHidden(m); }
   function addShareRecord(charId, camp) { const m = getShares(); const set = new Set(m[charId] || []); set.add(camp); m[charId] = [...set]; setShares(m); }
   function removeShareRecord(charId, camp) { const m = getShares(); m[charId] = (m[charId] || []).filter(c => c !== camp); if (!m[charId].length) delete m[charId]; setShares(m); }
 
@@ -632,6 +643,19 @@
   /* ------------------------------ Header -------------------------------- */
   function updateHeader() {
     document.getElementById('brandMark').innerHTML = icon('dice');
+    // The header title is a site-wide way home to the RH main page. Wired once —
+    // the header is static (render() only replaces #app), so this never stacks.
+    const brand = document.querySelector('.app-header .brand');
+    if (brand && !brand.dataset.homeWired) {
+      brand.dataset.homeWired = '1';
+      brand.style.cursor = 'pointer';
+      brand.title = 'Back to the Roll a Hero main page';
+      brand.setAttribute('role', 'link');
+      brand.tabIndex = 0;
+      const home = () => go('home');
+      brand.onclick = home;
+      brand.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); home(); } };
+    }
     const prog = document.getElementById('progress');
     if (['home', 'welcome', 'dm', 'edit', 'writeup', 'stories'].includes(state.step) || viewCtx) { prog.hidden = true; return; }
     const build = steps().filter(s => s !== 'welcome');
@@ -916,10 +940,18 @@
     document.getElementById('dmRefresh').onclick = () => render();
     document.getElementById('dmChange').onclick = () => { const p = getProfile(); delete p.dmCampaign; saveProfile(p); render(); };
     const status = document.getElementById('dmStatus'); const list = document.getElementById('dmList');
-    RAHSync.listCampaign(camp).then(rows => {
-      rows = rows.filter(row => row && row.character);
-      if (!rows.length) { status.innerHTML = 'No heroes shared here yet. Give your players the campaign code <strong>“' + escapeHtml(camp) + '”</strong> and have them tap <strong>Share</strong> on a hero.'; return; }
-      status.textContent = `${rows.length} hero${rows.length === 1 ? '' : 'es'} shared with you.`;
+    RAHSync.listCampaign(camp).then(all => {
+      all = all.filter(row => row && row.character);
+      const hidden = new Set(dmHiddenIds(camp));
+      const rows = all.filter(row => !hidden.has(row._id));
+      const hiddenCount = all.length - rows.length;
+      const hiddenNote = hiddenCount
+        ? ` <button class="btn btn-sm btn-ghost" id="dmUnhide" style="margin-left:8px;">Show ${hiddenCount} hidden</button>`
+        : '';
+      if (!rows.length && !hiddenCount) { status.innerHTML = 'No heroes shared here yet. Give your players the campaign code <strong>“' + escapeHtml(camp) + '”</strong> and have them tap <strong>Share</strong> on a hero.'; return; }
+      status.innerHTML = `${rows.length} hero${rows.length === 1 ? '' : 'es'} shared with you.` + hiddenNote;
+      const unhideBtn = document.getElementById('dmUnhide');
+      if (unhideBtn) unhideBtn.onclick = () => { unhideDmCampaign(camp); render(); };
       rows.forEach(row => {
         const snap = row.character;
         const info = withState(snap, () => { const r = getRace(), c = getClass(), a = getArchetype(); return { r: r, c: c, a: a, hp: computeHP(), ac: computeAC() }; });
@@ -933,15 +965,25 @@
           <button class="btn btn-sm btn-ghost" data-remove>Remove</button>`;
         // Open the shared hero's real character page (Print + Save-a-copy live there).
         el.querySelector('[data-view]').onclick = () => { viewCtx = { campaign: camp }; state = JSON.parse(JSON.stringify(snap)); go('finish'); };
-        // Remove this hero from the shared page (rules allow it only for its owner).
+        // Remove this hero from the DM's party view. If the DM's browser owns the
+        // shared doc, it's deleted server-side for everyone. If not (the hero was
+        // shared from a different device/account — including the DM's own hero
+        // shared elsewhere), we can't delete it under the rules, so we hide it
+        // locally instead. Either way "Remove" always clears it from this list,
+        // and it never removes the player's own saved copy.
         el.querySelector('[data-remove]').onclick = async (ev) => {
           const nm = row.name || (snap.story && snap.story.name) || 'this hero';
-          if (!confirm(`Remove "${nm}" from this shared page? This doesn't touch the player's own saved copy.`)) return;
+          if (!confirm(`Remove "${nm}" from your party view? This doesn't touch the player's own saved copy.`)) return;
           const b = ev.currentTarget; b.disabled = true; b.textContent = '…';
-          try { await RAHSync.deleteShared(camp, row._id); announce('Removed “' + nm + '” from the party.'); render(); }
-          catch (e) {
-            b.disabled = false; b.textContent = 'Remove';
-            alert('Couldn\'t remove it: ' + ((e && e.message) || e) + '\n\nA hero can normally only be removed by the player who shared it (ask them to tap Unshare). Heroes you shared yourself can always be removed here.');
+          try {
+            await RAHSync.deleteShared(camp, row._id);
+            announce('Removed “' + nm + '” from the party.');
+            render();
+          } catch (e) {
+            // Permission denied = not our doc to delete. Hide it from our view.
+            hideDmDoc(camp, row._id);
+            announce('Hid “' + nm + '” from your party view.');
+            render();
           }
         };
         list.appendChild(el);
