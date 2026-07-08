@@ -347,11 +347,20 @@
       archetypes: [
         { id: 'hunter', name: 'Monster Hunter', sub: 'Hunter Conclave', grantsSpells: false,
           desc: 'A specialist slayer of monsters. You learn deadly techniques for taking down tough or numerous foes.',
-          feature: { name: 'Hunter’s Prey', desc: 'Pick a trick: Colossus Slayer (extra damage to a wounded foe) or Horde Breaker (strike two foes side-by-side at once).' },
+          feature: { name: 'Hunter’s Prey', desc: 'You master one deadly signature trick, chosen when you take this specialty.' },
+          choice: {
+            key: 'prey', kind: 'options', prompt: 'Pick your signature trick:',
+            options: [
+              { id: 'colossus-slayer', name: 'Colossus Slayer', desc: 'Once each turn, when you hit a foe that is already wounded, deal an extra 1d8 damage.' },
+              { id: 'giant-killer', name: 'Giant Killer', desc: 'When a big foe close by attacks you and misses, you can strike back at it immediately.' },
+              { id: 'horde-breaker', name: 'Horde Breaker', desc: 'Once each turn when you attack, you can also strike a second foe standing right beside the first.' },
+            ],
+          },
           tags: { ranger: 2, hunter: 3 } },
         { id: 'beastmaster', name: 'Beast Master', sub: 'Beast Conclave', grantsSpells: false,
           desc: 'You bond with a loyal animal companion — a wolf, hawk, or big cat — that fights at your side and obeys your commands.',
           feature: { name: 'Animal Companion', desc: 'Your trained beast moves and attacks on your command, scouts ahead, and defends you fiercely.' },
+          choice: { key: 'companion', kind: 'companion', prompt: 'Choose your animal companion:' },
           tags: { ranger: 2, beastmaster: 3 } },
         { id: 'gloomstalker', name: 'Gloom Stalker', sub: 'Gloom Stalker Conclave', grantsSpells: false,
           desc: 'A hunter of dark places, nearly invisible in shadow and deadly in the first moments of a fight.',
@@ -896,9 +905,181 @@
     { term: 'NPC', def: 'A “non-player character” — anyone in the world played by the DM, like a shopkeeper, a king, or a goblin.' },
   ];
 
+  /* ------------------- Beast Master animal companions --------------------
+     The roster is every Beast the rules actually allow: Challenge 1/4 or lower,
+     size Medium or smaller. Name / size / speed / base Armor were cross-referenced
+     against the Monster Manual; everything else is translated into OUR simplified
+     system (see DECISIONS.md — the books are flavor and inspiration, not the rules).
+
+     Straight from the PHB's Ranger's Companion:
+       • Hit Points = 4 x your ranger level  (so 12 at level 3 — and it scales itself
+         the moment leveling arrives; nothing here needs changing).
+       • "Add your proficiency bonus to the beast's AC, attack rolls, and damage
+         rolls." That +2 is ALREADY baked into the numbers below, so nobody does
+         arithmetic at the table.
+
+     Instead of 42 bespoke stat lines we use three tiers keyed to the animal's role.
+     'gentle' beasts genuinely have no attack — the card says so plainly, so a kid
+     finds out before a fight, not during one. */
+  const COMPANION_TIERS = {
+    fierce: { label: 'Fierce', hit: 6, dmg: '1d6+4', note: 'A real fighter.' },
+    swift: { label: 'Swift', hit: 6, dmg: '1d4+3', note: 'Quick and scrappy.' },
+    gentle: { label: 'Gentle', hit: null, dmg: null, note: 'Does not fight — a scout and a friend.' },
+  };
+  const COMPANION_ROLES = [
+    { id: 'fight', label: '🗡️ Fight beside me' },
+    { id: 'scout', label: '🦅 Scout & fly' },
+    { id: 'friend', label: '🐾 Just be my friend' },
+  ];
+  const COMPANION_GROUPS = [
+    { id: 'hunters', name: '🐺 Hunters', blurb: 'Loyal beasts that fight at your side.' },
+    { id: 'winged', name: '🦅 Winged', blurb: 'Fliers that scout far ahead.' },
+    { id: 'crawly', name: '🐍 Creepy-Crawly', blurb: 'Small, sneaky, full of surprises.' },
+    { id: 'water', name: '🐟 Water', blurb: 'Swimmers for rivers, lakes, and the deep.' },
+    { id: 'gentle', name: '🐴 Gentle Beasts', blurb: 'Friends and helpers — not fighters.' },
+  ];
+  const COMPANIONS = [
+    // --- Hunters -------------------------------------------------------------
+    { id: 'wolf', name: 'Wolf', group: 'hunters', tier: 'fierce', size: 'Medium', ac: 15, speed: '40 ft.', classic: true, roles: ['fight'],
+      attack: 'Bite', trick: { name: 'Pack Tactics', desc: 'Attacks with advantage whenever one of your friends is right next to its target.' },
+      blurb: 'A loyal pack hunter — fiercest when it fights beside friends.' },
+    { id: 'panther', name: 'Panther', group: 'hunters', tier: 'fierce', size: 'Medium', ac: 14, speed: '50 ft., climb 40 ft.', classic: true, roles: ['fight', 'scout'],
+      attack: 'Claws', trick: { name: 'Pounce', desc: 'If it charges 20 ft. straight at a foe and hits, the foe must beat DC 12 Strength or be knocked flat.' },
+      blurb: 'A silent, climbing cat that strikes from cover.' },
+    { id: 'mastiff', name: 'Mastiff', group: 'hunters', tier: 'fierce', size: 'Medium', ac: 14, speed: '40 ft.', classic: true, roles: ['fight', 'friend'],
+      attack: 'Bite', trick: { name: 'Keen Nose', desc: 'Advantage to track by smell — and its bite can bowl a foe right over.' },
+      blurb: 'A big, brave, endlessly loyal dog.' },
+    { id: 'boar', name: 'Boar', group: 'hunters', tier: 'fierce', size: 'Medium', ac: 13, speed: '40 ft.', roles: ['fight'],
+      attack: 'Tusks', trick: { name: 'Charge', desc: 'If it runs 20 ft. first, its hit knocks the foe to the ground.' },
+      blurb: 'Stubborn, tough, and very hard to stop once it starts running.' },
+    { id: 'hyena', name: 'Hyena', group: 'hunters', tier: 'fierce', size: 'Medium', ac: 13, speed: '50 ft.', roles: ['fight'],
+      attack: 'Bite', trick: { name: 'Pack Tactics', desc: 'Attacks with advantage whenever one of your friends is right next to its target.' },
+      blurb: 'A cackling scavenger that never hunts alone.' },
+    { id: 'giant-badger', name: 'Giant Badger', group: 'hunters', tier: 'fierce', size: 'Medium', ac: 12, speed: '30 ft., burrow 10 ft.', roles: ['fight'],
+      attack: 'Claws', trick: { name: 'Tunneler', desc: 'Digs straight through earth — it can pop up where nobody expects it.' },
+      blurb: 'Small eyes, huge claws, absolutely fearless.' },
+    { id: 'giant-weasel', name: 'Giant Weasel', group: 'hunters', tier: 'fierce', size: 'Medium', ac: 15, speed: '40 ft.', roles: ['fight', 'scout'],
+      attack: 'Bite', trick: { name: 'Keen Senses', desc: 'Advantage to notice things by hearing or smell.' },
+      blurb: 'A lightning-quick hunter of burrows and tunnels.' },
+    { id: 'jackal', name: 'Jackal', group: 'hunters', tier: 'swift', size: 'Small', ac: 14, speed: '40 ft.', roles: ['fight', 'scout'],
+      attack: 'Bite', trick: { name: 'Pack Tactics', desc: 'Attacks with advantage whenever one of your friends is right next to its target.' },
+      blurb: 'A clever desert dog that hunts with its friends.' },
+    { id: 'baboon', name: 'Baboon', group: 'hunters', tier: 'swift', size: 'Small', ac: 14, speed: '30 ft., climb 30 ft.', roles: ['fight', 'scout'],
+      attack: 'Bite', trick: { name: 'Pack Tactics', desc: 'Attacks with advantage whenever one of your friends is right next to its target.' },
+      blurb: 'A noisy, clever climber with a mischievous streak.' },
+    { id: 'giant-rat', name: 'Giant Rat', group: 'hunters', tier: 'swift', size: 'Small', ac: 14, speed: '30 ft.', roles: ['fight'],
+      attack: 'Bite', trick: { name: 'Pack Tactics', desc: 'Attacks with advantage whenever one of your friends is right next to its target.' },
+      blurb: 'Bigger than a cat — and it brings friends.' },
+    { id: 'cat', name: 'Cat', group: 'hunters', tier: 'swift', size: 'Tiny', ac: 14, speed: '40 ft., climb 30 ft.', roles: ['scout', 'friend'],
+      attack: 'Claws', trick: { name: 'Keen Nose', desc: 'Advantage to notice things by smell — and it always lands on its feet.' },
+      blurb: 'Aloof, silent, and secretly entirely on your side.' },
+    { id: 'weasel', name: 'Weasel', group: 'hunters', tier: 'swift', size: 'Tiny', ac: 15, speed: '30 ft.', roles: ['scout'],
+      attack: 'Bite', trick: { name: 'Keen Senses', desc: 'Advantage to notice things by hearing or smell.' },
+      blurb: 'A whip-fast little hunter that slips through any gap.' },
+    { id: 'badger', name: 'Badger', group: 'hunters', tier: 'swift', size: 'Tiny', ac: 12, speed: '20 ft., burrow 5 ft.', roles: ['friend'],
+      attack: 'Bite', trick: { name: 'Keen Nose', desc: 'Advantage to notice things by smell.' },
+      blurb: 'Tiny, grumpy, and braver than it has any right to be.' },
+    { id: 'rat', name: 'Rat', group: 'hunters', tier: 'swift', size: 'Tiny', ac: 12, speed: '20 ft.', roles: ['scout', 'friend'],
+      attack: 'Bite', trick: { name: 'Keen Nose', desc: 'Advantage to notice things by smell.' },
+      blurb: 'Overlooked, underestimated, and absolutely everywhere.' },
+
+    // --- Winged --------------------------------------------------------------
+    { id: 'hawk', name: 'Hawk', group: 'winged', tier: 'swift', size: 'Tiny', ac: 15, speed: '10 ft., fly 60 ft.', classic: true, roles: ['scout'],
+      attack: 'Talons', trick: { name: 'Keen Sight', desc: 'Advantage to spot things by sight — it sees the whole world from above.' },
+      blurb: 'A sharp-eyed flier that scouts far ahead of the party.' },
+    { id: 'owl', name: 'Owl', group: 'winged', tier: 'swift', size: 'Tiny', ac: 13, speed: '5 ft., fly 60 ft.', roles: ['scout', 'friend'],
+      attack: 'Talons', trick: { name: 'Flyby', desc: 'Swoops in, strikes, and glides away without being caught. It also sees in the dark.' },
+      blurb: 'A silent night flier that misses nothing.' },
+    { id: 'raven', name: 'Raven', group: 'winged', tier: 'swift', size: 'Tiny', ac: 14, speed: '10 ft., fly 50 ft.', roles: ['scout', 'friend'],
+      attack: 'Beak', trick: { name: 'Mimicry', desc: 'Copies sounds and voices it has heard — perfect for a distraction.' },
+      blurb: 'A clever trickster with a talent for voices.' },
+    { id: 'eagle', name: 'Eagle', group: 'winged', tier: 'swift', size: 'Small', ac: 14, speed: '10 ft., fly 60 ft.', roles: ['scout'],
+      attack: 'Talons', trick: { name: 'Keen Sight', desc: 'Advantage to spot things by sight, from a very long way off.' },
+      blurb: 'Proud, powerful, and unmatched in the open sky.' },
+    { id: 'blood-hawk', name: 'Blood Hawk', group: 'winged', tier: 'swift', size: 'Small', ac: 14, speed: '10 ft., fly 60 ft.', roles: ['fight', 'scout'],
+      attack: 'Beak', trick: { name: 'Pack Tactics', desc: 'Attacks with advantage whenever one of your friends is right next to its target.' },
+      blurb: 'A fierce red-feathered hawk that hunts in flocks.' },
+    { id: 'bat', name: 'Bat', group: 'winged', tier: 'swift', size: 'Tiny', ac: 14, speed: '5 ft., fly 30 ft.', roles: ['scout'],
+      attack: 'Bite', trick: { name: 'Echolocation', desc: 'Sees by sound — pitch darkness does not slow it down at all.' },
+      blurb: 'It hears the shape of the room. Darkness means nothing.' },
+    { id: 'pteranodon', name: 'Pteranodon', group: 'winged', tier: 'fierce', size: 'Medium', ac: 15, speed: '10 ft., fly 60 ft.', roles: ['fight', 'scout'],
+      attack: 'Beak', trick: { name: 'Flyby', desc: 'Swoops in, strikes, and glides away without being caught.' },
+      blurb: 'A leathery flying reptile out of a forgotten age.' },
+    { id: 'flying-snake', name: 'Flying Snake', group: 'winged', tier: 'swift', size: 'Tiny', ac: 16, speed: '30 ft., fly 60 ft., swim 30 ft.', roles: ['scout', 'fight'],
+      attack: 'Venomous Bite', trick: { name: 'Flyby', desc: 'Darts in, strikes, and flits away before anyone can grab it.' },
+      blurb: 'A jewel-bright serpent with shimmering rainbow wings.' },
+
+    // --- Creepy-Crawly -------------------------------------------------------
+    { id: 'giant-wolf-spider', name: 'Giant Wolf Spider', group: 'crawly', tier: 'fierce', size: 'Medium', ac: 15, speed: '40 ft., climb 40 ft.', roles: ['fight'],
+      attack: 'Venomous Bite', trick: { name: 'Spider Climb', desc: 'Walks straight up walls and across ceilings.' },
+      blurb: 'A hunting spider the size of a big dog. Yes, really.' },
+    { id: 'giant-venomous-snake', name: 'Giant Venomous Snake', group: 'crawly', tier: 'fierce', size: 'Medium', ac: 16, speed: '30 ft., swim 30 ft.', roles: ['fight'],
+      attack: 'Venomous Bite', trick: { name: 'Quick Strike', desc: 'Lashes out faster than the eye can follow.' },
+      blurb: 'A coiled serpent as long as you are tall.' },
+    { id: 'giant-centipede', name: 'Giant Centipede', group: 'crawly', tier: 'swift', size: 'Small', ac: 15, speed: '30 ft., climb 30 ft.', roles: ['fight'],
+      attack: 'Venomous Bite', trick: { name: 'Wall Crawler', desc: 'Scuttles up walls and along ceilings without slowing.' },
+      blurb: 'A many-legged scuttler that goes where you cannot.' },
+    { id: 'venomous-snake', name: 'Venomous Snake', group: 'crawly', tier: 'swift', size: 'Tiny', ac: 15, speed: '30 ft., swim 30 ft.', roles: ['fight'],
+      attack: 'Venomous Bite', trick: { name: 'Slippery', desc: 'Hides in the smallest crack and strikes without warning.' },
+      blurb: 'Small, quiet, and not to be trifled with.' },
+    { id: 'spider', name: 'Spider', group: 'crawly', tier: 'swift', size: 'Tiny', ac: 14, speed: '20 ft., climb 20 ft.', roles: ['scout'],
+      attack: 'Venomous Bite', trick: { name: 'Web Walker', desc: 'Climbs any surface and moves freely across webs.' },
+      blurb: 'Small, patient, and always watching from a corner.' },
+    { id: 'scorpion', name: 'Scorpion', group: 'crawly', tier: 'swift', size: 'Tiny', ac: 13, speed: '10 ft.', roles: ['fight'],
+      attack: 'Venomous Sting', trick: { name: 'Armored Shell', desc: 'Its hard shell turns aside glancing blows.' },
+      blurb: 'Tiny, armored, and best not stepped on.' },
+    { id: 'stirge', name: 'Stirge', group: 'crawly', tier: 'swift', size: 'Tiny', ac: 16, speed: '10 ft., fly 40 ft.', roles: ['fight'],
+      attack: 'Prick', trick: { name: 'Latch On', desc: 'Clings tight to a foe and saps their strength until it is pulled off.' },
+      blurb: 'A darting, buzzing pest — on YOUR side, for once.' },
+    { id: 'giant-fire-beetle', name: 'Giant Fire Beetle', group: 'crawly', tier: 'swift', size: 'Small', ac: 15, speed: '30 ft.', roles: ['friend', 'scout'],
+      attack: 'Bite', trick: { name: 'Glowing', desc: 'Sheds a soft light 10 ft. all around it — a lantern that walks itself.' },
+      blurb: 'A living lantern with a warm, friendly glow.' },
+    { id: 'lizard', name: 'Lizard', group: 'crawly', tier: 'swift', size: 'Tiny', ac: 12, speed: '20 ft., climb 20 ft.', roles: ['scout', 'friend'],
+      attack: 'Bite', trick: { name: 'Wall Climber', desc: 'Scampers up sheer walls and hangs upside down.' },
+      blurb: 'A pocket-sized companion that goes anywhere.' },
+
+    // --- Water ---------------------------------------------------------------
+    { id: 'giant-crab', name: 'Giant Crab', group: 'water', tier: 'fierce', size: 'Medium', ac: 17, speed: '30 ft., swim 30 ft.', roles: ['fight'],
+      attack: 'Pincer', trick: { name: 'Pincer Grab', desc: 'Catches a foe in its claw and holds them fast.' },
+      blurb: 'An armored shell on legs — very, very hard to hurt.' },
+    { id: 'giant-frog', name: 'Giant Frog', group: 'water', tier: 'fierce', size: 'Medium', ac: 13, speed: '30 ft., swim 30 ft.', roles: ['fight'],
+      attack: 'Tongue', trick: { name: 'Long Tongue', desc: 'Yanks a foe right off their feet and drags them close.' },
+      blurb: 'A frog the size of a dog, with a tongue like a whip.' },
+    { id: 'octopus', name: 'Octopus', group: 'water', tier: 'swift', size: 'Small', ac: 14, speed: '5 ft., swim 30 ft.', roles: ['scout'],
+      attack: 'Tentacles', trick: { name: 'Ink Cloud', desc: 'Vanishes underwater in a sudden burst of ink.' },
+      blurb: 'Eight arms, endless curiosity, and a born escape artist.' },
+    { id: 'quipper', name: 'Quipper', group: 'water', tier: 'swift', size: 'Tiny', ac: 15, speed: 'swim 40 ft.', roles: ['fight'],
+      attack: 'Bite', trick: { name: 'Frenzy', desc: 'Attacks with advantage against any foe that is already hurt.' },
+      blurb: 'A little river fish with an enormous attitude.' },
+    { id: 'crab', name: 'Crab', group: 'water', tier: 'swift', size: 'Tiny', ac: 13, speed: '20 ft., swim 20 ft.', roles: ['friend'],
+      attack: 'Pincer', trick: { name: 'Amphibious', desc: 'Breathes air and water equally well.' },
+      blurb: 'A tiny, sideways-scuttling friend.' },
+    { id: 'sea-horse', name: 'Sea Horse', group: 'water', tier: 'gentle', size: 'Tiny', ac: 13, speed: 'swim 20 ft.', roles: ['friend', 'scout'],
+      attack: null, trick: { name: 'Water Breathing', desc: 'Breathes underwater and drifts along unnoticed. It watches — it does not fight.' },
+      blurb: 'A gentle, drifting swimmer. Not a fighter at all.' },
+    { id: 'frog', name: 'Frog', group: 'water', tier: 'gentle', size: 'Tiny', ac: 13, speed: '20 ft., swim 20 ft.', roles: ['friend'],
+      attack: null, trick: { name: 'Standing Leap', desc: 'Leaps 10 ft. from a standstill. It does not fight — it hops.' },
+      blurb: 'A cheerful hopper. Purely, proudly, a friend.' },
+
+    // --- Gentle Beasts -------------------------------------------------------
+    { id: 'deer', name: 'Deer', group: 'gentle', tier: 'gentle', size: 'Medium', ac: 15, speed: '50 ft.', roles: ['friend', 'scout'],
+      attack: null, trick: { name: 'Fleet', desc: 'Faster than almost anything on four legs. It runs — it does not fight.' },
+      blurb: 'Swift, graceful, and gentle.' },
+    { id: 'goat', name: 'Goat', group: 'gentle', tier: 'gentle', size: 'Medium', ac: 12, speed: '40 ft.', roles: ['friend'],
+      attack: null, trick: { name: 'Sure-Footed', desc: 'Climbs cliffs and narrow ledges without ever slipping.' },
+      blurb: 'Stubborn, sure-footed, and weirdly lovable.' },
+    { id: 'pony', name: 'Pony', group: 'gentle', tier: 'gentle', size: 'Medium', ac: 12, speed: '40 ft.', roles: ['friend'],
+      attack: null, trick: { name: 'Steady', desc: 'Calm enough for a small rider, and brave enough to stay put.' },
+      blurb: 'A small, steady mount and an even steadier friend.' },
+    { id: 'mule', name: 'Mule', group: 'gentle', tier: 'gentle', size: 'Medium', ac: 12, speed: '40 ft.', roles: ['friend'],
+      attack: null, trick: { name: 'Beast of Burden', desc: 'Carries an enormous load all day without complaint.' },
+      blurb: 'Carries everything. Judges you silently.' },
+  ];
+
   window.DATA = {
     ABILITIES, DC_TABLE, RACES, CLASSES, SPELLS, EQUIPMENT, ADVENTURING_PACK,
     TRAITS, MOTIVATIONS, QUIZ, GLOSSARY,
+    COMPANIONS, COMPANION_GROUPS, COMPANION_TIERS, COMPANION_ROLES,
     LEVEL: 3, XP: 900, PROFICIENCY: 2,
     STANDARD_ARRAY: [15, 14, 13, 12, 10, 8],
   };

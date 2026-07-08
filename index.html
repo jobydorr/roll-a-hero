@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=9" />
-  <link rel="stylesheet" href="print.css?v=9" media="print" />
+  <link rel="stylesheet" href="styles.css?v=10" />
+  <link rel="stylesheet" href="print.css?v=10" media="print" />
 </head>
 <body>
   <!-- App header -->
@@ -75,6 +75,12 @@
       <div class="ps-box-head">Daily Uses — tick a box each time you use one; refill when you rest</div>
       <div class="ps-box-body" data-f="uses"></div>
     </div>
+
+    <!-- Only shown for a Beast Master ranger; hidden by app.js otherwise -->
+    <div class="ps-box ps-companion" id="psCompanion" style="display:none;">
+      <div class="ps-box-head">Animal Companion — it takes its turn right after yours</div>
+      <div class="ps-box-body" data-f="companion"></div>
+    </div>
   </section>
 
   <!-- ===================================================================== -->
@@ -88,11 +94,11 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-  <script src="firebase-config.js?v=9"></script>
-  <script src="firebase-sync.js?v=9"></script>
+  <script src="firebase-config.js?v=10"></script>
+  <script src="firebase-sync.js?v=10"></script>
 
-  <script src="icons.js?v=9"></script>
-  <script src="data.js?v=9"></script>
-  <script src="app.js?v=9"></script>
+  <script src="icons.js?v=10"></script>
+  <script src="data.js?v=10"></script>
+  <script src="app.js?v=10"></script>
 </body>
 </html>

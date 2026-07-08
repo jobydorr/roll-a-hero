@@ -305,6 +305,16 @@ h2.title { font-size: clamp(24px, 4vw, 34px); }
 .mini-ab .ma-mod { font-size: 13px; color: var(--green); font-weight: 700; }
 .mini-ab .ma-mod.neg { color: var(--red); }
 
+/* ---------- Animal companion (on-screen summary) ---------- */
+.companion-strip {
+  border: 2px solid var(--panel-edge); border-radius: 10px; background: #fffaf0;
+  padding: 10px 12px; margin-top: 4px;
+}
+.companion-strip .cs-name { font-family: var(--font-display); font-weight: 700; font-size: 16px; }
+.companion-strip .cs-size { font-family: var(--font-body); font-style: italic; font-weight: 400; font-size: 12.5px; color: var(--ink-soft); }
+.companion-strip .cc-meta { margin: 6px 0 4px; }
+.companion-strip .cs-trick { font-size: 13px; color: var(--ink-soft); }
+
 /* ---------- Daily Uses tracker (on-screen) ---------- */
 .uses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 4px 18px; margin-top: 4px; }
 .use-row { display: flex; align-items: center; gap: 8px; padding: 3px 0; }
@@ -353,6 +363,14 @@ h2.title { font-size: clamp(24px, 4vw, 34px); }
 .modal-choice input { accent-color: var(--red); }
 .modal-actions { display: flex; align-items: center; gap: 10px; margin-top: 18px; }
 .modal-actions .spacer { flex: 1; }
+/* Companion picker: wider modal, inner scroll so the filters stay put. */
+.modal.modal-wide { max-width: 760px; }
+.companion-results { max-height: 48vh; overflow-y: auto; padding-right: 6px; margin-top: 4px; }
+.comp-grid { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; margin: 6px 0 14px; }
+.comp-grid .choice-card { padding: 13px; }
+.comp-grid .choice-card .cc-meta .tag { font-size: 11px; }
+.companion-results .spell-section-head { margin: 10px 0 2px; }
+
 .manage-list { display: grid; gap: 8px; }
 .manage-row {
   display: flex; align-items: center; gap: 10px; padding: 9px 12px;

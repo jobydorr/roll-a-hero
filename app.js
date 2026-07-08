@@ -5,6 +5,7 @@
   const {
     ABILITIES, DC_TABLE, RACES, CLASSES, SPELLS, EQUIPMENT, ADVENTURING_PACK,
     TRAITS, MOTIVATIONS, QUIZ, GLOSSARY, LEVEL, XP, PROFICIENCY, STANDARD_ARRAY,
+    COMPANIONS, COMPANION_GROUPS, COMPANION_TIERS, COMPANION_ROLES,
   } = window.DATA;
 
   const STORAGE_KEY = 'rollAHeroCharacters';
@@ -14,14 +15,29 @@
   function newCharacter() {
     return {
       id: null, step: 'welcome',
+      level: LEVEL, // per-character, so leveling up later is a data change, not a rewrite
       quizAnswers: [], quizLayout: null, recommendations: null, altRecs: null,
       rollMethod: '4d6', pool: null, lastRoll: null, rollsUsed: 0, assigned: blankAssign(),
       race: null, raceChoice: {},
-      klass: null, archetype: null, fightingStyle: null,
+      klass: null, archetype: null, fightingStyle: null, archetypeChoice: {},
       spells: [], equipment: {}, motiveShown: null,
       story: { name: '', traits: [], backstory: '', motivations: [] },
     };
   }
+  // Heroes saved before a field existed must still load. Fills defaults in place —
+  // this is what lets the two existing Beast Master rangers open without blowing up.
+  function normalize(snap) {
+    if (!snap || typeof snap !== 'object') return snap;
+    if (!snap.level) snap.level = LEVEL;
+    if (!snap.archetypeChoice || typeof snap.archetypeChoice !== 'object') snap.archetypeChoice = {};
+    if (!snap.raceChoice || typeof snap.raceChoice !== 'object') snap.raceChoice = {};
+    if (!Array.isArray(snap.spells)) snap.spells = [];
+    if (!snap.equipment || typeof snap.equipment !== 'object') snap.equipment = {};
+    if (!snap.assigned) snap.assigned = blankAssign();
+    if (!snap.story || typeof snap.story !== 'object') snap.story = { name: '', traits: [], backstory: '', motivations: [] };
+    return snap;
+  }
+  const charLevel = () => state.level || LEVEL;
   let state = newCharacter();
   let selectedChip = null;
   let rollTimer = null;
@@ -48,7 +64,7 @@
   const dexMod = () => { const d = finalScore('dex'); return d == null ? 0 : modOf(d); };
 
   // HP is always maxed: the full hit die for every level, plus Con each level.
-  function computeHP() { const c = getClass(); if (!c) return 0; const con = finalScore('con'); return c.hitDie * LEVEL + LEVEL * (con == null ? 0 : modOf(con)); }
+  function computeHP() { const c = getClass(); if (!c) return 0; const con = finalScore('con'); const L = charLevel(); return c.hitDie * L + L * (con == null ? 0 : modOf(con)); }
   function weaponHasShield() { return (state.equipment.weapon || '').includes('shield'); }
   function hasShield() {
     const c = getClass(); if (!c) return false;
@@ -102,7 +118,13 @@
     }
     return true;
   }
-  function classComplete() { const c = getClass(); if (!c || !state.archetype) return false; if (c.fightingStyles && !state.fightingStyle) return false; return true; }
+  function classComplete() {
+    const c = getClass(); if (!c || !state.archetype) return false;
+    if (c.fightingStyles && !state.fightingStyle) return false;
+    const a = getArchetype();
+    if (a && a.choice && !(state.archetypeChoice || {})[a.choice.key]) return false; // e.g. Beast Master's companion
+    return true;
+  }
   const assignComplete = () => ABILITIES.every(a => state.assigned[a.key] != null);
   function magicComplete() {
     const p = spellPlan(); if (!p) return true;
@@ -112,8 +134,51 @@
   const storyComplete = () => state.story.name.trim().length > 0;
   function gearComplete() { const c = getClass(); if (!c) return false; return EQUIPMENT[c.id].choices.every(ch => state.equipment[ch.key]); }
 
+  /* ------------------------ Animal companion ---------------------------- */
+  const getCompanion = () => COMPANIONS.find(x => x.id === (state.archetypeChoice || {}).companion) || null;
+  // Straight from the PHB: "its hit point maximum equals four times your ranger level."
+  const companionHP = () => 4 * charLevel();
+  function companionStats(comp) {
+    const t = COMPANION_TIERS[comp.tier];
+    return { hp: companionHP(), ac: comp.ac, speed: comp.speed, hit: t.hit, dmg: t.dmg, fights: !!comp.attack };
+  }
+
+  /* ------------------------- Requirements engine -------------------------
+     ONE place that answers "what does this hero still owe?" Everything else —
+     the ⚠ badge on the welcome list, the Edit screen's "Fix this →" jumps, and
+     (later) leveling up — is just a read of this list. Each requirement carries
+     the `level` it unlocks at, so when leveling arrives new requirements simply
+     appear and the same machinery points the player at them. */
+  function requirements(snap) {
+    return withState(snap, () => {
+      const reqs = [];
+      const add = (id, step, label, satisfied, level) => reqs.push({ id, step, label, satisfied: !!satisfied, level: level || 1 });
+      const r = getRace(), c = getClass(), a = getArchetype();
+
+      add('race', 'race', 'Choose a race', r);
+      if (r && r.choice) {
+        if (r.choice.key === 'ancestry') add('race-ancestry', 'race', 'Choose your dragon ancestor', state.raceChoice.ancestry);
+        if (r.choice.key === 'boosts') add('race-boosts', 'race', 'Pick two ability boosts', (state.raceChoice.boosts || []).length === 2);
+      }
+      add('class', 'class', 'Choose a class', c);
+      add('archetype', 'class', 'Choose your specialty', a);
+      if (c && c.fightingStyles) add('fighting-style', 'class', 'Pick a Fighting Style', state.fightingStyle);
+      if (a && a.choice) {
+        const label = a.choice.kind === 'companion' ? 'Choose your animal companion' : 'Pick your ' + a.feature.name;
+        add('arch-' + a.choice.key, 'class', label, (state.archetypeChoice || {})[a.choice.key], 3);
+      }
+      add('abilities', 'assign', 'Place your ability numbers', assignComplete());
+      if (buildHasSpells()) add('magic', 'magic', 'Choose your spells', magicComplete());
+      add('story', 'story', 'Name your hero', storyComplete());
+      add('gear', 'gear', 'Choose your gear', gearComplete());
+      return reqs;
+    });
+  }
+  const missingRequirements = (snap) => requirements(snap).filter(x => !x.satisfied);
+  const isComplete = (snap) => missingRequirements(snap).length === 0;
+
   /* --------------------------- localStorage ----------------------------- */
-  function loadAll() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch (e) { return []; } }
+  function loadAll() { try { return (JSON.parse(localStorage.getItem(STORAGE_KEY)) || []).map(normalize); } catch (e) { return []; } }
   function saveAll(list) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); } catch (e) {} }
   function persist() {
     if (!state.id) state.id = 'h' + Date.now();
@@ -217,14 +282,87 @@
   /* ------------------------------- Modal -------------------------------- */
   function closeModal() { const m = document.querySelector('.modal-overlay'); if (m) m.remove(); document.removeEventListener('keydown', escClose); }
   function escClose(e) { if (e.key === 'Escape') closeModal(); }
-  function openModal(contentHtml, wire) {
+  function openModal(contentHtml, wire, extraClass) {
     closeModal();
     const overlay = document.createElement('div'); overlay.className = 'modal-overlay';
-    overlay.innerHTML = `<div class="modal" role="dialog" aria-modal="true">${contentHtml}</div>`;
+    overlay.innerHTML = `<div class="modal ${extraClass || ''}" role="dialog" aria-modal="true">${contentHtml}</div>`;
     document.body.appendChild(overlay);
     overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
     document.addEventListener('keydown', escClose);
     if (wire) wire(overlay.querySelector('.modal'), closeModal);
+  }
+
+  /* --------------------- Animal companion picker ------------------------
+     42 animals would overwhelm a beginner, so this borrows the trick the app
+     already uses for classes/races: narrow first, browse second. Opens on a
+     "what do you want your friend to do?" filter, leads with the classics, and
+     groups the rest — reusing .choice-card so it looks native. */
+  function companionCardHTML(comp) {
+    const s = companionStats(comp);
+    return `<div class="cc-head"><span class="cc-name" style="font-size:17px;">${escapeHtml(comp.name)}</span></div>
+      <div class="cc-sub">${escapeHtml(comp.size)}${comp.classic ? ' · a classic choice' : ''}</div>
+      <div class="cc-desc">${escapeHtml(comp.blurb)}</div>
+      <div class="cc-meta">
+        <span class="tag">${s.hp} HP</span>
+        <span class="tag bonus">AC ${s.ac}</span>
+        <span class="tag">${escapeHtml(comp.speed)}</span>
+        ${s.fights
+          ? `<span class="tag">${escapeHtml(comp.attack)} +${s.hit} (${s.dmg})</span>`
+          : `<span class="tag magic">Doesn't fight</span>`}
+      </div>
+      <div class="signature"><span class="sig-name">${escapeHtml(comp.trick.name)}.</span> ${escapeHtml(comp.trick.desc)}</div>`;
+  }
+
+  function openCompanionPicker() {
+    const current = (state.archetypeChoice || {}).companion || null;
+    openModal(`
+      <h3 class="modal-title">${icon('star')} Choose your animal companion</h3>
+      <p class="modal-sub">Your beast fights on your command and takes its turn with you. It has <strong>${companionHP()} HP</strong> (four times your level), and every number below already includes your bonus — no maths at the table.</p>
+      <div class="chip-row" id="compRoles">
+        <button class="chip selected" data-role="all">Show me everything</button>
+        ${COMPANION_ROLES.map(r => `<button class="chip" data-role="${r.id}">${r.label}</button>`).join('')}
+      </div>
+      <div class="field" style="margin:10px 0 2px;"><input type="text" id="compSearch" placeholder="Search 42 animals — try “wolf”, “fly”, or “climb”…"></div>
+      <div id="compResults" class="companion-results"></div>
+      <div class="modal-actions"><button class="btn btn-ghost btn-sm" data-cancel>Cancel</button><div class="spacer"></div></div>
+    `, (modal, close) => {
+      let role = 'all', q = '';
+      const results = modal.querySelector('#compResults');
+      const matches = (c) => (role === 'all' || c.roles.includes(role)) &&
+        (!q || (c.name + ' ' + c.blurb + ' ' + c.trick.name + ' ' + c.trick.desc + ' ' + c.speed + ' ' + c.size).toLowerCase().includes(q));
+      function cardBtn(c) { return `<button class="choice-card${current === c.id ? ' selected' : ''}" data-comp="${c.id}">${companionCardHTML(c)}</button>`; }
+      function paint() {
+        const list = COMPANIONS.filter(matches);
+        if (!list.length) { results.innerHTML = `<p class="modal-hint">No animals match that. Try “wolf”, “fly”, or clear the search.</p>`; return; }
+        const leadWithClassics = role === 'all' && !q;
+        let html = '';
+        if (leadWithClassics) {
+          const cl = list.filter(c => c.classic);
+          html += `<h4 class="spell-section-head" style="margin-top:4px;">${icon('star')} Classic picks</h4>
+            <div class="card-grid comp-grid">${cl.map(cardBtn).join('')}</div>`;
+        }
+        COMPANION_GROUPS.forEach(g => {
+          const inG = list.filter(c => c.group === g.id && !(leadWithClassics && c.classic));
+          if (!inG.length) return;
+          html += `<h4 class="spell-section-head">${g.name} <span class="pick-counter" style="font-weight:400;font-size:12.5px;">— ${g.blurb}</span></h4>
+            <div class="card-grid comp-grid">${inG.map(cardBtn).join('')}</div>`;
+        });
+        results.innerHTML = html;
+        results.querySelectorAll('[data-comp]').forEach(b => b.onclick = () => {
+          state.archetypeChoice = Object.assign({}, state.archetypeChoice, { companion: b.dataset.comp });
+          const picked = COMPANIONS.find(x => x.id === b.dataset.comp);
+          announce((picked ? picked.name : 'Companion') + ' is now your companion.');
+          close(); render();
+        });
+      }
+      modal.querySelectorAll('#compRoles .chip').forEach(ch => ch.onclick = () => {
+        modal.querySelectorAll('#compRoles .chip').forEach(x => x.classList.remove('selected'));
+        ch.classList.add('selected'); role = ch.dataset.role; paint();
+      });
+      modal.querySelector('#compSearch').addEventListener('input', e => { q = e.target.value.trim().toLowerCase(); paint(); });
+      modal.querySelector('[data-cancel]').onclick = close;
+      paint();
+    }, 'modal-wide');
   }
 
   // First-time (or new-page) share: name + pick an existing share page or make one.
@@ -452,7 +590,28 @@
     if (c) c.features.forEach(f => list.push({ name: f.name, desc: f.desc }));
     if (c && c.fightingStyles && state.fightingStyle) { const st = c.fightingStyles.find(s => s.id === state.fightingStyle); if (st) list.push({ name: 'Fighting Style: ' + st.name, desc: st.desc }); }
     if (a && a.feature) list.push({ name: a.name + ': ' + a.feature.name, desc: a.feature.desc });
+    if (a && a.choice && a.choice.kind === 'options') {
+      const pick = (a.choice.options || []).find(o => o.id === (state.archetypeChoice || {})[a.choice.key]);
+      if (pick) list.push({ name: a.feature.name + ' — ' + pick.name, desc: pick.desc });
+    }
+    const comp = getCompanion();
+    if (comp) {
+      const s = companionStats(comp);
+      list.push({
+        name: 'Animal Companion: ' + comp.name,
+        desc: `${s.hp} HP, AC ${s.ac}, Speed ${comp.speed}. ` +
+          (s.fights ? `${comp.attack} +${s.hit} to hit for ${s.dmg} damage. ` : 'It does not fight. ') +
+          `<em>${comp.trick.name}:</em> ${comp.trick.desc}`,
+      });
+    }
     return list;
+  }
+  function companionLineHTML() {
+    const comp = getCompanion(); if (!comp) return '';
+    const s = companionStats(comp);
+    return `<div><span class="feat-name">${escapeHtml(comp.name)}</span> (${escapeHtml(comp.size)}) — ${s.hp} HP · AC ${s.ac} · Speed ${escapeHtml(comp.speed)}` +
+      (s.fights ? ` · ${escapeHtml(comp.attack)} <strong>+${s.hit}</strong> to hit, <strong>${s.dmg}</strong> damage` : ' · does not fight') + `</div>` +
+      `<div style="margin-top:3px"><span class="feat-name">${escapeHtml(comp.trick.name)}.</span> ${escapeHtml(comp.trick.desc)}</div>`;
   }
   function chosenSpellsGrouped() {
     const chosen = state.spells.map(getSpell).filter(Boolean);
@@ -844,7 +1003,7 @@
         <div class="cc-head"><span class="cc-icon">${icon(cls.icon)}</span><span class="cc-name">${cls.name}</span></div>
         <div class="cc-meta"><span class="tag">HP ${cls.hitDie * LEVEL}+</span><span class="tag bonus">Best: ${cls.bestAbility.split('(')[0].trim()}</span>${cls.spellcaster ? '<span class="tag magic">Magic</span>' : ''}</div>
         <div class="cc-desc">${cls.blurb}</div>`;
-      card.onclick = () => { if (state.klass !== cls.id) { state.klass = cls.id; state.archetype = null; state.fightingStyle = null; state.spells = []; state.equipment = {}; } render(); };
+      card.onclick = () => { if (state.klass !== cls.id) { state.klass = cls.id; state.archetype = null; state.fightingStyle = null; state.archetypeChoice = {}; state.spells = []; state.equipment = {}; } render(); };
       grid.appendChild(card);
     });
     if (c) renderClassExtra(c);
@@ -867,9 +1026,42 @@
         <div class="cc-desc">${a.desc}</div>
         <div class="cc-meta">${a.grantsSpells ? '<span class="tag magic">Learns a few spells</span>' : '<span class="tag">No spells</span>'}</div>
         <div class="signature"><span class="sig-name">${a.feature.name}.</span> ${a.feature.desc}</div>`;
-      card.onclick = () => { if (state.archetype !== a.id) { state.archetype = a.id; state.spells = []; } render(); };
+      card.onclick = () => { if (state.archetype !== a.id) { state.archetype = a.id; state.spells = []; state.archetypeChoice = {}; } render(); };
       ag.appendChild(card);
     });
+
+    // Archetype choice — Beast Master's companion, Hunter's Prey, etc.
+    const arch = getArchetype();
+    if (arch && arch.choice) {
+      const cp = document.createElement('div'); cp.className = 'panel';
+      if (arch.choice.kind === 'companion') {
+        const comp = getCompanion();
+        cp.innerHTML = `<h3 class="spell-section-head" style="margin-top:0;">${arch.choice.prompt}</h3>
+          <p style="margin:0 0 10px;color:var(--ink-soft);">Your loyal beast fights at your side and takes its turn with you. It has <strong>${companionHP()} HP</strong>.</p>
+          <div id="compChosen"></div>
+          <button class="btn btn-sm ${comp ? 'btn-ghost' : 'btn-gold'}" id="pickCompBtn">${comp ? 'Change companion' : icon('star') + ' Choose your companion'}</button>`;
+        wrap.appendChild(cp);
+        if (comp) {
+          const card = document.createElement('div');
+          card.className = 'choice-card selected'; card.style.marginBottom = '12px';
+          card.innerHTML = companionCardHTML(comp);
+          cp.querySelector('#compChosen').appendChild(card);
+        }
+        cp.querySelector('#pickCompBtn').onclick = openCompanionPicker;
+      } else {
+        cp.innerHTML = `<h3 class="spell-section-head" style="margin-top:0;">${arch.choice.prompt}</h3><div class="card-grid" id="archChoiceGrid"></div>`;
+        wrap.appendChild(cp);
+        const g = cp.querySelector('#archChoiceGrid');
+        arch.choice.options.forEach(o => {
+          const card = document.createElement('button');
+          card.className = 'choice-card' + ((state.archetypeChoice || {})[arch.choice.key] === o.id ? ' selected' : '');
+          card.innerHTML = `<div class="cc-name" style="font-size:16px;">${o.name}</div><div class="cc-desc">${o.desc}</div>`;
+          card.onclick = () => { state.archetypeChoice = Object.assign({}, state.archetypeChoice, { [arch.choice.key]: o.id }); render(); };
+          g.appendChild(card);
+        });
+      }
+    }
+
     // Fighting style (Fighter, Paladin, Ranger)
     if (c.fightingStyles) {
       const fp = document.createElement('div'); fp.className = 'panel';
@@ -1105,6 +1297,7 @@
             <h3 class="spell-section-head" style="margin-top:0;">Special Abilities</h3>
             <ul class="trait-list" style="font-size:13.5px;">${specialAbilities().map(x => `<li><strong>${escapeHtml(x.name)}.</strong> ${x.desc}</li>`).join('')}</ul>
             ${renderFinishSpells()}
+            ${renderFinishCompanion()}
             ${renderFinishUses()}
           </div>
         </div>
@@ -1150,6 +1343,19 @@
     return `<h3 class="spell-section-head">Spells ${sn ? `<span class="pick-counter">(to hit +${sn.atk}, dodge DC ${sn.dc})</span>` : ''}</h3>
       ${g.cant.length ? `<p style="margin:4px 0;"><strong>Cantrips:</strong> ${g.cant.join(', ')}</p>` : ''}
       ${g.lev.length ? `<p style="margin:4px 0;"><strong>Spells:</strong> ${g.lev.join(', ')}</p>` : ''}`;
+  }
+  function renderFinishCompanion() {
+    const comp = getCompanion(); if (!comp) return '';
+    const s = companionStats(comp);
+    return `<h3 class="spell-section-head">Animal Companion</h3>
+      <div class="companion-strip">
+        <div class="cs-name">${escapeHtml(comp.name)} <span class="cs-size">${escapeHtml(comp.size)}</span></div>
+        <div class="cc-meta">
+          <span class="tag">${s.hp} HP</span><span class="tag bonus">AC ${s.ac}</span><span class="tag">${escapeHtml(comp.speed)}</span>
+          ${s.fights ? `<span class="tag">${escapeHtml(comp.attack)} +${s.hit} (${s.dmg})</span>` : `<span class="tag magic">Doesn't fight</span>`}
+        </div>
+        <div class="cs-trick"><strong>${escapeHtml(comp.trick.name)}.</strong> ${escapeHtml(comp.trick.desc)}</div>
+      </div>`;
   }
   function renderFinishUses() {
     if (!limitedResources().length) return '';
@@ -1266,7 +1472,7 @@
     let raceLabel = r ? r.name : '';
     if (r && r.id === 'dragonborn' && state.raceChoice.ancestry) { const anc = r.choice.options.find(o => o.id === state.raceChoice.ancestry); raceLabel += ` (${anc.name.split('—')[0].trim()})`; }
     set('race', raceLabel);
-    set('xp', String(XP)); set('level', String(LEVEL));
+    set('xp', String(XP)); set('level', String(charLevel()));
     set('hp', String(computeHP())); set('speed', (r ? r.speed : 30) + ' ft'); set('ac', String(computeAC()));
     set('gear', `<ul>${resolvedEquipment().map(g => `<li>${escapeHtml(g)}</li>`).join('')}</ul><div style="margin-top:5px"><span class="feat-name">Pack:</span> ${ADVENTURING_PACK.join(', ')}.</div>`);
     let sp = `<ul>${specialAbilities().map(x => `<li><span class="feat-name">${escapeHtml(x.name)}.</span></li>`).join('')}</ul>`;
@@ -1278,6 +1484,12 @@
     }
     set('spells', sp);
     set('uses', usesRowsHTML());
+    const compBox = document.getElementById('psCompanion');
+    if (compBox) {
+      const comp = getCompanion();
+      compBox.style.display = comp ? '' : 'none';
+      if (comp) set('companion', companionLineHTML());
+    }
     document.getElementById('psAbilities').innerHTML = ABILITIES.map(ab => {
       const s = finalScore(ab.key), m = modOf(s);
       return `<div class="ps-ability"><div class="pa-label"><span class="pa-icon">${icon(ab.icon)}</span><span class="pa-name">${ab.name}</span></div>
@@ -1312,7 +1524,24 @@
       html += `<div class="pr-section"><h3>Class Features — ${escapeHtml(c.name)}</h3><ul>${items}</ul></div>`;
     }
     if (a && a.feature) {
-      html += `<div class="pr-section"><h3>Specialty — ${escapeHtml(a.name)} (${escapeHtml(a.sub)})</h3><ul><li><span class="pr-name">${escapeHtml(a.feature.name)}:</span> ${a.feature.desc}</li></ul></div>`;
+      let items = `<li><span class="pr-name">${escapeHtml(a.feature.name)}:</span> ${a.feature.desc}</li>`;
+      if (a.choice && a.choice.kind === 'options') {
+        const pick = (a.choice.options || []).find(o => o.id === (state.archetypeChoice || {})[a.choice.key]);
+        if (pick) items += `<li><span class="pr-name">${escapeHtml(pick.name)}:</span> ${pick.desc}</li>`;
+      }
+      html += `<div class="pr-section"><h3>Specialty — ${escapeHtml(a.name)} (${escapeHtml(a.sub)})</h3><ul>${items}</ul></div>`;
+    }
+    const comp = getCompanion();
+    if (comp) {
+      const s = companionStats(comp);
+      html += `<div class="pr-section"><h3>Animal Companion — ${escapeHtml(comp.name)}</h3>
+        <p class="pr-note">${s.hp} HP · AC ${s.ac} · Speed ${escapeHtml(comp.speed)}` +
+        (s.fights ? ` · ${escapeHtml(comp.attack)} +${s.hit} to hit, ${s.dmg} damage` : ' · it does not fight') +
+        `. These numbers already include your bonus.</p>
+        <ul>
+          <li><span class="pr-name">${escapeHtml(comp.trick.name)}:</span> ${escapeHtml(comp.trick.desc)}</li>
+          <li><span class="pr-name">How it acts:</span> It takes its turn right after yours. It moves when you point, and attacks when you command it to.</li>
+        </ul></div>`;
     }
     const chosen = state.spells.map(getSpell).filter(Boolean);
     if (chosen.length) {
