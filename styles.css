@@ -305,6 +305,21 @@ h2.title { font-size: clamp(24px, 4vw, 34px); }
 .mini-ab .ma-mod { font-size: 13px; color: var(--green); font-weight: 700; }
 .mini-ab .ma-mod.neg { color: var(--red); }
 
+/* ---------- Edit / review screen ---------- */
+.note-warn { border-left-color: var(--red); background: rgba(178, 59, 46, 0.1); }
+.tag.warn { background: rgba(178, 59, 46, 0.15); color: var(--red); }
+.saved-row.needs-work { border-color: var(--red); box-shadow: inset 4px 0 0 var(--red); }
+.req-list { display: grid; gap: 8px; margin: 16px 0; }
+.req-row {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  background: var(--panel); border: 2px solid var(--panel-edge); border-radius: 12px; padding: 10px 14px;
+}
+.req-row.missing { border-color: var(--red); background: #fffaf0; }
+.req-row .req-mark { font-size: 17px; color: var(--green); display: inline-flex; min-width: 20px; }
+.req-row.missing .req-mark { color: var(--red); }
+.req-row .req-label { font-family: var(--font-display); font-weight: 700; font-size: 15.5px; }
+.req-row .spacer { flex: 1; }
+
 /* ---------- Animal companion (on-screen summary) ---------- */
 .companion-strip {
   border: 2px solid var(--panel-edge); border-radius: 10px; background: #fffaf0;

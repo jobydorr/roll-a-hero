@@ -8,14 +8,26 @@
 
 ---
 
-## 🔴 URGENT — surface next session (flagged by Joby 2026-07-07)
+## 🔴 URGENT list — 3 of 4 done (2026-07-08)
 
-Two players rolled **Beast Master Rangers** and the builder had no way to finish them. Address ASAP next session:
+1. ✅ **Beast Master animal companion** — 42 companions (every Beast the rules allow), a browsable picker, and the companion now prints on the character sheet + cheat sheet. The two rangers are unblocked.
+2. ✅ **"Edit character" feature** — an **Edit / review screen** that autodetects what a hero is missing and jumps straight to the screen that fixes it. (The old path really did require clicking "← Make changes" five times; now it's one click.)
+3. ⬜ **Full character write-up viewable ON the site** 🟢 — *still open.* The finish page shows a summary; the full text of every racial power, class feature, and spell only exists in the printable cheat sheet. Surface that same content in-app.
+4. ✅ **Deep review of the character builder** — findings below.
 
-1. **Beast Master animal companion** 🟢 — the Beast Master Ranger needs a way to **pick an animal companion**, and the companion's stats must be **included on the character sheet**. Currently missing entirely — these two heroes are incomplete.
-2. **"Edit character" feature** 🟠 — a way to reopen and update a saved hero, so the two existing rangers (and anyone else) can be updated with new additions like the companion. Not just create-once. *(Note, found 2026-07-08: a rough path already exists — **Open** → the finish page → **"← Make changes"** walks back through the builder steps and re-saves on finish. Assess whether that's sufficient or a proper editor is wanted, rather than rebuilding from scratch.)*
-3. **Full character write-up viewable ON the site** 🟢 — the complete write-up should be readable in the app, not only in the printable PDF.
-4. **Deep review of the character builder** 🟠 — audit the whole builder for other empty/missing/dead-end parts like the Beast Master gap (class/subclass features that have no UI to actually choose them). Surface a findings list next session; **do nothing now.**
+### Audit findings (all 24 archetypes, cross-referenced against the PHB)
+
+**Real dead-ends — both now fixed:**
+- **Beast Master → Animal Companion.** Granted a companion; no data, no picker, absent from the sheet. *(fixed)*
+- **Hunter → Hunter's Prey.** Text said *"Pick a trick…"* with nothing to pick with. Now three PHB options. *(fixed)*
+
+**Flavor gaps — still open, low priority** 🟡
+- **Ranger → Favored Enemy.** PHB has you choose a creature type; we never record it.
+- **Ranger → Natural Explorer.** PHB has you choose a favored terrain; our text doesn't even mention choosing.
+
+**Intentional simplifications (not bugs, don't "fix"):** Battle Master maneuvers are a fixed set of 4 (PHB: choose 3 of ~16); spells are fixed known-lists (PHB: prepared daily).
+
+**Verified correct:** the Ranger's level-3 kit matches the PHB exactly (Favored Enemy, Natural Explorer, Fighting Style, Spellcasting, Primeval Awareness, Archetype), 3 spells known, and `spellSlots()` gives half-casters `{1:3}` — the PHB's three 1st-level slots.
 
 ---
 
@@ -67,6 +79,7 @@ Decided 2026-07-07 (see `DECISIONS.md`). Backend: **Firebase** project `roll-a-h
 
 ## Recently done (so you can see momentum)
 
+- ✅ **Beast Master companions + requirements engine** — 42 animals, a filtered/searchable picker, and a one-click **Edit / review** screen that autodetects what a hero is missing. Hunter's Prey fixed for free by the same engine. Per-character `level` field added, so leveling up is now a data change rather than a rewrite (2026-07-08)
 - ✅ Saved-hero row: Open / Share / Export / Delete now sit on one line (2026-07-07)
 - ✅ DM party view: **View** opens the hero's real character page (printable) instead of jumping to the print dialog; added **Remove** so the DM can clear a shared hero (also cleans up orphans) (2026-07-07)
 - ✅ Sharing UX pass — per-hero **Share** dialog (remembers your name, pick an existing share page or make a new one, multi-campaign ready), explicit **Unshare**, and **Delete now also removes the shared copy**. Dropped the clunky "Share & back up" box; Import is a small button. Verified server-side (2026-07-07)

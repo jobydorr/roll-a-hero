@@ -42,6 +42,7 @@
   let selectedChip = null;
   let rollTimer = null;
   let viewCtx = null; // set while the DM is viewing a shared hero read-only ({campaign}); else null
+  let editCtx = null; // set while editing a saved hero ({id}); adds a "Done" jump back to the review screen
 
   /* --------------------------- Lookups & math --------------------------- */
   const getRace = () => RACES.find(r => r.id === state.race) || null;
@@ -625,7 +626,7 @@
   function updateHeader() {
     document.getElementById('brandMark').innerHTML = icon('dice');
     const prog = document.getElementById('progress');
-    if (state.step === 'welcome' || state.step === 'dm' || viewCtx) { prog.hidden = true; return; }
+    if (state.step === 'welcome' || state.step === 'dm' || state.step === 'edit' || viewCtx) { prog.hidden = true; return; }
     const build = steps().filter(s => s !== 'welcome');
     let idx = build.indexOf(state.step);
     if (state.step === 'howto') { prog.hidden = true; return; }
@@ -642,19 +643,30 @@
     return `<div class="actions">
       ${o.back ? '<button class="btn btn-ghost" data-act="back">← Back</button>' : ''}
       <div class="spacer"></div>${o.extra}
+      ${editCtx ? `<button class="btn btn-gold" data-act="doneedit">${icon('check')} Done — back to my hero</button>` : ''}
       ${o.next ? `<button class="btn btn-primary" data-act="next" ${o.nextDisabled ? 'disabled' : ''}>${o.nextLabel}</button>` : ''}
     </div>`;
   }
   function wireFooter(host) {
     host.querySelectorAll('[data-act="back"]').forEach(b => b.onclick = prev);
     host.querySelectorAll('[data-act="next"]').forEach(b => b.onclick = next);
+    host.querySelectorAll('[data-act="doneedit"]').forEach(b => b.onclick = () => { persist(); go('edit'); });
+  }
+
+  // If this hero is published to any campaign, push the edit so the DM sees it.
+  async function resyncShares(snap) {
+    if (!sharingAvailable()) return;
+    const camps = sharedCampaignsOf(snap.id); if (!camps.length) return;
+    const p = getProfile(); if (!p.name) return;
+    for (const c of camps) { try { await RAHSync.shareCharacter(snap, c, p.name); } catch (e) {} }
+    announce('Updated the copy your DM sees.');
   }
 
   /* ============================ RENDERERS =============================== */
   const RENDER = {};
 
   RENDER.welcome = (host) => {
-    viewCtx = null; // leaving any DM read-only view
+    viewCtx = null; editCtx = null; // leaving any DM read-only view / edit session
     const saved = loadAll();
     const canShare = sharingAvailable();
     host.innerHTML = `
@@ -687,21 +699,25 @@
       saved.forEach(snap => {
         const r = RACES.find(x => x.id === snap.race), c = CLASSES.find(x => x.id === snap.klass);
         const a = c && snap.archetype ? c.archetypes.find(x => x.id === snap.archetype) : null;
-        const row = document.createElement('div'); row.className = 'saved-row';
+        const miss = missingRequirements(snap);
+        const row = document.createElement('div'); row.className = 'saved-row' + (miss.length ? ' needs-work' : '');
         row.innerHTML = `
           <div class="saved-info">
             <span class="saved-name">${escapeHtml((snap.story && snap.story.name) || 'Unnamed Hero')}</span>
-            <span class="saved-meta">${r ? r.name : '?'} ${c ? c.name : ''}${a ? ' · ' + a.name : ''} · Level ${LEVEL}</span>
+            <span class="saved-meta">${r ? r.name : '?'} ${c ? c.name : ''}${a ? ' · ' + a.name : ''} · Level ${snap.level || LEVEL}</span>
+            ${miss.length ? `<span class="tag warn">⚠ Needs ${miss.length} thing${miss.length === 1 ? '' : 's'}</span>` : ''}
           </div>
           <div class="saved-actions">
             <button class="btn btn-sm" data-open="${snap.id}">Open</button>
+            <button class="btn btn-sm ${miss.length ? 'btn-gold' : 'btn-ghost'}" data-edit="${snap.id}">${miss.length ? '⚠ Finish' : 'Edit'}</button>
             ${canShare ? `<button class="btn btn-sm btn-gold" data-share="${snap.id}">${icon('shield')} Share</button>` : ''}
             <button class="btn btn-sm btn-ghost" data-export="${snap.id}">Export</button>
             <button class="btn btn-sm btn-ghost" data-del="${snap.id}">Delete</button>
           </div>`;
         list.appendChild(row);
       });
-      list.querySelectorAll('[data-open]').forEach(b => b.onclick = () => { const s = loadAll().find(x => x.id === b.dataset.open); if (s) { state = s; viewCtx = null; go('finish'); } });
+      list.querySelectorAll('[data-open]').forEach(b => b.onclick = () => { const s = loadAll().find(x => x.id === b.dataset.open); if (s) { state = s; viewCtx = null; editCtx = null; go('finish'); } });
+      list.querySelectorAll('[data-edit]').forEach(b => b.onclick = () => { const s = loadAll().find(x => x.id === b.dataset.edit); if (s) { state = s; viewCtx = null; editCtx = { id: s.id }; go('edit'); } });
       list.querySelectorAll('[data-export]').forEach(b => b.onclick = () => { const s = loadAll().find(x => x.id === b.dataset.export); if (s) exportCharacter(s); });
       // Share: first time opens the share dialog; once shared, opens "manage" (unshare / add page).
       list.querySelectorAll('[data-share]').forEach(b => b.onclick = () => {
@@ -739,6 +755,53 @@
     if (backupBtn) backupBtn.onclick = () => { exportAll(); announce('Backed up all heroes to a file.'); };
     const dmBtn = document.getElementById('dmViewBtn');
     if (dmBtn) dmBtn.onclick = () => go('dm');
+  };
+
+  // Edit / review a saved hero. A thin read over requirements(): it shows exactly
+  // what the hero still owes and jumps straight to the screen that fixes it.
+  RENDER.edit = (host) => {
+    const reqs = requirements(state);
+    const missing = reqs.filter(x => !x.satisfied);
+    const r = getRace(), c = getClass(), a = getArchetype();
+    const name = (state.story && state.story.name) || 'Your hero';
+    const sharedTo = sharedCampaignsOf(state.id);
+    host.innerHTML = `
+      <div class="step">
+        <p class="eyebrow">Edit your hero</p>
+        <h2 class="title">${escapeHtml(name)}</h2>
+        <p class="lead">${r ? escapeHtml(r.name) : ''} ${c ? escapeHtml(c.name) : ''}${a ? ' — ' + escapeHtml(a.name) : ''}${(r || c) ? ' · Level ' + charLevel() : ''}</p>
+        ${missing.length
+          ? `<div class="note note-warn"><strong>⚠ This hero isn't finished.</strong> There ${missing.length === 1 ? 'is 1 thing' : 'are ' + missing.length + ' things'} still to choose. Tap <strong>Fix this</strong> and we'll take you straight there.</div>`
+          : `<div class="note">${icon('check')} <strong>All done — nothing is missing.</strong> You can still change anything below.</div>`}
+        <div class="req-list" id="reqList"></div>
+        ${sharedTo.length ? `<p class="modal-hint">Shared to ${sharedTo.map(x => '“' + escapeHtml(x) + '”').join(', ')} — saving will update the copy your DM sees.</p>` : ''}
+        <div class="actions">
+          <button class="btn btn-ghost" id="editBack">← Back</button>
+          <div class="spacer"></div>
+          <button class="btn" id="editView">${icon('scroll')} View hero page</button>
+          <button class="btn btn-primary" id="editSave">${icon('check')} Save &amp; close</button>
+        </div>
+      </div>`;
+    const list = document.getElementById('reqList');
+    missing.concat(reqs.filter(x => x.satisfied)).forEach(req => {
+      const row = document.createElement('div');
+      row.className = 'req-row' + (req.satisfied ? '' : ' missing');
+      row.innerHTML = `<span class="req-mark">${req.satisfied ? icon('check') : '⚠'}</span>
+        <span class="req-label">${escapeHtml(req.label)}</span>
+        <div class="spacer"></div>
+        <button class="btn btn-sm ${req.satisfied ? 'btn-ghost' : 'btn-gold'}" data-fix="${req.step}">${req.satisfied ? 'Change' : 'Fix this →'}</button>`;
+      list.appendChild(row);
+    });
+    list.querySelectorAll('[data-fix]').forEach(b => b.onclick = () => go(b.dataset.fix));
+    document.getElementById('editBack').onclick = () => { editCtx = null; go('welcome'); };
+    document.getElementById('editView').onclick = () => { persist(); editCtx = null; go('finish'); };
+    document.getElementById('editSave').onclick = async () => {
+      const btn = document.getElementById('editSave');
+      btn.disabled = true; btn.innerHTML = 'Saving…';
+      persist();
+      await resyncShares(JSON.parse(JSON.stringify(state)));
+      editCtx = null; announce('Saved.'); go('welcome');
+    };
   };
 
   RENDER.dm = (host) => {

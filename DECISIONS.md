@@ -6,6 +6,15 @@
 
 ---
 
+### 2026-07-08 — A requirements engine drives completeness, editing, and (later) leveling
+Rather than bolt on an "edit character" screen, we added **one declarative `requirements(snap)`** that returns every choice a hero still owes, each tagged with the level it unlocks at. Everything reads from it: the ⚠ badge on the saved-hero list, the Edit screen's "Fix this →" jumps, and `classComplete()`. **When leveling arrives, new requirements simply appear at higher levels and the same screen points the player at them** — leveling becomes "satisfy new requirements," not a separate system. Two enabling model changes: a per-character `level` (replacing the hardcoded global in HP math) and `archetypeChoice` (mirroring the proven `race.choice`). A `normalize()` pass backfills both on load, so heroes saved by the old app open without error.
+
+### 2026-07-08 — Animal companions: PHB rules, hand-curated stats, three tiers
+The Beast Master roster is **every Beast the rules allow** (Challenge 1/4 or lower, Medium or smaller) — 42 animals. Two calls worth remembering:
+- **The Monster Manual scrape is not trustworthy.** Its stat blocks are two-column and the OCR bleeds adjacent creatures together — it "gave" the frog a +9 attack and the hawk a piranha's Blood Frenzy. Name / size / speed / AC sit on fixed lines and extracted cleanly; **attacks and tricks were hand-curated.** If anyone re-derives this data, don't trust an automated scrape.
+- **Three tiers, not 42 stat lines.** `fierce` (+6, 1d6+4), `swift` (+6, 1d4+3), `gentle` (no attack — the card says so plainly, so a kid learns it before a fight, not during one). HP is `4 × level` **straight from the PHB's Ranger's Companion**, so it scales itself when leveling lands; the proficiency bonus is pre-baked into AC and attacks so nobody does arithmetic at the table.
+- 42 choices would overwhelm a beginner, so the picker borrows the trick the app already uses for classes: **narrow first, browse second** — a "what do you want your friend to do?" filter, then the PHB's classic examples, then groups, plus search.
+
 ### 2026-07-07 — Character sharing MVP built on Firebase (compat SDK, anonymous auth, Firestore)
 Implemented the sharing feature end-to-end and verified it against the live project. Technical shape, chosen to fit the app's no-build, `<script>`-tag style:
 - **Firebase compat SDK** loaded from the gstatic CDN as plain `<script>` globals (not the ES-module build) — no bundler needed. Config is a global in `firebase-config.js`; `firebase-sync.js` exposes `window.RAHSync`. If the SDK/config can't load, the app **degrades gracefully to offline-only** (sharing UI hides; build/print/backup still work).
