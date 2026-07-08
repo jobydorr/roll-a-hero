@@ -6,12 +6,16 @@
 
 > **▶ HANDOFF — start here (2026-07-08, later)**
 >
-> **What's in flight:** the **Dungeon Master OS** — a Scrivener-style workspace at `dm.html`. The week-old question *"where do DM tools live?"* is **settled: its own page** (see `DECISIONS.md`). **Phase 0 is done** — `campaign/` is gitignored, `app.js` exports its hero math as `window.RAH` (boot now guarded, since `dm.html` has no `#app`), and the welcome screen links to the OS.
+> **What just shipped:** the **Dungeon Master OS** at `dm.html` — Phases 0 and 1. The week-old question *"where do DM tools live?"* is **settled: its own page** (see `DECISIONS.md`). You get a three-column Scrivener-style workspace: a nestable folder tree, a continuous story feed that stitches a folder's documents into one scrolling read, typed documents with template fields, `[[wikilinks]]` you can hover to peek at without losing your place, and Export/Import. **The passcode is `bugbear`** — change it at the top of `dmos-boot.js`. Open it from the welcome screen, or at `http://localhost:8000/dm.html`.
 >
-> **Where to pick up:** **Phase 1 — shell + folder tree + story feed** (the phases are listed at the top of `BACKLOG.md`). Three things to know before you touch it:
-> - `dm.html` **must not link `print.css`** — its line 8 hides `.app-header, .app, #live`.
-> - `dm.html` shares a `localStorage` origin with `index.html`, and `saveAll()` (`app.js:190`) swallows quota errors. A full DM workspace could silently stop a *hero* from saving. Every DM write goes through one `save()` that surfaces `QuotaExceededError`.
-> - The campaign lives in a **gitignored `campaign/`** folder. That 404, not the passcode, is what keeps the story from the players.
+> **Where to pick up:** **Phase 2 — the review inbox** (phases listed at the top of `BACKLOG.md`). Cowork writes pushes to `campaign/inbox/*.json`; the OS shows them in a tray with a suggested folder, a confidence score, and its reasoning. Nothing auto-files. `dmos-store.js` already has the seam: `mergeIncoming(docs, pendingIds)` deliberately refuses to create a doc whose id is in `pendingIds`, so unreviewed content waits for the tray.
+>
+> **Five things to know before you touch it:**
+> - `dm.html` **must not link `print.css`** — its line 8 hides `.app-header, .app, #live`, and it knows nothing about `.dmos-shell`. `dmos.css` owns `@media print` for that page.
+> - `dm.html` shares a `localStorage` origin with `index.html`, and `saveAll()` (`app.js:190`) swallows quota errors. A full DM workspace could silently stop a *hero* from saving. Every DM write goes through one `write()` in `dmos-store.js` that surfaces `QuotaExceededError` and refuses to clear anything.
+> - The campaign lives in a **gitignored `campaign/`** folder. That 404 — not the passcode — is what keeps the story from the players. **Never `git add -f` a file in there.**
+> - **The feed's reconcile key is `nodeKey(d)`, not `rev`.** Conflict flags and the body-editor toggle change a node's HTML without moving a revision. Anything you add to `renderDocNode` that isn't derived from `rev` must go into `nodeKey` too, or you'll render a stale node.
+> - **Never detach the node `cursor` points at** in `PAINT.feed` without advancing `cursor` first. That bug threw `NotFoundError` on every repaint of the first document — silently, because `flush()` catches paint errors into the console.
 >
 > ---
 >

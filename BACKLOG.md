@@ -52,7 +52,7 @@ Decided 2026-07-07 (see `DECISIONS.md`). Backend: **Firebase** project `roll-a-h
 A Scrivener-style workspace, being built in phases. Shape settled 2026-07-08 (see `DECISIONS.md`); story content is authored with Cowork and pushed into the workspace through a **review inbox** that never auto-files.
 
 - ✅ **Phase 0 — safety net & docs.** `campaign/` gitignored; `window.RAH` export + guarded boot in `app.js`; DM OS link on the welcome screen.
-- ⬜ **Phase 1 — shell + folder tree + story feed.** Three columns, nestable folders, continuous "Scrivenings" feed, `[[wikilinks]]` with peek, Export/Import workspace.
+- ✅ **Phase 1 — shell + folder tree + story feed.** Three resizable/collapsible columns, nestable folders (folders *are* documents), continuous "Scrivenings" feed, typed docs with template fields, `[[wikilinks]]` with hover-peek, conflict handling, Export/Import, print. **Passcode is `bugbear`** — change it at the top of `dmos-boot.js`.
 - ⬜ **Phase 2 — review inbox.** Cowork pushes land in a tray with a suggested folder + confidence + reasoning. Confident items pre-file; nothing merges without a click.
 - ⬜ **Phase 3 — Sidebar B.** Tabbed rail: Initiative (one-click seed from an encounter, drag or type to order, HP/KO, survives a reload) · Party (live shared heroes) · Lookup (creatures, companions, spells, glossary).
 - ⬜ **Phase 4 — notebook + floating fast-notes.** Dated entry log that cannot lose data; "Clear notes" empties only the window. Highlight → pin to notebook.

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dungeon Master OS — Roll a Hero</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=15" />
+  <!-- print.css is deliberately NOT linked. Its line 8 hides .app-header/.app/#live,
+       and it knows nothing about .dmos-shell — so linking it would BOTH hide this
+       page's header and print the workspace as three coloured columns. dmos.css
+       owns @media print for this page. -->
+  <link rel="stylesheet" href="dmos.css?v=1" />
+</head>
+<body class="dmos-body">
+
+  <!-- The passcode gate. A curtain, not a vault — see dmos-boot.js. -->
+  <div id="dmGate" class="dmos-gate">
+    <div class="panel gate-panel">
+      <div class="crest">🐉</div>
+      <h1 class="title">Dungeon Master OS</h1>
+      <p class="lead">This is the DM's side of the screen. Spoilers live here.</p>
+      <div class="field">
+        <label for="dmPass">Passcode</label>
+        <input type="password" id="dmPass" autocomplete="current-password" spellcheck="false" />
+      </div>
+      <div class="actions" style="justify-content:center;">
+        <button class="btn btn-primary" id="unlockBtn">Unlock</button>
+        <a class="btn btn-ghost" href="index.html">← Back to Roll a Hero</a>
+      </div>
+      <p class="modal-hint" id="gateMsg" role="status"></p>
+    </div>
+  </div>
+
+  <!-- The workspace. #dmos is permanent: nothing ever replaces its innerHTML. -->
+  <div id="dmos" class="dmos-shell" hidden>
+
+    <aside id="paneTree" class="dmos-rail rail-a">
+      <span class="pane-pill" hidden></span>
+      <div class="rail-head" id="treeHead"></div>
+      <div class="rail-body" id="treeBody"></div>
+    </aside>
+
+    <div class="dmos-grip" data-act="grip" data-grip="a" role="separator"
+         aria-orientation="vertical" aria-label="Resize the folder sidebar"></div>
+
+    <main id="paneFeed" class="dmos-feed">
+      <span class="pane-pill" hidden></span>
+      <div class="feed-head" id="feedHead"></div>
+      <div class="feed-docs" id="feedDocs"></div>
+    </main>
+
+    <div class="dmos-grip" data-act="grip" data-grip="b" role="separator"
+         aria-orientation="vertical" aria-label="Resize the table sidebar"></div>
+
+    <aside id="paneRail" class="dmos-rail rail-b">
+      <span class="pane-pill" hidden></span>
+      <div class="rail-head" id="railHead"></div>
+      <div class="rail-body" id="railBody"></div>
+    </aside>
+
+    <button class="rail-reopen reopen-a" data-act="collapse-a" title="Show the folder sidebar">›</button>
+    <button class="rail-reopen reopen-b" data-act="collapse-b" title="Show the table sidebar">‹</button>
+  </div>
+
+  <!-- The other permanent roots. Each is owned by exactly one paint function. -->
+  <div id="dmosBanner" class="dmos-banner"></div>
+  <div id="dmosFloat"></div>
+  <div id="dmosPeek"></div>
+  <div id="dmosModal"></div>
+  <div id="dmosPrint"></div>
+
+  <!-- announce() in app.js does an unguarded getElementById('live'). Keep this. -->
+  <div id="live" class="sr-only" aria-live="polite"></div>
+  <input type="file" id="importWs" accept="application/json,.json" hidden />
+
+  <!-- Load order is the only dependency mechanism we have (no bundler).
+       data.js before app.js  — app.js:5 destructures window.DATA at parse time.
+       app.js is loaded ONLY for its window.RAH export block; it has no #app here,
+       so its guarded boot does not run. -->
+  <script src="icons.js?v=15"></script>
+  <script src="data.js?v=15"></script>
+  <script src="app.js?v=15"></script>
+
+  <script src="dmos-store.js?v=1"></script>
+  <script src="dmos-ui.js?v=5"></script>
+  <script src="dmos-boot.js?v=2"></script>
+</body>
+</html>
