@@ -20,14 +20,20 @@ This project is steered from three plain-language files in this folder — the "
 - **[BACKLOG.md](BACKLOG.md)** — the running list of ideas.
 
 ## Run it locally
-It's a plain static site — no build step, no dependencies. Either:
 
-- **Quickest:** double-click `index.html`. *(Saving/printing all work; a couple of browsers are picky about local files, so if anything looks off, use the server method below.)*
-- **Recommended (matches hosting):** from this folder run a tiny web server and open the address it prints:
-  ```bash
-  python -m http.server 8000
-  # then visit http://localhost:8000
-  ```
+**Double-click `start-roll-a-hero.cmd`.** It starts the little server, opens the Dungeon Master OS, and prints both addresses. Leave the black window open while you play; close it to stop. *(Make a desktop shortcut: right-click the file → Send to → Desktop.)*
+
+| | |
+|---|---|
+| Players | http://localhost:8000/ |
+| Dungeon Master | http://localhost:8000/dm.html |
+
+**The DM OS needs the server** — it can't be opened by double-clicking `dm.html`. Browsers won't let a page read files from its own folder, so it couldn't load your `campaign/`. (The player app *can* be opened by double-clicking `index.html`, though the server matches hosting more closely.)
+
+The launcher runs [`serve.py`](serve.py) rather than a bare `python -m http.server`, for two reasons worth knowing:
+
+- **It binds to `127.0.0.1`.** The default binds *every* network interface, so anyone on your Wi-Fi could open `http://<your-laptop-ip>:8000/campaign/docs/` and read the whole campaign — directory listing and all — without ever touching the passcode. Gitignoring `campaign/` keeps the story off the internet; loopback binding keeps it off the living room.
+- **It sends `Cache-Control: no-store`**, so you never have to remember `Ctrl+Shift+R` after changing a file.
 
 ## Share it with friends (free hosted link via GitHub Pages)
 1. Create a new repository on GitHub (e.g. `roll-a-hero`) and push this folder:
@@ -53,6 +59,9 @@ Send that link to your friends — nothing to install, it just opens in any brow
 | `data.js`    | All the game content — races, classes, spells, gear, quiz |
 | `app.js`     | The step-by-step walkthrough logic |
 | `icons.js`   | Inline SVG icons |
+| `dm.html` + `dmos-*.js` + `dmos.css` | The Dungeon Master OS — a separate, passcode-gated workspace |
+| `serve.py` + `start-roll-a-hero.cmd` | The local server and its double-clickable launcher |
+| `campaign/`  | Your campaign. **Gitignored on purpose** — it never reaches the public site |
 
 ## A note on rules
 Simplified from the **D&D 5e Basic Rules / Player's Handbook** for teaching. It's meant as an on-ramp — once players are comfortable, the full rules add all the depth that was trimmed here.

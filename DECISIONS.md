@@ -6,6 +6,15 @@
 
 ---
 
+### 2026-07-08 — The local server binds to loopback, and there's a launcher
+Two problems, one file. **The launcher:** the DM OS can't be opened by double-clicking `dm.html` — browsers refuse to let a `file://` page read its own folder, so it could never load `campaign/`. That made "start a server" a prerequisite for every session. `start-roll-a-hero.cmd` → `serve.py` now does it in one double-click.
+
+**The hole it closed, which matters more.** `python -m http.server 8000` binds **every network interface** by default. Verified on this machine: while the server ran, `http://192.168.1.213:8000/campaign/docs/` served a full directory listing and every story file to *anything on the home Wi-Fi* — the kids' tablets included. They'd never even load `dm.html`, so the passcode was irrelevant. We had carefully gitignored `campaign/` to keep the story off the internet while leaving it wide open on the living-room network.
+
+`serve.py` binds `127.0.0.1` (and `.claude/launch.json` passes `--bind 127.0.0.1`, so both launch paths match — a fix in one place only would have been worse than none, by creating false confidence). **Do not "helpfully" restore the default bind** so you can preview from a phone; that re-opens the hole. If you ever genuinely need LAN access, move the campaign out of the served directory first.
+
+`serve.py` also sends `Cache-Control: no-store`, which retires the manual hard-refresh ritual for local work. The `?v=` tags in the HTML still matter for the *deployed* site.
+
 ### 2026-07-08 — DM tools live on their own page (`dm.html`), and the campaign is never published
 This settles the open question that sat in `BACKLOG.md` for a week: *"Where should DM tools live — same app with a 'DM mode' toggle, or a separate companion page?"* **Answer: a separate page in the same repo.** Three reasons:
 - **The player app stays kid-simple.** `app.js` is already 1,783 lines; a workspace would double it, and a kid clicking around the character builder could stumble into the DM's spoilers.
