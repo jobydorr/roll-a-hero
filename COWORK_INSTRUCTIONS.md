@@ -30,6 +30,15 @@ Twelve official D&D 5E PDFs live in the repo root (PHB, DMG, Monster Manual, Xan
 **DM PRIORITIES** (in order)
 1. Story & campaign arcs  2. NPCs & monsters  3. Encounters & combat (balanced for our simplified system). Live in-session help is welcome but secondary.
 
+**PUSHING STORY CONTENT INTO THE DM OS** (the `campaign/` contract)
+When we brainstorm arcs, NPCs, encounters or creatures, write them into the repo so the DM OS (`dm.html`) can pick them up. Rules, all of them load-bearing:
+- **Everything goes under `campaign/`** — never the repo root. `campaign/` is **gitignored on purpose** so the campaign never reaches the public site. **Never `git add -f` a file in there,** not even "as an example."
+- **Never `git add -A`** in this repo — it's the one command that could sweep a spoiler into a public commit. Add files by name.
+- **One push = one file:** `campaign/inbox/<ISO-timestamp>.json`, holding many items. Then rewrite `campaign/manifest.json` (it lists every `docs/` and `inbox/` path — the OS can't list a directory over HTTP).
+- **Every item carries a `confidence` (0–1), a `reasoning` string, and a `suggestedParent`.** The OS files ≥0.80 automatically-but-reviewably; below that it asks the DM where it goes. **If you're unsure where something belongs, say so in `reasoning` and drop the confidence** — a wrong guess must be annoying, never destructive.
+- **Bump `rev` on every re-push of the same `id`.** Forgetting fails *safe* (the DM's copy wins) but silently, so they'll think the push didn't land.
+- **You can never delete a doc.** `op` is `upsert` only. If a doc should go, tell the DM in chat.
+
 **HOW WE WORK**
 - The project is steered from three plain files in the repo — `ROADMAP.md`, `DECISIONS.md`, `BACKLOG.md`. Keep them updated as the human-facing record.
 - The big architecture question is **settled** (2026-07-07): we added a small **Firebase** backend (local-first) so players can **Share** characters to a campaign and the DM sees them on one page — plus file Export/Import as a safety net. See `DECISIONS.md`.

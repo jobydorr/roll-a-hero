@@ -4,9 +4,18 @@
 
 *Last updated: 2026-07-08.*
 
-> **▶ HANDOFF — start here (2026-07-08)**
+> **▶ HANDOFF — start here (2026-07-08, later)**
 >
-> **What just shipped:** Character sharing is **built, verified, and LIVE**. Firebase project `roll-a-hero` (Firestore + anonymous auth); security rules published and confirmed with a real *server-side* round-trip (not just the client cache). A player taps **Share** on a hero → picks/creates a campaign code → the hero publishes. The DM opens **"DM: view a shared party"**, enters the same code, and can **View** each hero (full character page, printable), **Remove** it, or save a copy. **Unshare** lives in the dialog behind a shared hero's Share button, and **deleting a hero also removes its shared copy**. Local-first throughout: nothing leaves a browser unless you Share, existing heroes are never touched, and file **Export / Import** is the safety net.
+> **What's in flight:** the **Dungeon Master OS** — a Scrivener-style workspace at `dm.html`. The week-old question *"where do DM tools live?"* is **settled: its own page** (see `DECISIONS.md`). **Phase 0 is done** — `campaign/` is gitignored, `app.js` exports its hero math as `window.RAH` (boot now guarded, since `dm.html` has no `#app`), and the welcome screen links to the OS.
+>
+> **Where to pick up:** **Phase 1 — shell + folder tree + story feed** (the phases are listed at the top of `BACKLOG.md`). Three things to know before you touch it:
+> - `dm.html` **must not link `print.css`** — its line 8 hides `.app-header, .app, #live`.
+> - `dm.html` shares a `localStorage` origin with `index.html`, and `saveAll()` (`app.js:190`) swallows quota errors. A full DM workspace could silently stop a *hero* from saving. Every DM write goes through one `save()` that surfaces `QuotaExceededError`.
+> - The campaign lives in a **gitignored `campaign/`** folder. That 404, not the passcode, is what keeps the story from the players.
+>
+> ---
+>
+> **Previously (2026-07-08):** Character sharing is **built, verified, and LIVE**. Firebase project `roll-a-hero` (Firestore + anonymous auth); security rules published and confirmed with a real *server-side* round-trip (not just the client cache). A player taps **Share** on a hero → picks/creates a campaign code → the hero publishes. The DM opens **"DM: view a shared party"**, enters the same code, and can **View** each hero (full character page, printable), **Remove** it, or save a copy. **Unshare** lives in the dialog behind a shared hero's Share button, and **deleting a hero also removes its shared copy**. Local-first throughout: nothing leaves a browser unless you Share, existing heroes are never touched, and file **Export / Import** is the safety net.
 >
 > **Where to pick up next:** the **🔴 URGENT list at the top of `BACKLOG.md`** — two real players rolled **Beast Master Rangers** and the builder has no way to pick an animal companion, so those heroes are unfinished. Then the standing threads: a **private DM area** (today the DM page is reachable by anyone who knows a campaign code), and the two big pillars — **DM tools** and **leveling**.
 >

@@ -131,6 +131,9 @@ h2.title { font-size: clamp(24px, 4vw, 34px); }
 .btn-ghost:hover { background: rgba(255, 255, 255, 0.4); box-shadow: none; }
 .btn-lg { font-size: 19px; padding: 15px 32px; }
 .btn-sm { font-size: 14px; padding: 8px 16px; }
+/* A link that looks like a button (the DM OS lives on its own page, so it needs
+   a real <a> — middle-click opens a tab, which a <button> can't do). */
+a.btn { display: inline-block; text-decoration: none; }
 
 /* ---------- Card grids (race / class / archetype / spell) ---------- */
 .card-grid {

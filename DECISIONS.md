@@ -6,6 +6,18 @@
 
 ---
 
+### 2026-07-08 — DM tools live on their own page (`dm.html`), and the campaign is never published
+This settles the open question that sat in `BACKLOG.md` for a week: *"Where should DM tools live — same app with a 'DM mode' toggle, or a separate companion page?"* **Answer: a separate page in the same repo.** Three reasons:
+- **The player app stays kid-simple.** `app.js` is already 1,783 lines; a workspace would double it, and a kid clicking around the character builder could stumble into the DM's spoilers.
+- **The shapes are incompatible.** The builder is a single centered column that wipes `#app.innerHTML` on every step. The DM OS is a persistent three-column workspace with drag state, a floating notes window, and live text selection — it needs an inverted render model (delegated listeners, keyed subtree reconciles) that the builder neither needs nor wants.
+- **Privacy comes free.** `dm.html` reuses `styles.css`, `data.js`, `icons.js`, and `firebase-sync.js`, but the *campaign content* lives in a **gitignored `campaign/` folder** that never reaches GitHub Pages.
+
+**The passcode on `dm.html` is a curtain, not a vault — and that is on purpose.** Anyone can View Source and read it. It is not the security boundary. **The security boundary is that `campaign/` is gitignored**, so a stranger (or a curious 10-year-old) who gets past the passcode on the live site sees an empty workspace and a `campaign/manifest.json` that 404s. There is nothing there to find. *Do not "fix" this by adding real auth* — you'd break the DM's local workflow and protect nothing that isn't already absent. If the DM ever needs the campaign on a second device, that's the moment to revisit (encrypted files, or Firebase behind a real login), not before.
+
+Two consequences worth writing down:
+- **Two data flows, never conflated.** Player data flows **in, read-only** — the OS calls the existing `RAHSync.listCampaign()` to see the party's shared heroes. Player HP the DM tracks during a fight lives only in the DM's tracker and **never writes back** to a player's hero. Story data flows **nowhere**.
+- **`dm.html` borrows the hero math rather than copying it.** It loads `app.js` for a new `window.RAH` export block (and `app.js`'s boot is now guarded by `if (document.getElementById('app'))`, since `dm.html` has no `#app`). Copying `computeHP`/`computeAC` would mean the initiative tracker eventually shows a different AC than the player's printed sheet — at the table, in front of a 9-year-old. ⚠ `withState()` is **sync-only** (`try/finally`): hand it an `async` function and it restores `state` at the first `await`, then silently computes the wrong hero.
+
 ### 2026-07-08 — A requirements engine drives completeness, editing, and (later) leveling
 Rather than bolt on an "edit character" screen, we added **one declarative `requirements(snap)`** that returns every choice a hero still owes, each tagged with the level it unlocks at. Everything reads from it: the ⚠ badge on the saved-hero list, the Edit screen's "Fix this →" jumps, and `classComplete()`. **When leveling arrives, new requirements simply appear at higher levels and the same screen points the player at them** — leveling becomes "satisfy new requirements," not a separate system. Two enabling model changes: a per-character `level` (replacing the hardcoded global in HP math) and `archetypeChoice` (mirroring the proven `race.choice`). A `normalize()` pass backfills both on load, so heroes saved by the old app open without error.
 

@@ -697,6 +697,9 @@
       </div>`
       : `<div class="welcome-tools"><button class="btn btn-sm btn-ghost" id="importBtn">${icon('book')} Import a hero from a file</button></div>`}
       ${canShare ? `<div class="welcome-tools"><button class="btn btn-sm btn-ghost" id="dmViewBtn">${icon('shield')} DM: view a shared party</button></div>` : ''}
+      <!-- Outside the canShare gate on purpose: the DM OS is a local workspace and
+           works fine with Firebase blocked or offline. -->
+      <div class="welcome-tools"><a class="btn btn-sm btn-ghost" href="dm.html">${icon('scroll')} Dungeon Master OS</a></div>
       <input type="file" id="importInput" accept="application/json,.json" hidden>
     `;
     document.getElementById('startBtn').onclick = () => { state = newCharacter(); viewCtx = null; go('quiz'); };
@@ -1773,11 +1776,29 @@
     return html;
   }
 
+  /* ----------------- Public surface for the DM OS (dm.html) ---------------
+     dm.html loads this file purely to borrow the hero math — so the initiative
+     tracker and the printed character sheet can never disagree about a hero's
+     HP or AC. index.html never reads window.RAH.
+
+     ⚠ withState() is sync-only (try/finally). Handing it an async function
+     restores `state` at the first await, and every line after that computes the
+     WRONG hero while returning perfectly plausible numbers. Await first, then
+     compute. See dmos-store.js `partySnapshot`.                             */
+  window.RAH = {
+    normalize, withState, requirements, missingRequirements, isComplete, loadAll,
+    computeHP, computeAC, weaponAttackBonus, spellNumbers, finalScore, modOf, fmtMod,
+    charLevel, getRace, getClass, getArchetype, getSpell, getCompanion, companionStats,
+    referenceHTML, escapeHtml, campaignSlug,
+  };
+
   /* ------------------------------ Boot ---------------------------------- */
   function render() {
     updateHeader();
     const host = document.getElementById('app');
     (RENDER[state.step] || RENDER.welcome)(host);
   }
-  render();
+  // dm.html has no #app — it only wants window.RAH above. Without this guard,
+  // updateHeader() would throw on #brandMark before render() ever reached #app.
+  if (document.getElementById('app')) render();
 })();

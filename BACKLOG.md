@@ -47,9 +47,19 @@ Decided 2026-07-07 (see `DECISIONS.md`). Backend: **Firebase** project `roll-a-h
 
 ---
 
-## Big rocks (major efforts)
+## 🔨 Active now — the Dungeon Master OS (`dm.html`)
 
-- **DM tools — plan & run campaigns** 🟠 — the near-term new pillar, for you as the Dungeon Master. Likely pieces (to be shaped): a campaign + session planner, an NPC list, a simple encounter/monster builder, locations/world notes, a party tracker, and an easy initiative tracker for running a fight. Same north star as the rest of the app — simple and friendly, not a spreadsheet.
+A Scrivener-style workspace, being built in phases. Shape settled 2026-07-08 (see `DECISIONS.md`); story content is authored with Cowork and pushed into the workspace through a **review inbox** that never auto-files.
+
+- ✅ **Phase 0 — safety net & docs.** `campaign/` gitignored; `window.RAH` export + guarded boot in `app.js`; DM OS link on the welcome screen.
+- ⬜ **Phase 1 — shell + folder tree + story feed.** Three columns, nestable folders, continuous "Scrivenings" feed, `[[wikilinks]]` with peek, Export/Import workspace.
+- ⬜ **Phase 2 — review inbox.** Cowork pushes land in a tray with a suggested folder + confidence + reasoning. Confident items pre-file; nothing merges without a click.
+- ⬜ **Phase 3 — Sidebar B.** Tabbed rail: Initiative (one-click seed from an encounter, drag or type to order, HP/KO, survives a reload) · Party (live shared heroes) · Lookup (creatures, companions, spells, glossary).
+- ⬜ **Phase 4 — notebook + floating fast-notes.** Dated entry log that cannot lose data; "Clear notes" empties only the window. Highlight → pin to notebook.
+- ⬜ **Phase 5 — story flow chart.** Derived from beats + `leadsTo` links, so it adapts as the campaign grows. Drag to arrange; click a node to jump.
+- ⬜ **Phase 6 — print.** Print a doc, a folder, or the initiative card.
+
+## Big rocks (major efforts)
 - **Living characters — leveling up** 🟠 — ⭐ deferred by Joby 2026-07-08: *"we can work on that when the time comes for them to actually need to level up."* Let a saved hero advance past level 3.
 
   **The foundation is already built** (2026-07-08) — don't rebuild it:
@@ -85,7 +95,7 @@ Decided 2026-07-07 (see `DECISIONS.md`). Backend: **Firebase** project `roll-a-h
 
 - ✅ Settled (2026-07-07): add a small backend, local-first. See "Active now" above and `DECISIONS.md`.
 - Does leveling need real higher-level rules baked in (more PHB data per class), or stay simplified like the rest of the app?
-- Where should DM tools live — same app with a "DM mode" toggle, or a separate companion page?
+- ~~Where should DM tools live — same app with a "DM mode" toggle, or a separate companion page?~~ ✅ Settled (2026-07-08): **a separate page**, `dm.html`, in this repo. See `DECISIONS.md`.
 
 ---
 

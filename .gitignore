@@ -6,6 +6,18 @@
 # your local machine only. (See DECISIONS.md, 2026-07-07.)
 *.pdf
 
+# --- Campaign content — deliberately NOT committed ---
+# Story beats, encounters, NPCs, creatures and session notes for the live game.
+# This repo is PUBLIC and deploys to GitHub Pages, so publishing these would
+# spoil the campaign for the very players who use the site. `dm.html` itself
+# ships, but it is EMPTY for anyone who isn't the DM: their browser has no saved
+# workspace, and campaign/manifest.json simply 404s. That 404 — not the passcode
+# on dm.html — is the real protection. (See DECISIONS.md, 2026-07-08.)
+#
+# Never `git add -f` a file in here "just as an example". One slip and the
+# campaign is in public git history forever.
+campaign/
+
 # OS / editor junk
 Thumbs.db
 .DS_Store
