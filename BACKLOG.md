@@ -73,6 +73,7 @@ A Scrivener-style workspace reached from the **RH main page**. Shape and the big
   3. **A "Level Up" button** — nothing can actually change `level` yet.
 - **Connect DM ↔ players** ✅ decided → now the **Active now** effort above. The dream where your campaign can see your players' characters. Unblocked 2026-07-07: we're adding a small backend, local-first.
 - **Private DM area / accounts** 🟠 — flagged by Joby 2026-07-07. Right now *anyone* who opens the site can reach the DM view, and any known campaign code can be read. Add a real gate: the DM signs in (Google/email via Firebase Auth) and Firestore rules restrict a campaign's reads to its owner (+ maybe a members list). Fine to stay open for a family table today; needed before this becomes more than that.
+  - **Sub-item, deferred by Joby 2026-07-08 (the "remove your own hero" caveat):** a shared hero can only be *deleted* by the exact anonymous browser session that shared it (`firestore.rules`: delete needs `ownerUid == auth.uid`). So the DM can't truly delete a hero shared from another device — including their *own* hero shared from their player browser. **Shipped workaround:** the DM party "Remove" now hides such a hero from the DM's view locally (`rollAHeroDmHidden`, reversible via "Show N hidden"). The real fix is a "campaign owner" concept in the rules so the DM can delete anything in *their* campaign — which lands naturally with this Private-DM-area work.
 
 ## Smaller / anytime
 
