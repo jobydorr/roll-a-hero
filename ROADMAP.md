@@ -2,9 +2,15 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-07-07.*
+*Last updated: 2026-07-08.*
 
-> **▶ Status (2026-07-07):** Character sharing is **LIVE**. Firebase project "roll-a-hero" (Firestore + anonymous auth), security rules published and re-verified with a real server-side round-trip. Players set a display name + campaign code and tap **Share**; the DM opens **"DM: view the shared party"** with the same code and sees everyone. Local-first — nothing leaves a browser unless you Share, existing heroes are never touched, and file **Export/Import** is the safety net. See "The big question — SETTLED" below.
+> **▶ HANDOFF — start here (2026-07-08)**
+>
+> **What just shipped:** Character sharing is **built, verified, and LIVE**. Firebase project `roll-a-hero` (Firestore + anonymous auth); security rules published and confirmed with a real *server-side* round-trip (not just the client cache). A player taps **Share** on a hero → picks/creates a campaign code → the hero publishes. The DM opens **"DM: view a shared party"**, enters the same code, and can **View** each hero (full character page, printable), **Remove** it, or save a copy. **Unshare** lives in the dialog behind a shared hero's Share button, and **deleting a hero also removes its shared copy**. Local-first throughout: nothing leaves a browser unless you Share, existing heroes are never touched, and file **Export / Import** is the safety net.
+>
+> **Where to pick up next:** the **🔴 URGENT list at the top of `BACKLOG.md`** — two real players rolled **Beast Master Rangers** and the builder has no way to pick an animal companion, so those heroes are unfinished. Then the standing threads: a **private DM area** (today the DM page is reachable by anyone who knows a campaign code), and the two big pillars — **DM tools** and **leveling**.
+>
+> **Deploying:** commit → `git push` → GitHub Pages refreshes in ~1 min. Bump the `?v=` tag on every `index.html` asset when JS/CSS changes, and **hard-refresh** (`Ctrl+Shift+R`) to see it — the browser caches `index.html` itself.
 
 ---
 
