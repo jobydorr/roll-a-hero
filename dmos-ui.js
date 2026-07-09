@@ -1011,12 +1011,16 @@
   const markerKind = (k) => EDGE_KINDS[k] || 'other';
   let mapOpen = false;
   let chartScale = 1;
-  let chartState = null;   // { canvas, svg, scroll, zoomWrap, contentW, contentH, bands, nodesById, edges }
+  let chartState = null;   // { canvas, svg, scroll, zoomWrap, contentW, contentH, bands, nodesById, edges, miniScale }
   let chartDrag = null;    // { id, el, startX, startY, baseLeft, baseTop, moved }
   let chartPan = null;     // { startX, startY, sl, st, id }
+  let chartLink = null;    // { fromId } — dragging a NEW connection from a card's port
+  let miniDrag = false;    // panning via the mini-map
   let chartRaf = 0;
   let connectSrc = null;   // doc id the connect picker is wiring FROM
   let connectKind = 'then';
+  let edgeEdit = null;     // { from, to } — the connection the edge editor is editing
+  let edgeEditKind = 'then';
 
   const RX_LINK_G = /\[\[([^\]|]+?)(?:\|[^\]]+?)?\]\]/g;
   function linkTargetsIn(d) {
@@ -1167,12 +1171,19 @@
         <span class="cn-ico" aria-hidden="true">${icon(T.icon)}</span>
         <span class="cn-main"><span class="cn-title">${esc(d.title)}</span><span class="cn-type">${esc(T.label)}</span></span>
         ${broken ? `<span class="cn-warn" title="Dangling link: ${esc(broken.join(', '))}">⚠</span>` : ''}
+        <span class="cn-port" data-port="1" title="Drag to connect this card to another" aria-hidden="true"></span>
       </div>`;
     };
     const pathsHTML = g.edges.map((e, i) =>
       `<path class="ce ce-${e.kind}" data-edge="${i}"${e.type === 'flow' ? ` marker-end="url(#arw-${markerKind(e.kind)})"` : ''}></path>`).join('');
-    const labelsHTML = g.edges.map((e, i) => e.label
-      ? `<div class="chart-elabel" data-edge="${i}">${esc(e.label)}</div>` : '').join('');
+    // Every FLOW edge gets a clickable midpoint control — its label pill, or a
+    // small ✎ nub when it has no label — that opens the edge editor. Reference
+    // (wikilink) edges aren't editable here (they mirror the body text).
+    const controlsHTML = g.edges.map((e, i) => {
+      if (e.type !== 'flow') return '';
+      const base = `class="chart-elabel${e.label ? '' : ' is-empty'}" data-act="edge-edit" data-edge="${i}" data-from="${e.from}" data-to="${e.to}" title="Edit this connection"`;
+      return e.label ? `<button ${base}>${esc(e.label)}</button>` : `<button ${base} aria-label="Edit connection">✎</button>`;
+    }).join('');
     const bandsHTML = g.bands.map((b) =>
       `<div class="chart-band" style="top:${Math.max(4, b.top - 26)}px">${esc(b.title)}</div>`).join('');
     const marker = (k) => `<marker id="arw-${k}" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse">
@@ -1204,15 +1215,16 @@
         <div class="map-scroll" id="chartScroll">
           <div class="map-zoomwrap" id="chartZoom">
             <div class="chart-canvas" id="chartCanvas" style="width:${maxX}px;height:${maxY}px">
-              <svg class="chart-edges" id="chartEdges" width="${maxX}" height="${maxY}"><defs>${['then', 'alt', 'knows', 'other'].map(marker).join('')}</defs>${pathsHTML}</svg>
+              <svg class="chart-edges" id="chartEdges" width="${maxX}" height="${maxY}"><defs>${['then', 'alt', 'knows', 'other'].map(marker).join('')}</defs>${pathsHTML}<path class="ce ce-then ce-temp" id="chartTemp" marker-end="url(#arw-then)"></path></svg>
               ${bandsHTML}
               ${g.nodes.map(nodeHTML).join('')}
-              ${labelsHTML}
+              ${controlsHTML}
               ${emptyHint}
             </div>
           </div>
+          <div class="map-minimap" id="chartMini" hidden aria-hidden="true"><div class="mini-inner" id="chartMiniInner"></div></div>
         </div>
-        <div class="map-hint">Right-click a card to connect or edit · Right-click the board to add a card · Drag a card to move · Drag the board to pan</div>
+        <div class="map-hint">Drag a card's ○ handle onto another to connect · Click an arrow to edit it · Right-click for more · Drag the board to pan</div>
       </div>`;
 
     const canvas = ROOT.map.querySelector('#chartCanvas');
@@ -1222,11 +1234,14 @@
     if (!canvas || !svg) return;
     const nodesById = new Map();
     canvas.querySelectorAll('.chart-node').forEach(el => nodesById.set(el.dataset.doc, el));
-    chartState = { canvas, svg, scroll, zoomWrap, contentW: maxX, contentH: maxY, bands: g.bands, nodesById, edges: g.edges };
+    chartState = { canvas, svg, scroll, zoomWrap, contentW: maxX, contentH: maxY, bands: g.bands, nodesById, edges: g.edges, miniScale: 0 };
     wireChart(canvas, scroll);
+    wireMinimap();
     applyZoom();
     chartLayoutEdges();
+    renderMinimap();
     if (prev) { scroll.scrollLeft = prev.x; scroll.scrollTop = prev.y; }
+    updateMinimapViewport();
   }
 
   /* ------------------------------- Zoom ----------------------------------- */
@@ -1241,6 +1256,7 @@
     chartState.zoomWrap.style.height = (chartState.contentH * chartScale) + 'px';
     const pct = ROOT.map.querySelector('.zoom-pct');
     if (pct) pct.textContent = Math.round(chartScale * 100) + '%';
+    updateMinimapViewport();
   }
   const setZoom = (s) => { chartScale = Math.max(0.4, Math.min(1.6, +s.toFixed(2))); applyZoom(); };
   ACT['zoom-in'] = () => setZoom(chartScale + 0.1);
@@ -1260,6 +1276,19 @@
   function wireChart(canvas, scroll) {
     canvas.onpointerdown = (e) => {
       if (e.button && e.button !== 0) return;              // right/middle → context menu
+      // A card's ○ port starts a NEW connection drag (checked before the card).
+      const port = e.target.closest('.cn-port');
+      if (port) {
+        const card = port.closest('.chart-node');
+        chartLink = { fromId: card.dataset.doc };
+        canvas.classList.add('linking');
+        try { canvas.setPointerCapture(e.pointerId); } catch (_) {}
+        e.preventDefault();
+        return;
+      }
+      // An edge control (label/nub) is a click that opens the editor — don't pan,
+      // don't preventDefault, so the delegated click still fires.
+      if (e.target.closest('.chart-elabel')) return;
       const el = e.target.closest('.chart-node');
       if (el && canvas.contains(el)) {
         chartDrag = { id: el.dataset.doc, el, startX: e.clientX, startY: e.clientY, baseLeft: el.offsetLeft, baseTop: el.offsetTop, moved: false };
@@ -1273,7 +1302,13 @@
       }
     };
     canvas.onpointermove = (e) => {
-      if (chartDrag) {
+      if (chartLink) {
+        const from = chartState.nodesById.get(chartLink.fromId);
+        if (from) drawTempEdge({ x: from.offsetLeft, y: from.offsetTop, w: from.offsetWidth, h: from.offsetHeight }, canvasPoint(e));
+        const over = document.elementFromPoint(e.clientX, e.clientY);
+        const card = over && over.closest ? over.closest('.chart-node') : null;
+        highlightLinkTarget(card && card.dataset.doc !== chartLink.fromId ? card : null);
+      } else if (chartDrag) {
         const rawX = e.clientX - chartDrag.startX, rawY = e.clientY - chartDrag.startY;
         if (!chartDrag.moved && Math.abs(rawX) + Math.abs(rawY) < 4) return;
         if (!chartDrag.moved) { chartDrag.moved = true; chartDrag.el.classList.add('dragging'); }
@@ -1286,7 +1321,16 @@
       }
     };
     const finish = (e) => {
-      if (chartDrag) {
+      if (chartLink) {
+        const link = chartLink; chartLink = null;
+        canvas.classList.remove('linking');
+        try { canvas.releasePointerCapture(e.pointerId); } catch (_) {}
+        const temp = chartState.svg.querySelector('#chartTemp'); if (temp) temp.removeAttribute('d');
+        highlightLinkTarget(null);
+        const over = document.elementFromPoint(e.clientX, e.clientY);
+        const target = over && over.closest ? over.closest('.chart-node') : null;
+        if (target && target.dataset.doc !== link.fromId) connectCards(link.fromId, target.dataset.doc);
+      } else if (chartDrag) {
         const d = chartDrag; chartDrag = null;
         d.el.classList.remove('dragging');
         try { canvas.releasePointerCapture(e.pointerId); } catch (_) {}
@@ -1300,6 +1344,7 @@
     };
     canvas.onpointerup = finish;
     canvas.onpointercancel = () => {
+      if (chartLink) { chartLink = null; canvas.classList.remove('linking'); const t = chartState.svg.querySelector('#chartTemp'); if (t) t.removeAttribute('d'); highlightLinkTarget(null); }
       if (chartDrag) { chartDrag.el.classList.remove('dragging'); chartDrag = null; }
       if (chartPan) { canvas.classList.remove('panning'); chartPan = null; }
     };
@@ -1315,6 +1360,139 @@
       e.preventDefault();
       setZoom(chartScale + (e.deltaY < 0 ? 0.1 : -0.1));
     };
+    scroll.onscroll = () => updateMinimapViewport();
+  }
+
+  // Draw the in-progress connection line from a card's border toward the cursor.
+  function drawTempEdge(a, pt) {
+    const temp = chartState && chartState.svg.querySelector('#chartTemp');
+    if (!temp) return;
+    const p1 = borderPoint(a, pt);
+    const dx = pt.x - p1.x, s = Math.sign(dx) || 1, k = Math.max(26, Math.abs(dx) * 0.45);
+    temp.setAttribute('d', `M${p1.x},${p1.y} C${p1.x + s * k},${p1.y} ${pt.x - s * k},${pt.y} ${pt.x},${pt.y}`);
+  }
+  function highlightLinkTarget(cardEl) {
+    if (!chartState) return;
+    chartState.canvas.querySelectorAll('.chart-node.link-target').forEach(n => n.classList.remove('link-target'));
+    if (cardEl) cardEl.classList.add('link-target');
+  }
+  // Write a new leadsTo (kind 'then', no label) unless the pair is already linked.
+  function connectCards(fromId, toId) {
+    const src = STORE.get(fromId); if (!src) return;
+    if ((src.leadsTo || []).some(l => l.to === toId)) { announce('Those cards are already connected.'); return; }
+    STORE.patch(src.id, { leadsTo: (src.leadsTo || []).concat([{ to: toId, label: '', kind: 'then' }]) });
+    paintMap(true);
+    announce('Connected “' + src.title + '”. Click the arrow to label it.');
+  }
+
+  // Esc mid-gesture cancels it (rather than closing the whole map).
+  function cancelChartGesture() {
+    if (chartLink) { chartLink = null; if (chartState) { chartState.canvas.classList.remove('linking'); const t = chartState.svg.querySelector('#chartTemp'); if (t) t.removeAttribute('d'); } highlightLinkTarget(null); }
+    if (chartDrag) { chartDrag.el.classList.remove('dragging'); chartDrag = null; paintMap(true); }
+    if (chartPan) { if (chartState) chartState.canvas.classList.remove('panning'); chartPan = null; }
+  }
+  const chartBusy = () => !!(chartLink || chartDrag || chartPan);
+
+  /* ------------------------------- Mini-map ------------------------------- */
+  // A corner overview for big campaigns: every card as a tiny rect, plus a frame
+  // showing the current viewport. Shown only when there is off-screen content;
+  // click or drag it to pan. Rects are rebuilt on paint/move; the frame tracks
+  // scroll and zoom.
+  const MINI_MAX = { w: 200, h: 148 };
+  function renderMinimap() {
+    if (!chartState) return;
+    const inner = ROOT.map.querySelector('#chartMiniInner');
+    if (!inner) return;
+    const sm = Math.min(MINI_MAX.w / chartState.contentW, MINI_MAX.h / chartState.contentH);
+    chartState.miniScale = sm;
+    inner.style.width = (chartState.contentW * sm) + 'px';
+    inner.style.height = (chartState.contentH * sm) + 'px';
+    let html = '';
+    chartState.nodesById.forEach((el, id) => {
+      const d = STORE.get(id);
+      html += `<div class="mini-node type-${d ? d.type : 'note'}" style="left:${el.offsetLeft * sm}px;top:${el.offsetTop * sm}px;width:${Math.max(3, el.offsetWidth * sm)}px;height:${Math.max(2, el.offsetHeight * sm)}px"></div>`;
+    });
+    html += `<div class="mini-view" id="chartMiniView"></div>`;
+    inner.innerHTML = html;
+    updateMinimapViewport();
+  }
+  function updateMinimapViewport() {
+    if (!chartState) return;
+    const mini = ROOT.map.querySelector('#chartMini');
+    const view = ROOT.map.querySelector('#chartMiniView');
+    const s = chartState.scroll;
+    if (!mini || !s) return;
+    const needs = chartState.contentW * chartScale > s.clientWidth + 4 || chartState.contentH * chartScale > s.clientHeight + 4;
+    mini.hidden = !needs;
+    if (!view || !needs) return;
+    const sm = chartState.miniScale || 0;
+    view.style.left = (s.scrollLeft / chartScale * sm) + 'px';
+    view.style.top = (s.scrollTop / chartScale * sm) + 'px';
+    view.style.width = (s.clientWidth / chartScale * sm) + 'px';
+    view.style.height = (s.clientHeight / chartScale * sm) + 'px';
+  }
+  function wireMinimap() {
+    const mini = ROOT.map.querySelector('#chartMini');
+    if (!mini) return;
+    const jump = (e) => {
+      const inner = ROOT.map.querySelector('#chartMiniInner');
+      const r = inner.getBoundingClientRect();
+      const sm = chartState.miniScale || 1, s = chartState.scroll;
+      const cx = (e.clientX - r.left) / sm, cy = (e.clientY - r.top) / sm;   // unscaled content coords
+      s.scrollLeft = cx * chartScale - s.clientWidth / 2;
+      s.scrollTop = cy * chartScale - s.clientHeight / 2;
+    };
+    mini.onpointerdown = (e) => { miniDrag = true; try { mini.setPointerCapture(e.pointerId); } catch (_) {} jump(e); e.preventDefault(); };
+    mini.onpointermove = (e) => { if (miniDrag) jump(e); };
+    mini.onpointerup = (e) => { miniDrag = false; try { mini.releasePointerCapture(e.pointerId); } catch (_) {} };
+    mini.onpointercancel = () => { miniDrag = false; };
+  }
+
+  /* ---------------------------- Edge editor ------------------------------- */
+  // Click an arrow's label (or its ✎ nub) → change the connection's kind/label,
+  // or remove it. Edits the matching leadsTo entry on the SOURCE card.
+  ACT['edge-edit'] = (el) => openEdgeEditor(el.dataset.from, el.dataset.to);
+  ACT['edge-kind'] = (el) => {
+    edgeEditKind = el.dataset.kind;
+    ROOT.modal.querySelectorAll('.connect-kind').forEach(b => b.classList.toggle('is-active', b.dataset.kind === edgeEditKind));
+  };
+  ACT['edge-save'] = () => {
+    if (!edgeEdit) return;
+    const src = STORE.get(edgeEdit.from); if (!src) { closeModal(); return; }
+    const label = (ROOT.modal.querySelector('#edgeLabel') || {}).value || '';
+    let done = false;
+    const next = (src.leadsTo || []).map(l => {
+      if (!done && l.to === edgeEdit.to) { done = true; return Object.assign({}, l, { kind: edgeEditKind, label: label.trim() }); }
+      return l;
+    });
+    STORE.patch(src.id, { leadsTo: next });
+    closeModal(); paintMap(true); announce('Updated the connection.');
+  };
+  ACT['edge-remove'] = () => {
+    if (!edgeEdit) return;
+    const src = STORE.get(edgeEdit.from);
+    if (src) STORE.patch(src.id, { leadsTo: (src.leadsTo || []).filter(l => l.to !== edgeEdit.to) });
+    closeModal(); paintMap(true); announce('Removed the connection.');
+  };
+  function openEdgeEditor(from, to) {
+    const src = STORE.get(from), tgt = STORE.get(to);
+    if (!src || !tgt) return;
+    const link = (src.leadsTo || []).find(l => l.to === to) || { kind: 'then', label: '' };
+    edgeEdit = { from, to }; edgeEditKind = link.kind || 'then';
+    const kindBtn = (k, label) => `<button class="connect-kind${k === edgeEditKind ? ' is-active' : ''}" data-act="edge-kind" data-kind="${k}"><span class="chart-leg-line ce-${k}"></span>${label}</button>`;
+    openModal(`
+      <div class="modal-title">Connection</div>
+      <p class="modal-hint">${esc(src.title)} → ${esc(tgt.title)}</p>
+      <div class="connect-kinds">${kindBtn('then', 'Leads to')}${kindBtn('alt', 'Alternative')}${kindBtn('knows', 'Knows')}</div>
+      <input type="text" id="edgeLabel" class="connect-label" placeholder="Label (optional) — e.g. “if they ring it”" maxlength="60" value="${esc(link.label || '')}" autocomplete="off">
+      <div class="modal-actions" style="flex-wrap:wrap; gap:8px;">
+        <button class="btn btn-sm btn-ghost" data-act="edge-remove">Remove link</button>
+        <div class="spacer"></div>
+        <button class="btn btn-sm btn-ghost" data-act="close-modal">Cancel</button>
+        <button class="btn btn-sm btn-primary" data-act="edge-save">Save</button>
+      </div>`, 'modal-wide');
+    const inp = ROOT.modal.querySelector('#edgeLabel');
+    if (inp) { inp.focus(); inp.selectionStart = inp.selectionEnd = inp.value.length; }
   }
 
   /* --------------------------- Board authoring ---------------------------- */
@@ -1541,6 +1719,7 @@
     chartState.contentW = maxX; chartState.contentH = maxY;
     applyZoom();
     chartLayoutEdges();
+    renderMinimap();
   }
 
   /* ============================== The banner =============================== */
@@ -2378,6 +2557,7 @@
       }
       if (e.key !== 'Escape') return;
       if (modalOpen()) closeModal();       // a menu/picker over the map closes first
+      else if (mapOpen && chartBusy()) cancelChartGesture();   // cancel a drag/link, keep the map
       else if (mapOpen) closeStoryMap();
       else if (ROOT.peek.firstChild) hidePeek();
     });

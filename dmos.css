@@ -732,12 +732,52 @@ table.diff tbody th { width: 22%; font-family: var(--font-display); font-weight:
 .chart-node.type-session, .chart-node.type-note { border-left-color: var(--brown); }
 
 .chart-elabel {
-  position: absolute; transform: translate(-50%, -50%); pointer-events: none;
-  font-size: 11px; line-height: 1.15; color: var(--ink-soft);
+  position: absolute; transform: translate(-50%, -50%); cursor: pointer;
+  font: inherit; font-size: 11px; line-height: 1.15; color: var(--ink-soft);
   background: var(--surface-active); border: 1px solid var(--panel-edge);
   border-radius: 999px; padding: 2px 8px; max-width: 150px;
   text-align: center; box-shadow: 0 1px 4px var(--shadow); white-space: nowrap;
   overflow: hidden; text-overflow: ellipsis;
+}
+.chart-elabel:hover { border-color: var(--gold); color: var(--ink); }
+/* An edge with no label: a small ✎ nub, faint until hovered. */
+.chart-elabel.is-empty {
+  padding: 0; width: 20px; height: 20px; font-size: 11px; color: var(--brown);
+  display: inline-flex; align-items: center; justify-content: center; opacity: 0.55;
+}
+.chart-elabel.is-empty:hover { opacity: 1; background: var(--panel); }
+
+/* The ○ connector handle on a card's right edge — drag it onto another card to
+   connect. Subtle until you hover the card. */
+.cn-port {
+  position: absolute; right: -7px; top: 50%; transform: translateY(-50%);
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--panel); border: 2px solid var(--gold); cursor: crosshair;
+  opacity: 0; transition: opacity 0.12s ease, transform 0.12s ease;
+}
+.chart-node:hover .cn-port, .chart-canvas.linking .cn-port { opacity: 1; }
+.cn-port:hover { transform: translateY(-50%) scale(1.25); background: var(--gold-bright); }
+.chart-canvas.linking { cursor: crosshair; }
+.chart-node.link-target { border-color: var(--gold-bright); box-shadow: 0 0 0 3px rgba(226, 185, 76, 0.5), 0 6px 16px var(--shadow); }
+.ce-temp { stroke: var(--green); stroke-width: 2.4; stroke-dasharray: 5 4; fill: none; pointer-events: none; }
+
+/* Mini-map — a corner overview for large campaigns. */
+.map-minimap {
+  position: absolute; right: 14px; bottom: 46px; z-index: 3;
+  padding: 6px; background: rgba(251, 245, 230, 0.92);
+  border: 2px solid var(--panel-edge); border-radius: 10px;
+  box-shadow: 0 6px 18px var(--shadow); cursor: pointer;
+}
+.mini-inner { position: relative; }
+.mini-node { position: absolute; background: var(--brown); border-radius: 1px; opacity: 0.7; }
+.mini-node.type-beat, .mini-node.type-scene { background: var(--gold); }
+.mini-node.type-encounter { background: var(--red); }
+.mini-node.type-creature { background: var(--red-bright); }
+.mini-node.type-npc { background: var(--blue); }
+.mini-node.type-location { background: var(--green); }
+.mini-view {
+  position: absolute; border: 1.5px solid var(--red); background: rgba(178, 59, 46, 0.12);
+  border-radius: 2px; pointer-events: none; min-width: 6px; min-height: 6px;
 }
 .map-hint {
   flex: none; padding: 8px 16px; border-top: 2px solid var(--panel-edge);
