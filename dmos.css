@@ -274,6 +274,32 @@ a.rail-title:focus-visible { outline: 2px solid var(--gold-bright); outline-offs
 .lookup-actions { flex: none; display: flex; align-items: center; gap: 6px; }
 .lookup-del { background: transparent; border: 0; color: var(--ink-soft); cursor: pointer; font-size: 17px; line-height: 1; padding: 2px 6px; border-radius: 6px; }
 .lookup-del:hover { background: rgba(178, 59, 46, 0.16); color: var(--red-bright); }
+.lookup-tabs { display: flex; gap: 2px; margin: 8px 0 10px; border-bottom: 2px solid var(--panel-edge); }
+.lookup-tab {
+  background: transparent; border: 0; border-bottom: 3px solid transparent; cursor: pointer;
+  font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--ink-soft);
+  padding: 6px 14px; margin-bottom: -2px;
+}
+.lookup-tab:hover { color: var(--ink); }
+.lookup-tab.is-active { color: var(--brown); border-bottom-color: var(--gold); }
+.lookup-read { align-items: flex-start; }
+.lookup-desc { font-size: 13px; color: var(--ink-soft); line-height: 1.45; margin-top: 3px; }
+.src-spell { background: rgba(107, 74, 134, 0.16); color: var(--purple); }
+
+/* Today's notes */
+.today-list { max-height: 62vh; overflow-y: auto; }
+.today-row {
+  display: flex; align-items: flex-start; gap: 10px; width: 100%; text-align: left;
+  background: transparent; border: 0; border-bottom: 1px solid var(--panel-edge);
+  padding: 10px 4px; cursor: pointer;
+}
+.today-row:last-child { border-bottom: 0; }
+.today-row:hover { background: var(--surface-active); }
+.today-ico { flex: none; color: var(--brown); font-size: 16px; margin-top: 1px; }
+.today-main { min-width: 0; }
+.today-name { display: block; font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--ink); }
+.today-kind { font-family: var(--font-body, inherit); font-size: 11px; font-weight: 400; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.5px; }
+.today-snip { display: block; font-size: 12.5px; color: var(--ink-soft); margin-top: 2px; }
 
 /* The stat card (click a roster name). Sizable and scrollable — see most, scroll for the rest. */
 .stat-modal .stat-head { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }

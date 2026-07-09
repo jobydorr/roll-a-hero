@@ -399,6 +399,7 @@
         <ul class="tool-list">
           <li><button class="tool" data-act="search">${icon('scroll')} <span>Search</span> <kbd class="tool-kbd">Ctrl K</kbd></button></li>
           <li><button class="tool tool-quicknote" data-act="quick-note">${icon('flame')} <span>Quick note</span></button></li>
+          <li><button class="tool" data-act="today-notes">${icon('star')} <span>Today's notes</span></button></li>
           <li><button class="tool" data-act="sync">${icon('scroll')} <span>Sync from campaign</span></button></li>
           <li><button class="tool" data-act="new-workspace">${icon('star')} <span>New workspace</span></button></li>
           <li><button class="tool" data-act="export">${icon('print')} <span>Export workspace</span></button></li>
@@ -834,19 +835,66 @@
   // Search the shipped SRD starter + the DM's personal library. Each hit can be
   // dropped into the STORY (a real creature page) or onto the ROSTER (a quick
   // combatant with inline stats, no page). Personal entries can be removed.
+  let lookupTab = 'creatures';
+  let lookupQuery = '';
   ACT['lookup-open'] = () => openLookupModal();
-  ACT['lookup-input:input'] = (el) => renderLookupResults(el.value);
+  ACT['lookup-input:input'] = (el) => { lookupQuery = el.value; renderLookup(); };
+  ACT['lookup-tab'] = (el) => {
+    lookupTab = el.dataset.tab;
+    const inp = ROOT.modal.querySelector('#lookupInput'); if (inp) inp.focus();
+    renderLookup();
+  };
 
   function openLookupModal() {
+    lookupTab = 'creatures'; lookupQuery = '';
     openModal(`
-      <div class="modal-title">Look up a creature</div>
+      <div class="modal-title">Look up</div>
+      <div class="lookup-tabs">
+        <button class="lookup-tab" data-act="lookup-tab" data-tab="creatures">Creatures</button>
+        <button class="lookup-tab" data-act="lookup-tab" data-tab="spells">Spells</button>
+        <button class="lookup-tab" data-act="lookup-tab" data-tab="terms">Terms</button>
+      </div>
       <div class="search-box"><input type="text" id="lookupInput" data-act="lookup-input"
            placeholder="Search creatures by name or tag…" autocomplete="off" spellcheck="false"></div>
-      <div class="lookup-results" id="lookupResults"></div>`, 'modal-wide modal-search');
-    renderLookupResults('');
+      <div class="lookup-results" id="lookupResults"></div>`, 'modal-wide modal-search modal-lookup');
+    renderLookup();
     const inp = ROOT.modal.querySelector('#lookupInput'); if (inp) inp.focus();
   }
-  function renderLookupResults(query) {
+  function renderLookup() {
+    ROOT.modal.querySelectorAll('.lookup-tab').forEach(b => b.classList.toggle('is-active', b.dataset.tab === lookupTab));
+    const inp = ROOT.modal.querySelector('#lookupInput');
+    if (inp) inp.placeholder = lookupTab === 'spells' ? 'Search spells…' : (lookupTab === 'terms' ? 'Search game terms…' : 'Search creatures by name or tag…');
+    if (lookupTab === 'spells') renderLookupSpells(lookupQuery);
+    else if (lookupTab === 'terms') renderLookupTerms(lookupQuery);
+    else renderLookupCreatures(lookupQuery);
+  }
+  // Spells & Terms are read-only reference, straight from data.js (the builder's
+  // own curated, kid-safe wording — one source, no drift).
+  function renderLookupSpells(query) {
+    const box = ROOT.modal.querySelector('#lookupResults'); if (!box) return;
+    const q = query.trim().toLowerCase();
+    const all = (window.DATA && window.DATA.SPELLS) || [];
+    const list = q ? all.filter(s => s.name.toLowerCase().includes(q) || (s.desc || '').toLowerCase().includes(q)) : all;
+    if (!list.length) { box.innerHTML = `<p class="modal-hint">No spells match “${esc(query.trim())}”.</p>`; return; }
+    box.innerHTML = list.slice(0, 120).map(s => `<div class="lookup-row lookup-read">
+      <div class="lookup-main">
+        <div class="lookup-name">${esc(s.name)} <span class="lookup-src src-spell">${s.lvl === 0 ? 'Cantrip' : 'Level ' + s.lvl}</span></div>
+        <div class="lookup-desc">${esc(s.desc || '')}</div>
+      </div></div>`).join('');
+  }
+  function renderLookupTerms(query) {
+    const box = ROOT.modal.querySelector('#lookupResults'); if (!box) return;
+    const q = query.trim().toLowerCase();
+    const all = (window.DATA && window.DATA.GLOSSARY) || [];
+    const list = q ? all.filter(t => t.term.toLowerCase().includes(q) || (t.def || '').toLowerCase().includes(q)) : all;
+    if (!list.length) { box.innerHTML = `<p class="modal-hint">No terms match “${esc(query.trim())}”.</p>`; return; }
+    box.innerHTML = list.map(t => `<div class="lookup-row lookup-read">
+      <div class="lookup-main">
+        <div class="lookup-name">${esc(t.term)}</div>
+        <div class="lookup-desc">${esc(t.def || '')}</div>
+      </div></div>`).join('');
+  }
+  function renderLookupCreatures(query) {
     const box = ROOT.modal.querySelector('#lookupResults');
     if (!box) return;
     const q = query.trim().toLowerCase();
@@ -895,8 +943,8 @@
   };
   ACT['lookup-remove'] = (el) => {
     STORE.removeFromBestiary(el.dataset.id);
-    const inp = ROOT.modal.querySelector('#lookupInput');
-    renderLookupResults(inp ? inp.value : '');
+    const inp = ROOT.modal.querySelector('#lookupInput'); if (inp) lookupQuery = inp.value;
+    renderLookup();
   };
   // Save a creature page to the personal library (this browser only).
   ACT['save-bestiary'] = (el) => {
@@ -905,6 +953,36 @@
     STORE.saveToBestiary({ name: d.title, hp: f.hp || '', ac: f.ac || '', speed: f.speed || '', attack: f.attack || '', trick: f.trick || f.special || '', notes: d.body || '', tags: d.tags || [] });
     announce('Saved ' + d.title + ' to your creature library.');
   };
+
+  /* ----------------------------- Today's notes ---------------------------- */
+  // A quick "what did I jot today" view: notebook notes and session logs that
+  // were created today or whose content is dated today (Quick Note stamps the
+  // date; session logs carry a date field).
+  ACT['today-notes'] = () => openTodayModal();
+  ACT['today-open'] = (el) => { closeModal(); gotoDoc(el.dataset.doc); };
+  function openTodayModal() {
+    const today = STORE.nowISO().slice(0, 10);
+    const isToday = (d) =>
+      String(d.updated || '').slice(0, 10) === today
+      || (d.body || '').indexOf(today) >= 0
+      || (d.type === 'session' && String((d.fields || {}).date || '').indexOf(today) >= 0);
+    const notes = STORE.docs()
+      .filter(d => ((STORE.isInNotebook(d.id) && d.type === 'note') || d.type === 'session') && isToday(d))
+      .sort((a, b) => String(b.updated || '').localeCompare(String(a.updated || '')));
+    const snip = (d) => esc((d.body || Object.values(d.fields || {}).filter(Boolean).join(' · ') || '').replace(/\s+/g, ' ').trim().slice(0, 100));
+    openModal(`
+      <div class="modal-title">Today — ${esc(today)}</div>
+      ${notes.length
+        ? `<div class="today-list">${notes.map(d => `
+            <button class="today-row" data-act="today-open" data-doc="${d.id}">
+              <span class="today-ico" aria-hidden="true">${icon((DOC_TYPES[d.type] || {}).icon || 'book')}</span>
+              <span class="today-main">
+                <span class="today-name">${esc(d.title)} <span class="today-kind">${esc((DOC_TYPES[d.type] || {}).label || '')}</span></span>
+                <span class="today-snip">${snip(d)}</span>
+              </span></button>`).join('')}</div>`
+        : `<p class="modal-hint">Nothing dated today yet. Take a Quick note, or any note dated ${esc(today)} will show up here.</p>`}
+    `, 'modal-wide');
+  }
 
   /* ============================== The banner =============================== */
   PAINT.banner = function () {
