@@ -550,6 +550,26 @@
     s.turn = t;
     writeInit(s);
   }
+  // HP tracking. `hp` is current, `maxHp` the cap — either may be null (untracked).
+  // Setting current clamps to [0, maxHp]; a damage/heal delta does the same.
+  function rosterSetHp(id, cur, max) {
+    const s = getInitiative();
+    const e = s.entries.find(x => x.id === id); if (!e) return;
+    if (max !== undefined) e.maxHp = (max == null ? null : Math.max(0, Math.round(max)));
+    if (cur !== undefined) {
+      if (cur == null) e.hp = null;
+      else { let v = Math.max(0, Math.round(cur)); if (e.maxHp != null) v = Math.min(v, e.maxHp); e.hp = v; }
+    }
+    writeInit(s);
+  }
+  function rosterAdjustHp(id, delta) {   // delta < 0 = damage, > 0 = heal
+    const s = getInitiative();
+    const e = s.entries.find(x => x.id === id); if (!e || e.hp == null) return;
+    let v = e.hp + Math.round(delta);
+    if (e.maxHp != null) v = Math.min(v, e.maxHp);
+    e.hp = Math.max(0, v);
+    writeInit(s);
+  }
   const clearInitiative = () => writeInit(clone(EMPTY_INIT));
 
   /* --------------------------------- UI ----------------------------------- */
@@ -586,7 +606,7 @@
 
     // Initiative roster (the right-rail "at the table" list)
     getInitiative, rosterAdd, rosterPatch, rosterRemove, rosterMove, rosterSort,
-    initStep, clearInitiative,
+    initStep, clearInitiative, rosterSetHp, rosterAdjustHp,
 
     loadCampaign, mergeIncoming, backup, newWorkspace,
     exportWorkspace, importWorkspace,

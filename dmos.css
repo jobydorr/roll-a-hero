@@ -219,6 +219,40 @@ a.rail-title:focus-visible { outline: 2px solid var(--gold-bright); outline-offs
 .ini-x:hover { background: rgba(178, 59, 46, 0.16); color: var(--red-bright); }
 .ini-tools { display: flex; align-items: center; gap: 6px; padding: 8px 6px 4px; margin-top: 4px; border-top: 1px solid var(--panel-edge); }
 
+/* Per-row HP chip + its damage/heal editor. */
+.ini-hp {
+  flex: none; min-width: 30px; text-align: center; cursor: pointer;
+  font: inherit; font-size: 12px; font-weight: 700; line-height: 1;
+  padding: 4px 6px; border-radius: 7px; border: 1.5px solid transparent;
+  background: rgba(0, 0, 0, 0.05); color: var(--ink);
+}
+.ini-hp:hover { border-color: var(--panel-edge); }
+.ini-hp .ini-hp-max { font-weight: 400; font-size: 10px; color: var(--ink-soft); }
+.ini-hp.ini-hp-set { color: var(--ink-soft); font-weight: 400; opacity: 0.55; }
+.ini-hp.hp-ok   { background: rgba(76, 122, 63, 0.18);  color: #2f5426; }
+.ini-hp.hp-low  { background: rgba(194, 146, 46, 0.22); color: #7a5a12; }
+.ini-hp.hp-crit { background: rgba(178, 59, 46, 0.20);  color: var(--red-bright); }
+.ini-hp.hp-down { background: rgba(70, 70, 70, 0.16);   color: var(--ink-soft); text-decoration: line-through; }
+
+.hp-editor { padding: 4px 2px; min-width: 214px; }
+.hp-ed-title { font-size: 13px; color: var(--ink); margin-bottom: 8px; }
+.hp-ed-row { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+.hp-ed-sub { margin-bottom: 0; }
+.hp-amt {
+  flex: 1; min-width: 0; box-sizing: border-box; padding: 6px 8px; font: inherit; font-size: 14px;
+  color: var(--ink); background: rgba(255, 250, 240, 0.8); border: 2px solid var(--panel-edge); border-radius: 7px;
+}
+.hp-amt:focus { outline: none; border-color: var(--gold); background: var(--surface-active); }
+.hp-ed-hint { font-size: 11.5px; color: var(--ink-soft); font-style: italic; }
+
+/* Roster hover-preview (compact; sits to the left of the rail). */
+.roster-peek .rp-sub { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+.roster-peek .rp-hp { font-family: var(--font-display); font-weight: 700; color: var(--ink); margin: 4px 0 2px; }
+.roster-peek .rp-stats { font-size: 13px; color: var(--ink); margin: 3px 0; }
+.roster-peek .rp-abils { font-size: 11.5px; color: var(--ink-soft); margin: 3px 0; white-space: nowrap; }
+.roster-peek .rp-line { font-size: 12.5px; color: var(--ink-soft); margin: 3px 0; line-height: 1.4; }
+.roster-peek .rp-more { font-size: 11px; color: var(--brown); margin-top: 6px; font-style: italic; }
+
 /* The stat card (click a roster name). Sizable and scrollable — see most, scroll for the rest. */
 .stat-modal .stat-head { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
 .stat-ico { font-size: 26px; color: var(--brown); flex: none; margin-top: 2px; }

@@ -453,9 +453,30 @@
     return { name: e.name || 'Combatant', side: 'foe', icon: 'sword', typeLabel: 'One-off', doc: null };
   }
 
+  // A creature's page carries a starting HP (its hp field, first number). NPCs and
+  // one-offs have none until the DM sets one from the row's HP chip.
+  function hpFromDoc(d) {
+    if (!d || d.type !== 'creature') return null;
+    const m = /\d+/.exec(String((d.fields && d.fields.hp) || ''));
+    if (!m) return null;
+    const n = parseInt(m[0], 10);
+    return { hp: n, maxHp: n };
+  }
+  // Colour the HP chip by how bloodied the combatant is.
+  function hpClass(e) {
+    if (e.hp == null) return 'ini-hp-set';
+    if (e.hp <= 0) return 'hp-down';
+    if (e.maxHp == null) return 'hp-ok';
+    const r = e.hp / e.maxHp;
+    return r <= 0.25 ? 'hp-crit' : (r <= 0.5 ? 'hp-low' : 'hp-ok');
+  }
+
   function rosterRowHTML(e, i, s) {
     const info = resolveEntry(e);
     const isTurn = s.entries.length && i === s.turn;
+    const hpChip = e.hp == null
+      ? `<button class="ini-hp ini-hp-set" data-act="ini-hp" data-id="${e.id}" title="Set hit points">HP</button>`
+      : `<button class="ini-hp ${hpClass(e)}" data-act="ini-hp" data-id="${e.id}" title="Adjust hit points">${e.hp}${e.maxHp != null ? `<span class="ini-hp-max">/${e.maxHp}</span>` : ''}</button>`;
     return `<li class="ini-row side-${info.side}${isTurn ? ' is-turn' : ''}" data-id="${e.id}">
       <span class="ini-handle" data-act="roster-drag" data-id="${e.id}" title="Drag to reorder" aria-hidden="true">⠿</span>
       <input class="ini-num" data-act="ini-num" data-id="${e.id}" type="text" inputmode="numeric" maxlength="3"
@@ -464,6 +485,7 @@
         <span class="ini-ico" aria-hidden="true">${icon(info.icon)}</span>
         <span class="ini-name-text">${esc(info.name)}</span>
       </button>
+      ${hpChip}
       <button class="ini-x" data-act="roster-remove" data-id="${e.id}" title="Remove" aria-label="Remove ${esc(info.name)}">×</button>
     </li>`;
   }
@@ -484,7 +506,7 @@
   // wikilink's peek. Opens the rail if it was collapsed so the add is visible.
   ACT['roster-add-doc'] = (el) => {
     const d = STORE.get(el.dataset.doc); if (!d) return;
-    STORE.rosterAdd({ kind: 'doc', ref: d.id, name: d.title });
+    STORE.rosterAdd(Object.assign({ kind: 'doc', ref: d.id, name: d.title }, hpFromDoc(d) || {}));
     hidePeek();
     if (!ui().railB) { STORE.setUi({ railB: true }); applyRails(); }
     announce('Added ' + d.title + ' to initiative.');
@@ -495,9 +517,57 @@
     announce('Added ' + name + ' to initiative.');
   };
   ACT['roster-open'] = (el) => {
+    hidePeek();
     const e = STORE.getInitiative().entries.find(x => x.id === el.dataset.id);
     if (e) openStatCard(e);
   };
+
+  // The HP chip opens a small anchored editor: damage/heal by an amount, or set
+  // current/max. A combatant with no HP yet gets a "give it hit points" form.
+  ACT['ini-hp'] = (el) => openHpEditor(el);
+  const hpAmt = () => { const i = ROOT.modal.querySelector('.hp-amt'); const n = i ? parseInt(i.value, 10) : NaN; return isNaN(n) ? null : Math.abs(n); };
+  ACT['hp-damage'] = (el) => { const n = hpAmt(); if (n != null) STORE.rosterAdjustHp(el.dataset.id, -n); closeModal(); };
+  ACT['hp-heal']   = (el) => { const n = hpAmt(); if (n != null) STORE.rosterAdjustHp(el.dataset.id, n); closeModal(); };
+  ACT['hp-init']   = (el) => { const n = hpAmt(); if (n != null && n > 0) STORE.rosterSetHp(el.dataset.id, n, n); closeModal(); };
+  ACT['hp-full']   = (el) => { const e = STORE.getInitiative().entries.find(x => x.id === el.dataset.id); if (e && e.maxHp != null) STORE.rosterSetHp(el.dataset.id, e.maxHp); closeModal(); };
+  ACT['hp-clear']  = (el) => { STORE.rosterSetHp(el.dataset.id, null, null); closeModal(); };
+
+  function openHpEditor(anchorEl) {
+    const id = anchorEl.dataset.id;
+    const e = STORE.getInitiative().entries.find(x => x.id === id); if (!e) return;
+    const info = resolveEntry(e);
+    let body;
+    if (e.hp == null) {
+      body = `<div class="hp-ed-title">${esc(info.name)}</div>
+        <div class="hp-ed-row">
+          <input type="text" class="hp-amt" inputmode="numeric" maxlength="4" placeholder="Max HP" autocomplete="off">
+          <button class="btn btn-sm btn-primary" data-act="hp-init" data-id="${id}">Set</button>
+        </div>
+        <div class="hp-ed-hint">Give this combatant hit points to track at the table.</div>`;
+    } else {
+      body = `<div class="hp-ed-title">${esc(info.name)} — <strong>${e.hp}${e.maxHp != null ? ' / ' + e.maxHp : ''}</strong> HP</div>
+        <div class="hp-ed-row">
+          <input type="text" class="hp-amt" inputmode="numeric" maxlength="4" placeholder="amount" autocomplete="off">
+          <button class="btn btn-sm" data-act="hp-damage" data-id="${id}" title="Subtract (Enter)">− Damage</button>
+          <button class="btn btn-sm" data-act="hp-heal" data-id="${id}" title="Add">+ Heal</button>
+        </div>
+        <div class="hp-ed-row hp-ed-sub">
+          ${e.maxHp != null ? `<button class="btn btn-sm btn-ghost" data-act="hp-full" data-id="${id}">Full</button>` : ''}
+          <button class="btn btn-sm btn-ghost" data-act="hp-clear" data-id="${id}">Clear HP</button>
+        </div>`;
+    }
+    openMenu(anchorEl, `<div class="hp-editor">${body}</div>`);
+    const inp = ROOT.modal.querySelector('.hp-amt');
+    if (inp) {
+      inp.focus();
+      inp.onkeydown = (ev) => {
+        if (ev.key !== 'Enter') return;
+        ev.preventDefault();
+        const btn = ROOT.modal.querySelector('[data-act="hp-damage"], [data-act="hp-init"]');
+        if (btn) btn.click();
+      };
+    }
+  }
 
   // Live search as you type — matches workspace creatures & NPCs, plus an
   // always-present "add as a one-off". Updates ONLY #iniResults, so typing never
@@ -627,7 +697,9 @@
   ACT['party-add'] = (el) => {
     const h = partyState.heroes.find(x => x._id === el.dataset.id);
     if (!h) return;
-    STORE.rosterAdd({ kind: 'hero', ref: h._id, name: h.name || 'Hero', snapshot: h.character });
+    let hp = null;
+    try { const n = window.RAH.withState(h.character, () => window.RAH.computeHP()); if (typeof n === 'number' && n > 0) hp = { hp: n, maxHp: n }; } catch (err) {}
+    STORE.rosterAdd(Object.assign({ kind: 'hero', ref: h._id, name: h.name || 'Hero', snapshot: h.character }, hp || {}));
     announce('Added ' + (h.name || 'the hero') + ' to initiative.');
   };
 
@@ -1256,6 +1328,49 @@
     if (ROOT.peek) ROOT.peek.innerHTML = '';
   }
 
+  // Hover a roster name → a compact, non-modal preview. The rail hugs the right
+  // edge, so this sits to the LEFT of the row. A click still opens the full card.
+  function rosterPeekHTML(e) {
+    const info = resolveEntry(e);
+    const head = `<div class="peek-head">${icon(info.icon)} <strong>${esc(info.name)}</strong>${info.typeLabel ? ` <span class="tag">${esc(info.typeLabel)}</span>` : ''}</div>`;
+    const hpLine = e.hp != null ? `<div class="rp-hp">${e.hp}${e.maxHp != null ? ' / ' + e.maxHp : ''} HP</div>` : '';
+    let body = '';
+    if (e.kind === 'hero' && e.snapshot && window.RAH && window.RAH.withState) {
+      const R = window.RAH;
+      const d = R.withState(e.snapshot, () => ({
+        hp: R.computeHP(), ac: R.computeAC(),
+        sub: (() => { const r = R.getRace(), c = R.getClass(); return 'Lvl ' + R.charLevel() + ' ' + (r ? r.name : '') + ' ' + (c ? c.name : ''); })(),
+        ab: ['str', 'dex', 'con', 'int', 'wis', 'cha'].map(k => k.toUpperCase() + ' ' + R.fmtMod(R.modOf(R.finalScore(k) || 10))).join('  '),
+      }));
+      body = `<div class="rp-sub">${esc(d.sub)}</div><div class="rp-stats">HP ${d.hp} · AC ${d.ac}</div><div class="rp-abils">${esc(d.ab)}</div>`;
+    } else if (info.doc) {
+      const f = info.doc.fields || {};
+      const stats = [];
+      if (f.hp && e.hp == null) stats.push('HP ' + esc(String(f.hp).trim()));
+      if (f.ac) stats.push('AC ' + esc(String(f.ac).trim()));
+      body = (stats.length ? `<div class="rp-stats">${stats.join(' · ')}</div>` : '')
+        + (f.speed ? `<div class="rp-line">${esc(f.speed)}</div>` : '')
+        + (f.attack ? `<div class="rp-line"><strong>Attack:</strong> ${esc(f.attack)}</div>` : '');
+    } else {
+      body = `<div class="rp-sub">One-off combatant</div>`;
+    }
+    return head + hpLine + body + `<div class="rp-more">Click for full stats →</div>`;
+  }
+  function showRosterPeek(nameEl) {
+    const id = nameEl.dataset.id;
+    const e = STORE.getInitiative().entries.find(x => x.id === id); if (!e) return;
+    peekFor = nameEl;
+    ROOT.peek.innerHTML = `<div class="peek roster-peek" role="note">${rosterPeekHTML(e)}</div>`;
+    const box = ROOT.peek.firstChild;
+    const r = nameEl.getBoundingClientRect();
+    let left = r.left - box.offsetWidth - 12;
+    if (left < 8) left = Math.min(r.right + 12, window.innerWidth - box.offsetWidth - 8);
+    let top = r.top - 4;
+    if (top + box.offsetHeight > window.innerHeight - 8) top = window.innerHeight - 8 - box.offsetHeight;
+    box.style.left = Math.max(8, left) + 'px';
+    box.style.top = Math.max(8, top) + 'px';
+  }
+
   /* ============================== Rail sizing ============================== */
   function applyRails() {
     const u = ui();
@@ -1512,6 +1627,20 @@
     ROOT.peek.addEventListener('mouseover', () => clearTimeout(peekHideTimer));
     ROOT.peek.addEventListener('mouseout', () => { peekHideTimer = setTimeout(hidePeek, 250); });
     ROOT.feed.addEventListener('scroll', hidePeek, { passive: true });
+
+    // Same hover-peek for the roster rows (positioned to the left of the rail).
+    ROOT.rail.addEventListener('mouseover', (e) => {
+      const nameEl = e.target.closest && e.target.closest('.ini-name');
+      if (!nameEl || nameEl === peekFor) return;
+      clearTimeout(peekTimer);
+      peekTimer = setTimeout(() => showRosterPeek(nameEl), 300);
+    });
+    ROOT.rail.addEventListener('mouseout', (e) => {
+      if (!e.target.closest || !e.target.closest('.ini-name')) return;
+      clearTimeout(peekTimer);
+      peekHideTimer = setTimeout(hidePeek, 250);
+    });
+    ROOT.rail.addEventListener('scroll', hidePeek, { capture: true, passive: true });
 
     window.addEventListener('hashchange', () => {
       STORE.setUi({ focus: location.hash, editingBody: null });
