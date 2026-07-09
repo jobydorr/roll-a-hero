@@ -1629,14 +1629,24 @@
     ROOT.feed.addEventListener('scroll', hidePeek, { passive: true });
 
     // Same hover-peek for the roster rows (positioned to the left of the rail).
+    // The name button has child <span>s, so mouseover/out fire as the pointer
+    // crosses them; use relatedTarget so we only react on true enter/leave of the
+    // whole name — otherwise the mid-name mouseout kills the pending show timer.
     ROOT.rail.addEventListener('mouseover', (e) => {
       const nameEl = e.target.closest && e.target.closest('.ini-name');
-      if (!nameEl || nameEl === peekFor) return;
+      if (!nameEl) return;
+      const from = e.relatedTarget && e.relatedTarget.closest ? e.relatedTarget.closest('.ini-name') : null;
+      if (from === nameEl) return;              // moving within the same name — ignore
+      clearTimeout(peekHideTimer);
+      if (nameEl === peekFor) return;           // already showing for this row
       clearTimeout(peekTimer);
-      peekTimer = setTimeout(() => showRosterPeek(nameEl), 300);
+      peekTimer = setTimeout(() => showRosterPeek(nameEl), 250);
     });
     ROOT.rail.addEventListener('mouseout', (e) => {
-      if (!e.target.closest || !e.target.closest('.ini-name')) return;
+      const fromName = e.target.closest && e.target.closest('.ini-name');
+      if (!fromName) return;
+      const to = e.relatedTarget && e.relatedTarget.closest ? e.relatedTarget.closest('.ini-name') : null;
+      if (to === fromName) return;              // still within the same name — not leaving
       clearTimeout(peekTimer);
       peekHideTimer = setTimeout(hidePeek, 250);
     });
