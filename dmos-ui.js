@@ -384,6 +384,7 @@
     const selected = focus.id === d.id;
     return `<li>
       <div class="tree-row${selected ? ' is-selected' : ''}" data-act="select-node" data-doc="${d.id}" style="--depth:${depth}">
+        <span class="tree-handle" data-act="row-drag" data-doc="${d.id}" title="Drag to reorder" aria-hidden="true">⠿</span>
         ${kids.length
           ? `<button class="tree-twist${open ? ' is-open' : ''}" data-act="toggle-folder" data-doc="${d.id}"
                      aria-expanded="${open}" aria-label="${open ? 'Collapse' : 'Expand'} ${esc(d.title)}">▸</button>`
@@ -957,6 +958,18 @@
     e.preventDefault();
   };
 
+  // Reorder tree items by dragging the ⠿ handle (never the whole row, so a click
+  // can't accidentally start a drag). Siblings only.
+  ACT['row-drag:pointerdown'] = (el, e) => {
+    const id = el.dataset.doc;
+    const d = STORE.get(id); if (!d) return;
+    dragging = { kind: 'tree', id, parent: d.parent || null, dropTarget: null };
+    el.setPointerCapture(e.pointerId);
+    const row = el.closest('.tree-row'); if (row) row.classList.add('row-dragging');
+    document.body.classList.add('dmos-row-dragging');
+    e.preventDefault();
+  };
+
   // Drag the Quick Note window by its header (but not when the pointer starts on a
   // control inside the header, like the date box or close button).
   ACT['qn-drag:pointerdown'] = (el, e) => {
@@ -984,13 +997,63 @@
       const y = Math.max(4, Math.min(window.innerHeight - 40, dragging.baseY + (e.clientY - dragging.startY)));
       el.style.left = x + 'px'; el.style.top = y + 'px'; el.style.right = 'auto'; el.style.bottom = 'auto';
       ui().quickNotePos = { x: x, y: y };
+      return;
+    }
+    if (dragging.kind === 'tree') {
+      clearDropMarks();
+      const under = document.elementFromPoint(e.clientX, e.clientY);
+      const row = under && under.closest ? under.closest('.tree-row') : null;
+      dragging.dropTarget = null;
+      if (!row) return;
+      const tid = row.dataset.doc;
+      const td = tid && STORE.get(tid);
+      // Reorder among siblings only (same parent), never onto itself.
+      if (!td || tid === dragging.id || (td.parent || null) !== dragging.parent) return;
+      const r = row.getBoundingClientRect();
+      const before = (e.clientY - r.top) < r.height / 2;
+      row.classList.add(before ? 'drop-before' : 'drop-after');
+      dragging.dropTarget = tid; dragging.dropBefore = before;
     }
   }
+
+  function clearDropMarks() {
+    if (ROOT.tree) ROOT.tree.querySelectorAll('.drop-before, .drop-after').forEach(n => n.classList.remove('drop-before', 'drop-after'));
+  }
+
+  // Give the dragged doc a new order value between its new neighbours. One patch,
+  // not a re-numbering of the whole list. Siblings sort by (order, title).
+  function reorderSibling(id, targetId, before) {
+    const d = STORE.get(id); if (!d) return;
+    const parent = d.parent || null;
+    const sibs = STORE.docs()
+      .filter(x => (x.parent || null) === parent && x.id !== id)
+      .sort((a, b) => (a.order - b.order) || a.title.localeCompare(b.title));
+    const ti = sibs.findIndex(x => x.id === targetId);
+    if (ti < 0) return;
+    const at = before ? ti : ti + 1;
+    const prev = sibs[at - 1], next = sibs[at];
+    let order;
+    if (prev && next) order = (prev.order + next.order) / 2;
+    else if (prev) order = prev.order + 100;
+    else if (next) order = next.order - 100;
+    else order = 100;
+    STORE.patch(id, { order });
+  }
+
   function endDrag() {
     if (!dragging) return;
+    const drag = dragging;
     dragging = null;
-    document.body.classList.remove('dmos-resizing');
-    STORE.saveUi();
+    document.body.classList.remove('dmos-resizing', 'dmos-row-dragging');
+    if (drag.kind === 'tree') {
+      clearDropMarks();
+      const dr = ROOT.tree.querySelector('.row-dragging');
+      if (dr) dr.classList.remove('row-dragging');
+      if (drag.dropTarget) reorderSibling(drag.id, drag.dropTarget, drag.dropBefore);
+      else mark('tree');   // repaint to clear any lingering drag visuals
+    } else {
+      STORE.saveUi();      // grip widths / float position
+    }
     retry();
   }
 

@@ -169,6 +169,17 @@ a.rail-title:focus-visible { outline: 2px solid var(--gold-bright); outline-offs
 .tree-twist.is-open { transform: rotate(90deg); }
 .tree-twist-empty { display: inline-block; width: 14px; flex: none; }
 .tree-icon { color: var(--brown); flex: none; display: inline-flex; }
+.tree-handle {
+  flex: none; cursor: grab; color: var(--ink-soft); opacity: 0.25;
+  font-size: 11px; line-height: 1; padding: 0 1px; user-select: none;
+  touch-action: none;
+}
+.tree-row:hover .tree-handle { opacity: 0.6; }
+.tree-handle:active { cursor: grabbing; }
+.tree-row.row-dragging { opacity: 0.45; }
+.tree-row.drop-before { box-shadow: inset 0 2px 0 0 var(--gold); }
+.tree-row.drop-after { box-shadow: inset 0 -2px 0 0 var(--gold); }
+body.dmos-row-dragging, body.dmos-row-dragging * { cursor: grabbing !important; user-select: none; }
 .tree-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tree-badge { margin-left: auto; padding: 1px 7px; }
 .tree-restore { margin-left: auto; background: transparent; border: 0; cursor: pointer; font-size: 14px; }
