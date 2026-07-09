@@ -116,7 +116,19 @@ a.rail-title:focus-visible { outline: 2px solid var(--gold-bright); outline-offs
   font-family: var(--font-display); font-size: 11px; font-weight: 700;
   text-transform: uppercase; letter-spacing: 2px; color: var(--brown);
   margin: 4px 0 8px 4px;
+  display: flex; align-items: center;
 }
+.section-add {
+  margin-left: auto; background: transparent; border: 0; cursor: pointer;
+  color: var(--brown); font-size: 15px; font-weight: 700; line-height: 1;
+  padding: 0 6px; border-radius: 5px;
+}
+.section-add:hover { background: var(--surface-active); }
+.linklike {
+  background: transparent; border: 0; padding: 0; cursor: pointer;
+  color: var(--brown); text-decoration: underline; font: inherit;
+}
+.tool-quicknote .icon { color: var(--red-bright); }
 .rail-hint { font-size: 13.5px; color: var(--ink-soft); font-style: italic; margin: 4px; }
 
 /* Reopen tabs, only visible while a rail is closed. */
@@ -269,6 +281,50 @@ table.diff { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 table.diff th, table.diff td { border: 1px solid var(--panel-edge); padding: 6px 8px; text-align: left; vertical-align: top; }
 table.diff thead th { background: rgba(107, 74, 35, 0.12); font-family: var(--font-display); }
 table.diff tbody th { width: 22%; font-family: var(--font-display); font-weight: 700; text-transform: capitalize; }
+
+/* ------------------------ Quick Note floating window --------------------- */
+.quicknote {
+  position: fixed; right: 24px; bottom: 24px; z-index: var(--z-float);
+  width: min(380px, 92vw);
+  background: var(--panel); border: 2px solid var(--panel-edge); border-radius: 14px;
+  box-shadow: 0 16px 50px var(--shadow);
+  display: flex; flex-direction: column; overflow: hidden;
+  animation: rise 0.2s ease both;
+}
+.qn-head {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 8px 8px 12px; cursor: grab; touch-action: none;
+  background: linear-gradient(180deg, rgba(43, 30, 18, 0.92), rgba(60, 43, 24, 0.92));
+  color: var(--gold-bright);
+}
+.qn-title { font-family: var(--font-display); font-weight: 900; font-size: 14px; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px; }
+.qn-title .icon { color: var(--gold-bright); }
+.qn-date {
+  margin-left: auto; font: inherit; font-size: 12px; padding: 3px 6px;
+  border-radius: 6px; border: 1px solid var(--panel-edge);
+  background: var(--surface-active); color: var(--ink); cursor: text;
+}
+.qn-close { background: transparent; border: 0; color: var(--gold-bright); font-size: 20px; line-height: 1; cursor: pointer; padding: 0 6px; border-radius: 6px; }
+.qn-close:hover { background: rgba(255, 255, 255, 0.12); }
+.qn-pad {
+  border: 0; border-bottom: 2px solid var(--panel-edge); width: 100%;
+  font-family: var(--font-body); font-size: 15px; line-height: 1.5;
+  padding: 12px; min-height: 160px; max-height: 42vh; resize: vertical;
+  background: var(--panel); color: var(--ink);
+}
+.qn-pad:focus { outline: none; background: #fffdf7; }
+.qn-file { display: flex; gap: 6px; padding: 10px 12px 6px; align-items: center; flex-wrap: wrap; }
+.qn-target {
+  flex: 1 1 140px; min-width: 0; font: inherit; font-size: 13px;
+  padding: 6px 8px; border-radius: 8px; border: 2px solid var(--panel-edge);
+  background: var(--surface-active); color: var(--ink);
+}
+.qn-foot { display: flex; align-items: center; gap: 10px; padding: 2px 12px 12px; }
+.qn-hint { font-size: 11.5px; color: var(--ink-soft); font-style: italic; }
+
+@media (max-width: 900px) {
+  .quicknote { right: 8px; left: 8px; bottom: 8px; width: auto; }
+}
 
 /* --------------------------------- Print ---------------------------------- */
 #dmosPrint { display: none; }

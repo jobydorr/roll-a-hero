@@ -26,13 +26,20 @@
   const KEY = {
     workspace:  'rollAHeroDmWorkspace',
     backup:     'rollAHeroDmWorkspaceBackup',
-    notebook:   'rollAHeroDmNotebook',
+    quicknote:  'rollAHeroDmQuickNote',
     initiative: 'rollAHeroDmInitiative',
     chart:      'rollAHeroDmChart',
     inbox:      'rollAHeroDmInbox',
     ui:         'rollAHeroDmUi',
     party:      'rollAHeroDmParty',
   };
+
+  // The Notebook is a reserved top-level folder in the SAME document store as the
+  // story — so notebook sections and notes reuse the whole tree/feed/edit/reconcile
+  // machinery for free. It's partitioned out of the story views by isInNotebook().
+  // Notebook docs are DM-authored (origin 'local'), so they never appear in
+  // campaign.js and survive every sync.
+  const NB_ROOT = 'nb_root';
 
   /* Document types. Folders are documents too — that kills a whole class of
      "folders are special" bugs and makes the Scrivenings feed a plain DFS.
@@ -209,10 +216,13 @@
   function createDoc(opts) {
     const o = opts || {};
     const type = DOC_TYPES[o.type] ? o.type : 'note';
-    const id = 'loc_' + type + '_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    const id = o.id || ('loc_' + type + '_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6));
+    if (ws.base[id]) return effective(id);   // idempotent when an explicit id is reused
     ws.base[id] = normalizeDoc({
       id, type, title: o.title || 'Untitled ' + DOC_TYPES[type].label.toLowerCase(),
-      parent: o.parent || null, order: nextOrder(o.parent || null), rev: 0, origin: 'local',
+      parent: o.parent || null, order: nextOrder(o.parent || null),
+      rev: 0, origin: o.origin || 'local',
+      body: o.body || '',
     });
     persist();
     emit({ type: 'docs', ids: [id] });
@@ -357,11 +367,94 @@
     return { added, kept };
   }
 
+  /* ------------------------------ Notebook -------------------------------- */
+  function ensureNotebook() {
+    if (!ws.base[NB_ROOT]) {
+      createDoc({ id: NB_ROOT, type: 'folder', title: 'Notebook', parent: null, origin: 'local' });
+    }
+    return NB_ROOT;
+  }
+
+  // Is this doc the notebook root, or nested anywhere beneath it?
+  function isInNotebook(id) {
+    let cur = id, guard = 0;
+    while (cur && guard++ < 200) {
+      if (cur === NB_ROOT) return true;
+      const b = ws.base[cur];
+      cur = b ? b.parent : null;
+    }
+    return false;
+  }
+
+  // The notebook's sections (folders directly under the root), each in order.
+  function notebookSections() {
+    if (!ws.base[NB_ROOT]) return [];
+    return allDocs()
+      .filter(d => d.parent === NB_ROOT && d.type === 'folder')
+      .sort(byOrder);
+  }
+
+  // Flat destination list for the "file to…" dropdown: for each section, a
+  // "new note here" target plus every existing note in it (to append to).
+  function notebookTargets() {
+    return notebookSections().map(sec => ({
+      sectionId: sec.id,
+      sectionTitle: sec.title,
+      notes: allDocs().filter(d => d.parent === sec.id && d.type === 'note').sort(byOrder)
+                      .map(n => ({ id: n.id, title: n.title })),
+    }));
+  }
+
+  function createSection(title) {
+    ensureNotebook();
+    return createDoc({ type: 'folder', title: (title || 'New section').slice(0, 80), parent: NB_ROOT });
+  }
+
+  /* File text from the quick-note pad into the notebook.
+       { text, date, sectionId, noteId? }
+     noteId set  → append to that existing note (with a dated separator).
+     noteId null → create a new note in the section, titled by its first line
+                   (or the date), body = text. Returns the affected note doc. */
+  function fileNote(opts) {
+    const o = opts || {};
+    const text = String(o.text || '').trim();
+    if (!text) return null;
+    ensureNotebook();
+    const date = o.date || nowISO().slice(0, 10);
+
+    if (o.noteId && ws.base[o.noteId]) {
+      const cur = effective(o.noteId);
+      const joined = (cur.body ? cur.body.replace(/\s+$/, '') + '\n\n' : '') + '— ' + date + ' —\n' + text;
+      return patch(o.noteId, { body: joined });
+    }
+
+    let sectionId = o.sectionId;
+    if (!sectionId || !ws.base[sectionId]) sectionId = createSection('General').id;
+    const firstLine = text.split('\n').map(s => s.trim()).find(Boolean) || date;
+    const title = firstLine.length > 48 ? firstLine.slice(0, 47) + '…' : firstLine;
+    return createDoc({ type: 'note', title: title, parent: sectionId, body: '— ' + date + ' —\n' + text });
+  }
+
+  /* ---------------------------- Quick-note pad ---------------------------- */
+  const EMPTY_QUICKNOTE = { date: nowISO().slice(0, 10), text: '', filed: false };
+  function getQuickNote() {
+    const q = read(KEY.quicknote, EMPTY_QUICKNOTE);
+    if (!q.date) q.date = nowISO().slice(0, 10);
+    if (typeof q.text !== 'string') q.text = '';
+    return q;
+  }
+  function setQuickNote(partial) {
+    const q = Object.assign(getQuickNote(), partial);
+    write(KEY.quicknote, q);
+    return q;
+  }
+  const clearQuickNote = () => setQuickNote({ text: '', filed: false });
+
   /* --------------------------------- UI ----------------------------------- */
   const EMPTY_UI = {
     passOk: false, open: {}, focus: null,
     railA: true, railB: true, widthA: 268, widthB: 300, tab: 'initiative',
-    editingBody: null,
+    editingBody: null, quickNoteOpen: false, quickNotePos: null, quickNoteTarget: null,
   };
   let ui = Object.assign(clone(EMPTY_UI), read(KEY.ui, EMPTY_UI));
   const saveUi = () => write(KEY.ui, ui);
@@ -382,6 +475,11 @@
     patch, createDoc, deleteDoc, restoreDoc, trash,
     conflicts, keepMine, takeTheirs, restoreMine,
     incoming: (id) => ws.conflicts[id] || null,
+
+    // Notebook + quick-note pad
+    NB_ROOT, ensureNotebook, isInNotebook, notebookSections, notebookTargets,
+    createSection, fileNote,
+    getQuickNote, setQuickNote, clearQuickNote,
 
     loadCampaign, mergeIncoming, backup,
     exportWorkspace, importWorkspace,

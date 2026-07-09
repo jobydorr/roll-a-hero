@@ -43,6 +43,7 @@
   let campaignStatus = null;      // result of the last loadCampaign()
   let peekTimer = 0, peekHideTimer = 0, peekFor = null;
   let focusBodyOnPaint = null;    // doc id whose body editor should take focus once
+  let focusPadOnPaint = false;    // focus the quick-note pad on its next paint
 
   /* =============================== Repaint ================================= */
   function mark() {
@@ -124,7 +125,9 @@
   function feedDocs() {
     const f = parseHash();
     if (f.kind === 'd') { const d = STORE.get(f.id); return d ? [d] : []; }
-    if (!f.id) return STORE.descendantsOf(null);
+    // Whole-campaign view: story only. The Notebook has its own sidebar section
+    // and is read by focusing it directly (#/f/nb_root or a section/note).
+    if (!f.id) return STORE.descendantsOf(null).filter(d => !STORE.isInNotebook(d.id));
     const self = STORE.get(f.id);
     const kids = STORE.descendantsOf(f.id);
     return self ? [self].concat(kids) : kids;
@@ -337,10 +340,14 @@
     const f = parseHash();
     const tr = STORE.trash();
 
+    const storyRoots = t.roots.filter(d => d.id !== STORE.NB_ROOT);
+    const nbSections = STORE.notebookSections();
+
     document.getElementById('treeBody').innerHTML = `
       <div class="rail-section">
         <div class="rail-section-head">Tools</div>
         <ul class="tool-list">
+          <li><button class="tool tool-quicknote" data-act="quick-note">${icon('flame')} <span>Quick note</span></button></li>
           <li><button class="tool" data-act="sync">${icon('scroll')} <span>Sync from campaign</span></button></li>
           <li><button class="tool" data-act="new-folder">${icon('book')} <span>New folder</span></button></li>
           <li><button class="tool" data-act="new-doc">${icon('star')} <span>New document</span></button></li>
@@ -352,8 +359,14 @@
       </div>
       <div class="rail-section">
         <div class="rail-section-head">Story Folders</div>
-        ${t.roots.length ? `<ul class="tree">${t.roots.map(d => treeNodeHTML(d, t, f, 0)).join('')}</ul>`
+        ${storyRoots.length ? `<ul class="tree">${storyRoots.map(d => treeNodeHTML(d, t, f, 0)).join('')}</ul>`
                          : `<p class="rail-hint">Nothing yet. Make a folder, or sync from the campaign.</p>`}
+      </div>
+      <div class="rail-section">
+        <div class="rail-section-head">Notebook
+          <button class="section-add" data-act="new-section" title="New notebook section">＋</button></div>
+        ${nbSections.length ? `<ul class="tree">${nbSections.map(d => treeNodeHTML(d, t, f, 0)).join('')}</ul>`
+                            : `<p class="rail-hint">No notes yet. Take a <button class="linklike" data-act="quick-note">Quick note</button>.</p>`}
       </div>
       ${tr.length ? `<div class="rail-section">
         <div class="rail-section-head">Trash (${tr.length})</div>
@@ -406,7 +419,104 @@
     ROOT.banner.innerHTML = parts.join('');
   };
 
-  PAINT.float = function () { /* Phase 4: the fast-notes window. */ };
+  /* ===================== The Quick Note floating window ==================== */
+  // A non-modal pad that never navigates you away. Its text lives in localStorage,
+  // so nothing here is lost until you Clear it. Filing moves text into the Notebook
+  // (which is just documents — see dmos-store). The float is a full-rebuild pane;
+  // isLive(ROOT.float) defers repaints while you're typing, so the pad is stable.
+  function targetOptionsHTML() {
+    const targets = STORE.notebookTargets();
+    let html = `<option value="new-section">＋ New section…</option>`;
+    targets.forEach(sec => {
+      html += `<optgroup label="${esc(sec.sectionTitle)}">`;
+      html += `<option value="new:${sec.sectionId}">＋ New note here</option>`;
+      sec.notes.forEach(n => { html += `<option value="note:${n.id}">→ ${esc(n.title)}</option>`; });
+      html += `</optgroup>`;
+    });
+    return html;
+  }
+
+  PAINT.float = function () {
+    const host = ROOT.float;
+    if (!ui().quickNoteOpen) { host.innerHTML = ''; return; }
+    const q = STORE.getQuickNote();
+    const pos = ui().quickNotePos;
+    const posStyle = pos ? `left:${pos.x}px; top:${pos.y}px; right:auto; bottom:auto;` : '';
+    host.innerHTML = `
+      <div class="quicknote" style="${posStyle}" role="dialog" aria-label="Quick note">
+        <div class="qn-head" data-act="qn-drag">
+          <span class="qn-title">${icon('flame')} Quick Note</span>
+          <input type="date" class="qn-date" value="${esc(q.date)}" data-act="qn-date" title="Date stamped on filed notes">
+          <button class="qn-close" data-act="close-quicknote" title="Close — your notes stay" aria-label="Close">×</button>
+        </div>
+        <textarea class="qn-pad" data-act="qn-input" spellcheck="true"
+                  placeholder="Jot fast. Nothing here is lost until you press Clear.">${esc(q.text)}</textarea>
+        <div class="qn-file">
+          <select class="qn-target" data-act="qn-target" aria-label="Where to file">${targetOptionsHTML()}</select>
+          <button class="btn btn-sm" data-act="file-selection" disabled title="Select text in the pad first">File selection</button>
+          <button class="btn btn-sm btn-primary" data-act="file-all">File all →</button>
+        </div>
+        <div class="qn-foot">
+          <button class="btn btn-sm btn-ghost" data-act="clear-note">Clear</button>
+          <span class="qn-hint">Filing moves notes into the Notebook. Clear erases the pad.</span>
+        </div>
+      </div>`;
+    // Restore the chosen destination, else default to the first section's new note.
+    const sel = host.querySelector('.qn-target');
+    const want = ui().quickNoteTarget;
+    const targets = STORE.notebookTargets();
+    if (want && [...sel.options].some(o => o.value === want)) sel.value = want;
+    else if (targets.length) sel.value = 'new:' + targets[0].sectionId;
+
+    updateSelButton();
+    if (focusPadOnPaint) {
+      focusPadOnPaint = false;
+      const pad = host.querySelector('.qn-pad');
+      pad.focus(); pad.selectionStart = pad.selectionEnd = pad.value.length;
+    }
+  };
+
+  function updateSelButton() {
+    const host = ROOT.float;
+    const pad = host && host.querySelector('.qn-pad');
+    const btn = host && host.querySelector('[data-act="file-selection"]');
+    if (!pad || !btn) return;
+    btn.disabled = pad.selectionStart === pad.selectionEnd;
+  }
+
+  // Rebuild just the destination <select> in place (filing changes the notebook
+  // but must not disturb the pad the DM is typing in).
+  function refreshQuickNoteTargets() {
+    const sel = ROOT.float.querySelector('.qn-target');
+    if (!sel) return;
+    const cur = sel.value;
+    sel.innerHTML = targetOptionsHTML();
+    if ([...sel.options].some(o => o.value === cur)) sel.value = cur;
+    else if (STORE.notebookTargets().length) sel.value = 'new:' + STORE.notebookTargets()[0].sectionId;
+    STORE.setUi({ quickNoteTarget: sel.value });
+  }
+
+  // Resolve the dropdown into a filing destination. Returns null if the DM
+  // cancels a "new section" name prompt.
+  function resolveTarget() {
+    const sel = ROOT.float.querySelector('.qn-target');
+    const v = sel.value;
+    if (v === 'new-section') {
+      const name = prompt('Name the new notebook section:');
+      if (name == null) return null;
+      const sec = STORE.createSection(name.trim() || 'General');
+      return { sectionId: sec.id, noteId: null, label: sec.title };
+    }
+    if (v.indexOf('new:') === 0) {
+      const sid = v.slice(4); const s = STORE.get(sid);
+      return { sectionId: sid, noteId: null, label: s ? s.title : 'section' };
+    }
+    if (v.indexOf('note:') === 0) {
+      const nid = v.slice(5); const n = STORE.get(nid);
+      return { sectionId: n ? n.parent : null, noteId: nid, label: n ? n.title : 'note' };
+    }
+    return null;
+  }
 
   /* ============================ Debounced writes =========================== */
   // Coalesce keystrokes. The doc's rev doesn't move until this flushes, so the
@@ -486,6 +596,83 @@
   // Re-gate the DM OS: clear the remembered unlock and reload, so boot shows the
   // passcode again. Non-destructive — the workspace content stays in localStorage.
   ACT['lock'] = () => { STORE.setUi({ passOk: false }); location.reload(); };
+
+  /* ------------------------- Quick note + notebook ------------------------ */
+  ACT['quick-note'] = () => { focusPadOnPaint = true; STORE.setUi({ quickNoteOpen: true }); mark('float'); };
+  ACT['close-quicknote'] = () => { STORE.setUi({ quickNoteOpen: false }); mark('float'); };
+  ACT['qn-date:change'] = (el) => STORE.setQuickNote({ date: el.value });
+  ACT['qn-target:change'] = (el) => STORE.setUi({ quickNoteTarget: el.value });
+  ACT['qn-input:input'] = (el) => { STORE.setQuickNote({ text: el.value, filed: false }); updateSelButton(); };
+  ACT['qn-input:keyup'] = () => updateSelButton();
+  ACT['qn-input:mouseup'] = () => updateSelButton();
+
+  ACT['new-section'] = () => {
+    const name = prompt('Name the new notebook section:');
+    if (name == null) return;
+    const sec = STORE.createSection(name.trim() || 'New section');
+    const open = ui().open; open[STORE.NB_ROOT] = true; STORE.setUi({ open });
+    refreshQuickNoteTargets();
+    mark('tree');
+    announce('Added section “' + sec.title + '”.');
+  };
+
+  ACT['file-all'] = () => {
+    const pad = ROOT.float.querySelector('.qn-pad');
+    if (!pad.value.trim()) { announce('Nothing to file yet.'); return; }
+    const dest = resolveTarget();
+    if (!dest) return;
+    const q = STORE.getQuickNote();
+    STORE.fileNote({ text: pad.value, date: q.date, sectionId: dest.sectionId, noteId: dest.noteId });
+    pad.value = ''; STORE.clearQuickNote();
+    refreshQuickNoteTargets(); updateSelButton(); mark('tree');
+    announce('Filed to “' + dest.label + '”.');
+  };
+
+  ACT['file-selection'] = () => {
+    const pad = ROOT.float.querySelector('.qn-pad');
+    const s = pad.selectionStart, e = pad.selectionEnd;
+    if (s === e || !pad.value.slice(s, e).trim()) { announce('Select some text in the pad first.'); return; }
+    const dest = resolveTarget();
+    if (!dest) return;
+    const q = STORE.getQuickNote();
+    STORE.fileNote({ text: pad.value.slice(s, e), date: q.date, sectionId: dest.sectionId, noteId: dest.noteId });
+    pad.value = pad.value.slice(0, s) + pad.value.slice(e);   // the moved text leaves the pad
+    STORE.setQuickNote({ text: pad.value });
+    pad.focus(); pad.selectionStart = pad.selectionEnd = s;
+    refreshQuickNoteTargets(); updateSelButton(); mark('tree');
+    announce('Moved the selection to “' + dest.label + '”.');
+  };
+
+  ACT['clear-note'] = () => {
+    const pad = ROOT.float.querySelector('.qn-pad');
+    if (!pad.value.trim()) { pad.value = ''; STORE.clearQuickNote(); updateSelButton(); return; }
+    openModal(`
+      <div class="modal-title">Clear the quick note?</div>
+      <p class="modal-hint">There are notes in the pad. File them into the notebook first, or clear without filing?</p>
+      <div class="modal-actions" style="flex-wrap:wrap; gap:8px;">
+        <button class="btn btn-sm btn-ghost" data-act="close-modal">Cancel</button>
+        <div class="spacer"></div>
+        <button class="btn btn-sm" data-act="clear-discard">Just clear</button>
+        <button class="btn btn-sm btn-primary" data-act="clear-file">File, then clear</button>
+      </div>`);
+  };
+  ACT['clear-discard'] = () => {
+    closeModal();
+    const pad = ROOT.float.querySelector('.qn-pad');
+    pad.value = ''; STORE.clearQuickNote(); updateSelButton();
+    announce('Cleared the pad.');
+  };
+  ACT['clear-file'] = () => {
+    closeModal();
+    const pad = ROOT.float.querySelector('.qn-pad');
+    const dest = resolveTarget();
+    if (!dest) return;
+    const q = STORE.getQuickNote();
+    STORE.fileNote({ text: pad.value, date: q.date, sectionId: dest.sectionId, noteId: dest.noteId });
+    pad.value = ''; STORE.clearQuickNote();
+    refreshQuickNoteTargets(); updateSelButton(); mark('tree');
+    announce('Filed to “' + dest.label + '”, then cleared.');
+  };
 
   ACT['sync'] = async () => {
     announce('Syncing from the campaign folder…');
@@ -634,14 +821,34 @@
     e.preventDefault();
   };
 
+  // Drag the Quick Note window by its header (but not when the pointer starts on a
+  // control inside the header, like the date box or close button).
+  ACT['qn-drag:pointerdown'] = (el, e) => {
+    if (e.target.closest('input, button, select, textarea')) return;
+    const box = ROOT.float.querySelector('.quicknote').getBoundingClientRect();
+    dragging = { kind: 'float', startX: e.clientX, startY: e.clientY, baseX: box.left, baseY: box.top };
+    el.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  };
+
   function onPointerMove(e) {
-    if (!dragging || dragging.kind !== 'grip') return;
-    const dx = e.clientX - dragging.startX;
-    const raw = dragging.which === 'a' ? dragging.startW + dx : dragging.startW - dx;
-    const w = Math.max(180, Math.min(560, raw));
-    // Poke CSS directly: no model change, no repaint, no jank.
-    if (dragging.which === 'a') { ui().widthA = w; ROOT.shell.style.setProperty('--rail-a', w + 'px'); }
-    else { ui().widthB = w; ROOT.shell.style.setProperty('--rail-b', w + 'px'); }
+    if (!dragging) return;
+    if (dragging.kind === 'grip') {
+      const dx = e.clientX - dragging.startX;
+      const raw = dragging.which === 'a' ? dragging.startW + dx : dragging.startW - dx;
+      const w = Math.max(180, Math.min(560, raw));
+      // Poke CSS directly: no model change, no repaint, no jank.
+      if (dragging.which === 'a') { ui().widthA = w; ROOT.shell.style.setProperty('--rail-a', w + 'px'); }
+      else { ui().widthB = w; ROOT.shell.style.setProperty('--rail-b', w + 'px'); }
+      return;
+    }
+    if (dragging.kind === 'float') {
+      const el = ROOT.float.querySelector('.quicknote'); if (!el) return;
+      const x = Math.max(4, Math.min(window.innerWidth - 80, dragging.baseX + (e.clientX - dragging.startX)));
+      const y = Math.max(4, Math.min(window.innerHeight - 40, dragging.baseY + (e.clientY - dragging.startY)));
+      el.style.left = x + 'px'; el.style.top = y + 'px'; el.style.right = 'auto'; el.style.bottom = 'auto';
+      ui().quickNotePos = { x: x, y: y };
+    }
   }
   function endDrag() {
     if (!dragging) return;
@@ -685,7 +892,9 @@
     on(ROOT.banner, 'click');
     on(ROOT.modal, 'click');
     on(ROOT.peek, 'click');
-    on(ROOT.float, 'click');
+    // The float is a separate root, so it needs its own delegated events: the pad
+    // fires input/keyup/mouseup, the date/target fire change, the header drags.
+    ['click', 'input', 'change', 'keyup', 'mouseup', 'pointerdown'].forEach(t => on(ROOT.float, t));
 
     NARROW.addEventListener('change', syncNarrow);
 

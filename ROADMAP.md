@@ -14,7 +14,9 @@
 >
 > **⏸ Feedback still pending.** Joby has *"comments and concerns"* they haven't given yet. Ask before starting new feature work.
 >
-> **Where to pick up:** **Sidebar B** (Initiative / Party / Lookup) is still a placeholder, and the notes window and flow chart are unbuilt (see `BACKLOG.md`). The old "review inbox" phase is now moot — content just lands via `campaign.js`. If uncertain where a pushed doc belongs, ask Joby in chat rather than building an inbox UI.
+> **What's new (2026-07-08 evening):** the **Notebook + Quick Note** system. A Notebook lives in the left sidebar with its own sections (separate from Story Folders); its notes open/edit in the center feed. The **Quick Note** tool opens a floating pad (date box) that persists until you Clear it; file the whole pad or a highlighted piece into a section (new note) or an existing note (append). Built on the shared document store via a reserved `nb_root` folder, partitioned out of the story views by `isInNotebook()`.
+>
+> **Where to pick up:** **Sidebar B** (Initiative / Party / Lookup) is still a placeholder, and the flow chart is unbuilt (see `BACKLOG.md`). Notebook follow-ups: keyword search, drag-reorder. The old "review inbox" phase is moot — content lands via `campaign.js`; if uncertain where a pushed doc belongs, ask Joby in chat.
 >
 > **Commits are unpushed.** `git push` deploys to the public site. Fine to do — there's nothing secret in the repo by design — but it's Joby's call.
 >
