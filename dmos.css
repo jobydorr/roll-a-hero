@@ -179,8 +179,32 @@ a.rail-title:focus-visible { outline: 2px solid var(--gold-bright); outline-offs
 .tree-row.row-dragging { opacity: 0.45; }
 .tree-row.drop-before { box-shadow: inset 0 2px 0 0 var(--gold); }
 .tree-row.drop-after { box-shadow: inset 0 -2px 0 0 var(--gold); }
+.tree-row.drop-into { background: rgba(194, 146, 46, 0.25); box-shadow: inset 0 0 0 2px var(--gold); }
 body.dmos-row-dragging, body.dmos-row-dragging * { cursor: grabbing !important; user-select: none; }
-.tree-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row-add {
+  margin-left: auto; flex: none; background: transparent; border: 0; cursor: pointer;
+  color: var(--brown); font-size: 14px; font-weight: 700; line-height: 1;
+  padding: 0 5px; border-radius: 4px; opacity: 0;
+}
+.tree-row:hover .row-add { opacity: 0.7; }
+.row-add:hover { opacity: 1; background: var(--surface-active); }
+
+/* Anchored popup menu (folder ＋). Reuses the modal root for click-outside close. */
+.menu-overlay { position: fixed; inset: 0; z-index: var(--z-modal); }
+.menu {
+  position: fixed; min-width: 190px; max-width: 260px;
+  background: var(--panel); border: 2px solid var(--panel-edge); border-radius: 12px;
+  box-shadow: 0 14px 44px var(--shadow); padding: 6px; animation: rise 0.12s ease both;
+}
+.menu-item {
+  display: flex; align-items: center; gap: 9px; width: 100%; text-align: left;
+  background: transparent; border: 0; border-radius: 8px; cursor: pointer;
+  padding: 8px 10px; font: inherit; font-size: 14px; color: var(--ink);
+}
+.menu-item .icon { color: var(--brown); }
+.menu-item:hover { background: var(--surface-active); }
+.menu-sep { height: 1px; background: var(--panel-edge); margin: 5px 4px; }
+.tree-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tree-badge { margin-left: auto; padding: 1px 7px; }
 .tree-restore { margin-left: auto; background: transparent; border: 0; cursor: pointer; font-size: 14px; }
 

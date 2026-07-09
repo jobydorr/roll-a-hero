@@ -109,7 +109,9 @@
   }
 
   /* ------------------------------ Workspace ------------------------------ */
-  const EMPTY_WS = { schema: SCHEMA, campaign: null, base: {}, overlay: {}, conflicts: {} };
+  // autoSync: whether boot merges campaign.js. True for the normal workspace (so
+  // Cowork pushes appear); a fresh "New workspace" sets it false so it stays blank.
+  const EMPTY_WS = { schema: SCHEMA, campaign: null, base: {}, overlay: {}, conflicts: {}, autoSync: true };
 
   // Mirrors normalize() in app.js:29 — backfill on load so the schema can grow
   // without a migration script.
@@ -118,6 +120,7 @@
     if (!w.schema) w.schema = SCHEMA;
     ['base', 'overlay', 'conflicts'].forEach(k => { if (!w[k] || typeof w[k] !== 'object') w[k] = {}; });
     if (!('campaign' in w)) w.campaign = null;
+    if (typeof w.autoSync !== 'boolean') w.autoSync = true;
     return w;
   }
 
@@ -329,16 +332,33 @@
      loaded by a <script> tag exactly like data.js. No fetch, so no server and no
      file:// problem: dm.html works on the live site AND by double-clicking it.
      Async only to keep the signature its callers already await. */
-  function loadCampaign() {
+  function loadCampaign(force) {
+    // A fresh workspace opts out of auto-seeding; boot passes no force, the
+    // "Sync from campaign" tool passes true to pull campaign.js in on demand.
+    if (!force && ws.autoSync === false) {
+      return Promise.resolve({ ok: false, reason: 'no-campaign' });
+    }
     const src = window.DM_CAMPAIGN;
     if (!src || !Array.isArray(src.docs) || !src.docs.length) {
       return Promise.resolve({ ok: false, reason: 'no-campaign' });
     }
     const result = mergeIncoming(src.docs.map(clone), new Set());
     if (src.campaign) ws.campaign = src.campaign;
+    if (force) ws.autoSync = true;   // an explicit sync re-enables ongoing updates
     persist();
     emit({ type: 'docs' });
     return Promise.resolve(Object.assign({ ok: true }, result));
+  }
+
+  // Start over: back up the current workspace, then blank it. autoSync goes false
+  // so a reload doesn't re-seed campaign.js. Export/Import make this reversible.
+  function newWorkspace() {
+    backup();
+    ws = clone(EMPTY_WS);
+    ws.autoSync = false;
+    persist();
+    write(KEY.quicknote, { date: nowISO().slice(0, 10), text: '', filed: false });
+    emit({ type: 'docs' });
   }
 
   /* --------------------- Export / Import (the safety net) ----------------- */
@@ -481,7 +501,7 @@
     createSection, fileNote,
     getQuickNote, setQuickNote, clearQuickNote,
 
-    loadCampaign, mergeIncoming, backup,
+    loadCampaign, mergeIncoming, backup, newWorkspace,
     exportWorkspace, importWorkspace,
 
     getUi: () => ui,

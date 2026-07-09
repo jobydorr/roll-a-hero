@@ -298,25 +298,23 @@
   function emptyFeedHTML() {
     if (campaignStatus && campaignStatus.reason === 'no-campaign') {
       return `<div class="feed-empty"><div class="note">
-        <strong>No campaign content yet.</strong> Nothing has been written to the
-        <code>campaign/</code> folder. Brainstorm a story arc in Cowork and push it here,
-        or make a folder and start writing.
+        <strong>A blank workspace.</strong> Build it here — use the ＋ in the Story Folders
+        sidebar to add a parent folder, then documents inside it — or brainstorm a campaign
+        in Cowork and it will appear.
         <div class="actions" style="margin-top:12px;">
-          <button class="btn btn-sm btn-primary" data-act="new-folder">${icon('book')} New folder</button>
-          <button class="btn btn-sm" data-act="new-doc">${icon('scroll')} New document</button>
+          <button class="btn btn-sm btn-primary" data-act="folder-menu" data-parent="">＋ Add a folder or document</button>
         </div></div></div>`;
     }
     if (campaignStatus && !campaignStatus.ok) {
       return `<div class="feed-empty"><div class="note note-warn">
-        <strong>Couldn't read the campaign folder.</strong>
+        <strong>Couldn't load the campaign.</strong>
         <br>${esc(campaignStatus.reason)}${campaignStatus.detail ? ' — ' + esc(campaignStatus.detail) : ''}
         <br><br>Nothing was changed. Your workspace is untouched.</div></div>`;
     }
     return `<div class="feed-empty"><div class="note">
       <strong>Nothing in here yet.</strong>
       <div class="actions" style="margin-top:12px;">
-        <button class="btn btn-sm btn-primary" data-act="new-doc">${icon('scroll')} New document</button>
-        <button class="btn btn-sm" data-act="new-folder">${icon('book')} New folder</button>
+        <button class="btn btn-sm btn-primary" data-act="folder-menu" data-parent="">＋ Add a folder or document</button>
       </div></div></div>`;
   }
 
@@ -350,8 +348,7 @@
           <li><button class="tool" data-act="search">${icon('scroll')} <span>Search</span> <kbd class="tool-kbd">Ctrl K</kbd></button></li>
           <li><button class="tool tool-quicknote" data-act="quick-note">${icon('flame')} <span>Quick note</span></button></li>
           <li><button class="tool" data-act="sync">${icon('scroll')} <span>Sync from campaign</span></button></li>
-          <li><button class="tool" data-act="new-folder">${icon('book')} <span>New folder</span></button></li>
-          <li><button class="tool" data-act="new-doc">${icon('star')} <span>New document</span></button></li>
+          <li><button class="tool" data-act="new-workspace">${icon('star')} <span>New workspace</span></button></li>
           <li><button class="tool" data-act="export">${icon('print')} <span>Export workspace</span></button></li>
           <li><button class="tool" data-act="import">${icon('check')} <span>Import workspace</span></button></li>
           <li><button class="tool tool-lock" data-act="lock"
@@ -359,9 +356,10 @@
         </ul>
       </div>
       <div class="rail-section">
-        <div class="rail-section-head">Story Folders</div>
+        <div class="rail-section-head">Story Folders
+          <button class="section-add" data-act="folder-menu" data-parent="" title="Add a parent folder or a document">＋</button></div>
         ${storyRoots.length ? `<ul class="tree">${storyRoots.map(d => treeNodeHTML(d, t, f, 0)).join('')}</ul>`
-                         : `<p class="rail-hint">Nothing yet. Make a folder, or sync from the campaign.</p>`}
+                         : `<p class="rail-hint">Nothing yet. Use the ＋ above to add a parent folder or a document.</p>`}
       </div>
       <div class="rail-section">
         <div class="rail-section-head">Notebook
@@ -378,20 +376,29 @@
         </div></li>`).join('')}</ul></div>` : ''}`;
   };
 
+  // A top-level folder (a "parent" — an Act) reads as a tome; a nested folder is a
+  // plain folder. Everything else uses its doc-type icon.
+  function docIconName(d) {
+    if (d.type !== 'folder') return DOC_TYPES[d.type].icon;
+    return (d.parent === null || d.parent === undefined) ? 'book' : 'folder';
+  }
+
   function treeNodeHTML(d, t, focus, depth) {
     const kids = t.kids.get(d.id) || [];
     const open = !!ui().open[d.id];
     const selected = focus.id === d.id;
+    const isFolder = d.type === 'folder';
     return `<li>
-      <div class="tree-row${selected ? ' is-selected' : ''}" data-act="select-node" data-doc="${d.id}" style="--depth:${depth}">
+      <div class="tree-row${selected ? ' is-selected' : ''}${isFolder ? ' is-folder' : ''}" data-act="select-node" data-doc="${d.id}" style="--depth:${depth}">
         <span class="tree-handle" data-act="row-drag" data-doc="${d.id}" title="Drag to reorder" aria-hidden="true">⠿</span>
         ${kids.length
           ? `<button class="tree-twist${open ? ' is-open' : ''}" data-act="toggle-folder" data-doc="${d.id}"
                      aria-expanded="${open}" aria-label="${open ? 'Collapse' : 'Expand'} ${esc(d.title)}">▸</button>`
           : `<span class="tree-twist tree-twist-empty" aria-hidden="true"></span>`}
-        <span class="tree-icon" aria-hidden="true">${icon(DOC_TYPES[d.type].icon)}</span>
+        <span class="tree-icon" aria-hidden="true">${icon(docIconName(d))}</span>
         <span class="tree-title">${esc(d.title)}</span>
         ${d.conflict ? '<span class="tag warn tree-badge" title="Cowork sent a newer version">!</span>' : ''}
+        ${isFolder ? `<button class="row-add" data-act="folder-menu" data-parent="${d.id}" title="Add to “${esc(d.title)}”">＋</button>` : ''}
       </div>
       ${kids.length && open ? `<ul>${kids.map(k => treeNodeHTML(k, t, focus, depth + 1)).join('')}</ul>` : ''}
     </li>`;
@@ -603,12 +610,40 @@
     mark('feed');
   };
 
-  ACT['new-doc'] = () => openNewDocModal(currentFolder());
-  ACT['new-folder'] = () => {
-    const d = STORE.createDoc({ type: 'folder', title: 'New folder', parent: currentFolder() });
-    const open = ui().open; open[d.id] = true; STORE.setUi({ open });
-    gotoFolder(d.id);
-    announce('Made a new folder.');
+  // The ＋ on the Story Folders header (data-parent="") and on each folder row
+  // (data-parent="<id>"). Only the header can add a top-level ("parent") folder.
+  ACT['folder-menu'] = (el) => {
+    const parent = el.dataset.parent || '';
+    const atRoot = parent === '';
+    let items = menuItem('create-child', { type: 'folder', parent: parent },
+      atRoot ? 'book' : 'folder', atRoot ? 'New parent folder' : 'New folder');
+    items += '<div class="menu-sep"></div>';
+    items += DOC_MENU_TYPES.map(t =>
+      menuItem('create-child', { type: t, parent: parent }, DOC_TYPES[t].icon, 'New ' + DOC_TYPES[t].label.toLowerCase())).join('');
+    openMenu(el, items);
+  };
+
+  ACT['create-child'] = (el) => {
+    const type = el.dataset.type;
+    const parent = el.dataset.parent || null;
+    closeModal();
+    if (type === 'folder') {
+      openTextPromptModal({
+        title: parent ? 'New folder' : 'New parent folder',
+        placeholder: 'Folder name', submitLabel: 'Add',
+        onSubmit: (name) => {
+          const f = STORE.createDoc({ type: 'folder', title: name, parent: parent });
+          const open = ui().open; if (parent) open[parent] = true; STORE.setUi({ open });
+          gotoFolder(f.id); mark('tree');
+          announce('Added folder “' + f.title + '”.');
+        },
+      });
+      return;
+    }
+    const d = STORE.createDoc({ type: type, parent: parent });
+    const open = ui().open; if (parent) open[parent] = true; STORE.setUi({ open });
+    gotoDoc(d.id); mark('tree');
+    announce('Added a new ' + (DOC_TYPES[type] ? DOC_TYPES[type].label.toLowerCase() : 'document') + '.');
   };
 
   ACT['delete-doc'] = (el) => {
@@ -721,8 +756,8 @@
   };
 
   ACT['sync'] = async () => {
-    announce('Syncing from the campaign folder…');
-    const res = await STORE.loadCampaign();
+    announce('Syncing from the campaign…');
+    const res = await STORE.loadCampaign(true);   // explicit → force, even in a fresh workspace
     campaignStatus = res;
     if (!res.ok) { mark('feed'); announce('Nothing to sync.'); return; }
     const bits = [];
@@ -733,16 +768,37 @@
     mark('tree', 'feed');
   };
 
-  ACT['export'] = () => {
+  function downloadWorkspace() {
     const blob = new Blob([STORE.exportWorkspace()], { type: 'application/json' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = 'dm-workspace-' + new Date().toISOString().slice(0, 10) + '.json';
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-    announce('Exported your workspace to a file.');
-  };
+  }
+  ACT['export'] = () => { downloadWorkspace(); announce('Exported your workspace to a file.'); };
   ACT['import'] = () => document.getElementById('importWs').click();
+
+  ACT['new-workspace'] = () => openModal(`
+    <div class="modal-title">Start a new workspace?</div>
+    <p class="modal-hint">This clears everything and gives you a blank slate to build a
+      different campaign in. Your current workspace downloads as a backup first, so nothing
+      is lost — re-open it any time with <strong>Import workspace</strong>.</p>
+    <div class="modal-actions" style="flex-wrap:wrap; gap:8px;">
+      <button class="btn btn-sm btn-ghost" data-act="close-modal">Cancel</button>
+      <div class="spacer"></div>
+      <button class="btn btn-sm btn-primary" data-act="new-workspace-go">Back up &amp; start fresh</button>
+    </div>`);
+  ACT['new-workspace-go'] = () => {
+    closeModal();
+    downloadWorkspace();
+    STORE.newWorkspace();
+    STORE.setUi({ open: {}, focus: '#/f/', quickNoteOpen: false, quickNoteTarget: null });
+    campaignStatus = { ok: false, reason: 'no-campaign' };
+    location.hash = '#/f/';
+    mark('tree', 'feed', 'float');
+    announce('Started a new workspace. Your old one was downloaded as a backup.');
+  };
 
   ACT['modal-backdrop'] = (el, e) => { if (e.target === el) closeModal(); };
   ACT['close-modal'] = () => closeModal();
@@ -761,13 +817,6 @@
     mark('tree');
   };
 
-  const currentFolder = () => {
-    const f = parseHash();
-    if (!f.id) return null;
-    const d = STORE.get(f.id);
-    if (!d) return null;
-    return d.type === 'folder' ? d.id : (d.parent || null);
-  };
 
   /* ============================ Modal + peek =============================== */
   function openModal(html, extraClass) {
@@ -796,6 +845,24 @@
     input.onkeydown = (e) => { if (e.key === 'Enter') { e.preventDefault(); submit(); } };
     input.focus();
   }
+
+  // A small anchored popup menu (reuses the modal root + its click-outside close).
+  function menuItem(act, data, iconName, label) {
+    const attrs = Object.keys(data).map(k => `data-${k}="${esc(String(data[k]))}"`).join(' ');
+    return `<button class="menu-item" data-act="${act}" ${attrs}>${icon(iconName)} <span>${esc(label)}</span></button>`;
+  }
+  function openMenu(anchorEl, itemsHTML) {
+    const r = anchorEl.getBoundingClientRect();
+    ROOT.modal.innerHTML = `<div class="menu-overlay" data-act="modal-backdrop"><div class="menu" role="menu">${itemsHTML}</div></div>`;
+    const box = ROOT.modal.querySelector('.menu');
+    box.style.left = r.left + 'px';
+    box.style.top = (r.bottom + 4) + 'px';
+    const b = box.getBoundingClientRect();
+    if (b.right > window.innerWidth - 8) box.style.left = Math.max(8, window.innerWidth - 8 - b.width) + 'px';
+    if (b.bottom > window.innerHeight - 8) box.style.top = Math.max(8, r.top - b.height - 4) + 'px';
+  }
+
+  const DOC_MENU_TYPES = ['beat', 'scene', 'encounter', 'npc', 'creature', 'location', 'session', 'note'];
 
   /* ============================ App-wide search =========================== */
   const pathLabel = (id) => pathOf(id).slice(0, -1).map(d => d.title).join(' › ');
@@ -854,31 +921,6 @@
            placeholder="Search all story &amp; notebook…" autocomplete="off" spellcheck="false"></div>
       <div class="search-results" id="searchResults"><p class="modal-hint">Type to search across every folder and note.</p></div>`, 'modal-wide modal-search');
     ROOT.modal.querySelector('#searchInput').focus();
-  }
-
-  function openNewDocModal(parent) {
-    const types = Object.keys(DOC_TYPES).filter(t => t !== 'folder');
-    openModal(`
-      <div class="modal-title">New document</div>
-      <p class="modal-hint">Each kind opens with its own prompts. You can change them all later.</p>
-      <div class="field"><label for="ndTitle">What's it called?</label>
-        <input type="text" id="ndTitle" placeholder="The Hollow Bell"></div>
-      <div class="field"><label for="ndType">What kind?</label>
-        <select id="ndType">${types.map(t => `<option value="${t}">${esc(DOC_TYPES[t].label)}</option>`).join('')}</select></div>
-      <div class="modal-actions">
-        <button class="btn btn-sm btn-ghost" data-act="close-modal">Cancel</button>
-        <div class="spacer"></div>
-        <button class="btn btn-sm btn-primary" data-act="new-doc-go">Make it</button>
-      </div>`);
-    ROOT.modal.querySelector('#ndTitle').focus();
-    ACT['new-doc-go'] = () => {
-      const title = ROOT.modal.querySelector('#ndTitle').value.trim();
-      const type = ROOT.modal.querySelector('#ndType').value;
-      closeModal();
-      const d = STORE.createDoc({ type, title: title || undefined, parent });
-      gotoDoc(d.id);
-      announce('Made a new ' + DOC_TYPES[type].label.toLowerCase() + '.');
-    };
   }
 
   function openDiffModal(id) {
@@ -1001,30 +1043,46 @@
     }
     if (dragging.kind === 'tree') {
       clearDropMarks();
+      dragging.dropTarget = null; dragging.dropInto = null;
       const under = document.elementFromPoint(e.clientX, e.clientY);
       const row = under && under.closest ? under.closest('.tree-row') : null;
-      dragging.dropTarget = null;
       if (!row) return;
       const tid = row.dataset.doc;
-      const td = tid && STORE.get(tid);
-      // Reorder among siblings only (same parent), never onto itself.
-      if (!td || tid === dragging.id || (td.parent || null) !== dragging.parent) return;
+      if (!tid || tid === dragging.id) return;
+      const td = STORE.get(tid);
+      if (!td) return;
+      // A folder dropped into its own subtree would make a cycle — refuse it.
+      const cyclic = pathOf(tid).some(a => a.id === dragging.id);
+      if (cyclic) return;
       const r = row.getBoundingClientRect();
-      const before = (e.clientY - r.top) < r.height / 2;
+      const y = (e.clientY - r.top) / r.height;   // 0 (top) .. 1 (bottom)
+      if (td.type === 'folder' && y > 0.25 && y < 0.75) {
+        row.classList.add('drop-into');            // drop INTO the folder
+        dragging.dropInto = tid;
+        return;
+      }
+      const before = y < 0.5;                       // reorder as a sibling of this row
       row.classList.add(before ? 'drop-before' : 'drop-after');
       dragging.dropTarget = tid; dragging.dropBefore = before;
     }
   }
 
   function clearDropMarks() {
-    if (ROOT.tree) ROOT.tree.querySelectorAll('.drop-before, .drop-after').forEach(n => n.classList.remove('drop-before', 'drop-after'));
+    if (ROOT.tree) ROOT.tree.querySelectorAll('.drop-before, .drop-after, .drop-into')
+      .forEach(n => n.classList.remove('drop-before', 'drop-after', 'drop-into'));
   }
 
-  // Give the dragged doc a new order value between its new neighbours. One patch,
-  // not a re-numbering of the whole list. Siblings sort by (order, title).
-  function reorderSibling(id, targetId, before) {
-    const d = STORE.get(id); if (!d) return;
-    const parent = d.parent || null;
+  // Move the dragged doc INTO a folder (append at the end).
+  function reparentInto(id, folderId) {
+    STORE.patch(id, { parent: folderId, order: STORE.nextOrder(folderId) });
+  }
+
+  // Place the dragged doc next to a target row, adopting that row's parent — so
+  // this both reorders within a folder AND moves an item between folders. One
+  // patch, an interpolated order between the new neighbours.
+  function reorderAt(id, targetId, before) {
+    const target = STORE.get(targetId); if (!target) return;
+    const parent = target.parent || null;
     const sibs = STORE.docs()
       .filter(x => (x.parent || null) === parent && x.id !== id)
       .sort((a, b) => (a.order - b.order) || a.title.localeCompare(b.title));
@@ -1037,7 +1095,7 @@
     else if (prev) order = prev.order + 100;
     else if (next) order = next.order - 100;
     else order = 100;
-    STORE.patch(id, { order });
+    STORE.patch(id, { parent, order });
   }
 
   function endDrag() {
@@ -1049,7 +1107,8 @@
       clearDropMarks();
       const dr = ROOT.tree.querySelector('.row-dragging');
       if (dr) dr.classList.remove('row-dragging');
-      if (drag.dropTarget) reorderSibling(drag.id, drag.dropTarget, drag.dropBefore);
+      if (drag.dropInto) reparentInto(drag.id, drag.dropInto);
+      else if (drag.dropTarget) reorderAt(drag.id, drag.dropTarget, drag.dropBefore);
       else mark('tree');   // repaint to clear any lingering drag visuals
     } else {
       STORE.saveUi();      // grip widths / float position

@@ -25,6 +25,7 @@
     print: wrap('<path fill="currentColor" d="M7 3h10v4H7Zm-2 6h14a2 2 0 0 1 2 2v6h-4v3H7v-3H3v-6a2 2 0 0 1 2-2Zm4 6v4h6v-4Zm8-3a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/>'),
     check: wrap('<path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m4 12 5 5L20 6"/>'),
     book: wrap('<path fill="currentColor" d="M4 4a2 2 0 0 1 2-2h12v18H6a2 2 0 0 0-2 2ZM6 18h10v2H6a0 0 0 0 1 0 0Z"/>'),
+    folder: wrap('<path fill="currentColor" d="M3 5.5A1.5 1.5 0 0 1 4.5 4h3.8a1.5 1.5 0 0 1 1.06.44L10.7 6H19.5A1.5 1.5 0 0 1 21 7.5v10A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5Z"/>'),
     sword: wrap('<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M14.5 3H21v6.5L9 21.5 2.5 15ZM21 3 9.5 14.5M6 12l6 6"/>'),
     heart: wrap('<path fill="currentColor" d="M12 21.3 4.3 14a5 5 0 0 1 7.1-7.05l.6.6.6-.6A5 5 0 0 1 19.7 14Z"/>'),
     flame: wrap('<path fill="currentColor" d="M12 2c1 3 5 5 5 9a5 5 0 0 1-10 0c0-1.4.5-2.3 1.2-3.2C8.8 9 9 10 9.5 10.5 9 8 12 5 12 2Z"/>'),
