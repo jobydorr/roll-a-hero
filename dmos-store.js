@@ -470,11 +470,94 @@
   }
   const clearQuickNote = () => setQuickNote({ text: '', filed: false });
 
+  /* ---------------------- Initiative roster (at the table) ---------------- */
+  /* The right-rail roster IS the turn order: `entries` in initiative order, a
+     `turn` cursor into it, and a `round` counter. Each entry either references a
+     workspace doc (kind 'doc' — a creature/NPC), a shared hero (kind 'hero',
+     wired in the Firebase phase), or is a one-off (kind 'custom'). Kept in its
+     own localStorage key, separate from the document store — a combat is
+     ephemeral table state, not campaign content, and never syncs to Cowork. */
+  const EMPTY_INIT = { round: 1, turn: 0, entries: [] };
+
+  function getInitiative() {
+    const s = read(KEY.initiative, EMPTY_INIT);
+    if (!Array.isArray(s.entries)) s.entries = [];
+    if (typeof s.round !== 'number' || s.round < 1) s.round = 1;
+    if (typeof s.turn !== 'number' || s.turn < 0) s.turn = 0;
+    if (s.turn >= s.entries.length) s.turn = 0;
+    return s;
+  }
+  const writeInit = (s) => { write(KEY.initiative, s); emit({ type: 'initiative' }); return s; };
+  const iniId = () => 'ini_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
+
+  // Add an entry. For a doc/hero ref, refuse a duplicate so a name can't be
+  // added to the same fight twice. Returns the new entry, or the existing one.
+  function rosterAdd(entry) {
+    const s = getInitiative();
+    const e = Object.assign({ id: iniId(), kind: 'custom', ref: null, name: 'New', init: null }, entry || {});
+    if (e.ref) { const dup = s.entries.find(x => x.ref === e.ref); if (dup) return dup; }
+    s.entries.push(e);
+    writeInit(s);
+    return e;
+  }
+  function rosterPatch(id, partial) {
+    const s = getInitiative();
+    const e = s.entries.find(x => x.id === id); if (!e) return null;
+    Object.assign(e, partial);
+    writeInit(s);
+    return e;
+  }
+  function rosterRemove(id) {
+    const s = getInitiative();
+    const i = s.entries.findIndex(x => x.id === id); if (i < 0) return;
+    s.entries.splice(i, 1);
+    if (s.turn > i) s.turn -= 1;            // keep the cursor on the same combatant
+    if (s.turn >= s.entries.length) s.turn = 0;
+    writeInit(s);
+  }
+  // Move an entry to a new index (drag-drop). The index is in the post-removal
+  // list, matching how the UI computes a drop position.
+  function rosterMove(id, toIndex) {
+    const s = getInitiative();
+    const from = s.entries.findIndex(x => x.id === id); if (from < 0) return;
+    const [e] = s.entries.splice(from, 1);
+    const to = Math.max(0, Math.min(s.entries.length, toIndex));
+    s.entries.splice(to, 0, e);
+    writeInit(s);
+  }
+  // Sort by initiative, high to low; entries with no number sink to the bottom
+  // but keep their relative order. Resets the turn cursor to the top.
+  function rosterSort() {
+    const s = getInitiative();
+    s.entries = s.entries
+      .map((e, i) => [e, i])
+      .sort((a, b) => {
+        const av = a[0].init == null ? -Infinity : a[0].init;
+        const bv = b[0].init == null ? -Infinity : b[0].init;
+        return (bv - av) || (a[1] - b[1]);
+      })
+      .map(p => p[0]);
+    s.turn = 0;
+    writeInit(s);
+  }
+  // Advance/rewind the turn cursor, rolling the round counter on wrap.
+  function initStep(dir) {
+    const s = getInitiative();
+    const n = s.entries.length; if (!n) return;
+    let t = s.turn + (dir || 1);
+    if (t >= n) { t = 0; s.round += 1; }
+    else if (t < 0) { t = n - 1; s.round = Math.max(1, s.round - 1); }
+    s.turn = t;
+    writeInit(s);
+  }
+  const clearInitiative = () => writeInit(clone(EMPTY_INIT));
+
   /* --------------------------------- UI ----------------------------------- */
   const EMPTY_UI = {
     passOk: false, open: {}, focus: null,
     railA: true, railB: true, widthA: 268, widthB: 300, tab: 'initiative',
     editingBody: null, quickNoteOpen: false, quickNotePos: null, quickNoteTarget: null,
+    campaignCode: '',   // the code the DM reads the shared party from (remembered per-browser)
   };
   let ui = Object.assign(clone(EMPTY_UI), read(KEY.ui, EMPTY_UI));
   const saveUi = () => write(KEY.ui, ui);
@@ -500,6 +583,10 @@
     NB_ROOT, ensureNotebook, isInNotebook, notebookSections, notebookTargets,
     createSection, fileNote,
     getQuickNote, setQuickNote, clearQuickNote,
+
+    // Initiative roster (the right-rail "at the table" list)
+    getInitiative, rosterAdd, rosterPatch, rosterRemove, rosterMove, rosterSort,
+    initStep, clearInitiative,
 
     loadCampaign, mergeIncoming, backup, newWorkspace,
     exportWorkspace, importWorkspace,

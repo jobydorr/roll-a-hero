@@ -405,15 +405,298 @@
   }
 
   /* ============================ The rail pane ============================== */
+  /* The right rail is the "at the table" roster: one ordered list that IS the
+     initiative order. Player heroes (Firebase phase), NPCs, and creatures share
+     it. Drag the ⠿ handle to reorder; click a name for a scrollable stat card;
+     add via the search box or a story wikilink's "＋ Initiative". */
   PAINT.rail = function () {
+    const s = STORE.getInitiative();
     document.getElementById('railHead').innerHTML = `
       <button class="rail-collapse" data-act="collapse-b" title="Hide this sidebar" aria-label="Hide sidebar">›</button>
       <div class="rail-title"><span>At the table</span></div>`;
+
+    const rows = s.entries.map((e, i) => rosterRowHTML(e, i, s)).join('');
     document.getElementById('railBody').innerHTML = `
-      <div class="rail-section">
-        <p class="rail-hint">Initiative, the party, and fast lookup arrive in the next phase.</p>
+      <div class="ini">
+        ${partyPanelHTML()}
+        <div class="ini-bar">
+          <span class="ini-round">Round <strong>${s.round}</strong></span>
+          <span class="spacer"></span>
+          <button class="ini-step" data-act="ini-prev" title="Previous turn"${s.entries.length ? '' : ' disabled'} aria-label="Previous turn">‹</button>
+          <button class="ini-step ini-step-next" data-act="ini-next" title="Next turn"${s.entries.length ? '' : ' disabled'}>Next ›</button>
+        </div>
+        <div class="ini-addbar">
+          <input type="text" class="ini-search" data-act="ini-search" placeholder="Add a creature, NPC, or name…" autocomplete="off" spellcheck="false" aria-label="Add to initiative">
+          <div class="ini-results" id="iniResults" hidden></div>
+        </div>
+        <ol class="ini-list" id="iniList">${rows || `<li class="ini-empty">No one in the fight yet.<br><span class="rail-hint">Search above, or hover a name in the story and pick “＋ Initiative”.</span></li>`}</ol>
+        ${s.entries.length ? `<div class="ini-tools">
+          <button class="btn btn-sm btn-ghost" data-act="ini-sort" title="Order by initiative number, high to low">Sort by init</button>
+          <span class="spacer"></span>
+          <button class="btn btn-sm btn-ghost" data-act="ini-clear">Clear all</button>
+        </div>` : ''}
       </div>`;
   };
+
+  // What a roster entry resolves to right now — its ref doc may have been edited
+  // or deleted since it was added. `side` drives the row's left-edge colour.
+  function resolveEntry(e) {
+    if (e.kind === 'doc' && e.ref) {
+      const d = STORE.get(e.ref);
+      if (d) {
+        const T = DOC_TYPES[d.type] || {};
+        return { name: d.title, side: d.type === 'npc' ? 'npc' : 'foe', icon: T.icon || 'shield', typeLabel: T.label || '', doc: d };
+      }
+      return { name: e.name || 'Removed', side: 'foe', icon: 'shield', typeLabel: 'No longer in the workspace', doc: null };
+    }
+    if (e.kind === 'hero') return { name: e.name || 'Hero', side: 'party', icon: 'star', typeLabel: 'Player character', doc: null };
+    return { name: e.name || 'Combatant', side: 'foe', icon: 'sword', typeLabel: 'One-off', doc: null };
+  }
+
+  function rosterRowHTML(e, i, s) {
+    const info = resolveEntry(e);
+    const isTurn = s.entries.length && i === s.turn;
+    return `<li class="ini-row side-${info.side}${isTurn ? ' is-turn' : ''}" data-id="${e.id}">
+      <span class="ini-handle" data-act="roster-drag" data-id="${e.id}" title="Drag to reorder" aria-hidden="true">⠿</span>
+      <input class="ini-num" data-act="ini-num" data-id="${e.id}" type="text" inputmode="numeric" maxlength="3"
+             value="${e.init == null ? '' : e.init}" title="Initiative" aria-label="Initiative for ${esc(info.name)}" placeholder="–">
+      <button class="ini-name" data-act="roster-open" data-id="${e.id}" title="See stats">
+        <span class="ini-ico" aria-hidden="true">${icon(info.icon)}</span>
+        <span class="ini-name-text">${esc(info.name)}</span>
+      </button>
+      <button class="ini-x" data-act="roster-remove" data-id="${e.id}" title="Remove" aria-label="Remove ${esc(info.name)}">×</button>
+    </li>`;
+  }
+
+  /* ------------------------------ Roster acts ----------------------------- */
+  ACT['ini-next'] = () => STORE.initStep(1);
+  ACT['ini-prev'] = () => STORE.initStep(-1);
+  ACT['ini-sort'] = () => STORE.rosterSort();
+  ACT['ini-clear'] = () => { if (confirm('Clear everyone from the initiative list?\n\nYour creature and NPC pages are untouched.')) STORE.clearInitiative(); };
+  ACT['roster-remove'] = (el) => STORE.rosterRemove(el.dataset.id);
+  ACT['ini-num:change'] = (el) => {
+    const v = el.value.trim();
+    const n = v === '' ? null : parseInt(v, 10);
+    STORE.rosterPatch(el.dataset.id, { init: (n == null || isNaN(n)) ? null : n });
+  };
+
+  // Add a workspace doc (creature/NPC) — from the search results or a story
+  // wikilink's peek. Opens the rail if it was collapsed so the add is visible.
+  ACT['roster-add-doc'] = (el) => {
+    const d = STORE.get(el.dataset.doc); if (!d) return;
+    STORE.rosterAdd({ kind: 'doc', ref: d.id, name: d.title });
+    hidePeek();
+    if (!ui().railB) { STORE.setUi({ railB: true }); applyRails(); }
+    announce('Added ' + d.title + ' to initiative.');
+  };
+  ACT['roster-add-custom'] = (el) => {
+    const name = (el.dataset.name || '').trim(); if (!name) return;
+    STORE.rosterAdd({ kind: 'custom', name });
+    announce('Added ' + name + ' to initiative.');
+  };
+  ACT['roster-open'] = (el) => {
+    const e = STORE.getInitiative().entries.find(x => x.id === el.dataset.id);
+    if (e) openStatCard(e);
+  };
+
+  // Live search as you type — matches workspace creatures & NPCs, plus an
+  // always-present "add as a one-off". Updates ONLY #iniResults, so typing never
+  // triggers a rail repaint (the pane would defer as "live" anyway).
+  ACT['ini-search:input'] = (el) => renderIniResults(el.value);
+  ACT['ini-search:keydown'] = (el, e) => {
+    if (e.key === 'Escape') { el.value = ''; renderIniResults(''); return; }
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+    const first = document.querySelector('#iniResults .ini-result');
+    el.blur();                       // so the add's repaint isn't deferred as live
+    if (first) first.click();
+  };
+  function renderIniResults(query) {
+    const box = document.getElementById('iniResults');
+    if (!box) return;
+    const q = query.trim().toLowerCase();
+    if (!q) { box.hidden = true; box.innerHTML = ''; return; }
+    const hits = STORE.docs()
+      .filter(d => (d.type === 'creature' || d.type === 'npc') && !STORE.isInNotebook(d.id))
+      .filter(d => d.title.toLowerCase().includes(q) || DOC_TYPES[d.type].label.toLowerCase().includes(q))
+      .slice(0, 8)
+      .map(d => `<button class="ini-result" data-act="roster-add-doc" data-doc="${d.id}">
+        <span class="ini-ico" aria-hidden="true">${icon(DOC_TYPES[d.type].icon)}</span>
+        <span class="ini-result-name">${esc(d.title)}</span>
+        <span class="ini-result-type">${esc(DOC_TYPES[d.type].label)}</span></button>`).join('');
+    box.innerHTML = hits + `<button class="ini-result ini-result-custom" data-act="roster-add-custom" data-name="${esc(query.trim())}">
+      <span class="ini-ico" aria-hidden="true">${icon('sword')}</span>
+      <span class="ini-result-name">Add “${esc(query.trim())}”</span>
+      <span class="ini-result-type">one-off</span></button>`;
+    box.hidden = false;
+  }
+
+  // Click a roster name → a sizable, scrollable stat card. For a creature/NPC it
+  // shows that page's template fields + notes; a "one-off" has nothing to show.
+  function openStatCard(e) {
+    if (e.kind === 'hero' && e.snapshot && window.RAH && window.RAH.withState) { openHeroCard(e); return; }
+    const info = resolveEntry(e);
+    let inner;
+    if (info.doc) {
+      const d = info.doc, T = DOC_TYPES[d.type] || { fields: [] };
+      const statRow = (k, v) => `<div class="stat-row"><div class="stat-k">${esc(k)}</div><div class="stat-v">${esc(v).replace(/\n/g, '<br>')}</div></div>`;
+      const fieldRows = (T.fields || []).map(([k, prompt]) => { const v = (d.fields || {})[k]; return v ? statRow(prompt, v) : ''; }).join('');
+      const bodyRow = d.body ? statRow('Notes', unlink(d.body)) : '';
+      inner = (fieldRows + bodyRow) || '<p class="modal-hint">Nothing written on this page yet.</p>';
+    } else {
+      inner = `<p class="modal-hint">${e.kind === 'hero' ? 'Player-character stats arrive with the party phase.' : 'A one-off combatant — no page to show.'}</p>`;
+    }
+    openModal(`
+      <div class="stat-head">
+        <span class="stat-ico" aria-hidden="true">${icon(info.icon)}</span>
+        <div class="stat-heading">
+          <div class="modal-title">${esc(info.name)}</div>
+          ${info.typeLabel ? `<div class="stat-sub">${esc(info.typeLabel)}</div>` : ''}
+        </div>
+        ${info.doc ? `<a class="btn btn-sm btn-ghost stat-open" href="#/d/${info.doc.id}" data-act="close-modal">Open page →</a>` : ''}
+      </div>
+      <div class="stat-body">${inner}</div>`, 'modal-wide stat-modal');
+  }
+
+  // Drag a roster row by its ⠿ handle to reorder. Flat list — no nesting.
+  ACT['roster-drag:pointerdown'] = (el, e) => {
+    const id = el.dataset.id;
+    if (!STORE.getInitiative().entries.some(x => x.id === id)) return;
+    dragging = { kind: 'roster', id: id, dropTarget: null, dropBefore: true };
+    el.setPointerCapture(e.pointerId);
+    const row = el.closest('.ini-row'); if (row) row.classList.add('row-dragging');
+    document.body.classList.add('dmos-row-dragging');
+    e.preventDefault();
+  };
+  function clearRosterMarks() {
+    if (ROOT.rail) ROOT.rail.querySelectorAll('.drop-before, .drop-after')
+      .forEach(n => n.classList.remove('drop-before', 'drop-after'));
+  }
+
+  /* ----------------------- Shared party (Firebase) ------------------------ */
+  // The rail can pull the players' SHARED heroes into the roster. The DM types
+  // their campaign code once (remembered in the store); we read that campaign
+  // from Firebase via RAHSync. partyState is transient view state — the code
+  // persists, the fetched list does not (a re-fetch is cheap and always current).
+  let partyState = { status: 'idle', code: '', heroes: [], error: '' };
+  const sharingOn = () => !!(window.RAHSync && window.RAHSync.available);
+
+  function partyPanelHTML() {
+    if (!sharingOn()) {
+      return `<div class="party party-off"><span class="rail-hint">The shared-party connection isn’t available here, so player characters can’t be pulled in. (Creatures &amp; NPCs still work.)</span></div>`;
+    }
+    const code = ui().campaignCode || '';
+    let list = '';
+    if (partyState.status === 'loading') list = `<div class="party-status">Loading the party…</div>`;
+    else if (partyState.status === 'error') list = `<div class="party-status party-err">${esc(partyState.error || 'Could not load that campaign.')}</div>`;
+    else if (partyState.status === 'ok') {
+      list = partyState.heroes.length
+        ? partyState.heroes.map(partyHeroRowHTML).join('')
+        : `<div class="party-status">No shared characters under “${esc(partyState.code)}” yet.</div>`;
+    }
+    return `<div class="party">
+      <div class="party-row">
+        <input class="party-code" data-act="party-code" type="text" value="${esc(code)}"
+               placeholder="Campaign code" autocomplete="off" spellcheck="false" aria-label="Campaign code">
+        <button class="btn btn-sm btn-ghost" data-act="party-load">Load</button>
+      </div>
+      ${list ? `<div class="party-list">${list}</div>` : ''}
+    </div>`;
+  }
+
+  function partyHeroRowHTML(h) {
+    const inFight = STORE.getInitiative().entries.some(e => e.ref === h._id);
+    return `<div class="party-hero">
+      <span class="ini-ico" aria-hidden="true">${icon('star')}</span>
+      <span class="party-hero-name">${esc(h.name || 'Unnamed Hero')}${h._sub ? ` <span class="party-hero-sub">${esc(h._sub)}</span>` : ''}</span>
+      ${inFight
+        ? `<span class="party-in" title="Already in the fight">✓</span>`
+        : `<button class="party-add" data-act="party-add" data-id="${esc(h._id)}" title="Add to initiative" aria-label="Add ${esc(h.name || 'hero')} to initiative">＋</button>`}
+    </div>`;
+  }
+
+  ACT['party-code:change'] = (el) => STORE.setUi({ campaignCode: el.value.trim() });
+  ACT['party-code:keydown'] = (el, e) => {
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+    STORE.setUi({ campaignCode: el.value.trim() });
+    el.blur();
+    loadParty();
+  };
+  ACT['party-load'] = () => loadParty();
+  ACT['party-add'] = (el) => {
+    const h = partyState.heroes.find(x => x._id === el.dataset.id);
+    if (!h) return;
+    STORE.rosterAdd({ kind: 'hero', ref: h._id, name: h.name || 'Hero', snapshot: h.character });
+    announce('Added ' + (h.name || 'the hero') + ' to initiative.');
+  };
+
+  function loadParty() {
+    if (!sharingOn()) return;
+    const code = (ui().campaignCode || '').trim();
+    if (!code) { announce('Type your campaign code first.'); return; }
+    partyState = { status: 'loading', code: code, heroes: [], error: '' };
+    mark('rail');
+    window.RAHSync.listCampaign(code).then((rows) => {
+      const heroes = (rows || []).map((h) => {
+        let sub = '';
+        try {
+          sub = window.RAH.withState(h.character, () => {
+            const r = window.RAH.getRace(), c = window.RAH.getClass();
+            return [r ? r.name : '', c ? c.name : ''].filter(Boolean).join(' ');
+          });
+        } catch (err) { /* a malformed snapshot just shows no sub-line */ }
+        return Object.assign({}, h, { _sub: sub });
+      });
+      partyState = { status: 'ok', code: code, heroes: heroes, error: '' };
+      mark('rail');
+    }).catch((err) => {
+      partyState = { status: 'error', code: code, heroes: [], error: (err && err.message) || 'Could not reach the party.' };
+      mark('rail');
+    });
+  }
+
+  // A player's stat card: real HP/AC/abilities computed from their shared
+  // snapshot, plus the full features/spells write-up. withState is SYNC-ONLY
+  // (app.js warning) — everything below runs inside one synchronous pass.
+  function openHeroCard(e) {
+    const R = window.RAH;
+    const d = R.withState(e.snapshot, () => {
+      const r = R.getRace(), c = R.getClass(), a = R.getArchetype();
+      const wis = R.finalScore('wis');
+      const abil = ['str', 'dex', 'con', 'int', 'wis', 'cha'].map((k) => {
+        const sc = R.finalScore(k);
+        return { k: k, score: sc, mod: sc == null ? null : R.modOf(sc) };
+      });
+      return {
+        level: R.charLevel(),
+        race: r ? r.name : '', klass: c ? c.name : '', arch: a ? a.name : '',
+        hp: R.computeHP(), ac: R.computeAC(),
+        passive: wis == null ? null : 10 + R.modOf(wis),
+        spell: R.spellNumbers(), abil: abil,
+        ref: R.referenceHTML(false),
+      };
+    });
+    const stat = (num, lab) => `<div class="hs-stat"><span class="hs-num">${num}</span><span class="hs-lab">${lab}</span></div>`;
+    const top = `<div class="hs-top">
+      ${stat(d.hp, 'HP')}${stat(d.ac, 'AC')}${d.passive == null ? '' : stat(d.passive, 'Passive')}
+      ${d.spell ? stat('+' + d.spell.atk, 'Spell atk') + stat(d.spell.dc, 'Spell DC') : ''}
+    </div>`;
+    const abils = `<div class="hs-abils">${d.abil.map((x) =>
+      `<div class="hs-ab"><span class="hs-ab-k">${x.k.toUpperCase()}</span><span class="hs-ab-v">${x.score == null ? '—' : x.score}</span><span class="hs-ab-m">${x.mod == null ? '' : R.fmtMod(x.mod)}</span></div>`).join('')}</div>`;
+    openModal(`
+      <div class="stat-head">
+        <span class="stat-ico" aria-hidden="true">${icon('star')}</span>
+        <div class="stat-heading">
+          <div class="modal-title">${esc(e.name || 'Hero')}</div>
+          <div class="stat-sub">Level ${d.level} ${esc(d.race)} ${esc(d.klass)}${d.arch ? ' — ' + esc(d.arch) : ''}</div>
+        </div>
+      </div>
+      <div class="stat-body">
+        ${top}${abils}
+        <div class="writeup hs-ref">${d.ref}</div>
+      </div>`, 'modal-wide stat-modal hero-modal');
+  }
 
   /* ============================== The banner =============================== */
   PAINT.banner = function () {
@@ -957,7 +1240,10 @@
     ROOT.peek.innerHTML = `<div class="peek" role="note">
       <div class="peek-head">${icon(T.icon)} <strong>${esc(d.title)}</strong> <span class="tag">${esc(T.label)}</span></div>
       <p class="peek-body">${esc(summary) || '<em>Nothing written here yet.</em>'}</p>
-      <a class="peek-go" href="#/d/${d.id}" data-act="jump">Open it →</a></div>`;
+      <div class="peek-actions">
+        <a class="peek-go" href="#/d/${d.id}" data-act="jump">Open it →</a>
+        ${(d.type === 'creature' || d.type === 'npc') ? `<button class="peek-add" data-act="roster-add-doc" data-doc="${d.id}">＋ Initiative</button>` : ''}
+      </div></div>`;
     const box = ROOT.peek.firstChild;
     const r = link.getBoundingClientRect();
     const top = r.bottom + 8;
@@ -1041,6 +1327,20 @@
       ui().quickNotePos = { x: x, y: y };
       return;
     }
+    if (dragging.kind === 'roster') {
+      clearRosterMarks();
+      dragging.dropTarget = null; dragging.dropBefore = true;
+      const under = document.elementFromPoint(e.clientX, e.clientY);
+      const row = under && under.closest ? under.closest('.ini-row') : null;
+      if (!row) return;
+      const tid = row.dataset.id;
+      if (!tid || tid === dragging.id) return;
+      const r = row.getBoundingClientRect();
+      const before = (e.clientY - r.top) / r.height < 0.5;
+      row.classList.add(before ? 'drop-before' : 'drop-after');
+      dragging.dropTarget = tid; dragging.dropBefore = before;
+      return;
+    }
     if (dragging.kind === 'tree') {
       clearDropMarks();
       dragging.dropTarget = null; dragging.dropInto = null;
@@ -1110,6 +1410,17 @@
       if (drag.dropInto) reparentInto(drag.id, drag.dropInto);
       else if (drag.dropTarget) reorderAt(drag.id, drag.dropTarget, drag.dropBefore);
       else mark('tree');   // repaint to clear any lingering drag visuals
+    } else if (drag.kind === 'roster') {
+      clearRosterMarks();
+      const dr = ROOT.rail.querySelector('.row-dragging');
+      if (dr) dr.classList.remove('row-dragging');
+      if (drag.dropTarget) {
+        // Index into the list with the dragged row removed — matches rosterMove.
+        const ids = STORE.getInitiative().entries.map(x => x.id).filter(x => x !== drag.id);
+        let idx = ids.indexOf(drag.dropTarget);
+        if (idx < 0) { mark('rail'); }
+        else { if (!drag.dropBefore) idx += 1; STORE.rosterMove(drag.id, idx); }
+      } else mark('rail');
     } else {
       STORE.saveUi();      // grip widths / float position
     }
@@ -1220,7 +1531,8 @@
     window.addEventListener('beforeprint', fillPrint);
 
     STORE.subscribe((evt) => {
-      if (evt.type === 'docs') mark('tree', 'feed');
+      if (evt.type === 'docs') mark('tree', 'feed', 'rail');   // roster names track their docs
+      else if (evt.type === 'initiative') mark('rail');
       if (evt.type === 'quota') mark('banner');
     });
 

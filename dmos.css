@@ -140,6 +140,152 @@ a.rail-title:focus-visible { outline: 2px solid var(--gold-bright); outline-offs
 .rail-a-closed .reopen-a { display: block; left: 8px; }
 .rail-b-closed .reopen-b { display: block; right: 8px; }
 
+/* ---------------------- Initiative roster (at the table) ------------------ */
+.ini { padding: 8px 8px 4px; }
+.ini-bar {
+  display: flex; align-items: center; gap: 6px; padding: 2px 4px 8px;
+  border-bottom: 1px solid var(--panel-edge); margin-bottom: 8px;
+}
+.ini-round { font-family: var(--font-display); font-size: 13px; color: var(--ink-soft); }
+.ini-round strong { color: var(--ink); font-size: 15px; }
+.ini-step {
+  background: var(--panel); border: 2px solid var(--panel-edge); border-radius: 8px;
+  color: var(--ink); cursor: pointer; font: inherit; font-size: 13px; line-height: 1;
+  padding: 5px 9px;
+}
+.ini-step-next { font-family: var(--font-display); font-weight: 700; color: var(--brown); border-color: var(--gold); }
+.ini-step:hover:not(:disabled) { background: var(--surface-active); }
+.ini-step:disabled { opacity: 0.4; cursor: default; }
+
+.ini-addbar { position: relative; padding: 0 4px 8px; }
+.ini-search {
+  width: 100%; box-sizing: border-box; padding: 7px 10px; font: inherit; font-size: 14px;
+  color: var(--ink); background: rgba(255, 250, 240, 0.7);
+  border: 2px solid var(--panel-edge); border-radius: 8px;
+}
+.ini-search:focus { outline: none; border-color: var(--gold); background: var(--surface-active); }
+.ini-results {
+  position: absolute; left: 4px; right: 4px; top: calc(100% - 4px); z-index: 6;
+  background: var(--panel); border: 2px solid var(--panel-edge); border-radius: 10px;
+  box-shadow: 0 8px 24px var(--shadow); overflow: hidden; max-height: 260px; overflow-y: auto;
+}
+.ini-result {
+  display: flex; align-items: center; gap: 8px; width: 100%; text-align: left;
+  background: transparent; border: 0; border-bottom: 1px solid var(--panel-edge);
+  padding: 8px 10px; font: inherit; font-size: 13.5px; color: var(--ink); cursor: pointer;
+}
+.ini-result:last-child { border-bottom: 0; }
+.ini-result:hover { background: var(--surface-active); }
+.ini-result .ini-ico { font-size: 15px; color: var(--brown); flex: none; }
+.ini-result-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ini-result-type { font-size: 11px; color: var(--ink-soft); flex: none; }
+.ini-result-custom .ini-result-name { font-style: italic; }
+
+.ini-list { list-style: none; margin: 0; padding: 0; }
+.ini-empty { text-align: center; color: var(--ink-soft); padding: 18px 12px; line-height: 1.6; }
+.ini-empty .rail-hint { display: inline; }
+.ini-row {
+  display: flex; align-items: center; gap: 4px; padding: 4px 6px 4px 3px;
+  border-left: 3px solid var(--panel-edge); border-radius: 0 8px 8px 0; margin: 2px 4px;
+}
+.ini-row.side-party { border-left-color: var(--green); }
+.ini-row.side-foe   { border-left-color: var(--red-bright); }
+.ini-row.side-npc   { border-left-color: var(--gold); }
+.ini-row.is-turn { background: rgba(226, 185, 76, 0.18); box-shadow: inset 0 0 0 1px rgba(194, 146, 46, 0.4); }
+.ini-row.is-turn .ini-name-text { font-weight: 700; }
+.ini-row.row-dragging { opacity: 0.5; }
+.ini-row.drop-before { box-shadow: inset 0 2px 0 0 var(--gold); }
+.ini-row.drop-after  { box-shadow: inset 0 -2px 0 0 var(--gold); }
+.ini-handle { flex: none; cursor: grab; color: var(--ink-soft); opacity: 0.35; padding: 0 1px; touch-action: none; }
+.ini-handle:hover { opacity: 0.8; }
+.ini-num {
+  flex: none; width: 30px; text-align: center; padding: 3px 2px; font: inherit; font-size: 13px;
+  color: var(--ink); background: transparent; border: 1px solid transparent; border-radius: 6px;
+}
+.ini-num:hover { border-color: var(--panel-edge); }
+.ini-num:focus { outline: none; border-color: var(--gold); background: var(--surface-active); }
+.ini-name {
+  flex: 1; min-width: 0; display: flex; align-items: center; gap: 7px;
+  background: transparent; border: 0; cursor: pointer; text-align: left;
+  padding: 4px 2px; font: inherit; font-size: 14.5px; color: var(--ink); border-radius: 6px;
+}
+.ini-name:hover { background: var(--surface-active); }
+.ini-name .ini-ico { flex: none; font-size: 16px; color: var(--brown); }
+.ini-name-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ini-x {
+  flex: none; background: transparent; border: 0; cursor: pointer; color: var(--ink-soft);
+  font-size: 17px; line-height: 1; padding: 2px 6px; border-radius: 6px;
+}
+.ini-x:hover { background: rgba(178, 59, 46, 0.16); color: var(--red-bright); }
+.ini-tools { display: flex; align-items: center; gap: 6px; padding: 8px 6px 4px; margin-top: 4px; border-top: 1px solid var(--panel-edge); }
+
+/* The stat card (click a roster name). Sizable and scrollable — see most, scroll for the rest. */
+.stat-modal .stat-head { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+.stat-ico { font-size: 26px; color: var(--brown); flex: none; margin-top: 2px; }
+.stat-heading { flex: 1; min-width: 0; }
+.stat-sub { font-size: 12px; color: var(--ink-soft); font-family: var(--font-display); letter-spacing: 0.5px; text-transform: uppercase; }
+.stat-open { flex: none; }
+.stat-body { max-height: 62vh; overflow-y: auto; }
+.stat-row { display: grid; grid-template-columns: minmax(72px, 26%) 1fr; gap: 10px; padding: 8px 2px; border-bottom: 1px solid var(--panel-edge); }
+.stat-row:last-child { border-bottom: 0; }
+.stat-k { font-family: var(--font-display); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--brown); }
+.stat-v { color: var(--ink); line-height: 1.5; }
+
+/* Peek gets an actions row now (Open + ＋ Initiative). */
+.peek-actions { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+.peek-add {
+  background: var(--panel); border: 2px solid var(--gold); border-radius: 7px;
+  color: var(--brown); cursor: pointer; font: inherit; font-size: 12.5px; font-weight: 700;
+  padding: 4px 9px;
+}
+.peek-add:hover { background: var(--surface-active); }
+
+/* --------------- Shared party (players pulled from Firebase) --------------- */
+.party { padding: 2px 4px 10px; margin-bottom: 8px; border-bottom: 1px solid var(--panel-edge); }
+.party-off { border-bottom: 1px solid var(--panel-edge); }
+.party-row { display: flex; gap: 6px; align-items: center; }
+.party-code {
+  flex: 1; min-width: 0; box-sizing: border-box; padding: 6px 9px; font: inherit; font-size: 13.5px;
+  color: var(--ink); background: rgba(255, 250, 240, 0.7);
+  border: 2px solid var(--panel-edge); border-radius: 8px;
+}
+.party-code:focus { outline: none; border-color: var(--gold); background: var(--surface-active); }
+.party-list { margin-top: 6px; }
+.party-status { font-size: 13px; color: var(--ink-soft); font-style: italic; padding: 5px 4px; }
+.party-err { color: var(--red-bright); font-style: normal; }
+.party-hero {
+  display: flex; align-items: center; gap: 7px; padding: 5px 4px 5px 6px;
+  border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; margin: 2px 0;
+}
+.party-hero .ini-ico { flex: none; font-size: 15px; color: var(--brown); }
+.party-hero-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; color: var(--ink); }
+.party-hero-sub { color: var(--ink-soft); font-size: 12px; }
+.party-add {
+  flex: none; background: var(--panel); border: 2px solid var(--gold); border-radius: 7px;
+  color: var(--brown); cursor: pointer; font-size: 14px; font-weight: 700; line-height: 1; padding: 2px 8px;
+}
+.party-add:hover { background: var(--surface-active); }
+.party-in { flex: none; color: var(--green); font-weight: 700; padding: 0 6px; }
+
+/* The player stat card (a roster "hero" entry). */
+.hs-top { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.hs-stat {
+  flex: 1 1 60px; text-align: center; padding: 8px 6px;
+  background: rgba(255, 250, 240, 0.7); border: 2px solid var(--panel-edge); border-radius: 10px;
+}
+.hs-num { display: block; font-family: var(--font-display); font-weight: 900; font-size: 22px; color: var(--ink); }
+.hs-lab { display: block; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--ink-soft); margin-top: 2px; }
+.hs-abils { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-bottom: 14px; }
+.hs-ab {
+  text-align: center; padding: 6px 2px; border: 2px solid var(--panel-edge); border-radius: 9px;
+  background: var(--panel);
+}
+.hs-ab-k { display: block; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; color: var(--brown); }
+.hs-ab-v { display: block; font-family: var(--font-display); font-weight: 900; font-size: 17px; color: var(--ink); }
+.hs-ab-m { display: block; font-size: 12px; color: var(--green); }
+.hs-ref { margin-top: 2px; }
+@media (max-width: 480px) { .hs-abils { grid-template-columns: repeat(3, 1fr); } }
+
 /* --------------------------------- Tools ---------------------------------- */
 .tool-list { list-style: none; margin: 0; padding: 0; }
 .tool {

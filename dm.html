@@ -8,12 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=15" />
+  <link rel="stylesheet" href="styles.css?v=16" />
   <!-- print.css is deliberately NOT linked. Its line 8 hides .app-header/.app/#live,
        and it knows nothing about .dmos-shell — so linking it would BOTH hide this
        page's header and print the workspace as three coloured columns. dmos.css
        owns @media print for this page. -->
-  <link rel="stylesheet" href="dmos.css?v=9" />
+  <link rel="stylesheet" href="dmos.css?v=11" />
 </head>
 <body class="dmos-body">
 
@@ -83,12 +83,23 @@
        so its guarded boot does not run. -->
   <script src="icons.js?v=16"></script>
   <script src="data.js?v=15"></script>
-  <script src="app.js?v=17"></script>
+  <script src="app.js?v=18"></script>
+
+  <!-- Firebase (compat) — lets the roster pull the players' SHARED heroes into
+       initiative. Same stack index.html uses. Optional by design: if these fail
+       to load (offline/blocked), RAHSync.available stays false, the party field
+       hides, and the rest of the DM OS is untouched. The passcode still gates
+       the page; the campaign code gates which party it reads. -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js?v=15"></script>
+  <script src="firebase-sync.js?v=15"></script>
 
   <!-- The campaign content, committed like data.js. No fetch, no server. -->
   <script src="campaign.js?v=1"></script>
-  <script src="dmos-store.js?v=5"></script>
-  <script src="dmos-ui.js?v=13"></script>
+  <script src="dmos-store.js?v=7"></script>
+  <script src="dmos-ui.js?v=15"></script>
   <script src="dmos-boot.js?v=3"></script>
 </body>
 </html>
