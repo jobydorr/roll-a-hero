@@ -30,6 +30,8 @@
     heart: wrap('<path fill="currentColor" d="M12 21.3 4.3 14a5 5 0 0 1 7.1-7.05l.6.6.6-.6A5 5 0 0 1 19.7 14Z"/>'),
     flame: wrap('<path fill="currentColor" d="M12 2c1 3 5 5 5 9a5 5 0 0 1-10 0c0-1.4.5-2.3 1.2-3.2C8.8 9 9 10 9.5 10.5 9 8 12 5 12 2Z"/>'),
     shield: wrap('<path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5Z"/>'),
+    // A little node graph — one beat branching to two — for the story map.
+    flow: wrap('<g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M7 12h4.5M7.6 10 16 6.5M7.6 14 16 17.5"/></g><g fill="currentColor"><circle cx="5" cy="12" r="2.6"/><circle cx="17.6" cy="6" r="2.6"/><circle cx="17.6" cy="18" r="2.6"/></g>'),
   };
 
   window.ICONS = ICONS;

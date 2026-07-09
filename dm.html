@@ -13,7 +13,7 @@
        and it knows nothing about .dmos-shell — so linking it would BOTH hide this
        page's header and print the workspace as three coloured columns. dmos.css
        owns @media print for this page. -->
-  <link rel="stylesheet" href="dmos.css?v=15" />
+  <link rel="stylesheet" href="dmos.css?v=17" />
 </head>
 <body class="dmos-body">
 
@@ -70,6 +70,10 @@
   <div id="dmosBanner" class="dmos-banner"></div>
   <div id="dmosFloat"></div>
   <div id="dmosPeek"></div>
+  <!-- The Story map is its own full-viewport surface (an authoring board), not a
+       floating dialog. Hidden until opened; sits above the shell but below the
+       modal root so its right-click menus/pickers can overlay it. -->
+  <div id="dmosMap" class="dmos-map" hidden></div>
   <div id="dmosModal"></div>
   <div id="dmosPrint"></div>
 
@@ -81,7 +85,7 @@
        data.js before app.js  — app.js:5 destructures window.DATA at parse time.
        app.js is loaded ONLY for its window.RAH export block; it has no #app here,
        so its guarded boot does not run. -->
-  <script src="icons.js?v=16"></script>
+  <script src="icons.js?v=17"></script>
   <script src="data.js?v=15"></script>
   <script src="app.js?v=19"></script>
 
@@ -101,8 +105,8 @@
   <!-- A public, SRD-licensed starter bestiary (safe to ship); the DM's personal
        library lives in their browser only. -->
   <script src="bestiary.js?v=1"></script>
-  <script src="dmos-store.js?v=10"></script>
-  <script src="dmos-ui.js?v=21"></script>
+  <script src="dmos-store.js?v=11"></script>
+  <script src="dmos-ui.js?v=23"></script>
   <script src="dmos-boot.js?v=3"></script>
 </body>
 </html>

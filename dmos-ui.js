@@ -400,6 +400,7 @@
           <li><button class="tool" data-act="search">${icon('scroll')} <span>Search</span> <kbd class="tool-kbd">Ctrl K</kbd></button></li>
           <li><button class="tool tool-quicknote" data-act="quick-note">${icon('flame')} <span>Quick note</span></button></li>
           <li><button class="tool" data-act="today-notes">${icon('star')} <span>Today's notes</span></button></li>
+          <li><button class="tool" data-act="story-map">${icon('flow')} <span>Story map</span></button></li>
           <li><button class="tool" data-act="sync">${icon('scroll')} <span>Sync from campaign</span></button></li>
           <li><button class="tool" data-act="new-workspace">${icon('star')} <span>New workspace</span></button></li>
           <li><button class="tool" data-act="export">${icon('print')} <span>Export workspace</span></button></li>
@@ -982,6 +983,564 @@
               </span></button>`).join('')}</div>`
         : `<p class="modal-hint">Nothing dated today yet. Take a Quick note, or any note dated ${esc(today)} will show up here.</p>`}
     `, 'modal-wide');
+  }
+
+  /* ============================= Story flow map =========================== */
+  /* The Story map is a full-viewport AUTHORING surface — its own screen (the
+     #dmosMap root), NOT a floating dialog. Every non-folder story doc is a card;
+     the links already living ON those docs are the arrows —
+       • leadsTo entries  → solid, arrow-headed, labelled edges
+                            (coloured by kind: then / alt / knows), and
+       • [[wikilinks]]     → thin dashed "mentions" edges (skipped when a flow
+                            edge already joins the same pair).
+     The graph is DERIVED on every (re)paint, so it can never drift from the
+     story. Editing here goes straight through the store — createDoc / patch /
+     deleteDoc — so a card you add or a link you draw shows up immediately in the
+     Story Folders sidebar too. The ONLY chart-private state is where a card has
+     been dragged (STORE.getChart().pos); auto-layout supplies the rest.
+
+     Why its OWN root and not ROOT.modal: the right-click menus and the connect
+     picker use ROOT.modal (openMenu / openModal), so the board must live
+     elsewhere or those popovers would erase it. The board's pointer handlers are
+     self-owned on its canvas (rebuilt each paint); popovers overlay it at a
+     higher z-index and can rebuild the board via paintMap() without disturbing
+     the DM's scroll. */
+  const CHART = { PAD: 48, COL_W: 248, ROW_H: 108, BAND_GAP: 52, NODE_W: 176, NODE_H: 66 };
+  const CHART_DOC_TYPES = ['beat', 'scene', 'encounter', 'npc', 'creature', 'location'];
+  const EDGE_KINDS = { then: 'then', alt: 'alt', knows: 'knows' };   // known leadsTo kinds → styled markers
+  const markerKind = (k) => EDGE_KINDS[k] || 'other';
+  let mapOpen = false;
+  let chartScale = 1;
+  let chartState = null;   // { canvas, svg, scroll, zoomWrap, contentW, contentH, bands, nodesById, edges }
+  let chartDrag = null;    // { id, el, startX, startY, baseLeft, baseTop, moved }
+  let chartPan = null;     // { startX, startY, sl, st, id }
+  let chartRaf = 0;
+  let connectSrc = null;   // doc id the connect picker is wiring FROM
+  let connectKind = 'then';
+
+  const RX_LINK_G = /\[\[([^\]|]+?)(?:\|[^\]]+?)?\]\]/g;
+  function linkTargetsIn(d) {
+    const text = [d.body].concat(Object.values(d.fields || {})).filter(Boolean).join('\n');
+    const rx = new RegExp(RX_LINK_G.source, 'g');
+    const out = new Set(); let m;
+    while ((m = rx.exec(text))) out.add(m[1].trim());
+    return out;
+  }
+  // Walk to the top-level ancestor (the Act) so cards can be grouped by it.
+  function topAncestor(d, byId) {
+    let cur = d, guard = 0;
+    while (cur && cur.parent && byId.get(cur.parent) && guard++ < 200) cur = byId.get(cur.parent);
+    return cur;
+  }
+
+  // Build {nodes, edges, brokenBy, columns, pos} entirely from the live docs.
+  function buildStoryGraph() {
+    const byId = STORE.tree().byId;
+    const nodes = STORE.descendantsOf(null)
+      .filter(d => d.type !== 'folder' && !STORE.isInNotebook(d.id));
+    const nodeIds = new Set(nodes.map(d => d.id));
+
+    const edges = [], brokenBy = {};
+    const flowUnordered = new Set();
+    nodes.forEach(d => (d.leadsTo || []).forEach(l => {
+      const to = String((l && l.to) || '').trim();
+      if (to && nodeIds.has(to)) {
+        edges.push({ from: d.id, to, type: 'flow', kind: (l.kind || 'then'), label: String(l.label || '').trim() });
+        flowUnordered.add([d.id, to].sort().join('|'));
+      } else {
+        const t = to && STORE.get(to);
+        (brokenBy[d.id] = brokenBy[d.id] || []).push(l.label ? l.label : (t ? t.title : (to || '???')));
+      }
+    }));
+    const refSeen = new Set();
+    nodes.forEach(d => linkTargetsIn(d).forEach(to => {
+      if (to === d.id || !nodeIds.has(to)) return;
+      if (flowUnordered.has([d.id, to].sort().join('|'))) return;      // a stronger link already shows
+      if (refSeen.has(d.id + '>' + to) || refSeen.has(to + '>' + d.id)) return;
+      refSeen.add(d.id + '>' + to);
+      edges.push({ from: d.id, to, type: 'ref', kind: 'ref', label: '' });
+    }));
+
+    // Layout: one horizontal band per Act (top-level folder), Acts stacked in
+    // tree order with a synthetic "Unfiled" band last. WITHIN a band, cards flow
+    // left→right by their leadsTo depth — a beat sits left of the encounter it
+    // leads to — so flow edges run across, not through, the cards. Cards sharing
+    // a depth stack vertically. This is only the STARTING arrangement; a stored
+    // position (a card the DM dragged) always wins.
+    const bandOrder = [], bandMap = new Map();
+    const ensureBand = (key, title) => {
+      if (!bandMap.has(key)) { bandMap.set(key, { key, title, members: [] }); bandOrder.push(bandMap.get(key)); }
+      return bandMap.get(key);
+    };
+    STORE.tree().roots.forEach(r => { if (r.type === 'folder' && r.id !== STORE.NB_ROOT) ensureBand(r.id, r.title); });
+    nodes.forEach(d => {
+      const top = topAncestor(d, byId);
+      const key = (top && top.type === 'folder') ? top.id : '__unfiled__';
+      ensureBand(key, key === '__unfiled__' ? 'Unfiled' : ((byId.get(key) || {}).title || 'Act')).members.push(d);
+    });
+
+    const flowEdges = edges.filter(e => e.type === 'flow');
+    const stored = STORE.getChart().pos || {};
+    const bands = [], auto = {};
+    let bandTop = CHART.PAD;
+    bandOrder.forEach(band => {
+      if (!band.members.length) return;
+      const ids = new Set(band.members.map(n => n.id));
+      const local = flowEdges.filter(e => ids.has(e.from) && ids.has(e.to));
+      const origIndex = {}; band.members.forEach((n, i) => { origIndex[n.id] = i; });
+      // Longest-path depth via bounded relaxation (safe if the story loops back).
+      const depth = {}; band.members.forEach(n => { depth[n.id] = 0; });
+      for (let it = 0; it < band.members.length; it++) {
+        let changed = false;
+        local.forEach(e => { if (depth[e.to] < depth[e.from] + 1) { depth[e.to] = depth[e.from] + 1; changed = true; } });
+        if (!changed) break;
+      }
+      // Within each depth column, order cards by the average row of the cards
+      // that flow INTO them (a barycentre pass) so an edge lands beside its
+      // source instead of crossing the whole band. Cards with no inbound flow
+      // fall to the bottom in document order.
+      const preds = {}; local.forEach(e => { (preds[e.to] = preds[e.to] || []).push(e.from); });
+      const byDepth = {}; band.members.forEach(n => { (byDepth[depth[n.id]] = byDepth[depth[n.id]] || []).push(n); });
+      const rowOf = {};
+      let maxRows = 1;
+      Object.keys(byDepth).map(Number).sort((a, b) => a - b).forEach(c => {
+        const bary = (n) => {
+          const rs = (preds[n.id] || []).map(p => rowOf[p]).filter(r => r != null);
+          return rs.length ? rs.reduce((s, r) => s + r, 0) / rs.length : 1e6 + origIndex[n.id];
+        };
+        const group = byDepth[c].slice();
+        if (c > 0) group.sort((a, b) => (bary(a) - bary(b)) || (origIndex[a.id] - origIndex[b.id]));
+        group.forEach((n, r) => { rowOf[n.id] = r; auto[n.id] = { x: CHART.PAD + c * CHART.COL_W, y: bandTop + r * CHART.ROW_H }; });
+        maxRows = Math.max(maxRows, group.length);
+      });
+      bands.push({ key: band.key, title: band.title, top: bandTop });
+      bandTop += maxRows * CHART.ROW_H + CHART.BAND_GAP;
+    });
+
+    const pos = {};
+    nodes.forEach(d => {
+      const s = stored[d.id];
+      pos[d.id] = (s && typeof s.x === 'number') ? { x: s.x, y: s.y } : (auto[d.id] || { x: CHART.PAD, y: CHART.PAD });
+    });
+
+    return { nodes, edges, brokenBy, bands, pos, byId };
+  }
+
+  ACT['story-map'] = () => openStoryMap();
+  ACT['close-map'] = () => closeStoryMap();
+  ACT['chart-reset'] = () => {
+    if (!confirm('Reset the map to its automatic layout?\n\nThe cards you have dragged will snap back. Nothing in your campaign changes.')) return;
+    STORE.clearChart();
+    paintMap(false);
+  };
+
+  function openStoryMap() {
+    chartState = null; chartDrag = null; chartPan = null; chartScale = 1;
+    mapOpen = true;
+    ROOT.map.hidden = false;
+    paintMap(false);
+  }
+  function closeStoryMap() {
+    mapOpen = false;
+    ROOT.map.hidden = true;
+    ROOT.map.innerHTML = '';
+    chartState = null; chartDrag = null; chartPan = null;
+  }
+
+  // Re-derive and re-render the whole board. `preserveScroll` keeps the DM's
+  // place after an edit; a fresh open passes false. All authoring calls this.
+  function paintMap(preserveScroll) {
+    if (!mapOpen) return;
+    const prev = preserveScroll ? (() => { const s = ROOT.map.querySelector('#chartScroll'); return s ? { x: s.scrollLeft, y: s.scrollTop } : null; })() : null;
+
+    const g = buildStoryGraph();
+    const flowCount = g.edges.filter(e => e.type === 'flow').length;
+    const brokenCount = Object.values(g.brokenBy).reduce((n, a) => n + a.length, 0);
+
+    let maxX = 720, maxY = 440;
+    Object.values(g.pos).forEach(p => { maxX = Math.max(maxX, p.x + CHART.NODE_W + CHART.PAD); maxY = Math.max(maxY, p.y + CHART.NODE_H + CHART.PAD); });
+
+    const nodeHTML = (d) => {
+      const T = DOC_TYPES[d.type] || { icon: 'scroll', label: '' };
+      const p = g.pos[d.id], broken = g.brokenBy[d.id];
+      return `<div class="chart-node type-${d.type}" data-doc="${d.id}" style="left:${p.x}px;top:${p.y}px">
+        <span class="cn-ico" aria-hidden="true">${icon(T.icon)}</span>
+        <span class="cn-main"><span class="cn-title">${esc(d.title)}</span><span class="cn-type">${esc(T.label)}</span></span>
+        ${broken ? `<span class="cn-warn" title="Dangling link: ${esc(broken.join(', '))}">⚠</span>` : ''}
+      </div>`;
+    };
+    const pathsHTML = g.edges.map((e, i) =>
+      `<path class="ce ce-${e.kind}" data-edge="${i}"${e.type === 'flow' ? ` marker-end="url(#arw-${markerKind(e.kind)})"` : ''}></path>`).join('');
+    const labelsHTML = g.edges.map((e, i) => e.label
+      ? `<div class="chart-elabel" data-edge="${i}">${esc(e.label)}</div>` : '').join('');
+    const bandsHTML = g.bands.map((b) =>
+      `<div class="chart-band" style="top:${Math.max(4, b.top - 26)}px">${esc(b.title)}</div>`).join('');
+    const marker = (k) => `<marker id="arw-${k}" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L8,4 L0,8 Z" class="arw arw-${k}"></path></marker>`;
+    const legend = (cls, label) => `<span class="chart-leg"><span class="chart-leg-line ${cls}"></span>${label}</span>`;
+    const emptyHint = g.nodes.length ? '' :
+      `<div class="chart-empty"><strong>An empty board.</strong><br>Right-click anywhere to add your first card — or build story folders in the sidebar and they will appear here.</div>`;
+
+    ROOT.map.innerHTML = `
+      <div class="map-shell">
+        <div class="map-bar">
+          <span class="map-ico" aria-hidden="true">${icon('flow')}</span>
+          <div class="map-heading">
+            <div class="map-title">Story map</div>
+            <div class="map-sub">${g.nodes.length} ${g.nodes.length === 1 ? 'card' : 'cards'} · ${flowCount} ${flowCount === 1 ? 'link' : 'links'}${brokenCount ? ` · <span class="chart-warn-txt">${brokenCount} dangling</span>` : ''}</div>
+          </div>
+          <div class="chart-legend">
+            ${legend('ce-then', 'Leads to')}${legend('ce-alt', 'Alternative')}${legend('ce-knows', 'Knows')}${legend('ce-ref', 'Mentions')}
+          </div>
+          <div class="spacer"></div>
+          <div class="map-zoom">
+            <button class="map-zoom-btn" data-act="zoom-out" title="Zoom out" aria-label="Zoom out">−</button>
+            <button class="map-zoom-btn map-zoom-pct" data-act="zoom-fit" title="Fit the whole map"><span class="zoom-pct">100%</span></button>
+            <button class="map-zoom-btn" data-act="zoom-in" title="Zoom in" aria-label="Zoom in">+</button>
+          </div>
+          <button class="btn btn-sm btn-ghost" data-act="chart-reset" title="Snap every card back to the automatic layout">Reset layout</button>
+          <button class="btn btn-sm btn-primary" data-act="close-map">Done</button>
+        </div>
+        <div class="map-scroll" id="chartScroll">
+          <div class="map-zoomwrap" id="chartZoom">
+            <div class="chart-canvas" id="chartCanvas" style="width:${maxX}px;height:${maxY}px">
+              <svg class="chart-edges" id="chartEdges" width="${maxX}" height="${maxY}"><defs>${['then', 'alt', 'knows', 'other'].map(marker).join('')}</defs>${pathsHTML}</svg>
+              ${bandsHTML}
+              ${g.nodes.map(nodeHTML).join('')}
+              ${labelsHTML}
+              ${emptyHint}
+            </div>
+          </div>
+        </div>
+        <div class="map-hint">Right-click a card to connect or edit · Right-click the board to add a card · Drag a card to move · Drag the board to pan</div>
+      </div>`;
+
+    const canvas = ROOT.map.querySelector('#chartCanvas');
+    const svg = ROOT.map.querySelector('#chartEdges');
+    const scroll = ROOT.map.querySelector('#chartScroll');
+    const zoomWrap = ROOT.map.querySelector('#chartZoom');
+    if (!canvas || !svg) return;
+    const nodesById = new Map();
+    canvas.querySelectorAll('.chart-node').forEach(el => nodesById.set(el.dataset.doc, el));
+    chartState = { canvas, svg, scroll, zoomWrap, contentW: maxX, contentH: maxY, bands: g.bands, nodesById, edges: g.edges };
+    wireChart(canvas, scroll);
+    applyZoom();
+    chartLayoutEdges();
+    if (prev) { scroll.scrollLeft = prev.x; scroll.scrollTop = prev.y; }
+  }
+
+  /* ------------------------------- Zoom ----------------------------------- */
+  // The canvas is scaled with a CSS transform; the wrapper takes the SCALED size
+  // so the scrollbars stay honest. Drag/create maths divide client deltas by the
+  // scale to convert back to unscaled canvas coordinates.
+  function applyZoom() {
+    if (!chartState) return;
+    chartState.canvas.style.transformOrigin = '0 0';
+    chartState.canvas.style.transform = 'scale(' + chartScale + ')';
+    chartState.zoomWrap.style.width = (chartState.contentW * chartScale) + 'px';
+    chartState.zoomWrap.style.height = (chartState.contentH * chartScale) + 'px';
+    const pct = ROOT.map.querySelector('.zoom-pct');
+    if (pct) pct.textContent = Math.round(chartScale * 100) + '%';
+  }
+  const setZoom = (s) => { chartScale = Math.max(0.4, Math.min(1.6, +s.toFixed(2))); applyZoom(); };
+  ACT['zoom-in'] = () => setZoom(chartScale + 0.1);
+  ACT['zoom-out'] = () => setZoom(chartScale - 0.1);
+  ACT['zoom-fit'] = () => {
+    if (!chartState) return;
+    const s = chartState.scroll;
+    const sc = Math.min((s.clientWidth - 24) / chartState.contentW, (s.clientHeight - 24) / chartState.contentH);
+    setZoom(Math.max(0.4, Math.min(1, sc)));
+    s.scrollLeft = 0; s.scrollTop = 0;
+  };
+
+  /* ------------------------- Board pointer wiring -------------------------- */
+  // Self-owned on the freshly-built canvas (rebuilt every paint, so nothing to
+  // tear down). Left-drag a card = move (persist) or, if it never moved, a click
+  // = jump. Left-drag the empty board = pan. Right-click = a context menu.
+  function wireChart(canvas, scroll) {
+    canvas.onpointerdown = (e) => {
+      if (e.button && e.button !== 0) return;              // right/middle → context menu
+      const el = e.target.closest('.chart-node');
+      if (el && canvas.contains(el)) {
+        chartDrag = { id: el.dataset.doc, el, startX: e.clientX, startY: e.clientY, baseLeft: el.offsetLeft, baseTop: el.offsetTop, moved: false };
+        try { canvas.setPointerCapture(e.pointerId); } catch (_) {}
+        e.preventDefault();
+      } else {
+        chartPan = { startX: e.clientX, startY: e.clientY, sl: scroll.scrollLeft, st: scroll.scrollTop, id: e.pointerId };
+        canvas.classList.add('panning');
+        try { canvas.setPointerCapture(e.pointerId); } catch (_) {}
+        e.preventDefault();
+      }
+    };
+    canvas.onpointermove = (e) => {
+      if (chartDrag) {
+        const rawX = e.clientX - chartDrag.startX, rawY = e.clientY - chartDrag.startY;
+        if (!chartDrag.moved && Math.abs(rawX) + Math.abs(rawY) < 4) return;
+        if (!chartDrag.moved) { chartDrag.moved = true; chartDrag.el.classList.add('dragging'); }
+        chartDrag.el.style.left = Math.max(0, chartDrag.baseLeft + rawX / chartScale) + 'px';
+        chartDrag.el.style.top = Math.max(0, chartDrag.baseTop + rawY / chartScale) + 'px';
+        chartScheduleEdges();
+      } else if (chartPan) {
+        scroll.scrollLeft = chartPan.sl - (e.clientX - chartPan.startX);
+        scroll.scrollTop = chartPan.st - (e.clientY - chartPan.startY);
+      }
+    };
+    const finish = (e) => {
+      if (chartDrag) {
+        const d = chartDrag; chartDrag = null;
+        d.el.classList.remove('dragging');
+        try { canvas.releasePointerCapture(e.pointerId); } catch (_) {}
+        if (d.moved) { STORE.setChartPos(d.id, d.el.offsetLeft, d.el.offsetTop); chartGrowCanvas(); }
+        else { closeStoryMap(); gotoDoc(d.id); }
+      } else if (chartPan) {
+        const p = chartPan; chartPan = null;
+        canvas.classList.remove('panning');
+        try { canvas.releasePointerCapture(p.id); } catch (_) {}
+      }
+    };
+    canvas.onpointerup = finish;
+    canvas.onpointercancel = () => {
+      if (chartDrag) { chartDrag.el.classList.remove('dragging'); chartDrag = null; }
+      if (chartPan) { canvas.classList.remove('panning'); chartPan = null; }
+    };
+    canvas.oncontextmenu = (e) => {
+      e.preventDefault();
+      const el = e.target.closest('.chart-node');
+      if (el) openCardMenu(el, e); else openCanvasMenu(e);
+    };
+    // Ctrl/⌘-wheel zooms (plain wheel keeps scrolling). Not passive, so we can
+    // preventDefault the browser's own page zoom.
+    scroll.onwheel = (e) => {
+      if (!e.ctrlKey && !e.metaKey) return;
+      e.preventDefault();
+      setZoom(chartScale + (e.deltaY < 0 ? 0.1 : -0.1));
+    };
+  }
+
+  /* --------------------------- Board authoring ---------------------------- */
+  // A point in the viewport → unscaled canvas coordinates.
+  function canvasPoint(e) {
+    const r = chartState.canvas.getBoundingClientRect();
+    return { x: (e.clientX - r.left) / chartScale, y: (e.clientY - r.top) / chartScale };
+  }
+  // Which Act band a y-coordinate falls in → its folder id (or '' for none), so
+  // a card added there is filed under that Act.
+  function bandFolderAt(y) {
+    const bands = chartState ? chartState.bands : [];
+    for (let i = 0; i < bands.length; i++) {
+      const top = bands[i].top - CHART.BAND_GAP / 2;
+      const bottom = (i + 1 < bands.length) ? bands[i + 1].top - CHART.BAND_GAP / 2 : Infinity;
+      if (y >= top && y < bottom) return bands[i].key === '__unfiled__' ? '' : bands[i].key;
+    }
+    return '';
+  }
+
+  function openCanvasMenu(e) {
+    const pt = canvasPoint(e);
+    const x = Math.max(0, Math.round(pt.x - CHART.NODE_W / 2)), y = Math.max(0, Math.round(pt.y - CHART.NODE_H / 2));
+    const parent = bandFolderAt(pt.y);
+    const items = `<div class="menu-note">Add a card here</div>` + CHART_DOC_TYPES.map(t =>
+      menuItem('map-new', { type: t, parent, x, y }, DOC_TYPES[t].icon, DOC_TYPES[t].label)).join('');
+    openMenuAtPoint(e.clientX, e.clientY, items);
+  }
+  ACT['map-new'] = (el) => {
+    const type = el.dataset.type, parent = el.dataset.parent || null;
+    closeModal();
+    const d = STORE.createDoc({ type, parent });
+    STORE.setChartPos(d.id, +el.dataset.x, +el.dataset.y);
+    if (parent) { const open = ui().open; open[parent] = true; STORE.setUi({ open }); }
+    paintMap(true);
+    announce('Added a ' + (DOC_TYPES[type] ? DOC_TYPES[type].label.toLowerCase() : 'card') + '. It is in the Story Folders too.');
+  };
+
+  function openCardMenu(cardEl, e) {
+    const id = cardEl.dataset.doc, d = STORE.get(id);
+    if (!d) return;
+    const links = (d.leadsTo || []).filter(l => l && l.to && STORE.get(l.to));
+    let items = `<div class="menu-note">${esc(d.title)}</div>`;
+    items += menuItem('connect-open', { doc: id }, 'flow', 'Connect to a card…');
+    items += menuItem('map-follow-menu', { doc: id }, 'scroll', 'New card it leads to…');
+    items += '<div class="menu-sep"></div>';
+    items += menuItem('map-open', { doc: id }, 'book', 'Open in the story');
+    items += menuItem('map-rename', { doc: id }, 'check', 'Rename…');
+    if (links.length) {
+      items += '<div class="menu-sep"></div>';
+      items += links.map(l => menuItem('map-unlink', { doc: id, to: l.to }, 'sword',
+        'Unlink: ' + ((STORE.get(l.to) || {}).title || l.to))).join('');
+    }
+    items += '<div class="menu-sep"></div>';
+    items += menuItem('map-delete', { doc: id }, 'flame', 'Delete card');
+    openMenuAtPoint(e.clientX, e.clientY, items);
+  }
+  ACT['map-open'] = (el) => { closeStoryMap(); gotoDoc(el.dataset.doc); };
+  ACT['map-rename'] = (el) => {
+    const d = STORE.get(el.dataset.doc); if (!d) return;
+    closeModal();
+    openTextPromptModal({
+      title: 'Rename card', placeholder: 'Title', submitLabel: 'Rename',
+      onSubmit: (name) => { STORE.patch(d.id, { title: name }); paintMap(true); announce('Renamed.'); },
+    });
+  };
+  ACT['map-delete'] = (el) => {
+    const d = STORE.get(el.dataset.doc); if (!d) return;
+    closeModal();
+    if (!confirm('Move “' + d.title + '” to the trash?\n\nIt is never really deleted — restore it from the Story Folders sidebar.')) return;
+    STORE.deleteDoc(d.id);
+    paintMap(true);
+    announce('Moved to trash.');
+  };
+  ACT['map-unlink'] = (el) => {
+    const src = STORE.get(el.dataset.doc); if (!src) return;
+    const to = el.dataset.to;
+    STORE.patch(src.id, { leadsTo: (src.leadsTo || []).filter(l => l.to !== to) });
+    closeModal();
+    paintMap(true);
+    announce('Removed a connection.');
+  };
+  // "New card it leads to…" → pick a type, create it beside the source, link it.
+  ACT['map-follow-menu'] = (el) => {
+    const src = el.dataset.doc;
+    const items = `<div class="menu-note">New card it leads to</div>` + CHART_DOC_TYPES.map(t =>
+      menuItem('map-follow-new', { src, type: t }, DOC_TYPES[t].icon, DOC_TYPES[t].label)).join('');
+    openMenu(el, items);
+  };
+  ACT['map-follow-new'] = (el) => {
+    const srcId = el.dataset.src, type = el.dataset.type;
+    const src = STORE.get(srcId); if (!src) return;
+    closeModal();
+    const byId = STORE.tree().byId, top = topAncestor(src, byId);
+    const parent = (top && top.type === 'folder') ? top.id : (src.parent || null);
+    const d = STORE.createDoc({ type, parent });
+    // Place it to the right of the source so the new flow edge reads left→right.
+    const srcEl = chartState && chartState.nodesById.get(srcId);
+    if (srcEl) STORE.setChartPos(d.id, srcEl.offsetLeft + CHART.COL_W, srcEl.offsetTop);
+    STORE.patch(srcId, { leadsTo: (src.leadsTo || []).concat([{ to: d.id, label: '', kind: 'then' }]) });
+    if (parent) { const open = ui().open; open[parent] = true; STORE.setUi({ open }); }
+    paintMap(true);
+    announce('Added a linked ' + DOC_TYPES[type].label.toLowerCase() + '.');
+  };
+
+  /* ----------------------------- Connect picker --------------------------- */
+  // Right-click a card → "Connect to…" → this searchable list of the other cards.
+  // Choose a link kind (colours the arrow) and an optional label, then pick a
+  // target; a leadsTo entry is written onto the SOURCE doc.
+  ACT['connect-open'] = (el) => { closeModal(); openConnectPicker(el.dataset.doc); };
+  ACT['connect-kind'] = (el) => {
+    connectKind = el.dataset.kind;
+    ROOT.modal.querySelectorAll('.connect-kind').forEach(b => b.classList.toggle('is-active', b.dataset.kind === connectKind));
+  };
+  ACT['connect-search:input'] = (el) => renderConnectList(el.value);
+  ACT['connect-pick'] = (el) => {
+    const src = STORE.get(connectSrc); if (!src) return;
+    const labelEl = ROOT.modal.querySelector('#connectLabel');
+    const label = labelEl ? labelEl.value.trim() : '';
+    const next = (src.leadsTo || []).concat([{ to: el.dataset.to, label, kind: connectKind }]);
+    STORE.patch(src.id, { leadsTo: next });
+    closeModal();
+    paintMap(true);
+    announce('Connected “' + src.title + '”.');
+  };
+  function openConnectPicker(srcId) {
+    const src = STORE.get(srcId); if (!src) return;
+    connectSrc = srcId; connectKind = 'then';
+    const kindBtn = (k, label) => `<button class="connect-kind${k === 'then' ? ' is-active' : ''}" data-act="connect-kind" data-kind="${k}"><span class="chart-leg-line ce-${k}"></span>${label}</button>`;
+    openModal(`
+      <div class="modal-title">Connect “${esc(src.title)}” to…</div>
+      <p class="modal-hint">Draw an arrow from this card to another. Pick the kind, add an optional label, then choose the destination.</p>
+      <div class="connect-kinds">${kindBtn('then', 'Leads to')}${kindBtn('alt', 'Alternative')}${kindBtn('knows', 'Knows')}</div>
+      <input type="text" id="connectLabel" class="connect-label" placeholder="Label (optional) — e.g. “if they ring it”" maxlength="60" autocomplete="off">
+      <div class="search-box"><input type="text" id="connectSearch" data-act="connect-search" placeholder="Search cards to connect to…" autocomplete="off" spellcheck="false"></div>
+      <div class="connect-list" id="connectList"></div>`, 'modal-wide modal-search');
+    renderConnectList('');
+    const inp = ROOT.modal.querySelector('#connectSearch'); if (inp) inp.focus();
+  }
+  function renderConnectList(query) {
+    const box = ROOT.modal.querySelector('#connectList'); if (!box) return;
+    const src = STORE.get(connectSrc); if (!src) return;
+    const existing = new Set((src.leadsTo || []).map(l => l.to));
+    const q = query.trim().toLowerCase();
+    let list = STORE.docs().filter(d => d.type !== 'folder' && !STORE.isInNotebook(d.id) && d.id !== connectSrc && !existing.has(d.id));
+    if (q) list = list.filter(d => d.title.toLowerCase().includes(q) || DOC_TYPES[d.type].label.toLowerCase().includes(q));
+    if (!list.length) { box.innerHTML = `<p class="modal-hint">${q ? 'No cards match “' + esc(query.trim()) + '”.' : 'No other cards to connect to yet.'}</p>`; return; }
+    box.innerHTML = list.slice(0, 60).map(d => {
+      const path = pathLabel(d.id);
+      return `<button class="search-row connect-row" data-act="connect-pick" data-to="${d.id}">
+        <span class="search-icon">${icon(DOC_TYPES[d.type].icon)}</span>
+        <span class="search-main"><span class="search-title">${esc(d.title)} <span class="search-area">${esc(DOC_TYPES[d.type].label)}${path ? ' · ' + esc(path) : ''}</span></span></span>
+      </button>`;
+    }).join('');
+  }
+
+  // A popup menu anchored at an arbitrary point (right-click), reusing the modal
+  // root + its click-outside close, mirroring openMenu()'s clamping.
+  function openMenuAtPoint(x, y, itemsHTML) {
+    ROOT.modal.innerHTML = `<div class="menu-overlay" data-act="modal-backdrop"><div class="menu" role="menu">${itemsHTML}</div></div>`;
+    const box = ROOT.modal.querySelector('.menu');
+    box.style.left = x + 'px';
+    box.style.top = (y + 2) + 'px';
+    const b = box.getBoundingClientRect();
+    if (b.right > window.innerWidth - 8) box.style.left = Math.max(8, window.innerWidth - 8 - b.width) + 'px';
+    if (b.bottom > window.innerHeight - 8) box.style.top = Math.max(8, y - b.height - 2) + 'px';
+  }
+
+  // Bezier between two card boxes, exiting/entering each box's border along the
+  // line joining their centres. Returns the path string and the curve midpoint
+  // (for placing the edge label).
+  function borderPoint(box, target) {
+    const cx = box.x + box.w / 2, cy = box.y + box.h / 2;
+    const dx = target.x - cx, dy = target.y - cy;
+    if (!dx && !dy) return { x: cx, y: cy };
+    const s = 1 / Math.max(Math.abs(dx) / (box.w / 2), Math.abs(dy) / (box.h / 2));
+    return { x: cx + dx * s, y: cy + dy * s };
+  }
+  function edgeGeom(a, b) {
+    const ac = { x: a.x + a.w / 2, y: a.y + a.h / 2 }, bc = { x: b.x + b.w / 2, y: b.y + b.h / 2 };
+    const p1 = borderPoint(a, bc), p2 = borderPoint(b, ac);
+    const dx = p2.x - p1.x, dy = p2.y - p1.y;
+    const horiz = Math.abs(dx) >= Math.abs(dy);
+    const k = Math.max(26, (horiz ? Math.abs(dx) : Math.abs(dy)) * 0.45);
+    const sx = Math.sign(dx) || 1, sy = Math.sign(dy) || 1;
+    const c1 = horiz ? { x: p1.x + sx * k, y: p1.y } : { x: p1.x, y: p1.y + sy * k };
+    const c2 = horiz ? { x: p2.x - sx * k, y: p2.y } : { x: p2.x, y: p2.y - sy * k };
+    const t = 0.5, mt = 0.5;
+    const mid = {
+      x: mt * mt * mt * p1.x + 3 * mt * mt * t * c1.x + 3 * mt * t * t * c2.x + t * t * t * p2.x,
+      y: mt * mt * mt * p1.y + 3 * mt * mt * t * c1.y + 3 * mt * t * t * c2.y + t * t * t * p2.y,
+    };
+    return { d: `M${p1.x},${p1.y} C${c1.x},${c1.y} ${c2.x},${c2.y} ${p2.x},${p2.y}`, mid };
+  }
+  function chartLayoutEdges() {
+    if (!chartState) return;
+    const box = {};
+    chartState.nodesById.forEach((el, id) => { box[id] = { x: el.offsetLeft, y: el.offsetTop, w: el.offsetWidth, h: el.offsetHeight }; });
+    chartState.edges.forEach((e, i) => {
+      const pathEl = chartState.svg.querySelector(`path[data-edge="${i}"]`);
+      const lab = chartState.canvas.querySelector(`.chart-elabel[data-edge="${i}"]`);
+      const a = box[e.from], b = box[e.to];
+      if (!a || !b || !pathEl) { if (pathEl) pathEl.removeAttribute('d'); return; }
+      const geo = edgeGeom(a, b);
+      pathEl.setAttribute('d', geo.d);
+      if (lab) { lab.style.left = geo.mid.x + 'px'; lab.style.top = geo.mid.y + 'px'; }
+    });
+  }
+  const chartScheduleEdges = () => { if (!chartRaf) chartRaf = requestAnimationFrame(() => { chartRaf = 0; chartLayoutEdges(); }); };
+
+  // Grow the canvas so a card dragged past the edge stays reachable via scroll.
+  // Keeps the scaled wrapper and the SVG in step with the new content size.
+  function chartGrowCanvas() {
+    if (!chartState) return;
+    let maxX = 720, maxY = 440;
+    chartState.nodesById.forEach(el => {
+      maxX = Math.max(maxX, el.offsetLeft + el.offsetWidth + CHART.PAD);
+      maxY = Math.max(maxY, el.offsetTop + el.offsetHeight + CHART.PAD);
+    });
+    chartState.canvas.style.width = maxX + 'px';
+    chartState.canvas.style.height = maxY + 'px';
+    chartState.svg.setAttribute('width', maxX);
+    chartState.svg.setAttribute('height', maxY);
+    chartState.contentW = maxX; chartState.contentH = maxY;
+    applyZoom();
+    chartLayoutEdges();
   }
 
   /* ============================== The banner =============================== */
@@ -1784,12 +2343,17 @@
     ROOT.peek = document.getElementById('dmosPeek');
     ROOT.banner = document.getElementById('dmosBanner');
     ROOT.print = document.getElementById('dmosPrint');
+    ROOT.map = document.getElementById('dmosMap');
 
     // Bound once, on permanent roots. Never removed. See the header comment.
     ['click', 'input', 'change', 'keydown', 'pointerdown', 'contextmenu'].forEach(t => on(ROOT.shell, t));
     on(ROOT.banner, 'click');
     ['click', 'input'].forEach(t => on(ROOT.modal, t));   // input drives live search
     on(ROOT.peek, 'click');
+    // The Story map is its own full-viewport root. Its toolbar buttons are
+    // delegated here; the board's own pointer/context handlers are self-owned on
+    // the canvas (rebuilt each paint).
+    on(ROOT.map, 'click');
     // The float is a separate root, so it needs its own delegated events: the pad
     // fires input/keyup/mouseup, the date/target fire change, the header drags.
     ['click', 'input', 'change', 'keyup', 'mouseup', 'pointerdown'].forEach(t => on(ROOT.float, t));
@@ -1813,7 +2377,8 @@
         return;
       }
       if (e.key !== 'Escape') return;
-      if (modalOpen()) closeModal();
+      if (modalOpen()) closeModal();       // a menu/picker over the map closes first
+      else if (mapOpen) closeStoryMap();
       else if (ROOT.peek.firstChild) hidePeek();
     });
 

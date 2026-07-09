@@ -578,6 +578,26 @@
   }
   const clearInitiative = () => writeInit(clone(EMPTY_INIT));
 
+  /* --------------------------- Story flow chart --------------------------- */
+  /* The story map derives its shape from the docs themselves (leadsTo links +
+     [[wikilinks]]), so it can't drift from the campaign. The ONLY thing that
+     lives here is where the DM has dragged each node — a pure presentation
+     override, keyed by doc id. Auto-layout supplies a position for any node the
+     DM hasn't touched; a stored one wins. Ephemeral like the roster: table
+     furniture, never campaign content, never synced to Cowork. */
+  function getChart() {
+    const c = read(KEY.chart, { pos: {} });
+    if (!c.pos || typeof c.pos !== 'object') c.pos = {};
+    return c;
+  }
+  function setChartPos(id, x, y) {
+    const c = getChart();
+    c.pos[id] = { x: Math.round(x), y: Math.round(y) };
+    write(KEY.chart, c);
+    return c;
+  }
+  const clearChart = () => write(KEY.chart, { pos: {} });
+
   /* ------------------------------ Bestiary -------------------------------- */
   /* The shipped starter set (bestiary.js → window.DM_BESTIARY, public/SRD) plus
      the DM's PERSONAL library (this browser only, never the repo). getBestiary()
@@ -648,6 +668,9 @@
     // Initiative roster (the right-rail "at the table" list)
     getInitiative, rosterAdd, rosterPatch, rosterRemove, rosterMove, rosterSort,
     initStep, clearInitiative, rosterSetHp, rosterAdjustHp,
+
+    // Story flow chart (dragged node positions; the graph itself is derived)
+    getChart, setChartPos, clearChart,
 
     // Creature library (shipped SRD starter + personal, this browser only)
     getBestiary, saveToBestiary, removeFromBestiary,

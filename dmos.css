@@ -15,6 +15,7 @@
   --z-grip: 25;
   --z-float: 40;
   --z-peek: 45;
+  --z-map: 48;
   --z-modal: 50;
 
   /* The five hexes that were already de-facto tokens in styles.css, named at
@@ -634,13 +635,146 @@ table.diff tbody th { width: 22%; font-family: var(--font-display); font-weight:
   .quicknote { right: 8px; left: 8px; bottom: 8px; width: auto; }
 }
 
+/* ------------------------------ Story map -------------------------------- */
+/* The Story map is its OWN full-viewport surface (#dmosMap), not a floating
+   dialog: a fixed toolbar + hint with a scrolling, zoomable board between them.
+   The board (.chart-canvas) is a plain positioned surface — SVG edges beneath,
+   cards on top, edge labels above — scaled by a CSS transform inside a wrapper
+   that carries the scaled size so scrollbars stay honest. Cards are dragged
+   (positions persist), clicked (jump), or right-clicked (author). See the
+   Story-flow-map section in dmos-ui.js. */
+.dmos-map { position: fixed; inset: 0; z-index: var(--z-map); }
+.map-shell { position: absolute; inset: 0; display: flex; flex-direction: column; background: var(--panel); }
+.map-bar {
+  display: flex; align-items: center; gap: 12px; flex: none;
+  padding: 12px 16px; border-bottom: 2px solid var(--panel-edge);
+  background: linear-gradient(180deg, rgba(43, 30, 18, 0.06), transparent);
+}
+.map-ico { color: var(--brown); flex: none; }
+.map-heading { flex: none; }
+.map-title { font-family: var(--font-display); font-weight: 900; color: var(--ink); font-size: 18px; }
+.map-sub { font-size: 12.5px; color: var(--ink-soft); }
+.chart-warn-txt { color: var(--red); font-weight: 700; }
+.chart-legend { display: flex; flex-wrap: wrap; gap: 12px; margin-left: 10px; }
+.chart-leg { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-soft); }
+.chart-leg-line { width: 20px; height: 0; border-top: 3px solid var(--brown); border-radius: 2px; }
+.chart-leg-line.ce-then { border-top-color: var(--green); }
+.chart-leg-line.ce-alt { border-top-color: var(--gold); }
+.chart-leg-line.ce-knows { border-top-color: var(--blue); }
+.chart-leg-line.ce-ref { border-top-style: dashed; border-top-color: var(--brown); opacity: 0.6; }
+
+.map-zoom { display: flex; align-items: center; gap: 2px; }
+.map-zoom-btn {
+  min-width: 30px; height: 28px; padding: 0 8px; cursor: pointer;
+  background: var(--surface-active); border: 1px solid var(--panel-edge); color: var(--ink);
+  font-size: 16px; line-height: 1; border-radius: 7px;
+}
+.map-zoom-btn.map-zoom-pct { font-size: 12px; min-width: 48px; font-variant-numeric: tabular-nums; }
+.map-zoom-btn:hover { border-color: var(--gold); }
+
+.map-scroll {
+  flex: 1; overflow: auto; position: relative;
+  background:
+    linear-gradient(rgba(107, 74, 35, 0.06) 1px, transparent 1px) 0 0 / 26px 26px,
+    linear-gradient(90deg, rgba(107, 74, 35, 0.06) 1px, transparent 1px) 0 0 / 26px 26px,
+    linear-gradient(135deg, var(--parchment), var(--parchment-2));
+}
+.map-zoomwrap { position: relative; }
+.chart-canvas { position: relative; touch-action: none; user-select: none; cursor: grab; }
+.chart-canvas.panning { cursor: grabbing; }
+.chart-empty {
+  position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
+  text-align: center; color: var(--ink-soft); font-size: 14px; line-height: 1.6;
+  background: var(--panel); border: 2px dashed var(--panel-edge); border-radius: 12px;
+  padding: 18px 22px; max-width: 340px;
+}
+.chart-empty strong { color: var(--brown); }
+.chart-edges { position: absolute; inset: 0; pointer-events: none; overflow: visible; }
+.ce { fill: none; stroke-width: 2.4; stroke-linecap: round; }
+.ce-then { stroke: var(--green); }
+.ce-alt { stroke: var(--gold); }
+.ce-knows { stroke: var(--blue); }
+.ce-other { stroke: var(--brown); }
+.ce-ref { stroke: var(--brown); stroke-width: 1.6; stroke-dasharray: 3 5; opacity: 0.5; }
+.arw-then { fill: var(--green); }
+.arw-alt { fill: var(--gold); }
+.arw-knows { fill: var(--blue); }
+.arw-other { fill: var(--brown); }
+
+.chart-band {
+  position: absolute; left: 14px;
+  font-family: var(--font-display); font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px; color: var(--brown);
+  opacity: 0.7; pointer-events: none; white-space: nowrap;
+}
+.chart-node {
+  position: absolute; width: 176px; box-sizing: border-box;
+  display: flex; align-items: center; gap: 9px; padding: 10px 11px;
+  background: var(--panel); border: 2px solid var(--panel-edge); border-left-width: 5px;
+  border-radius: 11px; box-shadow: 0 2px 8px var(--shadow);
+  cursor: grab; touch-action: none;
+  transition: box-shadow 0.12s ease, transform 0.12s ease, border-color 0.12s ease;
+}
+.chart-node:hover { border-color: var(--gold); box-shadow: 0 6px 16px var(--shadow); transform: translateY(-1px); }
+.chart-node.dragging { cursor: grabbing; box-shadow: 0 12px 26px var(--shadow); transform: none; opacity: 0.96; z-index: 5; }
+.chart-node .cn-ico { color: var(--brown); flex: none; }
+.chart-node .cn-main { min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.cn-title { font-family: var(--font-display); font-weight: 700; font-size: 13.5px; color: var(--ink); line-height: 1.2; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.cn-type { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--ink-soft); }
+.cn-warn { flex: none; color: var(--red); font-size: 14px; align-self: flex-start; cursor: help; }
+
+/* Type accents on the thick left border. */
+.chart-node.type-beat, .chart-node.type-scene { border-left-color: var(--gold); }
+.chart-node.type-encounter { border-left-color: var(--red); }
+.chart-node.type-creature { border-left-color: var(--red-bright); }
+.chart-node.type-npc { border-left-color: var(--blue); }
+.chart-node.type-location { border-left-color: var(--green); }
+.chart-node.type-session, .chart-node.type-note { border-left-color: var(--brown); }
+
+.chart-elabel {
+  position: absolute; transform: translate(-50%, -50%); pointer-events: none;
+  font-size: 11px; line-height: 1.15; color: var(--ink-soft);
+  background: var(--surface-active); border: 1px solid var(--panel-edge);
+  border-radius: 999px; padding: 2px 8px; max-width: 150px;
+  text-align: center; box-shadow: 0 1px 4px var(--shadow); white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.map-hint {
+  flex: none; padding: 8px 16px; border-top: 2px solid var(--panel-edge);
+  font-size: 12px; color: var(--ink-soft); font-style: italic; text-align: center;
+}
+
+/* The connect picker (right-click a card → Connect to…). */
+.connect-kinds { display: flex; gap: 6px; margin: 4px 0 10px; flex-wrap: wrap; }
+.connect-kind {
+  display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
+  padding: 6px 12px; border-radius: 999px; font-size: 13px;
+  border: 2px solid var(--panel-edge); background: var(--panel); color: var(--ink-soft);
+}
+.connect-kind .chart-leg-line { width: 16px; }
+.connect-kind:hover { border-color: var(--gold); }
+.connect-kind.is-active { border-color: var(--gold); background: var(--surface-active); color: var(--ink); font-weight: 700; }
+.connect-label {
+  width: 100%; font: inherit; font-size: 14px; padding: 9px 12px; margin-bottom: 8px;
+  border-radius: 10px; border: 2px solid var(--panel-edge);
+  background: var(--surface-active); color: var(--ink);
+}
+.connect-label:focus { outline: none; border-color: var(--gold); }
+.connect-list { max-height: 46vh; overflow-y: auto; margin-top: 6px; }
+.connect-row { width: 100%; }
+
+@media (max-width: 900px) {
+  .chart-legend { display: none; }
+  .map-bar { gap: 8px; padding: 10px 12px; }
+}
+
 /* --------------------------------- Print ---------------------------------- */
 #dmosPrint { display: none; }
 
 @media print {
   @page { size: letter portrait; margin: 0.6in; }
   .dmos-gate, .dmos-shell, .dmos-banner,
-  #dmosFloat, #dmosPeek, #dmosModal, #live { display: none !important; }
+  #dmosFloat, #dmosPeek, #dmosMap, #dmosModal, #live { display: none !important; }
   .dmos-body { height: auto; overflow: visible; }
   #dmosPrint { display: block !important; color: #000; }
   #dmosPrint .p-doc { page-break-inside: avoid; margin-bottom: 18pt; }
