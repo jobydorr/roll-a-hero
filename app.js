@@ -200,6 +200,15 @@
   // (used to compute/print a shared hero without disturbing the current one).
   function withState(snap, fn) { const saved = state; state = snap; try { return fn(); } finally { state = saved; } }
 
+  // Has the builder made a real choice yet? Guards the "My Heroes" jump from
+  // saving an untouched new hero (all-null) into the list. A picked race/class,
+  // rolled abilities, or a typed name all count as "worth keeping."
+  function heroStarted(s) {
+    if (!s) return false;
+    const named = !!(s.story && s.story.name && s.story.name.trim());
+    return !!(s.race || s.klass || s.pool || named);
+  }
+
   /* --------------------- Export / Import (the safety net) --------------- */
   // Nothing here ever deletes a saved hero — export copies out, import merges in.
   function download(filename, text) {
@@ -655,6 +664,26 @@
       const home = () => go('home');
       brand.onclick = home;
       brand.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); home(); } };
+    }
+    // Persistent "My Heroes" jump — same static header, wired once. Shown on
+    // every hero screen except the hub (home) and the list itself (welcome),
+    // where it'd be redundant. Toggled via inline display (see .header-btn).
+    const heroesBtn = document.getElementById('toHeroes');
+    if (heroesBtn) {
+      if (!heroesBtn.dataset.wired) {
+        heroesBtn.dataset.wired = '1';
+        heroesBtn.innerHTML = `<span class="hb-ico">${icon('book')}</span><span class="hb-label">My Heroes</span>`;
+        heroesBtn.title = 'Back to your saved heroes';
+        heroesBtn.onclick = () => {
+          // Don't lose an in-progress build when jumping to the list — a hero
+          // isn't saved until the Finish screen. Never persist a DM-viewed
+          // shared hero (viewCtx): it must not land in this browser's list.
+          if (!viewCtx && heroStarted(state)) persist();
+          go('welcome');
+        };
+      }
+      const redundant = state.step === 'home' || state.step === 'welcome';
+      heroesBtn.style.display = redundant ? 'none' : 'inline-flex';
     }
     const prog = document.getElementById('progress');
     if (['home', 'welcome', 'dm', 'edit', 'writeup', 'stories'].includes(state.step) || viewCtx) { prog.hidden = true; return; }

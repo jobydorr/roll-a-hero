@@ -45,6 +45,11 @@ body {
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
 
+/* The `hidden` attribute must actually hide. Author `display` rules (e.g.
+   .progress{display:flex}) otherwise beat the UA [hidden] rule, which left a
+   stale progress bar leaking onto the hub / welcome screens. Mirrors dmos.css. */
+[hidden] { display: none !important; }
+
 /* ---------- Icons ---------- */
 .icon { width: 1em; height: 1em; display: inline-block; vertical-align: -0.14em; }
 
@@ -72,6 +77,44 @@ body {
   transition: width 0.4s ease;
 }
 .progress-label { font-family: var(--font-display); font-size: 13px; color: #efdfba; white-space: nowrap; }
+
+/* The brand is wired as a site-wide "home" link in app.js — give it a hover
+   cue so it reads as clickable. */
+.brand[role="link"] { transition: color 0.15s ease; }
+.brand[role="link"]:hover .brand-name,
+.brand[role="link"]:hover .brand-mark { color: var(--gold-bright); }
+
+/* Persistent "My Heroes" jump. It lives on the dark header bar, so it's styled
+   for that (not the parchment .btn rules). margin-left:auto pins it right even
+   when the progress bar (flex:1) is hidden. Visibility is driven by inline
+   style.display in app.js, sidestepping the [hidden]-vs-author-display gotcha. */
+.header-btn {
+  margin-left: auto;
+  align-items: center; gap: 8px;
+  font-family: var(--font-display);
+  font-size: 14px; font-weight: 700; letter-spacing: 0.5px;
+  color: #f6e7c2;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  padding: 8px 16px;
+  cursor: pointer; white-space: nowrap;
+  transition: background 0.15s ease, transform 0.08s ease;
+}
+.header-btn:hover { background: rgba(226, 185, 76, 0.22); }
+.header-btn:active { transform: translateY(1px); }
+.header-btn:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 2px; }
+.header-btn .hb-ico { color: var(--gold-bright); display: inline-flex; font-size: 18px; }
+@media (max-width: 560px) {
+  /* Too narrow for brand + progress + button on one line. Wrap: keep brand and
+     the (icon-only) button on top, drop the progress bar to a full-width row
+     below. When progress is hidden ([hidden]), that row collapses. */
+  .app-header { flex-wrap: wrap; gap: 8px 12px; }
+  .brand { order: 1; }
+  .header-btn { order: 2; padding: 8px 12px; }
+  .header-btn .hb-label { display: none; }
+  .progress { order: 3; flex-basis: 100%; }
+}
 
 /* ---------- Layout ---------- */
 .app {
