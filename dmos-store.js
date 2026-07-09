@@ -32,6 +32,7 @@
     inbox:      'rollAHeroDmInbox',
     ui:         'rollAHeroDmUi',
     party:      'rollAHeroDmParty',
+    bestiary:   'rollAHeroDmBestiary',
   };
 
   // The Notebook is a reserved top-level folder in the SAME document store as the
@@ -230,6 +231,7 @@
       parent: o.parent || null, order: nextOrder(o.parent || null),
       rev: 0, origin: o.origin || 'local',
       body: o.body || '',
+      fields: (o.fields && typeof o.fields === 'object') ? o.fields : {},
     });
     persist();
     emit({ type: 'docs', ids: [id] });
@@ -576,6 +578,41 @@
   }
   const clearInitiative = () => writeInit(clone(EMPTY_INIT));
 
+  /* ------------------------------ Bestiary -------------------------------- */
+  /* The shipped starter set (bestiary.js → window.DM_BESTIARY, public/SRD) plus
+     the DM's PERSONAL library (this browser only, never the repo). getBestiary()
+     merges them, personal first so a saved creature can shadow a shipped one by
+     id. Each entry maps straight onto a creature document's fields. */
+  const personalBestiary = () => {
+    const raw = read(KEY.bestiary, { creatures: [] });
+    return Array.isArray(raw.creatures) ? raw.creatures : [];
+  };
+  const shippedBestiary = () => {
+    const src = window.DM_BESTIARY;
+    return (src && Array.isArray(src.creatures)) ? src.creatures : [];
+  };
+  function getBestiary() {
+    const personal = personalBestiary().map(c => Object.assign({ source: 'yours' }, c));
+    const seen = new Set(personal.map(c => c.id));
+    const shipped = shippedBestiary().filter(c => !seen.has(c.id)).map(c => Object.assign({ source: 'srd' }, c));
+    return personal.concat(shipped);
+  }
+  function saveToBestiary(entry) {
+    const list = personalBestiary();
+    const e = Object.assign({}, entry);
+    if (!e.id || !/^my_/.test(e.id)) e.id = 'my_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
+    e.name = (e.name || 'Creature').slice(0, 80);
+    const i = list.findIndex(c => c.id === e.id);
+    if (i >= 0) list[i] = e; else list.push(e);
+    write(KEY.bestiary, { creatures: list });
+    emit({ type: 'bestiary' });
+    return e;
+  }
+  function removeFromBestiary(id) {
+    write(KEY.bestiary, { creatures: personalBestiary().filter(c => c.id !== id) });
+    emit({ type: 'bestiary' });
+  }
+
   /* --------------------------------- UI ----------------------------------- */
   const EMPTY_UI = {
     passOk: false, open: {}, focus: null,
@@ -611,6 +648,9 @@
     // Initiative roster (the right-rail "at the table" list)
     getInitiative, rosterAdd, rosterPatch, rosterRemove, rosterMove, rosterSort,
     initStep, clearInitiative, rosterSetHp, rosterAdjustHp,
+
+    // Creature library (shipped SRD starter + personal, this browser only)
+    getBestiary, saveToBestiary, removeFromBestiary,
 
     loadCampaign, mergeIncoming, backup, newWorkspace,
     exportWorkspace, importWorkspace,

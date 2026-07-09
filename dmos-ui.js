@@ -212,6 +212,8 @@
         <div class="spacer"></div>
         ${(d.type === 'npc' || d.type === 'creature') ? `<button class="btn btn-sm btn-ghost" data-act="statblock-menu" data-doc="${d.id}"
                 title="Quick-generate a stat block">${icon('flame')} Stats</button>` : ''}
+        ${d.type === 'creature' ? `<button class="btn btn-sm btn-ghost" data-act="save-bestiary" data-doc="${d.id}"
+                title="Save to your creature library">${icon('book')} Save</button>` : ''}
         <button class="btn btn-sm btn-ghost" data-act="focus-doc" data-doc="${d.id}"
                 title="Open just this document">${icon('scroll')}</button>
         <button class="btn btn-sm btn-ghost" data-act="delete-doc" data-doc="${d.id}"
@@ -479,6 +481,7 @@
           <input type="text" class="ini-search" data-act="ini-search" placeholder="Add a creature, NPC, or name…" autocomplete="off" spellcheck="false" aria-label="Add to initiative">
           <div class="ini-results" id="iniResults" hidden></div>
         </div>
+        <button class="ini-lookup" data-act="lookup-open">${icon('book')} Look up a creature</button>
         <ol class="ini-list" id="iniList">${rows || `<li class="ini-empty">No one in the fight yet.<br><span class="rail-hint">Search above, or hover a name in the story and pick “＋ Initiative”.</span></li>`}</ol>
         ${s.entries.length ? `<div class="ini-tools">
           <button class="btn btn-sm btn-ghost" data-act="ini-sort" title="Order by initiative number, high to low">Sort by init</button>
@@ -500,6 +503,12 @@
       return { name: e.name || 'Removed', side: 'foe', icon: 'shield', typeLabel: 'No longer in the workspace', doc: null };
     }
     if (e.kind === 'hero') return { name: e.name || 'Hero', side: 'party', icon: 'star', typeLabel: 'Player character', doc: null };
+    // A creature dropped straight onto the roster from Lookup — no story page, so
+    // synthesize a doc-shaped object from its inline stats for the card/peek.
+    if (e.kind === 'creature' && e.stats) {
+      const synth = { type: 'creature', title: e.name, fields: e.stats, body: e.stats.notes || '' };
+      return { name: e.name || 'Creature', side: 'foe', icon: 'shield', typeLabel: 'Creature', doc: synth };
+    }
     return { name: e.name || 'Combatant', side: 'foe', icon: 'sword', typeLabel: 'One-off', doc: null };
   }
 
@@ -674,7 +683,7 @@
           <div class="modal-title">${esc(info.name)}</div>
           ${info.typeLabel ? `<div class="stat-sub">${esc(info.typeLabel)}</div>` : ''}
         </div>
-        ${info.doc ? `<a class="btn btn-sm btn-ghost stat-open" href="#/d/${info.doc.id}" data-act="close-modal">Open page →</a>` : ''}
+        ${info.doc && info.doc.id ? `<a class="btn btn-sm btn-ghost stat-open" href="#/d/${info.doc.id}" data-act="close-modal">Open page →</a>` : ''}
       </div>
       <div class="stat-body">${inner}</div>`, 'modal-wide stat-modal');
   }
@@ -820,6 +829,82 @@
         <div class="writeup hs-ref">${d.ref}</div>
       </div>`, 'modal-wide stat-modal hero-modal');
   }
+
+  /* --------------------------- Creature Lookup ---------------------------- */
+  // Search the shipped SRD starter + the DM's personal library. Each hit can be
+  // dropped into the STORY (a real creature page) or onto the ROSTER (a quick
+  // combatant with inline stats, no page). Personal entries can be removed.
+  ACT['lookup-open'] = () => openLookupModal();
+  ACT['lookup-input:input'] = (el) => renderLookupResults(el.value);
+
+  function openLookupModal() {
+    openModal(`
+      <div class="modal-title">Look up a creature</div>
+      <div class="search-box"><input type="text" id="lookupInput" data-act="lookup-input"
+           placeholder="Search creatures by name or tag…" autocomplete="off" spellcheck="false"></div>
+      <div class="lookup-results" id="lookupResults"></div>`, 'modal-wide modal-search');
+    renderLookupResults('');
+    const inp = ROOT.modal.querySelector('#lookupInput'); if (inp) inp.focus();
+  }
+  function renderLookupResults(query) {
+    const box = ROOT.modal.querySelector('#lookupResults');
+    if (!box) return;
+    const q = query.trim().toLowerCase();
+    let list = STORE.getBestiary();
+    if (q) list = list.filter(c => (c.name || '').toLowerCase().includes(q) || (c.tags || []).some(t => String(t).toLowerCase().includes(q)));
+    if (!list.length) {
+      box.innerHTML = `<p class="modal-hint">${q ? 'No creatures match “' + esc(query.trim()) + '”.' : 'Nothing here yet — save a creature to your library, or ask Cowork to add one.'}</p>`;
+      return;
+    }
+    box.innerHTML = list.slice(0, 80).map(c => {
+      const bits = [c.hp && ('HP ' + esc(c.hp)), c.ac && ('AC ' + esc(c.ac))].filter(Boolean).join(' · ');
+      return `<div class="lookup-row">
+        <div class="lookup-main">
+          <div class="lookup-name">${esc(c.name)} <span class="lookup-src ${c.source === 'yours' ? 'src-yours' : 'src-srd'}">${c.source === 'yours' ? 'Yours' : 'SRD'}</span></div>
+          <div class="lookup-meta">${bits}${(c.tags && c.tags.length) ? ' · ' + esc(c.tags.join(', ')) : ''}</div>
+        </div>
+        <div class="lookup-actions">
+          <button class="btn btn-sm btn-ghost" data-act="lookup-story" data-id="${esc(c.id)}">＋ Story</button>
+          <button class="btn btn-sm btn-gold" data-act="lookup-roster" data-id="${esc(c.id)}">＋ Roster</button>
+          ${c.source === 'yours' ? `<button class="lookup-del" data-act="lookup-remove" data-id="${esc(c.id)}" title="Remove from your library" aria-label="Remove ${esc(c.name)} from your library">×</button>` : ''}
+        </div>
+      </div>`;
+    }).join('');
+  }
+  const bestiaryById = (id) => STORE.getBestiary().find(c => c.id === id) || null;
+  const creatureFields = (c) => ({ hp: c.hp || '', ac: c.ac || '', speed: c.speed || '', attack: c.attack || '', trick: c.trick || '' });
+  const firstNum = (s) => { const m = /\d+/.exec(String(s || '')); return m ? parseInt(m[0], 10) : null; };
+
+  ACT['lookup-story'] = (el) => {
+    const c = bestiaryById(el.dataset.id); if (!c) return;
+    const f = parseHash();
+    const parent = (f.kind === 'f' && f.id) ? f.id : null;   // into the focused folder, else root
+    const d = STORE.createDoc({ type: 'creature', title: c.name, parent: parent, body: c.notes || '', fields: creatureFields(c) });
+    if (parent) { const open = ui().open; open[parent] = true; STORE.setUi({ open }); }
+    closeModal();
+    gotoDoc(d.id);
+    announce('Added ' + c.name + ' to the story.');
+  };
+  ACT['lookup-roster'] = (el) => {
+    const c = bestiaryById(el.dataset.id); if (!c) return;
+    const stats = { hp: c.hp || '', ac: c.ac || '', speed: c.speed || '', attack: c.attack || '', trick: c.trick || '', notes: c.notes || '' };
+    const hp = firstNum(c.hp);
+    STORE.rosterAdd(Object.assign({ kind: 'creature', name: c.name, stats: stats }, hp != null ? { hp: hp, maxHp: hp } : {}));
+    if (!ui().railB) { STORE.setUi({ railB: true }); applyRails(); }
+    announce('Added ' + c.name + ' to initiative.');
+  };
+  ACT['lookup-remove'] = (el) => {
+    STORE.removeFromBestiary(el.dataset.id);
+    const inp = ROOT.modal.querySelector('#lookupInput');
+    renderLookupResults(inp ? inp.value : '');
+  };
+  // Save a creature page to the personal library (this browser only).
+  ACT['save-bestiary'] = (el) => {
+    const d = STORE.get(el.dataset.doc); if (!d) return;
+    const f = d.fields || {};
+    STORE.saveToBestiary({ name: d.title, hp: f.hp || '', ac: f.ac || '', speed: f.speed || '', attack: f.attack || '', trick: f.trick || f.special || '', notes: d.body || '', tags: d.tags || [] });
+    announce('Saved ' + d.title + ' to your creature library.');
+  };
 
   /* ============================== The banner =============================== */
   PAINT.banner = function () {

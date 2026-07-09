@@ -253,6 +253,28 @@ a.rail-title:focus-visible { outline: 2px solid var(--gold-bright); outline-offs
 .roster-peek .rp-line { font-size: 12.5px; color: var(--ink-soft); margin: 3px 0; line-height: 1.4; }
 .roster-peek .rp-more { font-size: 11px; color: var(--brown); margin-top: 6px; font-style: italic; }
 
+/* Creature Lookup — the rail button + the bestiary search modal. */
+.ini-lookup {
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  width: calc(100% - 8px); margin: 0 4px 8px; box-sizing: border-box;
+  background: var(--panel); border: 2px solid var(--panel-edge); border-radius: 8px;
+  color: var(--brown); cursor: pointer; font: inherit; font-size: 13px; padding: 7px 10px;
+}
+.ini-lookup:hover { background: var(--surface-active); border-color: var(--gold); }
+.ini-lookup .icon { color: var(--brown); }
+.lookup-results { max-height: 60vh; overflow-y: auto; margin-top: 6px; }
+.lookup-row { display: flex; align-items: center; gap: 10px; padding: 9px 4px; border-bottom: 1px solid var(--panel-edge); }
+.lookup-row:last-child { border-bottom: 0; }
+.lookup-main { flex: 1; min-width: 0; }
+.lookup-name { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--ink); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.lookup-meta { font-size: 12.5px; color: var(--ink-soft); margin-top: 2px; }
+.lookup-src { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 1px 6px; border-radius: 999px; }
+.src-srd { background: rgba(53, 90, 134, 0.16); color: var(--blue); }
+.src-yours { background: rgba(76, 122, 63, 0.18); color: var(--green); }
+.lookup-actions { flex: none; display: flex; align-items: center; gap: 6px; }
+.lookup-del { background: transparent; border: 0; color: var(--ink-soft); cursor: pointer; font-size: 17px; line-height: 1; padding: 2px 6px; border-radius: 6px; }
+.lookup-del:hover { background: rgba(178, 59, 46, 0.16); color: var(--red-bright); }
+
 /* The stat card (click a roster name). Sizable and scrollable — see most, scroll for the rest. */
 .stat-modal .stat-head { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
 .stat-ico { font-size: 26px; color: var(--brown); flex: none; margin-top: 2px; }
