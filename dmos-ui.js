@@ -210,6 +210,8 @@
         <span class="tag">${esc(T.label)}</span>
         ${d.edited ? '<span class="tag bonus" title="You have changed this since Cowork wrote it">edited</span>' : ''}
         <div class="spacer"></div>
+        ${(d.type === 'npc' || d.type === 'creature') ? `<button class="btn btn-sm btn-ghost" data-act="statblock-menu" data-doc="${d.id}"
+                title="Quick-generate a stat block">${icon('flame')} Stats</button>` : ''}
         <button class="btn btn-sm btn-ghost" data-act="focus-doc" data-doc="${d.id}"
                 title="Open just this document">${icon('scroll')}</button>
         <button class="btn btn-sm btn-ghost" data-act="delete-doc" data-doc="${d.id}"
@@ -221,6 +223,7 @@
           <textarea rows="1" data-act="edit-field" data-doc="${d.id}" data-field="${k}"
                     placeholder="…">${esc((d.fields || {})[k] || '')}</textarea>
         </label>`).join('')}</div>` : ''}
+      ${T.statBlock ? statBlockFieldsHTML(d, T) : ''}
       <div class="doc-bodywrap">
         ${editingBody
           ? `<textarea class="doc-body-edit" data-act="edit-body" data-doc="${d.id}"
@@ -230,6 +233,53 @@
       </div>`;
     return el;
   }
+
+  // The optional NPC combat block — rendered only once it has values (a fresh
+  // NPC shows just the "⚡ Stats" header button until you generate or fill one).
+  function statBlockFieldsHTML(d, T) {
+    const has = (T.statBlock || []).some(([k]) => (d.fields || {})[k]);
+    if (!has) return '';
+    return `<div class="doc-fields doc-statblock">
+      <div class="statblock-head">${icon('flame')} Stat block</div>
+      ${T.statBlock.map(([k, prompt]) => `
+        <label class="doc-field">
+          <span class="doc-field-label">${esc(prompt)}</span>
+          <textarea rows="1" data-act="edit-field" data-doc="${d.id}" data-field="${k}"
+                    placeholder="…">${esc((d.fields || {})[k] || '')}</textarea>
+        </label>`).join('')}</div>`;
+  }
+
+  // Quick-generate a stat block at a chosen power tier. The numbers are a
+  // starting point the DM tweaks — calibrated loosely to a low-level table.
+  const TIER_STATS = {
+    normal:    { label: 'Normal',    hp: '11', ac: '12', speed: '30 feet', attack: '+3 to hit, 1d6+1 damage', special: '' },
+    heroic:    { label: 'Heroic',    hp: '27', ac: '14', speed: '30 feet', attack: '+5 to hit, 1d8+3 damage', special: 'Once per fight: a second attack, or a burst — others beat 13 or take 2d6 (half on a success).' },
+    legendary: { label: 'Legendary', hp: '52', ac: '16', speed: '30 feet', attack: '+7 to hit, 2d8+4 damage', special: 'Legendary — takes two turns each round and shrugs off one effect per turn.' },
+    epic:      { label: 'Epic',      hp: '95', ac: '18', speed: '30 feet', attack: '+9 to hit, 3d8+5 damage', special: 'Epic — three turns a round, resists most single hits, and a signature area attack (others beat 16).' },
+  };
+  const TIER_ORDER = ['normal', 'heroic', 'legendary', 'epic'];
+  function genStatsPatch(type, tier) {
+    const t = TIER_STATS[tier] || TIER_STATS.normal;
+    return type === 'creature'
+      ? { hp: t.hp, ac: t.ac, speed: t.speed, attack: t.attack }
+      : { hp: t.hp, ac: t.ac, attack: t.attack, special: t.special };
+  }
+  ACT['statblock-menu'] = (el) => {
+    const id = el.dataset.doc;
+    const items = TIER_ORDER.map(tier => menuItem('gen-stats', { doc: id, tier: tier }, 'flame', TIER_STATS[tier].label)).join('');
+    openMenu(el, `<div class="menu-note">Quick-generate stats</div>${items}`);
+  };
+  ACT['gen-stats'] = (el) => {
+    const id = el.dataset.doc, tier = el.dataset.tier;
+    const d = STORE.get(id); if (!d) return;
+    closeModal();
+    const patch = genStatsPatch(d.type, tier);
+    const hasStats = Object.keys(patch).some(k => (d.fields || {})[k]);
+    const label = (TIER_STATS[tier] || {}).label || 'new';
+    if (hasStats && !confirm('Replace the current stats with a ' + label + ' block?')) return;
+    STORE.patch(id, { fields: patch });
+    announce('Generated a ' + label + ' stat block.');
+  };
 
   /* The keyed reconcile. Unchanged docs are never touched, so scroll position,
      a mid-edit textarea, and a live text selection all survive a NEIGHBOUR
@@ -453,10 +503,10 @@
     return { name: e.name || 'Combatant', side: 'foe', icon: 'sword', typeLabel: 'One-off', doc: null };
   }
 
-  // A creature's page carries a starting HP (its hp field, first number). NPCs and
-  // one-offs have none until the DM sets one from the row's HP chip.
+  // A creature's page — or an NPC with a stat block — carries a starting HP (its
+  // hp field, first number). One-offs have none until the DM sets one.
   function hpFromDoc(d) {
-    if (!d || d.type !== 'creature') return null;
+    if (!d) return null;
     const m = /\d+/.exec(String((d.fields && d.fields.hp) || ''));
     if (!m) return null;
     const n = parseInt(m[0], 10);
@@ -610,9 +660,10 @@
     if (info.doc) {
       const d = info.doc, T = DOC_TYPES[d.type] || { fields: [] };
       const statRow = (k, v) => `<div class="stat-row"><div class="stat-k">${esc(k)}</div><div class="stat-v">${esc(v).replace(/\n/g, '<br>')}</div></div>`;
+      const blockRows = (T.statBlock || []).map(([k, prompt]) => { const v = (d.fields || {})[k]; return v ? statRow(prompt, v) : ''; }).join('');
       const fieldRows = (T.fields || []).map(([k, prompt]) => { const v = (d.fields || {})[k]; return v ? statRow(prompt, v) : ''; }).join('');
       const bodyRow = d.body ? statRow('Notes', unlink(d.body)) : '';
-      inner = (fieldRows + bodyRow) || '<p class="modal-hint">Nothing written on this page yet.</p>';
+      inner = (blockRows + fieldRows + bodyRow) || '<p class="modal-hint">Nothing written on this page yet.</p>';
     } else {
       inner = `<p class="modal-hint">${e.kind === 'hero' ? 'Player-character stats arrive with the party phase.' : 'A one-off combatant — no page to show.'}</p>`;
     }

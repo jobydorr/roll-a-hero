@@ -57,7 +57,11 @@
     encounter: { label: 'Encounter',   icon: 'sword',  fields: [
       ['setup', 'Setup'], ['creatures', 'Creatures'], ['tactics', 'Tactics'], ['reward', 'Reward'] ] },
     npc:       { label: 'NPC',         icon: 'cha',    fields: [
-      ['looks', 'Looks like'], ['wants', 'Wants'], ['voice', 'Voice'], ['secret', 'Secret'] ] },
+      ['looks', 'Looks like'], ['wants', 'Wants'], ['voice', 'Voice'], ['secret', 'Secret'] ],
+      // Optional combat block — shown only once it has values (or after a
+      // Quick-generate). Same field keys Cowork fills when it stats an NPC.
+      statBlock: [
+      ['hp', 'Hit points'], ['ac', 'Armor'], ['attack', 'Attack'], ['special', 'Special move'] ] },
     creature:  { label: 'Creature',    icon: 'shield', fields: [
       ['hp', 'Hit points'], ['ac', 'Armor'], ['speed', 'Speed'], ['attack', 'Attack'], ['trick', 'Signature trick'] ] },
     location:  { label: 'Location',    icon: 'armor',  fields: [
