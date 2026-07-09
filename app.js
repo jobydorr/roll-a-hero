@@ -675,10 +675,12 @@
         heroesBtn.innerHTML = `<span class="hb-ico">${icon('book')}</span><span class="hb-label">My Heroes</span>`;
         heroesBtn.title = 'Back to your saved heroes';
         heroesBtn.onclick = () => {
-          // Don't lose an in-progress build when jumping to the list — a hero
-          // isn't saved until the Finish screen. Never persist a DM-viewed
-          // shared hero (viewCtx): it must not land in this browser's list.
-          if (!viewCtx && heroStarted(state)) persist();
+          // Save the DM's OWN work before jumping — but ONLY that. A fresh build
+          // has no id yet; an edit has editCtx. A hero loaded by the DM-view is
+          // neither: it keeps the player's id and, once "Back to party" clears
+          // viewCtx, would otherwise be persisted here — writing another
+          // player's shared hero into this browser's list. Guard against it.
+          if (!viewCtx && (editCtx || !state.id) && heroStarted(state)) persist();
           go('welcome');
         };
       }
