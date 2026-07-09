@@ -347,6 +347,7 @@
       <div class="rail-section">
         <div class="rail-section-head">Tools</div>
         <ul class="tool-list">
+          <li><button class="tool" data-act="search">${icon('scroll')} <span>Search</span> <kbd class="tool-kbd">Ctrl K</kbd></button></li>
           <li><button class="tool tool-quicknote" data-act="quick-note">${icon('flame')} <span>Quick note</span></button></li>
           <li><button class="tool" data-act="sync">${icon('scroll')} <span>Sync from campaign</span></button></li>
           <li><button class="tool" data-act="new-folder">${icon('book')} <span>New folder</span></button></li>
@@ -456,9 +457,13 @@
           <button class="btn btn-sm" data-act="file-selection" disabled title="Select text in the pad first">File selection</button>
           <button class="btn btn-sm btn-primary" data-act="file-all">File all →</button>
         </div>
+        <div class="qn-newsection" hidden>
+          <input type="text" class="qn-newsection-input" data-act="qn-newsection"
+                 placeholder="Name the new section, then File…" maxlength="80">
+        </div>
         <div class="qn-foot">
           <button class="btn btn-sm btn-ghost" data-act="clear-note">Clear</button>
-          <span class="qn-hint">Filing moves notes into the Notebook. Clear erases the pad.</span>
+          <span class="qn-hint">Filing copies notes into the Notebook. Clear erases the pad.</span>
         </div>
       </div>`;
     // Restore the chosen destination, else default to the first section's new note.
@@ -467,6 +472,7 @@
     const targets = STORE.notebookTargets();
     if (want && [...sel.options].some(o => o.value === want)) sel.value = want;
     else if (targets.length) sel.value = 'new:' + targets[0].sectionId;
+    syncNewSectionField();
 
     updateSelButton();
     if (focusPadOnPaint) {
@@ -496,16 +502,33 @@
     STORE.setUi({ quickNoteTarget: sel.value });
   }
 
-  // Resolve the dropdown into a filing destination. Returns null if the DM
-  // cancels a "new section" name prompt.
+  // Show/hide the inline "new section" name field based on the dropdown value.
+  function syncNewSectionField() {
+    const sel = ROOT.float && ROOT.float.querySelector('.qn-target');
+    const wrap = ROOT.float && ROOT.float.querySelector('.qn-newsection');
+    if (!sel || !wrap) return;
+    wrap.hidden = sel.value !== 'new-section';
+  }
+
+  // Resolve the dropdown into a filing destination. Returns null (without filing)
+  // if "New section" is chosen but not yet named — it reveals and focuses the
+  // inline field instead of a native prompt.
   function resolveTarget() {
     const sel = ROOT.float.querySelector('.qn-target');
     const v = sel.value;
     if (v === 'new-section') {
-      const name = prompt('Name the new notebook section:');
-      if (name == null) return null;
-      const sec = STORE.createSection(name.trim() || 'General');
-      return { sectionId: sec.id, noteId: null, label: sec.title };
+      const input = ROOT.float.querySelector('.qn-newsection-input');
+      const name = input ? input.value.trim() : '';
+      if (!name) {
+        const wrap = ROOT.float.querySelector('.qn-newsection');
+        if (wrap) wrap.hidden = false;
+        if (input) input.focus();
+        announce('Type a name for the new section, then file.');
+        return null;
+      }
+      const sec = STORE.createSection(name);
+      if (input) input.value = '';
+      return { sectionId: sec.id, noteId: null, label: sec.title, createdSection: true };
     }
     if (v.indexOf('new:') === 0) {
       const sid = v.slice(4); const s = STORE.get(sid);
@@ -516,6 +539,20 @@
       return { sectionId: n ? n.parent : null, noteId: nid, label: n ? n.title : 'note' };
     }
     return null;
+  }
+
+  // After a successful file: refresh the dropdown, point it at where the note
+  // went, hide the new-section field, and repaint the tree.
+  function afterFile(dest) {
+    const sel = ROOT.float && ROOT.float.querySelector('.qn-target');
+    if (sel) {
+      sel.innerHTML = targetOptionsHTML();
+      const want = dest.noteId ? 'note:' + dest.noteId : 'new:' + dest.sectionId;
+      if ([...sel.options].some(o => o.value === want)) sel.value = want;
+      STORE.setUi({ quickNoteTarget: sel.value });
+    }
+    syncNewSectionField();
+    mark('tree');
   }
 
   /* ============================ Debounced writes =========================== */
@@ -601,20 +638,28 @@
   ACT['quick-note'] = () => { focusPadOnPaint = true; STORE.setUi({ quickNoteOpen: true }); mark('float'); };
   ACT['close-quicknote'] = () => { STORE.setUi({ quickNoteOpen: false }); mark('float'); };
   ACT['qn-date:change'] = (el) => STORE.setQuickNote({ date: el.value });
-  ACT['qn-target:change'] = (el) => STORE.setUi({ quickNoteTarget: el.value });
+  ACT['qn-target:change'] = (el) => {
+    STORE.setUi({ quickNoteTarget: el.value });
+    syncNewSectionField();
+    if (el.value === 'new-section') { const inp = ROOT.float.querySelector('.qn-newsection-input'); if (inp) inp.focus(); }
+  };
   ACT['qn-input:input'] = (el) => { STORE.setQuickNote({ text: el.value, filed: false }); updateSelButton(); };
   ACT['qn-input:keyup'] = () => updateSelButton();
   ACT['qn-input:mouseup'] = () => updateSelButton();
 
-  ACT['new-section'] = () => {
-    const name = prompt('Name the new notebook section:');
-    if (name == null) return;
-    const sec = STORE.createSection(name.trim() || 'New section');
-    const open = ui().open; open[STORE.NB_ROOT] = true; STORE.setUi({ open });
-    refreshQuickNoteTargets();
-    mark('tree');
-    announce('Added section “' + sec.title + '”.');
-  };
+  ACT['new-section'] = () => openTextPromptModal({
+    title: 'New notebook section',
+    hint: 'A place to file notes — e.g. “Session 3”, “NPCs I improvised”, “Loose threads”.',
+    placeholder: 'Section name',
+    submitLabel: 'Add section',
+    onSubmit: (name) => {
+      const sec = STORE.createSection(name);
+      const open = ui().open; open[STORE.NB_ROOT] = true; STORE.setUi({ open });
+      refreshQuickNoteTargets();
+      mark('tree');
+      announce('Added section “' + sec.title + '”.');
+    },
+  });
 
   ACT['file-all'] = () => {
     const pad = ROOT.float.querySelector('.qn-pad');
@@ -624,7 +669,7 @@
     const q = STORE.getQuickNote();
     STORE.fileNote({ text: pad.value, date: q.date, sectionId: dest.sectionId, noteId: dest.noteId });
     pad.value = ''; STORE.clearQuickNote();
-    refreshQuickNoteTargets(); updateSelButton(); mark('tree');
+    afterFile(dest); updateSelButton();
     announce('Filed to “' + dest.label + '”.');
   };
 
@@ -636,11 +681,11 @@
     if (!dest) return;
     const q = STORE.getQuickNote();
     STORE.fileNote({ text: pad.value.slice(s, e), date: q.date, sectionId: dest.sectionId, noteId: dest.noteId });
-    pad.value = pad.value.slice(0, s) + pad.value.slice(e);   // the moved text leaves the pad
-    STORE.setQuickNote({ text: pad.value });
-    pad.focus(); pad.selectionStart = pad.selectionEnd = s;
-    refreshQuickNoteTargets(); updateSelButton(); mark('tree');
-    announce('Moved the selection to “' + dest.label + '”.');
+    // Copy, not cut — the text stays in the pad so you can file it more than once
+    // or keep working with it. Clear is the only thing that erases the pad.
+    pad.focus(); pad.selectionStart = s; pad.selectionEnd = e;
+    afterFile(dest); updateSelButton();
+    announce('Filed the selection to “' + dest.label + '”. It is still in the pad.');
   };
 
   ACT['clear-note'] = () => {
@@ -670,7 +715,7 @@
     const q = STORE.getQuickNote();
     STORE.fileNote({ text: pad.value, date: q.date, sectionId: dest.sectionId, noteId: dest.noteId });
     pad.value = ''; STORE.clearQuickNote();
-    refreshQuickNoteTargets(); updateSelButton(); mark('tree');
+    afterFile(dest); updateSelButton();
     announce('Filed to “' + dest.label + '”, then cleared.');
   };
 
@@ -701,6 +746,20 @@
   ACT['modal-backdrop'] = (el, e) => { if (e.target === el) closeModal(); };
   ACT['close-modal'] = () => closeModal();
 
+  ACT['search'] = () => openSearchModal();
+  ACT['search-input:input'] = (el) => renderSearchResults(el.value);
+  ACT['search-open'] = (el) => {
+    const id = el.dataset.doc;
+    closeModal();
+    if (STORE.isInNotebook(id)) {
+      const open = ui().open; open[STORE.NB_ROOT] = true;
+      const p = STORE.get(id); if (p && p.parent) open[p.parent] = true;
+      STORE.setUi({ open });
+    }
+    gotoDoc(id);
+    mark('tree');
+  };
+
   const currentFolder = () => {
     const f = parseHash();
     if (!f.id) return null;
@@ -718,6 +777,83 @@
   }
   const closeModal = () => { ROOT.modal.innerHTML = ''; };
   const modalOpen = () => !!ROOT.modal.firstChild;
+
+  // A styled replacement for window.prompt — no more "localhost says" dialogs.
+  function openTextPromptModal(o) {
+    openModal(`
+      <div class="modal-title">${esc(o.title)}</div>
+      ${o.hint ? `<p class="modal-hint">${esc(o.hint)}</p>` : ''}
+      <div class="field"><input type="text" id="promptInput" placeholder="${esc(o.placeholder || '')}" maxlength="${o.maxlength || 80}"></div>
+      <div class="modal-actions">
+        <button class="btn btn-sm btn-ghost" data-act="close-modal">Cancel</button>
+        <div class="spacer"></div>
+        <button class="btn btn-sm btn-primary" id="promptOk">${esc(o.submitLabel || 'OK')}</button>
+      </div>`);
+    const input = ROOT.modal.querySelector('#promptInput');
+    const submit = () => { const v = input.value.trim(); if (!v) { input.focus(); return; } closeModal(); o.onSubmit(v); };
+    ROOT.modal.querySelector('#promptOk').onclick = submit;
+    input.onkeydown = (e) => { if (e.key === 'Enter') { e.preventDefault(); submit(); } };
+    input.focus();
+  }
+
+  /* ============================ App-wide search =========================== */
+  const pathLabel = (id) => pathOf(id).slice(0, -1).map(d => d.title).join(' › ');
+
+  // Substring match across every document — story folders AND the notebook —
+  // over title, template fields, and body. The narrow-then-browse idea from the
+  // companion picker, applied to the whole workspace.
+  function searchDocs(query) {
+    const q = query.trim().toLowerCase();
+    if (!q) return [];
+    const out = [];
+    STORE.docs().forEach(d => {
+      if (d.id === STORE.NB_ROOT || d.type === 'folder') { /* still searchable by title only */ }
+      const original = [d.title].concat(Object.values(d.fields || {})).concat([d.body]).filter(Boolean).join('   ');
+      const hay = original.toLowerCase();
+      const idx = hay.indexOf(q);
+      if (idx < 0) return;
+      const from = Math.max(0, idx - 30), to = Math.min(original.length, idx + q.length + 55);
+      const rel = idx - from;
+      const raw = original.slice(from, to);
+      const snip = (from > 0 ? '… ' : '')
+        + esc(raw.slice(0, rel)) + '<mark>' + esc(raw.slice(rel, rel + q.length)) + '</mark>' + esc(raw.slice(rel + q.length))
+        + (to < original.length ? ' …' : '');
+      out.push({
+        id: d.id, title: d.title, type: d.type,
+        area: STORE.isInNotebook(d.id) ? 'Notebook' : 'Story',
+        path: pathLabel(d.id),
+        titleHit: d.title.toLowerCase().indexOf(q) >= 0,
+        snip: snip.replace(/\n+/g, ' '),
+      });
+    });
+    out.sort((a, b) => (b.titleHit - a.titleHit) || a.title.localeCompare(b.title));
+    return out.slice(0, 40);
+  }
+
+  function renderSearchResults(query) {
+    const box = ROOT.modal.querySelector('#searchResults');
+    if (!box) return;
+    const q = query.trim();
+    if (!q) { box.innerHTML = '<p class="modal-hint">Type to search across every folder and note.</p>'; return; }
+    const res = searchDocs(query);
+    if (!res.length) { box.innerHTML = `<p class="modal-hint">No matches for “${esc(q)}”.</p>`; return; }
+    box.innerHTML = res.map(r => `
+      <button class="search-row" data-act="search-open" data-doc="${r.id}">
+        <span class="search-icon">${icon(DOC_TYPES[r.type] ? DOC_TYPES[r.type].icon : 'scroll')}</span>
+        <span class="search-main">
+          <span class="search-title">${esc(r.title)} <span class="search-area">${r.area}${r.path ? ' · ' + esc(r.path) : ''}</span></span>
+          <span class="search-snip">${r.snip}</span>
+        </span>
+      </button>`).join('');
+  }
+
+  function openSearchModal() {
+    openModal(`
+      <div class="search-box"><input type="text" id="searchInput" data-act="search-input"
+           placeholder="Search all story &amp; notebook…" autocomplete="off" spellcheck="false"></div>
+      <div class="search-results" id="searchResults"><p class="modal-hint">Type to search across every folder and note.</p></div>`, 'modal-wide modal-search');
+    ROOT.modal.querySelector('#searchInput').focus();
+  }
 
   function openNewDocModal(parent) {
     const types = Object.keys(DOC_TYPES).filter(t => t !== 'folder');
@@ -890,7 +1026,7 @@
     // Bound once, on permanent roots. Never removed. See the header comment.
     ['click', 'input', 'change', 'keydown', 'pointerdown', 'contextmenu'].forEach(t => on(ROOT.shell, t));
     on(ROOT.banner, 'click');
-    on(ROOT.modal, 'click');
+    ['click', 'input'].forEach(t => on(ROOT.modal, t));   // input drives live search
     on(ROOT.peek, 'click');
     // The float is a separate root, so it needs its own delegated events: the pad
     // fires input/keyup/mouseup, the date/target fire change, the header drags.
@@ -909,6 +1045,11 @@
     });
 
     document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) {
+        e.preventDefault();
+        if (!modalOpen()) openSearchModal();
+        return;
+      }
       if (e.key !== 'Escape') return;
       if (modalOpen()) closeModal();
       else if (ROOT.peek.firstChild) hidePeek();

@@ -282,6 +282,34 @@ table.diff th, table.diff td { border: 1px solid var(--panel-edge); padding: 6px
 table.diff thead th { background: rgba(107, 74, 35, 0.12); font-family: var(--font-display); }
 table.diff tbody th { width: 22%; font-family: var(--font-display); font-weight: 700; text-transform: capitalize; }
 
+/* ------------------------------- Search --------------------------------- */
+.tool-kbd {
+  margin-left: auto; font-family: var(--font-body); font-size: 10px;
+  color: var(--ink-soft); border: 1px solid var(--panel-edge);
+  border-radius: 4px; padding: 1px 5px; background: rgba(255,255,255,0.4);
+}
+.tool:hover .tool-kbd { background: transparent; }
+.modal-search { max-width: 620px; }
+.search-box input {
+  width: 100%; font: inherit; font-size: 17px; padding: 12px 14px;
+  border-radius: 10px; border: 2px solid var(--gold);
+  background: var(--surface-active); color: var(--ink);
+}
+.search-box input:focus { outline: none; }
+.search-results { margin-top: 12px; max-height: 56vh; overflow-y: auto; }
+.search-row {
+  display: flex; gap: 10px; width: 100%; text-align: left; align-items: flex-start;
+  background: transparent; border: 0; border-radius: 10px; cursor: pointer;
+  padding: 9px 10px; color: var(--ink);
+}
+.search-row:hover { background: var(--surface-active); }
+.search-icon { color: var(--brown); flex: none; margin-top: 2px; }
+.search-main { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.search-title { font-family: var(--font-display); font-weight: 700; font-size: 15px; }
+.search-area { font-family: var(--font-body); font-weight: 400; font-size: 11.5px; color: var(--brown); text-transform: none; letter-spacing: 0; }
+.search-snip { font-size: 13px; color: var(--ink-soft); line-height: 1.4; }
+.search-snip mark, .search-title mark { background: rgba(226, 185, 76, 0.5); color: inherit; border-radius: 2px; padding: 0 1px; }
+
 /* ------------------------ Quick Note floating window --------------------- */
 .quicknote {
   position: fixed; right: 24px; bottom: 24px; z-index: var(--z-float);
@@ -319,6 +347,13 @@ table.diff tbody th { width: 22%; font-family: var(--font-display); font-weight:
   padding: 6px 8px; border-radius: 8px; border: 2px solid var(--panel-edge);
   background: var(--surface-active); color: var(--ink);
 }
+.qn-newsection { padding: 0 12px 6px; }
+.qn-newsection-input {
+  width: 100%; font: inherit; font-size: 13px; padding: 6px 8px;
+  border-radius: 8px; border: 2px solid var(--gold);
+  background: var(--surface-active); color: var(--ink);
+}
+.qn-newsection-input:focus { outline: none; }
 .qn-foot { display: flex; align-items: center; gap: 10px; padding: 2px 12px 12px; }
 .qn-hint { font-size: 11.5px; color: var(--ink-soft); font-style: italic; }
 
