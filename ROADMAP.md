@@ -4,24 +4,32 @@
 
 *Last updated: 2026-07-08.*
 
-> **▶ HANDOFF — start here (2026-07-08, evening)**
+> **▶ HANDOFF — start here (2026-07-08, night — paused for a break, fresh chat next)**
 >
-> **The shape (naming, use it):** the **RH main page** (`index.html`) is a hub with two doors — **Build a Hero** (the character builder, for everyone) and **Dungeon Master OS** (`dm.html`, passcode `bugbear`, for the DM). The DM OS link lives only on the main page, never inside the builder, so a player has no path from their character sheet into the DM's spoilers.
+> **The shape (naming — Joby set this, use it):** the **RH main page** (`index.html`) is a hub with two doors — **Build a Hero** (the character builder, for everyone) and **Dungeon Master OS** (`dm.html`, passcode `bugbear`, for the DM). The DM OS link is on the main page only, never inside the builder, so a player has no path from their character sheet to the DM's spoilers. The header "Roll a Hero" title is a home link site-wide.
 >
-> **What just got much simpler (this session):** the DM OS used to load its campaign from gitignored JSON files fetched over a local server — which needed a launcher, which needed loopback hardening. All gone. **The campaign is now `campaign.js`, committed and public, loaded by a `<script>` tag like `data.js`.** No fetch, no server: the live site works and double-clicking `dm.html` works. To push content from Cowork, edit `campaign.js` and commit — same as adding a spell to `data.js`. Full reasoning (and the mistake that caused the detour) in `DECISIONS.md`, top entry.
+> **How campaign content works:** the campaign is **`campaign.js`** (`window.DM_CAMPAIGN`), committed and public, loaded by a `<script>` tag like `data.js`. **To push content from Cowork, edit `campaign.js` and commit** — same as adding a spell to `data.js`. No fetch, no server; the live site works and double-clicking `dm.html` works. `DMOS_STORE.loadCampaign(force)` reads that global. (Why it's public and there's no server: `DECISIONS.md`, top entries. Short version — Joby only needs players kept out via the passcode, not code-level secrecy.)
 >
-> **Still true about the workspace:** three-column Scrivener-style layout — nestable folder tree, a continuous story feed stitching a folder's docs into one read, typed documents with template fields, `[[wikilinks]]` with hover-peek, conflict-safe merge, Export/Import, print.
+> **What the DM OS has now (all built & verified this session):**
+> - Three-column Scrivener workspace: nestable folder tree, continuous story feed (a folder stitches its docs into one read), typed docs with template fields, `[[wikilinks]]` with hover-peek, conflict-safe merge, print.
+> - **Notebook + Quick Note.** Notebook = its own left-sidebar area (sections + notes), separate from Story Folders; notes open in the center feed. Quick Note = a floating pad (date box) that persists until you Clear it; **File all** or **File selection** (a *copy*, leaves the pad) into a section (new note) or an existing note (append). Built on the shared doc store via a reserved `nb_root`, partitioned out of story views by `isInNotebook()`.
+> - **App-wide search** (Search tool / **Ctrl+K**) over every doc's title/fields/body, story + notebook, highlighted.
+> - **Folder management:** parent (top-level) folders show a tome icon, child folders a folder icon (`docIconName()`); a **＋** on the Story Folders header adds a *parent* folder or a root doc; a **＋** on each folder adds a subfolder or doc *inside* it (popup menu, no native prompts). "New folder"/"New document" are gone from Tools.
+> - **Drag** (by the ⠿ handle only): reorder between rows, or drop onto a folder's middle to **move an item into it** (works across folders; cycle-guarded).
+> - **New workspace** (Tools): backs up to a file, then blanks the workspace. `ws.autoSync` (default true) stops a reload from re-seeding `campaign.js`; "Sync from campaign" forces it. Gives Export/Import real use (save/switch campaigns).
+> - **Lock** (Tools) re-gates the passcode. **The passcode is remembered per-browser** (`passOk` in localStorage) — by design, per Joby's choice.
 >
-> **⏸ Feedback still pending.** Joby has *"comments and concerns"* they haven't given yet. Ask before starting new feature work.
+> **⏸ No open request — Joby paused for a break.** Nothing half-done; last turn (folder management) is complete and committed. Ask what's next.
 >
-> **What's new (2026-07-08 evening):** the **Notebook + Quick Note** system. A Notebook lives in the left sidebar with its own sections (separate from Story Folders); its notes open/edit in the center feed. The **Quick Note** tool opens a floating pad (date box) that persists until you Clear it; file the whole pad or a highlighted piece into a section (new note) or an existing note (append). Built on the shared document store via a reserved `nb_root` folder, partitioned out of the story views by `isInNotebook()`.
+> **Where to pick up (Joby's menu, their call):** **Sidebar B** (Initiative / Party / Lookup) is still a placeholder — the obvious next big piece. The **story flow chart** is unbuilt. Smaller: a "today's notes" view. The **"review inbox"** phase is moot (content lands via `campaign.js`; if unsure where a pushed doc belongs, ask Joby in chat).
 >
-> **Where to pick up:** **Sidebar B** (Initiative / Party / Lookup) is still a placeholder, and the flow chart is unbuilt (see `BACKLOG.md`). Notebook follow-ups: keyword search, drag-reorder. The old "review inbox" phase is moot — content lands via `campaign.js`; if uncertain where a pushed doc belongs, ask Joby in chat.
+> **Deferred, agreed:** the DM can only truly *delete* a shared hero their current browser owns; for others, "Remove" hides it locally (`rollAHeroDmHidden`). Real fix = a "campaign owner" concept in `firestore.rules`, bundled with the **Private DM area / accounts** item in `BACKLOG.md`.
 >
-> **Commits are unpushed.** `git push` deploys to the public site. Fine to do — there's nothing secret in the repo by design — but it's Joby's call.
+> **17 commits unpushed.** `git push` deploys to the public site (`jobydorr.github.io/roll-a-hero`). Safe — nothing secret in the repo by design, verified no `campaign/` content was ever committed — but it's **Joby's call**, so ask.
 >
-> **Things to know before you touch it:**
-> - The campaign is **`campaign.js`** (`window.DM_CAMPAIGN`). `DMOS_STORE.loadCampaign()` reads that global; there is no fetch and no `campaign/` folder anymore.
+> **Local dev:** `python -m http.server 8000` in the repo, then `http://localhost:8000/`. (Preview tooling uses `.claude/launch.json`. Note: `requestAnimationFrame` is throttled in a backgrounded preview tab, so in `preview_eval` tests call `DMOS_UI.flush()` to force a synchronous paint instead of awaiting rAF.)
+>
+> **Traps that cost real debugging (don't relearn them):**
 > - `dm.html` **must not link `print.css`** — its line 8 hides `.app-header, .app, #live`. `dmos.css` owns `@media print` for that page.
 > - `dm.html` shares a `localStorage` origin with `index.html`, and `saveAll()` (`app.js:190`) swallows quota errors. A full DM workspace could silently stop a *hero* from saving. Every DM write goes through one `write()` in `dmos-store.js` that surfaces `QuotaExceededError`.
 > - **The feed's reconcile key is `nodeKey(d)`, not `rev`.** Conflict flags and the body-editor toggle change a node's HTML without moving a revision, so they're folded into `nodeKey`. Anything you add to `renderDocNode` that isn't derived from `rev` must go there too.
