@@ -2,9 +2,9 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-07-08.*
+*Last updated: 2026-07-09.*
 
-> **▶ HANDOFF — start here (2026-07-08, night — paused for a break, fresh chat next)**
+> **▶ HANDOFF — start here (2026-07-09 — paused mid-session; everything below is pushed & LIVE)**
 >
 > **The shape (naming — Joby set this, use it):** the **RH main page** (`index.html`) is a hub with two doors — **Build a Hero** (the character builder, for everyone) and **Dungeon Master OS** (`dm.html`, passcode `bugbear`, for the DM). The DM OS link is on the main page only, never inside the builder, so a player has no path from their character sheet to the DM's spoilers. The header "Roll a Hero" title is a home link site-wide.
 >
@@ -18,14 +18,18 @@
 > - **Drag** (by the ⠿ handle only): reorder between rows, or drop onto a folder's middle to **move an item into it** (works across folders; cycle-guarded).
 > - **New workspace** (Tools): backs up to a file, then blanks the workspace. `ws.autoSync` (default true) stops a reload from re-seeding `campaign.js`; "Sync from campaign" forces it. Gives Export/Import real use (save/switch campaigns).
 > - **Lock** (Tools) re-gates the passcode. **The passcode is remembered per-browser** (`passOk` in localStorage) — by design, per Joby's choice.
+> - **"At the table" right sidebar (NEW, 2026-07-09).** The right rail is now the **initiative roster**: one drag-ordered list that IS the turn order — player heroes + NPCs + creatures together. Click a name → scrollable stat card. Add a creature/NPC via a story wikilink's peek ("＋ Initiative") or the rail search box (name/type). Round/turn cursor, per-row init number, "sort by init". State lives on `rollAHeroDmInitiative` in `dmos-store.js` (`getInitiative`/`rosterAdd`/`rosterMove`/`initStep`); UI is `PAINT.rail` + a `roster` drag branch in `dmos-ui.js`.
+> - **Players from the REAL shared party (NEW).** `dm.html` now loads Firebase (RAHSync). The rail has a **campaign-code field** (`ui.campaignCode`, remembered, empty by default) → **Load** → `RAHSync.listCampaign(code)` → **＋** adds each shared hero as a `kind:'hero'` roster entry holding its snapshot. Its stat card computes real HP/AC/abilities/spells via `window.RAH.withState(snapshot, …)` + `referenceHTML`. (`withState` is SYNC-ONLY — compute in one pass.) Verified live: code `dungeon-dads` → Century, Aramil Quingalor, Sam Silkweed.
 >
-> **⏸ No open request — Joby paused for a break.** Nothing half-done; last turn (folder management) is complete and committed. Ask what's next.
+> **Also shipped this session (player-facing builder):** the header "Roll a Hero" logo is a site-wide home link (hover cue); a persistent **My Heroes** button jumps to the saved-heroes list; fixed a stray progress bar that leaked onto the hub (`[hidden]{display:none!important}` in `styles.css`).
 >
-> **Where to pick up (Joby's menu, their call):** **Sidebar B** (Initiative / Party / Lookup) is still a placeholder — the obvious next big piece. The **story flow chart** is unbuilt. Smaller: a "today's notes" view. The **"review inbox"** phase is moot (content lands via `campaign.js`; if unsure where a pushed doc belongs, ask Joby in chat).
+> **⏸ Paused mid-session. ONE outstanding user action for Joby:** **hard-refresh (Ctrl+Shift+R)** the live site, then **Delete the stray "Aramil Quingalor"** from their own *Your Saved Heroes*. It landed there via a My Heroes bug (fixed in `d58d71f` — it used to `persist()` a DM-*viewed* shared hero). Deleting it is **local-only and safe**, verified 4 ways incl. a live Firestore round-trip: the player's shared copy is untouched (the DM doesn't own that doc; `firestore.rules` forbids the delete; no unshare is even called since the DM never Shared it).
+>
+> **Where to pick up next (Joby's call):** the roster works but could grow — **per-row HP / damage tracking** at the table (not in Joby's original spec; easy add), hover-preview (not just click) for stat cards, or a **Lookup** tab (rules/spells search). Still open from before: the **story flow chart** (unbuilt), a "today's notes" view. Minor: the hero card's passive perception is shown as 10+WIS baseline (the builder doesn't model skill proficiency).
 >
 > **Deferred, agreed:** the DM can only truly *delete* a shared hero their current browser owns; for others, "Remove" hides it locally (`rollAHeroDmHidden`). Real fix = a "campaign owner" concept in `firestore.rules`, bundled with the **Private DM area / accounts** item in `BACKLOG.md`.
 >
-> **17 commits unpushed.** `git push` deploys to the public site (`jobydorr.github.io/roll-a-hero`). Safe — nothing secret in the repo by design, verified no `campaign/` content was ever committed — but it's **Joby's call**, so ask.
+> **Everything is pushed & LIVE** — `origin/main` @ `d58d71f`, working tree clean. The whole prior backlog + this session went out together (RH main page hub, DM OS, roster, party). Note: the passcode-gated **Dungeon Master OS door is now visible to players** on the front page (by design). Future `git push` deploys in ~1 min; bump `?v=` on changed assets and hard-refresh. Nothing secret in the repo by design.
 >
 > **Local dev:** `python -m http.server 8000` in the repo, then `http://localhost:8000/`. (Preview tooling uses `.claude/launch.json`. Note: `requestAnimationFrame` is throttled in a backgrounded preview tab, so in `preview_eval` tests call `DMOS_UI.flush()` to force a synchronous paint instead of awaiting rAF.)
 >
@@ -35,6 +39,7 @@
 > - **The feed's reconcile key is `nodeKey(d)`, not `rev`.** Conflict flags and the body-editor toggle change a node's HTML without moving a revision, so they're folded into `nodeKey`. Anything you add to `renderDocNode` that isn't derived from `rev` must go there too.
 > - **Never detach the node `cursor` points at** in `PAINT.feed` without advancing `cursor` first, or it throws `NotFoundError` on every repaint of the first doc — silently, because `flush()` catches paint errors into the console.
 > - **Assert on computed style, not on the attribute you just set**, and **watch `console.error` in UI tests** (`flush()` swallows paint errors). Both traps cost real debugging this session; the `[hidden]{display:none!important}` at the top of `dmos.css` exists because an author `display` rule was beating the browser's `[hidden]`.
+> - **Never `persist()` a hero the DM only *viewed*.** "DM: view a shared party" loads a player's hero into `state` and leaves it there after "Back to party" clears `viewCtx`. Any save-on-navigation must guard `!viewCtx && (editCtx || !state.id)` — a viewed shared hero keeps the player's id and has no `editCtx`. The My Heroes button hit exactly this and wrote another player's hero into the DM's list (fixed `d58d71f`).
 >
 > ---
 >
