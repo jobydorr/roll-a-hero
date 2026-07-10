@@ -210,6 +210,8 @@
         <span class="tag">${esc(T.label)}</span>
         ${d.edited ? '<span class="tag bonus" title="You have changed this since Cowork wrote it">edited</span>' : ''}
         <div class="spacer"></div>
+        ${(d.type === 'npc' || d.type === 'creature') ? `<button class="btn btn-sm btn-ghost" data-act="roster-add-doc" data-doc="${d.id}"
+                title="Add to the “At the table” initiative roster">${icon('sword')} To the table</button>` : ''}
         ${(d.type === 'npc' || d.type === 'creature') ? `<button class="btn btn-sm btn-ghost" data-act="statblock-menu" data-doc="${d.id}"
                 title="Quick-generate a stat block">${icon('flame')} Stats</button>` : ''}
         ${d.type === 'creature' ? `<button class="btn btn-sm btn-ghost" data-act="save-bestiary" data-doc="${d.id}"
@@ -567,10 +569,11 @@
   // wikilink's peek. Opens the rail if it was collapsed so the add is visible.
   ACT['roster-add-doc'] = (el) => {
     const d = STORE.get(el.dataset.doc); if (!d) return;
+    const already = STORE.getInitiative().entries.some(e => e.ref === d.id);
     STORE.rosterAdd(Object.assign({ kind: 'doc', ref: d.id, name: d.title }, hpFromDoc(d) || {}));
     hidePeek();
     if (!ui().railB) { STORE.setUi({ railB: true }); applyRails(); }
-    announce('Added ' + d.title + ' to initiative.');
+    announce(already ? d.title + ' is already at the table.' : 'Added ' + d.title + ' to the table.');
   };
   ACT['roster-add-custom'] = (el) => {
     const name = (el.dataset.name || '').trim(); if (!name) return;
