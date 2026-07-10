@@ -214,22 +214,24 @@
         <div class="spacer"></div>
         ${(d.type === 'npc' || d.type === 'creature') ? `<button class="btn btn-sm btn-ghost" data-act="roster-add-doc" data-doc="${d.id}"
                 title="Add to the “At the table” initiative roster">${icon('sword')} To the table</button>` : ''}
+        ${d.type === 'creature' ? `<button class="btn btn-sm btn-ghost" data-act="creature-fill" data-doc="${d.id}"
+                title="Fill this block from your creature library">${icon('book')} Look up</button>` : ''}
         ${(d.type === 'npc' || d.type === 'creature') ? `<button class="btn btn-sm btn-ghost" data-act="statblock-menu" data-doc="${d.id}"
                 title="Quick-generate a stat block">${icon('flame')} Stats</button>` : ''}
         ${d.type === 'creature' ? `<button class="btn btn-sm btn-ghost" data-act="save-bestiary" data-doc="${d.id}"
-                title="Save to your creature library">${icon('book')} Save</button>` : ''}
+                title="Save to your creature library">${icon('star')} Save</button>` : ''}
         <button class="btn btn-sm btn-ghost" data-act="focus-doc" data-doc="${d.id}"
                 title="Open just this document">${icon('scroll')}</button>
         <button class="btn btn-sm btn-ghost" data-act="delete-doc" data-doc="${d.id}"
                 title="Move to trash (never really deleted)">✕</button>
       </header>
+      ${T.statBlock ? statBlockFieldsHTML(d, T) : ''}
       ${T.fields.length ? `<div class="doc-fields">${T.fields.map(([k, prompt]) => `
         <label class="doc-field">
           <span class="doc-field-label">${esc(prompt)}</span>
           <textarea rows="1" data-act="edit-field" data-doc="${d.id}" data-field="${k}"
                     placeholder="…">${esc((d.fields || {})[k] || '')}</textarea>
         </label>`).join('')}</div>` : ''}
-      ${T.statBlock ? statBlockFieldsHTML(d, T) : ''}
       <div class="doc-bodywrap">
         ${editingBody
           ? `<textarea class="doc-body-edit" data-act="edit-body" data-doc="${d.id}"
@@ -255,20 +257,39 @@
         </label>`).join('')}</div>`;
   }
 
-  // Quick-generate a stat block at a chosen power tier. The numbers are a
-  // starting point the DM tweaks — calibrated loosely to a low-level table.
+  // Quick-generate a stat block at a chosen power tier. Each tier is a set of
+  // RANGES, rolled fresh every time, so two "Heroic" monsters aren't identical.
+  // A starting point the DM tweaks — calibrated loosely to a low-level table.
+  const rint = (lo, hi) => lo + Math.floor(Math.random() * (hi - lo + 1));
+  const pickOne = (arr) => arr[Math.floor(Math.random() * arr.length)];
   const TIER_STATS = {
-    normal:    { label: 'Normal',    hp: '11', ac: '12', speed: '30 feet', attack: '+3 to hit, 1d6+1 damage', special: '' },
-    heroic:    { label: 'Heroic',    hp: '27', ac: '14', speed: '30 feet', attack: '+5 to hit, 1d8+3 damage', special: 'Once per fight: a second attack, or a burst — others beat 13 or take 2d6 (half on a success).' },
-    legendary: { label: 'Legendary', hp: '52', ac: '16', speed: '30 feet', attack: '+7 to hit, 2d8+4 damage', special: 'Legendary — takes two turns each round and shrugs off one effect per turn.' },
-    epic:      { label: 'Epic',      hp: '95', ac: '18', speed: '30 feet', attack: '+9 to hit, 3d8+5 damage', special: 'Epic — three turns a round, resists most single hits, and a signature area attack (others beat 16).' },
+    normal:    { label: 'Normal',    hp: [8, 15],   ac: [11, 13], toHit: [2, 4],  dmg: '1d6', bonus: [0, 2], speed: ['30 feet', '30 feet', '25 feet'],
+      specials: ['', '', 'It can scramble away once a turn without being caught.', 'It fights dirty — it hits harder when an ally is beside its target.'] },
+    heroic:    { label: 'Heroic',    hp: [22, 34],  ac: [13, 15], toHit: [4, 6],  dmg: '1d8', bonus: [2, 4], speed: ['30 feet', '30 feet', '40 feet'],
+      specials: [
+        'Once per fight it strikes twice on its turn.',
+        'Once per fight it lets out a burst — everyone nearby beats 13 or takes 2d6 (half on a success).',
+        'When it is first bloodied it flies into a rage: +2 to hit until the end of the fight.'] },
+    legendary: { label: 'Legendary', hp: [46, 66],  ac: [15, 17], toHit: [6, 8],  dmg: '2d8', bonus: [3, 5], speed: ['30 feet', '40 feet'],
+      specials: [
+        'Legendary — it takes two turns each round and shrugs off one effect per turn.',
+        'Legendary — after any hero acts it can make a free move or attack in response.',
+        'Legendary — a signature area blast (others beat 15 or take 3d8, half on a success), then two attacks.'] },
+    epic:      { label: 'Epic',      hp: [84, 116], ac: [17, 19], toHit: [8, 10], dmg: '3d8', bonus: [4, 6], speed: ['30 feet', '40 feet', '50 feet, flying'],
+      specials: [
+        'Epic — three turns a round, resists most single hits, and a signature area attack (others beat 16).',
+        'Epic — it acts three times a round and cannot be surprised; once a round it undoes an effect on itself.',
+        'Epic — every round it unleashes a devastating blast (others beat 16 or take 4d8, half on a success).'] },
   };
   const TIER_ORDER = ['normal', 'heroic', 'legendary', 'epic'];
   function genStatsPatch(type, tier) {
     const t = TIER_STATS[tier] || TIER_STATS.normal;
+    const b = rint(t.bonus[0], t.bonus[1]);
+    const attack = '+' + rint(t.toHit[0], t.toHit[1]) + ' to hit, ' + t.dmg + (b ? '+' + b : '') + ' damage';
+    const common = { hp: String(rint(t.hp[0], t.hp[1])), ac: String(rint(t.ac[0], t.ac[1])), attack };
     return type === 'creature'
-      ? { hp: t.hp, ac: t.ac, speed: t.speed, attack: t.attack }
-      : { hp: t.hp, ac: t.ac, attack: t.attack, special: t.special };
+      ? Object.assign(common, { speed: pickOne(t.speed) })
+      : Object.assign(common, { special: pickOne(t.specials) });
   }
   ACT['statblock-menu'] = (el) => {
     const id = el.dataset.doc;
@@ -376,7 +397,7 @@
 
   function autosize(ta) {
     ta.style.height = 'auto';
-    ta.style.height = Math.max(ta.scrollHeight + 2, 34) + 'px';
+    ta.style.height = Math.max(ta.scrollHeight + 2, 28) + 'px';
   }
 
   /* ============================ The tree pane ============================== */
@@ -959,6 +980,52 @@
     STORE.saveToBestiary({ name: d.title, hp: f.hp || '', ac: f.ac || '', speed: f.speed || '', attack: f.attack || '', trick: f.trick || f.special || '', notes: d.body || '', tags: d.tags || [] });
     announce('Saved ' + d.title + ' to your creature library.');
   };
+
+  /* ---------------- Fill a creature block from the library ---------------- */
+  // The "📖 Look up" button on a creature page: pick from the library and its
+  // stats drop straight into THIS block (vs. the rail's Lookup, which makes a new
+  // page or a roster combatant). Filling hp also syncs the roster via patch().
+  let fillDocId = null;
+  ACT['creature-fill'] = (el) => openCreatureFillPicker(el.dataset.doc);
+  ACT['fill-search:input'] = (el) => renderFillCreatures(el.value);
+  ACT['fill-pick'] = (el) => {
+    const c = bestiaryById(el.dataset.id); if (!c) return;
+    const d = STORE.get(fillDocId); if (!d) { closeModal(); return; }
+    const patch = { fields: creatureFields(c) };
+    if (!d.body && c.notes) patch.body = c.notes;
+    STORE.patch(fillDocId, patch);
+    if (/^untitled/i.test(d.title)) STORE.patch(fillDocId, { title: c.name });
+    closeModal();
+    announce('Filled this block from ' + c.name + '.');
+  };
+  function openCreatureFillPicker(docId) {
+    fillDocId = docId;
+    const d = STORE.get(docId);
+    openModal(`
+      <div class="modal-title">Fill from your creature library</div>
+      <p class="modal-hint">Pick a creature — its stats drop into ${d ? '“' + esc(d.title) + '”' : 'this block'}. You can still edit them after. To add more creatures, use <strong>Save</strong> on any creature page, or ask Cowork.</p>
+      <div class="search-box"><input type="text" id="fillSearch" data-act="fill-search" placeholder="Search creatures by name or tag…" autocomplete="off" spellcheck="false"></div>
+      <div class="lookup-results" id="fillResults"></div>`, 'modal-wide modal-search modal-lookup');
+    renderFillCreatures('');
+    const inp = ROOT.modal.querySelector('#fillSearch'); if (inp) inp.focus();
+  }
+  function renderFillCreatures(query) {
+    const box = ROOT.modal.querySelector('#fillResults'); if (!box) return;
+    const q = query.trim().toLowerCase();
+    let list = STORE.getBestiary();
+    if (q) list = list.filter(c => (c.name || '').toLowerCase().includes(q) || (c.tags || []).some(t => String(t).toLowerCase().includes(q)));
+    if (!list.length) { box.innerHTML = `<p class="modal-hint">${q ? 'No creatures match “' + esc(query.trim()) + '”.' : 'Your library is empty yet — Save a creature page, or ask Cowork to add some.'}</p>`; return; }
+    box.innerHTML = list.slice(0, 80).map(c => {
+      const bits = [c.hp && ('HP ' + esc(c.hp)), c.ac && ('AC ' + esc(c.ac))].filter(Boolean).join(' · ');
+      return `<div class="lookup-row">
+        <div class="lookup-main">
+          <div class="lookup-name">${esc(c.name)} <span class="lookup-src ${c.source === 'yours' ? 'src-yours' : 'src-srd'}">${c.source === 'yours' ? 'Yours' : 'SRD'}</span></div>
+          <div class="lookup-meta">${bits}${(c.tags && c.tags.length) ? ' · ' + esc(c.tags.join(', ')) : ''}</div>
+        </div>
+        <div class="lookup-actions"><button class="btn btn-sm btn-gold" data-act="fill-pick" data-id="${esc(c.id)}">Use these stats</button></div>
+      </div>`;
+    }).join('');
+  }
 
   /* ----------------------------- Today's notes ---------------------------- */
   // A quick "what did I jot today" view: notebook notes and session logs that
