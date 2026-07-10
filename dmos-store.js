@@ -217,6 +217,9 @@
     o.localRev = (o.localRev || 0) + 1;
     o.updated = nowISO();
     persist();
+    // A creature/NPC's page HP is the source of truth for its max. If this edit
+    // touched it and that doc is on the roster, keep the tracker's max in step.
+    if (partial && partial.fields && 'hp' in partial.fields) syncRosterHpToDoc(id);
     emit({ type: 'docs', ids: [id] });
     return effective(id);
   }
@@ -577,6 +580,27 @@
     writeInit(s);
   }
   const clearInitiative = () => writeInit(clone(EMPTY_INIT));
+
+  /* When a doc's HP field changes (an edit, or a ⚡ Stats generate), push the new
+     max onto any roster entry that references it. A combatant sitting at full (or
+     with no HP tracked yet) refills to the new max; a bloodied one keeps its
+     current HP, only clamped down if the new max is lower. Called from patch(). */
+  function syncRosterHpToDoc(id) {
+    const d = effective(id); if (!d) return;
+    const m = /\d+/.exec(String((d.fields && d.fields.hp) || ''));
+    if (!m) return;                                   // no numeric page HP → nothing to sync
+    const newMax = parseInt(m[0], 10);
+    const s = getInitiative();
+    let changed = false;
+    s.entries.forEach(e => {
+      if (e.kind !== 'doc' || e.ref !== id) return;
+      const wasFull = e.hp == null || (e.maxHp != null && e.hp >= e.maxHp);
+      e.maxHp = newMax;
+      e.hp = (e.hp == null || wasFull) ? newMax : Math.min(e.hp, newMax);
+      changed = true;
+    });
+    if (changed) writeInit(s);
+  }
 
   /* --------------------------- Story flow chart --------------------------- */
   /* The story map derives its shape from the docs themselves (leadsTo links +

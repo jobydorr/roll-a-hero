@@ -44,6 +44,8 @@
   let peekTimer = 0, peekHideTimer = 0, peekFor = null;
   let focusBodyOnPaint = null;    // doc id whose body editor should take focus once
   let focusPadOnPaint = false;    // focus the quick-note pad on its next paint
+  let linkMarkerEl = null;        // the floating "🔗 Link" button over a body selection
+  let linkSel = null;             // { docId, start, end, value, text } captured at selection time
 
   /* =============================== Repaint ================================= */
   function mark() {
@@ -1920,6 +1922,94 @@
     mark('feed');
   };
 
+  /* ----------------------- Link from a selection -------------------------- */
+  /* Highlight text in a document's body → a floating "🔗 Link" marker appears →
+     click it → pick a document by TITLE → the selection is wrapped as a
+     [[id|highlighted text]] wikilink. Robust because the actual splice runs on
+     the exact selection offsets we captured, not on coordinate-mapped text:
+     we stash {value,start,end} the moment the selection is made, so it survives
+     the editor blurring when the marker/picker takes focus. (The resulting link
+     shows up on the Story map automatically — buildStoryGraph reads [[links]] as
+     "mentions" edges.) */
+  ACT['edit-body:mouseup'] = (el, e) => maybeShowLinkMarker(el, e.clientX, e.clientY);
+  ACT['edit-body:keyup'] = (el) => {
+    if (el.selectionStart === el.selectionEnd) { hideLinkMarker(); return; }
+    const r = el.getBoundingClientRect();       // no pointer point for keyboard selection
+    maybeShowLinkMarker(el, Math.min(r.right - 30, window.innerWidth - 60), r.top + 24);
+  };
+  function maybeShowLinkMarker(el, x, y) {
+    const s = el.selectionStart, en = el.selectionEnd;
+    if (s == null || s === en) { hideLinkMarker(); return; }
+    linkSel = { docId: el.dataset.doc, start: s, end: en, value: el.value, text: el.value.slice(s, en) };
+    showLinkMarker(x, y);
+  }
+  function showLinkMarker(x, y) {
+    hideLinkMarker();
+    const el = document.createElement('div');
+    el.className = 'link-marker';
+    el.innerHTML = `<button type="button" class="link-marker-btn">${icon('scroll')} Link</button>`;
+    document.body.appendChild(el);
+    el.style.left = Math.max(8, Math.min(x, window.innerWidth - el.offsetWidth - 8)) + 'px';
+    el.style.top = Math.max(8, y - el.offsetHeight - 8) + 'px';
+    // Own handler on an own node (removed with the node) — mirrors the modal/HP
+    // editor. mousedown, not click, so it fires before the textarea blur closes
+    // the editor and steals it.
+    el.querySelector('.link-marker-btn').addEventListener('mousedown', (ev) => {
+      ev.preventDefault(); ev.stopPropagation();
+      openLinkPicker();
+    });
+    linkMarkerEl = el;
+    document.addEventListener('mousedown', onMarkerOutside, true);
+    ROOT.feed.addEventListener('scroll', hideLinkMarker, { passive: true });
+  }
+  function onMarkerOutside(e) { if (linkMarkerEl && !linkMarkerEl.contains(e.target)) hideLinkMarker(); }
+  function hideLinkMarker() {
+    if (!linkMarkerEl) return;
+    document.removeEventListener('mousedown', onMarkerOutside, true);
+    ROOT.feed.removeEventListener('scroll', hideLinkMarker);
+    linkMarkerEl.remove();
+    linkMarkerEl = null;
+  }
+  function openLinkPicker() {
+    if (!linkSel) return;
+    hideLinkMarker();
+    openModal(`
+      <div class="modal-title">Link “${esc(linkSel.text.slice(0, 40))}${linkSel.text.length > 40 ? '…' : ''}” to…</div>
+      <p class="modal-hint">Pick the document this text should link to. It becomes a clickable link (and a “mentions” line on the Story map).</p>
+      <div class="search-box"><input type="text" id="linkSearch" data-act="link-search" placeholder="Search documents by title…" autocomplete="off" spellcheck="false"></div>
+      <div class="search-results" id="linkResults"></div>`, 'modal-wide modal-search');
+    renderLinkPicker('');
+    const inp = ROOT.modal.querySelector('#linkSearch'); if (inp) inp.focus();
+  }
+  ACT['link-search:input'] = (el) => renderLinkPicker(el.value);
+  ACT['link-pick'] = (el) => insertWikilink(el.dataset.doc);
+  function renderLinkPicker(query) {
+    const box = ROOT.modal.querySelector('#linkResults'); if (!box) return;
+    const q = query.trim().toLowerCase();
+    let list = STORE.docs().filter(d => d.type !== 'folder' && (!linkSel || d.id !== linkSel.docId));
+    if (q) list = list.filter(d => d.title.toLowerCase().includes(q));
+    list.sort((a, b) => a.title.localeCompare(b.title));
+    if (!list.length) { box.innerHTML = `<p class="modal-hint">${q ? 'No documents match “' + esc(query.trim()) + '”.' : 'No other documents to link to yet.'}</p>`; return; }
+    box.innerHTML = list.slice(0, 50).map(d => `<button class="search-row" data-act="link-pick" data-doc="${d.id}">
+      <span class="search-icon">${icon(DOC_TYPES[d.type].icon)}</span>
+      <span class="search-main"><span class="search-title">${esc(d.title)} <span class="search-area">${esc(DOC_TYPES[d.type].label)}${STORE.isInNotebook(d.id) ? ' · Notebook' : ''}</span></span></span>
+    </button>`).join('');
+  }
+  function insertWikilink(toId) {
+    const sel = linkSel;
+    if (!sel) { closeModal(); return; }
+    // Sanitise the label: no ']' (would close the link early), whitespace collapsed.
+    const label = sel.text.replace(/[\[\]]/g, '').replace(/\s+/g, ' ').trim();
+    const link = '[[' + toId + (label ? '|' + label : '') + ']]';
+    const newBody = sel.value.slice(0, sel.start) + link + sel.value.slice(sel.end);
+    pending.delete(sel.docId);          // drop any stale debounced body write for this doc
+    STORE.patch(sel.docId, { body: newBody });
+    linkSel = null;
+    closeModal();
+    const t = STORE.get(toId);
+    announce('Linked to ' + ((t && t.title) || 'the document') + '.');
+  }
+
   // The ＋ on the Story Folders header (data-parent="") and on each folder row
   // (data-parent="<id>"). Only the header can add a top-level ("parent") folder.
   ACT['folder-menu'] = (el) => {
@@ -2528,7 +2618,8 @@
     ROOT.map = document.getElementById('dmosMap');
 
     // Bound once, on permanent roots. Never removed. See the header comment.
-    ['click', 'input', 'change', 'keydown', 'pointerdown', 'contextmenu'].forEach(t => on(ROOT.shell, t));
+    // (mouseup/keyup drive the body editor's "🔗 Link" selection marker.)
+    ['click', 'input', 'change', 'keydown', 'keyup', 'mouseup', 'pointerdown', 'contextmenu'].forEach(t => on(ROOT.shell, t));
     on(ROOT.banner, 'click');
     ['click', 'input'].forEach(t => on(ROOT.modal, t));   // input drives live search
     on(ROOT.peek, 'click');
@@ -2562,6 +2653,7 @@
       if (modalOpen()) closeModal();       // a menu/picker over the map closes first
       else if (mapOpen && chartBusy()) cancelChartGesture();   // cancel a drag/link, keep the map
       else if (mapOpen) closeStoryMap();
+      else if (linkMarkerEl) hideLinkMarker();
       else if (ROOT.peek.firstChild) hidePeek();
     });
 
