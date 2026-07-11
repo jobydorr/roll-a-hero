@@ -20,22 +20,17 @@ The repo holds a distilled DM craft reference, built from 20 sources.
 
 **The rules:**
 
-1. **Before building ANY game content** — world, campaign, arc, NPC, villain, monster, dungeon, encounter, town, city, travel — **read `DM_CRAFT_QUICK.md` and follow its build sequence (§B).**
-2. **Open `DM_CRAFT.md` only at the specific section the card points to, and read only that section.** This is the difference between an ~800-token lookup and a ~40,000-token one.
-3. **When something we've built feels off, check the triage table (§C) before improvising a fix.** It maps ~45 symptoms to the exact section that addresses them.
-4. **`DM_CRAFT.md` is the source of truth.** The card is only an index; if they disagree, the big doc wins.
-5. **⚠️ The craft docs guide the GAME, not the APP.** `DM_CRAFT.md` is a craft reference for world-building and running sessions. **Never mine it for DM OS feature ideas or `BACKLOG.md` entries.** App features get raised by Joby, separately. *(Settled 2026-07-11.)*
+1. **Brainstorm FIRST. Check against the card SECOND.** The build sequences (§B) are a **net, not a mould** — they exist to catch what fell through, *not* to generate content by filling slots. Invent freely, follow the interesting thing, then use §B to ask *"what did we forget?"* **A town built by working down the template will feel like a form. Never let the sequence drive the idea.**
+2. **When something feels off, check the triage table (§C) before improvising a fix.** ~45 symptoms → the exact section that addresses each. *This is the card's main job.*
+3. **Open `DM_CRAFT.md` only at the section the card names, and read only that section.** The difference between an ~800-token lookup and a ~40,000-token one.
+4. **Re-read the card when a session has run long.** Instructions from the start of a long conversation get fuzzy. Re-anchoring is cheap (~4k tokens) — do it rather than drifting.
+5. **`DM_CRAFT.md` is the source of truth.** The card is only an index; if they disagree, the big doc wins.
+6. **⚠️ The craft docs guide the GAME, not the APP.** `DM_CRAFT.md` is a craft reference for world-building and running sessions. **Never mine it for DM OS feature ideas or `BACKLOG.md` entries.** App features get raised by Joby, separately. *(Settled 2026-07-11.)*
+
+> **The doc's own first law applies to the doc itself: *design the conditions for something memorable — don't script what happens.* If the reference is making our worlds more samey, we're using it backwards.**
 
 ---
 
 ## Non-negotiables (every session, both tracks)
 
-- **The beginner test:** would a 9-year-old *and* a brand-new adult get this? Core mechanic is always *"roll a d20, add your modifier, beat this number."*
-- **Table:** two adults + a 9- and 10-year-old.
-- **Tone:** family-friendly with a light edge. Spooky villains, real stakes, gentle dark themes (betrayal, loss) — yes. Cheeky humour that winks at the adults — yes.
-- **No permanent character death.** Heroes get knocked out, captured, or rescued. No explicit gore.
-- **Keep it kid-safe, simple, and committed.**
-
-## The full brief
-
-`COWORK_INSTRUCTIONS.md` holds the complete project instructions (the `campaign.js` contract, the 5E PDF policy, deployment). Read it if you need detail beyond the above.
+- **The beginner test:** would a 9-year-old *and* a brand-new adult get this? Core mechanic is always *"roll a d20, add your modif

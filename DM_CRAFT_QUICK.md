@@ -3,12 +3,24 @@
 **This is a router, not a summary.** It exists so you don't have to load `DM_CRAFT.md` (~29k words) to build something.
 
 **How to use it:**
-1. **Building something?** → find it in **§B Build Sequences**. Work the sequence.
-2. **Something feels wrong?** → find the symptom in **§C Triage**. It names the section to open.
-3. **Need a form to fill in?** → **§D Templates.** Most prep can be done from here alone.
+1. **Something feels wrong?** → find the symptom in **§C Triage**. It names the one section to open. *(This is the card's main job.)*
+2. **Just built something?** → run it past **§B Build Sequences** and ask *"what did we forget?"*
+3. **Need a form to fill in?** → **§D Templates.**
 4. **Want the *reasoning* or the worked examples?** → open `DM_CRAFT.md` at the section number. **Read that section only.**
 
 > **`DM_CRAFT.md` always wins.** Nothing here is new; it's all pointers. If they ever disagree, the big doc is right and this card is stale.
+
+---
+
+## ⚠️ How NOT to use this
+
+**The sequences in §B are a net, not a mould.**
+
+**Brainstorm first. Check second.** Chase the idea that excites you, follow the weird thread, let the thing surprise you — *then* come back here and ask what fell through the net. *"We never said why this town exists." "The 9-year-old's character has no stake in this."* **That's** what the sequences are for.
+
+**The failure mode to watch for:** every town has exactly one landmark and a feuding mayor-and-priest, because the template had slots for them. Every villain gets a wound because the form said so. **If our worlds start feeling samey, we're using this card backwards** — it has become a generator instead of a checklist, and it should be shut and ignored until the idea exists.
+
+> **The doc's own first law applies to the doc: *design the conditions for something memorable — don't script what happens.*** These frameworks are condition-setters. **None of them tell you what the thing is.** That part is still yours.
 
 ---
 
@@ -197,25 +209,4 @@ That's five minutes of prep and it stops a fight being maths homework.
 | § | Contents |
 |---|---|
 | **1.0** | The 10 commandments of world-building (tension before terrain) |
-| **1.1–1.8** | **Towns** — the list, 3 pillars, 7 player questions, 8 DM questions |
-| **1.9** | The 7 sins of world-building |
-| **1.10** | **Cities** — theme parks & rides |
-| **1.11** | The realism question (be *specific*, not *comprehensive*) |
-| **1.12** | The 7 levels — a diagnostic ladder |
-| **1.13** | **Dungeons** — and what a "dungeon" really is |
-| **2.1** | The 5-step campaign launch |
-| **2.2** | **The Seed Question** + 6-step diagnosis |
-| **2.3** | Theme as foundation (the Brennan method) |
-| **3.2** | **The 5 NPC layers** |
-| **4.1–4.3** | Villains |
-| **4.4–4.8** | **Monsters** — what's good, how to build, the complexity budget |
-| **5.0** | **The value shift** |
-| **5.1** | The 7 sins of combat |
-| **5.2** | Building a great fight (6 principles) |
-| **6.2** | **Point crawls** |
-| **6.8** | **The TEST travel method** |
-| **7** | Running the table (hub) |
-| **8.1** | The 4 prep layers |
-| **8.3** | Order of operations (every framework, in order) |
-| **8.5** | **The clock — one tool, three scales** |
-| **9** | Sources · where they disagree · known gaps |
+| **1.1–1.8** | **Towns** — the list, 3 pillars, 7 player questions, 8
