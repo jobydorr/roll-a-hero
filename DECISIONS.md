@@ -2,9 +2,44 @@
 
 *What this is:* a short record of the important calls we made and **why** — especially the moments the project changed direction. A pivot is never "lost": come back here to see what we were thinking.
 
-*Newest first. Last updated: 2026-07-08.*
+*Newest first. Last updated: 2026-07-11.*
 
 ---
+
+### 2026-07-11 — Campaign One is *The Folded World* — foundation locked (see `CAMPAIGN.md`)
+The first campaign's premise, factions, twists, and act structure are settled after a long brainstorm. The full bible lives in **`CAMPAIGN.md`**; this entry records the *choices* and, more importantly, **why** — because several of them look arbitrary until you see the trap they were dodging.
+
+**The premise: the villain already won.** Joby's instinct, and it's the whole spine — the world opens in the aftermath. A mapmaker, **the Foldwright**, folded the world like a paper map. Heroes must set it right. Travel/journey is the campaign's shape. Tone: Dune + Harry Potter, a splash of Pokémon; no princess-rescuing.
+
+**The design problem we spent the whole session solving — and the fix.** We want a late reveal that *the thing the Fold protects against is the real enemy.* That reveal dies instantly if the public reason to keep the Fold is **safety**, because safety implies a known danger. So the Fold's public benefit **cannot be protection**. It has to be good, and entirely self-contained.
+
+- **The fix: the Fold makes `starsalt`.** The creases wring a glowing substance out of the land — it lights, warms, mends. The folded world is *closer, safer, and richer than it has ever been.* People love it for **prosperity**, not protection. Nothing about monsters. Reveal sealed.
+- **And starsalt is the world's life being squeezed out.** Slow (a lifetime, not a season), visible only at the fenced-off **seams**. That's the hidden cost, it's kid-legible, and it means the pleasant world is genuinely damning without looking broken. Joby's constraint drove this: *"a world that is visibly deteriorating is hard to justify as a big bonus."* Correct — so it isn't visibly deteriorating.
+- **The Foldwright stays the assumed villain** on the strength of what the Folding *cost*: cities crushed, towns erased, people dead. Propaganda says he did it out of greed, to hoard starsalt. That yields the sentence the whole campaign hangs on: *"A monster did a terrible thing to us. But the world it left behind is nicer, and we've built our lives on it."*
+
+**The two-faction twist (Joby's, and it's the best structural idea in here).** The **Surveyors** (establishment; manage the Fold, hide the portals, broker starsalt) and the **Stillguard** (a loud "resistance" that says the Fold is unsustainable and the Foldwright is a monster) are **the same organization.** The Stillguard exists to absorb dissent — it recruits anyone who senses something's wrong and sends them on missions that go nowhere.
+
+This **retired an earlier, weaker design** where the establishment *suppressed* the truth about the decay. Suppression is fragile; secrets leak. Outsourcing the alarm is sturdier and nastier: the decay is *publicly acknowledged* and therefore permanently parked — *"yes, terrible, the Stillguard are handling it."* Keep it this way. **Rank-and-file Stillguard are sincere** — the rot is only at the top, which buys us sympathetic enemies and future allies.
+
+**The Foldwright's truth, in the order the table learns it:** (1) the world is being eaten; (2) he wasn't greedy — he folded the world to shield it from something, and lost the person he loved in the creases; (3) the thing he was shielding against is real, and unfolding lets it back in. He becomes an **ally**, and the **Devouring** becomes the final enemy. He was *not* driven out publicly — everyone believes he still rules, which is precisely what keeps anyone from noticing the Surveyors actually do. He's been in hiding, searching the folds for her.
+
+**Why he's both help and hindrance (and it isn't a cheat):** he *wants the portals opened* — she's in there — and *dreads the final Unfold* — it's out there. Both, genuinely. That's why he's unreadable for two acts.
+
+**Mechanics locked:** the **Compass Spirit** (a shy companion that unfurls into a projected compass rose) **drinks starsalt** to give the next direction, and its directions are **riddles**. So every leg of the journey is: win starsalt from the dangerous seams → feed the spirit → decipher the marker. Once the party learns what starsalt *is*, every direction they buy costs the world a little — the moral weight is built into the core loop. **The Unfold Rule:** open a portal and travel through it to unlock a region; **no region unfolds until all are unlocked**, then the world unfolds at once. Justification a kid accepts immediately: a folded sheet tears if you pull one crease while the others are set — **demonstrate it at the table with a real paper map.**
+
+**Deliberately unsettled:** the **Devouring** is unnamed and undescribed on purpose — it's the last card, and it must be seeded only in ways that make sense in hindsight. Nobody in the world knows it exists, *including the Surveyors*.
+
+**Then we stress-tested it, and it nearly fell over.** A skeptical read found leaks that would have killed the Act 3 reveal by session two. The fixes are canon now, and the ones below are **load-bearing — don't quietly undo them:**
+- **The Fold folded away *distance*, never *monsters*.** The first draft said the wild places "and the monsters in them" were folded away. Combine that with "the world unfolds all at once" and a ten-year-old deduces *"so unfolding brings the monsters back"* — the Act 3 twist, free, in session one. Monsters still exist everywhere in the world; they simply have nothing to do with the Fold.
+- **Starsalt is destroyed by *burning* it — the Fold only pressed it to the surface.** The draft said both "the creases squeeze it out" and "every lamp burns a piece of the world," which can't both be true: if the folding does the damage, burning is harmless and giving it back accomplishes nothing. Now: the Fold opened the wound, **burning is the bleeding**, and unburned starsalt is *reabsorbed when the world unfolds*. That is what makes the finale a real choice — *unfold, and everyone gives up the lamps* — instead of a switch.
+- **The propaganda blames him for *pride*, not starsalt-greed.** Starsalt didn't exist before the Fold, so "he folded the world to hoard starsalt" is a story that collapses the moment a clever kid checks the dates — and the crack leads straight to Act 2. He folded it to *remake the world and rule it*.
+- **Act One's turn is the betrayal + the mechanism, not "the world is dying."** The Stillguard *shout* that the world is dying at every rally, so it can't be a revelation. What's new is what starsalt *is*, and who the Stillguard *are*.
+- **He can't do it himself, and now there's a reason.** He cannot walk in the world (most hated face alive), and **the Compass Spirit will not serve him** — it fled its maker and slept a lifetime rather than answer him. It woke for these heroes. He can only follow.
+- **The Compass's starsalt cost is local and visible**, not an abstract share of a global total (which is a rounding error next to every lamp in the world, and the kids would say so). They cut it **raw from a seam with their hands, and the ground dies where they cut, in front of them, permanently.**
+- **The Foldwright hides in the *creases*** (the unreachable folded interior) — *not* the seams, where the party harvests every leg. Otherwise they trip over him constantly in Act 1, and his dread is a signpost reading "something is out there."
+- **Unlock ≠ unfold, and the prop has to show it.** Put a **seal** on every crease of the paper map. Unlocking a region takes its seal off; the map stays folded. The kids watch the checklist shrink and never once ask *"wait, is it unfolded now?"*
+- **Act One needs a clock a nine-year-old can feel.** "The world dies in a lifetime" motivates nobody. A **seam is eating a place they love, this season, with people who have names.**
+- **The top Surveyors get a real self-justification** (they were cartoon-villainous otherwise, which breaks our own "every faction is partly right" rule). Their best argument is also *true*: unfolding costs real people real warmth *today*, to save a world nobody alive has seen. The heroes have to actually answer that.
 
 ### 2026-07-08 — Simplify: an RH main page, and the campaign is a committed file (no server)
 Joby's words, after previewing: *"All I wanted was a separate set of pages I can access from the front page… is this really the easiest way?"* It wasn't, and this entry **supersedes** the two below it (the gitignored `campaign/` folder and the loopback-bound local server). The mistake was mine: Joby said the campaign should be *private*, and the only thing they meant was **a player shouldn't be able to reach the DM OS from the character builder.** I heard "hidden even from someone reading the code," and that stricter reading is what forced files-fetched-over-a-server, which forced the launcher, which forced the loopback fix. All of it, gone.
@@ -44,50 +79,4 @@ Two consequences worth writing down:
 - **`dm.html` borrows the hero math rather than copying it.** It loads `app.js` for a new `window.RAH` export block (and `app.js`'s boot is now guarded by `if (document.getElementById('app'))`, since `dm.html` has no `#app`). Copying `computeHP`/`computeAC` would mean the initiative tracker eventually shows a different AC than the player's printed sheet — at the table, in front of a 9-year-old. ⚠ `withState()` is **sync-only** (`try/finally`): hand it an `async` function and it restores `state` at the first `await`, then silently computes the wrong hero.
 
 ### 2026-07-08 — A requirements engine drives completeness, editing, and (later) leveling
-Rather than bolt on an "edit character" screen, we added **one declarative `requirements(snap)`** that returns every choice a hero still owes, each tagged with the level it unlocks at. Everything reads from it: the ⚠ badge on the saved-hero list, the Edit screen's "Fix this →" jumps, and `classComplete()`. **When leveling arrives, new requirements simply appear at higher levels and the same screen points the player at them** — leveling becomes "satisfy new requirements," not a separate system. Two enabling model changes: a per-character `level` (replacing the hardcoded global in HP math) and `archetypeChoice` (mirroring the proven `race.choice`). A `normalize()` pass backfills both on load, so heroes saved by the old app open without error.
-
-### 2026-07-08 — Animal companions: PHB rules, hand-curated stats, three tiers
-The Beast Master roster is **every Beast the rules allow** (Challenge 1/4 or lower, Medium or smaller) — 42 animals. Two calls worth remembering:
-- **The Monster Manual scrape is not trustworthy.** Its stat blocks are two-column and the OCR bleeds adjacent creatures together — it "gave" the frog a +9 attack and the hawk a piranha's Blood Frenzy. Name / size / speed / AC sit on fixed lines and extracted cleanly; **attacks and tricks were hand-curated.** If anyone re-derives this data, don't trust an automated scrape.
-- **Three tiers, not 42 stat lines.** `fierce` (+6, 1d6+4), `swift` (+6, 1d4+3), `gentle` (no attack — the card says so plainly, so a kid learns it before a fight, not during one). HP is `4 × level` **straight from the PHB's Ranger's Companion**, so it scales itself when leveling lands; the proficiency bonus is pre-baked into AC and attacks so nobody does arithmetic at the table.
-- 42 choices would overwhelm a beginner, so the picker borrows the trick the app already uses for classes: **narrow first, browse second** — a "what do you want your friend to do?" filter, then the PHB's classic examples, then groups, plus search.
-
-### 2026-07-07 — Character sharing MVP built on Firebase (compat SDK, anonymous auth, Firestore)
-Implemented the sharing feature end-to-end and verified it against the live project. Technical shape, chosen to fit the app's no-build, `<script>`-tag style:
-- **Firebase compat SDK** loaded from the gstatic CDN as plain `<script>` globals (not the ES-module build) — no bundler needed. Config is a global in `firebase-config.js`; `firebase-sync.js` exposes `window.RAHSync`. If the SDK/config can't load, the app **degrades gracefully to offline-only** (sharing UI hides; build/print/backup still work).
-- **Anonymous Auth** gives every browser a stable id with no passwords/emails (kid-safe). **Firestore** stores shared heroes at `campaigns/{code}/characters/{ownerUid__charId}`, with the full local snapshot under `character` so the DM prints an identical sheet.
-- **Local-first preserved:** `localStorage` stays the source of truth; Share only *publishes a copy*. New **Export/Import** (single hero or full backup) is the safety net and never deletes.
-- **Security:** `firestore.rules` (in repo) — anyone signed in can *read* a campaign (so the DM sees the party; the campaign code is the practical gate), but you can only *write/delete your own* heroes. Still needs pasting into the console to replace "test mode."
-
-### 2026-07-07 — Big question SETTLED: add a small backend (local-first) for character sharing
-The open architectural fork is **decided: we're adding a small backend.** Joby wants easy sharing — one site where users make a profile, build characters, hit **Share**, and the selected characters appear on a **common page the DM can see**, ending the "friends have to send me a PDF" problem. That requires data to meet in a shared place, so we're adding a free backend-as-a-service (**Supabase** preferred; **Firebase** the alternative) while the GitHub Pages static site stays the frontend — no server for Joby to run.
-
-**Guardrails locked in:**
-- **Local-first — nothing is ever lost.** Each browser's `localStorage` stays the source of truth; the backend only *publishes a copy*. If the backend ever vanished, every hero still lives in its owner's browser and in exported files.
-- **Existing characters are protected (the non-negotiable).** The **first** build step, before anything else, is **Export/Backup** to capture the two characters friends have already made. Migration is copy-out-then-up — never move, never delete.
-- **Kid-safe.** No passwords/emails for kids — profiles are display names + a shared **campaign code**, invite-only, zero personal info collected.
-
-**Phased plan:** (0) Export/Backup → (1) profiles + Share-to-campaign → (2) live DM party page.
-
-**One human step pending:** Joby creates a free Supabase (or Firebase) project and pastes back the two keys (~5 min, one-time). Nothing else is blocked — step (0) can start immediately with no backend at all.
-
-### 2026-07-07 — Official D&D 5E rulebooks are reference/inspiration, not canon
-Twelve official 5E PDFs (Player's Handbook, DMG, Monster Manual, Xanathar's, Tasha's, Volo's, Mordenkainen's, Sword Coast, Ravnica, Eberron, Elemental Evil, Tortle Package) live in the repo root alongside the code and `.md` files. **How we use them:** as source material and inspiration — for stories, settings, factions, NPCs, monsters, and encounters — NOT as a rules catalogue to import wholesale. Our simplified system ("roll a d20, add your modifier, beat this number") stays the law of the land; these books supply the *spirit and flavor* of real D&D. When building campaign content, the project is encouraged to reach into them for ideas and then translate to our simplified mechanics. Note: the PDFs are large binaries sitting in the folder, so they don't show up in Cowork's "context files" sidebar — but they're readable from the repo anytime.
-
-### 2026-06-29 — Expand into a fuller toolkit (DM tools + leveling), and manage it from Cowork
-The project grows from a one-time character creator into a bigger toolkit with two new pillars: **DM tools to plan and run campaigns** (the near-term expansion) and, later, **living characters that level up**. To steer this the same way as the Trading Journal, we set up the same PM model: the project's direction lives in plain files in the repo (`ROADMAP.md`, `DECISIONS.md`, `BACKLOG.md`) so it can be seen and steered, and a **Cowork project pointing at this repo folder becomes the command center**. This machine stays the work desk; GitHub is the live site + backup.
-
-### 2026-06-29 — Open question flagged: stay browser-only, or add a backend?
-Surfaced (not yet decided) the architectural fork the new pillars create. The app is currently a static page that saves to the browser — no server, no accounts. Leveling can stay that way; full DM↔player campaign sharing probably can't. We'll choose between "client-only + shareable save-files" and "add a backend with accounts" before building the DM-↔-player connection in earnest. Recorded now so the choice is deliberate, not accidental.
-
-### 2026-06-24 — Shipped and went live to a public link
-Backed the project up to GitHub and deployed it to a free public GitHub Pages link so the friends can just click it — no install. (Different from the Trading Journal, which is a *private* backup; this one is meant to be shared, so public is fine — there's nothing private in it.) Updates: change the files, push, and the live site refreshes itself in about a minute (bump the `?v=` cache tag so people actually get the new version).
-
-### 2026-06-23 — Keep it radically simplified
-The whole design rule: strip D&D down so a 9-year-old and a brand-new adult can play, while keeping the real feel. One "roll a d20 and beat this number" mechanic instead of skills/saves/proficiency math; plain-language spell cards; tomato analogies for the six abilities. Everything we add should pass the "would a beginner get this?" test — including the new DM and leveling features.
-
-### 2026-06-23 — Start everyone at level 3; 8 classes; 9 races
-Chose level 3 (where every class has its specialty) and grew to 8 classes + all 9 PHB races for variety, with a playstyle quiz so the choices don't overwhelm. This quietly set the stage for leveling later — level 3 is a starting point, not a ceiling.
-
-### 2026-06-23 — Built as a plain static website (no install, no build step)
-Made it a single static site (HTML/CSS/JS that saves to the browser) so it's the easiest possible thing to share and maintain — anyone opens a link, nothing to install. This is the decision the new "big question" (browser-only vs. backend) may revisit.
+Rather than bolt on an "edit character" screen, we added **one declarative `requirements(snap)`** that returns every choice a hero still owes, each tagged with the level it unlocks at. Everything reads from it: the ⚠ badge on the saved-hero list, the Edit screen's "Fix this →" jumps, and `classComplete()`. **When leveling arrives, new requirements simply appear at higher levels and the same screen points the player at them** — leveling becomes "satisfy new requirements," not a separate system. Two enabling
