@@ -13,7 +13,7 @@
        and it knows nothing about .dmos-shell — so linking it would BOTH hide this
        page's header and print the workspace as three coloured columns. dmos.css
        owns @media print for this page. -->
-  <link rel="stylesheet" href="dmos.css?v=20" />
+  <link rel="stylesheet" href="dmos.css?v=21" />
 </head>
 <body class="dmos-body">
 
@@ -85,7 +85,7 @@
        data.js before app.js  — app.js:5 destructures window.DATA at parse time.
        app.js is loaded ONLY for its window.RAH export block; it has no #app here,
        so its guarded boot does not run. -->
-  <script src="icons.js?v=17"></script>
+  <script src="icons.js?v=18"></script>
   <script src="data.js?v=15"></script>
   <script src="app.js?v=19"></script>
 
@@ -101,12 +101,12 @@
   <script src="firebase-sync.js?v=15"></script>
 
   <!-- The campaign content, committed like data.js. No fetch, no server. -->
-  <script src="campaign.js?v=1"></script>
+  <script src="campaign.js?v=2"></script>
   <!-- A public, SRD-licensed starter bestiary (safe to ship); the DM's personal
        library lives in their browser only. -->
   <script src="bestiary.js?v=1"></script>
-  <script src="dmos-store.js?v=12"></script>
-  <script src="dmos-ui.js?v=27"></script>
+  <script src="dmos-store.js?v=13"></script>
+  <script src="dmos-ui.js?v=28"></script>
   <script src="dmos-boot.js?v=3"></script>
 </body>
 </html>

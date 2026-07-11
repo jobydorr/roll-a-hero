@@ -53,23 +53,23 @@
       ['read_aloud', 'Read aloud'],
       ['if_they', 'If they…'],
       ['outcome', 'Where it leaves them'] ] },
-    scene:     { label: 'Scene',       icon: 'scroll', fields: [
+    scene:     { label: 'Scene',       icon: 'scene',  fields: [
       ['setting', 'Where we are'], ['read_aloud', 'Read aloud'], ['what_happens', 'What happens'] ] },
     encounter: { label: 'Encounter',   icon: 'sword',  fields: [
       ['setup', 'Setup'], ['creatures', 'Creatures'], ['tactics', 'Tactics'], ['reward', 'Reward'] ] },
-    npc:       { label: 'NPC',         icon: 'cha',    fields: [
+    npc:       { label: 'NPC',         icon: 'person', fields: [
       ['looks', 'Looks like'], ['wants', 'Wants'], ['voice', 'Voice'], ['secret', 'Secret'] ],
       // Optional combat block — shown only once it has values (or after a
       // Quick-generate). Same field keys Cowork fills when it stats an NPC.
       statBlock: [
       ['hp', 'Hit points'], ['ac', 'Armor'], ['attack', 'Attack'], ['special', 'Special move'] ] },
-    creature:  { label: 'Creature',    icon: 'shield', fields: [
+    creature:  { label: 'Creature',    icon: 'paw',    fields: [
       ['hp', 'Hit points'], ['ac', 'Armor'], ['speed', 'Speed'], ['attack', 'Attack'], ['trick', 'Signature trick'] ] },
-    location:  { label: 'Location',    icon: 'armor',  fields: [
+    location:  { label: 'Location',    icon: 'pin',    fields: [
       ['looks', 'Looks like'], ['who_is_here', 'Who is here'], ['hidden', 'Hidden here'] ] },
-    session:   { label: 'Session log', icon: 'star',   fields: [
+    session:   { label: 'Session log', icon: 'calendar', fields: [
       ['date', 'Date'], ['recap', 'Recap'], ['plan', 'Plan'], ['loose_ends', 'Loose ends'] ] },
-    note:      { label: 'Note',        icon: 'book',   fields: [] },
+    note:      { label: 'Note',        icon: 'notepad', fields: [] },
   };
 
   const clone = (o) => JSON.parse(JSON.stringify(o));

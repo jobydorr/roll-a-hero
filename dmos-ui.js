@@ -186,21 +186,23 @@
      revision (keepMine() only deletes a flag; open-body only touches UI state),
      so keying on `rev` alone silently renders a stale node. Anything you add to
      renderDocNode that isn't derived from `rev` belongs here too. */
-  const nodeKey = (d) => [
+  const nodeKey = (d, depth) => [
     d.rev,
     d.conflict ? 'c' : '',
     d.parkedEdit ? 'p' : '',
     ui().editingBody === d.id ? 'e' : '',
+    'd' + (depth || 0),   // indentation is presentation-only; re-focusing changes it without moving a rev
   ].join('|');
 
-  function renderDocNode(d) {
+  function renderDocNode(d, depth) {
     const T = DOC_TYPES[d.type];
     const editingBody = ui().editingBody === d.id;
     const el = document.createElement('article');
-    el.className = 'doc doc-' + d.type + (d.conflict ? ' has-conflict' : '');
+    el.className = 'doc doc-' + d.type + (d.conflict ? ' has-conflict' : '') + (depth ? ' is-nested' : '');
     el.dataset.docId = d.id;
     el.dataset.rev = d.rev;
-    el.dataset.key = nodeKey(d);
+    el.style.setProperty('--depth', depth || 0);
+    el.dataset.key = nodeKey(d, depth);
     el.innerHTML = `
       ${d.conflict ? conflictStripHTML(d) : ''}
       ${d.parkedEdit ? `<div class="note doc-parked">Your earlier edit is parked.
@@ -327,6 +329,19 @@
     if (!want.length) { host.innerHTML = emptyFeedHTML(); return; }
     if (host.querySelector('.feed-empty')) host.innerHTML = '';
 
+    /* Indentation: each card is indented by its depth RELATIVE to the doc leading
+       the feed, so a folder's (or a beat's) children sit visually beneath it. This
+       is presentation only — the feed still stitches every descendant into one
+       continuous read; nothing collapses here. */
+    const absDepth = (() => {
+      const t = STORE.tree();
+      const m = new Map();
+      (function walk(list, depth) { list.forEach(d => { m.set(d.id, depth); walk(t.kids.get(d.id) || [], depth + 1); }); })(t.roots, 0);
+      return m;
+    })();
+    const baseDepth = (f.kind === 'f' && f.id) ? (absDepth.get(f.id) || 0) : 0;
+    const depthOf = (d) => f.kind === 'd' ? 0 : Math.max(0, (absDepth.get(d.id) || 0) - baseDepth);
+
     // Index what's on screen; evict anything that isn't a doc node (e.g. a
     // leftover empty-state) so `cursor` below can only ever walk doc nodes.
     const have = new Map();
@@ -342,8 +357,9 @@
 
     for (const d of want) {
       let node = have.get(d.id);
+      const depth = depthOf(d);
 
-      if (node && node.dataset.key !== nodeKey(d)) {   // stale → drop and rebuild
+      if (node && node.dataset.key !== nodeKey(d, depth)) {   // stale → drop and rebuild
         if (node === cursor) cursor = cursor.nextSibling;
         have.delete(d.id);
         node.remove();
@@ -351,7 +367,7 @@
       }
 
       if (!node) {
-        host.insertBefore(renderDocNode(d), cursor);   // cursor null ⇒ append
+        host.insertBefore(renderDocNode(d, depth), cursor);   // cursor null ⇒ append
       } else if (node === cursor) {
         cursor = cursor.nextSibling;                   // already in place
         have.delete(d.id);
@@ -462,11 +478,40 @@
     return (d.parent === null || d.parent === undefined) ? 'book' : 'folder';
   }
 
+  /* Which docs may hold children. Folders always; a story beat may nest DOCUMENTS
+     too — but never a folder ("no folder inside a non-folder"). Everything else is
+     a leaf. The store already treats any doc as a possible parent, so this is only
+     the UI's rule about where the "＋ add" and drop-into affordances appear. */
+  const CONTAINER_TYPES = { folder: true, beat: true };
+  const canContain = (d) => !!(d && CONTAINER_TYPES[d.type]);
+  const isFolderType = (d) => !!(d && d.type === 'folder');
+
+  // Ids of every descendant of `id` that is itself a container-with-children —
+  // i.e. the nodes whose open/closed state "Unroll all" flips.
+  function containerDescendants(id, t) {
+    const out = [];
+    (function walk(pid) {
+      (t.kids.get(pid) || []).forEach(c => {
+        if ((t.kids.get(c.id) || []).length) out.push(c.id);
+        walk(c.id);
+      });
+    })(id);
+    return out;
+  }
+
   function treeNodeHTML(d, t, focus, depth) {
     const kids = t.kids.get(d.id) || [];
     const open = !!ui().open[d.id];
     const selected = focus.id === d.id;
     const isFolder = d.type === 'folder';
+    // "Unroll all" only shows when there's something nested to unroll. It's fully
+    // open when this node AND every container beneath it are open — that decides
+    // whether the button collapses everything or opens everything.
+    let fullyOpen = false;
+    if (kids.length) {
+      const conts = containerDescendants(d.id, t);
+      fullyOpen = open && conts.every(cid => !!ui().open[cid]);
+    }
     return `<li>
       <div class="tree-row${selected ? ' is-selected' : ''}${isFolder ? ' is-folder' : ''}" data-act="select-node" data-doc="${d.id}" style="--depth:${depth}">
         <span class="tree-handle" data-act="row-drag" data-doc="${d.id}" title="Drag to reorder" aria-hidden="true">⠿</span>
@@ -477,7 +522,10 @@
         <span class="tree-icon" aria-hidden="true">${icon(docIconName(d))}</span>
         <span class="tree-title">${esc(d.title)}</span>
         ${d.conflict ? '<span class="tag warn tree-badge" title="Cowork sent a newer version">!</span>' : ''}
-        ${isFolder ? `<button class="row-add" data-act="folder-menu" data-parent="${d.id}" title="Add to “${esc(d.title)}”">＋</button>` : ''}
+        ${kids.length ? `<button class="row-expand" data-act="expand-all" data-doc="${d.id}"
+                title="${fullyOpen ? 'Collapse everything inside' : 'Unroll everything inside'}"
+                aria-label="${fullyOpen ? 'Collapse all under' : 'Unroll all under'} ${esc(d.title)}">${icon(fullyOpen ? 'fold' : 'unfold')}</button>` : ''}
+        ${canContain(d) ? `<button class="row-add" data-act="folder-menu" data-parent="${d.id}" title="Add to “${esc(d.title)}”">＋</button>` : ''}
       </div>
       ${kids.length && open ? `<ul>${kids.map(k => treeNodeHTML(k, t, focus, depth + 1)).join('')}</ul>` : ''}
     </li>`;
@@ -1973,6 +2021,20 @@
     mark('tree');
   };
 
+  // "Unroll all": open this node and every container beneath it in one click. If
+  // it's already fully open, the same click folds the whole branch back up.
+  ACT['expand-all'] = (el, e) => {
+    e.stopPropagation();
+    const id = el.dataset.doc;
+    const t = STORE.tree();
+    const ids = [id].concat(containerDescendants(id, t));
+    const open = Object.assign({}, ui().open);
+    const allOpen = ids.every(x => !!open[x]);
+    ids.forEach(x => { if (allOpen) delete open[x]; else open[x] = true; });
+    STORE.setUi({ open });
+    mark('tree');
+  };
+
   ACT['focus-doc'] = (el) => gotoDoc(el.dataset.doc);
 
   ACT['edit-title:input'] = (el) => patchDebounced(el.dataset.doc, { title: el.value });
@@ -2082,9 +2144,15 @@
   ACT['folder-menu'] = (el) => {
     const parent = el.dataset.parent || '';
     const atRoot = parent === '';
-    let items = menuItem('create-child', { type: 'folder', parent: parent },
-      atRoot ? 'book' : 'folder', atRoot ? 'New parent folder' : 'New folder');
-    items += '<div class="menu-sep"></div>';
+    // A folder may only be created at the root or inside another folder — never
+    // inside a beat (the "no folder inside a non-folder" rule).
+    const canAddFolder = atRoot || isFolderType(parent ? STORE.get(parent) : null);
+    let items = '';
+    if (canAddFolder) {
+      items += menuItem('create-child', { type: 'folder', parent: parent },
+        atRoot ? 'book' : 'folder', atRoot ? 'New parent folder' : 'New folder');
+      items += '<div class="menu-sep"></div>';
+    }
     items += DOC_MENU_TYPES.map(t =>
       menuItem('create-child', { type: t, parent: parent }, DOC_TYPES[t].icon, 'New ' + DOC_TYPES[t].label.toLowerCase())).join('');
     openMenu(el, items);
@@ -2583,12 +2651,19 @@
       if (cyclic) return;
       const r = row.getBoundingClientRect();
       const y = (e.clientY - r.top) / r.height;   // 0 (top) .. 1 (bottom)
-      if (td.type === 'folder' && y > 0.25 && y < 0.75) {
-        row.classList.add('drop-into');            // drop INTO the folder
+      const draggedIsFolder = isFolderType(STORE.get(dragging.id));
+      // Drop INTO the middle of a container. A beat can hold documents too — but a
+      // folder may only nest inside another folder ("no folder inside a non-folder").
+      const canDropInto = canContain(td) && !(draggedIsFolder && !isFolderType(td));
+      if (canDropInto && y > 0.25 && y < 0.75) {
+        row.classList.add('drop-into');            // drop INTO the container
         dragging.dropInto = tid;
         return;
       }
-      const before = y < 0.5;                       // reorder as a sibling of this row
+      // Reorder as a sibling of this row — but refuse a slot that would file a
+      // folder under a non-folder parent (the same rule, on the target's parent).
+      if (draggedIsFolder && td.parent && !isFolderType(STORE.get(td.parent))) return;
+      const before = y < 0.5;
       row.classList.add(before ? 'drop-before' : 'drop-after');
       dragging.dropTarget = tid; dragging.dropBefore = before;
     }

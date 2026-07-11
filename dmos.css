@@ -417,6 +417,15 @@ body.dmos-row-dragging, body.dmos-row-dragging * { cursor: grabbing !important; 
 }
 .tree-row:hover .row-add { opacity: 0.7; }
 .row-add:hover { opacity: 1; background: var(--surface-active); }
+/* "Unroll all" — the recursive expand/collapse beside the ＋. Same hover-reveal. */
+.row-expand {
+  flex: none; background: transparent; border: 0; cursor: pointer;
+  color: var(--brown); line-height: 0; padding: 1px 3px; border-radius: 4px; opacity: 0;
+  display: inline-flex; align-items: center;
+}
+.row-expand .icon { width: 15px; height: 15px; }
+.tree-row:hover .row-expand { opacity: 0.6; }
+.row-expand:hover { opacity: 1; background: var(--surface-active); }
 
 /* Anchored popup menu (folder ＋). Reuses the modal root for click-outside close. */
 .menu-overlay { position: fixed; inset: 0; z-index: var(--z-modal); }
@@ -462,15 +471,20 @@ body.dmos-row-dragging, body.dmos-row-dragging * { cursor: grabbing !important; 
 .crumbs a:hover { text-decoration: underline; }
 .crumb-sep { opacity: 0.5; }
 
-.feed-docs { max-width: 780px; margin: 0 auto; padding: 14px 22px 40vh; }
+.feed-docs { max-width: 1200px; margin: 0 auto; padding: 14px 18px 40vh; }
 .feed-empty { margin-top: 12px; }
 
 .doc {
   background: var(--panel); border: 2px solid var(--panel-edge);
   border-radius: var(--radius); box-shadow: 0 4px 16px var(--shadow);
-  padding: 12px 16px; margin: 0 0 14px;
+  padding: 12px 16px;
+  /* Indent by depth relative to the doc leading the feed, so nested docs sit
+     under their parent. Cards are wide (above) precisely so this reads clearly. */
+  margin: 0 0 14px calc(var(--depth, 0) * 26px);
   animation: rise 0.35s ease both;
 }
+/* A nested card gets a thicker left edge to reinforce that it lives under another. */
+.doc.is-nested { border-left-width: 5px; border-left-color: var(--brown); }
 .doc.has-conflict { border-color: var(--gold); }
 .doc-head { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
 .doc-icon { color: var(--brown); display: inline-flex; }
@@ -866,4 +880,6 @@ table.diff tbody th { width: 22%; font-family: var(--font-display); font-weight:
   .rail-b-closed .reopen-b { display: block; }
 
   .feed-docs { padding: 18px 14px 40vh; }
+  /* Tighter indent on narrow screens so deep cards keep usable width. */
+  .doc { margin-left: calc(var(--depth, 0) * 16px); }
 }

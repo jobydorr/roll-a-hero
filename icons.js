@@ -32,6 +32,15 @@
     shield: wrap('<path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5Z"/>'),
     // A little node graph — one beat branching to two — for the story map.
     flow: wrap('<g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M7 12h4.5M7.6 10 16 6.5M7.6 14 16 17.5"/></g><g fill="currentColor"><circle cx="5" cy="12" r="2.6"/><circle cx="17.6" cy="6" r="2.6"/><circle cx="17.6" cy="18" r="2.6"/></g>'),
+    // --- DM OS: a distinct glyph per document type, plus the tree's expand-all ---
+    person: wrap('<path fill="currentColor" d="M12 4a3.6 3.6 0 1 0 0 7.2A3.6 3.6 0 0 0 12 4Zm0 9c-3.9 0-7 2.1-7 4.8V20h14v-2.2c0-2.7-3.1-4.8-7-4.8Z"/>'),
+    paw: wrap('<g fill="currentColor"><circle cx="7" cy="11" r="1.7"/><circle cx="17" cy="11" r="1.7"/><circle cx="9.6" cy="7" r="1.7"/><circle cx="14.4" cy="7" r="1.7"/><path d="M12 12.6c-2.4 0-4.3 1.8-4.3 3.8 0 1.5 1.1 2.6 2.5 2.6.7 0 1.2-.3 1.8-.3s1.1.3 1.8.3c1.4 0 2.5-1.1 2.5-2.6 0-2-1.9-3.8-4.3-3.8Z"/></g>'),
+    pin: wrap('<path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 4.6 5.6 11.4 6.4 12.3a.8.8 0 0 0 1.2 0C13.4 20.4 19 13.6 19 9a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/>'),
+    calendar: wrap('<path fill="currentColor" d="M8 2a1 1 0 0 0-1 1v1H5.5A2.5 2.5 0 0 0 3 7.5v11A2.5 2.5 0 0 0 5.5 21h13a2.5 2.5 0 0 0 2.5-2.5v-11A2.5 2.5 0 0 0 18.5 4H17V3a1 1 0 1 0-2 0v1H9V3a1 1 0 0 0-1-1Zm11 8v8.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V10Z"/><rect fill="currentColor" x="7" y="12.2" width="3.2" height="3" rx="0.6"/>'),
+    scene: wrap('<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path stroke-linecap="round" d="M3 16l5-5 4 4 3-3 6 6"/></g><circle cx="15.6" cy="9" r="1.7" fill="currentColor"/>'),
+    notepad: wrap('<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 3h8l4 4v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M14 3v4h4"/><path stroke-linecap="round" d="M8 12h8M8 15.5h6"/></g>'),
+    unfold: wrap('<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4M8 15l4 4 4-4"/>'),
+    fold: wrap('<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 5l4 4 4-4M8 19l4-4 4 4"/>'),
   };
 
   window.ICONS = ICONS;
