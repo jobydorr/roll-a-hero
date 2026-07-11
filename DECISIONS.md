@@ -6,6 +6,33 @@
 
 ---
 
+### 2026-07-11 (later) — Campaign One, revision two: banished zones, and the thing in the middle
+Two rounds of stress-testing broke the first draft. The fixes below are canon and **load-bearing**; the reasoning is here so nobody "simplifies" one of them back out.
+
+**Joby's fix: put the danger in the propaganda.** My first draft *removed monsters from the Fold* to protect the Act 3 reveal — a coward's fix that also starved the campaign of things to fight. Joby's version is better and does it properly: the Fold openly walls off the wild places into **banished zones**, and everyone knows unfolding lets the monsters out. So when a player asks *"don't the monsters come back?"* the answer is **yes, obviously, it's on the leaflet** — the question is asked, answered, and closed, and nobody digs further. **The Devouring hides behind a satisfying answer, not behind a blank space.** That's the whole misdirection, and it's sturdier than an omission. It also hands us the encounter engine: **portals lead into the zones**, so the zones *are* the dungeons.
+
+Corollary, now a rule: **every Devouring seed must have a satisfying wrong answer available.** The first draft's seeding method (a word he won't finish, a fear he won't name) was three blank spaces in a row — exactly the pattern a sharp player reads as *there's a second thing in there*. He now speaks **complete sentences the party misreads.**
+
+**Propaganda is now three claims** — unlimited power (starsalt), permanent safety (the zones), and **control** (he can *wrinkle* the world shut: pinch a road, seal a town). The third is the stated crime, and it answers *"why did he do it, and why then?"* completely — he seized the world the moment his machine was finished. A decoy has to answer that or Act 1 leaks.
+
+**The Surveyors were his allies, not usurpers** (Joby). They helped fold the world and knew what it was for. They stopped him from undoing it — *and were not entirely wrong to* — then noticed the starsalt was a fortune and the world easier to hold if its architect were a monster. **The founders knew about the Devouring; the current leadership has inherited the rule without the reason** and reads the sealed warning as their own predecessors' propaganda. That's what keeps the reveal sealed for two acts, and it buys a hell of a beat: in Act 3 the party shows the Surveyor leader the proof and **he goes white**, having laughed at that warning his whole life. And it gives the Foldwright a real flaw — he tried to undo the Fold **for her**, knowing what it might release.
+
+**The two problems that would have killed the campaign at the table, and the one idea that fixed both:**
+
+1. *"Why don't we just stop burning starsalt?"* The chain (burn → world weakens → creases loosen → breaches) made the fix a **lamp ban, not an apocalypse.** A clever kid proposes rationing in session three and is *right*. "The Fold is failing regardless" was asserted, never earned.
+2. *Unfolding is indefensible.* The heroes' plan was to deliberately release every monster on earth at once — a thing everyone knows from day one. Two adults and two kids reasonably say **"absolutely not."** "On purpose, prepared" is meaningless while nobody can say what *prepared* looks like.
+
+**The fix — the geometry.** Fold a sheet with something eating in from one edge, and that edge ends up **buried in the middle, wrapped in layers of world.** The Fold never built a wall; it used the world's own body as padding. **The banished zones are the layers. The Devouring is in the innermost crease, still chewing outward.**
+- The Fold is failing **because something is eating it.** No lamp ban saves you; burning starsalt only thins the layers faster. (Rationing = "good idea, helps, not enough, and nobody with the power will do it.")
+- The **breaches are it** — that's why they worsen, and everyone blames the wrong man.
+- The Devouring gets a **location and a clock** a nine-year-old can hold, and the journey gets a **direction**: each portal goes one layer deeper, *toward* it. The last zone is where it lives.
+
+**And it makes the mission defensible — this is now the spine of Acts 2–3.** The wall is coming down either way. *Do nothing* and it snaps at once, into a world with no warning. *Unfold on purpose* and you go through the portals **one at a time**: get the lost people out, learn the land and what lives in it, find the old ways of fighting it, mark the door. Then the world comes undone into a world that **knows what's coming.** Kid version, say it out loud at the table: **"The wall is going to fall. We can be standing there ready — or asleep in bed."** Every region now has a *point* (rescue, scout, prepare) instead of being a checkbox.
+
+**Starsalt physics, corrected.** The old draft said starsalt was destroyed by *burning* but harvested harmlessly — which contradicts itself, and would mean the Surveyors' mines are already enormous public dead zones. **They are, and that's the point.** Starsalt is destroyed by being **taken out of the ground and spent**. **The seams *are* the mines**, everyone can see the grey, and everyone has been told it's *"the Foldwright's blight."* So the Act 1 reveal isn't "there's a dead zone" — it's **"the dead zone is the mine"** — same decoy trick as the monsters. And the party learns it **with their own hands**, cutting raw starsalt for the Compass Spirit and watching the ground die under their fingers. Every direction costs a grey handprint.
+
+**Two smaller fixes:** **wrinkles cost starsalt, a lot** (otherwise the Surveyors would simply box the party in every session), and **portals cannot be destroyed** — they *are* the creases, so the Surveyors can only hide and fence them, which is why they've never removed the problem. **The finale must be a fight with a describable Devouring**, not an abstraction and not a conversation; talking the Foldwright down is a *scene*, not the climax. This table has spent twenty sessions swinging swords.
+
 ### 2026-07-11 — Campaign One is *The Folded World* — foundation locked (see `CAMPAIGN.md`)
 The first campaign's premise, factions, twists, and act structure are settled after a long brainstorm. The full bible lives in **`CAMPAIGN.md`**; this entry records the *choices* and, more importantly, **why** — because several of them look arbitrary until you see the trap they were dodging.
 
@@ -52,31 +79,4 @@ Joby's words, after previewing: *"All I wanted was a separate set of pages I can
 
 The lesson worth keeping: **when a non-technical requirement ("private") drives a heavy technical design, restate it in plain terms and check it before building.** One clarifying question here would have saved three turns.
 
-### 2026-07-08 — The local server binds to loopback, and there's a launcher *(SUPERSEDED — see above)*
-*Kept for the record. The server, launcher, and gitignored `campaign/` folder described here were all removed once the campaign became a committed `campaign.js`. The loopback-binding lesson still stands in principle, but there is no longer a local server that serves private content.*
-
-Two problems, one file. **The launcher:** the DM OS can't be opened by double-clicking `dm.html` — browsers refuse to let a `file://` page read its own folder, so it could never load `campaign/`. That made "start a server" a prerequisite for every session. `start-roll-a-hero.cmd` → `serve.py` now does it in one double-click.
-
-**The hole it closed, which matters more.** `python -m http.server 8000` binds **every network interface** by default. Verified on this machine: while the server ran, `http://192.168.1.213:8000/campaign/docs/` served a full directory listing and every story file to *anything on the home Wi-Fi* — the kids' tablets included. They'd never even load `dm.html`, so the passcode was irrelevant. We had carefully gitignored `campaign/` to keep the story off the internet while leaving it wide open on the living-room network.
-
-`serve.py` binds `127.0.0.1`, and **`.claude/launch.json` runs the same `serve.py`** (with `--no-browser`) rather than its own `python -m http.server`. One implementation, no drift: a fix applied to one launch path and not the other would have been worse than no fix, because it creates confidence without protection. **Do not "helpfully" restore the default bind** to preview from a phone — that re-opens the hole. If you ever genuinely need LAN access, move the campaign out of the served directory first.
-
-Three details that cost real debugging, so they're written down:
-- **Find the interpreter, don't assume `python`.** Explorer launches the `.cmd` with the *saved* PATH, which on this machine has the Python Launcher (`py.exe`) but **not** `python.exe`. A shell has both, so a launcher tested only from a shell reports "Python isn't installed" on a machine that plainly has it. The `.cmd` tries `py -3`, `py`, `python`, `python3` and **proves each runs** — `where` also finds the WindowsApps stub that exists, resolves, and does nothing but offer to open the Microsoft Store.
-- **`ThreadingHTTPServer`, never `socketserver.TCPServer`.** Single-threaded serving handles one connection at a time; a browser opens several and holds them, so the next request hangs forever and the app appears to freeze. This is why `python -m http.server` itself switched to threading in 3.7.
-- `serve.py` sends `Cache-Control: no-store`, retiring the manual hard-refresh ritual for local work. The `?v=` tags in the HTML still matter for the *deployed* site.
-
-### 2026-07-08 — DM tools live on their own page (`dm.html`), and the campaign is never published
-This settles the open question that sat in `BACKLOG.md` for a week: *"Where should DM tools live — same app with a 'DM mode' toggle, or a separate companion page?"* **Answer: a separate page in the same repo.** Three reasons:
-- **The player app stays kid-simple.** `app.js` is already 1,783 lines; a workspace would double it, and a kid clicking around the character builder could stumble into the DM's spoilers.
-- **The shapes are incompatible.** The builder is a single centered column that wipes `#app.innerHTML` on every step. The DM OS is a persistent three-column workspace with drag state, a floating notes window, and live text selection — it needs an inverted render model (delegated listeners, keyed subtree reconciles) that the builder neither needs nor wants.
-- **Privacy comes free.** `dm.html` reuses `styles.css`, `data.js`, `icons.js`, and `firebase-sync.js`, but the *campaign content* lives in a **gitignored `campaign/` folder** that never reaches GitHub Pages.
-
-**The passcode on `dm.html` is a curtain, not a vault — and that is on purpose.** Anyone can View Source and read it. It is not the security boundary. **The security boundary is that `campaign/` is gitignored**, so a stranger (or a curious 10-year-old) who gets past the passcode on the live site sees an empty workspace and a `campaign/manifest.json` that 404s. There is nothing there to find. *Do not "fix" this by adding real auth* — you'd break the DM's local workflow and protect nothing that isn't already absent. If the DM ever needs the campaign on a second device, that's the moment to revisit (encrypted files, or Firebase behind a real login), not before.
-
-Two consequences worth writing down:
-- **Two data flows, never conflated.** Player data flows **in, read-only** — the OS calls the existing `RAHSync.listCampaign()` to see the party's shared heroes. Player HP the DM tracks during a fight lives only in the DM's tracker and **never writes back** to a player's hero. Story data flows **nowhere**.
-- **`dm.html` borrows the hero math rather than copying it.** It loads `app.js` for a new `window.RAH` export block (and `app.js`'s boot is now guarded by `if (document.getElementById('app'))`, since `dm.html` has no `#app`). Copying `computeHP`/`computeAC` would mean the initiative tracker eventually shows a different AC than the player's printed sheet — at the table, in front of a 9-year-old. ⚠ `withState()` is **sync-only** (`try/finally`): hand it an `async` function and it restores `state` at the first `await`, then silently computes the wrong hero.
-
-### 2026-07-08 — A requirements engine drives completeness, editing, and (later) leveling
-Rather than bolt on an "edit character" screen, we added **one declarative `requirements(snap)`** that returns every choice a hero still owes, each tagged with the level it unlocks at. Everything reads from it: the ⚠ badge on the saved-hero list, the Edit screen's "Fix this →" jumps, and `classComplete()`. **When leveling arrives, new requirements simply appear at higher levels and the same screen points the player at them** — leveling becomes "satisfy new requirements," not a separate system. Two enabling
+### 2026-07-08 — The local server binds to loopback, and there's a launcher *(SUPER
