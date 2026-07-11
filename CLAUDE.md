@@ -5,32 +5,30 @@
 ## Two tracks, don't mix them
 
 1. **BUILDER** — develop the toolkit (a plain static site: HTML/CSS/JS, saves to the browser). Steered by `ROADMAP.md`, `DECISIONS.md`, `BACKLOG.md`.
-2. **DM PARTNER** — plan and run games using our simplified rules. Steered by `DM_CRAFT.md` + `CAMPAIGN.md`.
+2. **DM PARTNER** — plan and run games using our simplified rules. Steered by `CAMPAIGN.md`.
 
 ---
 
-## 🎲 DM CRAFT REFERENCE — read before building any game content
+## 🧠 Standing order for all brainstorming and ideation
 
-The repo holds a distilled DM craft reference, built from 20 sources.
+**This applies to every creative task — worlds, towns, NPCs, villains, monsters, dungeons, encounters, plots, names, items, twists.**
 
-| File | What it is | How to use it |
-|---|---|---|
-| **`DM_CRAFT_QUICK.md`** | A short **router** (~2.7k words): the laws, build sequences, a symptom→section triage table, and fillable templates. | **Read this first.** Most prep can be done from it alone. |
-| **`DM_CRAFT.md`** | The full reference (~29k words). | **Never load the whole file.** Open only the section the card names. |
+**Keep it fresh. Refuse the generic.**
 
-**The rules:**
+- **The first idea is almost always the trope.** Name it, notice it, and then go past it. If a villain is a power-hungry wizard, if the mayor is corrupt, if the forest is cursed, if the artifact is in three pieces — **that's the default, not the idea.**
+- **Don't recycle.** If we've already done a betrayed lieutenant, a missing parent, a rival adventuring party, a cult in the basement — **don't reach for it again.** Track what we've used and deliberately go elsewhere.
+- **Vary the *shape*, not just the paint.** Two different villains who are both misunderstood idealists are the same villain. Two towns that both have one landmark and a feuding council are the same town. **Change the underlying structure, not the names.**
+- **Avoid formula and standardization** — unless the standard form buys something *real* for the task at hand. Consistency is a tool, not a default. If a template is generating the content rather than checking it, **stop using the template.**
+- **Follow the weird thread.** If something unexpected shows up mid-brainstorm and it's interesting, chase it. The plan is not sacred.
+- **Specific beats generic, always.** "A tavern" is nothing. "A tavern built inside a beached whaling ship, where the innkeeper still won't say what happened to the crew" is something.
+- **It's fine to be strange.** Kid-safe does not mean bland. Kids have a very high tolerance for the weird and a very low tolerance for the boring.
 
-1. **Brainstorm FIRST. Check against the card SECOND.** The build sequences (§B) are a **net, not a mould** — they exist to catch what fell through, *not* to generate content by filling slots. Invent freely, follow the interesting thing, then use §B to ask *"what did we forget?"* **A town built by working down the template will feel like a form. Never let the sequence drive the idea.**
-2. **When something feels off, check the triage table (§C) before improvising a fix.** ~45 symptoms → the exact section that addresses each. *This is the card's main job.*
-3. **Open `DM_CRAFT.md` only at the section the card names, and read only that section.** The difference between an ~800-token lookup and a ~40,000-token one.
-4. **Re-read the card when a session has run long.** Instructions from the start of a long conversation get fuzzy. Re-anchoring is cheap (~4k tokens) — do it rather than drifting.
-5. **`DM_CRAFT.md` is the source of truth.** The card is only an index; if they disagree, the big doc wins.
-6. **⚠️ The craft docs guide the GAME, not the APP.** `DM_CRAFT.md` is a craft reference for world-building and running sessions. **Never mine it for DM OS feature ideas or `BACKLOG.md` entries.** App features get raised by Joby, separately. *(Settled 2026-07-11.)*
-
-> **The doc's own first law applies to the doc itself: *design the conditions for something memorable — don't script what happens.* If the reference is making our worlds more samey, we're using it backwards.**
+**The tell that we've drifted:** the content is *fine*, technically correct, hits all the marks — **and completely forgettable.** If a session starts producing that, say so out loud and start over.
 
 ---
 
-## Non-negotiables (every session, both tracks)
+## Reference material (used on request, not by default)
 
-- **The beginner test:** would a 9-year-old *and* a brand-new adult get this? Core mechanic is always *"roll a d20, add your modif
+The repo holds a distilled DM craft reference, built from 20 sources: **`DM_CRAFT.md`** (full, ~29k words) and **`DM_CRAFT_QUICK.md`** (a short router — laws, a symptom→section triage table, and templates).
+
+- **Do NOT load these by default.** They're consulted **when Joby points at them**, or wh

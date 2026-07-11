@@ -21,7 +21,15 @@
 1. **`DM_CRAFT.md` is the source of truth.** The card contains nothing that isn't in the big doc; if they disagree, the big doc wins. If we ingest more sources, the card needs a sync pass.
 2. **⚠️ The craft docs guide the GAME, not the APP.** `DM_CRAFT.md` is a craft reference for world-building and running sessions. It is **not** a source of feature ideas for the DM OS, and must never be mined for `BACKLOG.md` entries. App features get raised by Joby, separately. *(This corrected a first pass that did exactly that.)*
 
-**Where the pointers live.** `CLAUDE.md` (auto-loaded every session — this is what actually enforces the routing rule), `COWORK_INSTRUCTIONS.md` (the version-controlled copy of the project instructions), and `README.md`.
+**Where the pointers live.** `CLAUDE.md` (auto-loaded every session), `COWORK_INSTRUCTIONS.md` (the version-controlled copy of the project instructions), and `README.md`.
+
+**⚠️ REVISED, same day — the reference is NOT auto-consulted.** The first version of this made sessions read `DM_CRAFT_QUICK.md` before building any game content. **We reversed that.**
+
+**Why.** A standing order to consult a framework before every creative task is a machine for producing formulaic output. Even with the "net, not a mould" wording, the pull is toward *checking boxes before having an idea* — and the reference is only useful *after* there's something to check. The risk isn't that it gives bad advice; it's that **reaching for it reflexively makes every town, villain, and dungeon come out the same shape.**
+
+**What replaced it.** The standing order in `CLAUDE.md` is now a **brainstorming posture**, not a routing rule: *the first idea is almost always the trope — go past it. Don't recycle. Vary the shape, not the paint. Avoid formula and standardization unless it buys something real for the task at hand. Follow the weird thread. Specific beats generic. Kid-safe ≠ bland.* Plus the tell that we've drifted: **the content is fine, hits all the marks, and is completely forgettable.**
+
+**The craft docs are now pulled, not pushed.** Joby points at them when he wants them. They remain excellent as a **diagnostic** — the triage table maps ~45 symptoms ("combat feels like maths," "players don't care about the world") to the section that addresses each. That's the use that can't homogenise anything, because it only fires when something is *already* wrong.
 
 ---
 
@@ -153,9 +161,4 @@ The open architectural fork is **decided: we're adding a small backend.** Joby w
 **One human step pending:** Joby creates a free Supabase (or Firebase) project and pastes back the two keys (~5 min, one-time). Nothing else is blocked — step (0) can start immediately with no backend at all.
 
 ### 2026-07-07 — Official D&D 5E rulebooks are reference/inspiration, not canon
-Twelve official 5E PDFs (Player's Handbook, DMG, Monster Manual, Xanathar's, Tasha's, Volo's, Mordenkainen's, Sword Coast, Ravnica, Eberron, Elemental Evil, Tortle Package) live in the repo root alongside the code and `.md` files. **How we use them:** as source material and inspiration — for stories, settings, factions, NPCs, monsters, and encounters — NOT as a rules catalogue to import wholesale. Our simplified system ("roll a d20, add your modifier, beat this number") stays the law of the land; these books supply the *spirit and flavor* of real D&D. When building campaign content, the project is encouraged to reach into them for ideas and then translate to our simplified mechanics. Note: the PDFs are large binaries sitting in the folder, so they don't show up in Cowork's "context files" sidebar — but they're readable from the repo anytime.
-
-### 2026-06-29 — Expand into a fuller toolkit (DM tools + leveling), and manage it from Cowork
-The project grows from a one-time character creator into a bigger toolkit with two new pillars: **DM tools to plan and run campaigns** (the near-term expansion) and, later, **living characters that level up**. To steer this the same way as the Trading Journal, we set up the same PM model: the project's direction lives in plain files in the repo (`ROADMAP.md`, `DECISIONS.md`, `BACKLOG.md`) so it can be seen and steered, and a **Cowork project pointing at this repo folder becomes the command center**. This machine stays the work desk; GitHub is the live site + backup.
-
-### 2026-06-29 — Open question flagged: stay browser-only, or add a bac
+Twelve official 5E PDFs (Player's Handbook, DMG, Monster Manual, Xanathar's, Tasha's, Volo's, Mordenkainen's, Sword Coast, Ravnica, Eberron, Elemental Evil, Tortle 

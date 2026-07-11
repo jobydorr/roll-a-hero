@@ -30,20 +30,21 @@ Twelve official D&D 5E PDFs live in the repo root (PHB, DMG, Monster Manual, Xan
 **DM PRIORITIES** (in order)
 1. Story & campaign arcs  2. NPCs & monsters  3. Encounters & combat (balanced for our simplified system). Live in-session help is welcome but secondary.
 
-**DM CRAFT REFERENCE** (read before building any game content)
-The repo holds a distilled DM craft reference, built from 20 sources.
-- `DM_CRAFT_QUICK.md` — a short **router**: the laws, build sequences, a symptom→section triage table, and fillable templates. **Read this first.** Most prep can be done from it alone.
-- `DM_CRAFT.md` — the full reference (~29k words). **Never load the whole file.**
+**BRAINSTORMING POSTURE** (standing order for all ideation)
+Applies to every creative task — worlds, towns, NPCs, villains, monsters, dungeons, encounters, plots, names, items, twists. **Keep it fresh. Refuse the generic.**
+- **The first idea is almost always the trope.** Name it, notice it, then go past it. A power-hungry wizard, a corrupt mayor, a cursed forest, an artifact in three pieces — that's the default, not the idea.
+- **Don't recycle.** If we've done a betrayed lieutenant, a missing parent, a cult in the basement — don't reach for it again.
+- **Vary the *shape*, not just the paint.** Two villains who are both misunderstood idealists are the same villain.
+- **Avoid formula and standardization** unless the standard form buys something *real* for the task at hand. If a template is generating content rather than checking it, stop using the template.
+- **Follow the weird thread.** The plan is not sacred.
+- **Specific beats generic, always.** "A tavern" is nothing. "A tavern built inside a beached whaling ship, where the innkeeper won't say what happened to the crew" is something.
+- **Kid-safe ≠ bland.** Kids have a high tolerance for the weird and a low tolerance for the boring.
+- **The tell that we've drifted:** the content is *fine*, hits all the marks, and is completely forgettable. If that starts happening, say so and start over.
 
-Rules:
-1. **Before building ANY game content** — world, campaign, arc, NPC, villain, monster, dungeon, encounter, town, city, travel — read `DM_CRAFT_QUICK.md` and follow its build sequence (§B).
-2. **Open `DM_CRAFT.md` only at the specific section the card names, and read only that section.** This is the difference between an ~800-token lookup and a ~40,000-token one.
-3. When something we've built feels off, **check the triage table (§C) before improvising a fix** — it maps ~45 symptoms to the section that addresses them.
-4. `DM_CRAFT.md` is the source of truth; the card is only an index.
-5. **⚠️ The craft docs guide the GAME, not the APP.** Never mine `DM_CRAFT.md` for DM OS feature ideas or `BACKLOG.md` entries. App features get raised by Joby, separately. *(Settled 2026-07-11.)*
+**DM CRAFT REFERENCE** (used on request — NOT loaded by default)
+The repo holds a distilled DM craft reference built from 20 sources: `DM_CRAFT.md` (full, ~29k words) and `DM_CRAFT_QUICK.md` (a short router — laws, a symptom→section triage table, templates).
+- **Do not load these by default.** Consult them **when Joby points at them**, or when explicitly asked.
+- **When used:** brainstorm first, check second. They're a **net, not a mould** — for catching what fell through, never for generating content by filling slots. Never load the whole of `DM_CRAFT.md`; open only the section needed.
+- **⚠️ The craft docs guide the GAME, not the APP.** Never mine them for DM OS feature ideas or `BACKLOG.md` entries. App features get raised by Joby, separately. *(Settled 2026-07-11.)*
 
-**PUSHING STORY CONTENT INTO THE DM OS** (the `campaign.js` contract)
-When we brainstorm arcs, NPCs, encounters or creatures, put them into `campaign.js` — a committed, public file loaded by `dm.html` exactly like `data.js`. It sets `window.DM_CAMPAIGN = { campaign, docs: [ … ] }`. Editing it and committing is the whole handoff; the content appears in the DM OS on next load, the same way a new spell in `data.js` appears in the builder. Rules:
-- **One document = one object** in the `docs` array. Shape: `{ schema:1, id, type, title, parent, order, rev, tags, leadsTo, fields, body }`. Types and their `fields` keys are defined in `DOC_TYPES` in `dmos-store.js`; fill those keys. `parent` is another doc's `id` (or `null` for a top-level folder).
-- **Bump `rev` on every re-push of the same `id`.** The DM's own edits inside the workspace are layered on top and are preserved across re-pushes; a higher `rev` is how a genuine update is recognized. Forgetting fails *safe* (the DM's copy wins) but silently.
-- 
+**PUSHING STORY CONTENT INTO THE DM OS** (the `campaign.js` contr

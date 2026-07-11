@@ -20,12 +20,12 @@ This project is steered from three plain-language files in this folder — the "
 - **[BACKLOG.md](BACKLOG.md)** — the running list of ideas.
 
 ## Running the game
-Building the *app* and building the *game* are two different jobs, steered by different files:
-- **[DM_CRAFT_QUICK.md](DM_CRAFT_QUICK.md)** — 🎲 **start here for anything game-side.** A short reference card: the laws, build sequences (world / campaign / NPC / monster / dungeon / fight / journey), a symptom→section triage table, and fillable templates. Most prep can be done from this alone.
-- **[DM_CRAFT.md](DM_CRAFT.md)** — the full DM craft reference (~29k words), distilled from 20 sources. Don't read it end-to-end; let the card point you to the section you need.
+Building the *app* and building the *game* are two different jobs:
 - **[CAMPAIGN.md](CAMPAIGN.md)** — the campaign itself.
+- **[DM_CRAFT.md](DM_CRAFT.md)** — a DM craft reference (~29k words) distilled from 20 sources: world-building, towns, cities, dungeons, campaigns, NPCs, monsters, combat, travel, prep. **A reference to reach for when wanted — not a process to follow.**
+- **[DM_CRAFT_QUICK.md](DM_CRAFT_QUICK.md)** — a short router into the above: the laws, a symptom→section triage table (~45 symptoms → the section that addresses each), and templates. Handy when something feels off and you want to know why.
 
-> These are **craft** references for *playing and building the game* — not a source of feature ideas for the app.
+> These are **craft** references for *playing the game* — not a source of feature ideas for the app. And they're a **net, not a mould**: brainstorm first, check second. Working down a template produces a template.
 
 ## The two pages
 
@@ -58,9 +58,4 @@ It's a plain static site, no build step. Easiest: use the live link below. To ru
 3. Wait ~1 minute. Your shareable link will be:
    `https://<your-username>.github.io/roll-a-hero/`
 
-Send that link to your friends — nothing to install, it just opens in any browser.
-
-## Files
-| File | What it does |
-|------|--------------|
-| `index.html` | App shell + th
+Send that link to your friends — nothing to install, it just opens in any brows
