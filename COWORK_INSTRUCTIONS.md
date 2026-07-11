@@ -30,16 +30,20 @@ Twelve official D&D 5E PDFs live in the repo root (PHB, DMG, Monster Manual, Xan
 **DM PRIORITIES** (in order)
 1. Story & campaign arcs  2. NPCs & monsters  3. Encounters & combat (balanced for our simplified system). Live in-session help is welcome but secondary.
 
+**DM CRAFT REFERENCE** (read before building any game content)
+The repo holds a distilled DM craft reference, built from 20 sources.
+- `DM_CRAFT_QUICK.md` — a short **router**: the laws, build sequences, a symptom→section triage table, and fillable templates. **Read this first.** Most prep can be done from it alone.
+- `DM_CRAFT.md` — the full reference (~29k words). **Never load the whole file.**
+
+Rules:
+1. **Before building ANY game content** — world, campaign, arc, NPC, villain, monster, dungeon, encounter, town, city, travel — read `DM_CRAFT_QUICK.md` and follow its build sequence (§B).
+2. **Open `DM_CRAFT.md` only at the specific section the card names, and read only that section.** This is the difference between an ~800-token lookup and a ~40,000-token one.
+3. When something we've built feels off, **check the triage table (§C) before improvising a fix** — it maps ~45 symptoms to the section that addresses them.
+4. `DM_CRAFT.md` is the source of truth; the card is only an index.
+5. **⚠️ The craft docs guide the GAME, not the APP.** Never mine `DM_CRAFT.md` for DM OS feature ideas or `BACKLOG.md` entries. App features get raised by Joby, separately. *(Settled 2026-07-11.)*
+
 **PUSHING STORY CONTENT INTO THE DM OS** (the `campaign.js` contract)
 When we brainstorm arcs, NPCs, encounters or creatures, put them into `campaign.js` — a committed, public file loaded by `dm.html` exactly like `data.js`. It sets `window.DM_CAMPAIGN = { campaign, docs: [ … ] }`. Editing it and committing is the whole handoff; the content appears in the DM OS on next load, the same way a new spell in `data.js` appears in the builder. Rules:
 - **One document = one object** in the `docs` array. Shape: `{ schema:1, id, type, title, parent, order, rev, tags, leadsTo, fields, body }`. Types and their `fields` keys are defined in `DOC_TYPES` in `dmos-store.js`; fill those keys. `parent` is another doc's `id` (or `null` for a top-level folder).
 - **Bump `rev` on every re-push of the same `id`.** The DM's own edits inside the workspace are layered on top and are preserved across re-pushes; a higher `rev` is how a genuine update is recognized. Forgetting fails *safe* (the DM's copy wins) but silently.
-- **If you're unsure where a doc belongs, don't guess — ask Joby in chat** which folder (`parent`) it should sit under. A wrong `parent` is annoying, not destructive, but ask anyway.
-- **Never delete a doc from someone's live game silently.** Removing an object from the array won't remove it from the DM's workspace (their copy persists); if a doc should truly go, tell Joby.
-- Because `campaign.js` is committed and public, there is **nothing secret at the file level** — that's fine and intended. The passcode on `dm.html` is what keeps players out of the running workspace.
-
-**HOW WE WORK**
-- The project is steered from three plain files in the repo — `ROADMAP.md`, `DECISIONS.md`, `BACKLOG.md`. Keep them updated as the human-facing record.
-- The big architecture question is **settled** (2026-07-07): we added a small **Firebase** backend (local-first) so players can **Share** characters to a campaign and the DM sees them on one page — plus file Export/Import as a safety net. See `DECISIONS.md`.
-- This machine is the work desk; GitHub (`jobydorr/roll-a-hero`) is the live site + backup. Commit changes and offer to push — you can deploy for me.
-- Always keep it kid-safe, simple, and committed.
+- 

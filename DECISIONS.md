@@ -6,6 +6,25 @@
 
 ---
 
+### 2026-07-11 (latest) — A DM craft reference, and the rule for how to read it
+
+**What we did.** Ingested 20 YouTube sources on world-building, campaigns, NPCs, monsters, dungeons, combat, travel and prep, and distilled them into **`DM_CRAFT.md`** (~29k words) — the standing brief for building and running our games. Then built **`DM_CRAFT_QUICK.md`**, a short router card.
+
+**The problem it solves.** A 29k-word reference is useless if loading it costs ~40k tokens every time we want to invent a town. So the two files have strictly different jobs:
+
+- **`DM_CRAFT_QUICK.md` is a *router*, not a summary.** It holds the laws, the build sequences, a **symptom→section triage table** (~45 symptoms → the exact section that fixes each), and the fillable templates. It's ~4k tokens and most prep can be done from it alone.
+- **`DM_CRAFT.md` is opened one section at a time**, at whatever the card names. **Never end-to-end.** That's an ~800-token lookup instead of ~40,000.
+
+**Why a router and not a summary.** A summary would throw away the worked examples — which are the actual value — and still be long. A router *increases* the big doc's usefulness instead of competing with it, because it tells you *when* to go deep and *where*.
+
+**Two rules that keep it healthy:**
+1. **`DM_CRAFT.md` is the source of truth.** The card contains nothing that isn't in the big doc; if they disagree, the big doc wins. If we ingest more sources, the card needs a sync pass.
+2. **⚠️ The craft docs guide the GAME, not the APP.** `DM_CRAFT.md` is a craft reference for world-building and running sessions. It is **not** a source of feature ideas for the DM OS, and must never be mined for `BACKLOG.md` entries. App features get raised by Joby, separately. *(This corrected a first pass that did exactly that.)*
+
+**Where the pointers live.** `CLAUDE.md` (auto-loaded every session — this is what actually enforces the routing rule), `COWORK_INSTRUCTIONS.md` (the version-controlled copy of the project instructions), and `README.md`.
+
+---
+
 ### 2026-07-11 (later) — Campaign One, revision two: banished zones, and the thing in the middle
 Two rounds of stress-testing broke the first draft. The fixes below are canon and **load-bearing**; the reasoning is here so nobody "simplifies" one of them back out.
 
@@ -139,17 +158,4 @@ Twelve official 5E PDFs (Player's Handbook, DMG, Monster Manual, Xanathar's, Tas
 ### 2026-06-29 — Expand into a fuller toolkit (DM tools + leveling), and manage it from Cowork
 The project grows from a one-time character creator into a bigger toolkit with two new pillars: **DM tools to plan and run campaigns** (the near-term expansion) and, later, **living characters that level up**. To steer this the same way as the Trading Journal, we set up the same PM model: the project's direction lives in plain files in the repo (`ROADMAP.md`, `DECISIONS.md`, `BACKLOG.md`) so it can be seen and steered, and a **Cowork project pointing at this repo folder becomes the command center**. This machine stays the work desk; GitHub is the live site + backup.
 
-### 2026-06-29 — Open question flagged: stay browser-only, or add a backend?
-Surfaced (not yet decided) the architectural fork the new pillars create. The app is currently a static page that saves to the browser — no server, no accounts. Leveling can stay that way; full DM↔player campaign sharing probably can't. We'll choose between "client-only + shareable save-files" and "add a backend with accounts" before building the DM-↔-player connection in earnest. Recorded now so the choice is deliberate, not accidental.
-
-### 2026-06-24 — Shipped and went live to a public link
-Backed the project up to GitHub and deployed it to a free public GitHub Pages link so the friends can just click it — no install. (Different from the Trading Journal, which is a *private* backup; this one is meant to be shared, so public is fine — there's nothing private in it.) Updates: change the files, push, and the live site refreshes itself in about a minute (bump the `?v=` cache tag so people actually get the new version).
-
-### 2026-06-23 — Keep it radically simplified
-The whole design rule: strip D&D down so a 9-year-old and a brand-new adult can play, while keeping the real feel. One "roll a d20 and beat this number" mechanic instead of skills/saves/proficiency math; plain-language spell cards; tomato analogies for the six abilities. Everything we add should pass the "would a beginner get this?" test — including the new DM and leveling features.
-
-### 2026-06-23 — Start everyone at level 3; 8 classes; 9 races
-Chose level 3 (where every class has its specialty) and grew to 8 classes + all 9 PHB races for variety, with a playstyle quiz so the choices don't overwhelm. This quietly set the stage for leveling later — level 3 is a starting point, not a ceiling.
-
-### 2026-06-23 — Built as a plain static website (no install, no build step)
-Made it a single static site (HTML/CSS/JS that saves to the browser) so it's the easiest possible thing to share and maintain — anyone opens a link, nothing to install. This is the decision the new "big question" (browser-only vs. backend) may revisit.
+### 2026-06-29 — Open question flagged: stay browser-only, or add a bac

@@ -19,6 +19,14 @@ This project is steered from three plain-language files in this folder — the "
 - **[DECISIONS.md](DECISIONS.md)** — the important calls and *why*.
 - **[BACKLOG.md](BACKLOG.md)** — the running list of ideas.
 
+## Running the game
+Building the *app* and building the *game* are two different jobs, steered by different files:
+- **[DM_CRAFT_QUICK.md](DM_CRAFT_QUICK.md)** — 🎲 **start here for anything game-side.** A short reference card: the laws, build sequences (world / campaign / NPC / monster / dungeon / fight / journey), a symptom→section triage table, and fillable templates. Most prep can be done from this alone.
+- **[DM_CRAFT.md](DM_CRAFT.md)** — the full DM craft reference (~29k words), distilled from 20 sources. Don't read it end-to-end; let the card point you to the section you need.
+- **[CAMPAIGN.md](CAMPAIGN.md)** — the campaign itself.
+
+> These are **craft** references for *playing and building the game* — not a source of feature ideas for the app.
+
 ## The two pages
 
 Everything opens from the **RH main page** (`index.html`), a hub with two doors:
@@ -55,14 +63,4 @@ Send that link to your friends — nothing to install, it just opens in any brow
 ## Files
 | File | What it does |
 |------|--------------|
-| `index.html` | App shell + the printable character-sheet template |
-| `styles.css` | The hybrid-fantasy look of the walkthrough (screen only) |
-| `print.css`  | The clean black-and-white one-page sheet (print only) |
-| `data.js`    | All the game content — races, classes, spells, gear, quiz |
-| `app.js`     | The step-by-step walkthrough logic |
-| `icons.js`   | Inline SVG icons |
-| `dm.html` + `dmos-*.js` + `dmos.css` | The Dungeon Master OS — a separate, passcode-gated workspace |
-| `campaign.js` | Your campaign content, committed like `data.js` — the DM OS reads it directly |
-
-## A note on rules
-Simplified from the **D&D 5e Basic Rules / Player's Handbook** for teaching. It's meant as an on-ramp — once players are comfortable, the full rules add all the depth that was trimmed here.
+| `index.html` | App shell + th
