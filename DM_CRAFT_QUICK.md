@@ -49,7 +49,20 @@ The things that change decisions on their own. If you remember nothing else:
 
 ## B · Build Sequences
 
-*Work these in order. Each arrow is a decision.*
+*Not a running order. A net — cast it over the idea you already have, and see what falls through.*
+
+**⚠️ Dosage matters. The full doc says so explicitly and this card is too short to keep repeating it:**
+
+| The doc's own words | Where |
+|---|---|
+| *"You don't need all five layers on every NPC."* Pick what suits the role. **Start with the want and build outward** — that's the only part that's fixed. | §3.3 |
+| *"You don't need all four every time — pick one and add it to the next game."* | §8.1 |
+| *"Hit a few of these and you're fine; you don't need all of them."* | §4.4 |
+| *"One or two sentences each is plenty."* | §1.7 |
+| *"You are not failing if you sit at level 2."* | §1.12 |
+| *"Your world doesn't need to be finished before you play. Start it, and let the game build the rest."* | §1.0 cmdt. 9 |
+
+**A monster with one great idea beats a monster with five checked boxes. Same for a town, an NPC, a fight.**
 
 | Building… | Sequence | Full |
 |---|---|---|
@@ -59,7 +72,7 @@ The things that change decisions on their own. If you remember nothing else:
 | **A town** | The **list** *is* the town: ~10 locations, each with 1 NPC + 1 line. Answer the 7 player questions → then the 8 DM questions → **give it ONE unforgettable landmark** | §1.2–1.7 |
 | **A city** | Pick a **visual** theme ("the City of ___") → build **rides**, not shops → **every player gets a ride** → stop before the sewage system | §1.10 |
 | **A dungeon** | Pick a **theme** (lies, death, greed) → pick a **mechanic that expresses it in the rules** → pick a **goal** (not always "kill the boss") → 4–6 encounters across combat/puzzle/roleplay, each pushing the mechanic → **end by colliding theme + mechanic** | §1.13.1 |
-| **An NPC** | Want → Wound → Cover (an *active* lie) → Momentum (mid-task when they arrive) → **Ignition point** (let the players' first reaction decide what he is) | §3.2 |
+| **An NPC** | **Want** *(the only mandatory one)* → then as many of these as the role deserves: Wound → Cover (an *active* lie) → Momentum (mid-task when they arrive) → **Ignition point** (let the players' first reaction decide who they are). **Most NPCs need one or two. A shopkeeper needs a want and a name.** | §3.2 |
 | **A monster** | Role first (minion/standard/boss) → does it already exist? → compare 4–5 stat blocks at that tier → **reskin if you can** → stay inside the complexity budget → play-test | §4.5 |
 | **A fight** | **What value shifts?** (opening feeling → closing feeling → the *pivot*) → why is this fight happening (a goal beyond "kill it") → frame the scene → 3 tensions in the environment → **give each PC one moment** → 3 layers of stakes → build in an escalation | §5.0, §5.2 |
 | **A journey** | Is it worth running at all? → **choice layer**: points & paths, informed choice → **content layer**: close/far/very far = 1/2/3 authored events | §6.2, §6.8 |
@@ -141,7 +154,7 @@ The things that change decisions on their own. If you remember nothing else:
 
 ## D · Templates
 
-*Fill these in directly. You don't need the big doc for any of them.*
+**⚠️ These are checking tools, not writing tools.** Invent the thing first — find what makes it *itself* — then run the form over it to see what's missing. **Working top-to-bottom down a form produces a form.** Blank rows are allowed and often meaningful: a hamlet of forty has no market, no guard, and no wizard, and *that* is the interesting thing about it.
 
 ### Town Sheet
 ```
@@ -184,29 +197,4 @@ Problems:         THE PROBLEM: ...        THE GOSSIP: ...
 - [ ] Zero DMPCs
 
 ### Travel — TEST
-**Close = 1 event · Far = 2 · Very far = 3.** Then they arrive. No miles. No rations.
-- 🔴 **Red** = combat (authored, never rolled) · 🟡 **Yellow** = exploration/skill · 🔵 **Blue** = roleplay
-- 🟣 Purple = red+blue · 🟢 Green = yellow+blue · ⚪ **White = the players choose which it becomes**
-
-### Monster Complexity Budget
-> **It lives 3–5 rounds. It gets 3–5 turns. Anything more will never happen.**
-
-- **One really good basic attack** (make it worth using — not a fallback)
-- **Plus 1–3 of:** an **opening** move · a **combo** move (conditional — vs. prone/restrained) · a **finishing** move
-- **Hard caps:** ONE bonus action · ONE reaction · ONE recharge · ONE per-day *(bosses excepted)*
-- **Word-count sanity check:** ~200 words = minion · ~400 = standard · 500–800 = boss
-- **Best trick:** minions with ONE cool thing (*shove 5ft on a hit*) + a boss with an area attack **they're shoving people into**
-
-### The Minimum Viable Good Fight
-> **One terrain feature someone can interact with + one moment designed for a specific character.**
-
-That's five minutes of prep and it stops a fight being maths homework.
-
----
-
-## E · Section Map
-
-| § | Contents |
-|---|---|
-| **1.0** | The 10 commandments of world-building (tension before terrain) |
-| **1.1–1.8** | **Towns** — the list, 3 pillars, 7 player questions, 8
+**Close = 1 event · Far 

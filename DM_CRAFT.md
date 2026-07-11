@@ -30,6 +30,28 @@
 
 ---
 
+## ⚠️ Law Zero — how to use this without going generic
+
+**Everything below is a net. None of it is a mould.**
+
+**Brainstorm first. Check second.** Chase the idea that excites you, follow the odd thread, let the thing surprise you — **then** run a framework over it and ask *"what did we forget?"* Used that way, this document makes our worlds sharper. Used backwards — working down a list, filling slots — **it will make every town, villain, and dungeon we build feel like the last one.**
+
+**The tells that we're using it backwards:**
+- Every town has exactly one landmark, and a feuding mayor and priest.
+- Every villain is a well-meaning tyrant who's *right about the problem*.
+- Every NPC has all five layers, including the innkeeper who appears once.
+- Every faction has precisely one smell, one custom, and one object.
+- The content is *fine*, and completely forgettable.
+
+**The dosage rules — these appear throughout, and they're not garnish:**
+> *"You don't need all five layers on every NPC."* (§3.3) · *"Pick one and add it to the next game."* (§8.1) · *"Hit a few of these and you're fine."* (§4.4) · *"One or two sentences each is plenty."* (§1.7) · *"You are not failing if you sit at level 2."* (§1.12) · *"Start it, and let the game build the rest."* (§1.0)
+
+**A monster with one great idea beats a monster with five checked boxes.** So does a town. So does a villain.
+
+**The frameworks are strongest where they're *diagnostic*** — the triage table, the seven sins, the seven levels. They tell you *what's broken*. They never tell you *what the thing is*. **That part is still ours.**
+
+---
+
 ## 1 · World & Setting
 
 *Order of this section:* **§1.0 how to start a world** → §1.1–1.8 **towns** → §1.9 **the seven sins** → §1.10 **cities** → §1.11 **the realism question** → §1.12 **the seven levels** → §1.13 **dungeons.**
@@ -138,7 +160,9 @@ These are the questions players actually ask on arrival. Answering all seven = t
 1. **Where's the inn?** — The cornerstone. Non-negotiable, even where history says a village that size wouldn't have one. It's where they rest AND where they gather information AND where the rest of the cast congregates in the evening (the blacksmith is here drinking at 6pm — that's how you meet him without opening the forge). Give it: a keeper (a *family* running it adds instant cast), a sign, and one quirk it's known for. One inn is enough.
 2. **Where can I buy equipment?** — Small towns realistically have a blacksmith who makes nails and horseshoes, not longswords. Consider a **market** (people selling wares by day) instead of shops, or a **passing caravan** for the adventuring gear. Don't stat ten shopkeepers: say "the market sells anything on the gear list under 10gp" and move on.
 3. **Where can we sell our loot?** — Often the market, but special loot (magic items, art, gemstones) needs a *specific person*: the local wizard, a noble, a collector who covets rare books and pays double.
-4. **Who's in charge here?** — Always have this NPC ready. A good default power structure: **mayor / most prominent noble / priest / captain of the guard**. And *no town is without rivalries* — two of those four should be at odds. Influence comes in flavors: legal, spiritual, economic, military.
+4. **Who's in charge here?** — Have this NPC ready before play. **What matters is that authority exists and is *contested*, not who holds it.** Influence comes in flavours — **legal, spiritual, economic, military** — and the interesting question is *which flavour dominates here, and who resents it.*
+   - ⚠️ **The source offers a stock cast — mayor / noble / priest / guard captain, with two of them feuding. Do not reach for it twice.** It's *one* answer, and if every town we build has it, every town will feel the same. Ask instead: **who actually holds power in a place like this?** The guild that owns the only bridge. A council of grandmothers. The mine foreman, because he controls the water. A child, and the four adults arguing over her. Nobody — and that's the problem.
+   - *The durable part of the rule is the friction, not the roster.* **A town without a power struggle is a town without scenes.**
 5. **Where do we get information?** — Spread it: shopkeepers know the region, the authority knows the town's current problems, the inn knows gossip. **Telegraph the important one.** If they need the wizard, put his tower on the cliff by the waterfall. Making players interview six NPCs to find the one that matters is tedious.
 6. **Who can heal us / do magic?** — Be stingy and be deliberate. See 1.5.
 7. **Are there any problems in town?** — See 1.6. This is the engine of the next adventure.
@@ -159,7 +183,11 @@ Two tiers, and you want both:
 - **The real problem** — bandits on the trade road, a hippogriff in the fields, trolls in the woods, the local druid has gone mad. This is the plot hook.
 - **Folksy colour** — the butcher's boys got drunk and started a fight last night. Doesn't tie to anything. Makes the place feel alive. *Sometimes players get obsessed with this and it becomes the adventure anyway.* Let them.
 
-**The Zelda mechanic:** the person whose help you need has a problem of their own. *"I can't help you until someone deals with the owlbears eating my hunters."* This chains the party into meeting the town, doing an investigation, earning goodwill — and *then* the main quest opens up. It's the cleanest way to make a town's cast matter.
+**The Zelda mechanic:** the person whose help you need has a problem of their own. *"I can't help you until someone deals with the owlbears eating my hunters."* This chains the party into meeting the town, doing an investigation, earning goodwill — and *then* the main quest opens up. It's a clean way to make a town's cast matter.
+
+> **⚠️ Once. Not every town.** If every person the party needs has a chore for them first, it stops being a story and becomes a **toll booth** — and players smell it immediately. It's a tool for the town where *earning the town's trust* is the point, not a default gate.
+>
+> **Other ways the cast can matter:** they *disagree* about whether to help, and the party has to pick a side. They help immediately, and it costs them something the party has to watch. They *want* to help and can't. They already tried, and failed, and are ashamed. **Or they just help — because sometimes a town that simply likes you is the most surprising thing in a campaign.**
 
 ### 1.7 The DM-facing questionnaire (answer these and the town feels *real*)
 
@@ -838,7 +866,16 @@ Not everyone gets five layers. For the rest:
 
 The test: if players can't see why *anyone* — not them, but *anyone* — would find the villain even slightly compelling, the villain is a wall with hit points. Walls aren't memorable.
 
-**This does not mean softening them.** The recipe is **right about the problem, horrifying about the solution.** The diagnosis is correct; the prescription is monstrous. That's how real people end up following terrible causes — and it's what turns a villain from an NPC into a *position the party has to argue with*.
+**This does not mean softening them.** One reliable shape: **right about the problem, horrifying about the solution.** The diagnosis is correct; the prescription is monstrous. That's how real people end up following terrible causes — and it's what turns a villain from an NPC into a *position the party has to argue with*.
+
+> **⚠️ But that is one shape, not the only one — and used every time it becomes its own cliché: a parade of well-meaning tyrants.** The requirement is only that the villain **be an answer to the seed question** that *someone* could believe. That answer can be:
+> - **Right about the problem, monstrous about the cure** *(the classic)*
+> - **Correct, and simply willing to pay a price nobody else will** — the genuinely hardest kind to argue with
+> - **Wrong, but for a reason you can feel** — grief, humiliation, a promise kept too long
+> - **Entirely selfish, and completely honest about it** — refreshing, and disarming
+> - **Not wrong at all.** The villain is only a villain because they're in the party's way. *(Use sparingly. Devastating.)*
+>
+> **Ask what this villain believes, not which template they fit.**
 
 **The consequence:** an antagonist who embodies an idea **can't be solved by killing them.** You have to understand the ideology and dismantle *that* — which is also how real problems work, since they're systemic. (§2.3)
 
@@ -1163,7 +1200,7 @@ No exposition. You already know exactly who these three people are.
 
 #### Principle 3 — Layered stakes
 
-Even great enemies feel hollow if nothing is actually at risk. **There should always be at least three levels of stakes in play:**
+Even great enemies feel hollow if nothing is actually at risk. **The rule is that *something beyond the fight itself* must be at risk.** Three layers is the fullest version — take as many as the fight can carry, and don't force all three onto a scrap with some bandits:
 
 1. **Immediate stakes** — the fight itself, right now. Frost-slick floor means you fight for every step; one bad move slides you into the assassin's reach.
 2. **Environmental stakes** — what breaks, and what that costs. The dome is cracking. If it goes, it doesn't just kill everyone inside; it releases decades of contained magical experiments into the city below.
@@ -1494,7 +1531,15 @@ The point isn't the prose — make it as plain or as flowery as *you* like. The 
 
 ### 8.2 The Town Sheet (reusable template)
 
-Derived from §1.4 + §1.7. Copy this into a fresh doc whenever we invent a new settlement.
+Derived from §1.4 + §1.7.
+
+> **⚠️ This is a checking tool, not a writing tool.** It is the most form-shaped object in this document, and therefore the most dangerous.
+>
+> **Invent the town first.** Find the one thing that makes it *this* town — the thing you'd tell someone about at a bus stop — and build outward from that. **Then** run the sheet over it and see what's missing.
+>
+> **If you fill this in from top to bottom, you will produce a town-shaped object with no soul**, and you'll produce a slightly different one every time forever. The failure is easy to spot: *every settlement has exactly one landmark and a feuding mayor and priest, because the form had slots for them.*
+>
+> **Blank rows are allowed.** A hamlet of forty people has no market, no guard, no wizard, and that *is* the interesting thing about it.
 
 ```
 TOWN: <name>                     Population: <n>
@@ -1581,25 +1626,4 @@ The failure mode is well documented: **the prep becomes the hobby and the game n
 | S1 | Everything you Need to Know to Run a D&D Campaign | Pointy Hat (Antonio Demao) | Campaign launch: tone, concept, setting, conflict, player inclusion | 2026-07-11 |
 | S2 | Creating a Fantasy Town in Dungeons & Dragons 5e | Dungeon Dudes (Monty Martin & Kelly McLaughlin) | Town design: the list, the three pillars, player & DM questionnaires, scale ratios | 2026-07-11 |
 | S3 | Give Me 13min, I'll Fix Your D&D NPCs Forever | — | NPCs as *forces*: want → wound → cover → momentum → ignition point | 2026-07-11 |
-| S4 | Give Me 18min, You'll Never Dread D&D Prep Again | — (same creator as S3) | Session prep: tension pairs, functional soundscape, asymmetric clues, texture | 2026-07-11 |
-| S5 | Is Your D&D Campaign Idea Worth Playing? | — (same creator as S3/S4) | The Seed Question + six-step diagnosis; conflict web; villain as persuasive wrong answer | 2026-07-11 |
-| S6 | Lord of the Rings' TRICK to Make Travel Interesting | Mystic Arts (Dali) | Point crawls, informed choice, when a journey is worth running, point vs. hex crawl | 2026-07-11 |
-| S7 | The 7 Deadly SINS of D&D Combat | — (same creator as S3/S4/S5) | Combat diagnostics: slow turns, autopilot, zombie fights, empty rooms, lonely bosses, whack-a-mole healing, the 5-minute adventuring day | 2026-07-11 |
-| S8 | Make D&D Combat AMAZING | — | Combat construction: three tensions, cause-and-effect chains, character through action, layered stakes, trigger moments | 2026-07-11 |
-| S9 | The 7 Deadly SINS of D&D Worldbuilding | — (same creator as S3/S4/S5/S7) | World-building diagnostics: over-explanation, lore dumps, quest-dispenser NPCs, the tourist effect, single-purpose locations, no consequences, ego | 2026-07-11 |
-| S10 | The Brennan Method Every DM Should Be Stealing | — (same creator as S3/S4/S5/S7/S9) | Theme as foundation not decoration; the Trojan horse; mechanics-for-simulation & trust; identity from values | 2026-07-11 |
-| S11 | The First Step of Worldbuilding No One Teaches | — | **The ten commandments.** Tension before terrain; define by lack; let magic break the world; fake the iceberg; actionable lore; faction clocks; mystery as a resource; honour your promises; build through play; the world serves the characters | 2026-07-11 |
-| S12 | The EASY Way to Make D&D Cities Actually Fun | Pointy Hat (same creator as S1) | Cities as **theme parks**: pick a visual theme, build *rides* not shops, every player gets a ride, kill verisimilitude | 2026-07-11 |
-| S13 | The Seven Levels of Worldbuilding | — | A **diagnostic ladder**: map → rule of cool → surface identity → functional power → deep culture → infrastructure → generative | 2026-07-11 |
-| S14 | Traveling in D&D is Bad (and how to Fix It) | Pointy Hat (same creator as S1/S12) | **The TEST method** — close/far/very far; 1/2/3 authored events; red (combat) / yellow (exploration) / blue (roleplay) and their blends | 2026-07-11 |
-| S15 | The Dungeon Design Method That Changes Everything | — (same creator as S3/S4/S5/S7/S9/S10) | **Dungeons as a journey through decisions**: the anatomy of a real fork, corridors as mystery-gaps, traps as puzzles, layered reveals, loss aversion, retreat & rest as costed choices | 2026-07-11 |
-| S16 | The Man Who Solved D&D Combat | — (same creator as S15) | **The value shift** (opening → closing → pivot); the heist-movie problem; escalation because tension only falls; end with a complication | 2026-07-11 |
-| S17 | How to Make GOOD D&D Dungeons | Pointy Hat (same creator as S1/S12/S14) | **Dungeon construction**: theme → mechanic → goal → encounters → ending; encounter ≠ combat; traps as puzzles; hit dice as the balance metric; what a "dungeon" actually is | 2026-07-11 |
-| S18 | Designing a Great D&D Monster | DM Lair | **What makes a monster good** — the 20-point checklist; best move ≠ every round; weakness-as-puzzle; "monsters never attack first" | 2026-07-11 |
-| S19 | D&D monster homebrew for mechanics dummies | Ginny Di | **Reskinning & Frankensteining** — find the core ability and re-fiction it; combining stat blocks; power-level conversion; the ability-score cascade trap | 2026-07-11 |
-| S20 | How to Homebrew Monsters for D&D 5e! | Dungeon Dudes (same as S2) | **The full build process** — goal → research → development → play-test; ⭐**the complexity budget**; the minion/boss combo; the Monster Mash | 2026-07-11 |
-
-*S3, S4, S5, S7, S9 and S10 are all one creator, and they interlock* — S10 (why the campaign exists) → S5 (turning that into a campaign idea) → S9 (building the world around it) → S3 (the NPCs who live in it) → S4 (prepping the sessions) → S7 (fixing the fights). That's a complete pipeline, and it's the spine of this document.
-*S7/S8 and S1/S9 are diagnostic + constructive pairs* — one tells you what's broken, the other what to build. §5 and §1 are organised that way.
-*S11 is the missing front end* — it starts one step earlier than everything else (before the campaign, before the map) and its "central tension" is the same engine as S5's seed question, applied to the **world** rather than the **campaign**.
-*S6 and S14 are the two halves of travel* — S6 gives you the **choice** layer (point crawl), S14 gives you the **content** layer (TEST). They
+| S4 | Give Me 18min, You'll Never Dread D&D Prep Again | — (same creator as S3) | Session prep: tension pairs, functiona
