@@ -268,5 +268,108 @@ Ordinary, familiar, fightable: trolls, wyrms, wild magic, things with teeth. **T
 
 ### The opening hook — ten minutes, no exposition
 
-1. **A breach.** Something came out of a crease and wrecked something they love. **Fight it in the first ten minutes.** No history lesson: a monster, a village, a reason to be angry.
-2. **The Stillguard recruit them.** Join the resistance. Find a portal. **Strike a blow at the tyrant who rules the wo
+2. **The Stillguard recruit them.** Join the resistance. Find a portal. **Strike a blow at the tyrant who rules the world.**
+3. **The mission was designed to fail** — like every Stillguard mission. Come back empty, feel useful, stay in the pen.
+4. **The Compass Spirit wakes up.** Nobody planned that. It chooses them, off-script, and the pointless mission suddenly *works*.
+5. **Their own side tries to shut them down.** *That's the first turn, and it's earned.*
+
+### The three acts
+
+**Act One — "unlimited" was a lie, and our own side is in on it.**
+Breaches worsen, this season, where they live. The grey dead zones are **the mines**, not a blight. The resistance is a **leash**.
+*Act One's turn is the betrayal and the mechanism — NOT "the world is dying." The Stillguard shout that at every rally; the party heard it on day one. It cannot be a revelation.*
+
+**Act Two — the tyrant has been a prisoner for a lifetime.**
+There is no Foldwright on the throne. **There hasn't been for generations.** Every decree in his name was theirs. The man they were recruited to bring down folded the world to *save* it, was hollowed doing it, lost his family inside it, tried to undo it, and was deposed by his own order for saying so.
+**And here the party learns the mission.** Closing question: *what was he shielding us from?*
+
+**Act Three — the Devouring, and the man who would let it in.**
+It's real, it's at the centre, it's been eating all along, and the founders' sealed warning was true. And the Foldwright — restored, and holding his family a door away — **might still unfold right now, unprepared, to get them out.**
+The Fold comes down. The only question was ever whether the world would be standing there ready.
+
+---
+
+## 7. Running It
+
+### The load-bearing rules
+
+Break one and something downstream quietly collapses.
+
+1. **The banished zones hold ordinary monsters.** The **Devouring is categorically different** and is never hinted at as one of them.
+2. **Every Devouring seed must have a satisfying wrong answer available.** Never leave a *blank* — a gap is a signpost. If the Compass Spirit is afraid, it's afraid **in a monster's lair**, so they think it fears the monster.
+3. **Nobody living believes in the Devouring** — not the public, not the Stillguard, not the Surveyor leadership.
+4. **The world believes the Foldwright rules.** Only the leadership of the two arms knows he was deposed. **Everything the Surveyors do, they do in his name.**
+5. **Nobody knows what the Fold really is.** Everyone — *including the Surveyors* — believes the folded-sheet diagram. The Snarl is a reveal, and it lands from the *inside*, by being walked through. Never let an NPC on the outside describe it correctly.
+6. **The Fold is at the cinch.** No more creases will take. Nobody can fold their way out of anything.
+7. **The Foldwright never explains himself** until Act Three.
+8. **Starsalt is destroyed by being taken out of the ground and spent.** In the ground it is still the world. *This is what makes the finale a real sacrifice.*
+9. **Wrinkles cost starsalt, heavily.**
+
+### Why the propaganda holds
+
+The stated story: the Foldwright folded the world for **unlimited power**, **permanent safety**, and **control** — and the last is his crime, ongoing, present tense. He rules by owning distance itself.
+
+**Two of the three are true, and the third completely answers "why does he do it?"** Nobody is kept in the dark about the danger — **the danger is advertised.** So when a player asks *"if we unfold, don't the monsters come back?"* the answer is **yes, obviously, everyone knows that, it's on the leaflet.** Asked, answered, closed.
+
+> **The Devouring hides behind a satisfying answer, not behind a blank space. This is the most important structural fact in the campaign.**
+
+### The two maps — the best prop we have
+
+**Map one: the folded sheet.** A real paper map, neatly folded, with a **seal** (paper clip, wax dot, ribbon) on every crease. This is the **Surveyor-issue diagram** — the official picture of the world, handed to the party in Act One like a pamphlet. **Unlocking a region = taking that fold's seal off.** The map stays folded. The kids watch the checklist shrink and never once ask *"wait, is it unfolded now?"* **Last seal off = the finale.**
+
+**Map two: the Snarl.** A second map, **crumpled into a tight wad and jammed into a small box.** Keep it out of sight until the party first goes deep enough to see the truth.
+
+Then put it on the table and say: ***this is the real one.***
+
+*That is the whole "the map is not the territory" reveal, delivered without a word of explanation, to a table that has spent ten sessions trusting a diagram. And it re-justifies the Unfold Rule better than the sheet ever did: you cannot smooth a crumpled wad one crease at a time. It has to come apart all at once, or not at all.*
+
+*Demonstrate the tearing, too — pull one crease open while the others are still set, and let the paper rip.*
+
+### Tone and guardrails
+
+Family-friendly with a **light edge, leaning family**. Spooky villains, real stakes, gentle dark themes — betrayal, loss, a comfortable lie. Cheeky humor that winks at the adults.
+
+- **No permanent character death.** Heroes get knocked out, captured, or rescued — never killed off.
+- **No explicit gore.** Nothing genuinely inappropriate for a nine-year-old.
+- **No long exposition.** The kids get hooked fast; the story reveals itself through *doing*.
+- **Not just battles.** Every leg wants a fight, a puzzle (the Compass riddles carry most of this load), and one moment where somebody has to decide something uncomfortable.
+
+### Every faction is partly right — keep it that way
+
+The **townsfolk** love the folded world and aren't fools; it *is* safer and warmer. The **rank-and-file Surveyors** genuinely save lives at every breach. The **rank-and-file Stillguard** sincerely want to save the world, and have been used. The **Surveyor leadership** is right about the cost of unfolding and wrong about nearly everything else. The **Foldwright** saved the world, and then grief nearly made him unsave it — *his jailers were not entirely wrong to stop him.* And the **heroes** are right that the Fold must come down — but the cost is real, and it will be paid by people with names.
+
+---
+
+## 8. Open Questions
+
+| # | Question | Why it matters |
+|---|---|---|
+| 1 | **What IS the Devouring?** Name and nature. | Needs a **face and a fight** by Act Three. Highest priority. |
+| 2 | **How many cells/regions?** | Sets campaign length. Probably 5–7 — and each must hold *one of his losses* plus its own monsters or lost town. |
+| 3 | **When does the Snarl reveal land?** | Proposed: **end of Act One / early Act Two** — the first time they go properly deep. It's too good to save, and it re-motivates everything. |
+| 4 | **Names:** the Foldwright, his order, his wife and children, the Compass Spirit (*Pip? Tesse?*). Confirm *"the Snarl,"* *"the cinch,"* *"his measure."* | The Surveyors carry his sigil — it should mean something. |
+| 5 | **The Surveyor leader**, and the **Stillguard recruiter** who brings the heroes in. | Two `npc` docs the opening needs. |
+| 6 | **What happens to the lamps afterward?** | The finale asks a world to give up its power source. A hopeful answer is available — decide whether to take it. |
+
+---
+
+## 9. Glossary
+
+| Term | Meaning |
+|---|---|
+| **the Fold** | The Folding of the world; packed it around the thing eating it |
+| **the folded sheet** | The official diagram. Neat, teachable, **wrong.** What everyone believes |
+| **the Snarl** | What is actually in there. A dense, convoluted labyrinth cinched into a shape — a brain squeezed into a geometry. Only the Compass Spirit can navigate it |
+| **the cinch** | The density limit. No further crease will take. **The world is folded to it** |
+| **the creases** | The hidden interior. Where the Foldwright is imprisoned, and his family lost |
+| **the banished zones** | The cells of the Snarl. Monsters, lost towns, and what he lost. Each one is itself densely folded — bigger inside than out |
+| **a breach** | Monsters getting out, through slack the Devouring has eaten. Worsening. Blamed on the Foldwright's cruelty |
+| **a wrinkle** | Pinching a road or town shut. Done by the Surveyors, **in his name**. Costs heavy starsalt — and packs an over-packed structure tighter |
+| **starsalt** | Sold as *unlimited*. Is the world's life. Destroyed by being taken and spent. **It is padding, and we are burning it** |
+| **the seams** | The grey dead edges. **They are the mines.** Blamed on "the Foldwright's blight" |
+| **his measure** | The piece of himself he spent to fold the world. Left him weak enough to be deposed. Scattered in the zones |
+| **the Surveyors** | **His own order.** Deposed him, and rule in his name as his "humble ministry." They cannot read the machine they run |
+| **the Stillguard** | The fake resistance. Fighting a man who is a prisoner. They guard the *stillness* |
+| **the Foldwright** | The god-king everyone believes rules. Real name TBD |
+| **the Compass Spirit** | The companion. Name TBD. Will not serve its maker. **The only map of the Snarl that exists** |
+| **the Devouring** | The real threat. At the centre, eating the padding outward. TBD |
