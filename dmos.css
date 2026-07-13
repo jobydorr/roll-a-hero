@@ -233,6 +233,7 @@ a.rail-title:focus-visible { outline: 2px solid var(--gold-bright); outline-offs
 .ini-cond.is-active { opacity: 1; }
 .ini-cond.cond-buff   { color: #2f5426; background: rgba(76, 122, 63, 0.18); }
 .ini-cond.cond-debuff { color: var(--red-bright); background: rgba(178, 59, 46, 0.18); }
+.ini-cond.cond-marker { color: var(--purple); background: rgba(107, 74, 134, 0.16); }
 .ini-cond.cond-mixed  { color: #7a5a12; background: rgba(194, 146, 46, 0.22); }
 .ini-cond-badge {
   position: absolute; top: -5px; right: -5px; min-width: 14px; height: 14px; padding: 0 3px;
@@ -281,6 +282,7 @@ a.rail-title:focus-visible { outline: 2px solid var(--gold-bright); outline-offs
 .rp-cond-dot { flex: none; width: 8px; height: 8px; margin-top: 4px; border-radius: 999px; background: var(--ink-soft); }
 .rp-cond-buff .rp-cond-dot   { background: var(--green); }
 .rp-cond-debuff .rp-cond-dot { background: var(--red-bright); }
+.rp-cond-marker .rp-cond-dot { background: var(--purple); }
 .rp-cond-main { flex: 1; min-width: 0; color: var(--ink-soft); }
 .rp-cond-name { font-weight: 700; color: var(--ink); }
 .rp-cond-eff { display: block; }

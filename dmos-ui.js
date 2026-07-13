@@ -644,14 +644,25 @@
     paladin: ['bless', 'protection'],
     wizard:  ['haste', 'enlarge'],
   };
+  // Marks are a third kind — neither buff nor debuff. A PC places one on a target
+  // and removes it at will (a ranger's Hunter's Mark). Offered only when a player
+  // character whose class provides one is actually at the table.
+  const MARKERS = {
+    hunters_mark: { name: "Hunter's Mark", effect: 'The ranger deals +1d6 when they hit this target.', rounds: null },
+  };
+  const CLASS_MARKER_KEYS = {
+    ranger: ['hunters_mark'],
+  };
+  const COND_CATALOGS = { buff: BUFFS, debuff: DEBUFFS, marker: MARKERS };
+  const specFor = (kind, key) => (COND_CATALOGS[kind] || BUFFS)[key];
+  const condKind = (c) => (c.kind === 'debuff' ? 'debuff' : (c.kind === 'marker' ? 'marker' : 'buff'));
 
   // Row-icon summary: how many effects, and whether they're buffs, debuffs, or both.
   function condSummary(e) {
     const cs = (e && e.conditions) || [];
     if (!cs.length) return { count: 0, tone: '' };
-    const hasBuff = cs.some(c => c.kind === 'buff');
-    const hasDebuff = cs.some(c => c.kind === 'debuff');
-    return { count: cs.length, tone: (hasBuff && hasDebuff) ? 'mixed' : (hasDebuff ? 'debuff' : 'buff') };
+    const kinds = new Set(cs.map(condKind));            // buff / debuff / marker
+    return { count: cs.length, tone: kinds.size > 1 ? 'mixed' : [...kinds][0] };
   }
   function condButtonHTML(e) {
     const sum = condSummary(e);
@@ -720,25 +731,38 @@
   // The effect icon on a PC row → a menu of buffs the OTHER party members can
   // grant (labelled by who), plus the debuff library. Applying adds a condition.
   function condMenuItem(kind, key, src, id) {
-    const spec = (kind === 'buff' ? BUFFS : DEBUFFS)[key]; if (!spec) return '';
+    const spec = specFor(kind, key); if (!spec) return '';
     const dur = spec.rounds == null ? '∞' : spec.rounds + 'r';
     const label = spec.name + (src ? ' — ' + src : '') + ' · ' + dur;
     const data = { kind: kind, key: key, id: id };
     if (src) data.src = src;
-    return menuItem('cond-apply', data, kind === 'buff' ? 'aura' : 'flame', label);
+    const iconName = kind === 'buff' ? 'aura' : (kind === 'marker' ? 'pin' : 'flame');
+    return menuItem('cond-apply', data, iconName, label);
   }
   ACT['cond-menu'] = (el) => {
     const id = el.dataset.id;
     const s = STORE.getInitiative();
     const e = s.entries.find(x => x.id === id); if (!e) return;
-    let buffItems = condMenuItem('buff', 'help', null, id);   // anyone at the table can Help
-    const seen = new Set();
-    s.entries.filter(x => x.id !== id && x.kind === 'hero').forEach(o => {
+    const others = s.entries.filter(x => x.id !== id && x.kind === 'hero');
+    // Buffs — Help (anyone) plus whatever the OTHER PCs' classes can grant.
+    let buffItems = condMenuItem('buff', 'help', null, id);
+    const bseen = new Set();
+    others.forEach(o => {
       const cls = (o.snapshot && o.snapshot.klass) || '';
       (CLASS_BUFF_KEYS[cls] || []).forEach(key => {
-        const tag = key + '|' + o.name;
-        if (seen.has(tag)) return; seen.add(tag);
+        const tag = key + '|' + o.name; if (bseen.has(tag)) return; bseen.add(tag);
         buffItems += condMenuItem('buff', key, o.name, id);
+      });
+    });
+    // Marks — PC abilities placed on a target (Hunter's Mark…). Detected from the
+    // PCs at the table; the section is omitted entirely when none can grant one.
+    let markItems = '';
+    const mseen = new Set();
+    others.forEach(o => {
+      const cls = (o.snapshot && o.snapshot.klass) || '';
+      (CLASS_MARKER_KEYS[cls] || []).forEach(key => {
+        const tag = key + '|' + o.name; if (mseen.has(tag)) return; mseen.add(tag);
+        markItems += condMenuItem('marker', key, o.name, id);
       });
     });
     const debuffItems = Object.keys(DEBUFFS).map(key => condMenuItem('debuff', key, null, id)).join('');
@@ -746,12 +770,14 @@
     const roundsRow = `<div class="menu-rounds"><span>Rounds</span>
       <input class="cond-rounds-input" type="text" inputmode="numeric" maxlength="3" placeholder="default"
              aria-label="Duration in rounds — leave blank to use the effect's default"></div>`;
-    openMenu(el, roundsRow + `<div class="menu-note">Buffs</div>${buffItems}`
-      + `<div class="menu-sep"></div><div class="menu-note">Debuffs</div>${debuffItems}`);
+    let html = roundsRow + `<div class="menu-note">Buffs</div>${buffItems}`;
+    if (markItems) html += `<div class="menu-sep"></div><div class="menu-note">Marks</div>${markItems}`;
+    html += `<div class="menu-sep"></div><div class="menu-note">Debuffs</div>${debuffItems}`;
+    openMenu(el, html);
   };
   ACT['cond-apply'] = (el) => {
     const kind = el.dataset.kind, key = el.dataset.key, id = el.dataset.id, src = el.dataset.src || null;
-    const spec = (kind === 'buff' ? BUFFS : DEBUFFS)[key]; if (!spec) return;
+    const spec = specFor(kind, key); if (!spec) return;
     // Read the optional rounds override before the menu closes.
     let rounds = spec.rounds;
     const rIn = ROOT.modal.querySelector('.cond-rounds-input');
@@ -2649,7 +2675,7 @@
     }
     const conds = (e.conditions || []);
     const condHTML = conds.length ? `<div class="rp-conds">${conds.map(c => `
-      <div class="rp-cond rp-cond-${c.kind === 'debuff' ? 'debuff' : 'buff'}">
+      <div class="rp-cond rp-cond-${condKind(c)}">
         <span class="rp-cond-dot" aria-hidden="true"></span>
         <span class="rp-cond-main"><span class="rp-cond-name">${esc(c.name)}</span>${c.effect ? `<span class="rp-cond-eff">${esc(c.effect)}</span>` : ''}${c.source ? `<span class="rp-cond-src">from ${esc(c.source)}</span>` : ''}</span>
         <span class="rp-cond-rounds" title="${c.rounds == null ? 'Lasts until cleared' : c.rounds + ' round' + (c.rounds > 1 ? 's' : '') + ' left'}">${c.rounds == null ? '∞' : c.rounds + 'r'}</span>
