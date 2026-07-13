@@ -58,4 +58,19 @@ It's a plain static site, no build step. Easiest: use the live link below. To ru
 3. Wait ~1 minute. Your shareable link will be:
    `https://<your-username>.github.io/roll-a-hero/`
 
-Send that link to your friends — nothing to install, it just opens in any brows
+Send that link to your friends — nothing to install, it just opens in any browser.
+
+## Files
+| File | What it does |
+|------|--------------|
+| `index.html` | App shell + the printable character-sheet template |
+| `styles.css` | The hybrid-fantasy look of the walkthrough (screen only) |
+| `print.css`  | The clean black-and-white one-page sheet (print only) |
+| `data.js`    | All the game content — races, classes, spells, gear, quiz |
+| `app.js`     | The step-by-step walkthrough logic |
+| `icons.js`   | Inline SVG icons |
+| `dm.html` + `dmos-*.js` + `dmos.css` | The Dungeon Master OS — a separate, passcode-gated workspace |
+| `campaign.js` | Your campaign content, committed like `data.js` — the DM OS reads it directly |
+
+## A note on rules
+Simplified from the **D&D 5e Basic Rules / Player's Handbook** for teaching. It's meant as an on-ramp — once players are comfortable, the full rules add all the depth that was trimmed here.

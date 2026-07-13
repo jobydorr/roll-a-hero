@@ -197,4 +197,50 @@ Problems:         THE PROBLEM: ...        THE GOSSIP: ...
 - [ ] Zero DMPCs
 
 ### Travel — TEST
-**Close = 1 event · Far 
+**Close = 1 event · Far = 2 · Very far = 3.** Then they arrive. No miles. No rations.
+- 🔴 **Red** = combat (authored, never rolled) · 🟡 **Yellow** = exploration/skill · 🔵 **Blue** = roleplay
+- 🟣 Purple = red+blue · 🟢 Green = yellow+blue · ⚪ **White = the players choose which it becomes**
+
+### Monster Complexity Budget
+> **It lives 3–5 rounds. It gets 3–5 turns. Anything more will never happen.**
+
+- **One really good basic attack** (make it worth using — not a fallback)
+- **Plus 1–3 of:** an **opening** move · a **combo** move (conditional — vs. prone/restrained) · a **finishing** move
+- **Hard caps:** ONE bonus action · ONE reaction · ONE recharge · ONE per-day *(bosses excepted)*
+- **Word-count sanity check:** ~200 words = minion · ~400 = standard · 500–800 = boss
+- **Best trick:** minions with ONE cool thing (*shove 5ft on a hit*) + a boss with an area attack **they're shoving people into**
+
+### The Minimum Viable Good Fight
+> **One terrain feature someone can interact with + one moment designed for a specific character.**
+
+That's five minutes of prep and it stops a fight being maths homework.
+
+---
+
+## E · Section Map
+
+| § | Contents |
+|---|---|
+| **1.0** | The 10 commandments of world-building (tension before terrain) |
+| **1.1–1.8** | **Towns** — the list, 3 pillars, 7 player questions, 8 DM questions |
+| **1.9** | The 7 sins of world-building |
+| **1.10** | **Cities** — theme parks & rides |
+| **1.11** | The realism question (be *specific*, not *comprehensive*) |
+| **1.12** | The 7 levels — a diagnostic ladder |
+| **1.13** | **Dungeons** — and what a "dungeon" really is |
+| **2.1** | The 5-step campaign launch |
+| **2.2** | **The Seed Question** + 6-step diagnosis |
+| **2.3** | Theme as foundation (the Brennan method) |
+| **3.2** | **The 5 NPC layers** |
+| **4.1–4.3** | Villains |
+| **4.4–4.8** | **Monsters** — what's good, how to build, the complexity budget |
+| **5.0** | **The value shift** |
+| **5.1** | The 7 sins of combat |
+| **5.2** | Building a great fight (6 principles) |
+| **6.2** | **Point crawls** |
+| **6.8** | **The TEST travel method** |
+| **7** | Running the table (hub) |
+| **8.1** | The 4 prep layers |
+| **8.3** | Order of operations (every framework, in order) |
+| **8.5** | **The clock — one tool, three scales** |
+| **9** | Sources · where they disagree · known gaps |

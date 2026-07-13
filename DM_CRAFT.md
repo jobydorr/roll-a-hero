@@ -1626,4 +1626,53 @@ The failure mode is well documented: **the prep becomes the hobby and the game n
 | S1 | Everything you Need to Know to Run a D&D Campaign | Pointy Hat (Antonio Demao) | Campaign launch: tone, concept, setting, conflict, player inclusion | 2026-07-11 |
 | S2 | Creating a Fantasy Town in Dungeons & Dragons 5e | Dungeon Dudes (Monty Martin & Kelly McLaughlin) | Town design: the list, the three pillars, player & DM questionnaires, scale ratios | 2026-07-11 |
 | S3 | Give Me 13min, I'll Fix Your D&D NPCs Forever | — | NPCs as *forces*: want → wound → cover → momentum → ignition point | 2026-07-11 |
-| S4 | Give Me 18min, You'll Never Dread D&D Prep Again | — (same creator as S3) | Session prep: tension pairs, functiona
+| S4 | Give Me 18min, You'll Never Dread D&D Prep Again | — (same creator as S3) | Session prep: tension pairs, functional soundscape, asymmetric clues, texture | 2026-07-11 |
+| S5 | Is Your D&D Campaign Idea Worth Playing? | — (same creator as S3/S4) | The Seed Question + six-step diagnosis; conflict web; villain as persuasive wrong answer | 2026-07-11 |
+| S6 | Lord of the Rings' TRICK to Make Travel Interesting | Mystic Arts (Dali) | Point crawls, informed choice, when a journey is worth running, point vs. hex crawl | 2026-07-11 |
+| S7 | The 7 Deadly SINS of D&D Combat | — (same creator as S3/S4/S5) | Combat diagnostics: slow turns, autopilot, zombie fights, empty rooms, lonely bosses, whack-a-mole healing, the 5-minute adventuring day | 2026-07-11 |
+| S8 | Make D&D Combat AMAZING | — | Combat construction: three tensions, cause-and-effect chains, character through action, layered stakes, trigger moments | 2026-07-11 |
+| S9 | The 7 Deadly SINS of D&D Worldbuilding | — (same creator as S3/S4/S5/S7) | World-building diagnostics: over-explanation, lore dumps, quest-dispenser NPCs, the tourist effect, single-purpose locations, no consequences, ego | 2026-07-11 |
+| S10 | The Brennan Method Every DM Should Be Stealing | — (same creator as S3/S4/S5/S7/S9) | Theme as foundation not decoration; the Trojan horse; mechanics-for-simulation & trust; identity from values | 2026-07-11 |
+| S11 | The First Step of Worldbuilding No One Teaches | — | **The ten commandments.** Tension before terrain; define by lack; let magic break the world; fake the iceberg; actionable lore; faction clocks; mystery as a resource; honour your promises; build through play; the world serves the characters | 2026-07-11 |
+| S12 | The EASY Way to Make D&D Cities Actually Fun | Pointy Hat (same creator as S1) | Cities as **theme parks**: pick a visual theme, build *rides* not shops, every player gets a ride, kill verisimilitude | 2026-07-11 |
+| S13 | The Seven Levels of Worldbuilding | — | A **diagnostic ladder**: map → rule of cool → surface identity → functional power → deep culture → infrastructure → generative | 2026-07-11 |
+| S14 | Traveling in D&D is Bad (and how to Fix It) | Pointy Hat (same creator as S1/S12) | **The TEST method** — close/far/very far; 1/2/3 authored events; red (combat) / yellow (exploration) / blue (roleplay) and their blends | 2026-07-11 |
+| S15 | The Dungeon Design Method That Changes Everything | — (same creator as S3/S4/S5/S7/S9/S10) | **Dungeons as a journey through decisions**: the anatomy of a real fork, corridors as mystery-gaps, traps as puzzles, layered reveals, loss aversion, retreat & rest as costed choices | 2026-07-11 |
+| S16 | The Man Who Solved D&D Combat | — (same creator as S15) | **The value shift** (opening → closing → pivot); the heist-movie problem; escalation because tension only falls; end with a complication | 2026-07-11 |
+| S17 | How to Make GOOD D&D Dungeons | Pointy Hat (same creator as S1/S12/S14) | **Dungeon construction**: theme → mechanic → goal → encounters → ending; encounter ≠ combat; traps as puzzles; hit dice as the balance metric; what a "dungeon" actually is | 2026-07-11 |
+| S18 | Designing a Great D&D Monster | DM Lair | **What makes a monster good** — the 20-point checklist; best move ≠ every round; weakness-as-puzzle; "monsters never attack first" | 2026-07-11 |
+| S19 | D&D monster homebrew for mechanics dummies | Ginny Di | **Reskinning & Frankensteining** — find the core ability and re-fiction it; combining stat blocks; power-level conversion; the ability-score cascade trap | 2026-07-11 |
+| S20 | How to Homebrew Monsters for D&D 5e! | Dungeon Dudes (same as S2) | **The full build process** — goal → research → development → play-test; ⭐**the complexity budget**; the minion/boss combo; the Monster Mash | 2026-07-11 |
+
+*S3, S4, S5, S7, S9 and S10 are all one creator, and they interlock* — S10 (why the campaign exists) → S5 (turning that into a campaign idea) → S9 (building the world around it) → S3 (the NPCs who live in it) → S4 (prepping the sessions) → S7 (fixing the fights). That's a complete pipeline, and it's the spine of this document.
+*S7/S8 and S1/S9 are diagnostic + constructive pairs* — one tells you what's broken, the other what to build. §5 and §1 are organised that way.
+*S11 is the missing front end* — it starts one step earlier than everything else (before the campaign, before the map) and its "central tension" is the same engine as S5's seed question, applied to the **world** rather than the **campaign**.
+*S6 and S14 are the two halves of travel* — S6 gives you the **choice** layer (point crawl), S14 gives you the **content** layer (TEST). They stack; see §6.9. Both flatly reject realism-simulation and random encounter tables.
+*S11 and S13 converge independently* on two big claims — that **power must reshape the world** (commandment 3 = level 4) and that the finish line is a world producing **drama that constructs itself** (level 7). Independent agreement across unrelated sources; treat both as settled.
+*S15 and S17 are the two halves of dungeons* — S17 builds it (theme → mechanic → goal → encounters → ending), S15 makes every step inside it a real decision. **They agree independently that traps must be puzzles**, which is now settled.
+*S18, S19 and S20 are the three halves of monsters* — S18 says **what a good monster is**, S19 gives the **fast methods** (reskin, Frankenstein, level-conversion), S20 gives the **full process** and — crucially — **the complexity budget.** All three independently arrive at the same warning: **an over-complicated monster is a bad monster, because you won't run it properly.**
+*S12 and S17 are the same brain applied to two location types* — city = *pick a theme, build rides*; dungeon = *pick a theme, pick a mechanic, build encounters*. **Both are theme-first and gameplay-first.** Worth internalising as one habit rather than two techniques.
+
+**The most-corroborated claim in this document** — arrived at independently by four unrelated sources at four different scales — is: **make sure every person at the table gets their thing.** Player stakes in the campaign (§2.2 step 5), the spotlight rule (§2.1 step 5), a ride for every player in a city (§1.10), a moment for every character in a fight (§5.2 principle 5). If you only remember one instruction, remember that one.
+
+### Where sources disagree (and how it's settled)
+
+| Disagreement | Sources | Resolution |
+|---|---|---|
+| **Is realism worth building?** | S2 lists *verisimilitude* as a pillar; S12 says delete it; S13 makes infrastructure a whole level | **§1.11.** Two meanings of one word. Build "feels alive" (specific, sensory, cheap). Skip "simulation" (comprehensive, expensive). **Test: does it make something happen at the table?** |
+| **Start with a map, or not?** | S13 makes the map level 1; S11 says *tension before terrain* | Both. **S11 is about *order*, S13 about *quality*.** Start with the argument, not the coastline — but when you *do* draw the map, make the land obey rules. |
+| **Can travel be good at all?** | S6: *"you can't make travel interesting — time-skip it"*; S14: *"I ran a travel campaign for two years and I love it"* | **§6.1 and §6.9.** They agree on the diagnosis (walking is boring; simulation and random tables are the disease). They differ on the cure's ambition. **Skip travel by default; when the journey *is* the story, author it as choices + events.** |
+| **Give a monster variety, or keep it simple?** | S18: *don't build a one-trick pony*; S20: *don't exceed the complexity budget* | **§4.7b.** Same rule from opposite ends. **3–5 abilities is the window** — which is also how many turns the monster gets. The complexity budget *is* the variety budget. |
+
+### Known gaps (to fill from future sources)
+
+- ~~**Monster design & stat-building**~~ ✅ **Filled by S18/S19/S20** (§4.4–4.8).
+- ~~**Dungeon design**~~ ✅ **Filled by S15/S17** (§1.13). All three location types (towns, cities, dungeons) now covered.
+
+**All the original gaps are now closed.** What's left is genuinely optional:
+- **Roleplay & social encounters** — S7 signs off pointing at a "7 deadly sins of D&D roleplay." We have almost nothing on running social scenes; with two kids at the table that's a live concern.
+- **Campaign openings** — flagged *twice now* (S9 and S10 both sign off pointing at it: "7 terrible ways to start a campaign" and "what happens when the villain wins in session one"). Given how much weight §2.2 step 6 puts on session one, this is the highest-value gap after monsters.
+- **Prep as "making toys"** — S10 mentions a Brennan prep philosophy built around creating reusable improv building blocks, and explicitly declines to explain it. Sounds directly useful.
+- **Betrayals / antagonist psychology** — S8 signs off pointing at this. Fits our "gentle dark themes" mandate exactly.
+- **Table management** — player selection, scheduling, absences, DM burnout. S1 explicitly defers all of it.
+- **Session zero / safety tools** — nothing yet, and worth having with kids at the table.
