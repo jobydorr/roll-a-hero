@@ -41,6 +41,8 @@
     notepad: wrap('<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 3h8l4 4v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M14 3v4h4"/><path stroke-linecap="round" d="M8 12h8M8 15.5h6"/></g>'),
     unfold: wrap('<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4M8 15l4 4 4-4"/>'),
     fold: wrap('<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 5l4 4 4-4M8 19l4-4 4 4"/>'),
+    // Buffs/debuffs on a combatant — a two-spark "effect" glyph.
+    aura: wrap('<path fill="currentColor" d="M9.5 3l1.35 3.65L14.5 8l-3.65 1.35L9.5 13 8.15 9.35 4.5 8l3.65-1.35z"/><path fill="currentColor" d="M16.5 12l.9 2.35 2.35.9-2.35.9-.9 2.35-.9-2.35-2.35-.9 2.35-.9z"/>'),
   };
 
   window.ICONS = ICONS;

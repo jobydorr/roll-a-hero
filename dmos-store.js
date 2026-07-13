@@ -549,14 +549,17 @@
     s.turn = 0;
     writeInit(s);
   }
-  // Advance/rewind the turn cursor, rolling the round counter on wrap.
+  // Advance/rewind the turn cursor, rolling the round counter on wrap. Each new
+  // round ticks down every timed buff/debuff; ones that hit zero clear themselves.
   function initStep(dir) {
     const s = getInitiative();
     const n = s.entries.length; if (!n) return;
+    const oldRound = s.round;
     let t = s.turn + (dir || 1);
     if (t >= n) { t = 0; s.round += 1; }
     else if (t < 0) { t = n - 1; s.round = Math.max(1, s.round - 1); }
     s.turn = t;
+    if (s.round > oldRound) tickConditions(s, s.round - oldRound);
     writeInit(s);
   }
   // HP tracking. `hp` is current, `maxHp` the cap — either may be null (untracked).
@@ -580,6 +583,42 @@
     writeInit(s);
   }
   const clearInitiative = () => writeInit(clone(EMPTY_INIT));
+
+  /* -------------------------- Buffs & debuffs ----------------------------- */
+  /* A combatant carries a `conditions` array of applied effects. Each is
+     { id, kind:'buff'|'debuff', name, effect, rounds, source }. `rounds` is the
+     count remaining (null = lasts until cleared by hand). Ephemeral table state,
+     like HP — it rides along in the initiative store and never syncs to Cowork. */
+  const condId = () => 'cnd_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
+
+  function conditionAdd(entryId, cond) {
+    const s = getInitiative();
+    const e = s.entries.find(x => x.id === entryId); if (!e) return null;
+    if (!Array.isArray(e.conditions)) e.conditions = [];
+    const r = (cond && cond.rounds != null) ? Math.max(1, Math.round(cond.rounds)) : null;
+    const c = Object.assign({ kind: 'buff', name: 'Effect', effect: '', source: null }, cond || {}, { id: condId(), rounds: r });
+    e.conditions.push(c);
+    writeInit(s);
+    return c;
+  }
+  function conditionRemove(entryId, cid) {
+    const s = getInitiative();
+    const e = s.entries.find(x => x.id === entryId);
+    if (!e || !Array.isArray(e.conditions)) return;
+    e.conditions = e.conditions.filter(c => c.id !== cid);
+    writeInit(s);
+  }
+  // Count down timed conditions by `by` rounds (mutates s in place; caller writes).
+  function tickConditions(s, by) {
+    (s.entries || []).forEach(e => {
+      if (!Array.isArray(e.conditions) || !e.conditions.length) return;
+      e.conditions = e.conditions.filter(c => {
+        if (c.rounds == null) return true;      // indefinite — stays until cleared
+        c.rounds -= by;
+        return c.rounds > 0;
+      });
+    });
+  }
 
   /* When a doc's HP field changes (an edit, or a ⚡ Stats generate), push the new
      max onto any roster entry that references it. A combatant sitting at full (or
@@ -692,6 +731,7 @@
     // Initiative roster (the right-rail "at the table" list)
     getInitiative, rosterAdd, rosterPatch, rosterRemove, rosterMove, rosterSort,
     initStep, clearInitiative, rosterSetHp, rosterAdjustHp,
+    conditionAdd, conditionRemove,
 
     // Story flow chart (dragged node positions; the graph itself is derived)
     getChart, setChartPos, clearChart,

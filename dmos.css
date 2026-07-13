@@ -186,7 +186,7 @@ a.rail-title:focus-visible { outline: 2px solid var(--gold-bright); outline-offs
 .ini-empty { text-align: center; color: var(--ink-soft); padding: 18px 12px; line-height: 1.6; }
 .ini-empty .rail-hint { display: inline; }
 .ini-row {
-  display: flex; align-items: center; gap: 4px; padding: 4px 6px 4px 3px;
+  display: flex; align-items: center; gap: 3px; padding: 4px 4px 4px 3px;
   border-left: 3px solid var(--panel-edge); border-radius: 0 8px 8px 0; margin: 2px 4px;
 }
 .ini-row.side-party { border-left-color: var(--green); }
@@ -219,6 +219,26 @@ a.rail-title:focus-visible { outline: 2px solid var(--gold-bright); outline-offs
 }
 .ini-x:hover { background: rgba(178, 59, 46, 0.16); color: var(--red-bright); }
 .ini-tools { display: flex; align-items: center; gap: 6px; padding: 8px 6px 4px; margin-top: 4px; border-top: 1px solid var(--panel-edge); }
+
+/* Buff/debuff icon on a PC row. Faint until effects are on the character, then it
+   lights up in the tone of what's applied (green buff / red debuff / gold both). */
+.ini-cond {
+  position: relative; flex: none; display: inline-flex; align-items: center; justify-content: center;
+  width: 25px; height: 24px; padding: 0; cursor: pointer;
+  background: transparent; border: 1.5px solid transparent; border-radius: 7px;
+  color: var(--ink-soft); opacity: 0.45;
+}
+.ini-cond .icon { width: 16px; height: 16px; }
+.ini-cond:hover { opacity: 1; border-color: var(--panel-edge); background: rgba(0, 0, 0, 0.04); }
+.ini-cond.is-active { opacity: 1; }
+.ini-cond.cond-buff   { color: #2f5426; background: rgba(76, 122, 63, 0.18); }
+.ini-cond.cond-debuff { color: var(--red-bright); background: rgba(178, 59, 46, 0.18); }
+.ini-cond.cond-mixed  { color: #7a5a12; background: rgba(194, 146, 46, 0.22); }
+.ini-cond-badge {
+  position: absolute; top: -5px; right: -5px; min-width: 14px; height: 14px; padding: 0 3px;
+  box-sizing: border-box; font-size: 9px; font-weight: 700; line-height: 12px; text-align: center;
+  color: #fff; background: var(--brown); border: 1px solid var(--panel); border-radius: 999px;
+}
 
 /* Per-row HP chip + its damage/heal editor. */
 .ini-hp {
@@ -253,6 +273,27 @@ a.rail-title:focus-visible { outline: 2px solid var(--gold-bright); outline-offs
 .roster-peek .rp-abils { font-size: 11.5px; color: var(--ink-soft); margin: 3px 0; white-space: nowrap; }
 .roster-peek .rp-line { font-size: 12.5px; color: var(--ink-soft); margin: 3px 0; line-height: 1.4; }
 .roster-peek .rp-more { font-size: 11px; color: var(--brown); margin-top: 6px; font-style: italic; }
+/* Applied buffs/debuffs in the hover card: a coloured dot, the effect, a round
+   counter, and an × to clear it early. */
+.roster-peek.has-cond { width: min(392px, 92vw); }
+.rp-conds { margin: 8px 0 2px; padding-top: 7px; border-top: 1px solid var(--panel-edge); display: grid; gap: 6px; }
+.rp-cond { display: flex; align-items: flex-start; gap: 7px; font-size: 12.5px; line-height: 1.35; }
+.rp-cond-dot { flex: none; width: 8px; height: 8px; margin-top: 4px; border-radius: 999px; background: var(--ink-soft); }
+.rp-cond-buff .rp-cond-dot   { background: var(--green); }
+.rp-cond-debuff .rp-cond-dot { background: var(--red-bright); }
+.rp-cond-main { flex: 1; min-width: 0; color: var(--ink-soft); }
+.rp-cond-name { font-weight: 700; color: var(--ink); }
+.rp-cond-eff { display: block; }
+.rp-cond-src { display: block; font-style: italic; opacity: 0.8; }
+.rp-cond-rounds {
+  flex: none; margin-top: 1px; font-size: 11px; font-weight: 700; color: var(--brown);
+  background: rgba(0, 0, 0, 0.05); padding: 1px 6px; border-radius: 999px;
+}
+.rp-cond-x {
+  flex: none; margin-top: -1px; background: transparent; border: 0; cursor: pointer;
+  color: var(--ink-soft); font-size: 16px; line-height: 1; padding: 0 3px; border-radius: 5px;
+}
+.rp-cond-x:hover { color: var(--red-bright); background: rgba(178, 59, 46, 0.14); }
 
 /* Creature Lookup — the rail button + the bestiary search modal. */
 .ini-lookup {
@@ -431,6 +472,7 @@ body.dmos-row-dragging, body.dmos-row-dragging * { cursor: grabbing !important; 
 .menu-overlay { position: fixed; inset: 0; z-index: var(--z-modal); }
 .menu {
   position: fixed; min-width: 190px; max-width: 260px;
+  max-height: min(72vh, 520px); overflow-y: auto;
   background: var(--panel); border: 2px solid var(--panel-edge); border-radius: 12px;
   box-shadow: 0 14px 44px var(--shadow); padding: 6px; animation: rise 0.12s ease both;
 }
@@ -443,6 +485,14 @@ body.dmos-row-dragging, body.dmos-row-dragging * { cursor: grabbing !important; 
 .menu-item:hover { background: var(--surface-active); }
 .menu-sep { height: 1px; background: var(--panel-edge); margin: 5px 4px; }
 .menu-note { font-family: var(--font-display); font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--ink-soft); padding: 4px 12px 6px; }
+/* Optional "how many rounds" field at the top of the buff/debuff menu. */
+.menu-rounds { display: flex; align-items: center; gap: 8px; padding: 4px 10px 8px; margin-bottom: 2px; border-bottom: 1px solid var(--panel-edge); }
+.menu-rounds > span { font-family: var(--font-display); font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--ink-soft); }
+.cond-rounds-input {
+  width: 84px; font: inherit; font-size: 13px; padding: 4px 8px;
+  border: 2px solid var(--panel-edge); border-radius: 7px; background: rgba(255, 250, 240, 0.85); color: var(--ink);
+}
+.cond-rounds-input:focus { outline: none; border-color: var(--gold); background: var(--surface-active); }
 
 /* Optional NPC combat block, set off from the roleplay fields above it. */
 /* The optional NPC combat block now sits ABOVE the roleplay fields, so its

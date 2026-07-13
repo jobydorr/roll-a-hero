@@ -605,6 +605,65 @@
     return r <= 0.25 ? 'hp-crit' : (r <= 0.5 ? 'hp-low' : 'hp-ok');
   }
 
+  /* ---------------------------- Buffs & debuffs --------------------------- */
+  /* Buffs are keyed and offered per class — clicking a PC's effect icon shows the
+     buffs the OTHER player characters at the table can grant (labelled by who),
+     plus a fixed library of debuffs. Effects are our simplified plain-language
+     versions; `rounds` is the default duration (null = lasts until cleared). */
+  const BUFFS = {
+    help:            { name: 'Help',             effect: 'Advantage on the next attack or check.',            rounds: 1 },
+    bardic_inspiration: { name: 'Bardic Inspiration', effect: 'Add 1d6 to one attack, check, or save.',       rounds: 10 },
+    bless:           { name: 'Bless',            effect: '+1d4 to attack rolls and saving throws.',            rounds: 10 },
+    guidance:        { name: 'Guidance',         effect: '+1d4 to one ability check.',                         rounds: 1 },
+    resistance:      { name: 'Resistance',       effect: '+1d4 to one saving throw.',                          rounds: 1 },
+    shield_of_faith: { name: 'Shield of Faith',  effect: '+2 AC.',                                             rounds: 10 },
+    aid:             { name: 'Aid',              effect: '+5 to maximum and current HP.',                      rounds: null },
+    protection:      { name: 'Protection',       effect: '+2 to saving throws while near the paladin.',        rounds: null },
+    haste:           { name: 'Haste',            effect: '+2 AC, double speed, and an extra action each turn.', rounds: 10 },
+    enlarge:         { name: 'Enlarge',          effect: 'Grows large — +1d4 damage, advantage on Strength.',  rounds: 10 },
+  };
+  const DEBUFFS = {
+    poisoned:   { name: 'Poisoned',   effect: 'Disadvantage on attacks and ability checks.',                 rounds: null },
+    frightened: { name: 'Frightened', effect: "Disadvantage while it can see the source; can't move closer.", rounds: null },
+    stunned:    { name: 'Stunned',    effect: "Can't move or take actions.",                                  rounds: 1 },
+    prone:      { name: 'Prone',      effect: 'Disadvantage on its attacks; melee attackers have advantage.', rounds: null },
+    restrained: { name: 'Restrained', effect: "Can't move; disadvantage on attacks; attackers have advantage.", rounds: null },
+    grappled:   { name: 'Grappled',   effect: "Can't move.",                                                  rounds: null },
+    blinded:    { name: 'Blinded',    effect: "Can't see; disadvantage on attacks; attackers have advantage.", rounds: null },
+    charmed:    { name: 'Charmed',    effect: "Can't attack the charmer.",                                     rounds: null },
+    slowed:     { name: 'Slowed',     effect: 'Half speed and −2 AC.',                                         rounds: 10 },
+    weakened:   { name: 'Weakened',   effect: '−1d4 to attack rolls.',                                         rounds: 10 },
+    burning:    { name: 'Burning',    effect: 'Takes damage at the start of each turn.',                       rounds: 3 },
+    deafened:   { name: 'Deafened',   effect: "Can't hear.",                                                   rounds: null },
+  };
+  // What each class can grant an ally. Classes not listed contribute no buffs of
+  // their own — everyone can still offer Help, which is added separately.
+  const CLASS_BUFF_KEYS = {
+    bard:    ['bardic_inspiration'],
+    cleric:  ['bless', 'guidance', 'resistance', 'shield_of_faith', 'aid'],
+    paladin: ['bless', 'protection'],
+    wizard:  ['haste', 'enlarge'],
+  };
+
+  // Row-icon summary: how many effects, and whether they're buffs, debuffs, or both.
+  function condSummary(e) {
+    const cs = (e && e.conditions) || [];
+    if (!cs.length) return { count: 0, tone: '' };
+    const hasBuff = cs.some(c => c.kind === 'buff');
+    const hasDebuff = cs.some(c => c.kind === 'debuff');
+    return { count: cs.length, tone: (hasBuff && hasDebuff) ? 'mixed' : (hasDebuff ? 'debuff' : 'buff') };
+  }
+  function condButtonHTML(e) {
+    const sum = condSummary(e);
+    const active = sum.count > 0;
+    const title = active
+      ? sum.count + ' effect' + (sum.count > 1 ? 's' : '') + ' — add or view (hover the name)'
+      : 'Add a buff or debuff';
+    return `<button class="ini-cond${active ? ' is-active cond-' + sum.tone : ''}" data-act="cond-menu" data-id="${e.id}" title="${esc(title)}" aria-label="${esc(title)}">
+      ${icon('aura')}${active ? `<span class="ini-cond-badge">${sum.count}</span>` : ''}
+    </button>`;
+  }
+
   function rosterRowHTML(e, i, s) {
     const info = resolveEntry(e);
     const isTurn = s.entries.length && i === s.turn;
@@ -619,6 +678,7 @@
         <span class="ini-ico" aria-hidden="true">${icon(info.icon)}</span>
         <span class="ini-name-text">${esc(info.name)}</span>
       </button>
+      ${condButtonHTML(e)}
       ${hpChip}
       <button class="ini-x" data-act="roster-remove" data-id="${e.id}" title="Remove" aria-label="Remove ${esc(info.name)}">×</button>
     </li>`;
@@ -656,6 +716,59 @@
     const e = STORE.getInitiative().entries.find(x => x.id === el.dataset.id);
     if (e) openStatCard(e);
   };
+
+  // The effect icon on a PC row → a menu of buffs the OTHER party members can
+  // grant (labelled by who), plus the debuff library. Applying adds a condition.
+  function condMenuItem(kind, key, src, id) {
+    const spec = (kind === 'buff' ? BUFFS : DEBUFFS)[key]; if (!spec) return '';
+    const dur = spec.rounds == null ? '∞' : spec.rounds + 'r';
+    const label = spec.name + (src ? ' — ' + src : '') + ' · ' + dur;
+    const data = { kind: kind, key: key, id: id };
+    if (src) data.src = src;
+    return menuItem('cond-apply', data, kind === 'buff' ? 'aura' : 'flame', label);
+  }
+  ACT['cond-menu'] = (el) => {
+    const id = el.dataset.id;
+    const s = STORE.getInitiative();
+    const e = s.entries.find(x => x.id === id); if (!e) return;
+    let buffItems = condMenuItem('buff', 'help', null, id);   // anyone at the table can Help
+    const seen = new Set();
+    s.entries.filter(x => x.id !== id && x.kind === 'hero').forEach(o => {
+      const cls = (o.snapshot && o.snapshot.klass) || '';
+      (CLASS_BUFF_KEYS[cls] || []).forEach(key => {
+        const tag = key + '|' + o.name;
+        if (seen.has(tag)) return; seen.add(tag);
+        buffItems += condMenuItem('buff', key, o.name, id);
+      });
+    });
+    const debuffItems = Object.keys(DEBUFFS).map(key => condMenuItem('debuff', key, null, id)).join('');
+    // Optional rounds override — blank uses each effect's own default duration.
+    const roundsRow = `<div class="menu-rounds"><span>Rounds</span>
+      <input class="cond-rounds-input" type="text" inputmode="numeric" maxlength="3" placeholder="default"
+             aria-label="Duration in rounds — leave blank to use the effect's default"></div>`;
+    openMenu(el, roundsRow + `<div class="menu-note">Buffs</div>${buffItems}`
+      + `<div class="menu-sep"></div><div class="menu-note">Debuffs</div>${debuffItems}`);
+  };
+  ACT['cond-apply'] = (el) => {
+    const kind = el.dataset.kind, key = el.dataset.key, id = el.dataset.id, src = el.dataset.src || null;
+    const spec = (kind === 'buff' ? BUFFS : DEBUFFS)[key]; if (!spec) return;
+    // Read the optional rounds override before the menu closes.
+    let rounds = spec.rounds;
+    const rIn = ROOT.modal.querySelector('.cond-rounds-input');
+    if (rIn && rIn.value.trim() !== '') { const n = parseInt(rIn.value, 10); if (!isNaN(n) && n > 0) rounds = n; }
+    closeModal();
+    STORE.conditionAdd(id, { kind: kind, name: spec.name, effect: spec.effect, rounds: rounds, source: src });
+    announce('Applied ' + spec.name + (src ? ' from ' + src : '') + (rounds != null ? ' · ' + rounds + 'r' : '') + '.');
+  };
+  ACT['cond-clear'] = (el) => {
+    STORE.conditionRemove(el.dataset.id, el.dataset.cond);
+    refreshRosterPeekFor(el.dataset.id);          // keep the open hover card in step
+  };
+  function refreshRosterPeekFor(id) {
+    if (peekFor && peekFor.classList && peekFor.classList.contains('ini-name') && peekFor.dataset.id === id) {
+      showRosterPeek(peekFor);
+    }
+  }
 
   // The HP chip opens a small anchored editor: damage/heal by an amount, or set
   // current/max. A combatant with no HP yet gets a "give it hit points" form.
@@ -2534,13 +2647,22 @@
     } else {
       body = `<div class="rp-sub">One-off combatant</div>`;
     }
-    return head + hpLine + body + `<div class="rp-more">Click for full stats →</div>`;
+    const conds = (e.conditions || []);
+    const condHTML = conds.length ? `<div class="rp-conds">${conds.map(c => `
+      <div class="rp-cond rp-cond-${c.kind === 'debuff' ? 'debuff' : 'buff'}">
+        <span class="rp-cond-dot" aria-hidden="true"></span>
+        <span class="rp-cond-main"><span class="rp-cond-name">${esc(c.name)}</span>${c.effect ? `<span class="rp-cond-eff">${esc(c.effect)}</span>` : ''}${c.source ? `<span class="rp-cond-src">from ${esc(c.source)}</span>` : ''}</span>
+        <span class="rp-cond-rounds" title="${c.rounds == null ? 'Lasts until cleared' : c.rounds + ' round' + (c.rounds > 1 ? 's' : '') + ' left'}">${c.rounds == null ? '∞' : c.rounds + 'r'}</span>
+        <button class="rp-cond-x" data-act="cond-clear" data-id="${e.id}" data-cond="${c.id}" title="Clear now" aria-label="Clear ${esc(c.name)}">×</button>
+      </div>`).join('')}</div>` : '';
+    return head + hpLine + body + condHTML + `<div class="rp-more">Click for full stats →</div>`;
   }
   function showRosterPeek(nameEl) {
     const id = nameEl.dataset.id;
     const e = STORE.getInitiative().entries.find(x => x.id === id); if (!e) return;
     peekFor = nameEl;
-    ROOT.peek.innerHTML = `<div class="peek roster-peek" role="note">${rosterPeekHTML(e)}</div>`;
+    const hasCond = !!(e.conditions && e.conditions.length);
+    ROOT.peek.innerHTML = `<div class="peek roster-peek${hasCond ? ' has-cond' : ''}" role="note">${rosterPeekHTML(e)}</div>`;
     const box = ROOT.peek.firstChild;
     const r = nameEl.getBoundingClientRect();
     let left = r.left - box.offsetWidth - 12;
