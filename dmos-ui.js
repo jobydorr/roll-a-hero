@@ -606,22 +606,34 @@
   }
 
   /* ---------------------------- Buffs & debuffs --------------------------- */
-  /* Buffs are keyed and offered per class — clicking a PC's effect icon shows the
-     buffs the OTHER player characters at the table can grant (labelled by who),
-     plus a fixed library of debuffs. Effects are our simplified plain-language
-     versions; `rounds` is the default duration (null = lasts until cleared). */
-  const BUFFS = {
-    help:            { name: 'Help',             effect: 'Advantage on the next attack or check.',            rounds: 1 },
-    bardic_inspiration: { name: 'Bardic Inspiration', effect: 'Add 1d6 to one attack, check, or save.',       rounds: 10 },
-    bless:           { name: 'Bless',            effect: '+1d4 to attack rolls and saving throws.',            rounds: 10 },
-    guidance:        { name: 'Guidance',         effect: '+1d4 to one ability check.',                         rounds: 1 },
-    resistance:      { name: 'Resistance',       effect: '+1d4 to one saving throw.',                          rounds: 1 },
-    shield_of_faith: { name: 'Shield of Faith',  effect: '+2 AC.',                                             rounds: 10 },
-    aid:             { name: 'Aid',              effect: '+5 to maximum and current HP.',                      rounds: null },
-    protection:      { name: 'Protection',       effect: '+2 to saving throws while near the paladin.',        rounds: null },
-    haste:           { name: 'Haste',            effect: '+2 AC, double speed, and an extra action each turn.', rounds: 10 },
-    enlarge:         { name: 'Enlarge',          effect: 'Grows large — +1d4 damage, advantage on Strength.',  rounds: 10 },
+  /* The effect menu is DATA-DRIVEN. Clicking a combatant's icon scans the PCs at
+     the table and offers the buffs/marks each one can actually grant, read from
+     their character sheet — chosen spells (name + rule text straight from data.js,
+     classified by the spell's own `type`) plus recognised class/subclass/racial
+     features, via window.RAH. New player choices appear automatically; nothing is
+     coded per character. EFFECT_META only refines the handful we want reclassified
+     or timed differently, and DEBUFFS is the DM's generic condition library. */
+
+  // Central overrides keyed by data.js spell id. Anything not listed uses the
+  // defaults, so a newly-added buff spell surfaces with no entry here.
+  const EFFECT_META = {
+    'hunters-mark': { kind: 'marker', rounds: null },   // a mark placed on a target
+    'aid':          { rounds: null },
+    'mage-armor':   { rounds: null },
+    'sanctuary':    { rounds: null },
   };
+  const DEFAULT_ROUNDS = { buff: 10, marker: null, debuff: 10 };
+
+  // Non-spell grants, matched by the feature name exactly as it reads in data.js
+  // (features carry no `type`, so this is the one small hand-kept map). Help is
+  // universal — anyone at the table can take the Help action.
+  const HELP = { name: 'Help', effect: 'Advantage on the next attack or check.', kind: 'buff', rounds: 1, source: null };
+  const FEATURE_EFFECTS = {
+    'Bardic Inspiration': { name: 'Bardic Inspiration', effect: 'Add 1d6 to one attack, check, or save.', kind: 'buff', rounds: 10 },
+  };
+
+  // The DM's generic debuff library — conditions the table inflicts directly,
+  // independent of any PC's spells.
   const DEBUFFS = {
     poisoned:   { name: 'Poisoned',   effect: 'Disadvantage on attacks and ability checks.',                 rounds: null },
     frightened: { name: 'Frightened', effect: "Disadvantage while it can see the source; can't move closer.", rounds: null },
@@ -636,26 +648,37 @@
     burning:    { name: 'Burning',    effect: 'Takes damage at the start of each turn.',                       rounds: 3 },
     deafened:   { name: 'Deafened',   effect: "Can't hear.",                                                   rounds: null },
   };
-  // What each class can grant an ally. Classes not listed contribute no buffs of
-  // their own — everyone can still offer Help, which is added separately.
-  const CLASS_BUFF_KEYS = {
-    bard:    ['bardic_inspiration'],
-    cleric:  ['bless', 'guidance', 'resistance', 'shield_of_faith', 'aid'],
-    paladin: ['bless', 'protection'],
-    wizard:  ['haste', 'enlarge'],
-  };
-  // Marks are a third kind — neither buff nor debuff. A PC places one on a target
-  // and removes it at will (a ranger's Hunter's Mark). Offered only when a player
-  // character whose class provides one is actually at the table.
-  const MARKERS = {
-    hunters_mark: { name: "Hunter's Mark", effect: 'The ranger deals +1d6 when they hit this target.', rounds: null },
-  };
-  const CLASS_MARKER_KEYS = {
-    ranger: ['hunters_mark'],
-  };
-  const COND_CATALOGS = { buff: BUFFS, debuff: DEBUFFS, marker: MARKERS };
-  const specFor = (kind, key) => (COND_CATALOGS[kind] || BUFFS)[key];
+
   const condKind = (c) => (c.kind === 'debuff' ? 'debuff' : (c.kind === 'marker' ? 'marker' : 'buff'));
+
+  /* Read one hero's sheet for the effects THEY can grant a target: their chosen
+     buff/debuff spells and any recognised feature. Pure read through window.RAH;
+     safe when RAH is missing or a snapshot is malformed. */
+  function heroGrants(entry) {
+    const R = window.RAH;
+    if (!R || !entry || !entry.snapshot || typeof R.getSpell !== 'function') return [];
+    const snap = entry.snapshot, out = [], seen = new Set();
+    const push = (o) => { const tag = o.kind + '/' + o.name; if (seen.has(tag)) return; seen.add(tag); out.push(Object.assign({ source: entry.name }, o)); };
+    (Array.isArray(snap.spells) ? snap.spells : []).forEach(sid => {
+      const sp = R.getSpell(sid);
+      if (!sp || (sp.type !== 'buff' && sp.type !== 'debuff')) return;   // only trackable spells
+      const meta = EFFECT_META[sp.id] || {};
+      const kind = meta.kind || (sp.type === 'debuff' ? 'debuff' : 'buff');
+      const rounds = ('rounds' in meta) ? meta.rounds : DEFAULT_ROUNDS[kind];
+      push({ name: sp.name, effect: sp.desc, kind: kind, rounds: rounds });
+    });
+    try {
+      R.withState(snap, () => {
+        const c = R.getClass(), a = R.getArchetype(), r = R.getRace();
+        const names = [];
+        if (c && Array.isArray(c.features)) c.features.forEach(f => names.push(f.name));
+        if (a && a.feature) names.push(a.feature.name);
+        if (r && r.signature) names.push(r.signature.name);
+        names.forEach(nm => { const fe = FEATURE_EFFECTS[nm]; if (fe) push(fe); });
+      });
+    } catch (err) { /* malformed snapshot → no feature grants */ }
+    return out;
+  }
 
   // Row-icon summary: how many effects, and whether they're buffs, debuffs, or both.
   function condSummary(e) {
@@ -728,45 +751,33 @@
     if (e) openStatCard(e);
   };
 
-  // The effect icon on a PC row → a menu of buffs the OTHER party members can
-  // grant (labelled by who), plus the debuff library. Applying adds a condition.
-  function condMenuItem(kind, key, src, id) {
-    const spec = specFor(kind, key); if (!spec) return '';
+  // The effect icon → a menu built by SCANNING the PCs at the table (heroGrants):
+  // Help + every buff/mark those PCs can actually grant, labelled by who, then the
+  // DM's debuff library. The scanned options are stashed for the life of the menu
+  // so a click can apply the full derived spec without encoding it in attributes.
+  let condMenuOptions = {};
+  function condOptionItem(key, spec) {
     const dur = spec.rounds == null ? '∞' : spec.rounds + 'r';
-    const label = spec.name + (src ? ' — ' + src : '') + ' · ' + dur;
-    const data = { kind: kind, key: key, id: id };
-    if (src) data.src = src;
-    const iconName = kind === 'buff' ? 'aura' : (kind === 'marker' ? 'pin' : 'flame');
-    return menuItem('cond-apply', data, iconName, label);
+    const label = spec.name + (spec.source ? ' — ' + spec.source : '') + ' · ' + dur;
+    const iconName = spec.kind === 'buff' ? 'aura' : (spec.kind === 'marker' ? 'pin' : 'flame');
+    return menuItem('cond-apply', { opt: key }, iconName, label);
   }
   ACT['cond-menu'] = (el) => {
     const id = el.dataset.id;
     const s = STORE.getInitiative();
     const e = s.entries.find(x => x.id === id); if (!e) return;
-    const others = s.entries.filter(x => x.id !== id && x.kind === 'hero');
-    // Buffs — Help (anyone) plus whatever the OTHER PCs' classes can grant.
-    let buffItems = condMenuItem('buff', 'help', null, id);
-    const bseen = new Set();
-    others.forEach(o => {
-      const cls = (o.snapshot && o.snapshot.klass) || '';
-      (CLASS_BUFF_KEYS[cls] || []).forEach(key => {
-        const tag = key + '|' + o.name; if (bseen.has(tag)) return; bseen.add(tag);
-        buffItems += condMenuItem('buff', key, o.name, id);
-      });
-    });
-    // Marks — PC abilities placed on a target (Hunter's Mark…). Detected from the
-    // PCs at the table; the section is omitted entirely when none can grant one.
+    condMenuOptions = {};
+    let n = 0;
+    const add = (spec) => { const key = 'o' + (n++); condMenuOptions[key] = Object.assign({ target: id }, spec); return condOptionItem(key, condMenuOptions[key]); };
+    // Everything a PC can grant, read off the OTHER player characters' sheets.
+    const grants = s.entries.filter(x => x.id !== id && x.kind === 'hero').flatMap(heroGrants);
+    let buffItems = add(HELP);
+    grants.filter(g => g.kind === 'buff').forEach(g => { buffItems += add(g); });
     let markItems = '';
-    const mseen = new Set();
-    others.forEach(o => {
-      const cls = (o.snapshot && o.snapshot.klass) || '';
-      (CLASS_MARKER_KEYS[cls] || []).forEach(key => {
-        const tag = key + '|' + o.name; if (mseen.has(tag)) return; mseen.add(tag);
-        markItems += condMenuItem('marker', key, o.name, id);
-      });
-    });
-    const debuffItems = Object.keys(DEBUFFS).map(key => condMenuItem('debuff', key, null, id)).join('');
-    // Optional rounds override — blank uses each effect's own default duration.
+    grants.filter(g => g.kind === 'marker').forEach(g => { markItems += add(g); });
+    let debuffItems = '';
+    grants.filter(g => g.kind === 'debuff').forEach(g => { debuffItems += add(g); });        // PC-cast debuffs, sourced
+    Object.keys(DEBUFFS).forEach(dk => { debuffItems += add(Object.assign({ source: null }, DEBUFFS[dk], { kind: 'debuff' })); });
     const roundsRow = `<div class="menu-rounds"><span>Rounds</span>
       <input class="cond-rounds-input" type="text" inputmode="numeric" maxlength="3" placeholder="default"
              aria-label="Duration in rounds — leave blank to use the effect's default"></div>`;
@@ -776,15 +787,14 @@
     openMenu(el, html);
   };
   ACT['cond-apply'] = (el) => {
-    const kind = el.dataset.kind, key = el.dataset.key, id = el.dataset.id, src = el.dataset.src || null;
-    const spec = specFor(kind, key); if (!spec) return;
+    const spec = condMenuOptions[el.dataset.opt]; if (!spec) return;
     // Read the optional rounds override before the menu closes.
     let rounds = spec.rounds;
     const rIn = ROOT.modal.querySelector('.cond-rounds-input');
-    if (rIn && rIn.value.trim() !== '') { const n = parseInt(rIn.value, 10); if (!isNaN(n) && n > 0) rounds = n; }
+    if (rIn && rIn.value.trim() !== '') { const v = parseInt(rIn.value, 10); if (!isNaN(v) && v > 0) rounds = v; }
     closeModal();
-    STORE.conditionAdd(id, { kind: kind, name: spec.name, effect: spec.effect, rounds: rounds, source: src });
-    announce('Applied ' + spec.name + (src ? ' from ' + src : '') + (rounds != null ? ' · ' + rounds + 'r' : '') + '.');
+    STORE.conditionAdd(spec.target, { kind: spec.kind, name: spec.name, effect: spec.effect, rounds: rounds, source: spec.source || null });
+    announce('Applied ' + spec.name + (spec.source ? ' from ' + spec.source : '') + (rounds != null ? ' · ' + rounds + 'r' : '') + '.');
   };
   ACT['cond-clear'] = (el) => {
     STORE.conditionRemove(el.dataset.id, el.dataset.cond);
