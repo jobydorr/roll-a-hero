@@ -66,4 +66,4 @@ This repo lives on a flaky sandbox mount that has silently **truncated committed
 - The project is steered from three plain files in the repo — `ROADMAP.md`, `DECISIONS.md`, `BACKLOG.md`. Keep them updated as the human-facing record.
 - The big architecture question is **settled** (2026-07-07): we added a small **Firebase** backend (local-first) so players can **Share** characters to a campaign and the DM sees them on one page — plus file Export/Import as a safety net. See `DECISIONS.md`.
 - This machine is the work desk; GitHub (`jobydorr/roll-a-hero`) is the live site + backup. **Draft** changes and leave them for the Code side to commit and deploy (see **GIT & SAVING WORK** above) — don't commit or push from Cowork yourself.
-- Always keep it kid-safe, simple, and committed.
+- Always keep it kid-safe, simple, and wholehearted — bold and decisive, never bland. (This is a design ethos; for git, see **GIT & SAVING WORK** above.)

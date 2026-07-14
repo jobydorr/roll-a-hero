@@ -68,7 +68,7 @@ The repo holds a distilled DM craft reference, built from 20 sources: **`DM_CRAF
 - **Table:** two adults + a 9- and 10-year-old.
 - **Tone:** family-friendly with a light edge. Spooky villains, real stakes, gentle dark themes (betrayal, loss) — yes. Cheeky humour that winks at the adults — yes.
 - **No permanent character death.** Heroes get knocked out, captured, or rescued. No explicit gore.
-- **Keep it kid-safe, simple, and committed.**
+- **Keep it kid-safe, simple, and wholehearted** — bold and decisive, never bland (a design ethos, not a git instruction).
 
 ## The full brief
 
