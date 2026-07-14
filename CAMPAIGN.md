@@ -36,6 +36,8 @@ So the most powerful wizard who ever lived — one who could reach past the surf
 
 It cost cities. It cost towns, and roads, and people who were never found. **And it worked.**
 
+A fold that tight does not hold itself. So he built a thing to hold it: **the Armature** — a geometric construct of nested rings and sliding cells, a labyrinth you can turn in your hands. It is a map of the Fold and the governor of it at once. **Whoever holds the Armature holds the shape of the world.**
+
 He did not do it alone. His own order — the **Surveyors**, who had spent their lives measuring what lies between one place and another — folded the world at his side, and knew exactly what it was for. It was meant to be **temporary**: buy time, find the way to kill the thing, then let the world breathe again.
 
 **Nobody ever went looking.** Because of what the folded world *gave* them.
@@ -52,13 +54,25 @@ Grieving, and weak for the first time in his life, he went to his Surveyors and 
 
 **They said no.** They were gods now. And they had never seen him weak before.
 
-So they took him. They put the Foldwright into the creases with his own hands' work, and shut the door. **And then they told the world nothing at all.**
+So they came to kill him. **He ran** — into the creases, into the Snarl, the one place they could not follow. **And he took the Armature with him.**
 
-**Because as far as the world knows, the Foldwright still rules.** He is the unseen god-king, the man who folded the world and holds it in his fist; nobody has laid eyes on him in a lifetime, and nobody expects to. The Surveyors are merely his ministry — they administer his Fold, they ration his sunsalt, they carry out his will, and they are *ever so sorry* about the fences. Every cruelty is his. Every sealed road, every monster that claws out of a failing crease, every grey and dying mile — **his.** And when the anger grows too great to park, there is the **Stillguard**, the brave resistance, who will one day bring the tyrant down.
+That is the standoff, and it has held for a lifetime. **They cannot kill him, because without the Armature the Fold tears and the world with it.** They cannot find him, because nothing can navigate the Snarl. He cannot come out, because they would take it. And he cannot mend anything, because he is hollow.
 
-The Surveyors run both. **They invented a tyrant to serve, and a rebellion to fight him, and they own them both.** Only they know the throne is empty.
+**So he sits in the dark and works the Armature with the last of his strength, holding the world together — and the world curses his name for the tremors when his grip slips.**
 
-And so the world has its villain — and the villain is a hollowed old man in the dark, who has spent a lifetime searching the folds for his family — and the thing at the centre is four walls from daylight.
+**And then they told the world nothing at all.**
+
+**Because as far as the world knows, the Foldwright still rules.** He is the unseen god-king, the man who folded the world and holds it in his fist; nobody has laid eyes on him in a lifetime, and nobody expects to. The Surveyors are merely his ministry — they administer his Fold, they ration his sunsalt, they carry out his will, and they are *ever so sorry* about the fences. Every cruelty is his. Every sealed road, every monster out of a failing crease, every tremor that cracks a wall — **his.**
+
+But they need that machine, and they cannot go into the Snarl to get it.
+
+**So they built a rebellion.** They call it the **Stillguard** — and it exists to do the one thing the Surveyors cannot: **search.** It preaches that the tyrant must be found and brought down; it recruits the grieving and the furious, the ones who lost somebody to the Folding and would go anywhere to make him answer for it; and it sends them into the folds. It has never won anything, and it never will, **because winning was never the point.**
+
+**Every cell of the resistance is a search party that does not know it is one.** And on the day some brave fool finally finds the Foldwright, the Surveyors will be a step behind them.
+
+**They invented a tyrant to serve, and a rebellion to hunt him, and they own them both.** Only they know the throne is empty.
+
+And so the world has its villain — a hollowed old man in the dark, holding the world up with one hand and searching the folds for his family with the other — and the thing at the centre is four walls from daylight.
 
 ---
 
@@ -66,17 +80,21 @@ And so the world has its villain — and the villain is a hollowed old man in th
 
 ### The folded world — and it is *not* simply better
 
-Everything is close now. Your grandmother is a day's walk, not a season's journey. Trade is cheap, the roads are short, nobody starves crossing a wilderness. The lamps burn sunsalt and never go out. Every monster and murderous wild place is sealed in the **banished zones**, where it cannot touch you.
+**It is close, and it is safe, and it is rich.**
 
-Most people, asked, would tell you the world is better. **They are not fools, and they are not simply wrong.**
+Your grandmother is a day's walk, not a season's journey. The roads are short and nothing waits on them: the folding tamed the wild, and the truly dark things — the old horrors that used to eat whole villages — were **banished outright**, sealed into pockets where they cannot reach you. Children play at the treeline. Nobody bars a door.
+
+And the world is *booming*. Sunsalt lights, heats, mends, and drives; it does what nothing has ever done, and every year some workshop finds it a new trade. **No generation has ever lived this well.**
+
+Most people, asked, would tell you the world is better. **They are not fools, and they are not wrong.**
 
 But it is not better in every way, and everybody knows it:
-- Cities were **crushed together** in the Folding, and towns went into the creases and never came back. Every family has a name they don't say.
-- Where the folding bit deepest the ground is **grey and dead** — the seams — and the greyness is spreading.
-- The monsters get out. **More every year.**
-- And the road you walk on can be **sealed at a word**, by a tyrant nobody has ever seen.
+- Cities were **crushed together** in the Folding, and towns went into the creases and never came back. **Every family has a name they don't say.**
+- **The ground shakes.** *Foldquakes* — the world shuddering in its skin, cracking walls, stopping clocks, dropping a bridge into a river. They come more often now. The Surveyors call them *settling*, and manageable, and nothing to fear. **Not everybody believes them.**
+- **The Draws are spreading.** Where sunsalt is bled out of the world, the land goes grey and never comes back, and the fenced grey is a little wider every year.
+- And the road you walk can be **sealed at a word**, by a tyrant nobody has ever seen.
 
-*A smaller, safer, warmer, poorer, more frightened world, and it is running out. That trade is what the campaign is about.*
+*A close, safe, prosperous, shuddering world with something wrong under the floor. That trade is what the campaign is about.*
 
 ### The Fold, as everyone understands it — *and this is wrong*
 
@@ -118,6 +136,7 @@ Three consequences:
 1. **Nobody can fold their way out of anything.** There is no room left. *Forecloses the obvious player question with a hard, physical no.*
 2. **The Surveyors pinch wrinkles into an over-packed structure they cannot read, at its breaking point.** They believe they are being careful.
 3. **The Devouring eats, and eating makes slack — and slack is space.** Space is what it needs. **A breach is the thing making room for itself, and something with teeth wandering out through the gap.**
+4. **And the Fold is only stable because one hollowed old man is still working the Armature.** *Foldquakes are his grip slipping.* They will get worse as he weakens — **and they will ease as the heroes restore him, which means the party can watch their progress in the steadiness of the ground.***
 
 > **The cruelty at the heart of it: the lamps and the thing at the centre are doing the same work, from opposite ends.** Every scrap of sunsalt burned is a little more room handed to it. Humanity is helping, one warm evening at a time.
 
@@ -131,11 +150,13 @@ Rationed by the Surveyors in the Foldwright's name and sold as **unlimited**. It
 
 **What it is:** **the world's own living essence**, bled to the surface by the squeezing. In the ground it is still *part of the world*. **Take it out and spend it, and that piece of the world is gone forever — and the room it occupied belongs to the thing at the centre.**
 
-**The seams are the mines.** They are the scars where the folding bit deepest, and they run *through* the world, not around it — grey, dead, fenced, guarded, and visible from a mile off. This is where sunsalt is cut. Everyone can see them. Everyone has been told the grey is *"the Foldwright's blight."*
+**Sunsalt is not dug. It is drawn.** Where the folding bit deepest the fabric shows through — a **seam** — and from a seam the world's essence can be *bled up* and left to crystallise, like brine in a salt pan. The workings are called **the Draws**: broad glowing flats, fenced and guarded and visible from a mile off, with Surveyor crews scraping the crust.
 
-> **The Act One reveal is not "there is a dead zone." It is "the dead zone is the mine."** The ugly fact sits in plain sight with a villain's name already attached — the same trick as the monsters.
+**And around every worked Draw the land is grey and dead, and the grey is spreading.** Everyone can see it. Everyone has been told it is *"the Foldwright's blight,"* seeping up out of the creases.
 
-And the party learns it **with their own hands.** They can't get refined Surveyor sunsalt, so they cut it **raw from a seam, with their fingers** — and the ground dies under their hands and stays dead. A grey handprint they leave behind, every time they want a direction. Nobody has to explain sunsalt to them. *They did it.*
+> **The Act One reveal is not "there is a dead zone." It is "the dead zone is the Draw."** The ugly fact sits in plain sight with a villain's name already attached — the same trick as the monsters.
+
+And the party learns it **with their own hands.** They can't get refined Surveyor sunsalt, so they bleed it **raw from a seam, with their fingers** — and the ground dies under their hands and stays dead. A grey handprint left behind, every time they want a direction. Nobody has to explain sunsalt to them. *They did it.*
 
 **Why a rationing plan isn't the answer.** Burning less would help; it would not save anyone. The thing at the centre is making its own room regardless, and a lamp ban buys years, not a future. *And it is not on the menu: a civilisation runs on this, the Surveyors are gods because of it, and four heroes cannot ration a world.*
 
@@ -174,6 +195,8 @@ Every folded region has a hidden **portal**. To **unlock** a region, open its po
 
 **Understand what they actually hold.** Not a throne — *distance*. Every army's march, every harvest's journey, every message between two angry towns, closable with a pinch. And sunsalt, which does very nearly anything. **They are not officials who got greedy. They are gods who were asked to stop being gods, and declined.**
 
+**And understand what they lack.** The Armature. Without it they cannot steady the Fold, cannot stop the foldquakes, and dare not kill the man who holds it. **They are gods with a crack running through the floor, and they have been hunting that machine for a lifetime.** *This is the faction's want, and it is urgent — everything they do points at it.*
+
 Publicly, they are not the government. They are his **servants** — the ones who administer the Fold, ration the sunsalt, maintain the fences, and carry his will to the people. They apologize a great deal. They are ever so sorry about the wrinkles.
 
 *Public line:* **"The Foldwright wills it. We only serve. Take your ration, keep off the seams, and we will plead with him again on your behalf."**
@@ -207,7 +230,7 @@ The Stillguard is a machine for **absorbing dissent** — anyone who senses some
 
 **Only the leadership knows the throne is empty.** Not the public, not the rank and file of either arm.
 
-**And not all of them are rotten.** The Surveyor who kills a breach-troll to save a village *is* a hero and has no idea what he is part of. The Stillguard recruiter who signs the heroes up genuinely believes she is saving the world. The rot is at the top. *Sympathetic enemies, future allies, and a genuinely upsetting reveal for the kids: the good guys were the bad guys — but not all of them.*
+**And not all of them are rotten.** The Surveyor who kills a breach-troll to save a village *is* a hero and has no idea what he is part of. The Stillguard recruiter genuinely believes she is raising an army against a tyrant. **She is running a kennel.** The rot is at the top. *Sympathetic enemies, future allies, and a genuinely upsetting reveal for the kids: the good guys were the bad guys — but not all of them.*
 
 ---
 
@@ -221,9 +244,11 @@ The Stillguard is a machine for **absorbing dissent** — anyone who senses some
 
 **He is not on the throne. The throne is empty. He has not given an order in a lifetime.**
 
+**He is not a prisoner, either — he is a fugitive.** He fled into the Snarl to keep his own order from killing him, and he took **the Armature** with him. It is the only reason he is still alive: kill him and the Fold tears, so until they have that machine, they dare not. **And he has spent every day since working it — steadying a world that hates him, with the last of what he has left.** The foldquakes are his hands shaking.
+
 **Why he needs the heroes** — four nobodies, when he was the most powerful wizard who ever lived:
 - **He is hollowed.** The Folding took most of what he was. He is not the man the world fears; he is barely a man at all.
-- **He is trapped in the creases.** He can move *within* the folds and slip briefly through weak places, but he **cannot open a portal from the inside.**
+- **He cannot leave the Snarl.** Step out and the Surveyors take the Armature, and everything ends. He can move *within* the folds and slip briefly through weak places, but he **cannot open a portal from the inside** — and he cannot spare the strength to try. **Every ounce he has is holding the ground still.**
 - **He cannot walk in the world.** His is the most hated face alive — and the one nobody would recognize, which is somehow worse.
 - **The Compass Spirit will not serve him.** He made it; it fled him. It woke for *these heroes*, and chose them, and that is the one thing he can neither order nor buy. **He can only follow.**
 
@@ -304,7 +329,7 @@ Ordinary, familiar, fightable: trolls, wyrms, wild magic, things with teeth. **T
 ### The three acts
 
 **Act One — "unlimited" was a lie, and our own side is in on it.**
-Breaches worsen, this season, where they live. The grey dead zones are **the mines**, not a blight. The resistance is a **leash**.
+Breaches and foldquakes worsen, this season, where they live. **The grey is the Draws, not a blight.** And the resistance is **a leash — and a leash held by the people it claims to be fighting.**
 *Act One's turn is the betrayal and the mechanism — NOT "the world is dying." The Stillguard shout that at every rally; the party heard it on day one. It cannot be a revelation.*
 
 **Act Two — the tyrant has been a prisoner for a lifetime.**
@@ -332,6 +357,7 @@ Break one and something downstream quietly collapses.
 7. **The Foldwright never explains himself** until Act Three.
 8. **Sunsalt is destroyed by being taken out of the ground and spent.** In the ground it is still the world. *This is what makes the finale a real sacrifice.*
 9. **Wrinkles cost sunsalt, heavily.**
+10. **The Armature is the standoff.** He escaped with it; without it the Fold tears; so they cannot kill him and he cannot come out. **Nobody moves.** The heroes are what breaks a lifetime of deadlock — *and if they find him, they lead the hunters to him.*
 
 ### Why the propaganda holds
 
@@ -376,8 +402,10 @@ The **townsfolk** love the folded world and aren't fools; it *is* safer and warm
 | 2 | **How many cells/regions?** | Sets campaign length. Probably 5–7 — and each must hold *one of his losses* plus its own monsters or lost town. |
 | 3 | **When does the Snarl reveal land?** | Proposed: **end of Act One / early Act Two** — the first time they go properly deep. It's too good to save, and it re-motivates everything. |
 | 4 | **Names:** the Foldwright, his order, his wife and children, the Compass Spirit (*Pip? Tesse?*). Confirm *"the Snarl,"* *"the cinch,"* *"his measure."* | The Surveyors carry his sigil — it should mean something. |
-| 5 | **The Surveyor leader**, and the **Stillguard recruiter** who brings the heroes in. | Two `npc` docs the opening needs. |
-| 6 | **What happens to the lamps afterward?** | The finale asks a world to give up its power source. A hopeful answer is available — decide whether to take it. |
+| 5 | **The Surveyor leader**, and the **Stillguard recruiter**. | Two `npc` docs. The recruiter runs a kennel and thinks it's an army. |
+| 6 | **Name the fake resistance.** *Stillguard* not settled. | Candidates: **the Ravel** (to ravel is both to tangle and untangle — and it pairs against the Snarl), **the Slack** (a rebellion accidentally named after the apocalypse), **the Open Hand**, **the Unmaking**. |
+| 7 | **Is "the Armature" the right name?** | It's the frame that holds a sculpture's shape — apt. At the table the kids will just call it *the machine* or *the cube*. |
+| 8 | **What happens to the lamps afterward?** | The finale asks a world to give up its power source. A hopeful answer is available — decide whether to take it. |
 
 ---
 
@@ -394,10 +422,13 @@ The **townsfolk** love the folded world and aren't fools; it *is* safer and warm
 | **a breach** | The Devouring has eaten slack, and slack is space. Something with teeth wanders out through the gap. Worsening. Blamed on the Foldwright |
 | **a wrinkle** | Pinching a road or town shut — **the basis of all Surveyor power.** Done in his name. Costs heavy sunsalt |
 | **sunsalt** | Sold as *unlimited*. Bled from the world's fabric; does very nearly anything, and fuels every wrinkle. Destroyed by being taken and spent — **and the room it leaves belongs to the Devouring** |
-| **the seams** | Grey dead scars where the folding bit deepest — running *through* the world, not around it. **They are the mines.** Blamed on "the Foldwright's blight" |
+| **the seams** | Where the folding bit deepest and the fabric shows through. Sunsalt is bled up from them |
+| **the Draws** | The workings — broad glowing flats where sunsalt is drawn and scraped. **The grey dead land around them is spreading**, and everyone blames "the Foldwright's blight" |
+| **a foldquake** | The world shuddering in its skin. Cracked walls, stopped clocks, a bridge in the river. Getting worse. The Surveyors call it *settling*. **It is the Foldwright's grip slipping** |
+| **the Armature** | The construct that governs the Fold — a labyrinth of nested rings you turn in your hands. **He escaped with it. They cannot kill him until they get it back.** Working name |
 | **his measure** | The piece of himself he spent to fold the world. Left him weak enough to be deposed. Scattered in the zones |
 | **the Surveyors** | **His own order.** Deposed him, and rule in his name as his "humble ministry." They cannot read the machine they run |
-| **the Stillguard** | The fake resistance. Fighting a man who is a prisoner. They guard the *stillness* |
-| **the Foldwright** | The god-king everyone believes rules. Real name TBD |
+| **the Stillguard** | The fake resistance — **a manhunt for the Armature, wearing a rebellion's clothes.** Every cell is a search party that doesn't know it. Name not final |
+| **the Foldwright** | The god-king everyone believes rules. Actually a hollowed fugitive holding the world together in the dark. Real name TBD |
 | **the Compass Spirit** | The companion. Name TBD. Will not serve its maker. **The only map of the Snarl that exists** |
 | **the Devouring** | The real threat. Comes through the gaps *between* things. Pinned at the centre by the cinch, and eating outward — **because eating makes room, and room is how it lives.** TBD |
