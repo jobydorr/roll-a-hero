@@ -28,51 +28,57 @@ The sections map onto the DM OS document types, so the bible **feeds the workspa
 
 ## 1. The Story
 
-*The whole thing, short. Everything after this is detail.*
+### The Calamity
 
-There was a world, and something began eating it — not from anywhere. **From between.** It came through the gaps in things, the spaces inside the spaces, and what it touched stopped being. You could not march on it. You could not find its border. It had none.
+Long ago, something began to consume the world. It did not invade from any direction, because it did not come from anywhere; it emerged from between — through the gaps in things, the spaces inside of spaces — and whatever it touched simply ceased to exist. It could not be fought in any conventional sense. Armies could not march on it, and no border could be defended, because it had none. Against an enemy made of absence, every power in the world was helpless.
 
-So the most powerful wizard who ever lived — one who could reach past the surface of the world and take hold of the fabric underneath — did the only thing that could possibly work. **He left it no room.** He took the world in his hands and **folded it**, and folded it again, and kept folding until there was no space left anywhere for the thing to be. The wild lands folded out into sealed pockets. The far places folded close together. And whatever had already come through was swept inward, pinned in the one space that cannot be closed — **because you cannot fold a thing to nothing. There is always a centre.**
+### The Folding
 
-It cost cities. It cost towns, and roads, and people who were never found. **And it worked.**
+The answer came from the most powerful wizard who ever lived, a man capable of reaching past the surface of the world and taking hold of the fabric beneath it. His reasoning was simple: if the enemy lived in the spaces between things, the only possible defense was to leave it no space. So he took the world in his hands and folded it, and folded it again, and continued folding until nowhere remained for the thing to be. The wild lands were folded away into sealed pockets. The far places were folded close together. The entity itself — everything of it that had already come through — was swept inward and pinned at the center of the Fold, the one point that no folding can close, because nothing can be folded down to nothing. There is always a center.
 
-A fold that tight does not hold itself. So he built a thing to hold it: **the Armature** — a geometric construct of nested rings and sliding cells, a labyrinth you can turn in your hands. It is a map of the Fold and the governor of it at once. **Whoever holds the Armature holds the shape of the world.**
+The working succeeded, but at a catastrophic price. Entire cities vanished into the creases, along with towns, roads, and countless people who were never found. The world that emerged was smaller and stranger, but it was saved.
 
-He did not do it alone. His own order — the **Surveyors**, who had spent their lives measuring what lies between one place and another — folded the world at his side, and knew exactly what it was for. It was meant to be **temporary**: buy time, find the way to kill the thing, then let the world breathe again.
+Because a fold that tight cannot hold itself, the wizard — known as the Foldwright — built an instrument to maintain it: the Armature, a geometric construct of nested rings and sliding cells, like a labyrinth that can be turned in the hands. The Armature is both a map of the Fold and the mechanism that governs it, which means that whoever holds the Armature holds the shape of the world.
 
-**Nobody ever went looking.** Because of what the folded world *gave* them.
+### The Surveyors
 
-**Distance is the only thing power has ever really been made of.** Armies move, or they do not. Grain reaches the city, or it rots. A message arrives in time, or a year too late. **The Surveyors now own the movement of every soldier, every sack of wheat, and every word in the world, and they can close any of it with a pinch.** No rebellion can gather, because no two angry towns can reach each other.
+The Foldwright did not perform the working alone. His own order, the Surveyors, had spent their lives measuring what lies between one place and another, and they folded the world at his side with full knowledge of what it was for. The Fold was intended to be temporary — a way to buy time until the entity could be destroyed, after which the world would be unfolded and allowed to breathe again.
 
-And up out of the squeezed world came **sunsalt** — bled from the fabric itself, and there is nothing it cannot do. It lights and heats, yes; it also mends what should not mend, drives what should not move, and it is the fuel that bends reality itself. **Give a man total command of distance and a substance that does anything, and you have not made him rich. You have made him a god.**
+No one ever pursued that answer, because of what the folded world had given them.
 
-That is a motive with a universal adapter. Whatever you wanted, the folded world would get it for you.
+Distance is the raw material of all power. Armies move or they do not; grain reaches the city or it rots; a message arrives in time or a year too late. In the folded world, the Surveyors control the movement of every soldier, every sack of wheat, and every word — and they can close any route with a pinch. No rebellion can ever gather against them, because no two angry towns can reach each other.
 
-**But the Folding took a terrible price, and the Foldwright paid it out of himself.** He came out of that working **hollowed** — a fraction of the man who went in, his own measure spent into the creases along with the cities. And it took something worse. **His wife, his children, and his closest allies were swallowed into the folds** and never came out. He had folded the world around his own family.
+The Fold produced a second gift as well. Out of the compressed fabric of the world bleeds a substance called sunsalt, and there is nothing it cannot do. It lights and heats, but it also mends what should not mend, drives what should not move, and serves as the fuel by which reality itself is bent. Total command of distance, combined with a substance capable of anything, does not merely make a man rich — it makes him a god. This is what corrupted the Surveyors: the folded world could satisfy any ambition a person might hold, and so an emergency measure quietly became a permanent arrangement. It is the oldest pattern of power — a crisis justifies extraordinary control, and the control outlives the crisis.
 
-Grieving, and weak for the first time in his life, he went to his Surveyors and told them the truth: the design was flawed, the thing at the centre was still eating, the Fold was failing, and the world had to be unfolded and re-made — whatever it cost.
+### The Break
 
-**They said no.** They were gods now. And they had never seen him weak before.
+The Folding took its price from the Foldwright as well, and he paid it out of himself. He emerged from the working hollowed — a fraction of the man who went in, his own measure spent into the creases along with the lost cities. It cost him something worse than power. His wife, his children, and his closest allies were swallowed into the folds and never came out. He had folded the world around his own family.
 
-So they came to kill him. **He ran** — into the creases, into the Snarl, the one place they could not follow. **And he took the Armature with him.**
+Grieving, and weakened for the first time in his life, he went to the Surveyors and told them the truth: the design was flawed, the thing at the center was still eating, the Fold was failing, and the world would have to be unfolded and remade, whatever the cost.
 
-That is the standoff, and it has held for a lifetime. **They cannot kill him, because without the Armature the Fold tears and the world with it.** They cannot find him, because nothing can navigate the Snarl. He cannot come out, because they would take it. And he cannot mend anything, because he is hollow.
+They refused. They were gods now, and they had never seen him weak before.
 
-**So he sits in the dark and works the Armature with the last of his strength, holding the world together — and the world curses his name for the tremors when his grip slips.**
+When the Surveyors came to kill him, he fled into the one place they could not follow — the Snarl, the deep interior of the creases, where nothing can navigate — and he took the Armature with him.
 
-**And then they told the world nothing at all.**
+### The Standoff
 
-**Because as far as the world knows, the Foldwright still rules.** He is the unseen god-king, the man who folded the world and holds it in his fist; nobody has laid eyes on him in a lifetime, and nobody expects to. The Surveyors are merely his ministry — they administer his Fold, they ration his sunsalt, they carry out his will, and they are *ever so sorry* about the fences. Every cruelty is his. Every sealed road, every monster out of a failing crease, every tremor that cracks a wall — **his.**
+That flight created a stalemate that has now held for a lifetime, and it rests on four locked conditions. The Surveyors cannot kill the Foldwright, because without the Armature the Fold tears, and the world tears with it. They cannot find him, because nothing can chart the Snarl. He cannot come out, because the moment he did, they would take the Armature from him. And he cannot repair the failing design himself, because he is hollow.
 
-But they need that machine, and they cannot go into the Snarl to get it.
+So he sits in the dark and works the Armature with the last of his strength, holding the world together — while the world curses his name for every tremor that comes when his grip slips.
 
-**So they built a rebellion.** They call it the **Stillguard** — and it exists to do the one thing the Surveyors cannot: **search.** It preaches that the tyrant must be found and brought down; it recruits the grieving and the furious, the ones who lost somebody to the Folding and would go anywhere to make him answer for it; and it sends them into the folds. It has never won anything, and it never will, **because winning was never the point.**
+### The Invented Tyrant
 
-**Every cell of the resistance is a search party that does not know it is one.** And on the day some brave fool finally finds the Foldwright, the Surveyors will be a step behind them.
+The Surveyors told the world nothing. As far as anyone knows, the Foldwright still rules. He is the unseen god-king, the man who folded the world and holds it in his fist; no one has laid eyes on him in a lifetime, and no one expects to. The Surveyors present themselves as nothing more than his ministry: they administer his Fold, they ration his sunsalt, they carry out his will, and they are ever so sorry about the fences. Every cruelty in the world belongs to him — every sealed road, every monster loosed from a failing crease, every tremor that cracks a wall.
 
-**They invented a tyrant to serve, and a rebellion to hunt him, and they own them both.** Only they know the throne is empty.
+But the Surveyors still need the Armature, and they cannot enter the Snarl to take it. So they built a rebellion.
 
-And so the world has its villain — a hollowed old man in the dark, holding the world up with one hand and searching the folds for his family with the other — and the thing at the centre is four walls from daylight.
+They call it the Stillguard, and it exists to do the one thing the Surveyors cannot do: search. It preaches that the tyrant must be found and brought down. It recruits the grieving and the furious — the people who lost someone to the Folding and would go anywhere to make him answer for it — and it sends them into the folds. The Stillguard has never won anything, and it never will, because winning was never the point. Every cell of the resistance is a search party that does not know it is one, and on the day some brave soul finally finds the Foldwright, the Surveyors will be one step behind.
+
+They invented a tyrant to serve and a rebellion to hunt him, and they own them both. Only they know the throne is empty.
+
+### The World as It Stands
+
+And so the world has its villain: a hollowed old man in the dark, holding the world up with one hand and searching the folds for his family with the other — while the thing at the center sits four walls from daylight.
 
 ---
 
@@ -424,11 +430,4 @@ The **townsfolk** love the folded world and aren't fools; it *is* safer and warm
 | **sunsalt** | Sold as *unlimited*. Bled from the world's fabric; does very nearly anything, and fuels every wrinkle. Destroyed by being taken and spent — **and the room it leaves belongs to the Devouring** |
 | **the seams** | Where the folding bit deepest and the fabric shows through. Sunsalt is bled up from them |
 | **the Draws** | The workings — broad glowing flats where sunsalt is drawn and scraped. **The grey dead land around them is spreading**, and everyone blames "the Foldwright's blight" |
-| **a foldquake** | The world shuddering in its skin. Cracked walls, stopped clocks, a bridge in the river. Getting worse. The Surveyors call it *settling*. **It is the Foldwright's grip slipping** |
-| **the Armature** | The construct that governs the Fold — a labyrinth of nested rings you turn in your hands. **He escaped with it. They cannot kill him until they get it back.** Working name |
-| **his measure** | The piece of himself he spent to fold the world. Left him weak enough to be deposed. Scattered in the zones |
-| **the Surveyors** | **His own order.** Deposed him, and rule in his name as his "humble ministry." They cannot read the machine they run |
-| **the Stillguard** | The fake resistance — **a manhunt for the Armature, wearing a rebellion's clothes.** Every cell is a search party that doesn't know it. Name not final |
-| **the Foldwright** | The god-king everyone believes rules. Actually a hollowed fugitive holding the world together in the dark. Real name TBD |
-| **the Compass Spirit** | The companion. Name TBD. Will not serve its maker. **The only map of the Snarl that exists** |
-| **the Devouring** | The real threat. Comes through the gaps *between* things. Pinned at the centre by the cinch, and eating outward — **because eating makes room, and room is how it lives.** TBD |
+| **a foldquake** | The world shuddering in its skin. Cracked walls, stopped clocks, a bridge in the river. Getting worse. The Surveyors call it

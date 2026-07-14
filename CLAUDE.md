@@ -27,24 +27,24 @@
 
 ---
 
+## ✍️ House style — read `STYLE.md` before writing any document
+
+All written deliverables (campaign docs, world material, NPC and faction write-ups, briefs) follow **`STYLE.md`**. The short version:
+
+- **Connected sentences, complete thoughts, causal connectives.** Formal-essay register — a book synopsis, not ad copy.
+- **No fragments for punch.** No "And it worked." No "They said no." That staccato rhythm is the loudest tell of AI prose and it is *not* how Joby writes.
+- **State the fact, then say what it means.** Name the theme outright.
+- **Almost no bold**, and **no italic DM asides wedged into canon.**
+- American spellings.
+
+**`CAMPAIGN.md` §1 is the reference implementation.** When in doubt, go read it and match it.
+
+*(Chat replies are exempt — those stay short and direct.)*
+
 ## Reference material (used on request, not by default)
 
 The repo holds a distilled DM craft reference, built from 20 sources: **`DM_CRAFT.md`** (full, ~29k words) and **`DM_CRAFT_QUICK.md`** (a short router — laws, a symptom→section triage table, and templates).
 
 - **Do NOT load these by default.** They're consulted **when Joby points at them**, or when explicitly asked.
 - **When they are used:** brainstorm first, check second. They're a **net, not a mould** — good for catching what fell through, never for generating content by filling slots. **`DM_CRAFT.md` is the source of truth; never load the whole file — open only the section needed.**
-- **⚠️ The craft docs guide the GAME, not the APP.** Never mine them for DM OS feature ideas or `BACKLOG.md` entries. App features get raised by Joby, separately. *(Settled 2026-07-11.)*
-
----
-
-## Non-negotiables (every session, both tracks)
-
-- **The beginner test:** would a 9-year-old *and* a brand-new adult get this? Core mechanic is always *"roll a d20, add your modifier, beat this number."*
-- **Table:** two adults + a 9- and 10-year-old.
-- **Tone:** family-friendly with a light edge. Spooky villains, real stakes, gentle dark themes (betrayal, loss) — yes. Cheeky humour that winks at the adults — yes.
-- **No permanent character death.** Heroes get knocked out, captured, or rescued. No explicit gore.
-- **Keep it kid-safe, simple, and committed.**
-
-## The full brief
-
-`COWORK_INSTRUCTIONS.md` holds the complete project instructions (the `campaign.js` contract, the 5E PDF policy, deployment).
+- **⚠️ The craft docs guide the GAME, not the APP.** Never mine them for DM OS feature ideas or `BACKLOG
