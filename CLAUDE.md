@@ -9,6 +9,17 @@
 
 ---
 
+## 🔒 Saving work — git happens on the Code side ONLY
+
+This repo sits on a flaky sandbox mount that has silently **truncated committed files** (it corrupted this very file once). So:
+
+- **In a Cowork session: brainstorm and draft all you want, but run NO `git` — no staging, no commits, no pushes.** Leave your changes uncommitted and tell Joby they're ready.
+- **All staging / committing / pushing happens on the Code side** (Claude Code on the desktop). It verifies before pushing — a `pre-push` hook blocks truncated files.
+- **GitHub (`jobydorr/roll-a-hero`) is the source of truth.** If the local repo looks scrambled, reconcile toward `origin/main`; don't trust the local checkout.
+- *Why "no commits," not just "no pushes": the truncation strikes at commit time — a bad commit is already in history before any push.*
+
+---
+
 ## 🧠 Standing order for all brainstorming and ideation
 
 **This applies to every creative task — worlds, towns, NPCs, villains, monsters, dungeons, encounters, plots, names, items, twists.**
