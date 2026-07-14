@@ -2,7 +2,32 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-07-10.*
+*Last updated: 2026-07-14.*
+
+> **▶ CAMPAIGN HANDOFF — start here for DM-partner work (2026-07-14 — paused for context)**
+>
+> *The builder handoff below is unchanged and still accurate; nothing shipped in the app this window. This window was **all DM PARTNER work** — designing Campaign One.*
+>
+> **Read these three, in order:** `CAMPAIGN.md` (the bible — §1 is the whole story in four minutes), `STYLE.md` (how we write; **read before producing any document**), and the 2026-07-14 entry in `DECISIONS.md` (why the campaign is shaped as it is).
+>
+> **Where the campaign stands.** *The Folded World* is designed and internally sound. A wizard folded the world to starve an entity that seeps in through the gaps between things — not to wall it out, but to **leave it no room**. It worked, at the cost of cities, of his own family, and of a piece of himself. His own order deposed him when he said the design was failing; he **escaped into the Snarl with the Armature**, the machine that governs the Fold, and has spent a lifetime in the dark holding the world together with the last of his strength. The world believes he still rules. The Surveyors govern in his name and have invented a "resistance" — the Stillguard — whose real purpose is to **hunt him and recover the machine.** The heroes will be sent in by that resistance, and the thing at the center is still eating.
+>
+> **The state of it: an excellent world, and about 20% of a campaign.** Three deep audits against `DM_CRAFT.md` were run this window and the verdict is in `DECISIONS.md`. Two findings are structural.
+>
+> **1 · The players are not in the campaign.** Four heroes, no stakes, no hooks, no wounds. Worse, the zone structure as designed is a **DMPC engine** — every cell holds one of *the Foldwright's* losses, so twenty sessions of play amount to the table fetching an old man's family. **The fix is decided and not yet written: each cell holds a piece of the Foldwright AND a piece of a player's story.** Same prep, doubled payload.
+>
+> **2 · There is no seed question.** We have a premise, not an idea. Working candidate: *is it right to take away something people love, in order to save them from it?*
+>
+> **Next actions, in order.**
+> - **Get the player material.** Read what all four already picked in the builder (`data.js` has the 16 traits and 36 motivations they chose from — that list is startlingly well-suited to this world). One kid has already chosen *"to find a lost family member"* and *"to free those who are captured"*, which lands squarely in the banished zones and needs no further asking. For the others, **one bounded multiple-choice question by text**: *what did the Folding take from your hero?* Whatever they answer goes into a cell.
+> - **Then build the zones** — five to seven, outermost to innermost. They are shelved until the player material lands, deliberately.
+> - Decide the **Devouring** (it needs a face and a fight — it cannot be an abstraction at the finale), and **name the fake resistance** (*Stillguard* is not settled; candidates in `CAMPAIGN.md` §8).
+>
+> **Do not propose the Stillguard-recruiter opening scene.** It was raised, considered, and rejected. The opening is still open, and it must deliver a fight inside ten minutes, a personal reason to be angry, and the Compass Spirit choosing the heroes off-script.
+>
+> **⚠ Tooling hazard, learned the hard way.** The Cowork workspace mount **silently truncates large writes** — it committed a damaged `CAMPAIGN.md` twice before it was caught. **Assemble long documents in `/tmp`, `cp` them into the repo, and verify with `wc -c` before committing.** The mount also cannot delete files, which corrupts git's index; if git reports `index file corrupt`, run with `GIT_INDEX_FILE=/tmp/rah-index`.
+>
+> **Note on the working tree:** Joby has his own uncommitted DM OS work in progress (`dmos-ui.js`, `dmos-store.js`, `dmos.css`, `icons.js`, `dm.html`, `campaign.js`). **Leave it alone.** Only the campaign documents were touched this window.
 
 > **▶ HANDOFF — start here (2026-07-10 — paused for context; everything below is pushed & LIVE)**
 >
