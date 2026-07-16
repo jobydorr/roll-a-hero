@@ -24,8 +24,13 @@ Radically simplified so a 9-year-old and a brand-new adult can play, while keepi
 **SETTING**
 High fantasy with our own homebrew touches layered on — leaning high fantasy (taverns, dungeons, dragons, but our own places, factions, and characters).
 
-**SOURCE MATERIAL** (the official 5E rulebooks in the repo)
-Twelve official D&D 5E PDFs live in the repo root (PHB, DMG, Monster Manual, Xanathar's, Tasha's, Volo's, Mordenkainen's, Sword Coast, Ravnica, Eberron, Elemental Evil, Tortle Package). Use them as **reference and inspiration, NOT as a wholesale rules catalogue.** You're encouraged to reach into them when building stories, settings, factions, NPCs, monsters, and encounters — stay true to the *spirit* of real D&D — then translate everything to OUR simplified system ("roll a d20, add your modifier, beat this number"). Simplified mechanics always win; the books supply flavor and ideas, not the rules we play by.
+**SOURCE MATERIAL** (the D&D reference library in the repo)
+The repo root holds a reference library of official D&D PDFs, spanning editions:
+
+- **5E rulebooks (12):** PHB, DMG, Monster Manual, Xanathar's, Tasha's, Volo's, Mordenkainen's, Sword Coast, Ravnica, Eberron, Elemental Evil, Tortle Package.
+- **Classic modules & supplements (6):** B2 *Keep on the Borderlands* (Basic), T1 *The Village of Hommlet*, N1 *Against the Cult of the Reptile God*, *Book of Challenges: Dungeon Rooms, Puzzles and Traps* (3e), *Dungeon Delve* (4e), H1 *Keep on the Shadowfell* (4e).
+
+Use all of it as **reference and inspiration, NOT as a wholesale rules catalogue.** You're encouraged to reach into these when building stories, settings, towns, dungeons, factions, NPCs, monsters, and encounters — stay true to the *spirit* of real D&D — then translate everything to OUR simplified system ("roll a d20, add your modifier, beat this number"). Simplified mechanics always win; the books supply flavor, structure, and ideas, not the rules we play by. **Never import 3e/4e stat blocks, math, or rules as-is** — they're incompatible with our system by design. Mine them for the *good bones*: dungeon layouts, room logic, puzzles, traps, village texture, faction dynamics, and adventure structure.
 
 **DM PRIORITIES** (in order)
 1. Story & campaign arcs  2. NPCs & monsters  3. Encounters & combat (balanced for our simplified system). Live in-session help is welcome but secondary.
