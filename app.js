@@ -3,7 +3,7 @@
   'use strict';
 
   const {
-    ABILITIES, DC_TABLE, RACES, CLASSES, SPELLS, EQUIPMENT, ADVENTURING_PACK,
+    ABILITIES, DC_TABLE, RACES, CLASSES, SPELLS, EQUIPMENT, ADVENTURING_PACK, WEAPON_STATS,
     TRAITS, MOTIVATIONS, QUIZ, GLOSSARY, LEVEL, XP, PROFICIENCY, STANDARD_ARRAY,
     COMPANIONS, COMPANION_GROUPS, COMPANION_TIERS, COMPANION_ROLES,
   } = window.DATA;
@@ -1645,15 +1645,11 @@
 
         <div class="panel writeup">${referenceHTML(false)}</div>
 
-        <div class="panel writeup">
-          <div class="pr-section"><h3>Weapons &amp; Equipment</h3>
-            <ul>${resolvedEquipment().map(g => `<li>${escapeHtml(g)}</li>`).join('')}</ul>
-            <p class="pr-note">You also carry a pack: ${ADVENTURING_PACK.join(', ')}.</p>
-          </div>
-          ${limitedResources().length ? `<div class="pr-section"><h3>Daily Uses</h3>
+        ${limitedResources().length ? `<div class="panel writeup">
+          <div class="pr-section"><h3>Daily Uses</h3>
             <p class="pr-note">Tick one each time you use it; they all refill when you rest.</p>
-            <div class="uses-grid">${usesRowsHTML()}</div></div>` : ''}
-        </div>
+            <div class="uses-grid">${usesRowsHTML()}</div></div>
+        </div>` : ''}
 
         <div class="actions">
           <button class="btn btn-ghost" id="wuBack">← Back to my hero</button>
@@ -1864,6 +1860,37 @@
       if (cant.length) sp += `<ul>${cant.map(line).join('')}</ul>`;
       if (lev.length) sp += `<ul>${lev.map(line).join('')}</ul>`;
       html += `<div class="pr-section"><h3>Your Spells</h3>${sp}</div>`;
+    }
+    // Weapons & Equipment — per-item stats, derived from the chosen gear ids so
+    // they appear on the sheet AND in the DM OS with no re-share needed.
+    if (c) {
+      const eq = EQUIPMENT[c.id] || { auto: [], choices: [] };
+      const toHit = weaponAttackBonus();
+      const dmgMod = toHit - PROFICIENCY;                      // ability mod → damage bonus
+      const modStr = dmgMod >= 0 ? '+' + dmgMod : String(dmgMod);
+      const gear = [];
+      (eq.choices || []).forEach(ch => {
+        if (ch.key !== 'weapon') return;
+        const opt = ch.options.find(o => o.id === state.equipment[ch.key]); if (!opt) return;
+        const w = WEAPON_STATS[opt.id];
+        if (!w) { gear.push(`<li>${escapeHtml(opt.name)}</li>`); return; }
+        const bits = [`${w.die}${modStr} ${w.type}`];
+        if (w.range) bits.push(`range ${w.range}`);
+        if (w.note) bits.push(w.note);
+        gear.push(`<li><span class="pr-name">${escapeHtml(opt.name)}:</span> ${bits.join(' · ')} — <strong>+${toHit}</strong> to hit</li>`);
+      });
+      const armorLabel = (c.id === 'cleric')
+        ? ((state.equipment.armor === 'chain-mail' ? 'Chain Mail' : 'Scale Mail') + ' &amp; Shield')
+        : escapeHtml((c.armor && c.armor.label) || 'Unarmored');
+      gear.push(`<li><span class="pr-name">${armorLabel}:</span> <strong>AC ${computeAC()}</strong></li>`);
+      const also = (eq.auto || []).filter(x => !/armor/i.test(x));   // armor shown as the AC line above
+      (eq.choices || []).forEach(ch => {                              // non-weapon picks (e.g. a bard's instrument)
+        if (ch.key === 'weapon') return;
+        const opt = ch.options.find(o => o.id === state.equipment[ch.key]); if (opt) also.push(opt.name);
+      });
+      also.push('an adventuring pack (' + ADVENTURING_PACK.join(', ') + ')');
+      html += `<div class="pr-section"><h3>Weapons &amp; Equipment</h3><ul>${gear.join('')}</ul>` +
+              `<p class="pr-note">Also carrying: ${also.map(escapeHtml).join(', ')}.</p></div>`;
     }
     return html;
   }

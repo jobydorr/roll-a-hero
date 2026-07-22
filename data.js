@@ -716,6 +716,34 @@
   };
 
   /* ---------------------------------------------------------------------------
+     WEAPON STATS — die + damage type + range/notes for each weapon option in
+     EQUIPMENT above, keyed by its option id. The To-Hit number and the damage
+     bonus come from the hero's ability (weaponAttackBonus in app.js); these just
+     add the die, type, and any reach/range so a weapon reads like a real D&D
+     weapon on the sheet and in the DM OS. Simplified, but standard-flavored.
+  --------------------------------------------------------------------------- */
+  const WEAPON_STATS = {
+    'longsword-shield':    { die: '1d8',  type: 'slashing',    note: 'one-handed, with a shield (+2 Armor)' },
+    'greatsword':          { die: '2d6',  type: 'slashing',    note: 'two-handed' },
+    'battleaxe-shield':    { die: '1d8',  type: 'slashing',    note: 'one-handed, with a shield (+2 Armor)' },
+    'longbow':             { die: '1d8',  type: 'piercing',    range: '150 ft', note: 'two-handed bow' },
+    'rapier':              { die: '1d8',  type: 'piercing',    note: 'finesse' },
+    'shortsword':          { die: '1d6',  type: 'piercing',    note: 'finesse, light' },
+    'shortbow':            { die: '1d6',  type: 'piercing',    range: '80 ft' },
+    'quarterstaff':        { die: '1d6',  type: 'bludgeoning' },
+    'dagger':              { die: '1d4',  type: 'piercing',    range: '20 ft thrown', note: 'finesse, light' },
+    'mace':                { die: '1d6',  type: 'bludgeoning' },
+    'warhammer':           { die: '1d8',  type: 'bludgeoning' },
+    'greataxe':            { die: '1d12', type: 'slashing',    note: 'two-handed' },
+    'battleaxe-handaxe':   { die: '1d8',  type: 'slashing',    note: 'plus a handaxe (1d6, thrown 20 ft)' },
+    'two-handaxes':        { die: '1d6',  type: 'slashing',    note: 'one in each hand, each thrown 20 ft' },
+    'warhammer-shield':    { die: '1d8',  type: 'bludgeoning', note: 'one-handed, with a shield (+2 Armor)' },
+    'halberd':             { die: '1d10', type: 'slashing',    note: 'two-handed, reach — hits from 10 ft' },
+    'two-shortswords':     { die: '1d6',  type: 'piercing',    note: 'a blade in each hand (finesse, light)' },
+    'shortsword-shortbow': { die: '1d6',  type: 'piercing',    note: 'shortsword up close; shortbow 1d6 at 80 ft' },
+  };
+
+  /* ---------------------------------------------------------------------------
      STORY  (personality chips + motivations to spark imagination)
   --------------------------------------------------------------------------- */
   const TRAITS = [
@@ -1116,7 +1144,7 @@
   ];
 
   window.DATA = {
-    ABILITIES, DC_TABLE, RACES, CLASSES, SPELLS, EQUIPMENT, ADVENTURING_PACK,
+    ABILITIES, DC_TABLE, RACES, CLASSES, SPELLS, EQUIPMENT, ADVENTURING_PACK, WEAPON_STATS,
     TRAITS, MOTIVATIONS, QUIZ, GLOSSARY,
     COMPANIONS, COMPANION_GROUPS, COMPANION_TIERS, COMPANION_ROLES,
     LEVEL: 3, XP: 900, PROFICIENCY: 2,
