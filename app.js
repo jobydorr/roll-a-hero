@@ -20,7 +20,7 @@
       rollMethod: '4d6', pool: null, lastRoll: null, rollsUsed: 0, assigned: blankAssign(),
       race: null, raceChoice: {},
       klass: null, archetype: null, fightingStyle: null, classChoice: {}, archetypeChoice: {},
-      spells: [], equipment: {}, motiveShown: null,
+      spells: [], equipment: {}, motiveShown: null, magicItems: [],
       story: { name: '', traits: [], backstory: '', motivations: [] },
     };
   }
@@ -34,6 +34,7 @@
     if (!snap.raceChoice || typeof snap.raceChoice !== 'object') snap.raceChoice = {};
     if (!Array.isArray(snap.spells)) snap.spells = [];
     if (!snap.equipment || typeof snap.equipment !== 'object') snap.equipment = {};
+    if (!Array.isArray(snap.magicItems)) snap.magicItems = [];
     if (!snap.assigned) snap.assigned = blankAssign();
     if (!snap.story || typeof snap.story !== 'object') snap.story = { name: '', traits: [], backstory: '', motivations: [] };
     return snap;
@@ -1487,6 +1488,12 @@
           <h3 class="spell-section-head" style="margin-top:0;">${icon('check')} Already in your pack</h3>
           <ul class="trait-list" style="font-size:14px;">${eq.auto.map(i => `<li>${i}</li>`).join('')}<li>An adventuring pack: ${ADVENTURING_PACK.join(', ')}.</li></ul>
         </div>
+        <div class="panel">
+          <h3 class="spell-section-head" style="margin-top:0;">${icon('spell')} Magic Items</h3>
+          <p class="lead" style="font-size:14px;margin:-2px 0 10px;">Found a magic weapon or item on your adventures? Add it here. It shows on your sheet, and once you tap <strong>Share</strong> again it shows on your DM's screen too.</p>
+          <div id="magicList"></div>
+          <button type="button" class="btn btn-sm btn-ghost" id="addMagic">＋ Add a magic item</button>
+        </div>
         ${footer({ nextDisabled: !gearComplete(), nextLabel: 'See my hero! →' })}
       </div>`;
     const area = document.getElementById('choiceArea');
@@ -1503,6 +1510,29 @@
       });
       area.appendChild(p);
     });
+    // Magic items — a simple, free-text list the player edits as they loot.
+    const magicList = document.getElementById('magicList');
+    const paintMagic = () => {
+      magicList.innerHTML = '';
+      if (!state.magicItems.length) { magicList.innerHTML = '<p class="pr-note" style="margin:0 0 8px;">No magic items yet.</p>'; return; }
+      state.magicItems.forEach((mi, i) => {
+        const row = document.createElement('div'); row.className = 'magic-row';
+        row.innerHTML = `
+          <div class="magic-fields">
+            <input class="magic-name" maxlength="60" placeholder="Item name — e.g. Flametongue Dagger" value="${escapeHtml(mi.name || '')}">
+            <input class="magic-effect" maxlength="180" placeholder="What it does — e.g. +1 to hit &amp; damage, +1d6 fire" value="${escapeHtml(mi.effect || '')}">
+          </div>
+          <label class="magic-attune"><input type="checkbox" ${mi.attuned ? 'checked' : ''}> Attuned</label>
+          <button type="button" class="magic-del" title="Remove this item" aria-label="Remove">✕</button>`;
+        row.querySelector('.magic-name').oninput = (e) => { state.magicItems[i].name = e.target.value; };
+        row.querySelector('.magic-effect').oninput = (e) => { state.magicItems[i].effect = e.target.value; };
+        row.querySelector('.magic-attune input').onchange = (e) => { state.magicItems[i].attuned = e.target.checked; };
+        row.querySelector('.magic-del').onclick = () => { state.magicItems.splice(i, 1); paintMagic(); };
+        magicList.appendChild(row);
+      });
+    };
+    paintMagic();
+    document.getElementById('addMagic').onclick = () => { state.magicItems.push({ name: '', effect: '', attuned: false }); paintMagic(); };
     wireFooter(host);
   };
 
@@ -1891,6 +1921,12 @@
       also.push('an adventuring pack (' + ADVENTURING_PACK.join(', ') + ')');
       html += `<div class="pr-section"><h3>Weapons &amp; Equipment</h3><ul>${gear.join('')}</ul>` +
               `<p class="pr-note">Also carrying: ${also.map(escapeHtml).join(', ')}.</p></div>`;
+    }
+    // Magic items the player has added — shown on the sheet and, once re-shared, in the DM OS.
+    const magic = (state.magicItems || []).filter(mi => (mi.name || '').trim());
+    if (magic.length) {
+      const mrows = magic.map(mi => `<li><span class="pr-name">${escapeHtml(mi.name)}${mi.attuned ? ' <em>(attuned)</em>' : ''}:</span> ${escapeHtml(mi.effect || '')}</li>`).join('');
+      html += `<div class="pr-section"><h3>Magic Items</h3><ul>${mrows}</ul></div>`;
     }
     return html;
   }

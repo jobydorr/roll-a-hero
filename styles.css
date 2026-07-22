@@ -199,6 +199,20 @@ a.btn { display: inline-block; text-decoration: none; }
 .choice-card .cc-icon { font-size: 26px; color: var(--brown); }
 .choice-card .cc-name { font-family: var(--font-display); font-weight: 700; font-size: 19px; }
 .choice-card .cc-sub { font-size: 12.5px; color: var(--ink-soft); font-style: italic; margin-top: -2px; }
+
+/* Magic-items editor (Gear step) — a simple free-text list players add loot to. */
+.magic-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.magic-fields { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+.magic-name, .magic-effect {
+  width: 100%; box-sizing: border-box; font: inherit; font-size: 14px; padding: 7px 10px;
+  border: 2px solid var(--panel-edge); border-radius: 8px; background: rgba(255, 255, 255, 0.55); color: var(--ink);
+}
+.magic-name { font-weight: 600; }
+.magic-name:focus, .magic-effect:focus { outline: none; border-color: var(--gold); background: #fffaf0; }
+.magic-attune { flex: none; font-size: 13px; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; cursor: pointer; color: var(--ink-soft); }
+.magic-del { flex: none; background: transparent; border: 0; cursor: pointer; font-size: 17px; line-height: 1; color: var(--ink-soft); padding: 4px 6px; border-radius: 6px; }
+.magic-del:hover { color: var(--red-bright); background: rgba(178, 59, 46, 0.12); }
+@media (max-width: 560px) { .magic-row { flex-wrap: wrap; } .magic-attune { order: 3; } }
 .choice-card .cc-desc { font-size: 14px; color: var(--ink-soft); }
 .choice-card .cc-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
 .tag {
