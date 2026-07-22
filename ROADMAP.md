@@ -2,7 +2,27 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-07-14.*
+*Last updated: 2026-07-16.*
+
+> **▶ HANDOFF — start here (app-work session; everything committed, pushed & LIVE, working tree clean, local == `origin/main`).**
+>
+> **Workflow rules — read `CLAUDE.md`, this is load-bearing.** Git happens on the **Code side ONLY**. Cowork brainstorms and drafts files but runs **NO git** (no stage/commit/push): a flaky Cowork sandbox mount truncates writes *at commit time* and has corrupted committed files before. GitHub (`jobydorr/roll-a-hero`) is the source of truth — if the local repo looks scrambled, `git fetch` and reconcile toward `origin/main`. A **`pre-push` hook** (`.git/hooks/pre-push`, local to this clone) blocks pushing a truncated text file (empty / no trailing newline); override with `git push --no-verify` only after confirming. Root cause is now diagnosed: the **Cowork mount is the injector**; the local disk is healthy (fsck clean, real NTFS, not OneDrive). The `/tmp`-assemble workaround in the CAMPAIGN HANDOFF below is fine belt-and-suspenders on the Cowork side, but the rule is simply **Cowork drafts, Code commits.** See [[push-workflow]] in memory.
+>
+> **Current LIVE asset versions** (`dm.html` + `index.html`): app `v21`, data `v16`, styles `v17`, icons `v19`, dmos-store `v14`, dmos-ui `v32`, dmos.css `v24`, bestiary `v1`, campaign `v2`. Deploy = `git push` → GitHub Pages (~1 min); bump `?v=` on changed assets + hard-refresh (Ctrl+Shift+R).
+>
+> **Shipped this session (all LIVE, verified):**
+> - **Clean slate.** `campaign.js` cleared of the "Marrow's Rest" demo → `{ campaign:null, docs:[] }`. Joby is building his first real campaign ("The Folded World" — see the CAMPAIGN HANDOFF below) via Cowork-draft → Code-commit → **Tools → Sync from campaign**. To clear the demo from his browser he runs **Tools → New workspace** once.
+> - **DM OS tree/feed pass.** The story feed **indents** cards by depth (cards widened); a **distinct icon per doc type**; **story beats can nest documents** (never a folder); a tree **"unroll all"** control.
+> - **Buffs / debuffs / marks on the "at the table" roster.** Effect icon per combatant (green buff / red debuff / purple mark / gold mixed). The menu is **DATA-DRIVEN from each PC's sheet** — scans other PCs' chosen spells (by `data.js` spell `type`) + class features, so real picks (Bless, Hunter's Mark…) auto-appear (`heroGrants`/`EFFECT_META` in `dmos-ui.js`). Round counter ticks + auto-clears; rounds override on apply; generic DEBUFFS library for DM-inflicted conditions.
+> - **Weapon/armor stats + magic items** (commits `1693fcb`, `50027d6`). `data.js` `WEAPON_STATS`; a stat-bearing "Weapons & Equipment" section in **`referenceHTML()`** shows per-item damage/type/range + to-hit and armor AC on **both** the character sheet and the DM OS hero card (both render `referenceHTML`), derived from equipment ids → **no re-share**. `state.magicItems` (free-text, editable in the Gear step) renders in a "Magic Items" section → sheet + DM OS after the player re-Shares.
+> - **Git reliability:** diagnosed the mount truncation, installed the pre-push hook, and rewrote `CLAUDE.md` + `COWORK_INSTRUCTIONS.md` so they no longer tell Cowork to commit. **The CAMPAIGN HANDOFF's note to "leave Joby's uncommitted DM OS work alone" is RESOLVED** — that work is committed & live.
+>
+> **Open threads / pick up here:**
+> - **Backstory:** players report backstories that aren't showing; shared copies are empty even after recent re-shares. The code path is correct (saves/displays/shares), so it's most likely just not re-shared. **Definitive check:** a player hard-refreshes → opens their hero's Story step — text still there ⇒ re-Share; blank ⇒ a real bug to fix.
+> - **Leveling is now structurally required** by the campaign's escalating-mission design (see CAMPAIGN HANDOFF). Player material is still the #1 DM-partner blocker.
+> - Standing backlog: grow the SRD bestiary, the in-app "DM's Assistant", private DM area / accounts.
+>
+> **Party (live `dungeon-dads`):** 4 shared heroes — Century (Ben), Aramil Quingalor (Harlan), Sam Silkweed (Harlan, was Drew), and a NEW one **Jef Blackstone (Rowan)** with a full backstory. Aramil/Sam/Century have no written backstory in their shares yet.
 
 > **▶ CAMPAIGN HANDOFF — start here for DM-partner work (2026-07-14, revision five)**
 >
