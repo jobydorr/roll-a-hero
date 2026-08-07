@@ -2,7 +2,7 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-07-16.*
+*Last updated: 2026-08-07.*
 
 > **▶ HANDOFF — start here (app-work session; everything committed, pushed & LIVE, working tree clean, local == `origin/main`).**
 >
@@ -57,9 +57,9 @@
 >
 > **⚠ Tooling hazard, learned the hard way.** The Cowork workspace mount **silently truncates large writes** — it committed a damaged `CAMPAIGN.md` twice before it was caught. **Assemble long documents in `/tmp`, `cp` them into the repo, and verify with `cmp` and `wc -c` before committing.** The mount also cannot delete files, which corrupts git's index; if git reports `index file corrupt`, run with `GIT_INDEX_FILE=/tmp/rah-index`.
 >
-> **Uncommitted, by design.** Per `CLAUDE.md`, Cowork runs no git. `CAMPAIGN.md`, `DECISIONS.md`, and `ROADMAP.md` are edited and waiting; commit from the Code side.
+> **Committed as of 2026-08-07.** The campaign documents this block describes — `CAMPAIGN.md`, `DECISIONS.md`, and `ROADMAP.md` — went in on the Code side at `1f286c7`, so nothing here is still waiting. The standing rule is unchanged: per `CLAUDE.md`, Cowork drafts and runs no git, and the Code side commits.
 >
-> **Note on the working tree:** Joby has his own uncommitted DM OS work in progress (`dmos-ui.js`, `dmos-store.js`, `dmos.css`, `icons.js`, `dm.html`, `campaign.js`). **Leave it alone.** Only the campaign documents were touched this window.
+> **The working tree is clean.** The DM OS work this block previously told you to leave alone shipped on 2026-07-21 (`1693fcb`, `50027d6`), and local `main` is level with `origin/main`, so a session starting here begins from a clean checkout rather than from someone else's work in progress.
 
 > **▶ HANDOFF — start here (2026-07-10 — paused for context; everything below is pushed & LIVE)**
 >
