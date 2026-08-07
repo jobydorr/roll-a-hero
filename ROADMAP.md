@@ -24,6 +24,23 @@
 >
 > **Party (live `dungeon-dads`):** 4 shared heroes — Century (Ben), Aramil Quingalor (Harlan), Sam Silkweed (Harlan, was Drew), and a NEW one **Jef Blackstone (Rowan)** with a full backstory. Aramil/Sam/Century have no written backstory in their shares yet.
 
+> **▶ NEXT SESSION — the Surveyor species question (opened 2026-08-07, not yet resolved)**
+>
+> *Read `STYLE.md` and `CAMPAIGN.md` §1 before writing anything, then the Factions section (§ "The Surveyors" through "What Is True of Both"). The CAMPAIGN HANDOFF below is still accurate on everything except this question.*
+>
+> **The ask.** Joby wants far less human-versus-human violence in the campaign, because the table includes a nine- and ten-year-old and the fights are pretend battles they play out. His proposal is to make the Surveyors an openly alien race rather than human, homebrewed if nothing in the existing material fits. The goal is sound and the campaign should meet it; the specific proposal has a cost that has to be priced before anyone rewrites the bible.
+>
+> **What the proposal costs, stated plainly.** The Surveyors are currently human in four load-bearing places. They were the Foldwright's own order and deposed their own master, which is what makes the betrayal intimate rather than a conquest. They are knowingly diminished — they remember having known how to fold the world and have built a doctrine out of pretending otherwise — which is a human failure of pride. The rank-and-file Surveyor who saves a village on Tuesday and breaks up a rally on Thursday is the engine of the two-floors design and the reason the reveal lands as upsetting rather than clever. And the argument they never say aloud is that unfolding would require them to become men again, a line that stops meaning anything if they were never men. A straight species swap does not adjust the faction; it removes the campaign's moral architecture and leaves a species the party may hit without guilt, which is a different and much smaller story.
+>
+> **The separation that unlocks it.** The problem is about whom the party punches, but the proposed change operates on whom the story holds responsible, and those are separable. §237 already establishes that the rank and file do the fighting while the leadership does the deciding, so the surgical move is to change what the enforcement arm *is* and leave culpability where it sits. Two directions are worth developing, and they are genuinely different rather than two coats of paint.
+>
+> - **The law on the roads is not people.** Leadership stays human and stays guilty, while the armor the party actually fights is something measured into being out of sunsalt and folded material. The Tuesday-and-Thursday tragedy survives in a colder form, because a made thing saves the village and breaks the rally without ever choosing either, and the party can fight it freely.
+> - **The Fold changed them.** They were his order and a lifetime spent inside the creases unmade them, which keeps the intimate betrayal intact and makes "become men again" literal rather than figurative. The risk to weigh is that it converts the Surveyors into victims, and the campaign already has a victim-villain in the Foldwright, so the two may collide.
+>
+> **One trap to name and walk past.** "The ruling class is secretly a different species" is among the oldest allegory templates there is and it runs in ugly directions without being steered. Per the standing order in `CLAUDE.md`, notice it out loud rather than sliding into it.
+>
+> **Deliverable.** Settle the direction with Joby first, then revise the Factions section of `CAMPAIGN.md` and log the reasoning in `DECISIONS.md`. Consequences to the world follow from the choice and should be worked through rather than assumed, since the Surveyors touch sunsalt rationing, the wrinkle economy, Green Fields' staffing, and the ending's philosophical argument.
+
 > **▶ CAMPAIGN HANDOFF — start here for DM-partner work (2026-07-14, revision five)**
 >
 > *The builder handoff below is unchanged and still accurate; nothing shipped in the app this window. This was **all DM PARTNER work** — designing Campaign One.*

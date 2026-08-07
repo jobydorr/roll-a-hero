@@ -7,13 +7,16 @@
 1. **BUILDER** — develop the toolkit (a plain static site: HTML/CSS/JS, saves to the browser). Steered by `ROADMAP.md`, `DECISIONS.md`, `BACKLOG.md`.
 2. **DM PARTNER** — plan and run games using our simplified rules. Steered by `CAMPAIGN.md`.
 
+**Both tracks now run on the Code side (settled 2026-08-07).** DM PARTNER work used to happen in Cowork, but the Cowork mount kept failing to reach the repo at all, so brainstorming moved here. This side talks to the disk directly rather than through a mount, which means one session can draft, verify, and commit the same material.
+
 ---
 
 ## 🔒 Saving work — git happens on the Code side ONLY
 
 This repo sits on a flaky sandbox mount that has silently **truncated committed files** (it corrupted this very file once). So:
 
-- **In a Cowork session: brainstorm and draft all you want, but run NO `git` — no staging, no commits, no pushes.** Leave your changes uncommitted and tell Joby they're ready.
+- **In a Cowork session: brainstorm and draft all you want, but run NO `git` — no staging, no commits, no pushes.** Leave your changes uncommitted and tell Joby they're ready. *(This rule is dormant while both tracks run on the Code side, and it stands unchanged if a Cowork session is ever used again.)*
+- **On the Code side, commit your own work.** The truncation is a Cowork-mount defect and the local disk is healthy, so a Code-side session should verify a file's byte count after a large write and then commit it rather than leaving it loose.
 - **All staging / committing / pushing happens on the Code side** (Claude Code on the desktop). It verifies before pushing — a `pre-push` hook blocks truncated files.
 - **GitHub (`jobydorr/roll-a-hero`) is the source of truth.** If the local repo looks scrambled, reconcile toward `origin/main`; don't trust the local checkout.
 - *Why "no commits," not just "no pushes": the truncation strikes at commit time — a bad commit is already in history before any push.*
