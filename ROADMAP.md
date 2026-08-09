@@ -37,6 +37,8 @@
 > **What this supersedes in the CAMPAIGN HANDOFF below:** its four-sentence story; the "invented a tyrant to serve" framing (the throne now holds the First Surveyor wearing the Foldwright's name); "cast the Surveyor leader" (done — merged into the false Foldwright); and the cinch (now the jam). Everything else there still stands: recruitment shape, Tobin's conversion as the door, the opening scene, the leveling dependency, and the #1 blocker — **the player material — which is unchanged and still outranks everything.**
 >
 > **New questions for Joby, from `CAMPAIGN.md` §8:** what would it take to unconvince the First Surveyor (Q7), does any rank-and-file Surveyor defect to the party's side (Q14), and what happens to the invaders if the heroes win (Q16).
+>
+> **`ACT1.md` now exists (2026-08-09) — the Act One runbook and staging ground** (scenes, encounters, cast sheets, props, clocks, state of play; sections mirror the DM OS doc types for later transfer to `campaign.js`). It carries the homework protocol for collecting each hero's reason-for-coming (Joby's line at the top of session one, bounded reason cards for the kids, Wenna's interview as the in-fiction due date). Current work: brainstorming the set and setting of the opening ceremony scene.
 
 > **▶ CAMPAIGN HANDOFF — start here for DM-partner work (2026-07-14, revision five)**
 >
