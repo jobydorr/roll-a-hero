@@ -2,11 +2,23 @@
 
 *What this is:* a short record of the important calls we made and **why** — especially the moments the project changed direction. A pivot is never "lost": come back here to see what we were thinking.
 
-*Newest first. Last updated: 2026-08-07.*
+*Newest first. Last updated: 2026-08-10.*
 
 ---
 
-### 2026-08-07 (latest) — Campaign One, revision eight: the Hearthspire opening, the faded go into the towers, and the Mending gets its mechanics
+### 2026-08-10 (latest) — Campaign One, revision nine: Lastlight locked, the Rectors, and the canyon canon absorbed
+
+Two working sessions on 2026-08-09 and 2026-08-10 carried the campaign from bible to table prep. `ACT1.md` now exists as the Act One runbook — scenes, encounters, cast sheets, props, clocks, and state of play, structured to mirror the DM OS document types for eventual transfer to `campaign.js` — and the opening scene is locked in both documents. This entry records the calls.
+
+**The opening scene (LASTLIGHT) is locked, with two changes of Joby's.** First, Finch does not ride a lift: the lighting works by offering — a chamber at the Hearthspire's foot takes the reliquary of the Cinder Draw's last crust, and the boy sets it in while the city watches. The consequence is staging gold: when the pull finds no slack, the tear rips *down the tower's face* from the broken crown to the chamber, which puts Finch nearest the wound, lets him outrun the falling clock tower by a step in front of ten thousand people, and hands him to the first monster through — the campaign's inciting capture, witnessed by everyone. Second, the Surveyors' power is shown early: the ceremony is led by **the Rectors** (working name — a rector is a straightener, one who rules lines, which is the doctrine in a word), the order's ritual grade, who close the canyon at the ceremony and join the disaster as protectors. The staging rule that keeps them from eating the table: **Rectors are spectacle, not allies with dice** — they fold a falling slab away above the grandstand and pinch a street shut to pen the worst of it, far off, and they never roll, never enter the party's corner, and never save anyone the heroes could have saved. That is the no-DMPC law applied to a fight, and it makes their display an education rather than an upstaging.
+
+**The canyon canon went into the bible.** The delta list staged in `ACT1.md` §8 on 2026-08-09 was absorbed on 2026-08-10: a Draw is a canyon folded into itself and driven down (a crease deepening and drawing in more paper), structure-lined and deeper than its rim admits; the land around one stays mostly healthy, with the harm surfacing as pockets of gray and fouled wells; cities are long and thin along their creases, and a great city is almost always paired with a Draw because the crease that made one made both; the healing beat closes the canyon and leaves the scar-line; the white wagons drive to a far Reactor (killing the wagon-ruts plant in the First Door section and opening a future far-tower rescue mapped by Hettie's census); tear monsters are the classic bestiary (SRD via `bestiary.js`, original analogues for product-identity creatures, original prose always) and they take captives, which adds the sixth session-zero instrument — *the one you couldn't reach* — so the fight itself writes the rescue list.
+
+**The transition collection is chosen, not detailed.** From the five brainstormed shapes, Joby picked the Badge, the Empty Coffin, and the Paper Bird; the Slips and the Recantation drop to texture. He has alteration ideas for all three — the Paper Bird especially — so the shapes are recorded as present and deliberately unbuilt, and sequencing is open. The instruction of record: lock the first encounter before moving further ahead.
+
+**Next, in agreed order:** Encounter 1's build (monster family with a capture move, the scripted Finch opener, fairground terrain, staged saves and losses, Rector display beats as read-aloud), then locked NPC stats (Wenna; Tobin as the Act One healer; wardens), then the wreck, then props, then the DM OS push.
+
+### 2026-08-07 — Campaign One, revision eight: the Hearthspire opening, the faded go into the towers, and the Mending gets its mechanics
 
 Four clarifications from Joby, arriving on the heels of revision seven and applied the same day. `CAMPAIGN.md` is the state; this records the reasoning, and in particular the answers chosen for the two questions Joby posed openly.
 
