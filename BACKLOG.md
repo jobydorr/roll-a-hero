@@ -4,7 +4,20 @@
 
 *Tags:* 🟢 can build anytime (fits today's browser-only app) · 🟠 bigger feature, needs design · 🔵 may need the "backend vs. browser-only" question answered first.
 
-*Last updated: 2026-07-09.*
+*Last updated: 2026-08-10.*
+
+---
+
+## 🟠 Insert existing NPC / creature (raised by Joby, 2026-08-10)
+
+**The want:** when choosing "new NPC" or "new creature" in the DM OS, a way to pick from the NPCs and creatures that already exist in the workspace instead of creating a duplicate sheet.
+
+**Design direction (settled in discussion, not yet built):**
+- **No special folder type is needed.** A doc's `type` is already the registry: the store can enumerate every `npc` and `creature` doc regardless of where it's filed (`STORE.docs().filter(...)`), so the OS can surface the cast from anywhere in the tree. The master **NPCs** and **Monsters** folders (shipped in `campaign.js` v4) are a filing *convention* — one sheet per being, the single source of truth — not a mechanism.
+- **UX:** every ＋ menu that offers *New NPC* / *New creature* gains a second entry — *Existing NPC…* / *Existing creature…* — opening a searchable picker (same widget pattern as the story map's "Connect to…" picker and the 📖 Look up modal) listing all workspace docs of that type wherever they live.
+- **Choosing one inserts a reference, not a copy:** a `[[id|Name]]` wikilink at the point of use — appended to a folder's body as a "Cast:" line when invoked from a folder's ＋, or inserted into the focused doc's body otherwise. Hover-peek and **＋ To the table / ＋ Initiative** already complete the loop from link → sheet → roster, so no new plumbing is needed downstream.
+- **Rejected alternative:** per-appearance "reference stub" docs — they duplicate truth and clutter the tree.
+- **Cheap optional rider:** a "Cast" view (all `npc` + `creature` docs grouped by type) riding the same enumeration.
 
 ---
 
