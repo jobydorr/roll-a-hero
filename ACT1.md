@@ -77,6 +77,8 @@ The chosen collection, in Joby's words "the collection for now" — each shape i
 
 *Every fight follows the minimum viable rule: one terrain feature someone can interact with, and one moment designed for a specific hero. Kid-simple stat blocks; complexity budget of three to five turns.*
 
+**The table (the standing tuning reference, per Joby 2026-08-10):** four level-3 heroes — a bard, a fighter, and two rangers (the live `dungeon-dads` party). Level 3 is what the builder produces; every encounter in this campaign is tuned for these four. If someone misses a session, the DM lever is to quietly shed one snatcher per empty chair, not to retune.
+
 | # | Encounter | Type | Where it runs | Status |
 |---|---|---|---|---|
 | 1 | Lastlight — the things through the tear | combat (initiative, opt-in) | Scene 1 | scene LOCKED; stat blocks to build next |

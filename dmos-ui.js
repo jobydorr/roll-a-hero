@@ -2304,6 +2304,17 @@
     }
     items += DOC_MENU_TYPES.map(t =>
       menuItem('create-child', { type: t, parent: parent }, DOC_TYPES[t].icon, 'New ' + DOC_TYPES[t].label.toLowerCase())).join('');
+    // Reference an existing sheet instead of creating a duplicate: link an NPC
+    // or creature into this container as a "Cast:" line. Offered only inside a
+    // container (the root has no body to hold the line), and only when at least
+    // one sheet of that type exists somewhere in the workspace.
+    if (parent) {
+      const hasAny = (t) => STORE.docs().some(d => d.type === t && !STORE.isInNotebook(d.id));
+      let extra = '';
+      if (hasAny('npc'))      extra += menuItem('cast-open', { kind: 'npc',      parent: parent }, DOC_TYPES.npc.icon,      'Existing NPC…');
+      if (hasAny('creature')) extra += menuItem('cast-open', { kind: 'creature', parent: parent }, DOC_TYPES.creature.icon, 'Existing creature…');
+      if (extra) items += '<div class="menu-sep"></div>' + extra;
+    }
     openMenu(el, items);
   };
 
@@ -2329,6 +2340,68 @@
     gotoDoc(d.id); mark('tree');
     announce('Added a new ' + (DOC_TYPES[type] ? DOC_TYPES[type].label.toLowerCase() : 'document') + '.');
   };
+
+  /* "Existing NPC…" / "Existing creature…" — reference a sheet that already
+     lives somewhere in the workspace (usually the NPCs / Monsters master
+     folders) instead of creating a duplicate. Picking one appends a
+     "Cast: [[id|Title]]" line to the container's body — a link, not a copy —
+     so hover-peek and ＋ To the table keep working from the one true sheet.
+     The doc's TYPE is the registry: the picker lists every sheet of that type
+     no matter where it is filed. */
+  let castKind = 'npc', castParent = null;
+  ACT['cast-open'] = (el) => { closeModal(); openCastPicker(el.dataset.kind, el.dataset.parent); };
+  ACT['cast-search:input'] = (el) => renderCastList(el.value);
+  ACT['cast-pick'] = (el) => {
+    const d = STORE.get(el.dataset.doc), f = STORE.get(castParent);
+    if (!d || !f) return;
+    const link = '[[' + d.id + '|' + d.title + ']]';
+    let body = f.body || '';
+    const m = body.match(/^Cast: .*$/m);
+    body = m ? body.replace(m[0], m[0] + ', ' + link)
+             : (body ? body + '\n\n' : '') + 'Cast: ' + link;
+    pending.delete(f.id);            // drop any stale debounced body write for this doc
+    STORE.patch(f.id, { body: body });
+    closeModal();
+    const open = ui().open; open[f.id] = true; STORE.setUi({ open });
+    if (isFolderType(f)) gotoFolder(f.id); else gotoDoc(f.id);
+    announce('Linked ' + d.title + ' into “' + f.title + '”.');
+  };
+  function openCastPicker(kind, parentId) {
+    const f = STORE.get(parentId); if (!f) return;
+    castKind = kind; castParent = parentId;
+    const T = DOC_TYPES[kind] || DOC_TYPES.npc;
+    openModal(`
+      <div class="modal-title">Add an existing ${esc(T.label.toLowerCase())} to “${esc(f.title)}”</div>
+      <p class="modal-hint">This links the sheet rather than moving or copying it — the one true sheet stays where it lives. Hover the link for a peek; open it for ＋ To the table.</p>
+      <div class="search-box"><input type="text" id="castSearch" data-act="cast-search" placeholder="Search by name…" autocomplete="off" spellcheck="false"></div>
+      <div class="connect-list" id="castList"></div>`, 'modal-wide modal-search');
+    renderCastList('');
+    const inp = ROOT.modal.querySelector('#castSearch'); if (inp) inp.focus();
+  }
+  function renderCastList(query) {
+    const box = ROOT.modal.querySelector('#castList'); if (!box) return;
+    const f = STORE.get(castParent); if (!f) return;
+    const body = f.body || '';
+    const linked = (id) => body.indexOf('[[' + id + '|') !== -1 || body.indexOf('[[' + id + ']]') !== -1;
+    const q = query.trim().toLowerCase();
+    let list = STORE.docs().filter(d =>
+      d.type === castKind && !STORE.isInNotebook(d.id) && d.id !== castParent && !linked(d.id));
+    if (q) list = list.filter(d => d.title.toLowerCase().includes(q));
+    const label = (DOC_TYPES[castKind] || {}).label || 'sheet';
+    if (!list.length) {
+      box.innerHTML = `<p class="modal-hint">${q
+        ? 'No ' + esc(label.toLowerCase()) + ' matches “' + esc(query.trim()) + '”.'
+        : 'Every ' + esc(label.toLowerCase()) + ' in the workspace is already linked here.'}</p>`;
+      return;
+    }
+    box.innerHTML = list.slice(0, 60).map(d => {
+      const path = pathLabel(d.id);
+      return `<button class="search-row connect-row" data-act="cast-pick" data-doc="${d.id}">
+        <span class="search-icon">${icon(DOC_TYPES[d.type].icon)}</span>
+        <span class="search-main"><span class="search-title">${esc(d.title)} <span class="search-area">${esc(DOC_TYPES[d.type].label)}${path ? ' · ' + esc(path) : ''}</span></span></span>
+      </button>`;
+    }).join('');
+  }
 
   ACT['delete-doc'] = (el) => {
     const d = STORE.get(el.dataset.doc);

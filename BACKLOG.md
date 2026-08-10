@@ -8,11 +8,13 @@
 
 ---
 
-## 🟠 Insert existing NPC / creature (raised by Joby, 2026-08-10)
+## ✅ Insert existing NPC / creature (raised by Joby 2026-08-10 — SHIPPED same day, dmos-ui `v33`)
 
 **The want:** when choosing "new NPC" or "new creature" in the DM OS, a way to pick from the NPCs and creatures that already exist in the workspace instead of creating a duplicate sheet.
 
-**Design direction (settled in discussion, not yet built):**
+**As built:** every container's ＋ menu now ends with **Existing NPC…** / **Existing creature…** (each entry appears only when at least one sheet of that type exists anywhere in the workspace; hidden at the root, which has no body to hold a line). Picking opens a searchable picker of every sheet of that type wherever it is filed, and choosing one appends a `Cast: [[id|Title]]` line to the container's body — subsequent picks extend the same line, already-linked sheets are excluded from the picker, and the link is live (hover-peek, jump, ＋ To the table from the sheet). Verified end-to-end through the delegated UI in a local DM OS. Code: `cast-open` / `cast-pick` / `cast-search:input` + `openCastPicker` / `renderCastList` in `dmos-ui.js`, beside `create-child`; reuses the connect-picker's modal classes, so no CSS changes.
+
+**Design direction (settled in discussion):**
 - **No special folder type is needed.** A doc's `type` is already the registry: the store can enumerate every `npc` and `creature` doc regardless of where it's filed (`STORE.docs().filter(...)`), so the OS can surface the cast from anywhere in the tree. The master **NPCs** and **Monsters** folders (shipped in `campaign.js` v4) are a filing *convention* — one sheet per being, the single source of truth — not a mechanism.
 - **UX:** every ＋ menu that offers *New NPC* / *New creature* gains a second entry — *Existing NPC…* / *Existing creature…* — opening a searchable picker (same widget pattern as the story map's "Connect to…" picker and the 📖 Look up modal) listing all workspace docs of that type wherever they live.
 - **Choosing one inserts a reference, not a copy:** a `[[id|Name]]` wikilink at the point of use — appended to a folder's body as a "Cast:" line when invoked from a folder's ＋, or inserted into the focused doc's body otherwise. Hover-peek and **＋ To the table / ＋ Initiative** already complete the loop from link → sheet → roster, so no new plumbing is needed downstream.
