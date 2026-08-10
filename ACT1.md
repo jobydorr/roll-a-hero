@@ -145,7 +145,7 @@ The chosen collection, in Joby's words "the collection for now" — each shape i
 - **Player reasons collected:** none yet — homework protocol not yet run.
 - **Keepsakes named:** none yet.
 - **Sessions played:** none. The campaign has not opened.
-- **Scene 1 is LOCKED** (2026-08-10) and mirrored in the bible's §6 opening; ready to stage into the DM OS (`campaign.js`) when Joby gives the word.
+- **Scene 1 is LOCKED** (2026-08-10), mirrored in the bible's §6 opening, and **PUSHED to the DM OS** — the runnable draft (read-alouds, beat sequence, staging rules, session-zero machinery) lives in `campaign.js` (v3) as the `sc-lastlight` scene doc under the Act One folder, with NPC docs for Wenna, Tobin, Finch, and Hettie. Verified rendering in a local DM OS. Joby: hard-refresh `dm.html` (Ctrl+Shift+R) and run **Tools → Sync from campaign** to pull it into your workspace.
 - **Decisions due from Joby:** alteration ideas for the three chosen transition shapes (the Badge, the Empty Coffin, the Paper Bird) and their sequencing; the Rectors' name and faces; whether "Lastlight," "Finch," and the other working names stand.
 - **Build queue (agreed order):** Encounter 1 — monster family stat blocks, the scripted Finch opener, terrain, staged saves and losses, Rector display beats → NPC stats locked (Wenna, Tobin as Act One healer, wardens) → Scene 3 (the wreck) → reason cards and the folded-sheet prop → DM OS push.
 
