@@ -43,6 +43,7 @@
   let campaignStatus = null;      // result of the last loadCampaign()
   let peekTimer = 0, peekHideTimer = 0, peekFor = null;
   let focusBodyOnPaint = null;    // doc id whose body editor should take focus once
+  let focusFieldOnPaint = null;   // "<docId> <fieldKey>" whose field editor should take focus once
   let focusPadOnPaint = false;    // focus the quick-note pad on its next paint
   let linkMarkerEl = null;        // the floating "🔗 Link" button over a body selection
   let linkSel = null;             // { docId, start, end, value, text } captured at selection time
@@ -191,8 +192,31 @@
     d.conflict ? 'c' : '',
     d.parkedEdit ? 'p' : '',
     ui().editingBody === d.id ? 'e' : '',
+    editingFieldOf(d.id) ? 'f' + editingFieldOf(d.id) : '',
     'd' + (depth || 0),   // indentation is presentation-only; re-focusing changes it without moving a rev
   ].join('|');
+
+  /* Which field of `id` is open in its editor, if any. Fields hold [[links]] too,
+     so like the body they read as rendered prose and only become a textarea when
+     you click into one — otherwise a link in a field is stuck as raw brackets. */
+  /* A card's headers. Each doc type ships a template, and that template is what
+     a card shows until the DM rearranges it — at which point the arrangement is
+     stored on the DOCUMENT as [key, label] pairs and the template stops applying
+     to it. An empty array is therefore meaningful (a card with no headers at
+     all) and is not the same as null (never rearranged). Removing a header only
+     drops the pair; the text stays in d.fields, so putting the header back
+     brings its writing back with it. */
+  const fieldDefsOf = (d) => Array.isArray(d.fieldDefs)
+    ? d.fieldDefs
+    : ((DOC_TYPES[d.type] || {}).fields || []);
+
+  const FIELD_SEP = '::';   // no doc id or field key contains it
+  const editingFieldOf = (id) => {
+    const f = ui().editingField;
+    const head = id + FIELD_SEP;
+    return (f && f.slice(0, head.length) === head) ? f.slice(head.length) : null;
+  };
+  const fieldKeyOf = (id, k) => id + FIELD_SEP + k;
 
   /* One sheet, one card, one place. A document renders identically wherever the
      feed reaches it, because the feed only ever reaches it where it is filed. */
@@ -230,12 +254,26 @@
                 title="Move to trash (never really deleted)">✕</button>
       </header>
       ${T.statBlock ? statBlockFieldsHTML(d, T) : ''}
-      ${T.fields.length ? `<div class="doc-fields">${T.fields.map(([k, prompt]) => `
-        <label class="doc-field">
-          <span class="doc-field-label">${esc(prompt)}</span>
-          <textarea rows="1" data-act="edit-field" data-doc="${d.id}" data-field="${k}"
-                    placeholder="…">${esc((d.fields || {})[k] || '')}</textarea>
-        </label>`).join('')}</div>` : ''}
+      <div class="doc-fields">${fieldDefsOf(d).map(([k, prompt]) => {
+        const val = (d.fields || {})[k] || '';
+        return `<div class="doc-field" data-field-key="${esc(k)}">
+          <div class="doc-field-head">
+            <span class="field-handle" data-act="field-drag" data-doc="${d.id}" data-field="${esc(k)}"
+                  title="Drag to reorder this header" aria-hidden="true">⠿</span>
+            <button class="doc-field-label" data-act="field-rename" data-doc="${d.id}" data-field="${esc(k)}"
+                    title="Rename this header">${esc(prompt)}</button>
+            <button class="field-x" data-act="field-remove" data-doc="${d.id}" data-field="${esc(k)}"
+                    title="Remove this header from this card">✕</button>
+          </div>
+          ${editingFieldOf(d.id) === k
+            ? `<textarea rows="1" class="doc-field-edit" data-act="edit-field" data-doc="${d.id}" data-field="${esc(k)}"
+                         placeholder="Write here. Type [[ to link another sheet.">${esc(val)}</textarea>`
+            : `<div class="doc-field-read" data-act="open-field" data-doc="${d.id}" data-field="${esc(k)}">${
+                val ? linkify(val) : '<p class="doc-empty">Click to write…</p>'}</div>`}
+        </div>`;
+      }).join('')}
+        <button class="field-add" data-act="field-add" data-doc="${d.id}">＋ Add a header</button>
+      </div>
       <div class="doc-bodywrap">
         ${editingBody
           ? `<textarea class="doc-body-edit" data-act="edit-body" data-doc="${d.id}"
@@ -392,6 +430,11 @@
     if (focusBodyOnPaint) {
       const ta = host.querySelector(`[data-doc-id="${focusBodyOnPaint}"] .doc-body-edit`);
       focusBodyOnPaint = null;
+      if (ta) { ta.focus(); ta.selectionStart = ta.selectionEnd = ta.value.length; }
+    }
+    if (focusFieldOnPaint) {
+      const ta = host.querySelector('.doc-field-edit');
+      focusFieldOnPaint = null;
       if (ta) { ta.focus(); ta.selectionStart = ta.selectionEnd = ta.value.length; }
     }
   };
@@ -2206,16 +2249,232 @@
   ACT['edit-title:input'] = (el) => patchDebounced(el.dataset.doc, { title: el.value });
   ACT['edit-field:input'] = (el) => {
     autosize(el);
-    patchDebounced(el.dataset.doc, { fields: { [el.dataset.field]: el.value } });
+    writeEditor(el);
+    linkAutoScan(el);
   };
-  ACT['edit-body:input'] = (el) => { autosize(el); patchDebounced(el.dataset.doc, { body: el.value }); };
-  ACT['edit-body:keydown'] = (el, e) => { if (e.key === 'Escape') { e.stopPropagation(); el.blur(); } };
+  ACT['edit-body:input'] = (el) => { autosize(el); writeEditor(el); linkAutoScan(el); };
+  ACT['edit-field:keydown'] = (el, e) => editorKeydown(el, e);
+  ACT['edit-body:keydown'] = (el, e) => editorKeydown(el, e);
+
+  // The two editors write to different places on the doc; everything else about
+  // them — autosize, [[ completion, Escape — is identical.
+  function writeEditor(el) {
+    if (el.dataset.field) patchDebounced(el.dataset.doc, { fields: { [el.dataset.field]: el.value } });
+    else patchDebounced(el.dataset.doc, { body: el.value });
+  }
+  function editorKeydown(el, e) {
+    if (linkAutoKeydown(e)) return;
+    if (e.key === 'Escape') { e.stopPropagation(); el.blur(); }
+  }
+
+  /* ------------------------ Type [[ to link a sheet ----------------------- */
+  /* A [[wikilink]] is now the only way one document refers to another, so it has
+     to be typeable rather than memorized. Typing `[[` in any body or field
+     editor opens a list of documents filtered by whatever you type after it;
+     choosing one rewrites `[[what you typed` as `[[id|Title]]`. The older
+     select-text-then-click-Link marker still works and is better when the words
+     are already written; this is for writing the reference as you go. */
+  let linkAuto = null;            // { ta, start, items, index, el }
+  const RX_LINK_OPEN = /\[\[([^\]\[\n]*)$/;
+
+  function linkAutoMatches(q, selfId) {
+    const s = q.trim().toLowerCase();
+    const list = STORE.docs().filter(d => d.id !== selfId);
+    const hit = s ? list.filter(d => d.title.toLowerCase().includes(s)) : list;
+    return hit.sort((a, b) => {
+      // Whatever starts with what you typed is what you meant.
+      const ap = a.title.toLowerCase().indexOf(s) === 0 ? 0 : 1;
+      const bp = b.title.toLowerCase().indexOf(s) === 0 ? 0 : 1;
+      return (ap - bp) || a.title.localeCompare(b.title);
+    }).slice(0, 8);
+  }
+
+  function linkAutoScan(ta) {
+    const m = RX_LINK_OPEN.exec(ta.value.slice(0, ta.selectionStart));
+    if (!m) { linkAutoClose(); return; }
+    const items = linkAutoMatches(m[1], ta.dataset.doc);
+    if (!items.length) { linkAutoClose(); return; }
+    const keep = linkAuto && linkAuto.ta === ta ? Math.min(linkAuto.index, items.length - 1) : 0;
+    linkAutoRender(ta, m.index, items, keep);
+  }
+
+  function linkAutoRender(ta, start, items, index) {
+    const first = !linkAuto;
+    if (first) {
+      const el = document.createElement('div');
+      el.className = 'link-auto';
+      document.body.appendChild(el);
+      linkAuto = { ta: ta, start: start, items: items, index: index, el: el };
+      document.addEventListener('mousedown', linkAutoOutside, true);
+      ROOT.feed.addEventListener('scroll', linkAutoClose, { passive: true });
+    }
+    Object.assign(linkAuto, { ta: ta, start: start, items: items, index: index });
+    linkAuto.el.innerHTML = items.map((d, i) => `
+      <button type="button" class="link-auto-row${i === index ? ' is-on' : ''}" data-i="${i}">
+        <span class="link-auto-icon">${icon(DOC_TYPES[d.type].icon)}</span>
+        <span class="link-auto-title">${esc(d.title)}</span>
+        <span class="link-auto-type">${esc(DOC_TYPES[d.type].label)}</span>
+      </button>`).join('');
+    // mousedown, not click: the textarea must never lose focus to this list.
+    linkAuto.el.querySelectorAll('.link-auto-row').forEach(b => {
+      b.addEventListener('mousedown', (ev) => { ev.preventDefault(); linkAutoPick(+b.dataset.i); });
+    });
+    const p = caretPoint(ta);
+    const w = linkAuto.el.offsetWidth, h = linkAuto.el.offsetHeight;
+    const below = p.y + p.lh + h + 8 < window.innerHeight;
+    linkAuto.el.style.left = Math.max(8, Math.min(p.x, window.innerWidth - w - 8)) + 'px';
+    linkAuto.el.style.top = (below ? p.y + p.lh + 4 : p.y - h - 4) + 'px';
+  }
+
+  function linkAutoKeydown(e) {
+    if (!linkAuto) return false;
+    const n = linkAuto.items.length;
+    if (e.key === 'ArrowDown') { e.preventDefault(); linkAutoMove((linkAuto.index + 1) % n); return true; }
+    if (e.key === 'ArrowUp')   { e.preventDefault(); linkAutoMove((linkAuto.index - 1 + n) % n); return true; }
+    if (e.key === 'Enter' || e.key === 'Tab') { e.preventDefault(); linkAutoPick(linkAuto.index); return true; }
+    if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); linkAutoClose(); return true; }
+    return false;
+  }
+  function linkAutoMove(i) {
+    linkAuto.index = i;
+    linkAuto.el.querySelectorAll('.link-auto-row').forEach((b, j) => b.classList.toggle('is-on', j === i));
+  }
+
+  function linkAutoPick(i) {
+    if (!linkAuto) return;
+    const ta = linkAuto.ta, start = linkAuto.start, d = linkAuto.items[i];
+    if (!d) return;
+    const text = '[[' + d.id + '|' + d.title + ']]';
+    const before = ta.value.slice(0, start), after = ta.value.slice(ta.selectionStart);
+    linkAutoClose();
+    ta.value = before + text + after;
+    ta.selectionStart = ta.selectionEnd = before.length + text.length;
+    autosize(ta);
+    writeEditor(ta);
+    ta.focus();
+    announce('Linked to ' + d.title + '.');
+  }
+
+  function linkAutoOutside(e) { if (linkAuto && !linkAuto.el.contains(e.target)) linkAutoClose(); }
+  function linkAutoClose() {
+    if (!linkAuto) return;
+    document.removeEventListener('mousedown', linkAutoOutside, true);
+    ROOT.feed.removeEventListener('scroll', linkAutoClose);
+    linkAuto.el.remove();
+    linkAuto = null;
+  }
+
+  /* Where the caret sits on screen. A textarea exposes no such API, so measure it
+     with a hidden div carrying the textarea's own metrics and the text up to the
+     caret — the standard trick, and the only one that survives wrapping. */
+  function caretPoint(ta) {
+    const r = ta.getBoundingClientRect();
+    const cs = getComputedStyle(ta);
+    const mirror = document.createElement('div');
+    ['fontFamily', 'fontSize', 'fontWeight', 'fontStyle', 'letterSpacing', 'lineHeight',
+     'textTransform', 'wordSpacing', 'textIndent', 'paddingTop', 'paddingRight',
+     'paddingBottom', 'paddingLeft', 'borderTopWidth', 'borderLeftWidth',
+     'boxSizing'].forEach(k => { mirror.style[k] = cs[k]; });
+    Object.assign(mirror.style, {
+      position: 'absolute', visibility: 'hidden', whiteSpace: 'pre-wrap',
+      overflowWrap: 'break-word', top: '0', left: '0', width: r.width + 'px',
+    });
+    mirror.textContent = ta.value.slice(0, ta.selectionStart);
+    const dot = document.createElement('span');
+    dot.textContent = '​';
+    mirror.appendChild(dot);
+    document.body.appendChild(mirror);
+    const x = r.left + dot.offsetLeft - ta.scrollLeft;
+    const y = r.top + dot.offsetTop - ta.scrollTop;
+    mirror.remove();
+    return { x: x, y: y, lh: parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.4 };
+  }
 
   ACT['open-body'] = (el) => {
     focusBodyOnPaint = el.dataset.doc;
     STORE.setUi({ editingBody: el.dataset.doc });
     mark('feed');
   };
+
+  ACT['open-field'] = (el) => {
+    focusFieldOnPaint = fieldKeyOf(el.dataset.doc, el.dataset.field);
+    STORE.setUi({ editingField: focusFieldOnPaint });
+    mark('feed');
+  };
+
+  /* ------------------------- The card's own headers ----------------------- */
+  // A key derived from the label, so a header removed and re-added by the same
+  // name finds its old writing again. Unique within THIS card's headers.
+  function newFieldKey(d, label) {
+    const base = (String(label).toLowerCase().replace(/[^a-z0-9]+/g, '_')
+      .replace(/^_+|_+$/g, '') || 'header').slice(0, 24);
+    const taken = new Set(fieldDefsOf(d).map(([k]) => k));
+    if (!taken.has(base)) return base;
+    let i = 2; while (taken.has(base + '_' + i)) i++;
+    return base + '_' + i;
+  }
+
+  ACT['field-add'] = (el) => {
+    const d = STORE.get(el.dataset.doc); if (!d) return;
+    openTextPromptModal({
+      title: 'New header', placeholder: 'Header name — e.g. Complications', submitLabel: 'Add',
+      onSubmit: (name) => {
+        const doc = STORE.get(d.id); if (!doc) return;
+        const defs = fieldDefsOf(doc).concat([[newFieldKey(doc, name), name]]);
+        STORE.patch(doc.id, { fieldDefs: defs });
+        announce('Added the header “' + name + '”.');
+      },
+    });
+  };
+
+  ACT['field-rename'] = (el) => {
+    const d = STORE.get(el.dataset.doc); if (!d) return;
+    const key = el.dataset.field;
+    const cur = (fieldDefsOf(d).find(([k]) => k === key) || [key, key])[1];
+    openTextPromptModal({
+      title: 'Rename header', placeholder: 'Header name', value: cur, submitLabel: 'Rename',
+      onSubmit: (name) => {
+        const doc = STORE.get(d.id); if (!doc) return;
+        // The key never changes, so the writing underneath stays put.
+        STORE.patch(doc.id, { fieldDefs: fieldDefsOf(doc).map(p => p[0] === key ? [key, name] : p) });
+        announce('Renamed to “' + name + '”.');
+      },
+    });
+  };
+
+  ACT['field-remove'] = (el) => {
+    const d = STORE.get(el.dataset.doc); if (!d) return;
+    const key = el.dataset.field;
+    const pair = fieldDefsOf(d).find(([k]) => k === key); if (!pair) return;
+    const written = ((d.fields || {})[key] || '').trim();
+    if (!confirm(`Remove the header “${pair[1]}” from this card?` +
+      (written ? '\n\nWhat you wrote under it is kept — put the header back by the same name and it returns.' : ''))) return;
+    STORE.patch(d.id, { fieldDefs: fieldDefsOf(d).filter(p => p[0] !== key) });
+    announce('Removed “' + pair[1] + '”.');
+  };
+
+  // Headers reorder by their own ⠿ handle, within one card.
+  ACT['field-drag:pointerdown'] = (el, e) => {
+    const d = STORE.get(el.dataset.doc); if (!d) return;
+    dragging = { kind: 'field', docId: d.id, key: el.dataset.field, target: null, before: true };
+    el.setPointerCapture(e.pointerId);
+    const row = el.closest('.doc-field'); if (row) row.classList.add('row-dragging');
+    document.body.classList.add('dmos-row-dragging');
+    e.preventDefault();
+  };
+
+  function moveField(docId, key, targetKey, before) {
+    const d = STORE.get(docId); if (!d) return;
+    const defs = fieldDefsOf(d).slice();
+    const from = defs.findIndex(p => p[0] === key);
+    if (from < 0) return;
+    const moved = defs.splice(from, 1)[0];
+    let at = defs.findIndex(p => p[0] === targetKey);
+    if (at < 0) return;
+    if (!before) at += 1;
+    defs.splice(at, 0, moved);
+    STORE.patch(docId, { fieldDefs: defs });
+  }
 
   /* ----------------------- Link from a selection -------------------------- */
   /* Highlight text in a document's body → a floating "🔗 Link" marker appears →
@@ -2544,10 +2803,11 @@
         <button class="btn btn-sm btn-primary" id="promptOk">${esc(o.submitLabel || 'OK')}</button>
       </div>`);
     const input = ROOT.modal.querySelector('#promptInput');
+    if (o.value) input.value = o.value;      // renaming starts from the current name
     const submit = () => { const v = input.value.trim(); if (!v) { input.focus(); return; } closeModal(); o.onSubmit(v); };
     ROOT.modal.querySelector('#promptOk').onclick = submit;
     input.onkeydown = (e) => { if (e.key === 'Enter') { e.preventDefault(); submit(); } };
-    input.focus();
+    input.focus(); input.select();
   }
 
   // A small anchored popup menu (reuses the modal root + its click-outside close).
@@ -2814,6 +3074,23 @@
       dragging.dropTarget = tid; dragging.dropBefore = before;
       return;
     }
+    if (dragging.kind === 'field') {
+      clearFieldMarks();
+      dragging.target = null;
+      const under = document.elementFromPoint(e.clientX, e.clientY);
+      const row = under && under.closest ? under.closest('.doc-field') : null;
+      if (!row || !row.dataset.fieldKey) return;
+      // Headers belong to their card; a drag never crosses into another one.
+      const card = row.closest('[data-doc-id]');
+      if (!card || card.dataset.docId !== dragging.docId) return;
+      const k = row.dataset.fieldKey;
+      if (k === dragging.key) return;
+      const r = row.getBoundingClientRect();
+      const before = (e.clientY - r.top) / r.height < 0.5;
+      row.classList.add(before ? 'drop-before' : 'drop-after');
+      dragging.target = k; dragging.before = before;
+      return;
+    }
     if (dragging.kind === 'tree') {
       clearDropMarks();
       dragging.dropTarget = null; dragging.dropInto = null;
@@ -2850,6 +3127,11 @@
   function clearDropMarks() {
     if (ROOT.tree) ROOT.tree.querySelectorAll('.drop-before, .drop-after, .drop-into')
       .forEach(n => n.classList.remove('drop-before', 'drop-after', 'drop-into'));
+  }
+
+  function clearFieldMarks() {
+    if (ROOT.feed) ROOT.feed.querySelectorAll('.doc-field.drop-before, .doc-field.drop-after')
+      .forEach(n => n.classList.remove('drop-before', 'drop-after'));
   }
 
   // Move the dragged doc INTO a folder (append at the end).
@@ -2890,6 +3172,12 @@
       if (drag.dropInto) reparentInto(drag.id, drag.dropInto);
       else if (drag.dropTarget) reorderAt(drag.id, drag.dropTarget, drag.dropBefore);
       else mark('tree');   // repaint to clear any lingering drag visuals
+    } else if (drag.kind === 'field') {
+      clearFieldMarks();
+      const dr = ROOT.feed.querySelector('.doc-field.row-dragging');
+      if (dr) dr.classList.remove('row-dragging');
+      if (drag.target) moveField(drag.docId, drag.key, drag.target, drag.before);
+      else mark('feed');
     } else if (drag.kind === 'roster') {
       clearRosterMarks();
       const dr = ROOT.rail.querySelector('.row-dragging');
@@ -2977,11 +3265,19 @@
       else if (ROOT.peek.firstChild) hidePeek();
     });
 
-    // Leaving a body editor commits it and hands the node back to the reconcile.
+    // Leaving a body or field editor commits it and hands the node back to the
+    // reconcile, which is what turns [[links]] back into rendered links.
     document.addEventListener('focusout', (e) => {
-      if (e.target.classList && e.target.classList.contains('doc-body-edit')) {
+      const cl = e.target.classList;
+      if (!cl) return;
+      if (cl.contains('doc-body-edit')) {
         flushPending();
         STORE.setUi({ editingBody: null });
+        mark('feed');
+      } else if (cl.contains('doc-field-edit')) {
+        flushPending();
+        linkAutoClose();
+        STORE.setUi({ editingField: null });
         mark('feed');
       }
     });

@@ -146,6 +146,9 @@
       updated: d.updated || nowISO(),
       tags: Array.isArray(d.tags) ? d.tags : [],
       leadsTo: Array.isArray(d.leadsTo) ? d.leadsTo : [],
+      // The card's headers, as [key, label] pairs. null means "use the type's
+      // template"; an array (even an empty one) is the DM's own arrangement.
+      fieldDefs: Array.isArray(d.fieldDefs) ? d.fieldDefs : null,
       fields: (d.fields && typeof d.fields === 'object') ? d.fields : {},
       body: typeof d.body === 'string' ? d.body : '',
     };

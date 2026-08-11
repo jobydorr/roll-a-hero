@@ -550,11 +550,39 @@ body.dmos-row-dragging, body.dmos-row-dragging * { cursor: grabbing !important; 
 .doc-title:focus { outline: none; border-bottom-color: var(--gold); background: var(--surface-active); }
 
 .doc-fields { display: grid; gap: 7px; margin: 10px 0 2px; }
-.doc-field { display: block; }
+.doc-field { display: block; border-radius: 8px; }
+.doc-field-head { display: flex; align-items: center; gap: 3px; margin-bottom: 2px; }
 .doc-field-label {
-  display: block; font-family: var(--font-display); font-size: 10.5px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 1.3px; color: var(--brown); margin-bottom: 2px;
+  font-family: var(--font-display); font-size: 10.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.3px; color: var(--brown);
+  background: transparent; border: 0; padding: 1px 4px; border-radius: 5px;
+  cursor: pointer; text-align: left;
 }
+.doc-field-label:hover { background: var(--surface-active); color: var(--ink); }
+/* The header controls stay out of the way until the card is under the pointer. */
+.field-handle, .field-x {
+  flex: none; opacity: 0; transition: opacity 0.12s ease;
+  background: transparent; border: 0; padding: 0 2px; line-height: 1;
+  color: var(--ink-soft); font-size: 11px;
+}
+.field-handle { cursor: grab; touch-action: none; user-select: none; }
+.field-handle:active { cursor: grabbing; }
+.field-x { cursor: pointer; margin-left: auto; }
+.field-x:hover { color: var(--warn, #a33); }
+.doc:hover .field-handle, .doc:hover .field-x { opacity: 0.45; }
+.field-handle:hover, .field-x:hover { opacity: 1 !important; }
+.doc-field.row-dragging { opacity: 0.45; }
+.doc-field.drop-before { box-shadow: inset 0 2px 0 0 var(--gold); }
+.doc-field.drop-after { box-shadow: inset 0 -2px 0 0 var(--gold); }
+.field-add {
+  justify-self: start; margin-top: 2px; opacity: 0; transition: opacity 0.12s ease;
+  font-family: var(--font-display); font-size: 10.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.1px; color: var(--brown);
+  background: transparent; border: 1px dashed var(--panel-edge); border-radius: 6px;
+  padding: 3px 9px; cursor: pointer;
+}
+.doc:hover .field-add { opacity: 0.7; }
+.field-add:hover { opacity: 1 !important; background: var(--surface-active); }
 .doc-field textarea {
   width: 100%; font: inherit; font-size: 15px; line-height: 1.4;
   padding: 5px 9px; border-radius: 8px; resize: none; overflow: hidden;
@@ -562,6 +590,15 @@ body.dmos-row-dragging, body.dmos-row-dragging * { cursor: grabbing !important; 
 }
 .doc-field textarea:hover { border-color: var(--panel-edge); }
 .doc-field textarea:focus { outline: none; border-color: var(--gold); background: var(--surface-active); }
+/* A field reads as prose so its [[links]] render; clicking turns it back into
+   the textarea above. Same metrics as that textarea, so nothing shifts. */
+.doc-field-read {
+  font-size: 15px; line-height: 1.4; cursor: text; border-radius: 8px;
+  padding: 7px 11px; border: 2px solid transparent;
+}
+.doc-field-read:hover { border-color: var(--panel-edge); background: rgba(255, 250, 240, 0.6); }
+.doc-field-read p { margin: 0 0 0.6em; }
+.doc-field-read p:last-child { margin-bottom: 0; }
 
 .doc-bodywrap { margin-top: 10px; }
 .doc-body { font-size: 15px; line-height: 1.55; cursor: text; border-radius: 8px; padding: 4px 8px; }
@@ -863,6 +900,26 @@ table.diff tbody th { width: 22%; font-family: var(--font-display); font-weight:
 }
 .link-marker-btn .icon { color: var(--on-gold); }
 .link-marker-btn:hover { filter: brightness(1.06); }
+
+/* Type [[ in any editor → this list, filtered as you keep typing. */
+.link-auto {
+  position: fixed; z-index: var(--z-modal); width: 320px; max-width: calc(100vw - 16px);
+  padding: 4px; border-radius: 10px; overflow: hidden;
+  border: 2px solid var(--gold); background: var(--panel);
+  box-shadow: 0 10px 26px var(--shadow); animation: rise 0.1s ease both;
+}
+.link-auto-row {
+  display: flex; align-items: center; gap: 8px; width: 100%; cursor: pointer;
+  padding: 6px 8px; border: 0; border-radius: 7px; background: transparent;
+  font: inherit; font-size: 14px; color: var(--ink); text-align: left;
+}
+.link-auto-row .icon { color: var(--brown); flex: none; }
+.link-auto-title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.link-auto-type {
+  flex: none; font-family: var(--font-display); font-size: 9.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px; color: var(--ink-soft);
+}
+.link-auto-row.is-on, .link-auto-row:hover { background: var(--surface-active); }
 
 /* The connect picker (right-click a card → Connect to…). */
 .connect-kinds { display: flex; gap: 6px; margin: 4px 0 10px; flex-wrap: wrap; }
