@@ -194,15 +194,20 @@
     'd' + (depth || 0),   // indentation is presentation-only; re-focusing changes it without moving a rev
   ].join('|');
 
-  function renderDocNode(d, depth) {
+  /* One card, everywhere. A sheet added to a scene renders exactly as it does in
+     its home folder — same fields, same buttons, fully editable, because it IS
+     the same sheet. `castHost` only changes what ✕ means: inside a container the
+     sheet was added to, ✕ takes it out of THAT container and nothing else. Only
+     the sheet in its own home folder can be moved to the trash. */
+  function renderDocNode(d, depth, castHost) {
     const T = DOC_TYPES[d.type];
     const editingBody = ui().editingBody === d.id;
     const el = document.createElement('article');
     el.className = 'doc doc-' + d.type + (d.conflict ? ' has-conflict' : '') + (depth ? ' is-nested' : '');
-    el.dataset.docId = d.id;
+    el.dataset.docId = castHost ? 'cast:' + castHost.id + ':' + d.id : d.id;
     el.dataset.rev = d.rev;
     el.style.setProperty('--depth', depth || 0);
-    el.dataset.key = nodeKey(d, depth);
+    el.dataset.key = nodeKey(d, depth) + (castHost ? '|C' : '');
     el.innerHTML = `
       ${d.conflict ? conflictStripHTML(d) : ''}
       ${d.parkedEdit ? `<div class="note doc-parked">Your earlier edit is parked.
@@ -224,8 +229,11 @@
                 title="Save to your creature library">${icon('star')} Save</button>` : ''}
         <button class="btn btn-sm btn-ghost" data-act="focus-doc" data-doc="${d.id}"
                 title="Open just this document">${icon('scroll')}</button>
-        <button class="btn btn-sm btn-ghost" data-act="delete-doc" data-doc="${d.id}"
-                title="Move to trash (never really deleted)">✕</button>
+        ${castHost
+          ? `<button class="btn btn-sm btn-ghost" data-act="cast-unlink" data-host="${castHost.id}" data-doc="${d.id}"
+                title="Take out of “${esc(castHost.title)}” — the sheet itself is not deleted">✕</button>`
+          : `<button class="btn btn-sm btn-ghost" data-act="delete-doc" data-doc="${d.id}"
+                title="Move to trash (never really deleted)">✕</button>`}
       </header>
       ${T.statBlock ? statBlockFieldsHTML(d, T) : ''}
       ${T.fields.length ? `<div class="doc-fields">${T.fields.map(([k, prompt]) => `
@@ -241,44 +249,6 @@
           : `<div class="doc-body" data-act="open-body" data-doc="${d.id}">${
               d.body ? linkify(d.body) : '<p class="doc-empty">Click to write…</p>'}</div>`}
       </div>`;
-    return el;
-  }
-
-  /* A cast embed: the ONE TRUE SHEET of an NPC or creature, rendered in full,
-     read-only, inside the container that cast it (see PAINT.feed). Editing
-     happens on the sheet itself — the ${icon('scroll')} button opens it — and
-     the embed follows automatically, because its key folds in the target rev. */
-  const embedKey = (d, depth) => 'E|' + d.rev + '|d' + (depth || 0);
-  function renderCastEmbed(hostDoc, d, depth) {
-    const T = DOC_TYPES[d.type] || { label: 'Document', icon: 'scroll', fields: [], statBlock: null };
-    const home = pathOf(d.id).slice(0, -1).map(p => p.title).join(' › ') || 'the top level';
-    const el = document.createElement('article');
-    el.className = 'doc doc-' + d.type + ' doc-cast-embed is-nested';
-    el.dataset.docId = 'cast:' + hostDoc.id + ':' + d.id;
-    el.dataset.key = embedKey(d, depth);
-    el.style.setProperty('--depth', depth || 0);
-    const row = ([k, prompt]) => {
-      const v = (d.fields || {})[k];
-      return v ? `<div class="doc-field"><span class="doc-field-label">${esc(prompt)}</span>
-        <div class="doc-field-ro">${esc(v).replace(/\n/g, '<br>')}</div></div>` : '';
-    };
-    const rows = ((T.statBlock || []).concat(T.fields || [])).map(row).join('');
-    el.innerHTML = `
-      <header class="doc-head">
-        <span class="doc-icon" aria-hidden="true">${icon(T.icon)}</span>
-        <h2 class="doc-title-ro"><a href="#/d/${d.id}" data-act="jump">${esc(d.title)}</a></h2>
-        <span class="tag">${esc(T.label)}</span>
-        <span class="tag bonus" title="In this cast. The one true sheet lives in: ${esc(home)}">cast</span>
-        <div class="spacer"></div>
-        ${(d.type === 'npc' || d.type === 'creature') ? `<button class="btn btn-sm btn-ghost" data-act="roster-add-doc" data-doc="${d.id}"
-                title="Add to the “At the table” initiative roster">${icon('sword')} To the table</button>` : ''}
-        <button class="btn btn-sm btn-ghost" data-act="focus-doc" data-doc="${d.id}"
-                title="Open the sheet itself (it lives in ${esc(home)})">${icon('scroll')}</button>
-        <button class="btn btn-sm btn-ghost" data-act="cast-unlink" data-host="${hostDoc.id}" data-doc="${d.id}"
-                title="Take out of this cast (the sheet itself is untouched)">✕</button>
-      </header>
-      ${rows ? `<div class="doc-fields doc-fields-ro">${rows}</div>` : ''}
-      ${d.body ? `<div class="doc-body doc-body-ro">${linkify(d.body)}</div>` : ''}`;
     return el;
   }
 
@@ -418,7 +388,7 @@
 
     for (const en of entries) {
       let node = have.get(en.key);
-      const key = en.host ? embedKey(en.doc, en.depth) : nodeKey(en.doc, en.depth);
+      const key = nodeKey(en.doc, en.depth) + (en.host ? '|C' : '');
 
       if (node && node.dataset.key !== key) {   // stale → drop and rebuild
         if (node === cursor) cursor = cursor.nextSibling;
@@ -428,8 +398,7 @@
       }
 
       if (!node) {
-        host.insertBefore(en.host ? renderCastEmbed(en.host, en.doc, en.depth)
-                                  : renderDocNode(en.doc, en.depth), cursor);   // cursor null ⇒ append
+        host.insertBefore(renderDocNode(en.doc, en.depth, en.host), cursor);   // cursor null ⇒ append
       } else if (node === cursor) {
         cursor = cursor.nextSibling;                   // already in place
         have.delete(en.key);
@@ -571,9 +540,11 @@
       .filter(Boolean);
   }
 
-  function treeNodeHTML(d, t, focus, depth) {
+  function treeNodeHTML(d, t, focus, depth, noCast) {
     const kids = t.kids.get(d.id) || [];
-    const cast = treeCastMembers(d, t);
+    // A member added to this container lists here exactly like anything else —
+    // same row, same handle. `noCast` stops one cast list nesting inside another.
+    const cast = noCast ? [] : treeCastMembers(d, t);
     const hasInner = kids.length || cast.length;
     const open = !!ui().open[d.id];
     const selected = focus.id === d.id;
@@ -601,15 +572,8 @@
                 aria-label="${fullyOpen ? 'Collapse all under' : 'Unroll all under'} ${esc(d.title)}">${icon(fullyOpen ? 'fold' : 'unfold')}</button>` : ''}
         ${canContain(d) ? `<button class="row-add" data-act="folder-menu" data-parent="${d.id}" title="Add to “${esc(d.title)}”">＋</button>` : ''}
       </div>
-      ${hasInner && open ? `<ul>${kids.map(k => treeNodeHTML(k, t, focus, depth + 1)).join('')}${cast.map(c => `<li>
-        <div class="tree-row tree-cast${focus.id === c.id ? ' is-selected' : ''}" data-act="select-node" data-doc="${c.id}" style="--depth:${depth + 1}"
-             title="In this cast — the sheet itself lives elsewhere. Click to open it.">
-          <span class="tree-handle tree-handle-ghost" aria-hidden="true"></span>
-          <span class="tree-twist tree-twist-empty" aria-hidden="true"></span>
-          <span class="tree-icon" aria-hidden="true">${icon(docIconName(c))}</span>
-          <span class="tree-title">${esc(c.title)}</span>
-          <span class="tag bonus tree-badge">cast</span>
-        </div></li>`).join('')}</ul>` : ''}
+      ${hasInner && open ? `<ul>${kids.map(k => treeNodeHTML(k, t, focus, depth + 1)).join('')}${
+        cast.map(c => treeNodeHTML(c, t, focus, depth + 1, true)).join('')}</ul>` : ''}
     </li>`;
   }
 
@@ -2455,16 +2419,17 @@
   };
   ACT['cast-unlink'] = (el) => {
     const f = STORE.get(el.dataset.host); if (!f) return;
+    const d = STORE.get(el.dataset.doc);
     STORE.patch(f.id, { leadsTo: (f.leadsTo || []).filter(l => !(l && l.kind === 'cast' && l.to === el.dataset.doc)) });
-    announce('Taken out of this cast. The sheet itself is untouched.');
+    announce((d ? d.title : 'It') + ' is out of “' + f.title + '”. The sheet itself is untouched.');
   };
   function openCastPicker(kind, parentId) {
     const f = STORE.get(parentId); if (!f) return;
     castKind = kind; castParent = parentId;
     const T = DOC_TYPES[kind] || DOC_TYPES.npc;
     openModal(`
-      <div class="modal-title">The ${esc(T.label.toLowerCase())} cast of “${esc(f.title)}”</div>
-      <p class="modal-hint">Click a name to show its full sheet inside “${esc(f.title)}” — click it again to take it back out. The sheet itself never moves: edit it where it lives, and every place it is cast follows. Click outside when done.</p>
+      <div class="modal-title">${esc(T.label)}s in “${esc(f.title)}”</div>
+      <p class="modal-hint">Click a name to add its sheet here — click it again to take it out. Adding and removing here only affects “${esc(f.title)}”; the sheet keeps living in its own folder either way, and nothing is ever deleted. Click outside when done.</p>
       <div class="search-box"><input type="text" id="castSearch" data-act="cast-search" placeholder="Search by name…" autocomplete="off" spellcheck="false"></div>
       <div class="connect-list" id="castList"></div>`, 'modal-wide modal-search');
     renderCastList('');
@@ -2488,11 +2453,11 @@
     box.innerHTML = list.slice(0, 60).map(d => {
       const path = pathLabel(d.id);
       const isIn = inCast.has(d.id);
-      return `<button class="search-row connect-row${isIn ? ' is-cast' : ''}" data-act="cast-pick" data-doc="${d.id}"
-                      title="${isIn ? 'Click to take it out of this cast' : 'Click to show its sheet here'}">
+      return `<button class="search-row connect-row" data-act="cast-pick" data-doc="${d.id}"
+                      title="${isIn ? 'Click to take it out of here' : 'Click to add its sheet here'}">
         <span class="search-icon">${icon(DOC_TYPES[d.type].icon)}</span>
         <span class="search-main"><span class="search-title">${esc(d.title)} <span class="search-area">${esc(DOC_TYPES[d.type].label)}${path ? ' · ' + esc(path) : ''}</span></span></span>
-        ${isIn ? '<span class="tag bonus">✓ in this cast</span>' : ''}
+        ${isIn ? '<span class="tag bonus">✓ added</span>' : ''}
       </button>`;
     }).join('');
   }
@@ -2502,9 +2467,14 @@
     if (!d) return;
     const kids = (STORE.tree().kids.get(d.id) || []).length;
     const extra = kids ? `\n\nIts ${kids} nested document${kids === 1 ? '' : 's'} will move back to the top level.` : '';
-    if (!confirm(`Move "${d.title}" to the trash?${extra}\n\nIt is never really deleted — you can put it back.`)) return;
+    // Trashing a sheet takes it out of EVERY place it was added, so say so.
+    const casts = STORE.docs().filter(o => (o.leadsTo || []).some(l => l && l.kind === 'cast' && l.to === d.id));
+    const where = casts.length
+      ? `\n\nThis is the whole sheet, not just one appearance. It will disappear from ${casts.length} other place${casts.length === 1 ? '' : 's'} it was added (${casts.map(c => '“' + c.title + '”').join(', ')}) and from the "existing" pickers.`
+      : '';
+    if (!confirm(`Move "${d.title}" to the trash?${extra}${where}\n\nIt is never really deleted — you can put it back.`)) return;
     STORE.deleteDoc(d.id);
-    announce('Moved to trash.');
+    announce('Moved to trash. Put it back from Trash in the sidebar.');
   };
   ACT['restore-doc'] = (el) => { STORE.restoreDoc(el.dataset.doc); announce('Restored.'); };
 

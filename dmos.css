@@ -936,21 +936,5 @@ table.diff tbody th { width: 22%; font-family: var(--font-display); font-weight:
   .doc { margin-left: calc(var(--depth, 0) * 16px); }
 }
 
-/* Cast embeds — the one true sheet of an NPC/creature, rendered read-only
-   inside the container that cast it (feed only; see renderCastEmbed). */
-.doc-cast-embed { border-left: 3px solid rgba(176, 141, 46, 0.55); }
-.doc-cast-embed .doc-title-ro { flex: 1; margin: 0; font-size: 1.02rem; min-width: 0; }
-.doc-cast-embed .doc-title-ro a { color: inherit; text-decoration: none; }
-.doc-cast-embed .doc-title-ro a:hover { text-decoration: underline; }
-.doc-field-ro { padding: 7px 9px; white-space: normal; }
-.doc-body-ro { cursor: default; }
-
-/* Cast rows in the sidebar tree — references, not children: no drag handle,
-   dimmed, badged. Clicking one opens the real sheet. */
-.tree-row.tree-cast { opacity: 0.78; }
-.tree-row.tree-cast:hover { opacity: 1; }
-.tree-handle-ghost { visibility: hidden; }
-
-/* Cast-manager picker rows: members stay listed, badged, and dimmed. */
-.search-row.is-cast { opacity: 0.62; }
-.search-row.is-cast:hover { opacity: 1; }
+/* A sheet added to a scene renders as the same card it is at home — no special
+   styling. The only marker is in the picker, where members carry a ✓ badge. */
