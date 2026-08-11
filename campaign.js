@@ -16,10 +16,12 @@
    ⚠ `campaign` must be a plain string — the UI renders it directly.
 
    ── CAMPAIGN ONE: THE FOLDED WORLD ──────────────────────────────────────────
-   v5 (2026-08-10): scenes are FOLDERS that contain their components; NPCs and
+   v6 (2026-08-10): scenes are FOLDERS that contain their components; NPCs and
    Monsters each have a top-level master folder that CONTAINS every sheet (so
-   the folder's feed shows the sheets in full), and scenes point at those
-   sheets with [[wikilinks]] — masters contain, scenes link.
+   the folder's feed shows the sheets in full); and a scene CASTS the people
+   and monsters it uses via leadsTo entries of kind "cast" — the DM OS then
+   renders each cast member's FULL SHEET inside the scene, read-only, while
+   the one true sheet stays in its master folder. Masters contain, scenes cast.
 
    Act One (folder)
      └─ LASTLIGHT — the opening scene (folder)
@@ -39,8 +41,14 @@ window.DM_CAMPAIGN = {
 
   { "schema": 1, "id": "f-lastlight", "type": "folder",
     "title": "LASTLIGHT — the opening scene",
-    "parent": "act1", "order": 10, "rev": 2,
-    "tags": ["act1", "session1"], "leadsTo": [], "fields": {},
+    "parent": "act1", "order": 10, "rev": 3,
+    "tags": ["act1", "session1"],
+    "leadsTo": [
+      { "to": "npc-wenna",  "label": "", "kind": "cast" },
+      { "to": "npc-finch",  "label": "", "kind": "cast" },
+      { "to": "npc-hettie", "label": "", "kind": "cast" },
+      { "to": "npc-tobin",  "label": "", "kind": "cast" }
+    ], "fields": {},
     "body": "Session one, doubling as session zero. Everything needed to run the opening lives in this folder: the run sheet and the fairground encounter now; the handouts (reason cards, the Lastlight program) still to come. Cast on stage: [[npc-wenna|Wenna Ash]], [[npc-finch|Finch]], [[npc-hettie|Hettie Sarn]] (seen, not met) — and by the morning after, [[npc-tobin|Tobin Rell]]." },
 
   { "schema": 1, "id": "sc-lastlight", "type": "scene",
@@ -68,8 +76,13 @@ window.DM_CAMPAIGN = {
 
   { "schema": 1, "id": "enc-lastlight", "type": "encounter",
     "title": "The fairground fight — things through the tear",
-    "parent": "f-lastlight", "order": 20, "rev": 1,
-    "tags": ["act1", "session1"], "leadsTo": [],
+    "parent": "f-lastlight", "order": 20, "rev": 2,
+    "tags": ["act1", "session1"],
+    "leadsTo": [
+      { "to": "cr-snatch-goblin", "label": "", "kind": "cast" },
+      { "to": "cr-crease-wolf",   "label": "", "kind": "cast" },
+      { "to": "cr-tear-ogre",     "label": "", "kind": "cast" }
+    ],
     "fields": {
       "setup": "The Lastlight fairground, seconds after the tear. Initiative is opt-in — the fight starts when the heroes choose to stand. The scoreboard is rescues, not kills: every monster wants to leave with somebody, and a person carried into the tear is gone until the party goes in after them. Terrain to use hard: the grandstands (high ground, and one section groaning toward collapse), the fallen clockwork (cover, and a bell that can be rung), spilled grain-lanterns underfoot, the rope lines, and the scar-line where footing goes suddenly wrong.",
       "creatures": "Six [[cr-snatch-goblin|snatch-goblins]] in two waves of three, and three [[cr-crease-wolf|crease-wolves]]. Far off, one [[cr-tear-ogre|tear-ogre]] — penned by the Rectors, seen and never fought. Tuned for the table: four level-3 heroes (bard, fighter, two rangers). A player missing? Shed one goblin per empty chair and change nothing else.",

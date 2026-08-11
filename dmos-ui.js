@@ -244,6 +244,44 @@
     return el;
   }
 
+  /* A cast embed: the ONE TRUE SHEET of an NPC or creature, rendered in full,
+     read-only, inside the container that cast it (see PAINT.feed). Editing
+     happens on the sheet itself — the ${icon('scroll')} button opens it — and
+     the embed follows automatically, because its key folds in the target rev. */
+  const embedKey = (d, depth) => 'E|' + d.rev + '|d' + (depth || 0);
+  function renderCastEmbed(hostDoc, d, depth) {
+    const T = DOC_TYPES[d.type] || { label: 'Document', icon: 'scroll', fields: [], statBlock: null };
+    const home = pathOf(d.id).slice(0, -1).map(p => p.title).join(' › ') || 'the top level';
+    const el = document.createElement('article');
+    el.className = 'doc doc-' + d.type + ' doc-cast-embed is-nested';
+    el.dataset.docId = 'cast:' + hostDoc.id + ':' + d.id;
+    el.dataset.key = embedKey(d, depth);
+    el.style.setProperty('--depth', depth || 0);
+    const row = ([k, prompt]) => {
+      const v = (d.fields || {})[k];
+      return v ? `<div class="doc-field"><span class="doc-field-label">${esc(prompt)}</span>
+        <div class="doc-field-ro">${esc(v).replace(/\n/g, '<br>')}</div></div>` : '';
+    };
+    const rows = ((T.statBlock || []).concat(T.fields || [])).map(row).join('');
+    el.innerHTML = `
+      <header class="doc-head">
+        <span class="doc-icon" aria-hidden="true">${icon(T.icon)}</span>
+        <h2 class="doc-title-ro"><a href="#/d/${d.id}" data-act="jump">${esc(d.title)}</a></h2>
+        <span class="tag">${esc(T.label)}</span>
+        <span class="tag bonus" title="In this cast. The one true sheet lives in: ${esc(home)}">cast</span>
+        <div class="spacer"></div>
+        ${(d.type === 'npc' || d.type === 'creature') ? `<button class="btn btn-sm btn-ghost" data-act="roster-add-doc" data-doc="${d.id}"
+                title="Add to the “At the table” initiative roster">${icon('sword')} To the table</button>` : ''}
+        <button class="btn btn-sm btn-ghost" data-act="focus-doc" data-doc="${d.id}"
+                title="Open the sheet itself (it lives in ${esc(home)})">${icon('scroll')}</button>
+        <button class="btn btn-sm btn-ghost" data-act="cast-unlink" data-host="${hostDoc.id}" data-doc="${d.id}"
+                title="Take out of this cast (the sheet itself is untouched)">✕</button>
+      </header>
+      ${rows ? `<div class="doc-fields doc-fields-ro">${rows}</div>` : ''}
+      ${d.body ? `<div class="doc-body doc-body-ro">${linkify(d.body)}</div>` : ''}`;
+    return el;
+  }
+
   // The optional NPC combat block — rendered only once it has values (a fresh
   // NPC shows just the "⚡ Stats" header button until you generate or fill one).
   function statBlockFieldsHTML(d, T) {
@@ -342,6 +380,23 @@
     const baseDepth = (f.kind === 'f' && f.id) ? (absDepth.get(f.id) || 0) : 0;
     const depthOf = (d) => f.kind === 'd' ? 0 : Math.max(0, (absDepth.get(d.id) || 0) - baseDepth);
 
+    /* A container's cast (leadsTo entries of kind 'cast') renders as full
+       read-only EMBEDS of the referenced sheets, directly beneath the
+       container. The sheet itself lives wherever it is filed — an embed is a
+       placement of it, so its reconcile key is placement-unique
+       ('cast:<host>:<target>') and folds in the TARGET's rev. The same sheet
+       can therefore appear twice in one feed (its real home + an embed)
+       without the keyed reconcile ever seeing a duplicate id. */
+    const entries = [];
+    for (const d of want) {
+      entries.push({ key: d.id, doc: d, depth: depthOf(d), host: null });
+      (d.leadsTo || []).forEach(l => {
+        if (!l || l.kind !== 'cast') return;
+        const t = STORE.get(l.to);
+        if (t) entries.push({ key: 'cast:' + d.id + ':' + t.id, doc: t, depth: depthOf(d) + 1, host: d });
+      });
+    }
+
     // Index what's on screen; evict anything that isn't a doc node (e.g. a
     // leftover empty-state) so `cursor` below can only ever walk doc nodes.
     const have = new Map();
@@ -349,31 +404,32 @@
       if (n.dataset && n.dataset.docId) have.set(n.dataset.docId, n); else n.remove();
     });
 
-    /* `cursor` walks the existing children in parallel with `want`. The one
+    /* `cursor` walks the existing children in parallel with `entries`. The one
        trap: anything that detaches the node `cursor` points at leaves cursor
        dangling, and the next insertBefore(_, cursor) throws NotFoundError. So
        ALWAYS advance cursor before removing the node it points at. */
     let cursor = host.firstChild;
 
-    for (const d of want) {
-      let node = have.get(d.id);
-      const depth = depthOf(d);
+    for (const en of entries) {
+      let node = have.get(en.key);
+      const key = en.host ? embedKey(en.doc, en.depth) : nodeKey(en.doc, en.depth);
 
-      if (node && node.dataset.key !== nodeKey(d, depth)) {   // stale → drop and rebuild
+      if (node && node.dataset.key !== key) {   // stale → drop and rebuild
         if (node === cursor) cursor = cursor.nextSibling;
-        have.delete(d.id);
+        have.delete(en.key);
         node.remove();
         node = null;
       }
 
       if (!node) {
-        host.insertBefore(renderDocNode(d, depth), cursor);   // cursor null ⇒ append
+        host.insertBefore(en.host ? renderCastEmbed(en.host, en.doc, en.depth)
+                                  : renderDocNode(en.doc, en.depth), cursor);   // cursor null ⇒ append
       } else if (node === cursor) {
         cursor = cursor.nextSibling;                   // already in place
-        have.delete(d.id);
+        have.delete(en.key);
       } else {
         host.insertBefore(node, cursor);               // out of order → move it
-        have.delete(d.id);
+        have.delete(en.key);
       }
     }
     have.forEach(stale => stale.remove());
@@ -1316,6 +1372,7 @@
     const edges = [], brokenBy = {};
     const flowUnordered = new Set();
     nodes.forEach(d => (d.leadsTo || []).forEach(l => {
+      if (l && l.kind === 'cast') return;   // cast membership is a feed embed, not a story arrow
       const to = String((l && l.to) || '').trim();
       if (to && nodeIds.has(to)) {
         edges.push({ from: d.id, to, type: 'flow', kind: (l.kind || 'then'), label: String(l.label || '').trim() });
@@ -1648,7 +1705,7 @@
   // Write a new leadsTo (kind 'then', no label) unless the pair is already linked.
   function connectCards(fromId, toId) {
     const src = STORE.get(fromId); if (!src) return;
-    if ((src.leadsTo || []).some(l => l.to === toId)) { announce('Those cards are already connected.'); return; }
+    if ((src.leadsTo || []).some(l => l.to === toId && l.kind !== 'cast')) { announce('Those cards are already connected.'); return; }
     STORE.patch(src.id, { leadsTo: (src.leadsTo || []).concat([{ to: toId, label: '', kind: 'then' }]) });
     paintMap(true);
     announce('Connected “' + src.title + '”. Click the arrow to label it.');
@@ -1731,7 +1788,7 @@
     const label = (ROOT.modal.querySelector('#edgeLabel') || {}).value || '';
     let done = false;
     const next = (src.leadsTo || []).map(l => {
-      if (!done && l.to === edgeEdit.to) { done = true; return Object.assign({}, l, { kind: edgeEditKind, label: label.trim() }); }
+      if (!done && l.to === edgeEdit.to && l.kind !== 'cast') { done = true; return Object.assign({}, l, { kind: edgeEditKind, label: label.trim() }); }
       return l;
     });
     STORE.patch(src.id, { leadsTo: next });
@@ -1740,13 +1797,13 @@
   ACT['edge-remove'] = () => {
     if (!edgeEdit) return;
     const src = STORE.get(edgeEdit.from);
-    if (src) STORE.patch(src.id, { leadsTo: (src.leadsTo || []).filter(l => l.to !== edgeEdit.to) });
+    if (src) STORE.patch(src.id, { leadsTo: (src.leadsTo || []).filter(l => l.to !== edgeEdit.to || l.kind === 'cast') });
     closeModal(); paintMap(true); announce('Removed the connection.');
   };
   function openEdgeEditor(from, to) {
     const src = STORE.get(from), tgt = STORE.get(to);
     if (!src || !tgt) return;
-    const link = (src.leadsTo || []).find(l => l.to === to) || { kind: 'then', label: '' };
+    const link = (src.leadsTo || []).find(l => l.to === to && l.kind !== 'cast') || { kind: 'then', label: '' };
     edgeEdit = { from, to }; edgeEditKind = link.kind || 'then';
     const kindBtn = (k, label) => `<button class="connect-kind${k === edgeEditKind ? ' is-active' : ''}" data-act="edge-kind" data-kind="${k}"><span class="chart-leg-line ce-${k}"></span>${label}</button>`;
     openModal(`
@@ -1803,7 +1860,7 @@
   function openCardMenu(cardEl, e) {
     const id = cardEl.dataset.doc, d = STORE.get(id);
     if (!d) return;
-    const links = (d.leadsTo || []).filter(l => l && l.to && STORE.get(l.to));
+    const links = (d.leadsTo || []).filter(l => l && l.to && l.kind !== 'cast' && STORE.get(l.to));
     let items = `<div class="menu-note">${esc(d.title)}</div>`;
     items += menuItem('connect-open', { doc: id }, 'flow', 'Connect to a card…');
     items += menuItem('map-follow-menu', { doc: id }, 'scroll', 'New card it leads to…');
@@ -1839,7 +1896,7 @@
   ACT['map-unlink'] = (el) => {
     const src = STORE.get(el.dataset.doc); if (!src) return;
     const to = el.dataset.to;
-    STORE.patch(src.id, { leadsTo: (src.leadsTo || []).filter(l => l.to !== to) });
+    STORE.patch(src.id, { leadsTo: (src.leadsTo || []).filter(l => l.to !== to || l.kind === 'cast') });
     closeModal();
     paintMap(true);
     announce('Removed a connection.');
@@ -1904,7 +1961,7 @@
   function renderConnectList(query) {
     const box = ROOT.modal.querySelector('#connectList'); if (!box) return;
     const src = STORE.get(connectSrc); if (!src) return;
-    const existing = new Set((src.leadsTo || []).map(l => l.to));
+    const existing = new Set((src.leadsTo || []).filter(l => l.kind !== 'cast').map(l => l.to));
     const q = query.trim().toLowerCase();
     let list = STORE.docs().filter(d => d.type !== 'folder' && !STORE.isInNotebook(d.id) && d.id !== connectSrc && !existing.has(d.id));
     if (q) list = list.filter(d => d.title.toLowerCase().includes(q) || DOC_TYPES[d.type].label.toLowerCase().includes(q));
@@ -2341,30 +2398,32 @@
     announce('Added a new ' + (DOC_TYPES[type] ? DOC_TYPES[type].label.toLowerCase() : 'document') + '.');
   };
 
-  /* "Existing NPC…" / "Existing creature…" — reference a sheet that already
-     lives somewhere in the workspace (usually the NPCs / Monsters master
-     folders) instead of creating a duplicate. Picking one appends a
-     "Cast: [[id|Title]]" line to the container's body — a link, not a copy —
-     so hover-peek and ＋ To the table keep working from the one true sheet.
-     The doc's TYPE is the registry: the picker lists every sheet of that type
-     no matter where it is filed. */
+  /* "Existing NPC…" / "Existing creature…" — cast a sheet that already lives
+     somewhere in the workspace (usually the NPCs / Monsters master folders)
+     into this container, instead of creating a duplicate. Membership is a
+     leadsTo entry of kind 'cast' on the CONTAINER; the feed then renders the
+     member's FULL SHEET beneath the container (see renderCastEmbed). The
+     sheet itself never moves and is never copied — the doc's TYPE is the
+     registry, and the picker lists every sheet of that type no matter where
+     it is filed. */
   let castKind = 'npc', castParent = null;
+  const castRefIds = (d) => new Set((d.leadsTo || []).filter(l => l && l.kind === 'cast').map(l => l.to));
   ACT['cast-open'] = (el) => { closeModal(); openCastPicker(el.dataset.kind, el.dataset.parent); };
   ACT['cast-search:input'] = (el) => renderCastList(el.value);
   ACT['cast-pick'] = (el) => {
     const d = STORE.get(el.dataset.doc), f = STORE.get(castParent);
     if (!d || !f) return;
-    const link = '[[' + d.id + '|' + d.title + ']]';
-    let body = f.body || '';
-    const m = body.match(/^Cast: .*$/m);
-    body = m ? body.replace(m[0], m[0] + ', ' + link)
-             : (body ? body + '\n\n' : '') + 'Cast: ' + link;
-    pending.delete(f.id);            // drop any stale debounced body write for this doc
-    STORE.patch(f.id, { body: body });
+    if (castRefIds(f).has(d.id)) { closeModal(); return; }
+    STORE.patch(f.id, { leadsTo: (f.leadsTo || []).concat([{ to: d.id, label: '', kind: 'cast' }]) });
     closeModal();
     const open = ui().open; open[f.id] = true; STORE.setUi({ open });
     if (isFolderType(f)) gotoFolder(f.id); else gotoDoc(f.id);
-    announce('Linked ' + d.title + ' into “' + f.title + '”.');
+    announce(d.title + ' now shows its full sheet in “' + f.title + '”.');
+  };
+  ACT['cast-unlink'] = (el) => {
+    const f = STORE.get(el.dataset.host); if (!f) return;
+    STORE.patch(f.id, { leadsTo: (f.leadsTo || []).filter(l => !(l && l.kind === 'cast' && l.to === el.dataset.doc)) });
+    announce('Taken out of this cast. The sheet itself is untouched.');
   };
   function openCastPicker(kind, parentId) {
     const f = STORE.get(parentId); if (!f) return;
@@ -2372,7 +2431,7 @@
     const T = DOC_TYPES[kind] || DOC_TYPES.npc;
     openModal(`
       <div class="modal-title">Add an existing ${esc(T.label.toLowerCase())} to “${esc(f.title)}”</div>
-      <p class="modal-hint">This links the sheet rather than moving or copying it — the one true sheet stays where it lives. Hover the link for a peek; open it for ＋ To the table.</p>
+      <p class="modal-hint">The full sheet will show inside “${esc(f.title)}”. The sheet itself keeps living where it is filed — edit it there, and every place it is cast follows.</p>
       <div class="search-box"><input type="text" id="castSearch" data-act="cast-search" placeholder="Search by name…" autocomplete="off" spellcheck="false"></div>
       <div class="connect-list" id="castList"></div>`, 'modal-wide modal-search');
     renderCastList('');
@@ -2381,17 +2440,16 @@
   function renderCastList(query) {
     const box = ROOT.modal.querySelector('#castList'); if (!box) return;
     const f = STORE.get(castParent); if (!f) return;
-    const body = f.body || '';
-    const linked = (id) => body.indexOf('[[' + id + '|') !== -1 || body.indexOf('[[' + id + ']]') !== -1;
+    const inCast = castRefIds(f);
     const q = query.trim().toLowerCase();
     let list = STORE.docs().filter(d =>
-      d.type === castKind && !STORE.isInNotebook(d.id) && d.id !== castParent && !linked(d.id));
+      d.type === castKind && !STORE.isInNotebook(d.id) && d.id !== castParent && !inCast.has(d.id));
     if (q) list = list.filter(d => d.title.toLowerCase().includes(q));
     const label = (DOC_TYPES[castKind] || {}).label || 'sheet';
     if (!list.length) {
       box.innerHTML = `<p class="modal-hint">${q
         ? 'No ' + esc(label.toLowerCase()) + ' matches “' + esc(query.trim()) + '”.'
-        : 'Every ' + esc(label.toLowerCase()) + ' in the workspace is already linked here.'}</p>`;
+        : 'Every ' + esc(label.toLowerCase()) + ' in the workspace is already in this cast.'}</p>`;
       return;
     }
     box.innerHTML = list.slice(0, 60).map(d => {

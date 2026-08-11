@@ -935,3 +935,12 @@ table.diff tbody th { width: 22%; font-family: var(--font-display); font-weight:
   /* Tighter indent on narrow screens so deep cards keep usable width. */
   .doc { margin-left: calc(var(--depth, 0) * 16px); }
 }
+
+/* Cast embeds — the one true sheet of an NPC/creature, rendered read-only
+   inside the container that cast it (feed only; see renderCastEmbed). */
+.doc-cast-embed { border-left: 3px solid rgba(176, 141, 46, 0.55); }
+.doc-cast-embed .doc-title-ro { flex: 1; margin: 0; font-size: 1.02rem; min-width: 0; }
+.doc-cast-embed .doc-title-ro a { color: inherit; text-decoration: none; }
+.doc-cast-embed .doc-title-ro a:hover { text-decoration: underline; }
+.doc-field-ro { padding: 7px 9px; white-space: normal; }
+.doc-body-ro { cursor: default; }
