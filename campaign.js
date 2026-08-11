@@ -16,12 +16,17 @@
    ⚠ `campaign` must be a plain string — the UI renders it directly.
 
    ── CAMPAIGN ONE: THE FOLDED WORLD ──────────────────────────────────────────
-   v6 (2026-08-10): scenes are FOLDERS that contain their components; NPCs and
-   Monsters each have a top-level master folder that CONTAINS every sheet (so
-   the folder's feed shows the sheets in full); and a scene CASTS the people
-   and monsters it uses via leadsTo entries of kind "cast" — the DM OS then
-   renders each cast member's FULL SHEET inside the scene, read-only, while
-   the one true sheet stays in its master folder. Masters contain, scenes cast.
+   v7 (2026-08-11): every PERSON is filed in exactly one place — the NPCs
+   folder — and every scene that uses one refers to it with a [[wikilink]] in
+   the prose rather than casting it. A person therefore appears exactly once in
+   the story tree, always as her own sheet, always with a drag handle, which is
+   the rule the table wanted after cast placements proved impossible to tell
+   apart from real filings. Encounters still cast their CREATURES, because a
+   creature sheet is a stat block the DM reads mid-fight and wants sitting
+   inside the encounter itself.
+
+   v6 (2026-08-10): scenes are folders that contain their components, and each
+   of NPCs and Monsters has a top-level master folder holding every sheet.
 
    Act One (folder)
      └─ LASTLIGHT — the opening scene (folder)
@@ -41,14 +46,9 @@ window.DM_CAMPAIGN = {
 
   { "schema": 1, "id": "f-lastlight", "type": "folder",
     "title": "LASTLIGHT — the opening scene",
-    "parent": "act1", "order": 10, "rev": 3,
+    "parent": "act1", "order": 10, "rev": 4,
     "tags": ["act1", "session1"],
-    "leadsTo": [
-      { "to": "npc-wenna",  "label": "", "kind": "cast" },
-      { "to": "npc-finch",  "label": "", "kind": "cast" },
-      { "to": "npc-hettie", "label": "", "kind": "cast" },
-      { "to": "npc-tobin",  "label": "", "kind": "cast" }
-    ], "fields": {},
+    "leadsTo": [], "fields": {},
     "body": "Session one, doubling as session zero. Everything needed to run the opening lives in this folder: the run sheet and the fairground encounter now; the handouts (reason cards, the Lastlight program) still to come. Cast on stage: [[npc-wenna|Wenna Ash]], [[npc-finch|Finch]], [[npc-hettie|Hettie Sarn]] (seen, not met) — and by the morning after, [[npc-tobin|Tobin Rell]]." },
 
   { "schema": 1, "id": "sc-lastlight", "type": "scene",
