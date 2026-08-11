@@ -461,6 +461,7 @@
     const t = STORE.tree();
     const f = parseHash();
     const tr = STORE.trash();
+    castPlaced = new Set();   // one cast row per sheet, per paint
 
     const storyRoots = t.roots.filter(d => d.id !== STORE.NB_ROOT);
     const nbSections = STORE.notebookSections();
@@ -530,21 +531,41 @@
     return out;
   }
 
-  // A container's cast members (leadsTo kind 'cast'), minus any that are ALSO
-  // physical children of it — a real child row already shows those.
+  /* One placement per sheet, the same rule the feed already follows: a sheet
+     whose own row is already inside this container wins over a cast row, and the
+     FIRST cast placement wins over any later one — so casting the same person in
+     an act AND in a scene inside that act never doubles her up. Claimed as the
+     tree is built, and a container claims before it recurses into its children,
+     which is what makes the outermost placement the one that survives. Reset
+     once per paint (PAINT.tree). */
+  let castPlaced = new Set();
+
+  // A container's cast members (leadsTo kind 'cast'), minus any whose real sheet
+  // already sits somewhere inside this container — a real row already shows
+  // those — and minus any placed further out.
   function treeCastMembers(d, t) {
-    const kidIds = new Set((t.kids.get(d.id) || []).map(k => k.id));
-    return (d.leadsTo || [])
-      .filter(l => l && l.kind === 'cast' && !kidIds.has(l.to))
-      .map(l => STORE.get(l.to))
-      .filter(Boolean);
+    const inside = new Set();
+    (function walk(pid) { (t.kids.get(pid) || []).forEach(k => { inside.add(k.id); walk(k.id); }); })(d.id);
+    const out = [];
+    (d.leadsTo || []).forEach(l => {
+      if (!l || l.kind !== 'cast' || inside.has(l.to) || castPlaced.has(l.to)) return;
+      const c = STORE.get(l.to);
+      if (!c) return;
+      castPlaced.add(c.id);
+      out.push(c);
+    });
+    return out;
   }
 
-  function treeNodeHTML(d, t, focus, depth, noCast) {
+  /* `isCast` marks a row that is a PLACEMENT of a sheet rather than the sheet's
+     home. It reads like any other row and selects the same document, but it has
+     no drag handle and is not a drop target: its position comes from the host's
+     leadsTo, so dragging it could only ever move the real sheet somewhere the
+     row itself would not follow. Take it out via the host's ＋ picker instead.
+     The flag also stops one cast list nesting inside another. */
+  function treeNodeHTML(d, t, focus, depth, isCast) {
     const kids = t.kids.get(d.id) || [];
-    // A member added to this container lists here exactly like anything else —
-    // same row, same handle. `noCast` stops one cast list nesting inside another.
-    const cast = noCast ? [] : treeCastMembers(d, t);
+    const cast = isCast ? [] : treeCastMembers(d, t);
     const hasInner = kids.length || cast.length;
     const open = !!ui().open[d.id];
     const selected = focus.id === d.id;
@@ -558,8 +579,10 @@
       fullyOpen = open && conts.every(cid => !!ui().open[cid]);
     }
     return `<li>
-      <div class="tree-row${selected ? ' is-selected' : ''}${isFolder ? ' is-folder' : ''}" data-act="select-node" data-doc="${d.id}" style="--depth:${depth}">
-        <span class="tree-handle" data-act="row-drag" data-doc="${d.id}" title="Drag to reorder" aria-hidden="true">⠿</span>
+      <div class="tree-row${selected ? ' is-selected' : ''}${isFolder ? ' is-folder' : ''}" data-act="select-node" data-doc="${d.id}"${isCast ? ' data-cast="1"' : ''} style="--depth:${depth}">
+        ${isCast
+          ? `<span class="tree-handle tree-handle-fixed" aria-hidden="true">⠿</span>`
+          : `<span class="tree-handle" data-act="row-drag" data-doc="${d.id}" title="Drag to reorder" aria-hidden="true">⠿</span>`}
         ${hasInner
           ? `<button class="tree-twist${open ? ' is-open' : ''}" data-act="toggle-folder" data-doc="${d.id}"
                      aria-expanded="${open}" aria-label="${open ? 'Collapse' : 'Expand'} ${esc(d.title)}">▸</button>`
@@ -2939,6 +2962,9 @@
       if (!row) return;
       const tid = row.dataset.doc;
       if (!tid || tid === dragging.id) return;
+      // A cast row is a placement, not a home: filing something "next to" it
+      // would adopt the parent of the sheet's real row, somewhere else entirely.
+      if (row.dataset.cast) return;
       const td = STORE.get(tid);
       if (!td) return;
       // A folder dropped into its own subtree would make a cycle — refuse it.
