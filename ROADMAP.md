@@ -26,6 +26,29 @@
 >
 > ---
 >
+> **▶ HANDOFF — 2026-08-11, app-work session (this is the newest; older handoff follows).**
+>
+> **Casting is GONE. A document lives in exactly one folder, and everywhere else names it with a `[[wikilink]]`.** v33–v36 built "casting" (a scene borrowing a sheet filed elsewhere, shown as an extra tree row and an extra feed card) and it failed at the table: a borrowed row was drawn by the same code as a real one, so it looked identical while behaving nothing like it — dragging it refiled the underlying sheet without moving the row, removing it trashed the whole sheet, and an act plus a scene inside it could borrow the same person into three indistinguishable rows. It is removed from the tree, the feed, and the ＋ menu. **The reasoning is in `DECISIONS.md`, 2026-08-11 — read that before re-proposing anything shaped like it.** Old workspaces keep their `cast` entries as inert data; the story map and connection editors already filtered them out and still do.
+>
+> **Current LIVE asset versions:** dmos-ui `v42`, dmos-store `v16`, dmos.css `v32`, campaign `v7`. (app `v21`, data `v16`, styles `v17`, icons `v19`, bestiary `v1` unchanged.) All pushed and live.
+>
+> **Shipped this session (all verified in a running app, all pushed):**
+> - **Casting removed** (`v39`) + **campaign v7**: LASTLIGHT and the fairground encounter now name their people and creatures with wikilinks only. Every tree row is a real filing with a drag handle.
+> - **Links render in fields** (`v42`). Fields were permanent textareas, so a `[[link]]` in one showed as raw brackets forever. Fields now read as prose and become a textarea on click, exactly like the body.
+> - **Type `[[` to link** (`v42`). A filtered document list at the caret; ↑↓ moves, Enter/Tab accepts, Esc dismisses. Works in bodies and fields. The older select-text→Link marker still exists.
+> - **The card's headers belong to the document** (`v42`). Add, rename, remove, and drag-reorder headers per card. `DOC_TYPES[type].fields` is still the default; a doc only gets its own arrangement (`d.fieldDefs`, `[key,label]` pairs) once changed. Removing a header keeps its text, so re-adding by the same name restores the writing.
+> - **"Keep mine" stays kept** (`v16`). Declining a `campaign.js` revision left base at the old rev, so the identical conflict was re-raised on every single reload. The declined rev is now recorded and skipped; a genuinely newer rev still asks.
+> - **The conflict notice names `campaign.js`, not Cowork** (`v40`) — it never came from Cowork, and the wording sent Joby hunting for a session that was not involved.
+>
+> **⚠ The workspace-per-origin trap — this cost most of a session.** App code and `campaign.js` live on disk and are shared by every page. **The workspace (folders, sheets, edits, trash) lives in browser storage, which is per ORIGIN.** `file://`, `localhost:8000`, and `jobydorr.github.io` are three separate campaigns that happen to run the same code, and nothing syncs between them. Joby was on `file://`, which the Chrome browser tools **cannot reach at all** — so a session cannot read or repair his data there. **He is moving to `localhost:8000`** (`python -m http.server 8000`) via Export workspace → Import workspace; confirm that landed before assuming which origin holds the real campaign. See [[dm-os-workspace-origins]] in memory.
+>
+> **Open threads / pick up here:**
+> - **Confirm the Export→Import to `localhost:8000` succeeded** and that the tree looks right, then treat that origin as the only working copy.
+> - Joby should click **Keep mine** once more on LASTLIGHT after a hard refresh; that one sticks.
+> - Everything under the older handoff below still stands (backstory check, leveling, bestiary).
+>
+> ---
+>
 > **▶ HANDOFF — earlier app-work session (history below).**
 >
 > **Workflow rules — read `CLAUDE.md`, this is load-bearing.** Git happens on the **Code side ONLY**. Cowork brainstorms and drafts files but runs **NO git** (no stage/commit/push): a flaky Cowork sandbox mount truncates writes *at commit time* and has corrupted committed files before. GitHub (`jobydorr/roll-a-hero`) is the source of truth — if the local repo looks scrambled, `git fetch` and reconcile toward `origin/main`. A **`pre-push` hook** (`.git/hooks/pre-push`, local to this clone) blocks pushing a truncated text file (empty / no trailing newline); override with `git push --no-verify` only after confirming. Root cause is now diagnosed: the **Cowork mount is the injector**; the local disk is healthy (fsck clean, real NTFS, not OneDrive). The `/tmp`-assemble workaround in the CAMPAIGN HANDOFF below is fine belt-and-suspenders on the Cowork side, but the rule is simply **Cowork drafts, Code commits.** See [[push-workflow]] in memory.
