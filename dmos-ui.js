@@ -387,13 +387,19 @@
        ('cast:<host>:<target>') and folds in the TARGET's rev. The same sheet
        can therefore appear twice in one feed (its real home + an embed)
        without the keyed reconcile ever seeing a duplicate id. */
+    /* Each sheet appears AT MOST ONCE per feed: a real node always wins over an
+       embed, and the first cast placement wins over later ones — so casting the
+       same person in an act AND in a scene inside it never doubles her up. */
+    const wantIds = new Set(want.map(d => d.id));
+    const placed = new Set();
     const entries = [];
     for (const d of want) {
       entries.push({ key: d.id, doc: d, depth: depthOf(d), host: null });
       (d.leadsTo || []).forEach(l => {
         if (!l || l.kind !== 'cast') return;
+        if (wantIds.has(l.to) || placed.has(l.to)) return;   // already in this feed
         const t = STORE.get(l.to);
-        if (t) entries.push({ key: 'cast:' + d.id + ':' + t.id, doc: t, depth: depthOf(d) + 1, host: d });
+        if (t) { placed.add(t.id); entries.push({ key: 'cast:' + d.id + ':' + t.id, doc: t, depth: depthOf(d) + 1, host: d }); }
       });
     }
 
@@ -555,8 +561,20 @@
     return out;
   }
 
+  // A container's cast members (leadsTo kind 'cast'), minus any that are ALSO
+  // physical children of it — a real child row already shows those.
+  function treeCastMembers(d, t) {
+    const kidIds = new Set((t.kids.get(d.id) || []).map(k => k.id));
+    return (d.leadsTo || [])
+      .filter(l => l && l.kind === 'cast' && !kidIds.has(l.to))
+      .map(l => STORE.get(l.to))
+      .filter(Boolean);
+  }
+
   function treeNodeHTML(d, t, focus, depth) {
     const kids = t.kids.get(d.id) || [];
+    const cast = treeCastMembers(d, t);
+    const hasInner = kids.length || cast.length;
     const open = !!ui().open[d.id];
     const selected = focus.id === d.id;
     const isFolder = d.type === 'folder';
@@ -571,7 +589,7 @@
     return `<li>
       <div class="tree-row${selected ? ' is-selected' : ''}${isFolder ? ' is-folder' : ''}" data-act="select-node" data-doc="${d.id}" style="--depth:${depth}">
         <span class="tree-handle" data-act="row-drag" data-doc="${d.id}" title="Drag to reorder" aria-hidden="true">⠿</span>
-        ${kids.length
+        ${hasInner
           ? `<button class="tree-twist${open ? ' is-open' : ''}" data-act="toggle-folder" data-doc="${d.id}"
                      aria-expanded="${open}" aria-label="${open ? 'Collapse' : 'Expand'} ${esc(d.title)}">▸</button>`
           : `<span class="tree-twist tree-twist-empty" aria-hidden="true"></span>`}
@@ -583,7 +601,15 @@
                 aria-label="${fullyOpen ? 'Collapse all under' : 'Unroll all under'} ${esc(d.title)}">${icon(fullyOpen ? 'fold' : 'unfold')}</button>` : ''}
         ${canContain(d) ? `<button class="row-add" data-act="folder-menu" data-parent="${d.id}" title="Add to “${esc(d.title)}”">＋</button>` : ''}
       </div>
-      ${kids.length && open ? `<ul>${kids.map(k => treeNodeHTML(k, t, focus, depth + 1)).join('')}</ul>` : ''}
+      ${hasInner && open ? `<ul>${kids.map(k => treeNodeHTML(k, t, focus, depth + 1)).join('')}${cast.map(c => `<li>
+        <div class="tree-row tree-cast${focus.id === c.id ? ' is-selected' : ''}" data-act="select-node" data-doc="${c.id}" style="--depth:${depth + 1}"
+             title="In this cast — the sheet itself lives elsewhere. Click to open it.">
+          <span class="tree-handle tree-handle-ghost" aria-hidden="true"></span>
+          <span class="tree-twist tree-twist-empty" aria-hidden="true"></span>
+          <span class="tree-icon" aria-hidden="true">${icon(docIconName(c))}</span>
+          <span class="tree-title">${esc(c.title)}</span>
+          <span class="tag bonus tree-badge">cast</span>
+        </div></li>`).join('')}</ul>` : ''}
     </li>`;
   }
 
@@ -2410,15 +2436,22 @@
   const castRefIds = (d) => new Set((d.leadsTo || []).filter(l => l && l.kind === 'cast').map(l => l.to));
   ACT['cast-open'] = (el) => { closeModal(); openCastPicker(el.dataset.kind, el.dataset.parent); };
   ACT['cast-search:input'] = (el) => renderCastList(el.value);
+  /* The picker is a TOGGLE and stays open — it is the cast manager, not just an
+     adder. Click a name to add its sheet to the container; click it again to
+     take it back out. Members are always listed (badged), never hidden, so the
+     dialog can show the state instead of an empty box. */
   ACT['cast-pick'] = (el) => {
     const d = STORE.get(el.dataset.doc), f = STORE.get(castParent);
     if (!d || !f) return;
-    if (castRefIds(f).has(d.id)) { closeModal(); return; }
-    STORE.patch(f.id, { leadsTo: (f.leadsTo || []).concat([{ to: d.id, label: '', kind: 'cast' }]) });
-    closeModal();
+    const isIn = castRefIds(f).has(d.id);
+    STORE.patch(f.id, { leadsTo: isIn
+      ? (f.leadsTo || []).filter(l => !(l && l.kind === 'cast' && l.to === d.id))
+      : (f.leadsTo || []).concat([{ to: d.id, label: '', kind: 'cast' }]) });
     const open = ui().open; open[f.id] = true; STORE.setUi({ open });
-    if (isFolderType(f)) gotoFolder(f.id); else gotoDoc(f.id);
-    announce(d.title + ' now shows its full sheet in “' + f.title + '”.');
+    announce(isIn ? (d.title + ' taken out of “' + f.title + '”.')
+                  : (d.title + '’s full sheet now shows in “' + f.title + '”.'));
+    const inp = ROOT.modal.querySelector('#castSearch');
+    renderCastList(inp ? inp.value : '');
   };
   ACT['cast-unlink'] = (el) => {
     const f = STORE.get(el.dataset.host); if (!f) return;
@@ -2430,8 +2463,8 @@
     castKind = kind; castParent = parentId;
     const T = DOC_TYPES[kind] || DOC_TYPES.npc;
     openModal(`
-      <div class="modal-title">Add an existing ${esc(T.label.toLowerCase())} to “${esc(f.title)}”</div>
-      <p class="modal-hint">The full sheet will show inside “${esc(f.title)}”. The sheet itself keeps living where it is filed — edit it there, and every place it is cast follows.</p>
+      <div class="modal-title">The ${esc(T.label.toLowerCase())} cast of “${esc(f.title)}”</div>
+      <p class="modal-hint">Click a name to show its full sheet inside “${esc(f.title)}” — click it again to take it back out. The sheet itself never moves: edit it where it lives, and every place it is cast follows. Click outside when done.</p>
       <div class="search-box"><input type="text" id="castSearch" data-act="cast-search" placeholder="Search by name…" autocomplete="off" spellcheck="false"></div>
       <div class="connect-list" id="castList"></div>`, 'modal-wide modal-search');
     renderCastList('');
@@ -2443,20 +2476,23 @@
     const inCast = castRefIds(f);
     const q = query.trim().toLowerCase();
     let list = STORE.docs().filter(d =>
-      d.type === castKind && !STORE.isInNotebook(d.id) && d.id !== castParent && !inCast.has(d.id));
+      d.type === castKind && !STORE.isInNotebook(d.id) && d.id !== castParent);
     if (q) list = list.filter(d => d.title.toLowerCase().includes(q));
-    const label = (DOC_TYPES[castKind] || {}).label || 'sheet';
+    const label = ((DOC_TYPES[castKind] || {}).label || 'sheet').toLowerCase();
     if (!list.length) {
       box.innerHTML = `<p class="modal-hint">${q
-        ? 'No ' + esc(label.toLowerCase()) + ' matches “' + esc(query.trim()) + '”.'
-        : 'Every ' + esc(label.toLowerCase()) + ' in the workspace is already in this cast.'}</p>`;
+        ? 'No ' + esc(label) + ' matches “' + esc(query.trim()) + '”.'
+        : 'No ' + esc(label) + ' sheet exists yet — create one first with “New ' + esc(label) + '”.'}</p>`;
       return;
     }
     box.innerHTML = list.slice(0, 60).map(d => {
       const path = pathLabel(d.id);
-      return `<button class="search-row connect-row" data-act="cast-pick" data-doc="${d.id}">
+      const isIn = inCast.has(d.id);
+      return `<button class="search-row connect-row${isIn ? ' is-cast' : ''}" data-act="cast-pick" data-doc="${d.id}"
+                      title="${isIn ? 'Click to take it out of this cast' : 'Click to show its sheet here'}">
         <span class="search-icon">${icon(DOC_TYPES[d.type].icon)}</span>
         <span class="search-main"><span class="search-title">${esc(d.title)} <span class="search-area">${esc(DOC_TYPES[d.type].label)}${path ? ' · ' + esc(path) : ''}</span></span></span>
+        ${isIn ? '<span class="tag bonus">✓ in this cast</span>' : ''}
       </button>`;
     }).join('');
   }

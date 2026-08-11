@@ -944,3 +944,13 @@ table.diff tbody th { width: 22%; font-family: var(--font-display); font-weight:
 .doc-cast-embed .doc-title-ro a:hover { text-decoration: underline; }
 .doc-field-ro { padding: 7px 9px; white-space: normal; }
 .doc-body-ro { cursor: default; }
+
+/* Cast rows in the sidebar tree — references, not children: no drag handle,
+   dimmed, badged. Clicking one opens the real sheet. */
+.tree-row.tree-cast { opacity: 0.78; }
+.tree-row.tree-cast:hover { opacity: 1; }
+.tree-handle-ghost { visibility: hidden; }
+
+/* Cast-manager picker rows: members stay listed, badged, and dimmed. */
+.search-row.is-cast { opacity: 0.62; }
+.search-row.is-cast:hover { opacity: 1; }
