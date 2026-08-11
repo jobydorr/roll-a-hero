@@ -81,7 +81,7 @@ The chosen collection, in Joby's words "the collection for now" — each shape i
 
 | # | Encounter | Type | Where it runs | Status |
 |---|---|---|---|---|
-| 1 | Lastlight — the things through the tear | combat (initiative, opt-in) | Scene 1 | scene LOCKED; stat blocks to build next |
+| 1 | Lastlight — the things through the tear | combat (initiative, opt-in) | Scene 1 | BUILT & PUSHED (campaign.js v5): 6 snatch-goblins in two waves + 3 crease-wolves; tear-ogre seen, penned, never fought; per-hero moments staged (fighter holds the grandstand gap, rangers' long shots force drops, bard steadies the crowd) |
 | 2 | Surveyor wardens in the ruined stairwells | combat | Scene 3 | not drafted — teaches coming-undone |
 | 3 | The climb to the patched tear | exploration | Scene 3 | not drafted |
 
@@ -149,7 +149,8 @@ The chosen collection, in Joby's words "the collection for now" — each shape i
 - **Sessions played:** none. The campaign has not opened.
 - **Scene 1 is LOCKED** (2026-08-10), mirrored in the bible's §6 opening, and **PUSHED to the DM OS** — the runnable draft (read-alouds, beat sequence, staging rules, session-zero machinery) lives in `campaign.js` (v4) as the run sheet inside a **LASTLIGHT scene folder** (scenes are containers per Joby), alongside top-level master folders **NPCs — the cast** (Wenna, Tobin, Finch, Hettie) and **Monsters — the bestiary** (empty until the stat-block push). Verified in a local DM OS, both sync paths. Joby: hard-refresh `dm.html`, then — because the merge keeps *your* filing on updates — pull the new structure with **Tools → New workspace → Sync from campaign** (clean, backs up first) or just drag the five docs into the new folders if you've made edits you want to keep.
 - **Decisions due from Joby:** alteration ideas for the three chosen transition shapes (the Badge, the Empty Coffin, the Paper Bird) and their sequencing; the Rectors' name and faces; whether "Lastlight," "Finch," and the other working names stand.
-- **Build queue (agreed order):** Encounter 1 — monster family stat blocks, the scripted Finch opener, terrain, staged saves and losses, Rector display beats → NPC stats locked (Wenna, Tobin as Act One healer, wardens) → Scene 3 (the wreck) → reason cards and the folded-sheet prop → DM OS push.
+- **Encounter 1 is BUILT and PUSHED** (campaign.js v5, 2026-08-10): the tear family lives as creature sheets in the Monsters master folder (snatch-goblin HP 10/AC 12, the Snatch drag-and-drop-on-hit; crease-wolf HP 14/AC 13, hunts folded; tear-ogre HP 30/AC 13, Heroic band, statted for later), and the fairground encounter doc sits inside the LASTLIGHT scene folder with setup, waves, tactics, and per-hero moments. Verified as full stitched sheets in a fresh DM OS. **Masters contain, scenes link** — the "Existing NPC/creature" picker is the scene tool; the master folders hold the actual sheets as children.
+- **Build queue (agreed order):** NPC stats locked (Wenna, Tobin as Act One healer, wardens) → Scene 3 (the wreck) → reason cards and the folded-sheet prop → transition scenes once Joby's alteration ideas land.
 
 ---
 
