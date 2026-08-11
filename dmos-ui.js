@@ -173,7 +173,7 @@
   /* ============================ The feed pane ============================== */
   function conflictStripHTML(d) {
     return `<div class="note note-warn doc-conflict">
-      <strong>Cowork sent a newer version of this.</strong> Yours is still showing — nothing was overwritten.
+      <strong>campaign.js has a newer version of this.</strong> Yours is still showing — nothing was overwritten.
       <div class="actions" style="margin-top:10px;">
         <button class="btn btn-sm" data-act="keep-mine" data-doc="${d.id}">Keep mine</button>
         <button class="btn btn-sm btn-gold" data-act="take-theirs" data-doc="${d.id}">Take theirs</button>
@@ -214,7 +214,7 @@
         <input class="doc-title" data-act="edit-title" data-doc="${d.id}"
                value="${esc(d.title)}" aria-label="Title of this ${esc(T.label)}">
         <span class="tag">${esc(T.label)}</span>
-        ${d.edited ? '<span class="tag bonus" title="You have changed this since Cowork wrote it">edited</span>' : ''}
+        ${d.edited ? '<span class="tag bonus" title="You have changed this since campaign.js last wrote it">edited</span>' : ''}
         <div class="spacer"></div>
         ${(d.type === 'npc' || d.type === 'creature') ? `<button class="btn btn-sm btn-ghost" data-act="roster-add-doc" data-doc="${d.id}"
                 title="Add to the “At the table” initiative roster">${icon('sword')} To the table</button>` : ''}
@@ -534,7 +534,7 @@
           : `<span class="tree-twist tree-twist-empty" aria-hidden="true"></span>`}
         <span class="tree-icon" aria-hidden="true">${icon(docIconName(d))}</span>
         <span class="tree-title">${esc(d.title)}</span>
-        ${d.conflict ? '<span class="tag warn tree-badge" title="Cowork sent a newer version">!</span>' : ''}
+        ${d.conflict ? '<span class="tag warn tree-badge" title="campaign.js has a newer version — open it to choose">!</span>' : ''}
         ${kids.length ? `<button class="row-expand" data-act="expand-all" data-doc="${d.id}"
                 title="${fullyOpen ? 'Collapse everything inside' : 'Unroll everything inside'}"
                 aria-label="${fullyOpen ? 'Collapse all under' : 'Unroll all under'} ${esc(d.title)}">${icon(fullyOpen ? 'fold' : 'unfold')}</button>` : ''}
@@ -2637,7 +2637,7 @@
       <div class="modal-title">${esc(mine.title)}</div>
       <p class="modal-hint">Nothing has been overwritten. Yours is what you're reading in the feed.</p>
       <div class="diff-wrap"><table class="diff">
-        <thead><tr><th></th><th>Yours</th><th>Cowork's (rev ${theirs.rev})</th></tr></thead>
+        <thead><tr><th></th><th>Yours</th><th>campaign.js (rev ${theirs.rev})</th></tr></thead>
         <tbody>
           ${row('Title', mine.title, theirs.title)}
           ${keys.map(k => row(k.replace(/_/g, ' '), (mine.fields || {})[k], (theirs.fields || {})[k])).join('')}
