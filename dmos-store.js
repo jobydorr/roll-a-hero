@@ -268,8 +268,16 @@
     .map(id => Object.assign({}, ws.base[id], { deletedAt: ws.overlay[id].deletedAt }));
 
   /* --------------------------- Conflicts (rule 2) ------------------------- */
+  /* "Keep mine" has to STAY kept. Declining leaves base at the older rev, so
+     without a record of the refusal the very next sync raises the identical
+     conflict again, and again on every reload after that — the DM answers the
+     question and the question comes straight back. Remembering the declined rev
+     settles it for that revision only: a genuinely newer one still asks. */
   function keepMine(id) {
-    if (!ws.conflicts[id]) return;
+    const inc = ws.conflicts[id];
+    if (!inc) return;
+    const o = ws.overlay[id] || (ws.overlay[id] = { localRev: 0, patch: {} });
+    o.declinedRev = Math.max(o.declinedRev || 0, inc.rev || 0);
     delete ws.conflicts[id];
     persist();
     emit({ type: 'docs', ids: [id] });
@@ -287,6 +295,7 @@
       o.localRev = (o.localRev || 0) + 1;
     }
     ws.base[id] = Object.assign(clone(inc), { parent: b.parent, order: b.order });
+    if (o) delete o.declinedRev;      // base moved forward; nothing left to decline
     delete ws.conflicts[id];
     persist();
     emit({ type: 'docs', ids: [id] });
@@ -326,6 +335,8 @@
         continue;
       }
       if ((raw.rev || 0) <= (b.rev || 0)) { out.skipped.push(id); continue; }
+      // Already offered this exact revision and told no. Don't ask again.
+      if ((raw.rev || 0) <= ((ws.overlay[id] || {}).declinedRev || 0)) { out.skipped.push(id); continue; }
       if (isTouched(id) || b.origin === 'local') {
         ws.conflicts[id] = normalizeDoc(raw);
         out.conflicted.push(id);
