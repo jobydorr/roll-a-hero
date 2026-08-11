@@ -2,9 +2,21 @@
 
 *What this is:* a short record of the important calls we made and **why** — especially the moments the project changed direction. A pivot is never "lost": come back here to see what we were thinking.
 
-*Newest first. Last updated: 2026-08-10.*
+*Newest first. Last updated: 2026-08-11.*
 
 ---
+
+### 2026-08-11 (latest) — Casting is removed: one sheet, one folder, referenced by link
+
+The DM OS spent four releases (v33–v36) building "casting": a scene could borrow a person or a creature that lived in a master folder, and the borrowed sheet would render inside the scene's feed and as an extra row in the story tree. The idea was that a name belongs in the scene that uses it, and the idea was not wrong. The execution was the problem, and Joby found the edge of it at the table.
+
+A borrowed row was drawn by exactly the same code as a real one, so it looked identical, carried the same drag handle, and pointed at the same document. Dragging it silently refiled the underlying sheet while the row itself stayed where it was, because a borrowed row's position comes from the host's link list rather than from the sheet's own filing. Removing one felt like deleting a duplicate, but it moved the whole sheet to the trash. Worse, nothing stopped the same person being borrowed by an act *and* by a scene inside that act, so one person could hold three rows at once, and no two of them behaved the same way. The first repair added the missing rules — one placement per sheet, and no handle on a borrowed row — but that produced a tree in which some rows could be dragged and others could not, for reasons invisible on screen, which was a worse confusion than the one it fixed.
+
+**The call: a document lives in exactly one folder and appears exactly once in the tree, always with a handle.** Everywhere else it is named with a `[[wikilink]]` in the prose, which already gives a hover peek, a click-through, and a "＋ Initiative" action, and which the campaign's scenes were already using in their read-alouds anyway. Casting is gone from the tree, from the feed, and from the ＋ menu, and `campaign.js` v7 converts the LASTLIGHT scene and the fairground encounter to links alone.
+
+The reasoning that generalizes past this feature: **the story tree answers "where is this filed", and that question has exactly one answer per document.** Any UI that puts a second copy of a thing in a place that answers a single-answer question will produce two objects the user cannot tell apart, and no amount of styling fixes it — the second copy has to not exist. A view that shows relationships (the story map) can show a thing many times, because "what connects to what" is a many-answer question. The two must not be blended.
+
+Workspaces built before this keep their old `cast` entries as inert data; the story map and the connection editors already ignored them and continue to.
 
 ### 2026-08-10 (latest) — Campaign One, revision nine: Lastlight locked, the Rectors, and the canyon canon absorbed
 

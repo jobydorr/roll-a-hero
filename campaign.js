@@ -16,14 +16,13 @@
    ⚠ `campaign` must be a plain string — the UI renders it directly.
 
    ── CAMPAIGN ONE: THE FOLDED WORLD ──────────────────────────────────────────
-   v7 (2026-08-11): every PERSON is filed in exactly one place — the NPCs
-   folder — and every scene that uses one refers to it with a [[wikilink]] in
-   the prose rather than casting it. A person therefore appears exactly once in
-   the story tree, always as her own sheet, always with a drag handle, which is
-   the rule the table wanted after cast placements proved impossible to tell
-   apart from real filings. Encounters still cast their CREATURES, because a
-   creature sheet is a stat block the DM reads mid-fight and wants sitting
-   inside the encounter itself.
+   v7 (2026-08-11): every sheet is filed in exactly one place and is referred to
+   from everywhere else with a [[wikilink]] in the prose. People live in the
+   NPCs folder, creatures in the Monsters folder, and a scene that uses one
+   names it rather than borrowing a copy of it. Casting is gone from the app
+   entirely, so a document now appears exactly once in the story tree, always
+   as its own sheet and always draggable — the rule the table asked for after
+   borrowed placements proved impossible to tell apart from real filings.
 
    v6 (2026-08-10): scenes are folders that contain their components, and each
    of NPCs and Monsters has a top-level master folder holding every sheet.
@@ -76,13 +75,9 @@ window.DM_CAMPAIGN = {
 
   { "schema": 1, "id": "enc-lastlight", "type": "encounter",
     "title": "The fairground fight — things through the tear",
-    "parent": "f-lastlight", "order": 20, "rev": 2,
+    "parent": "f-lastlight", "order": 20, "rev": 3,
     "tags": ["act1", "session1"],
-    "leadsTo": [
-      { "to": "cr-snatch-goblin", "label": "", "kind": "cast" },
-      { "to": "cr-crease-wolf",   "label": "", "kind": "cast" },
-      { "to": "cr-tear-ogre",     "label": "", "kind": "cast" }
-    ],
+    "leadsTo": [],
     "fields": {
       "setup": "The Lastlight fairground, seconds after the tear. Initiative is opt-in — the fight starts when the heroes choose to stand. The scoreboard is rescues, not kills: every monster wants to leave with somebody, and a person carried into the tear is gone until the party goes in after them. Terrain to use hard: the grandstands (high ground, and one section groaning toward collapse), the fallen clockwork (cover, and a bell that can be rung), spilled grain-lanterns underfoot, the rope lines, and the scar-line where footing goes suddenly wrong.",
       "creatures": "Six [[cr-snatch-goblin|snatch-goblins]] in two waves of three, and three [[cr-crease-wolf|crease-wolves]]. Far off, one [[cr-tear-ogre|tear-ogre]] — penned by the Rectors, seen and never fought. Tuned for the table: four level-3 heroes (bard, fighter, two rangers). A player missing? Shed one goblin per empty chair and change nothing else.",
