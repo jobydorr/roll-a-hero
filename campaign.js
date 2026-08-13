@@ -16,6 +16,14 @@
    ⚠ `campaign` must be a plain string — the UI renders it directly.
 
    ── CAMPAIGN ONE: THE FOLDED WORLD ──────────────────────────────────────────
+   v9 (2026-08-13): places get their own master folder, Locations, alongside NPCs
+   and Monsters, fronted by a ▶ WHERE THEY CAN GO index that says what the party
+   can DO at each one rather than only what it looks like. Ten places in the city
+   plus the two THE COMMISSION already used. A separate IF THERE IS TIME folder
+   under Act One holds short optional material: a slip, which can be dropped
+   anywhere in ninety seconds, and the thing in Ganny's preserves, which is
+   fifteen minutes and plants a clue. The city has no name yet — deliberately.
+
    v8 (2026-08-11): Act One gains its second scene, THE COMMISSION. A scene that
    runs as a chain of events now files as a folder holding ONE index document —
    titled so it is unmistakable in the tree — whose "Run these in order" field is
@@ -39,12 +47,15 @@
      ├─ LASTLIGHT — the opening scene (folder)
      │    ├─ the run sheet (scene doc)
      │    └─ the fairground fight (encounter doc; handouts still to come)
-     └─ THE COMMISSION — the morning after (folder)
-          ├─ ▶ RUN THESE IN ORDER (scene doc — the index; read this one)
-          ├─ six beat docs, one per step, numbered 1–6
-          └─ two location docs: the Ossuary, the Set Square
+     ├─ THE COMMISSION — the morning after (folder)
+     │    ├─ ▶ RUN THESE IN ORDER (scene doc — the index; read this one)
+     │    └─ six beat docs, one per step, numbered 1–6
+     └─ IF THERE IS TIME — fast pieces (folder): a slip, Ganny's preserves
    NPCs — the cast (folder):        Wenna, Tobin, Finch, Hettie, Sela, the Rector
-   Monsters — the bestiary (folder): snatch-goblin, crease-wolf, tear-ogre */
+   Monsters — the bestiary (folder): snatch-goblin, crease-wolf, tear-ogre
+   Locations — the places (folder):  ▶ WHERE THEY CAN GO (index) + a sheet per
+     place. Master folders CONTAIN their sheets; scenes point at them by link.
+     The Ossuary and the Set Square moved here from THE COMMISSION in v9. */
 window.DM_CAMPAIGN = {
   "campaign": "The Folded World",
   "docs": [
@@ -102,7 +113,7 @@ window.DM_CAMPAIGN = {
     "title": "THE COMMISSION — the morning after",
     "parent": "act1", "order": 20, "rev": 1,
     "tags": ["act1", "session2"], "leadsTo": [], "fields": {},
-    "body": "The second scene of Act One, running from the settling dust of [[f-lastlight|LASTLIGHT]] to the moment the party walks out of a government building employed. There is no fight in it. Everything it does, it does by being kind to the heroes on camera.\n\nRead [[sc-commission|▶ RUN THESE IN ORDER]] and nothing else. That document is the whole scene in sequence, and every step in it links to the beat, the place, or the person it needs, so the rest of this folder is opened one piece at a time as play reaches it." },
+    "body": "The second scene of Act One, running from the settling dust of [[f-lastlight|LASTLIGHT]] to the moment the party walks out of a government building employed. There is no fight in it. Everything it does, it does by being kind to the heroes on camera.\n\nRead [[sc-commission|▶ RUN THESE IN ORDER]] and nothing else. That document is the whole scene in sequence, and every step in it links to the beat, the place, or the person it needs, so the rest of this folder is opened one piece at a time as play reaches it.\n\nThe two buildings this scene uses — [[loc-ossuary|the Ossuary]] and [[loc-setsquare|the Set Square]] — now live in [[f-locations|Locations]] with every other place in the city." },
 
   { "schema": 1, "id": "sc-commission", "type": "scene",
     "title": "▶ RUN THESE IN ORDER — the commission",
@@ -196,7 +207,7 @@ window.DM_CAMPAIGN = {
 
   { "schema": 1, "id": "loc-ossuary", "type": "location",
     "title": "The Ossuary — the ministry's hotel",
-    "parent": "f-commission", "order": 80, "rev": 1,
+    "parent": "f-locations", "order": 120, "rev": 2,
     "tags": ["act1", "city"], "leadsTo": [],
     "fields": {
       "looks": "Six floors of white stone at the top of the market street, with a sunsalt lamp burning in every single window — which on any ordinary night is the most expensive sight in the city and on this one is obscene. It was a bone-house before it was anything else, three centuries ago, and the city has never got round to renaming it. The vaults underneath are still down there and are used for wine.",
@@ -207,7 +218,7 @@ window.DM_CAMPAIGN = {
 
   { "schema": 1, "id": "loc-setsquare", "type": "location",
     "title": "The Set Square — the Rector's hall",
-    "parent": "f-commission", "order": 90, "rev": 1,
+    "parent": "f-locations", "order": 130, "rev": 2,
     "tags": ["act1", "city", "surveyors"], "leadsTo": [],
     "fields": {
       "looks": "A public square that is a perfect square, and a building on its north side that is the same square stood upright — a drafting instrument the size of a civic hall, which is where the name comes from and which the city finds funnier than the order does. Inside, every line is true. There are no worn steps, no settled lintels, and no corner anywhere in the building that is not exactly a corner, and after ten minutes of it most people want to go and look at something crooked.",
@@ -239,6 +250,168 @@ window.DM_CAMPAIGN = {
       "secret": "She has no secret and she is not a plant, which the DM should hold onto, because this campaign is full of people who turn out to be something. She is exactly what she appears to be: one of the haunted, twenty-four hours in, before anybody has reached her. Both Green Fields and Red Flag will come for her within the month, and which one gets there first is worth deciding at the table rather than in advance."
     },
     "body": "Sela exists to put a face and a name on the count. She appears in [[b-comm-6|the last beat of THE COMMISSION]], on the steps, for under a minute, and she says the name of the boy the party watched be taken — [[npc-finch|Finch]] — which nobody in a building full of officials said all morning.\n\nRAB. Five. He carries a paper bird that a Surveyor folded for him at the fair the day before, and he gives it away to a stranger with a badge because he has worked out, in the way five-year-olds do, that this is a thing he can do to help. He does it without being told and without letting go of it easily. Play the bent wing.\n\nWHERE SHE GOES. She should come back. A mother who appears once and is never seen again is a prop, and this campaign has enough of those; a mother the party keeps running into — at a Green Fields meeting, at a rope line, eventually in a dark house with a candle in the window — is the whole argument of Act One happening to one family in the background. Her arc is a standing invitation and is deliberately unscheduled." },
+
+  { "schema": 1, "id": "f-locations", "type": "folder",
+    "title": "Locations — the places",
+    "parent": null, "order": 40, "rev": 1,
+    "tags": ["places"], "leadsTo": [], "fields": {},
+    "body": "Every place in the campaign lives here — one sheet each, the single source of truth, no matter how many scenes use it. Scenes point at these sheets with wikilinks, the same way they point at people and creatures.\n\nStart at [[loc-index|▶ WHERE THEY CAN GO]], which lists the city in one screen and says what the party can actually DO at each place." },
+
+  { "schema": 1, "id": "loc-index", "type": "note",
+    "title": "▶ WHERE THEY CAN GO — the city",
+    "parent": "f-locations", "order": 10, "rev": 1,
+    "tags": ["places", "index"], "leadsTo": [],
+    "fieldDefs": [
+      ["places", "▶ The city, and what they can do there"],
+      ["ifthere", "If there is time"],
+      ["state", "The state of the city this week"]
+    ],
+    "fields": {
+      "places": "[[loc-clockface|The Clock Face]] — meet people, leave word, hire a runner. The city's meeting place, by accident.\n[[loc-petition|The Petition Rail]] — formally demand anything at all, including a name added to the count. Every word is filed.\n[[loc-lampoffice|The Lamp Office]] — buy light. The register on the wall does not add up, and nobody has ever added it.\n[[loc-sixtyone|Sixty-One Pairs]] — rummage, one roll each. The first buyer for anything brought back out of a crease.\n[[loc-longtable|The Long Table]] — food, cheap beds, every rumor in the city, and a room full of people who just lost their work.\n[[loc-rationhall|The Ration Hall]] — free food, blankets and healing, and your name on a list with dates.\n[[loc-foldingshop|The Folding Shop]] — commission a toy of anything. It gets the parts you did not say.\n[[loc-ganny|Ganny Marle's Cellar]] — a coin to look at a hole where the room does not meet itself. Something is coming through it.\n[[loc-scarline|The Scar-Line]] — walk where the canyon was. Their assignment, and the thinnest place in the city.\n[[loc-darkwindow|The Dark Window]] — the one unlit window on any street after dark. Knock and be lied to politely.\n\nAlso here, used by [[f-commission|THE COMMISSION]]: [[loc-ossuary|the Ossuary]] and [[loc-setsquare|the Set Square]].",
+      "ifthere": "Two pieces are written to be dropped when the night has room for them, and they live in [[f-iftime|IF THERE IS TIME]]: [[b-slip|a slip]], which can happen anywhere at all and takes ninety seconds, and [[enc-ganny|the thing in Ganny's preserves]], which is fifteen minutes and is not a fight unless the party insists.",
+      "state": "It is the week after Lastlight. The Cinder Draw was formally closed with garlands, so the best-paid trade in the world ended on a Tuesday and nobody has a job. Eleven people are officially missing and everyone who was there knows the number is wrong. The price of a lamp has doubled. The city is long and thin along its crease, and the town overhead hangs where it has always hung."
+    },
+    "body": "HOW TO USE THIS. The party has no assigned business in the city except the errand [[npc-wenna|Wenna]] gave them, so this list exists to be pointed at. When they say \"what's around,\" read them three or four of these and let them pick.\n\nNothing here is a quest chain. Each place is a room with something to do in it, and two of them hold a thing that matters later — [[loc-lampoffice|the Lamp Office]] register and the hoard in [[loc-ganny|Ganny's cellar]] — which the party can walk straight past without losing anything. Both are written so that noticing them is a reward and missing them costs nothing." },
+
+  { "schema": 1, "id": "loc-clockface", "type": "location",
+    "title": "The Clock Face — the meeting place",
+    "parent": "f-locations", "order": 20, "rev": 1,
+    "tags": ["city"], "leadsTo": [],
+    "fields": {
+      "looks": "The face of the fallen clock tower lies in the middle of a street it is far too large to be taken out of — twelve feet across, glass gone, the numbers still legible, one hand snapped and the other bent. It came down through three roofs and the city has quietly given up on moving it. Children have already worn the paint off climbing it.",
+      "who_is_here": "Everyone, eventually. A woman sells tea off a plank balanced on the rim, and has done since the second day, and will not be moved on because nobody can work out whose job it is to move her. Runners wait here for work. Notices are wedged into the crack across the face.",
+      "hidden": "Nothing is hidden here, and that is the point of it. This is the one place in the city where the party can be found by somebody who is looking for them, which will matter more than any secret."
+    },
+    "body": "WHAT THEY DO HERE. Meet people. Leave word. Hire a runner for a coin. Read the notices, which are mostly people looking for people. If the party needs to be found by an NPC — and over a long campaign they will, often — this is where it happens, and using one place for it every time makes the city feel like a place rather than a set of rooms.\n\nIt is also simply a good place to have a conversation, which a table with children in it needs more of than it needs another room with a door." },
+
+  { "schema": 1, "id": "loc-petition", "type": "location",
+    "title": "The Petition Rail — where you may say anything",
+    "parent": "f-locations", "order": 30, "rev": 1,
+    "tags": ["city", "registry"], "leadsTo": [],
+    "fields": {
+      "looks": "A brass rail outside the Registry, polished to a shine by a lifetime of hands, with a canvas awning over it and a clerk's desk at either end. Anyone at all may take the rail and say their grievance out loud. A human clerk writes down every word, reads it back, thanks them sincerely, and files it.",
+      "who_is_here": "The queue, which today runs the length of the street and around the corner. Clerks who are unfailingly kind and slightly hollowed out. A hoarse man near the front who is here every single week and says the same thing: that the Fold is the best thing that ever happened to anybody, and that not one word of that explains why no human sits at any table where anything is decided.",
+      "hidden": "Nothing has ever come of a petition. Not one, in a lifetime of them. The clerks do not know this, because each of them only sees their own share, and the filing is genuine — the words go into a real archive that is really kept. It is simply that the archive is where petitions are for."
+    },
+    "body": "WHAT THEY DO HERE. Formally demand anything, and be taken completely seriously. The most useful thing a party can do at this rail in Act One is get a name added to the count of the missing, which is exactly what [[npc-sela|Sela Orrin]] cannot do on her own and what the party's badges make possible in an afternoon.\n\nIt works, slowly, and it costs nothing, and every word said at the rail is written down with the speaker's name on it. Let that sit without comment.\n\nThe queue is its own resource: it is eleven days long, everyone in it is angry and talking, and it is the best place in the city to hear what people actually think. A man near the front will trade his place for a favor." },
+
+  { "schema": 1, "id": "loc-lampoffice", "type": "location",
+    "title": "The Lamp Office — where the city buys light",
+    "parent": "f-locations", "order": 40, "rev": 1,
+    "tags": ["city", "sunsalt", "clue"], "leadsTo": [],
+    "fields": {
+      "looks": "A long counter, a wall of lamps in racks, and behind the counter a slate board painted in two columns that is updated every week by hand. Sunsalt lamps, wicks, grain-lanterns, spare glass, and the household ration books in a drawer. Since the Draw closed the price has doubled and there is now a limit of one lamp a household, which is chalked on the door in a hand that was angry when it wrote it.",
+      "who_is_here": "A queue of people who have never had to queue for light before, and a clerk who is doing his best and has been shouted at nine times today.",
+      "hidden": "THE COLUMNS DO NOT MATCH. The left column is what came down from the Hearthspire this week. The right is what was issued to households. The right is smaller, and not by a little, and the gap has been there every week the board has been kept. The clerk has never added them, because the two columns are two different jobs and nobody has ever asked him to compare them."
+    },
+    "body": "WHAT THEY DO HERE. Buy light, fuel and spare glass — genuinely useful, and this is also where the Compass Spirit will eat later, so the party will come back.\n\nTHE CLUE, AND HOW TO PLAY IT. The slate is on the wall in plain sight. A player who reads it and does the arithmetic finds a shortfall the clerk cannot explain and is not hiding. Do not push it, do not have anyone react, and do not let the clerk turn out to be in on anything — he is not. If nobody looks at the board, nothing is lost.\n\nWhat it is worth later: this is [[npc-hettie|Hettie Sarn]]'s entire case, sitting on a wall for free. What the Reactors take in has never matched what comes out refined. When she finally opens her ledger and turns it around, a party that read this board already knows she is right, and the scene becomes a confirmation instead of a lecture." },
+
+  { "schema": 1, "id": "loc-sixtyone", "type": "location",
+    "title": "Sixty-One Pairs — the crease-salvage shop",
+    "parent": "f-locations", "order": 50, "rev": 1,
+    "tags": ["city", "shop"], "leadsTo": [],
+    "fields": {
+      "looks": "A deep narrow shop with sixty-one unmatched boots hanging from the ceiling on strings, each waiting on a partner that has not turned up. Everything on the shelves came out of a crease at some point: objects that arrived folded and did not entirely open again, half a chair, a kettle that is also a little bit of a different kettle, a pair of spectacles with one lens that shows the room slightly earlier.",
+      "who_is_here": "The owner, who buys by weight and sells by the story, and who has never once been through a crease herself and is not curious about doing so.",
+      "hidden": "She pays cash for anything brought back out of a crease, no questions, better than anyone else in the city. She is not an agent of anybody. She simply has the only market for it, because everyone else is frightened of the stuff."
+    },
+    "body": "WHAT THEY DO HERE. Rummage — give each hero one roll and let them turn up something strange; the stock is a licence to hand out oddities without them being magic items. Buy cheap gear. And, once they start going into creases, SELL, which makes this the party's first reliable buyer and gives crease-diving an economy.\n\nThe boots are the point of the shop and worth describing every visit. Sixty-one things that arrived without their other half is the Folding stated as a joke, and a table full of children will start looking for matches." },
+
+  { "schema": 1, "id": "loc-longtable", "type": "location",
+    "title": "The Long Table — the Draw crews' eating house",
+    "parent": "f-locations", "order": 60, "rev": 1,
+    "tags": ["city", "hub"], "leadsTo": [],
+    "fields": {
+      "looks": "One room, one table, running the whole length of it, scarred and scrubbed and set for sixty. Blight-cakes, thick soup, bread and beer. Beds upstairs for a few coins. By the door there is a hook with a garland still hanging on it from the closing ceremony, which nobody has taken down and nobody will touch.",
+      "who_is_here": "Two days ago this fed the best-paid workers in the world. Today it is full of people who have no work and are not yet used to the idea, sitting at the same places they have sat at for thirty years. The cook has fed all of them since they were apprentices and is the closest thing the room has to a mayor.",
+      "hidden": "The hiring board by the kitchen door, which for a lifetime has been the busiest board in the city, is empty. Everyone in the room can see it from where they are sitting."
+    },
+    "body": "WHAT THEY DO HERE. Eat, sleep cheap, and hear absolutely everything — this is the rumor hub, and any news the DM needs the party to have can arrive at this table without contrivance.\n\nThe cook has a small favor to ask, which is the fastest side piece in the city: her brother is at [[loc-petition|the petition rail]] again, several drinks in, working up to saying the thing that gets a man written down, and she would very much like somebody to walk him home. Five minutes, no dice needed unless the party wants them.\n\nAN OPTION, NOT YET CANON — say the word and I will build it: a Draw crew for hire, four people who spent thirty years inside the exact canyon the party has been sent to walk the rim of. A resource, a liability, and four more names the party becomes responsible for." },
+
+  { "schema": 1, "id": "loc-rationhall", "type": "location",
+    "title": "The Ration Hall — free, excellent, and written down",
+    "parent": "f-locations", "order": 70, "rev": 1,
+    "tags": ["city", "registry"], "leadsTo": [],
+    "fields": {
+      "looks": "A wide clean hall with numbered tables, run with the scrupulous fairness the ministry applies to everything it does directly. Food, blankets, boots, and at the back a genuinely excellent infirmary with human surgeons in it and no queue worth the name.",
+      "who_is_here": "Registry clerks, human staff, and since Lastlight a great many people with burns and broken arms. Everyone is treated. Nobody is turned away, nobody is charged, and nobody is asked whether they deserve it.",
+      "hidden": "Nothing, and that is the trick of it. Every ration, every blanket and every injury is entered in a ledger with a name and a date, openly, in front of the person it concerns, because the record is what makes the fairness auditable. It is the most honest institution in the city and it is building a file on everyone in it."
+    },
+    "body": "WHAT THEY DO HERE. Get healed, fed and equipped for nothing. Take it. It is real, it is good, and the campaign is not interested in punishing them for using it.\n\nWHAT IT COSTS. Their injuries are on a list with dates, and so is every time they turned up hurt. Nothing comes of this in Act One. It comes up in Act Two, when somebody produces the dates and asks where they were.\n\nWHY IT MATTERS NOW. This is the reason [[npc-tobin|Tobin]]'s hands are worth more than they look. A party that works out on its own that it would rather not be written down has understood the occupation better than any speech could teach them, and they will have worked it out inside a free hospital that was kind to them." },
+
+  { "schema": 1, "id": "loc-foldingshop", "type": "location",
+    "title": "The Folding Shop — a Surveyor that makes toys",
+    "parent": "f-locations", "order": 80, "rev": 1,
+    "tags": ["city", "surveyors"], "leadsTo": [],
+    "fields": {
+      "looks": "A single small room off a side street, spotlessly tidy, with a workbench and stacks of plain paper and nothing else. On strings from the ceiling: birds that flap, a horse that walks the length of the counter and turns around, a fish, a box that opens the wrong way and is empty from every angle. Everything costs one coin.",
+      "who_is_here": "A Surveyor, which is not on ministry business and is not stationed here. It keeps the shop because it likes to. It is delighted to be visited and is very good with children, allowing for the half-second delay on every expression.",
+      "hidden": "It keeps the coins in a jar and has no use for them whatsoever. It does not know what it is saving them for and finds the question interesting when asked. Ask it what it does when the shop is shut and it says, truthfully, that it folds."
+    },
+    "body": "WHAT THEY DO HERE. Commission a toy. Describe anything at all and it will fold it while they wait, in one unbroken motion, for one coin — and it will get the parts right that they did not describe, because it was listening to how they said it rather than what they said. A hero who asks for \"a dog\" gets their own dog, the one from when they were small, and will not be able to explain how.\n\nThis is where the bird in [[b-comm-6|Rab's hands]] was made, at the fair, the day before.\n\nHOW TO PLAY IT. Warm, generous, and slightly too accurate. The horror in the Surveyors is never cruelty; it is that they are better at knowing you than you are comfortable with, and they use it to be kind. A table that loves this shop is a table that will feel Act Two properly." },
+
+  { "schema": 1, "id": "loc-ganny", "type": "location",
+    "title": "Ganny Marle's Cellar — a coin to see a wrinkle",
+    "parent": "f-locations", "order": 90, "rev": 1,
+    "tags": ["city", "wrinkle", "clue"], "leadsTo": [],
+    "fields": {
+      "looks": "A narrow house on a street of narrow houses, and a cellar reached by six steps and a hatch. Ganny Marle charges one coin to look through a hand-sized hole she has knocked in the back wall. Through the hole the cellar does not meet itself: the far corner is about two feet further away than the near one says it should be, and there is a draught coming out of it that smells of somewhere else.",
+      "who_is_here": "Ganny Marle, eighty, entirely uninterested in what the wrinkle is or means, and very interested in the coin. Half the street says the hole is a trick with mirrors. She lets them say it.",
+      "hidden": "Something small has been coming through at night and eating her preserves, and she has not mentioned this to anybody because she does not want the ministry in her cellar. It has a hoard behind the wall. See [[enc-ganny|the thing in Ganny's preserves]]."
+    },
+    "body": "WHAT THEY DO HERE. Pay a coin and look, which is worth doing on its own — this is the first time most of the party will have seen a wrinkle up close and had time to study it, rather than being in a fight beside one.\n\nThen, if there is room in the night, [[enc-ganny|the preserves]]. Fifteen minutes, and the thing that comes out of the hole is not a fight unless the party makes it one.\n\nWHY THIS PLACE EXISTS. It is cheap, it is weird, and it is exactly the sort of thing children ask to go back to. It also quietly establishes that the fold has small holes in it all over the city, which is the fact the whole of Act One is built on and which nobody has to say out loud." },
+
+  { "schema": 1, "id": "loc-scarline", "type": "location",
+    "title": "The Scar-Line — where the canyon was",
+    "parent": "f-locations", "order": 100, "rev": 1,
+    "tags": ["city", "act1", "assignment"], "leadsTo": [],
+    "fields": {
+      "looks": "A line in the earth running the length of the city, arrow-straight, where two days ago there was a canyon with bridges and refinement towers descending out of sight. On one side of the line the grass is one green. On the other side it is another. A stream runs up to the line and does not quite meet itself on the far bank. A crow flies across and skips.",
+      "who_is_here": "People, walking out to look at it the way people visit a grave — Draw families mostly, standing at the line and not saying much. No fence, no guard, and no ceremony now the garlands are down.",
+      "hidden": "Where the stream fails to meet itself is the thinnest place in the city, and a hero who follows the water rather than the line will find it. It is not a way in. It is proof that a way in is possible, and it is the strongest argument the party can carry back to anybody."
+    },
+    "body": "WHAT THEY DO HERE. This is the errand [[npc-wenna|Wenna]] gave them, and it is a real place to walk around in rather than a punishment for following orders. Let them spend an hour on it. There is a great deal to notice and none of it requires a roll.\n\nWHAT IT IS NOT. It is not a way into the fold. It was closed two days ago by Rectors in front of the entire city and it is shut. That is the point of the assignment, and [[npc-tobin|Tobin]] said so before they set out.\n\nWHAT THEY GET ANYWAY. The stream, the two greens, and the crow. A party that pays attention leaves with the beginnings of a working theory about where the fold is thin, which is worth more than the errand was ever meant to give them." },
+
+  { "schema": 1, "id": "loc-darkwindow", "type": "location",
+    "title": "The Dark Window — the one unlit house",
+    "parent": "f-locations", "order": 110, "rev": 1,
+    "tags": ["city", "red-flag"], "leadsTo": [],
+    "fields": {
+      "looks": "After nightfall every window on every street in the city burns sunsalt, because light is the gift and the gift is free and refusing it would be strange. On any long street there is one window that does not. Behind the glass there is a small honest yellow flame of a kind most people in this city have never seen, and would not recognize as fire if asked.",
+      "who_is_here": "Whoever answers the door: polite, unhurried, and frightened in a way that is easy to miss. They will say they have run out of lamp oil and that it is being seen to, and they will not invite anybody in.",
+      "hidden": "It is a tallow candle. Tallow is not illegal and never has been — it is simply archaic, a thing the world has almost forgotten how to make, and no authority has ever thought to look for a house that refuses the gift rather than demanding more of it. The dark window is not a signal. It is an argument, addressed to nobody, and it has stayed safe for a generation precisely because nobody has worked out what it means."
+    },
+    "body": "WHAT THEY DO HERE. Notice it, which costs nothing and requires no roll — any hero who thinks to count windows on a dark street finds one. Then knock, if they like, and be lied to politely.\n\nHOW TO SEED IT. Mention one unlit window, once, in passing, on a night when the party is walking home from something else. Do not draw attention to it. Do not have anybody watch them from it. If they ask, the answer is lamp oil, and the door closes.\n\nWHEN IT PAYS OFF. Whenever you want. The party will meet Red Flag properly through [[npc-tobin|Tobin]] and eventually [[npc-hettie|Hettie Sarn]], and on the day somebody finally explains what an Unlit house is, a table that has already knocked on one will get there a beat ahead of the explanation.\n\nDO NOT let any authority investigate a dark window. The moment somebody in the ministry decodes it, the whole arrangement collapses and Red Flag stops being able to exist in plain sight." },
+
+  { "schema": 1, "id": "f-iftime", "type": "folder",
+    "title": "IF THERE IS TIME — fast pieces",
+    "parent": "act1", "order": 30, "rev": 1,
+    "tags": ["act1", "optional"], "leadsTo": [], "fields": {},
+    "body": "Short material to deploy when a session has room and skip when it does not. Nothing in here is load-bearing and nothing in here has to happen.\n\n[[b-slip|A slip]] — ninety seconds, anywhere at all, no preparation.\n[[enc-ganny|The thing in Ganny's preserves]] — fifteen minutes, at [[loc-ganny|Ganny Marle's cellar]], and it plants something worth calling back to." },
+
+  { "schema": 1, "id": "b-slip", "type": "beat",
+    "title": "A slip — drop it anywhere",
+    "parent": "f-iftime", "order": 10, "rev": 1,
+    "tags": ["act1", "optional", "droppable"], "leadsTo": [],
+    "fields": {
+      "hook": "For about a minute and a half, somewhere perfectly ordinary stops meeting itself. Then it stops, and the door is a door again. It can happen in any room, on any street, at any point in any session, and it needs no preparation whatsoever.",
+      "read_aloud": "Improvise from whatever is actually in the room. Three that work: \"The door you came through lets you out onto a street you know, three streets from the one you are on.\" · \"Going up, the stair has one step too many. Coming down, it has one too few. It does this twice more and then stops.\" · \"Somebody in the next room answers a question none of you asked, in a voice one of you knows.\"",
+      "if_they": "…investigate immediately, give them the full ninety seconds and let them get somewhere genuinely interesting — a wrong street, a room in a house nobody lives in — and then close it while they are still inside, and let them walk home the long way. Nobody is hurt by a slip. The fold is loose, not hostile.\n\n…ignore it, so does everybody else. People in this city have lived with slips their whole lives and treat them the way other worlds treat a draught.\n\n…ask an adult about it, they get the settling-joke: the world is still lying down, love, it does that.",
+      "outcome": "Nothing, most of the time, which is what makes it safe to use as often as you like. It costs no plot and buys atmosphere, and children will begin testing every doorway in the city, which is the correct response."
+    },
+    "body": "WHY IT IS WORTH HAVING. It is the campaign's whole cosmology delivered as a toy, it takes no preparation, and it can be dropped into a lull in any scene ever written.\n\nTHE CLUE IT PLANTS, IF YOU WANT IT. Slips cluster. They come in the days after a great pull of sunsalt, and a party that starts noting when they happen will eventually notice the pattern on their own. That is [[npc-hettie|Hettie Sarn]]'s ledger arriving through play rather than through a speech: when she finally opens the book and turns it around, the party is confirming something they already suspected instead of being told something new.\n\nTo use it that way, run slips deliberately rather than randomly — a cluster of two or three in the days after the Hearthspire draws, and none in the quiet weeks. Nobody needs to comment on it.\n\nESCALATION. Slips get more frequent as Act One goes on. That is not decoration; it is the same fact as everything else that is getting worse, and it needs no explanation at the table." },
+
+  { "schema": 1, "id": "enc-ganny", "type": "encounter",
+    "title": "The thing in Ganny's preserves",
+    "parent": "f-iftime", "order": 20, "rev": 1,
+    "tags": ["act1", "optional", "clue"], "leadsTo": [],
+    "fields": {
+      "setup": "[[loc-ganny|Ganny Marle]] mentions, once the party has paid their coin and had their look, that something has been at her preserves. Six jars in a fortnight, the lids off and set aside neatly rather than broken. She has not told the ministry because she does not want the ministry in her cellar.\n\nWait in the dark for twenty minutes of game time and something comes through the wrinkle.",
+      "creatures": "One [[cr-snatch-goblin|snatch-goblin]] kit — knee-high, thin, and by itself. Use the sheet's numbers if it comes to dice, but halve the hit points and give it no interest whatsoever in fighting. It wants the jam. It is frightened of everything and it is very fast.",
+      "tactics": "It is not an ambush and it does not attack. It freezes, it hides badly, and it bolts for the hole the moment anyone moves quickly. Anything the party does that is loud or sudden sends it back through the wrinkle, and it does not come back that night.\n\nWays this can go, all of them fine: corner it, catch it in a sack or a coat, feed it and watch what happens, block the hole and talk to it, follow it through the wrinkle before it closes, or kill it. If they are gentle it becomes almost tame within the hour, which children will find far more interesting than a corpse.",
+      "reward": "THE HOARD, behind a loose stone in the cellar wall, and they find it whether the kit lives or dies. It is a magpie's pile of shiny nothing: buttons, three spoons, a bootlace, a brass curtain ring, a good deal of broken glass.\n\nAnd one thing that does not belong. Something that was on a person at the fairground two days ago — a garland ribbon in the Draw's colors, a child's shoe, a lamplighter's brass key. Something the party can recognize."
+    },
+    "body": "THE POINT OF THIS, and why it is worth fifteen minutes: the wrinkle in an old woman's cellar and the tear at the foot of the Hearthspire open into the same place.\n\nThat is a real, concrete, physical clue delivered by a goblin stealing jam, and it does three things at once. It proves [[npc-tobin|Tobin]]'s suspicion before he has earned the right to say it out loud. It tells the party that the way in does not have to be a great seam that Rectors are watching — the city is full of small holes. And it makes the thing they saw at the fairground personal again, because whatever is in that hoard belonged to somebody who is on the far side of it right now.\n\nHOW HARD TO PUSH. Not at all. Put the object in the pile and describe the pile. If nobody picks it up, [[npc-tobin|Tobin]] does, and writes it down, and says nothing — and the party can find it in his notes later, which is arguably better.\n\nIT IS NOT A FIGHT. The scoreboard of this campaign is rescues rather than kills, and this is the first chance after Lastlight to teach that with something small and frightened instead of something dangerous. A party that catches the kit in a coat and feeds it has learned more about how these sessions work than a party that rolls initiative." },
 
   { "schema": 1, "id": "cr-snatch-goblin", "type": "creature",
     "title": "Snatch-goblin",

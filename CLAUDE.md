@@ -41,6 +41,22 @@ This repo sits on a flaky sandbox mount that has silently **truncated committed 
 
 ---
 
+## 🛑 Brainstorming is free. Canon is not. (Settled 2026-08-13.)
+
+**Propose every idea you like. Do not make any of them canon without Joby saying yes.**
+
+The line is the moment something gets written into `CAMPAIGN.md`, `ACT1.md`, or `campaign.js` / the DM OS. Before that line, invent freely — that's the job. After it, invention becomes a fact the campaign has to keep being consistent with, and a fact nobody chose is a fact that gets discovered mid-session and has to be retconned.
+
+- **Nothing becomes canon without a yes.** Names of places and people, a world detail "while I'm in there," a motivation, a piece of history, a rule about how something works — all of it gets proposed and confirmed first, however small it seems.
+- **The failure this rule exists for:** a session added, unasked, that the clock tower overhead had been stopped for a lifetime and started running the morning of the disaster. It went straight into the run sheet. Joby had only ever said a clock tower fell. Months later he is reading his own campaign and finding load-bearing details he never agreed to and cannot explain.
+- **When writing up approved material, write up the approved material.** If a gap turns up that needs filling to finish the document, fill it as plainly as possible and **flag it in the reply** — or mark it in the doc as an option rather than a fact. Do not quietly decide.
+- **Adding is the same as changing.** "I only added a detail" is how canon drifts. Ask.
+- **Corollary for the DM OS:** the same applies to reorganizing. Moving, renaming, or restructuring documents is a change to something Joby runs a game from. Propose the shape, then build it.
+
+*Ideas during brainstorming: as wild as you like. Once we are writing canon or filing documents, ad-libbing is at a minimum.*
+
+---
+
 ## ✍️ House style — read `STYLE.md` before writing any document
 
 All written deliverables (campaign docs, world material, NPC and faction write-ups, briefs) follow **`STYLE.md`**. The short version:
