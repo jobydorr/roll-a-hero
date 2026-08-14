@@ -56,7 +56,13 @@ Three practical ways in, none of which cost the tone anything:
 
 **A prosperous city is what this world says it is.** The Fold was made for plenty, sunsalt flows into every human hearth, and the occupation's entire case rests on having delivered. Grimy scarcity contradicts the premise and it keeps creeping in anyway, because fantasy defaults to mud.
 
-**The reference is roaring nineteenth-century midtown Manhattan, not a rainy English fishing village.** Glass roofs, palms in pots, brass, electric-bright streets, department stores that deliver to your door, pleasure palaces, bands, crowds in good coats. When a location needs a feel, reach for the Gilded Age before reaching for anything medieval.
+**The blend, precisely, because it is easy to get wrong in either direction: medieval aesthetics, the material prosperity of Rome on steroids, the festive confidence of the Gilded Age, all of it run by a totalitarian state.** Marble and colonnades and covered markets, not plate glass and shopfronts. Porters and handcarts and litters, not delivery vans. Stairs, not lifts. Crowds in good cloth at public games, gardens, baths, and feasts — abundance on an imperial scale, distributed as a right of citizenship and recorded in a census.
+
+**This is NOT the industrial revolution and there is no steam.** Nothing more advanced than an ancient, primitive, exceedingly rare flintlock. If a detail would need a factory behind it, cut it.
+
+**Sunsalt is where the wonder goes, and it should be seeded early as hints rather than explained.** Heat and light without fire is the signature: a floor that is warm underfoot, a hall lit with no flame in it, a pool that stays hot, a glasshouse full of plants that have no business growing here. That reads as marvel rather than machinery, which is the correct side of the line.
+
+**The dark is the undertow, not the weather.** The surface is a confident, wealthy, celebrating city. The horror surfaces in the cracks — a thing said too courteously, a record being kept, a wagon nobody watches leave — while the table is still laughing at the clowns. Do not let the two swap places.
 
 **Two working rules that follow from it:**
 
