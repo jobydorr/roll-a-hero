@@ -52,6 +52,19 @@ Three practical ways in, none of which cost the tone anything:
 
 **The test:** if a stretch of material contains nobody the boys would quote at each other in the car afterward, it is missing something.
 
+### Lean toward prosperity (added 2026-08-13)
+
+**A prosperous city is what this world says it is.** The Fold was made for plenty, sunsalt flows into every human hearth, and the occupation's entire case rests on having delivered. Grimy scarcity contradicts the premise and it keeps creeping in anyway, because fantasy defaults to mud.
+
+**The reference is roaring nineteenth-century midtown Manhattan, not a rainy English fishing village.** Glass roofs, palms in pots, brass, electric-bright streets, department stores that deliver to your door, pleasure palaces, bands, crowds in good coats. When a location needs a feel, reach for the Gilded Age before reaching for anything medieval.
+
+**Two working rules that follow from it:**
+
+- **Every place should be instantly recognizable as something from our world.** A department store, a toy shop, a pleasure garden, a sideshow, a showroom. If a location needs a paragraph to explain what kind of place it is, it is an invented institution and it will not land. Name the analogue first, then make it strange.
+- **The pressure in Act One is not poverty.** It is a rich city meeting its first limit in living memory and having no idea how to behave. That is funnier, stranger, and truer to the setting than hunger.
+
+**And keep the party in it.** Lastlight was a festival. The city put its garlands and bunting up for a celebration and the disaster arrived in the middle of it, so the streets are still dressed — decorations going brown, stalls half struck, a carousel nobody has dismantled. A city in party clothes with a hole in it is a far better image than a city in mourning.
+
 ## The test
 
 Read a paragraph aloud. If it sounds like advertising copy — short, punchy, escalating, every clause a hammer — it is wrong. If it sounds like a person patiently explaining something they have thought hard about, it is right.
