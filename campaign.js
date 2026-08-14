@@ -351,7 +351,7 @@ window.DM_CAMPAIGN = {
       "title": "▶ RUN THESE IN ORDER — the commission",
       "parent": "f-commission",
       "order": 10,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "session2",
@@ -377,7 +377,7 @@ window.DM_CAMPAIGN = {
         ]
       ],
       "fields": {
-        "order": "1. [[b-comm-1|In the dust — a Surveyor thanks them]] · the fairground, minutes after the fight\n2. [[b-comm-2|A night at the Ossuary]] · [[loc-ossuary|the hotel]], that evening\n3. [[b-comm-3|The awarding]] · [[loc-setsquare|the Set Square]], next morning — badges, purse, and a fold each\n4. [[b-comm-4|The commission and the lie]] · the same room, minutes later — the task force, and who they are told did this\n5. [[b-comm-5|Wenna's assignment]] · a Green Fields room across the city — where to look, and a clerk to carry the paper\n6. [[b-comm-6|The woman and the boy]] · the steps outside, on the way out\n\nSteps 3 and 4 are one conversation and should not be broken up. Everything else can breathe.",
+        "order": "1. [[b-comm-1|In the dust — a Surveyor thanks them]] · the fairground, minutes after the fight\n2. [[b-comm-2|A night at the Ossuary]] · [[loc-ossuary|the hotel]], that evening\n3. [[b-comm-3|The Set Square]] · the walk up through the government quarter, then badges, purse, and a fold each\n4. [[b-comm-4|The commission and the lie]] · the same room, minutes later — the task force, and who they are told did this\n5. [[b-comm-5|Wenna's office]] · across the courtyard — where to look, and a clerk to carry the paper\n6. [[b-comm-6|The woman and the boy]] · the steps outside, on the way out\n\nSteps 3 and 4 are one conversation and should not be broken up. Everything else can breathe.",
         "before": "Have ready: the three things the Rector hands over (see [[b-comm-3|the awarding]]), and one folded paper bird made for real, which is given away in [[b-comm-6|the last beat]] and is the only prop that matters. Know that [[npc-tobin|Tobin Rell]] joins the party in step 5 and that he is already further gone than he looks. Know that nobody today says the name of the boy from the tower's foot until the last thirty seconds of the scene.",
         "truth": "The tear was not caused by anybody. It is the jam in the great fold, and it has been coming for a lifetime. The ministry names Red Flag because a public enemy with a human face keeps the grieving flowing into Green Fields, which the occupation owns, and away from the candle houses, which it does not. Every human in the scene believes what they are saying. The Rector knows better and is not lying either, in its own reckoning, because a useful account of a disaster is a kind of order and order is mercy.",
         "after": "Employed, decorated, and pointed at the wrong crease. They leave with a badge that opens checkpoints, coin, a folded case each, a handler who disagrees with their orders, an assignment at the Cinder Draw scar-line, and a paper bird from a five-year-old. The next session is the choice between the crease they were sent to and the tear they saw with their own eyes."
@@ -391,7 +391,7 @@ window.DM_CAMPAIGN = {
       "title": "1 — In the dust: a Surveyor thanks them",
       "parent": "f-commission",
       "order": 20,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "session2"
@@ -399,7 +399,7 @@ window.DM_CAMPAIGN = {
       "leadsTo": [],
       "fields": {
         "hook": "They have just fought monsters in front of ten thousand people, and the first thing the government does is walk over and be delighted with them. It is the warmest reception any of them has ever had, and it is being conducted by something that is not a person.",
-        "read_aloud": "\"One of the paper people is coming toward you, and it is smiling. It has to arrange the smile first — the creases move, and then the expression arrives, a half-second late, the way a word arrives in a language you are still learning. It is very tall up close, and it is made of one piece. 'You stood,' it says. 'Ten thousand of you, and four stood. Do you know how rarely that happens? I have written it down. I have written all of it down.' It looks at each of you in turn, and it says your name — and none of you has told it your name.\"",
+        "read_aloud": "\"Ten minutes ago this was a fair. The grass is gone — it is mud and trampled sugar and paper flags pressed flat, and there is a smell of hot fat still coming off a stall nobody has gone back to turn off. Somewhere behind you a bell is ringing and nobody is answering it. And over all of it is the sound of ten thousand people calling names, which does not sound like screaming at all. It sounds like a crowd looking for its coats.\n\nOne of the paper people is coming toward you, and it is smiling. It has to arrange the smile first — the creases move, and then the expression arrives, a half-second late, the way a word arrives in a language you are still learning. It is very tall up close, and it is made of one piece.\n\n‘You stood,’ it says. ‘Ten thousand of you, and four stood. Do you know how rarely that happens? I have written it down. I have written all of it down.’\n\nIt looks at each of you in turn, and it says your name — and none of you has told it your name.\"",
         "if_they": "…ask how it knows their names, it is delighted to explain: it wrote them down, of course, that is what it is for, and it produces the page and shows them. Nothing is hidden and that is what makes it unsettling.\n\n…are hostile or suspicious, it is not offended in the least. It says that suspicion is reasonable after a day like this one, and offers the rooms anyway, and means it.\n\n…ask about the boy at the tower, it says it is very sorry and that the count is being taken and that they will be told. It will not be told. Nobody follows up. That is deliberate and should pass without comment.\n\n…ask what it wants, it says: nothing tonight. Tonight they should sleep somewhere warm. That is true.",
         "outcome": "The party is invited, as a token of the ministry's gratitude, to be guests at [[loc-ossuary|the Ossuary]] — the finest house in the city — for as long as they care to stay. A runner will bring word in the morning. Then it bows, and goes back to writing down faces."
       },
@@ -412,7 +412,7 @@ window.DM_CAMPAIGN = {
       "title": "2 — A night at the Ossuary",
       "parent": "f-commission",
       "order": 30,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "session2"
@@ -420,9 +420,9 @@ window.DM_CAMPAIGN = {
       "leadsTo": [],
       "fields": {
         "hook": "Hot water, clean sheets, and more food than any of them has seen at one table, on the worst night the city has had in living memory. Let them enjoy it, and let the enjoying be slightly difficult.",
-        "read_aloud": "\"[[loc-ossuary|The Ossuary]] was a bone-house once, and the city has never bothered to rename it. Six floors of white stone with a lamp in every window — real sunsalt lamps, the whole face of the building lit, on a night when the rest of the street is dark. There is a bath the size of a cart. There is a bed each. Someone has already brought up your things from wherever you left them, folded, and there is a tray with more food on it than your family eats at a wedding. Outside and four floors down, people are still looking for people.\"",
+        "read_aloud": "\"[[loc-ossuary|The Ossuary]] was a bone-house three hundred years ago and the city never bothered to rename it. The vaults are still down there. They keep the wine in them now.\n\nAbove ground it is the finest house in Dunlath, and tonight every window on its face is lit while the rest of the street is dark. Hot water, deep as a cart. A bed each. Supper is a whole roast bird apiece, bread still warm, honey, and a bowl of small sharp apples — more food than your family eats at a wedding, and nobody is going to ask you to pay for any of it.\n\nThe window does not shut all the way. Four floors down and a long way off, people are still calling names.\"",
         "if_they": "…go back out to help, let them, and let it matter: they can find one person tonight, and it should be someone small and alive and not the one everyone is thinking about. The ministry does not stop them and notes it approvingly in the morning.\n\n…try to leave the city, the doors are not locked and nobody follows. There is simply nowhere to go and a summons finds them wherever they are.\n\n…search their rooms or ask who packed their things, the answer is that the staff did, they are very sorry, they assumed it would be a kindness. It was a kindness. It is also the second time today somebody has handled their belongings without being asked.",
-        "outcome": "Morning. A human runner, sixteen and out of breath, brings four summonses on ordinary paper: their names, the hour, and the address of [[loc-setsquare|the Set Square]]. Nothing folds itself, nothing flaps. The state does not need to be strange when it is simply being obeyed."
+        "outcome": "Morning, and it has rained in the night — a low grey wet morning, the first bad weather in a fortnight.\n\nA human runner, sixteen and out of breath, brings four summonses on ordinary paper: their names, the hour, and the address of [[loc-setsquare|the Set Square]]. Nothing folds itself, nothing flaps. The state does not need to be strange when it is simply being obeyed."
       },
       "body": "This beat exists to buy the scene its contrast. The party should be comfortable, fed, and well treated in a building full of light while the city grieves in the dark outside, because that is the arrangement the whole campaign is about, and it is much better felt in a bathtub than explained in a speech.\n\nKeep it short at the table — ten minutes — unless the players want to use the evening, in which case give them the night and let them find somebody."
     },
@@ -430,10 +430,10 @@ window.DM_CAMPAIGN = {
       "schema": 1,
       "id": "b-comm-3",
       "type": "beat",
-      "title": "3 — The awarding",
+      "title": "3 — The Set Square: the walk up, and the awarding",
       "parent": "f-commission",
       "order": 40,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "session2",
@@ -442,7 +442,7 @@ window.DM_CAMPAIGN = {
       "leadsTo": [],
       "fields": {
         "hook": "The medal scene, played straight. Small, formal, and genuinely moving — about forty people in a room built for four hundred, and every one of them is there because these four went toward the monsters.",
-        "read_aloud": "\"The room at the top of [[loc-setsquare|the Set Square]] is one enormous square of pale stone, and every line in it is true. There are forty chairs set out in the middle of a floor meant for four hundred, and they are full: the people you pulled out of the dust, and the families of the ones you did not. Nobody claps when you come in. They stand up.\n\nThe Rector is waiting, and it is dressed differently today — pleated into a great fan of a collar that opens behind its head like a hand of cards. On the table beside it there are three things and a stack of plain paper.\"",
+        "read_aloud": "THE WALK. \"The city on the way is wrong in a way that takes a minute to place, and then you have it: the festival is still up. Bunting across every street, garlands on every door, sodden now and dripping. [[loc-rationhall|The Emporium]] is packed to the pillars. And on three corners between here and there, somebody is standing in the rain showing a little drawing to strangers.\n\nThen the government quarter, and it is beautiful. A whole district of it: white colonnades down both sides of a processional way, fountains running in the wet, plane trees in rows, courtyards opening off courtyards, clerks going between the buildings under oiled cloth. At the head of it stands the Set Square — a public square that is a perfect square, and the hall on its north side is that same square stood upright.\n\nInside, every line is true. No worn steps. No settled lintels. Not one corner in the building that is not exactly a corner, and after ten minutes of it you will want to go and look at something crooked.\"\n\nTHE ROOM. \"One enormous square of pale stone at the top. Forty chairs set out in the middle of a floor meant for four hundred, and they are full: the people you pulled out of the dust, and the families of the ones you did not. Nobody claps when you come in. They stand up.\n\nThe Rector is waiting, dressed differently today, pleated into a great fan of a collar that opens behind its head like a hand of cards. On the table beside it there are three things and a stack of plain paper.\"\n\nTHE FOLDING. \"It takes one blank sheet and it does not hurry. Its hands move for about eight seconds, and they never once go back to correct anything, and the room is completely silent while they do. What it holds out to you afterward has your name written inside the fold in a hand that never lifted, and edges like a knife, and it is warm.\"",
         "if_they": "…refuse the honors, the Rector accepts this with real grace, sets their share aside, and says the offer does not expire. It genuinely does not. Nothing in this scene requires them to accept anything.\n\n…ask what the fold is made of, the Rector says: paper. It is telling the truth and the truth is not reassuring.\n\n…try to open a fold on a living thing, it will not close. It simply refuses, gently, the way a door refuses. The Rector, if present, says only that this was thought best.",
         "outcome": "Three gifts, given one hero at a time, by name, in front of the room.\n\nTHE BADGE. A Writ of Search, folded from one blank sheet in a single unbroken motion that takes about eight seconds and never doubles back. It carries their name inside the fold and it opens every checkpoint, gate, and rope line in the city. It is not magic. It is a leash, and it is the reason this act is called what it is called.\n\nTHE PURSE. A month's wages each, in coin, counted out loud. Concrete, unglamorous, and more money than two of them have ever held.\n\nTHE FOLD. One each: a stiff pale card the size of a hand, which opens along creases into a deep case that holds far more than the card could, and closes back to a card. It must be opened and closed by hand, and it will not close on anything living. Nobody explains why that rule was necessary."
       },
@@ -455,7 +455,7 @@ window.DM_CAMPAIGN = {
       "title": "4 — The commission and the lie",
       "parent": "f-commission",
       "order": 50,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "session2",
@@ -466,7 +466,7 @@ window.DM_CAMPAIGN = {
         "hook": "They are offered a job by the most powerful institution in the world, and they are told who to blame. One of those two things is false, and it is not the one they will doubt.",
         "read_aloud": "\"'Eleven people went through that seam,' the Rector says, 'and they are alive, and they are not coming back on their own. We would go in after them ourselves. We cannot. There are only so many of us — there have only ever been so many of us — and we have not been able to make more since the world stopped moving. So the work that is done in this world by hands is done by human hands, and it has been that way since before your grandmothers.'\n\nIt lets that sit.\n\n'What we are forming is a task force. Human, small, sanctioned, and paid. You would be the first four names on it.'\"",
         "if_they": "…ask why them, the answer is honest and slightly chilling: because everyone else ran, and because it was standing there with a pen.\n\n…ask what caused the tear, this is where the lie arrives. See the outcome field, and deliver it as settled fact rather than as an accusation — the way one reports weather.\n\n…ask about the boy at the tower's foot, the Rector says the count is eleven and does not distinguish among them. It will not name him. Nobody in this building names him all morning.\n\n…ask to see the tear themselves, the Rector says the seam at the Hearthspire was patched by its own order within the hour and is closed. It believes this. It is wrong, and [[npc-tobin|Tobin]] will say so before the day is out.",
-        "outcome": "THE LIE, delivered plainly: the tear was made. A cell calling itself Red Flag — a scattering of refusers left over from the Fence War, who kept the old banner when the movement furled it — sabotaged the lighting of the Hearthspire in order to break the Accord and put the world back to war. They are named as terrorists, they are described as few and dangerous, and the party is asked, as part of the work, to bring back anything that shows a human hand in it.\n\nThen the second half of the commission: the searching itself is done under the Accord's right of search, which belongs to Green Fields and not to the ministry, so the party is to present themselves to a recruiter across the city. The Rector writes the address out by hand. It is [[npc-wenna|Wenna Ash]]."
+        "outcome": "THE LIE, delivered plainly: the tear was made. A cell calling itself Red Flag — a scattering of refusers left over from the Fence War, who kept the old banner when the movement furled it — sabotaged the lighting of the Hearthspire in order to break the Accord and put the world back to war. They are named as terrorists, described as few and dangerous, and the party is asked to bring back anything that shows a human hand in it.\n\nTHEN IT SENDS THEM ON, BY NAME: ‘The searching itself is not ours to do. By the Accord it belongs to the movement, and the movement keeps an attaché here on these grounds — three doors along and down one flight. Her name is Wenna Ash. She is expecting you. She will tell you where to begin.’\n\nIt is a two-minute walk across a courtyard. See [[b-comm-5|beat 5]]."
       },
       "body": "WHY THE LIE IS THE RIGHT ONE. Canon already has the criers blaming the veiled figure on the high seat, which is where the world's cosmic anger is meant to go. This is the operational version, issued to people who are actually being sent somewhere, and it does a job the veil cannot: it makes the candle houses radioactive, so that every grieving person in the city walks toward Green Fields — which the occupation owns — instead of toward Red Flag, which it does not. Record it in CAMPAIGN.md §3 as standing practice.\n\nWHAT THE PARTY NOW BELIEVES. That there are terrorists, that the terrorists made the hole, and that they have been hired to help clean up after them. They will carry that for several sessions, and they will carry it while traveling with a man who has been reading a dead friend's field book and can no longer make the numbers work.\n\nDO NOT WINK. The Rector is not smirking, and it is not lying in the sense it would recognize. It has been given an account of the disaster by its own leadership and it is passing that account on. Everything else in the room is true: the eleven, the offer, the pay, and the fact that its order cannot spare a single one of itself to go in."
     },
@@ -474,22 +474,22 @@ window.DM_CAMPAIGN = {
       "schema": 1,
       "id": "b-comm-5",
       "type": "beat",
-      "title": "5 — Wenna's assignment, and a clerk",
+      "title": "5 — Wenna's office, and a clerk",
       "parent": "f-commission",
       "order": 60,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "session2"
       ],
       "leadsTo": [],
       "fields": {
-        "hook": "They met her in the dust last night and liked her. This morning she turns out to be their employer, and she is so glad they came that it is a little hard to look at.",
-        "read_aloud": "\"The address the Rector wrote out is a room over a grain merchant's, with a hand-painted sign and a kettle going. There are maybe nine people in it, and half of them have the look you saw all over the fairground last night — the look of somebody who is counting a room to see who is missing. [[npc-wenna|Wenna Ash]] is standing on a chair pinning a paper to the wall, and when she sees you in the doorway she gets down so fast she nearly goes over.\"",
+        "hook": "A total stranger, three doors from the Rector that just decorated them, in the smallest office on a very grand corridor. She has been waiting all morning and she is so glad they came that it is a little hard to look at.",
+        "read_aloud": "\"Across a courtyard in the rain, into a lesser building, down a corridor of very large doors — and hers is the last one and the smallest. GREEN FIELDS · OFFICE OF SEARCH, on a card in a brass frame built for something longer.\n\nInside: one room, a kettle going, mismatched chairs, and nine people in a space meant for four. Half of them have the look you saw all over the fairground yesterday, which is the look of somebody counting a room to see who is missing.\n\n[[npc-wenna|Wenna Ash]] is standing on a chair pinning a paper to the wall, and the paper is a list of names, and it is not finished. When she sees you in the doorway she gets down so fast she nearly goes over.\"",
         "if_they": "…tell her the ministry named Red Flag, she goes quiet, and then she says carefully that she has heard the name and that she does not know, and that the people she has met who went that way were not monsters, they were just tired. It is the first crack of light in the whole scene and she does not know she has opened it.\n\n…ask why Green Fields and not the ministry, she gives the true answer, warmly and with pride: the right of search belongs to the movement, it was bought with the Accord, and it is the only thing in this world that human hands are allowed to do without asking.\n\n…ask about the boy at the tower, she says she does not know his name either, and that she is sorry, and that she has been trying since last night to find out. She has been. Nobody will tell her.",
         "outcome": "THE ASSIGNMENT. Wenna sends them to the scar-line at the Cinder Draw — the canyon the Rectors folded shut with garlands yesterday morning — on the reasoning that it is the newest seam in the world and the nearest thing to an open door. She believes this completely. It came down to her from above, which she does not think about, because assignments have always come down from above.\n\nTHE CLERK. Every expedition under the right of search carries a Registry man to keep the record; it is in the Accord. Theirs is [[npc-tobin|Tobin Rell]], junior, cheap, apologetic, and carrying a satchel too big for him. Introduce him as an inconvenience. He is their healer and their most dangerous secret and they have no idea."
       },
-      "body": "TOBIN'S FIRST MOVE, and the hook for next session. On the way out, or on the road, once and quietly and never in front of Wenna, he says the thing he has been chewing on: they closed that seam yesterday morning in front of the entire city, and the tear at the Hearthspire's foot was patched in an hour by people who were in a hurry. So why are we being sent to the one that is shut?\n\nHe does not say the words goose chase. He does not say Red Flag. He asks one question, badly, and then apologizes for asking it, and the party can do what it likes with that.\n\nThis gives session three its choice: the crease they were assigned, or the tear they watched open. Both are playable, the Draw is a real scene and not a punishment, and the party learns in their second session that their handler and their employer do not agree. See [[npc-tobin|Tobin's sheet]] for how far gone he actually is."
+      "body": "SHE IS PROUD OF THE OFFICE and will say so unprompted: the movement has a door inside the ministry’s own walls, which she reads as human hands finally at the table. She is not naive to be proud of it. She is simply looking at it from underneath.\n\nTOBIN'S FIRST MOVE, and the hook for next session. On the way out, or on the road, once and quietly and never in front of Wenna, he says the thing he has been chewing on: they closed that seam yesterday morning in front of the entire city, and the tear at the Hearthspire's foot was patched in an hour by people who were in a hurry. So why are we being sent to the one that is shut?\n\nHe does not say the words goose chase. He does not say Red Flag. He asks one question, badly, and then apologizes for asking it, and the party can do what it likes with that.\n\nThis gives session three its choice: the crease they were assigned, or the tear they watched open. Both are playable, the Draw is a real scene and not a punishment, and the party learns in their second session that their handler and their employer do not agree. See [[npc-tobin|Tobin's sheet]] for how far gone he actually is."
     },
     {
       "schema": 1,
@@ -540,7 +540,7 @@ window.DM_CAMPAIGN = {
       "title": "The Set Square — the Rector's hall",
       "parent": "f-locations",
       "order": 130,
-      "rev": 3,
+      "rev": 4,
       "tags": [
         "act1",
         "city",
@@ -548,8 +548,8 @@ window.DM_CAMPAIGN = {
       ],
       "leadsTo": [],
       "fields": {
-        "looks": "A public square that is a perfect square, and a building on its north side that is the same square stood upright — a drafting instrument the size of a civic hall, which is where the name comes from and which the city finds funnier than the order does. Inside, every line is true. There are no worn steps, no settled lintels, and no corner anywhere in the building that is not exactly a corner, and after ten minutes of it most people want to go and look at something crooked.",
-        "who_is_here": "Human clerks on the lower floors, doing real and useful work with real and useful courtesy. The ritual grade above. [[npc-rector|The Rector of the Set Square]] holds the top floor, which is one room the size of the building's footprint and is where public foldings and awardings are performed.",
+        "looks": "The government quarter, and the handsomest thing in Dunlath after [[loc-wintergarden|the Glasshouse]]: white colonnades down both sides of a processional way, fountains, plane trees in rows, courtyard opening off courtyard. At the head of it, the Set Square — a public square that is a perfect square, and a building on its north side that is the same square stood upright, which is where the name comes from and which the city finds funnier than the order does.\n\nInside, every line is true. No worn steps, no settled lintels, no corner anywhere that is not exactly a corner, and after ten minutes most people want to go and look at something crooked.",
+        "who_is_here": "Human clerks on the lower floors doing real and useful work with real and useful courtesy. The ritual grade above. [[npc-rector|The Rector of the Set Square]] holds the top floor, which is one room the size of the building’s footprint.\n\nAnd across the courtyard, in a lesser building, at the end of a corridor of much larger doors: GREEN FIELDS · OFFICE OF SEARCH, which is [[npc-wenna|Wenna Ash]] and a kettle. The permitted rebellion has a desk inside the building it petitions, and nobody on either side finds that strange.",
         "hidden": "The building has no stairs above the fourth floor and no other way up that anyone has ever found, and nobody has thought to ask how the Rectors reach the top. They fold flat and go under the doors. A hero who says the words out loud has worked out something true about Surveyors that will matter in a locked room in Act Two."
       },
       "body": "Give the party the ten minutes of trueness before the ceremony starts. Children notice a room with no crooked lines faster than adults do, and it is the cheapest possible way to teach the table what these beings actually are: not cruel, not cold, but incapable of leaving anything unfinished."
