@@ -61,6 +61,26 @@ window.DM_CAMPAIGN = {
   "campaign": "The Folded World",
   "docs": [
 
+  { "schema": 1, "id": "world-fold", "type": "note",
+    "title": "▶ THE FOLDED WORLD — the shape of things",
+    "parent": null, "order": 5, "rev": 1,
+    "tags": ["world", "index"], "leadsTo": [],
+    "fieldDefs": [
+      ["table", "Say this at the table"],
+      ["seen", "What they can actually see"],
+      ["how", "How it got this way"],
+      ["now", "What everybody believes now"],
+      ["shape", "The real shape — for you, not for them"]
+    ],
+    "fields": {
+      "table": "\"A long time ago the world was flat and open and went on forever, and it was hard. Places were far apart. People went hungry.\n\nThen it was folded up. Folded the way a letter is folded to go into an envelope — creased, and pressed, and tucked in on itself, so that everything that used to be spread out is close together now.\n\nIt did not finish. It stopped halfway. It has been sitting halfway ever since.\n\nSo this is the world. It has flat sides now, like the panels of a paper lantern, and we live on them. Look up on a clear day and you will see another panel hanging over you, with roofs on it, and roads, and a clock tower. Those are real places, with real people. Nobody has ever got to one.\n\nThe light comes in at the corners, where the panels do not quite meet. That is why we still have days.\"",
+      "seen": "The town above, hanging overhead, close enough to make out roofs.\nScar-lines — dead straight seams in the ground where something was folded shut.\nCreases, where the land changes angle for no reason.\nWrinkles: a corner of a room, or a stair, that does not meet itself.\nThe light coming in low and strange at the corners of the sky.",
+      "how": "1. The world was open, and far apart, and poor.\n2. Paper people arrived. Courteous, patient, and very good at arithmetic. They offered an answer.\n3. A man folded the world — for plenty, to end distance and want. Whole cities went inside the creases while he did it.\n4. It jammed halfway. It has never moved since.\n5. Things came out of the folds. People fought them, and then fought the paper people, for years.\n6. The war ended at a table. The Accord: amnesty, guaranteed provision, the right to petition, the right to search.\n7. Sunsalt was found in the creases — light and warmth for every house — and the world got rich.",
+      "now": "That the Fold was the best thing that ever happened to anybody, and most people are genuinely grateful, and they are not stupid to be. Nobody is hungry. Nobody is cold. The lamps are lit and the monsters mostly stay out.\n\nAnd: everything is fair, everything is free, everything is written down, and no human being sits at any table where anything is decided. Most people can hold both of those at once without noticing.",
+      "shape": "GEOMETRY, DM ONLY. The world is a nested polyhedron — a many-sided shell with another inside it and another inside that, faces and openings all the way in. Land sits on the faces. What hangs overhead is not a separate place; it is ANOTHER FACE OF THE SAME STRUCTURE, seen across the inside of the fold. That is the whole trick of this setting in one line.\n\nThere are SEVERAL such structures, in orbit around a sun, which is how light still reaches anybody — it comes in through the gaps between faces.\n\nThe shapes are not fixed. They morph, very slowly, over ages. Creases wander. That is why nothing in this world is quite where the old maps say.\n\nNever say any of this at the table. Show it: the town above, a scar-line, a stair that does not meet itself."
+    },
+    "body": "The first thing to read, and the only world-level doc there is. Everything in it is common knowledge in Dunlath — a nine-year-old there could tell you all of it except the last field.\n\nRun it as scenery rather than a lecture. The party grew up in this and finds none of it strange. It becomes strange when something stops working.\n\nAlso worth knowing: the paper people's own home is another folded world, finished long ago, and the several structures in that orbit may well include it. See CAMPAIGN.md §3." },
+
   { "schema": 1, "id": "act1", "type": "folder",
     "title": "Act One — the rebellion is on a leash",
     "parent": null, "order": 10, "rev": 1,
@@ -69,10 +89,10 @@ window.DM_CAMPAIGN = {
 
   { "schema": 1, "id": "f-lastlight", "type": "folder",
     "title": "LASTLIGHT — the opening scene",
-    "parent": "act1", "order": 10, "rev": 5,
+    "parent": "act1", "order": 10, "rev": 6,
     "tags": ["act1", "session1"],
     "leadsTo": [], "fields": {},
-    "body": "Session one, doubling as session zero. Everything needed to run the opening lives in this folder: the run sheet and the fairground encounter now; the handouts (reason cards, the Lastlight program) still to come. Cast on stage: [[npc-wenna|Wenna Ash]], [[npc-hettie|Hettie Sarn]] (seen, not met), and the boy who carries the reliquary — who is [[npc-finch|Finch]] on this page and NOWHERE at the table, because the party is not told his name today and does not learn it until his mother says it in [[b-comm-6|the last beat of the following scene]]. By the morning after they also have [[npc-tobin|Tobin Rell]]. What comes next is [[f-commission|THE COMMISSION]]." },
+    "body": "Before anything else, read [[world-fold|▶ THE FOLDED WORLD]] — it is the world in one page and it has the words to say at the table.\n\nSession one, doubling as session zero. Everything needed to run the opening lives in this folder: the run sheet and the fairground encounter now; the handouts (reason cards, the Lastlight program) still to come. Cast on stage: [[npc-wenna|Wenna Ash]], [[npc-hettie|Hettie Sarn]] (seen, not met), and the boy who carries the reliquary — who is [[npc-finch|Finch]] on this page and NOWHERE at the table, because the party is not told his name today and does not learn it until his mother says it in [[b-comm-6|the last beat of the following scene]]. By the morning after they also have [[npc-tobin|Tobin Rell]]. What comes next is [[f-commission|THE COMMISSION]]." },
 
   { "schema": 1, "id": "sc-lastlight", "type": "scene",
     "title": "LASTLIGHT — the run sheet",
