@@ -38,6 +38,20 @@ Efficient does not mean clipped. **Economy comes from cutting redundancy, not fr
 
 The document is written for an adult reader even though the game is for a table with a nine- and ten-year-old. **The prose does not need to be simple. The game does.** Do not confuse the two.
 
+### We are not always misty-eyed (added 2026-08-13)
+
+The register above governs how the documents are *written*. It is not a rule about what happens at the table, and it has been quietly turning into one. Nearly everything built so far is somber, and a campaign that is only somber is a campaign two nine-year-old boys will stop showing up for.
+
+**Sprinkle in the light stuff deliberately: comic relief, hijinks, and the occasional outright zany thing.** Not a joke on every page and not a gag NPC in every room, because the melancholy is load-bearing and the sad parts have to stay sad. But the ratio has been wrong, and the fix is not one comic character bolted on — it is that ordinary people in a bad situation are frequently very funny, and playing that honestly is both truer and better at the table.
+
+Three practical ways in, none of which cost the tone anything:
+
+- **People cope badly and specifically.** Grief and unemployment make people petty, obsessive, and ceremonious about nothing. A man who will not take his coat off is funnier and sadder than a man who weeps.
+- **Let the children act.** Hijinks are usually something the players *do*, not something the DM performs. Build rooms with obviously climbable, openable, stealable things in them and get out of the way.
+- **The strange can be delightful rather than ominous.** The world folds space as a matter of course. Sometimes that is a horror, and sometimes it is a shop where a paper horse walks off the counter.
+
+**The test:** if a stretch of material contains nobody the boys would quote at each other in the car afterward, it is missing something.
+
 ## The test
 
 Read a paragraph aloud. If it sounds like advertising copy — short, punchy, escalating, every clause a hammer — it is wrong. If it sounds like a person patiently explaining something they have thought hard about, it is right.

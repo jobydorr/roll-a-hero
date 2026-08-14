@@ -22,7 +22,8 @@
    plus the two THE COMMISSION already used. A separate IF THERE IS TIME folder
    under Act One holds short optional material: a slip, which can be dropped
    anywhere in ninety seconds, and the thing in Ganny's preserves, which is
-   fifteen minutes and plants a clue. The city has no name yet — deliberately.
+   fifteen minutes and plants a clue. The city is named DUNLATH (settled by Joby,
+   2026-08-13).
 
    v8 (2026-08-11): Act One gains its second scene, THE COMMISSION. A scene that
    runs as a chain of events now files as a folder holding ONE index document —
@@ -258,7 +259,7 @@ window.DM_CAMPAIGN = {
     "body": "Every place in the campaign lives here — one sheet each, the single source of truth, no matter how many scenes use it. Scenes point at these sheets with wikilinks, the same way they point at people and creatures.\n\nStart at [[loc-index|▶ WHERE THEY CAN GO]], which lists the city in one screen and says what the party can actually DO at each place." },
 
   { "schema": 1, "id": "loc-index", "type": "note",
-    "title": "▶ WHERE THEY CAN GO — the city",
+    "title": "▶ WHERE THEY CAN GO — Dunlath",
     "parent": "f-locations", "order": 10, "rev": 1,
     "tags": ["places", "index"], "leadsTo": [],
     "fieldDefs": [
@@ -269,7 +270,7 @@ window.DM_CAMPAIGN = {
     "fields": {
       "places": "[[loc-clockface|The Clock Face]] — meet people, leave word, hire a runner. The city's meeting place, by accident.\n[[loc-petition|The Petition Rail]] — formally demand anything at all, including a name added to the count. Every word is filed.\n[[loc-lampoffice|The Lamp Office]] — buy light. The register on the wall does not add up, and nobody has ever added it.\n[[loc-sixtyone|Sixty-One Pairs]] — rummage, one roll each. The first buyer for anything brought back out of a crease.\n[[loc-longtable|The Long Table]] — food, cheap beds, every rumor in the city, and a room full of people who just lost their work.\n[[loc-rationhall|The Ration Hall]] — free food, blankets and healing, and your name on a list with dates.\n[[loc-foldingshop|The Folding Shop]] — commission a toy of anything. It gets the parts you did not say.\n[[loc-ganny|Ganny Marle's Cellar]] — a coin to look at a hole where the room does not meet itself. Something is coming through it.\n[[loc-scarline|The Scar-Line]] — walk where the canyon was. Their assignment, and the thinnest place in the city.\n[[loc-darkwindow|The Dark Window]] — the one unlit window on any street after dark. Knock and be lied to politely.\n\nAlso here, used by [[f-commission|THE COMMISSION]]: [[loc-ossuary|the Ossuary]] and [[loc-setsquare|the Set Square]].",
       "ifthere": "Two pieces are written to be dropped when the night has room for them, and they live in [[f-iftime|IF THERE IS TIME]]: [[b-slip|a slip]], which can happen anywhere at all and takes ninety seconds, and [[enc-ganny|the thing in Ganny's preserves]], which is fifteen minutes and is not a fight unless the party insists.",
-      "state": "It is the week after Lastlight. The Cinder Draw was formally closed with garlands, so the best-paid trade in the world ended on a Tuesday and nobody has a job. Eleven people are officially missing and everyone who was there knows the number is wrong. The price of a lamp has doubled. The city is long and thin along its crease, and the town overhead hangs where it has always hung."
+      "state": "The city is DUNLATH. It is the week after Lastlight. The Cinder Draw was formally closed with garlands, so the best-paid trade in the world ended on a Tuesday and nobody has a job. Eleven people are officially missing and everyone who was there knows the number is wrong. The price of a lamp has doubled. The town overhead hangs where it has always hung."
     },
     "body": "HOW TO USE THIS. The party has no assigned business in the city except the errand [[npc-wenna|Wenna]] gave them, so this list exists to be pointed at. When they say \"what's around,\" read them three or four of these and let them pick.\n\nNothing here is a quest chain. Each place is a room with something to do in it, and two of them hold a thing that matters later — [[loc-lampoffice|the Lamp Office]] register and the hoard in [[loc-ganny|Ganny's cellar]] — which the party can walk straight past without losing anything. Both are written so that noticing them is a reward and missing them costs nothing." },
 
