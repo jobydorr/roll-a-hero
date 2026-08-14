@@ -260,7 +260,7 @@ window.DM_CAMPAIGN = {
 
   { "schema": 1, "id": "loc-index", "type": "note",
     "title": "▶ WHERE THEY CAN GO — Dunlath",
-    "parent": "f-locations", "order": 10, "rev": 4,
+    "parent": "f-locations", "order": 10, "rev": 5,
     "tags": ["places", "index"], "leadsTo": [],
     "fieldDefs": [
       ["places", "▶ The city, and what they can do there"],
@@ -268,7 +268,7 @@ window.DM_CAMPAIGN = {
       ["state", "The state of the city this week"]
     ],
     "fields": {
-      "places": "[[loc-clockface|The Clock Face]] — meet people, leave word, hire a runner. The city's meeting place, by accident.\n[[loc-petition|The Petition Rail]] — formally demand anything at all, including a name added to the count. Every word is filed.\n[[loc-lampoffice|The Lamp Office]] — buy light. The register on the wall does not add up, and nobody has ever added it.\n[[loc-sixtyone|Sixty-One Pairs]] — rummage, one roll each. The first buyer for anything brought back out of a crease.\n[[loc-longtable|The Long Table]] — half the room is dressed as clowns, half as bakers, and they are fighting about it. Food, rooms, every rumor in the city, and a guard company for hire.\n[[loc-wintergarden|The Glasshouse]] — a garden under a glass roof, kept warm by no fire at all. Food, drink, players, a games yard, and dice behind a curtain. Where the party has a good night.\n[[loc-rationhall|The Emporium]] — a covered market the size of a cathedral. Take what your household needs; a clerk marks it on the roll. The porters will not let you carry anything.\n[[loc-foldingshop|The Folding Shop]] — commission a toy of anything. It gets the parts you did not say. The paper animals have got out.\n[[loc-ganny|Ganny Marle's Cellar]] — a painted sideshow banner and a coin to see THE IMPOSSIBLE CORNER. Something is coming through it.\n[[loc-scarline|The Scar-Line]] — walk where the canyon was. Their assignment, and the thinnest place in the city.\n[[loc-darkwindow|The Dark Window]] — the one unlit window on any street after dark. Knock and be lied to politely.\n\nAlso here, used by [[f-commission|THE COMMISSION]]: [[loc-ossuary|the Ossuary]] and [[loc-setsquare|the Set Square]].",
+      "places": "[[loc-clockface|The Clock Face]] — meet people, leave word, hire a runner. The city's meeting place, by accident.\n[[loc-petition|The Petition Rail]] — formally demand anything at all, including a name added to the count. Every word is filed.\n[[loc-lampoffice|The Lamp Office]] — buy light. The register on the wall does not add up, and nobody has ever added it.\n[[loc-sixtyone|Sixty-One Pairs]] — rummage, one roll each. The first buyer for anything brought back out of a crease.\n[[loc-longtable|The Long Table]] — half the room is dressed as clowns, half as bakers, and they are fighting about it. Food, rooms, every rumor in the city, and a guard company for hire.\n[[loc-wintergarden|The Glasshouse]] — a garden under a glass roof, kept warm by no fire at all. Food, drink, players, a games yard, and dice behind a curtain. Where the party has a good night.\n[[loc-rationhall|The Emporium]] — a covered market the size of a cathedral. Take what your household needs; a clerk marks it on the roll. The porters will not let you carry anything.\n[[loc-foldingshop|The Folding Shop]] — commission a toy of anything. It gets the parts you did not say. The paper animals have got out.\n[[loc-ganny|Ganny Marle's Cellar]] — a painted sideshow banner and a coin to see THE IMPOSSIBLE CORNER. Something is coming through it.\n[[loc-scarline|The Scar-Line]] — walk where the canyon was. Their assignment, and the thinnest place in the city.\n[[loc-hearthspire|The Hearthspire]] — the tower, and the seam they actually saw open. The patch is loose at the bottom corner.\n[[loc-darkwindow|The Dark Window]] — the one unlit window on any street after dark. Knock and be lied to politely.\n\nAlso here, used by [[f-commission|THE COMMISSION]]: [[loc-ossuary|the Ossuary]] and [[loc-setsquare|the Set Square]].",
       "ifthere": "Two pieces are written to be dropped when the night has room for them, and they live in [[f-iftime|IF THERE IS TIME]]: [[b-slip|a slip]], which can happen anywhere at all and takes ninety seconds, and [[enc-ganny|the thing in Ganny's preserves]], which is fifteen minutes and is not a fight unless the party insists.",
       "state": "THE CITY IS DUNLATH AND IT IS RICH. The blend to reach for: MEDIEVAL AESTHETICS, the material prosperity of ROME ON STEROIDS, the festive confidence of the GILDED AGE, all run by a totalitarian state. Colonnades, covered markets, fountains, porters with handcarts, crowds in good cloth at public games and feasts. No steam, no factories, no machinery — nothing more advanced than an ancient primitive flintlock, and one of those would be a marvel. This world was folded for plenty and the occupation's case rests on having delivered it. Nobody here is hungry.\n\nWHERE THE WONDER GOES: sunsalt. Heat and light without fire, seeded as hints and never explained — a floor warm underfoot with nothing burning under it, a hall lit with no flame in it, fruit trees under glass in winter. Marvel rather than machinery.\n\nAND THE DARK IS THE UNDERTOW, not the weather. The surface is a confident, wealthy, celebrating city, and the horror surfaces in the cracks — a thing said too courteously, a record being kept, two Surveyors at a corner table who never eat anything — while the table is still laughing at the clowns.\n\nAND THE CITY IS STILL DRESSED FOR A PARTY. Lastlight was a festival — garlands, bunting, stalls, a fair — and the disaster arrived in the middle of it, so none of it has come down. Decorations across every street going slowly brown. A carousel nobody has dismantled. Half-struck stalls. The correct image is a city in party clothes with a hole in it, not a city in mourning, and the decorations are the single fastest way to put that on the table.\n\nIt is the week after. The Cinder Draw was formally closed with garlands, so the best-paid trade in the world ended on a Tuesday and nobody has a job. Eleven people are officially missing and everyone who was there knows the number is wrong. The price of a lamp has doubled, which is the first limit anyone in Dunlath has met in living memory. The town overhead hangs where it has always hung."
     },
@@ -384,6 +384,17 @@ window.DM_CAMPAIGN = {
     },
     "body": "WHAT THEY DO HERE. This is the errand [[npc-wenna|Wenna]] gave them, and it is a real place to walk around in rather than a punishment for following orders. Let them spend an hour on it. There is a great deal to notice and none of it requires a roll.\n\nWHAT IT IS NOT. It is not a way into the fold. It was closed two days ago by Rectors in front of the entire city and it is shut. That is the point of the assignment, and [[npc-tobin|Tobin]] said so before they set out.\n\nWHAT THEY GET ANYWAY. The stream, the two greens, and the crow. A party that pays attention leaves with the beginnings of a working theory about where the fold is thin, which is worth more than the errand was ever meant to give them." },
 
+  { "schema": 1, "id": "loc-hearthspire", "type": "location",
+    "title": "The Hearthspire — the tower, and the seam",
+    "parent": "f-locations", "order": 105, "rev": 1,
+    "tags": ["city", "act1", "tear", "assignment"], "leadsTo": [],
+    "fields": {
+      "looks": "New, pale, and the tallest thing human hands ever built, standing against the west wall with the fairground at its foot. The crown at the top is broken open. A seam runs the whole height of the face, top to bottom, down to a small door at the base built to take one offering.\n\nThe seam has been patched, and you can see the patch from the street, and it does not match.",
+      "who_is_here": "A rope line, bored human guards who will wave a Writ of Search through without reading it, and a steady trickle of people who have come to stand and look. Two Rectors work the upper face on rotation, very high up, folding something slowly.",
+      "hidden": "The patch is not a repair. It is a fold laid over a tear in a hurry, and at the bottom corner, low down by the little door, it is loose — a hand's width where the world does not quite meet itself, with a draught coming out of it."
+    },
+    "body": "WHY IT MATTERS. This is where the tear actually happened and where eleven people actually went, and [[npc-tobin|Tobin]] says so on the road out of [[b-comm-5|Wenna's room]]. The party was sent to [[loc-scarline|the scar-line]] instead.\n\nWHAT A CLOSE LOOK GETS THEM. The loose corner. Nobody has to roll for it — walk to the foot of the tower and look at the bottom of the patch and it is there.\n\nRUN THE RECTORS AS SCENERY. They are far above, they are not guarding anything, and they will not come down. The obstacle here is the rope line and a conversation, not a fight." },
+
   { "schema": 1, "id": "loc-darkwindow", "type": "location",
     "title": "The Dark Window — the one unlit house",
     "parent": "f-locations", "order": 110, "rev": 1,
@@ -424,6 +435,50 @@ window.DM_CAMPAIGN = {
       "reward": "THE HOARD, behind a loose stone in the cellar wall, and they find it whether the kit lives or dies. It is a magpie's pile of shiny nothing: buttons, three spoons, a bootlace, a brass curtain ring, a good deal of broken glass.\n\nAnd one thing that does not belong. Something that was on a person at the fairground two days ago — a garland ribbon in the Draw's colors, a child's shoe, a lamplighter's brass key. Something the party can recognize."
     },
     "body": "THE POINT OF THIS, and why it is worth fifteen minutes: the wrinkle in an old woman's cellar and the tear at the foot of the Hearthspire open into the same place.\n\nThat is a real, concrete, physical clue delivered by a goblin stealing jam, and it does three things at once. It proves [[npc-tobin|Tobin]]'s suspicion before he has earned the right to say it out loud. It tells the party that the way in does not have to be a great seam that Rectors are watching — the city is full of small holes. And it makes the thing they saw at the fairground personal again, because whatever is in that hoard belonged to somebody who is on the far side of it right now.\n\nHOW HARD TO PUSH. Not at all. Put the object in the pile and describe the pile. If nobody picks it up, [[npc-tobin|Tobin]] does, and writes it down, and says nothing — and the party can find it in his notes later, which is arguably better.\n\nIT IS NOT A FIGHT. The scoreboard of this campaign is rescues rather than kills, and this is the first chance after Lastlight to teach that with something small and frightened instead of something dangerous. A party that catches the kit in a coat and feeds it has learned more about how these sessions work than a party that rolls initiative." },
+
+  { "schema": 1, "id": "f-reference", "type": "folder",
+    "title": "Quick reference — for the table",
+    "parent": null, "order": 50, "rev": 1,
+    "tags": ["reference"], "leadsTo": [], "fields": {},
+    "body": "Things to grab mid-session. Lists, not reading." },
+
+  { "schema": 1, "id": "ref-names", "type": "note",
+    "title": "Names — when you need one right now",
+    "parent": "f-reference", "order": 10, "rev": 1,
+    "tags": ["reference"], "leadsTo": [],
+    "fieldDefs": [
+      ["given", "Given names"],
+      ["family", "Family names"],
+      ["signs", "Shops, signs and inns"],
+      ["note", "The register"]
+    ],
+    "fields": {
+      "given": "Wenna · Hettie · Sela · Maud · Nell · Bry · Ossa · Tamsin · Annis · Perr · Ivy · Corrin\n\nTobin · Ellum · Rab · Bram · Ivo · Hask · Merrit · Pell · Osric · Wend · Dellow · Corr",
+      "family": "Ash · Sarn · Rell · Wick · Orrin · Marle · Delk · Tarrow · Bind · Crale · Hollam · Vane · Quist · Brede · Loom · Skell · Ganty · Pyle",
+      "signs": "The Bell and Barrow · Skell & Daughters · The Nine Lamps · Crale's Rope · The Good Hour · Bind the Younger · Tarrow's Salt · The Half Bushel · Pyle's, for Boots",
+      "note": "Short, hard, plain, Anglo. One or two syllables. No apostrophes, no invented letters, nothing that sounds elvish. If it would suit a nineteenth-century mill town, it suits Dunlath."
+    },
+    "body": "Take the next unused one. Cross it off in your own copy." },
+
+  { "schema": 1, "id": "ref-street", "type": "note",
+    "title": "Dunlath at street level",
+    "parent": "f-reference", "order": 20, "rev": 1,
+    "tags": ["reference", "city"], "leadsTo": [],
+    "fieldDefs": [
+      ["see", "What you see"],
+      ["hear", "What you hear and smell"],
+      ["sale", "What's for sale"],
+      ["wear", "What people are wearing"],
+      ["crack", "The crack it shows through"]
+    ],
+    "fields": {
+      "see": "Bunting across every street, a month up and going brown. A carousel nobody has dismantled. Half-struck stalls. Lamps burning in daylight because nobody has thought to put them out. Colonnades, fountains, handcarts, litters. The town overhead.",
+      "hear": "Hammering, always, somewhere. Hawkers. Somebody practicing an instrument badly. Bells on the hour from three directions, none of them agreeing. Hot fat, honey, wet stone, and the faint mineral smell of sunsalt near a good lamp.",
+      "sale": "Honey-cakes, blight-cakes, roast nuts, paper flags left over from the festival at half price, hot pies, ribbons, dyed feathers, small bells, salt in twists of paper, and lamp oil at a price people have started remarking on.",
+      "wear": "Good cloth on everybody, because everybody has it. Colors — this is a rich city and it dresses like one. Festival ribbons still pinned to coats a month later, which nobody has decided to stop doing.",
+      "crack": "One thing per session, mentioned once and not explained. A Surveyor writing at a corner. A white wagon going out through a gate with nobody watching it. A window that stays dark. A patch of ground where two paving stones do not quite meet."
+    },
+    "body": "Skim before any city session. Take one line from each field and you have a street." },
 
   { "schema": 1, "id": "cr-snatch-goblin", "type": "creature",
     "title": "Snatch-goblin",
@@ -496,15 +551,15 @@ window.DM_CAMPAIGN = {
 
   { "schema": 1, "id": "npc-hettie", "type": "npc",
     "title": "Hettie Sarn — the woman who did not clap",
-    "parent": "f-npcs", "order": 40, "rev": 2,
+    "parent": "f-npcs", "order": 40, "rev": 3,
     "tags": ["act1", "red-flag"], "leadsTo": [],
     "fields": {
-      "looks": "Old and square-built, gray as weathered fence-wood, with a ledger under one arm. At the ceremony she is the only still thing in ten thousand people.",
+      "looks": "Old and square-built, gray as weathered fence-wood, with a ledger under one arm. At the ceremony she is the only still thing in ten thousand people. Two fingers gone on the left hand, taken by the work, and she uses the hand anyway and does not explain it.",
       "wants": "To be proven wrong. She never is.",
-      "voice": "Numbers first. Her method of recruitment is to open the ledger, turn it around, and wait.",
+      "voice": "Numbers first. Her method of recruitment is to open the ledger, turn it around, and wait. She will let a silence run for as long as it takes and has never once filled one.",
       "secret": "She ran the Cinder Draw for thirty-one years and accounted for more sunsalt than any living person. Her gray ledger shows the damage tracking the workings, the intake that never balances, and the shakes that follow the great pulls — and, kept quietest of all, a census of the faded, whose rest villages she has visited and found empty. Founder of the candle people."
     },
-    "body": "Session one she is seen, not met: the old woman at the rope line, counting the white wagons into her ledger, not clapping. She is local — the farmland the gray ate was her family's. When the party finally crosses to her is an open question, and she is the only person who can carry the real rebellion after Tobin leaves. Appears in: [[f-lastlight|LASTLIGHT]] (unnamed)." }
+    "body": "Session one she is seen, not met: the old woman at the rope line, counting the white wagons into her ledger, not clapping. Local — the farmland the gray ate was her family's.\n\nPLAY HER AS THE MOST BORING PERSON IN THE ROOM until the ledger opens. She does not argue, does not persuade, and does not raise her voice. She hands you an arithmetic problem and lets you do it yourself, which is why she cannot be dismissed as a crank.\n\nWhen the party crosses to her is open. She is the one who carries the real rebellion after [[npc-tobin|Tobin]] goes. Appears in: [[f-lastlight|LASTLIGHT]] (unnamed, at the rope line)." }
 
   ]
 };

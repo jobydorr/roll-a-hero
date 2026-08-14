@@ -71,6 +71,16 @@ Three practical ways in, none of which cost the tone anything:
 
 **And keep the party in it.** Lastlight was a festival. The city put its garlands and bunting up for a celebration and the disaster arrived in the middle of it, so the streets are still dressed — decorations going brown, stalls half struck, a carousel nobody has dismantled. A city in party clothes with a hole in it is a far better image than a city in mourning.
 
+## Length in the DM OS: sketches, not prose (added 2026-08-13)
+
+**The house register above governs `CAMPAIGN.md` and the long-form documents. It does not govern the DM OS, and the two have been drifting together.** A doc in the OS is read at the table, mid-session, with four people waiting. It is a picture being painted, not a book being read aloud.
+
+- **Hit the note and stop.** Two or three sentences per field. If a location needs a paragraph to establish its feel, the feel is not sharp enough yet.
+- **Bodies stay short.** Say what the players do there, what the DM should not miss, and nothing else. A thousand-character body is a wall Joby has to wade through to find the one line he needed.
+- **Leave room for him.** He improvises the texture at the table off these sketches. Over-specifying is not generosity, it is crowding him out.
+
+**The test:** can he take in the whole document in one glance while the players are arguing about something else? If not, it is too long.
+
 ## The test
 
 Read a paragraph aloud. If it sounds like advertising copy — short, punchy, escalating, every clause a hammer — it is wrong. If it sounds like a person patiently explaining something they have thought hard about, it is right.
