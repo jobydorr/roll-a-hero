@@ -60,588 +60,1176 @@
 window.DM_CAMPAIGN = {
   "campaign": "The Folded World",
   "docs": [
-
-  { "schema": 1, "id": "world-fold", "type": "note",
-    "title": "▶ THE FOLDED WORLD — the shape of things",
-    "parent": null, "order": 5, "rev": 2,
-    "tags": ["world", "index"], "leadsTo": [],
-    "fieldDefs": [
-      ["shape", "The shape of it — show them the pictures"],
-      ["history", "The history, the way the world tells it"],
-      ["seen", "What they can see from the street"],
-      ["truth", "What is actually true — you only"]
-    ],
-    "fields": {
-      "shape": "PLAYER-FACING. Show the pictures while you say it.\n\n\"The world is not a ball. It is a shape with flat sides — a lot of them — folded closed like a paper lantern, and we live on the faces of it.\n\nBetween the faces there are gaps. Look through a gap and you see the other faces: land, sideways or upside down from where you are standing, with roads on it and rivers and roofs. The nearest one hangs over Dunlath close enough to count the chimneys.\n\nAnd inside our shape there is another one, smaller. And inside that, another. On a clear night you can see a long way in, lit at the edges.\n\nThe sun is outside all of it, and the light comes in through the gaps. That is why the days go strange at the corners, and why nothing here throws a proper shadow at noon.\n\nOut in the dark there are other worlds folded up like ours, going round the same sun. Nobody has been to one.\"\n\nThe shapes shift, very slowly, over ages — which is why no old map is right and why the creases wander.",
-      "history": "PLAYER-FACING. This is the whole history as any Dunlath nine-year-old would tell it, and every word of it is what the world believes.\n\n\"Before all this, the world was wide. It took a season to cross what you can walk in a day now. Grain rotted before it reached the city. A letter came a year too late to matter. And in the empty country between towns there were things that ate people — whole villages, some years. Your great-grandparents called it the bad time, and they were not being dramatic.\n\nThen a man set out to fix it. The finest wizard anyone had heard of, and he could reach under the world and take hold of the cloth it is made from. He reached further down than anyone ever had — and he found marks in that cloth that nobody here had made. Creases, left by hands that were not hands. Something on the other side noticed him looking.\n\nThey came through to us. Tall, courteous, folded people, made of something like paper. For a whole year they did nothing but measure — the roads, the rivers, the distance between one town and the next. That is why we call them what we call them.\n\nThey brought a gift, and the gift is the reason your lamp is lit: sunsalt, a crystal of the light of their own world. And they brought an idea. Fold your world, they said, and the folding will press sunsalt out of it the way a press gets cider out of apples, and there will be no more want and no more distance, ever again.\n\nSo he folded it. He is the Foldwright, and everything you can see is his work.\n\nHe folded the wild country away into sealed pockets and shut the monsters of the bad time inside them, and that is why children walk to the next village on their own now. He folded the far places close together, so a thing grown three hundred miles away is on your table the same week. And when the work was done he had passed through his own folding and come out the other side of being a man — finished, they say. The first and only one of us ever raised into their kind.\n\nHe sits a high seat that no road goes to, veiled from the crown of his head to the floor, because none may look on the face that folded the world. His ministry keeps the roads and the ledgers in his name, and they are ever so sorry about the fences.\n\nNot everyone was grateful. A generation ago there was a war about it, and it was long and it was ugly, and you cannot kill a Surveyor — strike one down and it comes apart into flat pieces and slides off through the air and is back inside a month. So the war ended at a table instead. That is the Accord: nobody is punished for the war, every household is provided for, anyone may stand up and petition, and anyone may go looking for what the creases took.\n\nAnd here we are. Nobody in this city is hungry. Nobody is cold. There is a lamp in every window and a fair share for every house. The ground shakes now and then, and everybody will tell you the same thing about that: it is only the settling. The world easing itself into its finished shape.\"",
-      "seen": "The land overhead, close enough to make out roofs and a road and a clock tower.\nScar-lines: dead straight seams in the ground where something was folded shut.\nCreases, where the land changes angle for no reason at all.\nWrinkles — a cellar corner, a stair, a doorway that does not meet itself.\nLight coming in low and wrong at the corners of the sky.\nAnd sunsalt in every lamp, which is the world being pressed, though nobody puts it that way.",
-      "truth": "DM ONLY. None of this is known to anyone in Dunlath, and the party must not learn it early. Full account in CAMPAIGN.md §1.\n\n• IT NEVER FINISHED. The Foldwright read the design halfway through and understood that the world was not being folded into a shelter but into an ENVELOPE — a copy of the Surveyors' own dimension, folded, finished, closed, and addressed. Something had already begun to arrive at the center to collect it.\n• So he jammed the working at its midpoint, pinned the half-arrived thing there, and it cost him the greater part of himself. He fled into the Snarl with the machine that governs the fold, and he is there now, hollowed, holding it.\n• THE SHAKING IS NOT THE SETTLING. It is his grip slipping, and it is getting worse.\n• The cities that went into the creases went in with everyone living in them, and the folding creased the memory shut too, so the world does not know what it lost.\n• The veiled figure on the high seat is not the Foldwright. It is the First Surveyor, wearing a dead man's name because the name carries authority the paper people never could.\n• And one rebellion is owned by the people it petitions.\n\nThe Surveyors are not from another folded world in this orbit. They are INTERDIMENSIONAL — they came through portals from their own dimension entirely, which is where the Finished World is."
+    {
+      "schema": 1,
+      "id": "world-fold",
+      "type": "note",
+      "title": "▶ THE FOLDED WORLD — the shape of things",
+      "parent": null,
+      "order": 5,
+      "rev": 2,
+      "tags": [
+        "world",
+        "index"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "shape",
+          "The shape of it — show them the pictures"
+        ],
+        [
+          "history",
+          "The history, the way the world tells it"
+        ],
+        [
+          "seen",
+          "What they can see from the street"
+        ],
+        [
+          "truth",
+          "What is actually true — you only"
+        ]
+      ],
+      "fields": {
+        "shape": "PLAYER-FACING. Show the pictures while you say it.\n\n\"The world is not a ball. It is a shape with flat sides — a lot of them — folded closed like a paper lantern, and we live on the faces of it.\n\nBetween the faces there are gaps. Look through a gap and you see the other faces: land, sideways or upside down from where you are standing, with roads on it and rivers and roofs. The nearest one hangs over Dunlath close enough to count the chimneys.\n\nAnd inside our shape there is another one, smaller. And inside that, another. On a clear night you can see a long way in, lit at the edges.\n\nThe sun is outside all of it, and the light comes in through the gaps. That is why the days go strange at the corners, and why nothing here throws a proper shadow at noon.\n\nOut in the dark there are other worlds folded up like ours, going round the same sun. Nobody has been to one.\"\n\nThe shapes shift, very slowly, over ages — which is why no old map is right and why the creases wander.",
+        "history": "PLAYER-FACING. This is the whole history as any Dunlath nine-year-old would tell it, and every word of it is what the world believes.\n\n\"Before all this, the world was wide. It took a season to cross what you can walk in a day now. Grain rotted before it reached the city. A letter came a year too late to matter. And in the empty country between towns there were things that ate people — whole villages, some years. Your great-grandparents called it the bad time, and they were not being dramatic.\n\nThen a man set out to fix it. The finest wizard anyone had heard of, and he could reach under the world and take hold of the cloth it is made from. He reached further down than anyone ever had — and he found marks in that cloth that nobody here had made. Creases, left by hands that were not hands. Something on the other side noticed him looking.\n\nThey came through to us. Tall, courteous, folded people, made of something like paper. For a whole year they did nothing but measure — the roads, the rivers, the distance between one town and the next. That is why we call them what we call them.\n\nThey brought a gift, and the gift is the reason your lamp is lit: sunsalt, a crystal of the light of their own world. And they brought an idea. Fold your world, they said, and the folding will press sunsalt out of it the way a press gets cider out of apples, and there will be no more want and no more distance, ever again.\n\nSo he folded it. He is the Foldwright, and everything you can see is his work.\n\nHe folded the wild country away into sealed pockets and shut the monsters of the bad time inside them, and that is why children walk to the next village on their own now. He folded the far places close together, so a thing grown three hundred miles away is on your table the same week. And when the work was done he had passed through his own folding and come out the other side of being a man — finished, they say. The first and only one of us ever raised into their kind.\n\nHe sits a high seat that no road goes to, veiled from the crown of his head to the floor, because none may look on the face that folded the world. His ministry keeps the roads and the ledgers in his name, and they are ever so sorry about the fences.\n\nNot everyone was grateful. A generation ago there was a war about it, and it was long and it was ugly, and you cannot kill a Surveyor — strike one down and it comes apart into flat pieces and slides off through the air and is back inside a month. So the war ended at a table instead. That is the Accord: nobody is punished for the war, every household is provided for, anyone may stand up and petition, and anyone may go looking for what the creases took.\n\nAnd here we are. Nobody in this city is hungry. Nobody is cold. There is a lamp in every window and a fair share for every house. The ground shakes now and then, and everybody will tell you the same thing about that: it is only the settling. The world easing itself into its finished shape.\"",
+        "seen": "The land overhead, close enough to make out roofs and a road and a clock tower.\nScar-lines: dead straight seams in the ground where something was folded shut.\nCreases, where the land changes angle for no reason at all.\nWrinkles — a cellar corner, a stair, a doorway that does not meet itself.\nLight coming in low and wrong at the corners of the sky.\nAnd sunsalt in every lamp, which is the world being pressed, though nobody puts it that way.",
+        "truth": "DM ONLY. None of this is known to anyone in Dunlath, and the party must not learn it early. Full account in CAMPAIGN.md §1.\n\n• IT NEVER FINISHED. The Foldwright read the design halfway through and understood that the world was not being folded into a shelter but into an ENVELOPE — a copy of the Surveyors' own dimension, folded, finished, closed, and addressed. Something had already begun to arrive at the center to collect it.\n• So he jammed the working at its midpoint, pinned the half-arrived thing there, and it cost him the greater part of himself. He fled into the Snarl with the machine that governs the fold, and he is there now, hollowed, holding it.\n• THE SHAKING IS NOT THE SETTLING. It is his grip slipping, and it is getting worse.\n• The cities that went into the creases went in with everyone living in them, and the folding creased the memory shut too, so the world does not know what it lost.\n• The veiled figure on the high seat is not the Foldwright. It is the First Surveyor, wearing a dead man's name because the name carries authority the paper people never could.\n• And one rebellion is owned by the people it petitions.\n\nThe Surveyors are not from another folded world in this orbit. They are INTERDIMENSIONAL — they came through portals from their own dimension entirely, which is where the Finished World is."
+      },
+      "body": "The first thing to read. Everything in the first three fields is common knowledge — a nine-year-old in Dunlath could tell you all of it — so the party knows it already and finds none of it strange. It gets strange when something stops working.\n\nShow the geometry pictures while you read the shape. The words do half the job and the picture does the other half, and children get the nested-shell idea instantly from a drawing and slowly from a paragraph."
     },
-    "body": "The first thing to read. Everything in the first three fields is common knowledge — a nine-year-old in Dunlath could tell you all of it — so the party knows it already and finds none of it strange. It gets strange when something stops working.\n\nShow the geometry pictures while you read the shape. The words do half the job and the picture does the other half, and children get the nested-shell idea instantly from a drawing and slowly from a paragraph." },
-
-  { "schema": 1, "id": "act1", "type": "folder",
-    "title": "Act One — the rebellion is on a leash",
-    "parent": null, "order": 10, "rev": 1,
-    "tags": ["act1"], "leadsTo": [], "fields": {},
-    "body": "Act One runs from the Lastlight ceremony to the turn. The staging ground for this act lives in the repo as ACT1.md; the bible is CAMPAIGN.md. What is pushed here is table-ready material. Each scene is a folder holding everything needed to run it; the people and monsters live in their own master folders and are pointed at with wikilinks." },
-
-  { "schema": 1, "id": "f-lastlight", "type": "folder",
-    "title": "LASTLIGHT — the opening scene",
-    "parent": "act1", "order": 10, "rev": 6,
-    "tags": ["act1", "session1"],
-    "leadsTo": [], "fields": {},
-    "body": "Before anything else, read [[world-fold|▶ THE FOLDED WORLD]] — it is the world in one page and it has the words to say at the table.\n\nSession one, doubling as session zero. Everything needed to run the opening lives in this folder: the run sheet and the fairground encounter now; the handouts (reason cards, the Lastlight program) still to come. Cast on stage: [[npc-wenna|Wenna Ash]], [[npc-hettie|Hettie Sarn]] (seen, not met), and the boy who carries the reliquary — who is [[npc-finch|Finch]] on this page and NOWHERE at the table, because the party is not told his name today and does not learn it until his mother says it in [[b-comm-6|the last beat of the following scene]]. By the morning after they also have [[npc-tobin|Tobin Rell]]. What comes next is [[f-commission|THE COMMISSION]]." },
-
-  { "schema": 1, "id": "b-last-1", "type": "beat",
-    "title": "1 — The walk up: through Dunlath to the gate",
-    "parent": "f-lastlight", "order": 10, "rev": 1,
-    "tags": ["act1", "session1"], "leadsTo": [],
-    "fields": {
-      "hook": "The best day of the year, and the whole city is walking the same direction. Open here so the players get twenty minutes of a world worth saving before anything happens to it.",
-      "read_aloud": "\"The whole city is walking out through the west gate, and everyone is walking the same way you are. Overhead hangs the country in the sky — upside-down roofs, a road you could never follow, and the clock tower every kid here grew up watching. Somebody's little sister says it first: the hands are moving. They have never moved. The grownups say it must be the wind up there.\"",
-      "if_they": "…look at anything, it is open, bright and free today. Every shop is shut with a note on the door. Every window has a lamp lit in broad daylight, which is the custom and which nobody can explain. Children have paper flags. Somebody is selling them at the corner and somebody else is giving them away.\n\n…dawdle, let them. The crowd carries them along at its own pace and they will not miss anything.\n\n…go through the gate, the ground drops away and the whole valley is in front of them. Hand straight to [[b-last-2|the fairground]].",
-      "outcome": "Out through the west gate and down the slope, in a crowd, in the best mood any of them has been in for a year."
+    {
+      "schema": 1,
+      "id": "act1",
+      "type": "folder",
+      "title": "Act One — the rebellion is on a leash",
+      "parent": null,
+      "order": 10,
+      "rev": 1,
+      "tags": [
+        "act1"
+      ],
+      "leadsTo": [],
+      "fields": {},
+      "body": "Act One runs from the Lastlight ceremony to the turn. The staging ground for this act lives in the repo as ACT1.md; the bible is CAMPAIGN.md. What is pushed here is table-ready material. Each scene is a folder holding everything needed to run it; the people and monsters live in their own master folders and are pointed at with wikilinks."
     },
-    "body": "SIGHTS: fresh bunting strung across every street, not a day old. Garlands on the door of every house. The Emporium standing open and completely empty. Shutters down on the Glasshouse with a board reading BACK TONIGHT — LATE. People in their best cloth, festival ribbons pinned on, everyone slightly too warm.\n\nSMELLS: hot fat, honey, crushed grass past the gate, and the faint mineral smell of sunsalt off ten thousand lit lamps burning for no reason but the day.\n\nSOUNDS: bells from three directions not agreeing. A drum somewhere ahead. The crowd's noise, which is the sound of people who are certain that today is going to be good.\n\nSEED ONE THING PER HERO that does not line up, said once and not explained — a stair with one step too many, a verse of a song nobody else seems to hear, a name that draws a blank from someone who should know it. Do not follow up. These are the players' threads, not yours." },
-
-  { "schema": 1, "id": "b-last-2", "type": "beat",
-    "title": "2 — The fairground: the view, and the games",
-    "parent": "f-lastlight", "order": 20, "rev": 1,
-    "tags": ["act1", "session1", "comedy"], "leadsTo": [],
-    "fields": {
-      "hook": "The establishing shot of the entire campaign, and then half an hour of a fair. Let them play. Everything that happens later is measured against how good this was.",
-      "read_aloud": "\"Below the gate the ground opens out, and you can see the whole of it at once.\n\nThe fairground first — tents, ropes, banners, ten thousand people and more coming. Beyond it, standing over everything, the Hearthspire: white and new and gleaming, banded towers and arches at the base with pipework curving between them, and out of the middle one spire going up and up to a crown that is not lit yet.\n\nAnd past the tower, the country of the Draws. Straight-sided channels cut into the flats, running for miles, dropping so far down you cannot see the bottom of them from here. All of them dead and dry except the last one, and along the rim of that one, tall folded figures are taking their places.\"",
-      "if_they": "…want to play, see the games below. Give each a single roll and move on fast.\n\n…wander the stalls: gray-iced blight-cakes for a coin, paper lanterns with one glowing grain of sunsalt inside for anyone small enough to be given one free, ribbons, dyed feathers, roast nuts, and a man at a petition rail saying what he says every week — grateful for the Fold, and whose world is this exactly — while half the crowd nods and keeps walking toward the food.\n\n…find the paper people, there is one at the rope line folding toy birds that actually flap, patient under a heap of children. It will fold one for any hero who asks. THIS MATTERS LATER — it is the same shop and the same hands as the bird in [[b-comm-6|the last beat of THE COMMISSION]].",
-      "outcome": "Fed, hot, carrying a paper bird and a ribbon, and enjoying themselves. Then the drums change and everybody starts moving toward the grandstand — [[b-last-3|the ceremony]]."
+    {
+      "schema": 1,
+      "id": "f-lastlight",
+      "type": "folder",
+      "title": "LASTLIGHT — the opening scene",
+      "parent": "act1",
+      "order": 10,
+      "rev": 7,
+      "tags": [
+        "act1",
+        "session1"
+      ],
+      "leadsTo": [],
+      "fields": {},
+      "body": "Before anything else, read [[world-fold|▶ THE FOLDED WORLD]] — it is the world in one page and it has the words to say at the table.\n\nSession one. Everything needed to run the opening lives in this folder: the run sheet and the fairground encounter now; the handouts (the Lastlight program) still to come. Cast on stage: [[npc-wenna|Wenna Ash]], [[npc-hettie|Hettie Sarn]] (seen, not met), and the boy who carries the reliquary — who is [[npc-finch|Finch]] on this page and NOWHERE at the table, because the party is not told his name today and does not learn it until his mother says it in [[b-comm-6|the last beat of the following scene]]. By the morning after they also have [[npc-tobin|Tobin Rell]]. What comes next is [[f-commission|THE COMMISSION]]."
     },
-    "body": "THE GAMES. One roll each, no consequences, purely for the fun of it. Award something silly and worthless for a win.\n\n• Knock the hat off the post with a beanbag — beat 12.\n• Guess the weight of a stone brought up out of the Draw — beat 15. Nobody has ever won this and the stone is heavier than it has any right to be.\n• The greased pole, with a ham on the top — beat 14, and a crowd gathers.\n• Race a paper bird against another child's, down the length of a rope — beat 10, and you may cheat.\n• Have your trade guessed by a man in a red coat, or win a cake — beat 13 to stump him. He will guess a hero's trade correctly and unnervingly fast.\n• Blight-cake eating, against a nine-year-old, for a ribbon — beat 16, and the nine-year-old is a professional.\n\nSMELLS: fat, sugar, trampled grass, animals, and ten thousand warm people.\n\nAlso here and NOT to be pointed at: an old woman at the rope line with a ledger under her arm, writing, not smiling. That is [[npc-hettie|Hettie Sarn]]. And a woman working through the crowd looking at faces against a sheaf of little drawings — [[npc-wenna|Wenna Ash]], who will find them properly this evening." },
-
-  { "schema": 1, "id": "b-last-3", "type": "beat",
-    "title": "3 — The ceremony: the crews, the wagons, the healing",
-    "parent": "f-lastlight", "order": 30, "rev": 1,
-    "tags": ["act1", "session1"], "leadsTo": [],
-    "fields": {
-      "hook": "The state at its most generous and most beautiful, doing something enormous in public, and every disturbing thing in it is going past too fast and too pleasantly for anyone to catch.",
-      "read_aloud": "THE CREWS: \"The Cinder Draw's last workers come down the aisle in garlands, and the noise is deafening, and they are loving it. And at the back come the faded — the ones who worked the deepest, longest. They do not walk so much as arrive. And when the crowd cheers them, they wave: all together, once, like one hand.\"\n\nTHE HEALING: \"The Rectors take their places along the canyon's rim — tall folded figures pleated into fans and crowns — and when they move, the Draw moves. The canyon closes down its whole length, bridges and towers and all, the way a drawer shuts on everything inside it. Where it was, there is a line in the earth. On one side of the line the grass is one green; on the other side, another. A stream runs up to the line and does not quite meet itself. A crow flies across and — skips. Ten thousand people watch a wound being hidden, and cheer a wound being healed.\"",
-      "if_they": "…ask about the faded, anyone will tell them warmly: they gave the most, so they get the best rest. White wagons, a good village, and no more work ever again.\n\n…watch the wagons go, they roll out before the lighting and nobody watches which way they turn. The old woman at the rope line writes down each one as it passes, lips moving, counting.\n\n…try to reach the crews or the wagons, the crowd is ten thousand deep and cheerful and immovable. No hostility, no guards. They simply cannot get there, today.",
-      "outcome": "The Draw is shut, the wagons are gone, the crowd is at its loudest, and the drums stop for [[b-last-4|the lighting]]."
+    {
+      "schema": 1,
+      "id": "b-last-1",
+      "type": "beat",
+      "title": "1 — The walk up: through Dunlath to the gate",
+      "parent": "f-lastlight",
+      "order": 10,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "session1"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hook": "The best day of the year, and the whole city is walking the same direction. Open here so the players get twenty minutes of a world worth saving before anything happens to it.",
+        "read_aloud": "\"The whole city is walking out through the west gate, and everyone is walking the same way you are. Overhead hangs the country in the sky — upside-down roofs, a road you could never follow, and the clock tower every kid here grew up watching. Somebody's little sister says it first: the hands are moving. They have never moved. The grownups say it must be the wind up there.\"",
+        "if_they": "…look at anything, it is open, bright and free today. Every shop is shut with a note on the door. Every window has a lamp lit in broad daylight, which is the custom and which nobody can explain. Children have paper flags. Somebody is selling them at the corner and somebody else is giving them away.\n\n…dawdle, let them. The crowd carries them along at its own pace and they will not miss anything.\n\n…go through the gate, the ground drops away and the whole valley is in front of them. Hand straight to [[b-last-2|the fairground]].",
+        "outcome": "Out through the west gate and down the slope, in a crowd, in the best mood any of them has been in for a year."
+      },
+      "body": "SIGHTS: fresh bunting strung across every street, not a day old. Garlands on the door of every house. The Emporium standing open and completely empty. Shutters down on the Glasshouse with a board reading BACK TONIGHT — LATE. People in their best cloth, festival ribbons pinned on, everyone slightly too warm.\n\nSMELLS: hot fat, honey, crushed grass past the gate, and the faint mineral smell of sunsalt off ten thousand lit lamps burning for no reason but the day.\n\nSOUNDS: bells from three directions not agreeing. A drum somewhere ahead. The crowd's noise, which is the sound of people who are certain that today is going to be good.\n\nSEED ONE THING PER HERO that does not line up, said once and not explained — a stair with one step too many, a verse of a song nobody else seems to hear, a name that draws a blank from someone who should know it. Do not follow up. These are the players' threads, not yours."
     },
-    "body": "HOW IT IS LAID OUT. A grandstand for the ministry and the guilds. A roped aisle from the fairground to the tower's foot. Ten thousand standing. Rectors spaced along the rim of the Draw, a long way off and very visible. Two Surveyors at the edge of the ground with tablets, writing down faces, all day, cheerfully.\n\nWHO IS HERE: [[npc-hettie|Hettie Sarn]] at the rope line with her ledger. [[npc-wenna|Wenna Ash]] working the crowd. The honored crews. The faded. The Rectors. Everybody in Dunlath.\n\nTHE THREE THINGS GOING PAST TOO FAST: the faded waving in unison; the white wagons leaving before the main event with nobody watching them go; and an old woman counting them. Say each once. Do not linger and do not repeat them." },
-
-  { "schema": 1, "id": "b-last-4", "type": "beat",
-    "title": "4 — The lighting, and the tear",
-    "parent": "f-lastlight", "order": 40, "rev": 1,
-    "tags": ["act1", "session1"], "leadsTo": [],
-    "fields": {
-      "hook": "Ninety seconds from the most beautiful thing any of them has ever seen to the worst. Do not rush it and do not warn them.",
-      "read_aloud": "THE LIGHTING: \"No lever. No torch. There is a small door at the tower's foot, built to take one offering, and a boy in his best shirt, seven or so, picked by lottery, carries a glass case holding the last crust of sunsalt ever scraped from the Cinder Draw. He sets the old light into the new tower while the whole city holds its breath. Far above him, the crown begins to glow.\"\n\nTHE TEAR: \"The light goes wrong. The crown of the Hearthspire comes apart — and the tear does not stay at the crown. It rips DOWN the tower's face like a seam giving way: down, and down, to the little door, toward the boy. The sky bucks. The clock tower — the one that started ticking this morning — comes loose from the ceiling of the world and falls, end over end, three seconds, into the fairground. The boy runs. He is fast, and he is lucky, and he clears the falling stone in front of everybody — and then something long and gray comes out of the tear sideways, unfolds, and takes him. Then the rest come through. You know them. Everybody knows them. They are the monsters from every story your grandmother ever told — the ones the Folding sealed away. And they are not just hungry. They are taking people. Roll initiative — if you choose to stand.\"",
-      "if_they": "…try to reach the boy, they are four hundred yards away in a crowd of ten thousand that has just begun to run. Nobody gets there. This is not a failure and should never be framed as one.\n\n…run instead of standing, let them, and let them get somebody out. Initiative is opt-in and the fight starts when they choose it.",
-      "outcome": "Straight into [[enc-lastlight|the fairground fight]]. Nobody has said the boy's name, and nobody will until [[b-comm-6|his mother says it]] tomorrow."
+    {
+      "schema": 1,
+      "id": "b-last-2",
+      "type": "beat",
+      "title": "2 — The fairground: the view, and the games",
+      "parent": "f-lastlight",
+      "order": 20,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "session1",
+        "comedy"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hook": "The establishing shot of the entire campaign, and then half an hour of a fair. Let them play. Everything that happens later is measured against how good this was.",
+        "read_aloud": "\"Below the gate the ground opens out, and you can see the whole of it at once.\n\nThe fairground first — tents, ropes, banners, ten thousand people and more coming. Beyond it, standing over everything, the Hearthspire: white and new and gleaming, banded towers and arches at the base with pipework curving between them, and out of the middle one spire going up and up to a crown that is not lit yet.\n\nAnd past the tower, the country of the Draws. Straight-sided channels cut into the flats, running for miles, dropping so far down you cannot see the bottom of them from here. All of them dead and dry except the last one, and along the rim of that one, tall folded figures are taking their places.\"",
+        "if_they": "…want to play, see the games below. Give each a single roll and move on fast.\n\n…wander the stalls: gray-iced blight-cakes for a coin, paper lanterns with one glowing grain of sunsalt inside for anyone small enough to be given one free, ribbons, dyed feathers, roast nuts, and a man at a petition rail saying what he says every week — grateful for the Fold, and whose world is this exactly — while half the crowd nods and keeps walking toward the food.\n\n…find the paper people, there is one at the rope line folding toy birds that actually flap, patient under a heap of children. It will fold one for any hero who asks. THIS MATTERS LATER — it is the same shop and the same hands as the bird in [[b-comm-6|the last beat of THE COMMISSION]].",
+        "outcome": "Fed, hot, carrying a paper bird and a ribbon, and enjoying themselves. Then the drums change and everybody starts moving toward the grandstand — [[b-last-3|the ceremony]]."
+      },
+      "body": "THE GAMES. One roll each, no consequences, purely for the fun of it. Award something silly and worthless for a win.\n\n• Knock the hat off the post with a beanbag — beat 12.\n• Guess the weight of a stone brought up out of the Draw — beat 15. Nobody has ever won this and the stone is heavier than it has any right to be.\n• The greased pole, with a ham on the top — beat 14, and a crowd gathers.\n• Race a paper bird against another child's, down the length of a rope — beat 10, and you may cheat.\n• Have your trade guessed by a man in a red coat, or win a cake — beat 13 to stump him. He will guess a hero's trade correctly and unnervingly fast.\n• Blight-cake eating, against a nine-year-old, for a ribbon — beat 16, and the nine-year-old is a professional.\n\nSMELLS: fat, sugar, trampled grass, animals, and ten thousand warm people.\n\nAlso here and NOT to be pointed at: an old woman at the rope line with a ledger under her arm, writing, not smiling. That is [[npc-hettie|Hettie Sarn]]. And a woman working through the crowd looking at faces against a sheaf of little drawings — [[npc-wenna|Wenna Ash]], who will find them properly this evening."
     },
-    "body": "THE BOY IS NOT NAMED. Not by the criers, not by an official, not by you. See [[npc-finch|his sheet]].\n\nBEFORE THE LIGHTING, ask each hero: name one thing you carry that you would run back into danger for. Then threaten it in the collapse.\n\nThe clock tower falling is three seconds long. Count it out loud." },
-
-  { "schema": 1, "id": "b-last-5", "type": "beat",
-    "title": "5 — The dust: Wenna, and four faces filed",
-    "parent": "f-lastlight", "order": 60, "rev": 1,
-    "tags": ["act1", "session1"], "leadsTo": [],
-    "fields": {
-      "hook": "Ten minutes that felt like an hour, and then the quiet. This is where session zero's material actually gets collected, and the players will not notice it happening.",
-      "read_aloud": "\"It is over fast — ten minutes that felt like an hour. The tear is patched, the way a torn page gets taped. The paper people bow to the survivors and go back to writing down faces. The clock face lies broken in the road, and its hands are still moving. Nobody can tell you how many people went through. The number the ministry settles on by evening is eleven, and everybody who was standing where you were standing knows it was more than that.\"",
-      "if_they": "…look for the boy, he is gone, and so are ten others, and nobody official will say a number until evening.\n\n…help, there is a great deal of it to do and they should be allowed to do it until they are exhausted.",
-      "outcome": "[[npc-wenna|Wenna Ash]] finds them. She was in the crowd all day and did not run, and she does what recruiters do, which is ask.\n\nAnd two Surveyors at the edge of the ground have written down four new faces and will file them by evening — which is how, tomorrow, the heroes acquire a clerk. Play hands to [[f-commission|THE COMMISSION]]."
+    {
+      "schema": 1,
+      "id": "b-last-3",
+      "type": "beat",
+      "title": "3 — The ceremony: the crews, the wagons, the healing",
+      "parent": "f-lastlight",
+      "order": 30,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "session1"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hook": "The state at its most generous and most beautiful, doing something enormous in public, and every disturbing thing in it is going past too fast and too pleasantly for anyone to catch.",
+        "read_aloud": "THE CREWS: \"The Cinder Draw's last workers come down the aisle in garlands, and the noise is deafening, and they are loving it. And at the back come the faded — the ones who worked the deepest, longest. They do not walk so much as arrive. And when the crowd cheers them, they wave: all together, once, like one hand.\"\n\nTHE HEALING: \"The Rectors take their places along the canyon's rim — tall folded figures pleated into fans and crowns — and when they move, the Draw moves. The canyon closes down its whole length, bridges and towers and all, the way a drawer shuts on everything inside it. Where it was, there is a line in the earth. On one side of the line the grass is one green; on the other side, another. A stream runs up to the line and does not quite meet itself. A crow flies across and — skips. Ten thousand people watch a wound being hidden, and cheer a wound being healed.\"",
+        "if_they": "…ask about the faded, anyone will tell them warmly: they gave the most, so they get the best rest. White wagons, a good village, and no more work ever again.\n\n…watch the wagons go, they roll out before the lighting and nobody watches which way they turn. The old woman at the rope line writes down each one as it passes, lips moving, counting.\n\n…try to reach the crews or the wagons, the crowd is ten thousand deep and cheerful and immovable. No hostility, no guards. They simply cannot get there, today.",
+        "outcome": "The Draw is shut, the wagons are gone, the crowd is at its loudest, and the drums stop for [[b-last-4|the lighting]]."
+      },
+      "body": "HOW IT IS LAID OUT. A grandstand for the ministry and the guilds. A roped aisle from the fairground to the tower's foot. Ten thousand standing. Rectors spaced along the rim of the Draw, a long way off and very visible. Two Surveyors at the edge of the ground with tablets, writing down faces, all day, cheerfully.\n\nWHO IS HERE: [[npc-hettie|Hettie Sarn]] at the rope line with her ledger. [[npc-wenna|Wenna Ash]] working the crowd. The honored crews. The faded. The Rectors. Everybody in Dunlath.\n\nTHE THREE THINGS GOING PAST TOO FAST: the faded waving in unison; the white wagons leaving before the main event with nobody watching them go; and an old woman counting them. Say each once. Do not linger and do not repeat them."
     },
-    "body": "WENNA'S THREE QUESTIONS, and this is the collection point for everything session zero needs: What did you lose today? What have you lost before today? Why did you stand when everyone else ran?\n\nWhatever they tell her is canon by morning.\n\nThen she tells them the truth as she knows it: people went through that tear and are already being counted rather than named; her movement is the only one that goes in after the taken; the ministry permits it, records it, and never once helps; and what they have needed for years is somebody who can go in and come back out. Every word she believes. Most of it is true." },
-
-  {"schema": 1, "id": "sc-lastlight", "type": "scene", "title": "▶ RUN THESE IN ORDER — Lastlight", "parent": "f-lastlight", "order": 5, "rev": 7, "tags": ["act1", "session1", "opening", "index"], "leadsTo": [], "fieldDefs": [["order", "▶ Run these in order"], ["setting", "The lie of the land"], ["before", "Before anything happens"], ["after", "Where it leaves them"]], "fields": {"order": "0. [[world-fold|▶ THE FOLDED WORLD]] · read the shape and the history first, and show the pictures\n1. [[b-last-1|The walk up]] · through Dunlath to the west gate\n2. [[b-last-2|The fairground]] · the view, the stalls, and the games — give this real time\n3. [[b-last-3|The ceremony]] · the crews, the wagons, the healing of the Draw\n4. [[b-last-4|The lighting, and the tear]] · ninety seconds, no warning\n5. [[enc-lastlight|The fairground fight]] · initiative is opt-in; rescues, not kills\n6. [[b-last-5|The dust]] · Wenna asks her three questions, and four faces get filed\n\nThen play hands straight to [[f-commission|THE COMMISSION]].", "setting": "THE LIE OF THE LAND, west to east: [[loc-olddraws|the old Draws]] out on the flats, then the Cinder Draw — the last working in the world — then [[loc-hearthspire|the Hearthspire]] standing over the fairground, then rising ground, then Dunlath on the height behind its wall. Beneath all of it, the old sunsalt works. From the west gate you look down the slope and see the tower first and canyon country beyond it.\\n\\nThe fairground is on the flats below the city, in the tower's shadow. The Cinder Draw is a straight-sided channel cut into the plain, running dead straight for miles and dropping hundreds of feet sheer, lined with stepped ledges, bridges, and refinement towers built down its walls in tiers. Overhead hangs the town above, where the clock tower's hands are moving this morning for the first time in living memory.", "before": "Say the line, before anything: “Each of you has your reason for being here today. I’ll leave it to each of you to decide what that reason is.” Nobody has to answer now.\n\nEach kid gets a reason card with four seeds and “or make up your own”: someone you know is among the honored crews; you are looking for someone, and crowds are where you look; your family fought in the war and you came to see what the peace bought; you came to work the crowd — perform, sell, compete, impress.\n\nThe answers are collected in [[b-last-5|the dust]], by [[npc-wenna|Wenna]], and whatever they say is canon by morning.", "after": "Exhausted, hired by nobody yet, and carrying a rescue list. Planted today and paid later: the white wagons nobody watched leave; the scar-line and its skipping crow; the clock hands that started this morning; the toy birds and their maker; [[npc-hettie|Hettie]] counting; the boy at the tower’s foot whose name nobody says; the one each hero could not reach."}, "body": "Session one, doubling as session zero: the whole world on display, the first fight, and the machinery that collects the players’ own material without anyone noticing a questionnaire.\n\nSPEND THE TIME UP FRONT. Steps 1 and 2 are most of the first hour and they are not filler — everything after the tear is measured against how good the fair was. Do not hurry to the disaster.\n\nThe fight’s three staging rules live on [[enc-lastlight|the encounter]]."},
-
-  { "schema": 1, "id": "f-npcs", "type": "folder",
-    "title": "NPCs — the cast",
-    "parent": null, "order": 20, "rev": 1,
-    "tags": ["cast"], "leadsTo": [], "fields": {},
-    "body": "Every named person in the campaign lives here — one sheet each, the single source of truth, no matter how many scenes they appear in. Scenes point at these sheets with wikilinks; hover a link for the peek, and use ＋ To the table on a sheet to put someone in the initiative roster." },
-
-  { "schema": 1, "id": "f-monsters", "type": "folder",
-    "title": "Monsters — the bestiary",
-    "parent": null, "order": 30, "rev": 2,
-    "tags": ["bestiary"], "leadsTo": [], "fields": {},
-    "body": "Every campaign creature lives here — one sheet each, held IN this folder so the feed shows the full sheets, and linked from the scenes and encounters that use them. First residents, the Lastlight tear family: [[cr-snatch-goblin|the snatch-goblin]], [[cr-crease-wolf|the crease-wolf]], and [[cr-tear-ogre|the tear-ogre]]. The SRD starter creatures live separately in the 📖 Look up library; sheets here are this campaign's own." },
-
-  { "schema": 1, "id": "enc-lastlight", "type": "encounter",
-    "title": "The fairground fight — things through the tear",
-    "parent": "f-lastlight", "order": 50, "rev": 4,
-    "tags": ["act1", "session1"],
-    "leadsTo": [],
-    "fields": {
-      "setup": "The Lastlight fairground, seconds after the tear. Initiative is opt-in — the fight starts when the heroes choose to stand. The scoreboard is rescues, not kills: every monster wants to leave with somebody, and a person carried into the tear is gone until the party goes in after them. Terrain to use hard: the grandstands (high ground, and one section groaning toward collapse), the fallen clockwork (cover, and a bell that can be rung), spilled grain-lanterns underfoot, the rope lines, and the scar-line where footing goes suddenly wrong.",
-      "creatures": "Six [[cr-snatch-goblin|snatch-goblins]] in two waves of three, and three [[cr-crease-wolf|crease-wolves]]. Far off, one [[cr-tear-ogre|tear-ogre]] — penned by the Rectors, seen and never fought. Tuned for the table: four level-3 heroes (bard, fighter, two rangers). A player missing? Shed one goblin per empty chair and change nothing else.",
-      "tactics": "Scripted opener, before initiative: the first thing through takes the boy from the tower. Goblins grab and drag toward the tear, twenty feet a turn — and any hit on a goblin makes it drop its person. Wolves never carry: they herd runners back toward the goblins and knock heroes down when they hunt in pairs. One rescue is staged into each hero's path, and one capture happens beyond each hero's reach, far side of the ground, no matter how well they fight. Give each hero a moment: the fighter holds the gap between the grandstands, the rangers make goblins drop captives with long shots, and the bard can steady the crowd itself — a stampede turned, a shouted verse that gives a dragged neighbor the nerve to twist free.",
-      "reward": "No treasure — a fairground of witnesses. Every rescued civilian says something that assumes a history with their rescuer (bounded choice: family, teacher, or somebody you owe?). Wenna saw all of it, the Surveyors wrote all of it down, and the rescue list — the boy from the tower's foot at the top of it, still unnamed — now belongs to the party."
+    {
+      "schema": 1,
+      "id": "b-last-4",
+      "type": "beat",
+      "title": "4 — The lighting, and the tear",
+      "parent": "f-lastlight",
+      "order": 40,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "session1"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hook": "Ninety seconds from the most beautiful thing any of them has ever seen to the worst. Do not rush it and do not warn them.",
+        "read_aloud": "THE LIGHTING: \"No lever. No torch. There is a small door at the tower's foot, built to take one offering, and a boy in his best shirt, seven or so, picked by lottery, carries a glass case holding the last crust of sunsalt ever scraped from the Cinder Draw. He sets the old light into the new tower while the whole city holds its breath. Far above him, the crown begins to glow.\"\n\nTHE TEAR: \"The light goes wrong. The crown of the Hearthspire comes apart — and the tear does not stay at the crown. It rips DOWN the tower's face like a seam giving way: down, and down, to the little door, toward the boy. The sky bucks. The clock tower — the one that started ticking this morning — comes loose from the ceiling of the world and falls, end over end, three seconds, into the fairground. The boy runs. He is fast, and he is lucky, and he clears the falling stone in front of everybody — and then something long and gray comes out of the tear sideways, unfolds, and takes him. Then the rest come through. You know them. Everybody knows them. They are the monsters from every story your grandmother ever told — the ones the Folding sealed away. And they are not just hungry. They are taking people. Roll initiative — if you choose to stand.\"",
+        "if_they": "…try to reach the boy, they are four hundred yards away in a crowd of ten thousand that has just begun to run. Nobody gets there. This is not a failure and should never be framed as one.\n\n…run instead of standing, let them, and let them get somebody out. Initiative is opt-in and the fight starts when they choose it.",
+        "outcome": "Straight into [[enc-lastlight|the fairground fight]]. Nobody has said the boy's name, and nobody will until [[b-comm-6|his mother says it]] tomorrow."
+      },
+      "body": "THE BOY IS NOT NAMED. Not by the criers, not by an official, not by you. See [[npc-finch|his sheet]].\n\nBEFORE THE LIGHTING, ask each hero: name one thing you carry that you would run back into danger for. Then threaten it in the collapse.\n\nThe clock tower falling is three seconds long. Count it out loud."
     },
-    "body": "Runs inside [[f-lastlight|LASTLIGHT — the opening scene]]; the read-alouds and the session-zero machinery are in [[sc-lastlight|the run sheet]]. The Rectors fight the same disaster as pure spectacle — never in the party's corner, never with dice (staging rules in the run sheet, beat 6)." },
-
-  { "schema": 1, "id": "f-commission", "type": "folder",
-    "title": "THE COMMISSION — the morning after",
-    "parent": "act1", "order": 20, "rev": 1,
-    "tags": ["act1", "session2"], "leadsTo": [], "fields": {},
-    "body": "The second scene of Act One, running from the settling dust of [[f-lastlight|LASTLIGHT]] to the moment the party walks out of a government building employed. There is no fight in it. Everything it does, it does by being kind to the heroes on camera.\n\nRead [[sc-commission|▶ RUN THESE IN ORDER]] and nothing else. That document is the whole scene in sequence, and every step in it links to the beat, the place, or the person it needs, so the rest of this folder is opened one piece at a time as play reaches it.\n\nThe two buildings this scene uses — [[loc-ossuary|the Ossuary]] and [[loc-setsquare|the Set Square]] — now live in [[f-locations|Locations]] with every other place in the city." },
-
-  { "schema": 1, "id": "sc-commission", "type": "scene",
-    "title": "▶ RUN THESE IN ORDER — the commission",
-    "parent": "f-commission", "order": 10, "rev": 1,
-    "tags": ["act1", "session2", "index"], "leadsTo": [],
-    "fieldDefs": [
-      ["order", "▶ Run these in order"],
-      ["before", "Before you start"],
-      ["truth", "What is actually happening"],
-      ["after", "Where it leaves them"]
-    ],
-    "fields": {
-      "order": "1. [[b-comm-1|In the dust — a Surveyor thanks them]] · the fairground, minutes after the fight\n2. [[b-comm-2|A night at the Ossuary]] · [[loc-ossuary|the hotel]], that evening\n3. [[b-comm-3|The awarding]] · [[loc-setsquare|the Set Square]], next morning — badges, purse, and a fold each\n4. [[b-comm-4|The commission and the lie]] · the same room, minutes later — the task force, and who they are told did this\n5. [[b-comm-5|Wenna's assignment]] · a Green Fields room across the city — where to look, and a clerk to carry the paper\n6. [[b-comm-6|The woman and the boy]] · the steps outside, on the way out\n\nSteps 3 and 4 are one conversation and should not be broken up. Everything else can breathe.",
-      "before": "Have ready: the three things the Rector hands over (see [[b-comm-3|the awarding]]), and one folded paper bird made for real, which is given away in [[b-comm-6|the last beat]] and is the only prop that matters. Know that [[npc-tobin|Tobin Rell]] joins the party in step 5 and that he is already further gone than he looks. Know that nobody today says the name of the boy from the tower's foot until the last thirty seconds of the scene.",
-      "truth": "The tear was not caused by anybody. It is the jam in the great fold, and it has been coming for a lifetime. The ministry names Red Flag because a public enemy with a human face keeps the grieving flowing into Green Fields, which the occupation owns, and away from the candle houses, which it does not. Every human in the scene believes what they are saying. The Rector knows better and is not lying either, in its own reckoning, because a useful account of a disaster is a kind of order and order is mercy.",
-      "after": "Employed, decorated, and pointed at the wrong crease. They leave with a badge that opens checkpoints, coin, a folded case each, a handler who disagrees with their orders, an assignment at the Cinder Draw scar-line, and a paper bird from a five-year-old. The next session is the choice between the crease they were sent to and the tear they saw with their own eyes."
+    {
+      "schema": 1,
+      "id": "b-last-5",
+      "type": "beat",
+      "title": "5 — The dust",
+      "parent": "f-lastlight",
+      "order": 60,
+      "rev": 2,
+      "tags": [
+        "act1",
+        "session1"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hook": "Ten minutes that felt like an hour, and then the quiet. Let it be quiet for a moment before anybody official arrives.",
+        "read_aloud": "\"It is over fast — ten minutes that felt like an hour. The tear is patched, the way a torn page gets taped. The paper people bow to the survivors and go back to writing down faces. The clock face lies broken in the road, and its hands are still moving. Nobody can tell you how many people went through. The number the ministry settles on by evening is eleven, and everybody who was standing where you were standing knows it was more than that.\"",
+        "if_they": "…look for the boy from the tower, he is gone, and so are others, and nobody official will say a number until evening.\n\n…help, there is a great deal of it to do and they should be allowed to do it until they are exhausted. It will be noticed.\n\n…count for themselves, they will get more than eleven, and so will everyone else who tries.",
+        "outcome": "Two Surveyors at the edge of the ground have written down four new faces and will file them by evening.\n\nAnd one of them is walking over. Hand straight to [[b-comm-1|THE COMMISSION, beat 1]] — the congratulations, the rooms at [[loc-ossuary|the Ossuary]], and the summons in the morning."
+      },
+      "body": "Play the quiet. The fight is over, the paper people are bowing to survivors and going back to writing down faces, and the hands on the broken clock are still moving in the road.\n\nTHE COUNT IS THE ONLY THING TO PLANT. Eleven is the number the ministry settles on. Everyone who was standing where the party was standing knows it was more. Say it once and let it sit.\n\nNobody recruits them today. [[npc-wenna|Wenna]] does not appear until [[b-comm-5|THE COMMISSION, beat 5]], where she is their contact between the awarding and going off with [[npc-tobin|Tobin]]."
     },
-    "body": "HOW TO RUN IT. This is a scene about being handled well, so play everyone in it as genuinely decent and let the wrongness sit underneath. Nobody sneers, nobody threatens, and the only person in the building who suspects anything is the junior clerk nobody introduces properly.\n\nThe children should come out of this feeling like heroes who were given medals, because that is what happens, and because the whole point of a leash is that it is offered as a gift. Do not tip it. The adults will notice that the party's names were known before they gave them, that the route was assigned rather than chosen, and that a boy died at the foot of a tower this morning and no official in a building full of officials has mentioned him.\n\nPACING. Ninety minutes at a comfortable pace. If time is short, run 1, 3, 4 and 6, and give Wenna's assignment to the Rector's office instead — but do not cut step 6 under any circumstances, because it is the reason the rest of the scene hurts later." },
-
-  { "schema": 1, "id": "b-comm-1", "type": "beat",
-    "title": "1 — In the dust: a Surveyor thanks them",
-    "parent": "f-commission", "order": 20, "rev": 1,
-    "tags": ["act1", "session2"], "leadsTo": [],
-    "fields": {
-      "hook": "They have just fought monsters in front of ten thousand people, and the first thing the government does is walk over and be delighted with them. It is the warmest reception any of them has ever had, and it is being conducted by something that is not a person.",
-      "read_aloud": "\"One of the paper people is coming toward you, and it is smiling. It has to arrange the smile first — the creases move, and then the expression arrives, a half-second late, the way a word arrives in a language you are still learning. It is very tall up close, and it is made of one piece. 'You stood,' it says. 'Ten thousand of you, and four stood. Do you know how rarely that happens? I have written it down. I have written all of it down.' It looks at each of you in turn, and it says your name — and none of you has told it your name.\"",
-      "if_they": "…ask how it knows their names, it is delighted to explain: it wrote them down, of course, that is what it is for, and it produces the page and shows them. Nothing is hidden and that is what makes it unsettling.\n\n…are hostile or suspicious, it is not offended in the least. It says that suspicion is reasonable after a day like this one, and offers the rooms anyway, and means it.\n\n…ask about the boy at the tower, it says it is very sorry and that the count is being taken and that they will be told. It will not be told. Nobody follows up. That is deliberate and should pass without comment.\n\n…ask what it wants, it says: nothing tonight. Tonight they should sleep somewhere warm. That is true.",
-      "outcome": "The party is invited, as a token of the ministry's gratitude, to be guests at [[loc-ossuary|the Ossuary]] — the finest house in the city — for as long as they care to stay. A runner will bring word in the morning. Then it bows, and goes back to writing down faces."
+    {
+      "schema": 1,
+      "id": "sc-lastlight",
+      "type": "scene",
+      "title": "▶ RUN THESE IN ORDER — Lastlight",
+      "parent": "f-lastlight",
+      "order": 5,
+      "rev": 8,
+      "tags": [
+        "act1",
+        "session1",
+        "opening",
+        "index"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "order",
+          "▶ Run these in order"
+        ],
+        [
+          "setting",
+          "The lie of the land"
+        ],
+        [
+          "before",
+          "Before anything happens"
+        ],
+        [
+          "after",
+          "Where it leaves them"
+        ]
+      ],
+      "fields": {
+        "order": "0. [[world-fold|▶ THE FOLDED WORLD]] · read the shape and the history first, and show the pictures\n1. [[b-last-1|The walk up]] · through Dunlath to the west gate\n2. [[b-last-2|The fairground]] · the view, the stalls, and the games — give this real time\n3. [[b-last-3|The ceremony]] · the crews, the wagons, the healing of the Draw\n4. [[b-last-4|The lighting, and the tear]] · ninety seconds, no warning\n5. [[enc-lastlight|The fairground fight]] · initiative is opt-in; rescues, not kills\n6. [[b-last-5|The dust]] · the quiet, the count of eleven, and a Surveyor walking over\n\nThen play hands straight to [[f-commission|THE COMMISSION]].",
+        "setting": "THE LIE OF THE LAND, west to east: [[loc-olddraws|the old Draws]] out on the flats, then the Cinder Draw — the last working in the world — then [[loc-hearthspire|the Hearthspire]] standing over the fairground, then rising ground, then Dunlath on the height behind its wall. Beneath all of it, the old sunsalt works. From the west gate you look down the slope and see the tower first and canyon country beyond it.\\n\\nThe fairground is on the flats below the city, in the tower's shadow. The Cinder Draw is a straight-sided channel cut into the plain, running dead straight for miles and dropping hundreds of feet sheer, lined with stepped ledges, bridges, and refinement towers built down its walls in tiers. Overhead hangs the town above, where the clock tower's hands are moving this morning for the first time in living memory.",
+        "before": "Say the line, before anything: “Each of you has your reason for being here today. I’ll leave it to each of you to decide what that reason is.”\n\nThen leave it alone. Nobody has to answer, today or at all. Why the heroes came to Lastlight is theirs, and this campaign does not dig into it until later sessions — there is no questionnaire and no card to fill in.",
+        "after": "Exhausted, carrying a rescue list, and about to be thanked by the government. Planted today and paid later: the white wagons nobody watched leave; the scar-line and its skipping crow; the clock hands that started this morning; the toy birds and their maker; [[npc-hettie|Hettie]] counting; the boy at the tower’s foot whose name nobody says; the one each hero could not reach."
+      },
+      "body": "Session one: the whole world on display, and the first fight.\n\nSPEND THE TIME UP FRONT. Steps 1 and 2 are most of the first hour and they are not filler — everything after the tear is measured against how good the fair was. Do not hurry to the disaster.\n\nThe fight’s three staging rules live on [[enc-lastlight|the encounter]]."
     },
-    "body": "The Surveyor here is [[npc-rector|the Rector of the Set Square]], though it does not say so and is not in ceremonial form. Use the same being tomorrow at the awarding, and let a player be the one to notice it is the same one; a world in which one official handles you personally from the first minute is a smaller and more watched world than one with a cast of thousands.\n\nRun it warm. The temptation is to play the Surveyors cold, and cold is both wrong and boring at a table with children in it. This thing is thrilled with them. It behaves like a proud schoolteacher who happens to be folded out of a single sheet of something that is not quite paper, and the horror is entirely in the geometry and the timing rather than in the manner." },
-
-  { "schema": 1, "id": "b-comm-2", "type": "beat",
-    "title": "2 — A night at the Ossuary",
-    "parent": "f-commission", "order": 30, "rev": 1,
-    "tags": ["act1", "session2"], "leadsTo": [],
-    "fields": {
-      "hook": "Hot water, clean sheets, and more food than any of them has seen at one table, on the worst night the city has had in living memory. Let them enjoy it, and let the enjoying be slightly difficult.",
-      "read_aloud": "\"[[loc-ossuary|The Ossuary]] was a bone-house once, and the city has never bothered to rename it. Six floors of white stone with a lamp in every window — real sunsalt lamps, the whole face of the building lit, on a night when the rest of the street is dark. There is a bath the size of a cart. There is a bed each. Someone has already brought up your things from wherever you left them, folded, and there is a tray with more food on it than your family eats at a wedding. Outside and four floors down, people are still looking for people.\"",
-      "if_they": "…go back out to help, let them, and let it matter: they can find one person tonight, and it should be someone small and alive and not the one everyone is thinking about. The ministry does not stop them and notes it approvingly in the morning.\n\n…try to leave the city, the doors are not locked and nobody follows. There is simply nowhere to go and a summons finds them wherever they are.\n\n…search their rooms or ask who packed their things, the answer is that the staff did, they are very sorry, they assumed it would be a kindness. It was a kindness. It is also the second time today somebody has handled their belongings without being asked.",
-      "outcome": "Morning. A human runner, sixteen and out of breath, brings four summonses on ordinary paper: their names, the hour, and the address of [[loc-setsquare|the Set Square]]. Nothing folds itself, nothing flaps. The state does not need to be strange when it is simply being obeyed."
+    {
+      "schema": 1,
+      "id": "f-npcs",
+      "type": "folder",
+      "title": "NPCs — the cast",
+      "parent": null,
+      "order": 20,
+      "rev": 1,
+      "tags": [
+        "cast"
+      ],
+      "leadsTo": [],
+      "fields": {},
+      "body": "Every named person in the campaign lives here — one sheet each, the single source of truth, no matter how many scenes they appear in. Scenes point at these sheets with wikilinks; hover a link for the peek, and use ＋ To the table on a sheet to put someone in the initiative roster."
     },
-    "body": "This beat exists to buy the scene its contrast. The party should be comfortable, fed, and well treated in a building full of light while the city grieves in the dark outside, because that is the arrangement the whole campaign is about, and it is much better felt in a bathtub than explained in a speech.\n\nKeep it short at the table — ten minutes — unless the players want to use the evening, in which case give them the night and let them find somebody." },
-
-  { "schema": 1, "id": "b-comm-3", "type": "beat",
-    "title": "3 — The awarding",
-    "parent": "f-commission", "order": 40, "rev": 1,
-    "tags": ["act1", "session2", "reward"], "leadsTo": [],
-    "fields": {
-      "hook": "The medal scene, played straight. Small, formal, and genuinely moving — about forty people in a room built for four hundred, and every one of them is there because these four went toward the monsters.",
-      "read_aloud": "\"The room at the top of [[loc-setsquare|the Set Square]] is one enormous square of pale stone, and every line in it is true. There are forty chairs set out in the middle of a floor meant for four hundred, and they are full: the people you pulled out of the dust, and the families of the ones you did not. Nobody claps when you come in. They stand up.\n\nThe Rector is waiting, and it is dressed differently today — pleated into a great fan of a collar that opens behind its head like a hand of cards. On the table beside it there are three things and a stack of plain paper.\"",
-      "if_they": "…refuse the honors, the Rector accepts this with real grace, sets their share aside, and says the offer does not expire. It genuinely does not. Nothing in this scene requires them to accept anything.\n\n…ask what the fold is made of, the Rector says: paper. It is telling the truth and the truth is not reassuring.\n\n…try to open a fold on a living thing, it will not close. It simply refuses, gently, the way a door refuses. The Rector, if present, says only that this was thought best.",
-      "outcome": "Three gifts, given one hero at a time, by name, in front of the room.\n\nTHE BADGE. A Writ of Search, folded from one blank sheet in a single unbroken motion that takes about eight seconds and never doubles back. It carries their name inside the fold and it opens every checkpoint, gate, and rope line in the city. It is not magic. It is a leash, and it is the reason this act is called what it is called.\n\nTHE PURSE. A month's wages each, in coin, counted out loud. Concrete, unglamorous, and more money than two of them have ever held.\n\nTHE FOLD. One each: a stiff pale card the size of a hand, which opens along creases into a deep case that holds far more than the card could, and closes back to a card. It must be opened and closed by hand, and it will not close on anything living. Nobody explains why that rule was necessary."
+    {
+      "schema": 1,
+      "id": "f-monsters",
+      "type": "folder",
+      "title": "Monsters — the bestiary",
+      "parent": null,
+      "order": 30,
+      "rev": 2,
+      "tags": [
+        "bestiary"
+      ],
+      "leadsTo": [],
+      "fields": {},
+      "body": "Every campaign creature lives here — one sheet each, held IN this folder so the feed shows the full sheets, and linked from the scenes and encounters that use them. First residents, the Lastlight tear family: [[cr-snatch-goblin|the snatch-goblin]], [[cr-crease-wolf|the crease-wolf]], and [[cr-tear-ogre|the tear-ogre]]. The SRD starter creatures live separately in the 📖 Look up library; sheets here are this campaign's own."
     },
-    "body": "This is the beat the children came for, so give it the full ceremony: names read out, the room standing, the Rector coming down off the platform to hand each thing over personally. Do not undercut it. The scene is only worth anything later if it is worth something now.\n\nThe folding itself is the spectacle, and it is worth slowing down for. A Rector at work is meant to be seen — that is the entire point of the ritual grade — so describe the hands and the eight seconds and the fact that it never goes back to correct anything, and let a player ask to watch closely. They can. It is happy to be watched.\n\nON THE FOLD AS AN ITEM. No dice attach to it. It is a pocket that holds a great deal, it is delightful, and it will quietly teach the table that this world folds space as a matter of course, which is the cosmology arriving as a toy rather than as a lecture." },
-
-  { "schema": 1, "id": "b-comm-4", "type": "beat",
-    "title": "4 — The commission and the lie",
-    "parent": "f-commission", "order": 50, "rev": 1,
-    "tags": ["act1", "session2", "red-flag"], "leadsTo": [],
-    "fields": {
-      "hook": "They are offered a job by the most powerful institution in the world, and they are told who to blame. One of those two things is false, and it is not the one they will doubt.",
-      "read_aloud": "\"'Eleven people went through that seam,' the Rector says, 'and they are alive, and they are not coming back on their own. We would go in after them ourselves. We cannot. There are only so many of us — there have only ever been so many of us — and we have not been able to make more since the world stopped moving. So the work that is done in this world by hands is done by human hands, and it has been that way since before your grandmothers.'\n\nIt lets that sit.\n\n'What we are forming is a task force. Human, small, sanctioned, and paid. You would be the first four names on it.'\"",
-      "if_they": "…ask why them, the answer is honest and slightly chilling: because everyone else ran, and because it was standing there with a pen.\n\n…ask what caused the tear, this is where the lie arrives. See the outcome field, and deliver it as settled fact rather than as an accusation — the way one reports weather.\n\n…ask about the boy at the tower's foot, the Rector says the count is eleven and does not distinguish among them. It will not name him. Nobody in this building names him all morning.\n\n…ask to see the tear themselves, the Rector says the seam at the Hearthspire was patched by its own order within the hour and is closed. It believes this. It is wrong, and [[npc-tobin|Tobin]] will say so before the day is out.",
-      "outcome": "THE LIE, delivered plainly: the tear was made. A cell calling itself Red Flag — a scattering of refusers left over from the Fence War, who kept the old banner when the movement furled it — sabotaged the lighting of the Hearthspire in order to break the Accord and put the world back to war. They are named as terrorists, they are described as few and dangerous, and the party is asked, as part of the work, to bring back anything that shows a human hand in it.\n\nThen the second half of the commission: the searching itself is done under the Accord's right of search, which belongs to Green Fields and not to the ministry, so the party is to present themselves to a recruiter across the city. The Rector writes the address out by hand. It is [[npc-wenna|Wenna Ash]]."
+    {
+      "schema": 1,
+      "id": "enc-lastlight",
+      "type": "encounter",
+      "title": "The fairground fight — things through the tear",
+      "parent": "f-lastlight",
+      "order": 50,
+      "rev": 4,
+      "tags": [
+        "act1",
+        "session1"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "setup": "The Lastlight fairground, seconds after the tear. Initiative is opt-in — the fight starts when the heroes choose to stand. The scoreboard is rescues, not kills: every monster wants to leave with somebody, and a person carried into the tear is gone until the party goes in after them. Terrain to use hard: the grandstands (high ground, and one section groaning toward collapse), the fallen clockwork (cover, and a bell that can be rung), spilled grain-lanterns underfoot, the rope lines, and the scar-line where footing goes suddenly wrong.",
+        "creatures": "Six [[cr-snatch-goblin|snatch-goblins]] in two waves of three, and three [[cr-crease-wolf|crease-wolves]]. Far off, one [[cr-tear-ogre|tear-ogre]] — penned by the Rectors, seen and never fought. Tuned for the table: four level-3 heroes (bard, fighter, two rangers). A player missing? Shed one goblin per empty chair and change nothing else.",
+        "tactics": "Scripted opener, before initiative: the first thing through takes the boy from the tower. Goblins grab and drag toward the tear, twenty feet a turn — and any hit on a goblin makes it drop its person. Wolves never carry: they herd runners back toward the goblins and knock heroes down when they hunt in pairs. One rescue is staged into each hero's path, and one capture happens beyond each hero's reach, far side of the ground, no matter how well they fight. Give each hero a moment: the fighter holds the gap between the grandstands, the rangers make goblins drop captives with long shots, and the bard can steady the crowd itself — a stampede turned, a shouted verse that gives a dragged neighbor the nerve to twist free.",
+        "reward": "No treasure — a fairground of witnesses. Every rescued civilian says something that assumes a history with their rescuer (bounded choice: family, teacher, or somebody you owe?). Wenna saw all of it, the Surveyors wrote all of it down, and the rescue list — the boy from the tower's foot at the top of it, still unnamed — now belongs to the party."
+      },
+      "body": "Runs inside [[f-lastlight|LASTLIGHT — the opening scene]]; the read-alouds and the session-zero machinery are in [[sc-lastlight|the run sheet]]. The Rectors fight the same disaster as pure spectacle — never in the party's corner, never with dice (staging rules in the run sheet, beat 6)."
     },
-    "body": "WHY THE LIE IS THE RIGHT ONE. Canon already has the criers blaming the veiled figure on the high seat, which is where the world's cosmic anger is meant to go. This is the operational version, issued to people who are actually being sent somewhere, and it does a job the veil cannot: it makes the candle houses radioactive, so that every grieving person in the city walks toward Green Fields — which the occupation owns — instead of toward Red Flag, which it does not. Record it in CAMPAIGN.md §3 as standing practice.\n\nWHAT THE PARTY NOW BELIEVES. That there are terrorists, that the terrorists made the hole, and that they have been hired to help clean up after them. They will carry that for several sessions, and they will carry it while traveling with a man who has been reading a dead friend's field book and can no longer make the numbers work.\n\nDO NOT WINK. The Rector is not smirking, and it is not lying in the sense it would recognize. It has been given an account of the disaster by its own leadership and it is passing that account on. Everything else in the room is true: the eleven, the offer, the pay, and the fact that its order cannot spare a single one of itself to go in." },
-
-  { "schema": 1, "id": "b-comm-5", "type": "beat",
-    "title": "5 — Wenna's assignment, and a clerk",
-    "parent": "f-commission", "order": 60, "rev": 1,
-    "tags": ["act1", "session2"], "leadsTo": [],
-    "fields": {
-      "hook": "They met her in the dust last night and liked her. This morning she turns out to be their employer, and she is so glad they came that it is a little hard to look at.",
-      "read_aloud": "\"The address the Rector wrote out is a room over a grain merchant's, with a hand-painted sign and a kettle going. There are maybe nine people in it, and half of them have the look you saw all over the fairground last night — the look of somebody who is counting a room to see who is missing. [[npc-wenna|Wenna Ash]] is standing on a chair pinning a paper to the wall, and when she sees you in the doorway she gets down so fast she nearly goes over.\"",
-      "if_they": "…tell her the ministry named Red Flag, she goes quiet, and then she says carefully that she has heard the name and that she does not know, and that the people she has met who went that way were not monsters, they were just tired. It is the first crack of light in the whole scene and she does not know she has opened it.\n\n…ask why Green Fields and not the ministry, she gives the true answer, warmly and with pride: the right of search belongs to the movement, it was bought with the Accord, and it is the only thing in this world that human hands are allowed to do without asking.\n\n…ask about the boy at the tower, she says she does not know his name either, and that she is sorry, and that she has been trying since last night to find out. She has been. Nobody will tell her.",
-      "outcome": "THE ASSIGNMENT. Wenna sends them to the scar-line at the Cinder Draw — the canyon the Rectors folded shut with garlands yesterday morning — on the reasoning that it is the newest seam in the world and the nearest thing to an open door. She believes this completely. It came down to her from above, which she does not think about, because assignments have always come down from above.\n\nTHE CLERK. Every expedition under the right of search carries a Registry man to keep the record; it is in the Accord. Theirs is [[npc-tobin|Tobin Rell]], junior, cheap, apologetic, and carrying a satchel too big for him. Introduce him as an inconvenience. He is their healer and their most dangerous secret and they have no idea."
+    {
+      "schema": 1,
+      "id": "f-commission",
+      "type": "folder",
+      "title": "THE COMMISSION — the morning after",
+      "parent": "act1",
+      "order": 20,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "session2"
+      ],
+      "leadsTo": [],
+      "fields": {},
+      "body": "The second scene of Act One, running from the settling dust of [[f-lastlight|LASTLIGHT]] to the moment the party walks out of a government building employed. There is no fight in it. Everything it does, it does by being kind to the heroes on camera.\n\nRead [[sc-commission|▶ RUN THESE IN ORDER]] and nothing else. That document is the whole scene in sequence, and every step in it links to the beat, the place, or the person it needs, so the rest of this folder is opened one piece at a time as play reaches it.\n\nThe two buildings this scene uses — [[loc-ossuary|the Ossuary]] and [[loc-setsquare|the Set Square]] — now live in [[f-locations|Locations]] with every other place in the city."
     },
-    "body": "TOBIN'S FIRST MOVE, and the hook for next session. On the way out, or on the road, once and quietly and never in front of Wenna, he says the thing he has been chewing on: they closed that seam yesterday morning in front of the entire city, and the tear at the Hearthspire's foot was patched in an hour by people who were in a hurry. So why are we being sent to the one that is shut?\n\nHe does not say the words goose chase. He does not say Red Flag. He asks one question, badly, and then apologizes for asking it, and the party can do what it likes with that.\n\nThis gives session three its choice: the crease they were assigned, or the tear they watched open. Both are playable, the Draw is a real scene and not a punishment, and the party learns in their second session that their handler and their employer do not agree. See [[npc-tobin|Tobin's sheet]] for how far gone he actually is." },
-
-  { "schema": 1, "id": "b-comm-6", "type": "beat",
-    "title": "6 — The woman and the boy",
-    "parent": "f-commission", "order": 70, "rev": 1,
-    "tags": ["act1", "session2", "payoff"], "leadsTo": [],
-    "fields": {
-      "hook": "The whole scene has been officials being kind to them in warm rooms. This is thirty seconds on a cold step with two people nobody arranged, and it is the only part of the day anybody at the table will remember in a month.",
-      "read_aloud": "\"There is a woman sitting on the steps outside, and she has been there a while, because the stone is dry under her and wet everywhere else. There is a small boy with her, five or so, holding something in both hands. She stands up when she sees the badges.\n\n'They said you're the ones going in,' she says. 'They said there's a list.'\n\nThe boy comes forward on his own, without being told, and holds up what he is carrying. It is a paper bird. It is grubby and it has been held very tightly and one wing is bent. 'The tall one made it,' he says. 'At the fair. Before.'\"",
-      "if_they": "…take the bird, the boy is enormously relieved and goes back to his mother. Give the actual folded prop to whichever player took it, and do not explain it.\n\n…ask what she wants, she says the thing she came to say: please bring back my son. And then, because they are strangers and she has to, she says his name.\n\n…ask why she is not inside with the families, she says she tried. She is not on the list of families. Nobody has put her son on any list, because nobody wrote his name down, because he was not with his family when it happened — he was at the front, in his best shirt, carrying a glass case.\n\n…promise her anything, let them. Write it down. Campaigns are made out of promises made on steps.",
-      "outcome": "The party learns the name of the boy from the tower's foot, from his mother, on a step, twenty-four hours after watching him be taken — and they learn that in a building full of officials counting to eleven, not one of them said it.\n\nThe woman is [[npc-sela|Sela Orrin]]. The small boy is her surviving son, Rab. The taken one is [[npc-finch|Finch]]."
+    {
+      "schema": 1,
+      "id": "sc-commission",
+      "type": "scene",
+      "title": "▶ RUN THESE IN ORDER — the commission",
+      "parent": "f-commission",
+      "order": 10,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "session2",
+        "index"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "order",
+          "▶ Run these in order"
+        ],
+        [
+          "before",
+          "Before you start"
+        ],
+        [
+          "truth",
+          "What is actually happening"
+        ],
+        [
+          "after",
+          "Where it leaves them"
+        ]
+      ],
+      "fields": {
+        "order": "1. [[b-comm-1|In the dust — a Surveyor thanks them]] · the fairground, minutes after the fight\n2. [[b-comm-2|A night at the Ossuary]] · [[loc-ossuary|the hotel]], that evening\n3. [[b-comm-3|The awarding]] · [[loc-setsquare|the Set Square]], next morning — badges, purse, and a fold each\n4. [[b-comm-4|The commission and the lie]] · the same room, minutes later — the task force, and who they are told did this\n5. [[b-comm-5|Wenna's assignment]] · a Green Fields room across the city — where to look, and a clerk to carry the paper\n6. [[b-comm-6|The woman and the boy]] · the steps outside, on the way out\n\nSteps 3 and 4 are one conversation and should not be broken up. Everything else can breathe.",
+        "before": "Have ready: the three things the Rector hands over (see [[b-comm-3|the awarding]]), and one folded paper bird made for real, which is given away in [[b-comm-6|the last beat]] and is the only prop that matters. Know that [[npc-tobin|Tobin Rell]] joins the party in step 5 and that he is already further gone than he looks. Know that nobody today says the name of the boy from the tower's foot until the last thirty seconds of the scene.",
+        "truth": "The tear was not caused by anybody. It is the jam in the great fold, and it has been coming for a lifetime. The ministry names Red Flag because a public enemy with a human face keeps the grieving flowing into Green Fields, which the occupation owns, and away from the candle houses, which it does not. Every human in the scene believes what they are saying. The Rector knows better and is not lying either, in its own reckoning, because a useful account of a disaster is a kind of order and order is mercy.",
+        "after": "Employed, decorated, and pointed at the wrong crease. They leave with a badge that opens checkpoints, coin, a folded case each, a handler who disagrees with their orders, an assignment at the Cinder Draw scar-line, and a paper bird from a five-year-old. The next session is the choice between the crease they were sent to and the tear they saw with their own eyes."
+      },
+      "body": "HOW TO RUN IT. This is a scene about being handled well, so play everyone in it as genuinely decent and let the wrongness sit underneath. Nobody sneers, nobody threatens, and the only person in the building who suspects anything is the junior clerk nobody introduces properly.\n\nThe children should come out of this feeling like heroes who were given medals, because that is what happens, and because the whole point of a leash is that it is offered as a gift. Do not tip it. The adults will notice that the party's names were known before they gave them, that the route was assigned rather than chosen, and that a boy died at the foot of a tower this morning and no official in a building full of officials has mentioned him.\n\nPACING. Ninety minutes at a comfortable pace. If time is short, run 1, 3, 4 and 6, and give Wenna's assignment to the Rector's office instead — but do not cut step 6 under any circumstances, because it is the reason the rest of the scene hurts later."
     },
-    "body": "HOW TO PLAY IT. Do not signpost it. The party is walking out of a good morning, employed and decorated, and this happens on the way to the street. Keep it under a minute of real time and do not add music to it.\n\nThe bird is the whole design. The ministry gave them a badge that opens doors, coin, and a folded case that holds more than it should. A five-year-old gives them a bent paper bird that does nothing at all, made by the same hands that made the badge, on a day when it was still just a toy. Nobody has to point out the difference, and nobody should.\n\nUSE A REAL PROP. Fold one before the session and hand it across the table. It will end up in a dice bag and it will still be there in Act Three.\n\nWHY IT LANDS. Because the party watched this boy die — or thought they did — before anybody told them who he was, and because they have spent a whole morning being thanked by people who never once said his name. The theme of this campaign is a state that grieves in numbers, and this is the entire argument delivered in four lines by a child with a broken toy." },
-
-  { "schema": 1, "id": "loc-ossuary", "type": "location",
-    "title": "The Ossuary — the ministry's hotel",
-    "parent": "f-locations", "order": 120, "rev": 2,
-    "tags": ["act1", "city"], "leadsTo": [],
-    "fields": {
-      "looks": "Six floors of white stone at the top of the market street, with a sunsalt lamp burning in every single window — which on any ordinary night is the most expensive sight in the city and on this one is obscene. It was a bone-house before it was anything else, three centuries ago, and the city has never got round to renaming it. The vaults underneath are still down there and are used for wine.",
-      "who_is_here": "Human staff, all of them, scrupulously kind and slightly frightened of the guests. Ministry visitors, contractors, and the occasional Green Fields delegate, who are put on separate floors by a management that regards this as simple good manners rather than politics.",
-      "hidden": "The register. Every guest since the Accord is in it, in a fair hand, and the ledger for the last fifteen years has three pages that have been very neatly removed. Nobody on the staff will admit to knowing anything about it, and one of them is lying out of fear rather than loyalty."
+    {
+      "schema": 1,
+      "id": "b-comm-1",
+      "type": "beat",
+      "title": "1 — In the dust: a Surveyor thanks them",
+      "parent": "f-commission",
+      "order": 20,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "session2"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hook": "They have just fought monsters in front of ten thousand people, and the first thing the government does is walk over and be delighted with them. It is the warmest reception any of them has ever had, and it is being conducted by something that is not a person.",
+        "read_aloud": "\"One of the paper people is coming toward you, and it is smiling. It has to arrange the smile first — the creases move, and then the expression arrives, a half-second late, the way a word arrives in a language you are still learning. It is very tall up close, and it is made of one piece. 'You stood,' it says. 'Ten thousand of you, and four stood. Do you know how rarely that happens? I have written it down. I have written all of it down.' It looks at each of you in turn, and it says your name — and none of you has told it your name.\"",
+        "if_they": "…ask how it knows their names, it is delighted to explain: it wrote them down, of course, that is what it is for, and it produces the page and shows them. Nothing is hidden and that is what makes it unsettling.\n\n…are hostile or suspicious, it is not offended in the least. It says that suspicion is reasonable after a day like this one, and offers the rooms anyway, and means it.\n\n…ask about the boy at the tower, it says it is very sorry and that the count is being taken and that they will be told. It will not be told. Nobody follows up. That is deliberate and should pass without comment.\n\n…ask what it wants, it says: nothing tonight. Tonight they should sleep somewhere warm. That is true.",
+        "outcome": "The party is invited, as a token of the ministry's gratitude, to be guests at [[loc-ossuary|the Ossuary]] — the finest house in the city — for as long as they care to stay. A runner will bring word in the morning. Then it bows, and goes back to writing down faces."
+      },
+      "body": "The Surveyor here is [[npc-rector|the Rector of the Set Square]], though it does not say so and is not in ceremonial form. Use the same being tomorrow at the awarding, and let a player be the one to notice it is the same one; a world in which one official handles you personally from the first minute is a smaller and more watched world than one with a cast of thousands.\n\nRun it warm. The temptation is to play the Surveyors cold, and cold is both wrong and boring at a table with children in it. This thing is thrilled with them. It behaves like a proud schoolteacher who happens to be folded out of a single sheet of something that is not quite paper, and the horror is entirely in the geometry and the timing rather than in the manner."
     },
-    "body": "The Ossuary earns its place by being genuinely lovely on the worst night of the city's life, which is the whole arrangement of this world reduced to one building: the occupation is warm, it is generous, it keeps its lamps lit while the street is dark, and it is very glad you came. Play the comfort straight and let the players feel however they feel about it." },
-
-  { "schema": 1, "id": "loc-setsquare", "type": "location",
-    "title": "The Set Square — the Rector's hall",
-    "parent": "f-locations", "order": 130, "rev": 3,
-    "tags": ["act1", "city", "surveyors"], "leadsTo": [],
-    "fields": {
-      "looks": "A public square that is a perfect square, and a building on its north side that is the same square stood upright — a drafting instrument the size of a civic hall, which is where the name comes from and which the city finds funnier than the order does. Inside, every line is true. There are no worn steps, no settled lintels, and no corner anywhere in the building that is not exactly a corner, and after ten minutes of it most people want to go and look at something crooked.",
-      "who_is_here": "Human clerks on the lower floors, doing real and useful work with real and useful courtesy. The ritual grade above. [[npc-rector|The Rector of the Set Square]] holds the top floor, which is one room the size of the building's footprint and is where public foldings and awardings are performed.",
-      "hidden": "The building has no stairs above the fourth floor and no other way up that anyone has ever found, and nobody has thought to ask how the Rectors reach the top. They fold flat and go under the doors. A hero who says the words out loud has worked out something true about Surveyors that will matter in a locked room in Act Two."
+    {
+      "schema": 1,
+      "id": "b-comm-2",
+      "type": "beat",
+      "title": "2 — A night at the Ossuary",
+      "parent": "f-commission",
+      "order": 30,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "session2"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hook": "Hot water, clean sheets, and more food than any of them has seen at one table, on the worst night the city has had in living memory. Let them enjoy it, and let the enjoying be slightly difficult.",
+        "read_aloud": "\"[[loc-ossuary|The Ossuary]] was a bone-house once, and the city has never bothered to rename it. Six floors of white stone with a lamp in every window — real sunsalt lamps, the whole face of the building lit, on a night when the rest of the street is dark. There is a bath the size of a cart. There is a bed each. Someone has already brought up your things from wherever you left them, folded, and there is a tray with more food on it than your family eats at a wedding. Outside and four floors down, people are still looking for people.\"",
+        "if_they": "…go back out to help, let them, and let it matter: they can find one person tonight, and it should be someone small and alive and not the one everyone is thinking about. The ministry does not stop them and notes it approvingly in the morning.\n\n…try to leave the city, the doors are not locked and nobody follows. There is simply nowhere to go and a summons finds them wherever they are.\n\n…search their rooms or ask who packed their things, the answer is that the staff did, they are very sorry, they assumed it would be a kindness. It was a kindness. It is also the second time today somebody has handled their belongings without being asked.",
+        "outcome": "Morning. A human runner, sixteen and out of breath, brings four summonses on ordinary paper: their names, the hour, and the address of [[loc-setsquare|the Set Square]]. Nothing folds itself, nothing flaps. The state does not need to be strange when it is simply being obeyed."
+      },
+      "body": "This beat exists to buy the scene its contrast. The party should be comfortable, fed, and well treated in a building full of light while the city grieves in the dark outside, because that is the arrangement the whole campaign is about, and it is much better felt in a bathtub than explained in a speech.\n\nKeep it short at the table — ten minutes — unless the players want to use the evening, in which case give them the night and let them find somebody."
     },
-    "body": "Give the party the ten minutes of trueness before the ceremony starts. Children notice a room with no crooked lines faster than adults do, and it is the cheapest possible way to teach the table what these beings actually are: not cruel, not cold, but incapable of leaving anything unfinished." },
-
-  { "schema": 1, "id": "npc-rector", "type": "npc",
-    "title": "The Rector of the Set Square — the one who is delighted with them",
-    "parent": "f-npcs", "order": 50, "rev": 1,
-    "tags": ["act1", "surveyors"], "leadsTo": [],
-    "fields": {
-      "looks": "Tall, narrow, and folded out of a single sheet of something between paper and porcelain. Its face is a pattern of creases and it builds an expression before it wears one, so every smile arrives about half a second after the moment that earned it. In the hall it wears the ritual grade: a great pleated collar that opens behind its head like a hand of cards.",
-      "wants": "For the world to be finished, which it understands as the kindest thing that could possibly be done for anyone, and in the meantime for the eleven people in that seam to be brought home. It wants the second thing sincerely and will spend real money on it.",
-      "voice": "Warm, precise, and thrilled by competence. It compliments people specifically rather than generally — not that they were brave, but that they went left when everyone else went right. It never raises its voice, never threatens, and has genuinely never needed to.",
-      "secret": "It has no personal secret at all, which is the interesting thing about it. It passes on the Red Flag account because that is the account its leadership gave it, and it has not examined it, in the way that a decent officer does not examine the ministry's press. The only thing it is hiding is arithmetic: it knows the count was more than eleven, because it was standing there writing, and eleven is the number it has been given to say."
+    {
+      "schema": 1,
+      "id": "b-comm-3",
+      "type": "beat",
+      "title": "3 — The awarding",
+      "parent": "f-commission",
+      "order": 40,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "session2",
+        "reward"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hook": "The medal scene, played straight. Small, formal, and genuinely moving — about forty people in a room built for four hundred, and every one of them is there because these four went toward the monsters.",
+        "read_aloud": "\"The room at the top of [[loc-setsquare|the Set Square]] is one enormous square of pale stone, and every line in it is true. There are forty chairs set out in the middle of a floor meant for four hundred, and they are full: the people you pulled out of the dust, and the families of the ones you did not. Nobody claps when you come in. They stand up.\n\nThe Rector is waiting, and it is dressed differently today — pleated into a great fan of a collar that opens behind its head like a hand of cards. On the table beside it there are three things and a stack of plain paper.\"",
+        "if_they": "…refuse the honors, the Rector accepts this with real grace, sets their share aside, and says the offer does not expire. It genuinely does not. Nothing in this scene requires them to accept anything.\n\n…ask what the fold is made of, the Rector says: paper. It is telling the truth and the truth is not reassuring.\n\n…try to open a fold on a living thing, it will not close. It simply refuses, gently, the way a door refuses. The Rector, if present, says only that this was thought best.",
+        "outcome": "Three gifts, given one hero at a time, by name, in front of the room.\n\nTHE BADGE. A Writ of Search, folded from one blank sheet in a single unbroken motion that takes about eight seconds and never doubles back. It carries their name inside the fold and it opens every checkpoint, gate, and rope line in the city. It is not magic. It is a leash, and it is the reason this act is called what it is called.\n\nTHE PURSE. A month's wages each, in coin, counted out loud. Concrete, unglamorous, and more money than two of them have ever held.\n\nTHE FOLD. One each: a stiff pale card the size of a hand, which opens along creases into a deep case that holds far more than the card could, and closes back to a card. It must be opened and closed by hand, and it will not close on anything living. Nobody explains why that rule was necessary."
+      },
+      "body": "This is the beat the children came for, so give it the full ceremony: names read out, the room standing, the Rector coming down off the platform to hand each thing over personally. Do not undercut it. The scene is only worth anything later if it is worth something now.\n\nThe folding itself is the spectacle, and it is worth slowing down for. A Rector at work is meant to be seen — that is the entire point of the ritual grade — so describe the hands and the eight seconds and the fact that it never goes back to correct anything, and let a player ask to watch closely. They can. It is happy to be watched.\n\nON THE FOLD AS AN ITEM. No dice attach to it. It is a pocket that holds a great deal, it is delightful, and it will quietly teach the table that this world folds space as a matter of course, which is the cosmology arriving as a toy rather than as a lecture."
     },
-    "body": "The party's first named Surveyor, and their handler at the top of the ladder for the whole of Act One. It should be warm, personally attentive, and impossible to dislike, because a table that likes it will be genuinely disturbed the first time it folds a street shut with people on it — which is scheduled for Act Two.\n\nRun it in both appearances of [[f-commission|THE COMMISSION]]: it is the Surveyor who congratulates them in the dust in [[b-comm-1|beat 1]], out of ceremonial dress, and the officiant who folds their badges in [[b-comm-3|beat 3]]. Let a player notice it is the same one. A world where one official takes a personal interest in you from the first minute is smaller and more watched than a world with a cast of thousands, and the children will feel that without being told.\n\nIts own name for itself is a fold rather than a sound — a precise gesture of the hands — and it will teach a hero to make it, badly, if asked. It is enormously pleased to be asked." },
-
-  { "schema": 1, "id": "npc-sela", "type": "npc",
-    "title": "Sela Orrin — the woman on the steps",
-    "parent": "f-npcs", "order": 60, "rev": 1,
-    "tags": ["act1", "taken", "haunted"], "leadsTo": [],
-    "fields": {
-      "looks": "Forty, in yesterday's clothes, having sat on a wet step long enough to dry the stone under her. She has a five-year-old with her, Rab, who holds her hand except for the ten seconds in which he does the bravest thing anybody does in this scene.",
-      "wants": "Her son back. Beneath that, and harder to give her, she wants somebody official to write his name down, because the count is eleven and her son is not on any list of families, and a boy who is not on a list has not, in the only sense the state recognizes, been lost.",
-      "voice": "Flat and practical, because she has been awake for thirty hours and has already cried everything she is going to cry in front of strangers. She does not plead. She states the position and waits, and it is much worse than pleading.",
-      "secret": "She has no secret and she is not a plant, which the DM should hold onto, because this campaign is full of people who turn out to be something. She is exactly what she appears to be: one of the haunted, twenty-four hours in, before anybody has reached her. Both Green Fields and Red Flag will come for her within the month, and which one gets there first is worth deciding at the table rather than in advance."
+    {
+      "schema": 1,
+      "id": "b-comm-4",
+      "type": "beat",
+      "title": "4 — The commission and the lie",
+      "parent": "f-commission",
+      "order": 50,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "session2",
+        "red-flag"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hook": "They are offered a job by the most powerful institution in the world, and they are told who to blame. One of those two things is false, and it is not the one they will doubt.",
+        "read_aloud": "\"'Eleven people went through that seam,' the Rector says, 'and they are alive, and they are not coming back on their own. We would go in after them ourselves. We cannot. There are only so many of us — there have only ever been so many of us — and we have not been able to make more since the world stopped moving. So the work that is done in this world by hands is done by human hands, and it has been that way since before your grandmothers.'\n\nIt lets that sit.\n\n'What we are forming is a task force. Human, small, sanctioned, and paid. You would be the first four names on it.'\"",
+        "if_they": "…ask why them, the answer is honest and slightly chilling: because everyone else ran, and because it was standing there with a pen.\n\n…ask what caused the tear, this is where the lie arrives. See the outcome field, and deliver it as settled fact rather than as an accusation — the way one reports weather.\n\n…ask about the boy at the tower's foot, the Rector says the count is eleven and does not distinguish among them. It will not name him. Nobody in this building names him all morning.\n\n…ask to see the tear themselves, the Rector says the seam at the Hearthspire was patched by its own order within the hour and is closed. It believes this. It is wrong, and [[npc-tobin|Tobin]] will say so before the day is out.",
+        "outcome": "THE LIE, delivered plainly: the tear was made. A cell calling itself Red Flag — a scattering of refusers left over from the Fence War, who kept the old banner when the movement furled it — sabotaged the lighting of the Hearthspire in order to break the Accord and put the world back to war. They are named as terrorists, they are described as few and dangerous, and the party is asked, as part of the work, to bring back anything that shows a human hand in it.\n\nThen the second half of the commission: the searching itself is done under the Accord's right of search, which belongs to Green Fields and not to the ministry, so the party is to present themselves to a recruiter across the city. The Rector writes the address out by hand. It is [[npc-wenna|Wenna Ash]]."
+      },
+      "body": "WHY THE LIE IS THE RIGHT ONE. Canon already has the criers blaming the veiled figure on the high seat, which is where the world's cosmic anger is meant to go. This is the operational version, issued to people who are actually being sent somewhere, and it does a job the veil cannot: it makes the candle houses radioactive, so that every grieving person in the city walks toward Green Fields — which the occupation owns — instead of toward Red Flag, which it does not. Record it in CAMPAIGN.md §3 as standing practice.\n\nWHAT THE PARTY NOW BELIEVES. That there are terrorists, that the terrorists made the hole, and that they have been hired to help clean up after them. They will carry that for several sessions, and they will carry it while traveling with a man who has been reading a dead friend's field book and can no longer make the numbers work.\n\nDO NOT WINK. The Rector is not smirking, and it is not lying in the sense it would recognize. It has been given an account of the disaster by its own leadership and it is passing that account on. Everything else in the room is true: the eleven, the offer, the pay, and the fact that its order cannot spare a single one of itself to go in."
     },
-    "body": "Sela exists to put a face and a name on the count. She appears in [[b-comm-6|the last beat of THE COMMISSION]], on the steps, for under a minute, and she says the name of the boy the party watched be taken — [[npc-finch|Finch]] — which nobody in a building full of officials said all morning.\n\nRAB. Five. He carries a paper bird that a Surveyor folded for him at the fair the day before, and he gives it away to a stranger with a badge because he has worked out, in the way five-year-olds do, that this is a thing he can do to help. He does it without being told and without letting go of it easily. Play the bent wing.\n\nWHERE SHE GOES. She should come back. A mother who appears once and is never seen again is a prop, and this campaign has enough of those; a mother the party keeps running into — at a Green Fields meeting, at a rope line, eventually in a dark house with a candle in the window — is the whole argument of Act One happening to one family in the background. Her arc is a standing invitation and is deliberately unscheduled." },
-
-  { "schema": 1, "id": "f-locations", "type": "folder",
-    "title": "Locations — the places",
-    "parent": null, "order": 40, "rev": 1,
-    "tags": ["places"], "leadsTo": [], "fields": {},
-    "body": "Every place in the campaign lives here — one sheet each, the single source of truth, no matter how many scenes use it. Scenes point at these sheets with wikilinks, the same way they point at people and creatures.\n\nStart at [[loc-index|▶ WHERE THEY CAN GO]], which lists the city in one screen and says what the party can actually DO at each place." },
-
-  { "schema": 1, "id": "loc-index", "type": "note",
-    "title": "▶ WHERE THEY CAN GO — Dunlath",
-    "parent": "f-locations", "order": 10, "rev": 6,
-    "tags": ["places", "index"], "leadsTo": [],
-    "fieldDefs": [
-      ["places", "▶ The city, and what they can do there"],
-      ["land", "The lie of the land"],
-      ["ifthere", "If there is time"],
-      ["state", "The state of the city this week"]
-    ],
-    "fields": {
-      "places": "[[loc-clockface|The Clock Face]] — meet people, leave word, hire a runner. The city's meeting place, by accident.\n[[loc-petition|The Petition Rail]] — formally demand anything at all, including a name added to the count. Every word is filed.\n[[loc-lampoffice|The Lamp Office]] — buy light. The register on the wall does not add up, and nobody has ever added it.\n[[loc-sixtyone|Sixty-One Pairs]] — rummage, one roll each. The first buyer for anything brought back out of a crease.\n[[loc-longtable|The Long Table]] — half the room is dressed as clowns, half as bakers, and they are fighting about it. Food, rooms, every rumor in the city, and a guard company for hire.\n[[loc-wintergarden|The Glasshouse]] — a garden under a glass roof, kept warm by no fire at all. Food, drink, players, a games yard, and dice behind a curtain. Where the party has a good night.\n[[loc-rationhall|The Emporium]] — a covered market the size of a cathedral. Take what your household needs; a clerk marks it on the roll. The porters will not let you carry anything.\n[[loc-foldingshop|The Folding Shop]] — commission a toy of anything. It gets the parts you did not say. The paper animals have got out.\n[[loc-ganny|Ganny Marle's Cellar]] — a painted sideshow banner and a coin to see THE IMPOSSIBLE CORNER. Something is coming through it.\n[[loc-scarline|The Scar-Line]] — walk where the canyon was. Their assignment, and the thinnest place in the city.\n[[loc-hearthspire|The Hearthspire]] — the tower, and the seam they actually saw open. The patch is loose at the bottom corner.\n[[loc-olddraws|The Old Draws]] — stand at the rim of a dead one and look down. Hundreds of feet, and you cannot see the floor.\n[[loc-darkwindow|The Dark Window]] — the one unlit window on any street after dark. Knock and be lied to politely.\n\nAlso here, used by [[f-commission|THE COMMISSION]]: [[loc-ossuary|the Ossuary]] and [[loc-setsquare|the Set Square]].",
-      "land": "West to east: [[loc-olddraws|the old Draws]] on the flats → the Cinder Draw, the last of them, now [[loc-scarline|the scar-line]] → [[loc-hearthspire|the Hearthspire]] standing over the fairground → rising ground → DUNLATH on the height behind its wall. Beneath all of it, the old sunsalt works running east from the Draws and up into the city's undercroft.\n\nFrom the west gate you look DOWN the slope: the tower first, canyon country beyond it, and the town above hanging over the whole business. The city is on the high ground and everything that fed it is below.",
-      "ifthere": "Two pieces are written to be dropped when the night has room for them, and they live in [[f-iftime|IF THERE IS TIME]]: [[b-slip|a slip]], which can happen anywhere at all and takes ninety seconds, and [[enc-ganny|the thing in Ganny's preserves]], which is fifteen minutes and is not a fight unless the party insists.",
-      "state": "THE CITY IS DUNLATH AND IT IS RICH. The blend to reach for: MEDIEVAL AESTHETICS, the material prosperity of ROME ON STEROIDS, the festive confidence of the GILDED AGE, all run by a totalitarian state. Colonnades, covered markets, fountains, porters with handcarts, crowds in good cloth at public games and feasts. No steam, no factories, no machinery — nothing more advanced than an ancient primitive flintlock, and one of those would be a marvel. This world was folded for plenty and the occupation's case rests on having delivered it. Nobody here is hungry.\n\nWHERE THE WONDER GOES: sunsalt. Heat and light without fire, seeded as hints and never explained — a floor warm underfoot with nothing burning under it, a hall lit with no flame in it, fruit trees under glass in winter. Marvel rather than machinery.\n\nAND THE DARK IS THE UNDERTOW, not the weather. The surface is a confident, wealthy, celebrating city, and the horror surfaces in the cracks — a thing said too courteously, a record being kept, two Surveyors at a corner table who never eat anything — while the table is still laughing at the clowns.\n\nAND THE CITY IS STILL DRESSED FOR A PARTY. Lastlight was a festival — garlands, bunting, stalls, a fair — and the disaster arrived in the middle of it, so none of it has come down. Decorations across every street going slowly brown. A carousel nobody has dismantled. Half-struck stalls. The correct image is a city in party clothes with a hole in it, not a city in mourning, and the decorations are the single fastest way to put that on the table.\n\nIt is the week after. The Cinder Draw was formally closed with garlands, so the best-paid trade in the world ended on a Tuesday and nobody has a job. Eleven people are officially missing and everyone who was there knows the number is wrong. The price of a lamp has doubled, which is the first limit anyone in Dunlath has met in living memory. The town overhead hangs where it has always hung."
+    {
+      "schema": 1,
+      "id": "b-comm-5",
+      "type": "beat",
+      "title": "5 — Wenna's assignment, and a clerk",
+      "parent": "f-commission",
+      "order": 60,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "session2"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hook": "They met her in the dust last night and liked her. This morning she turns out to be their employer, and she is so glad they came that it is a little hard to look at.",
+        "read_aloud": "\"The address the Rector wrote out is a room over a grain merchant's, with a hand-painted sign and a kettle going. There are maybe nine people in it, and half of them have the look you saw all over the fairground last night — the look of somebody who is counting a room to see who is missing. [[npc-wenna|Wenna Ash]] is standing on a chair pinning a paper to the wall, and when she sees you in the doorway she gets down so fast she nearly goes over.\"",
+        "if_they": "…tell her the ministry named Red Flag, she goes quiet, and then she says carefully that she has heard the name and that she does not know, and that the people she has met who went that way were not monsters, they were just tired. It is the first crack of light in the whole scene and she does not know she has opened it.\n\n…ask why Green Fields and not the ministry, she gives the true answer, warmly and with pride: the right of search belongs to the movement, it was bought with the Accord, and it is the only thing in this world that human hands are allowed to do without asking.\n\n…ask about the boy at the tower, she says she does not know his name either, and that she is sorry, and that she has been trying since last night to find out. She has been. Nobody will tell her.",
+        "outcome": "THE ASSIGNMENT. Wenna sends them to the scar-line at the Cinder Draw — the canyon the Rectors folded shut with garlands yesterday morning — on the reasoning that it is the newest seam in the world and the nearest thing to an open door. She believes this completely. It came down to her from above, which she does not think about, because assignments have always come down from above.\n\nTHE CLERK. Every expedition under the right of search carries a Registry man to keep the record; it is in the Accord. Theirs is [[npc-tobin|Tobin Rell]], junior, cheap, apologetic, and carrying a satchel too big for him. Introduce him as an inconvenience. He is their healer and their most dangerous secret and they have no idea."
+      },
+      "body": "TOBIN'S FIRST MOVE, and the hook for next session. On the way out, or on the road, once and quietly and never in front of Wenna, he says the thing he has been chewing on: they closed that seam yesterday morning in front of the entire city, and the tear at the Hearthspire's foot was patched in an hour by people who were in a hurry. So why are we being sent to the one that is shut?\n\nHe does not say the words goose chase. He does not say Red Flag. He asks one question, badly, and then apologizes for asking it, and the party can do what it likes with that.\n\nThis gives session three its choice: the crease they were assigned, or the tear they watched open. Both are playable, the Draw is a real scene and not a punishment, and the party learns in their second session that their handler and their employer do not agree. See [[npc-tobin|Tobin's sheet]] for how far gone he actually is."
     },
-    "body": "HOW TO USE THIS. The party has no assigned business in the city except the errand [[npc-wenna|Wenna]] gave them, so this list exists to be pointed at. When they say \"what's around,\" read them three or four of these and let them pick.\n\nNothing here is a quest chain. Each place is a room with something to do in it, and two of them hold a thing that matters later — [[loc-lampoffice|the Lamp Office]] register and the hoard in [[loc-ganny|Ganny's cellar]] — which the party can walk straight past without losing anything. Both are written so that noticing them is a reward and missing them costs nothing." },
-
-  { "schema": 1, "id": "loc-clockface", "type": "location",
-    "title": "The Clock Face — the meeting place",
-    "parent": "f-locations", "order": 20, "rev": 3,
-    "tags": ["city", "comedy"], "leadsTo": [],
-    "fields": {
-      "looks": "The face of the fallen clock tower lies in the middle of a street it is far too large to be taken out of — twelve feet across, glass gone, the numbers still legible, one hand snapped and the other bent. It came down through three roofs and the city has quietly given up on moving it. Bunting from the festival is still strung across the street above it, and somebody has run a line of it down to the clock and tied it off on the number nine.\n\nCHILDREN HAVE TAKEN THE CLOCK. There are six to ten of them on it at any hour, they have built a fort into the works, there is a rope ladder, and they charge adults a button to climb up. They have rules. The rules are extensive and are explained to anybody who will listen.",
-      "who_is_here": "Everyone, eventually. Two honey-cake stalls and a man selling hot roast nuts have set up around the rim within a week, and none of them can be moved on because nobody can work out whose job it is. Runners wait here for work. Notices are wedged into the crack across the face. The tea woman pays the children's button toll every single day without comment.",
-      "hidden": "Nothing is hidden here, and that is the point of it. This is the one place in the city where the party can be found by somebody who is looking for them, which will matter more than any secret."
+    {
+      "schema": 1,
+      "id": "b-comm-6",
+      "type": "beat",
+      "title": "6 — The woman and the boy",
+      "parent": "f-commission",
+      "order": 70,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "session2",
+        "payoff"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hook": "The whole scene has been officials being kind to them in warm rooms. This is thirty seconds on a cold step with two people nobody arranged, and it is the only part of the day anybody at the table will remember in a month.",
+        "read_aloud": "\"There is a woman sitting on the steps outside, and she has been there a while, because the stone is dry under her and wet everywhere else. There is a small boy with her, five or so, holding something in both hands. She stands up when she sees the badges.\n\n'They said you're the ones going in,' she says. 'They said there's a list.'\n\nThe boy comes forward on his own, without being told, and holds up what he is carrying. It is a paper bird. It is grubby and it has been held very tightly and one wing is bent. 'The tall one made it,' he says. 'At the fair. Before.'\"",
+        "if_they": "…take the bird, the boy is enormously relieved and goes back to his mother. Give the actual folded prop to whichever player took it, and do not explain it.\n\n…ask what she wants, she says the thing she came to say: please bring back my son. And then, because they are strangers and she has to, she says his name.\n\n…ask why she is not inside with the families, she says she tried. She is not on the list of families. Nobody has put her son on any list, because nobody wrote his name down, because he was not with his family when it happened — he was at the front, in his best shirt, carrying a glass case.\n\n…promise her anything, let them. Write it down. Campaigns are made out of promises made on steps.",
+        "outcome": "The party learns the name of the boy from the tower's foot, from his mother, on a step, twenty-four hours after watching him be taken — and they learn that in a building full of officials counting to eleven, not one of them said it.\n\nThe woman is [[npc-sela|Sela Orrin]]. The small boy is her surviving son, Rab. The taken one is [[npc-finch|Finch]]."
+      },
+      "body": "HOW TO PLAY IT. Do not signpost it. The party is walking out of a good morning, employed and decorated, and this happens on the way to the street. Keep it under a minute of real time and do not add music to it.\n\nThe bird is the whole design. The ministry gave them a badge that opens doors, coin, and a folded case that holds more than it should. A five-year-old gives them a bent paper bird that does nothing at all, made by the same hands that made the badge, on a day when it was still just a toy. Nobody has to point out the difference, and nobody should.\n\nUSE A REAL PROP. Fold one before the session and hand it across the table. It will end up in a dice bag and it will still be there in Act Three.\n\nWHY IT LANDS. Because the party watched this boy die — or thought they did — before anybody told them who he was, and because they have spent a whole morning being thanked by people who never once said his name. The theme of this campaign is a state that grieves in numbers, and this is the entire argument delivered in four lines by a child with a broken toy."
     },
-    "body": "WHAT THEY DO HERE. Meet people. Leave word. Hire a runner for a coin. Read the notices, which are mostly people looking for people. If the party needs to be found by an NPC — and over a long campaign they will, often — this is where it happens, and using one place for it every time makes the city feel like a place rather than a set of rooms.\n\nIt is also simply a good place to have a conversation, which a table with children in it needs more of than it needs another room with a door." },
-
-  { "schema": 1, "id": "loc-petition", "type": "location",
-    "title": "The Petition Rail — where you may say anything",
-    "parent": "f-locations", "order": 30, "rev": 1,
-    "tags": ["city", "registry"], "leadsTo": [],
-    "fields": {
-      "looks": "A brass rail outside the Registry, polished to a shine by a lifetime of hands, with a canvas awning over it and a clerk's desk at either end. Anyone at all may take the rail and say their grievance out loud. A human clerk writes down every word, reads it back, thanks them sincerely, and files it.",
-      "who_is_here": "The queue, which today runs the length of the street and around the corner. Clerks who are unfailingly kind and slightly hollowed out. A hoarse man near the front who is here every single week and says the same thing: that the Fold is the best thing that ever happened to anybody, and that not one word of that explains why no human sits at any table where anything is decided.",
-      "hidden": "Nothing has ever come of a petition. Not one, in a lifetime of them. The clerks do not know this, because each of them only sees their own share, and the filing is genuine — the words go into a real archive that is really kept. It is simply that the archive is where petitions are for."
+    {
+      "schema": 1,
+      "id": "loc-ossuary",
+      "type": "location",
+      "title": "The Ossuary — the ministry's hotel",
+      "parent": "f-locations",
+      "order": 120,
+      "rev": 2,
+      "tags": [
+        "act1",
+        "city"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "Six floors of white stone at the top of the market street, with a sunsalt lamp burning in every single window — which on any ordinary night is the most expensive sight in the city and on this one is obscene. It was a bone-house before it was anything else, three centuries ago, and the city has never got round to renaming it. The vaults underneath are still down there and are used for wine.",
+        "who_is_here": "Human staff, all of them, scrupulously kind and slightly frightened of the guests. Ministry visitors, contractors, and the occasional Green Fields delegate, who are put on separate floors by a management that regards this as simple good manners rather than politics.",
+        "hidden": "The register. Every guest since the Accord is in it, in a fair hand, and the ledger for the last fifteen years has three pages that have been very neatly removed. Nobody on the staff will admit to knowing anything about it, and one of them is lying out of fear rather than loyalty."
+      },
+      "body": "The Ossuary earns its place by being genuinely lovely on the worst night of the city's life, which is the whole arrangement of this world reduced to one building: the occupation is warm, it is generous, it keeps its lamps lit while the street is dark, and it is very glad you came. Play the comfort straight and let the players feel however they feel about it."
     },
-    "body": "WHAT THEY DO HERE. Formally demand anything, and be taken completely seriously. The most useful thing a party can do at this rail in Act One is get a name added to the count of the missing, which is exactly what [[npc-sela|Sela Orrin]] cannot do on her own and what the party's badges make possible in an afternoon.\n\nIt works, slowly, and it costs nothing, and every word said at the rail is written down with the speaker's name on it. Let that sit without comment.\n\nThe queue is its own resource: it is eleven days long, everyone in it is angry and talking, and it is the best place in the city to hear what people actually think. A man near the front will trade his place for a favor." },
-
-  { "schema": 1, "id": "loc-lampoffice", "type": "location",
-    "title": "The Lamp Office — where the city buys light",
-    "parent": "f-locations", "order": 40, "rev": 4,
-    "tags": ["city", "sunsalt", "clue"], "leadsTo": [],
-    "fields": {
-      "looks": "The lampwrights' hall: a stone room off the market with a long counter, and lamps hung in rows on chains from the beams — plain tin ones for a kitchen, and beside them, lit, the ones with shades of colored glass that cost four times as much and that half the street has bought because a neighbor bought one. Spare glass, wicks, grain-lanterns, and the sunsalt itself kept in a locked chest behind the counter and measured out with a spoon.\n\nOn the wall, a slate painted in two columns and chalked up fresh every week.\n\nSince the Draw closed, the price has doubled and there is a limit of one lamp to a household, written on the door in a hand that was angry when it wrote it. It is the first limit anyone in Dunlath has met in living memory and the street is taking it extremely badly.",
-      "who_is_here": "A queue that has become a small civilization, because these people have never queued for anything and have decided to do it properly. A man near the front has brought a folding table, a cloth, and lunch. Two women have hired boys to hold their places and the boys have unionized and are now charging double. Somebody is auctioning his position out loud and is up to nine coins. A clerk is doing his best.",
-      "hidden": "THE COLUMNS DO NOT MATCH. The left column is what came down from the Hearthspire this week. The right is what was issued to households. The right is smaller, and not by a little, and the gap has been there every week the board has been kept. The clerk has never added them, because the two columns are two different jobs and nobody has ever asked him to compare them."
+    {
+      "schema": 1,
+      "id": "loc-setsquare",
+      "type": "location",
+      "title": "The Set Square — the Rector's hall",
+      "parent": "f-locations",
+      "order": 130,
+      "rev": 3,
+      "tags": [
+        "act1",
+        "city",
+        "surveyors"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "A public square that is a perfect square, and a building on its north side that is the same square stood upright — a drafting instrument the size of a civic hall, which is where the name comes from and which the city finds funnier than the order does. Inside, every line is true. There are no worn steps, no settled lintels, and no corner anywhere in the building that is not exactly a corner, and after ten minutes of it most people want to go and look at something crooked.",
+        "who_is_here": "Human clerks on the lower floors, doing real and useful work with real and useful courtesy. The ritual grade above. [[npc-rector|The Rector of the Set Square]] holds the top floor, which is one room the size of the building's footprint and is where public foldings and awardings are performed.",
+        "hidden": "The building has no stairs above the fourth floor and no other way up that anyone has ever found, and nobody has thought to ask how the Rectors reach the top. They fold flat and go under the doors. A hero who says the words out loud has worked out something true about Surveyors that will matter in a locked room in Act Two."
+      },
+      "body": "Give the party the ten minutes of trueness before the ceremony starts. Children notice a room with no crooked lines faster than adults do, and it is the cheapest possible way to teach the table what these beings actually are: not cruel, not cold, but incapable of leaving anything unfinished."
     },
-    "body": "WHAT THEY DO HERE. Buy light, fuel and spare glass — genuinely useful, and this is also where the Compass Spirit will eat later, so the party will come back.\n\nTHE CLUE, AND HOW TO PLAY IT. The slate is on the wall in plain sight. A player who reads it and does the arithmetic finds a shortfall the clerk cannot explain and is not hiding. Do not push it, do not have anyone react, and do not let the clerk turn out to be in on anything — he is not. If nobody looks at the board, nothing is lost.\n\nWhat it is worth later: this is [[npc-hettie|Hettie Sarn]]'s entire case, sitting on a wall for free. What the Reactors take in has never matched what comes out refined. When she finally opens her ledger and turns it around, a party that read this board already knows she is right, and the scene becomes a confirmation instead of a lecture." },
-
-  { "schema": 1, "id": "loc-sixtyone", "type": "location",
-    "title": "Sixty-One Pairs — the crease-salvage shop",
-    "parent": "f-locations", "order": 50, "rev": 1,
-    "tags": ["city", "shop"], "leadsTo": [],
-    "fields": {
-      "looks": "A deep narrow shop with sixty-one unmatched boots hanging from the ceiling on strings, each waiting on a partner that has not turned up. Everything on the shelves came out of a crease at some point: objects that arrived folded and did not entirely open again, half a chair, a kettle that is also a little bit of a different kettle, a pair of spectacles with one lens that shows the room slightly earlier.",
-      "who_is_here": "The owner, who buys by weight and sells by the story, and who has never once been through a crease herself and is not curious about doing so.",
-      "hidden": "She pays cash for anything brought back out of a crease, no questions, better than anyone else in the city. She is not an agent of anybody. She simply has the only market for it, because everyone else is frightened of the stuff."
+    {
+      "schema": 1,
+      "id": "npc-rector",
+      "type": "npc",
+      "title": "The Rector of the Set Square — the one who is delighted with them",
+      "parent": "f-npcs",
+      "order": 50,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "surveyors"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "Tall, narrow, and folded out of a single sheet of something between paper and porcelain. Its face is a pattern of creases and it builds an expression before it wears one, so every smile arrives about half a second after the moment that earned it. In the hall it wears the ritual grade: a great pleated collar that opens behind its head like a hand of cards.",
+        "wants": "For the world to be finished, which it understands as the kindest thing that could possibly be done for anyone, and in the meantime for the eleven people in that seam to be brought home. It wants the second thing sincerely and will spend real money on it.",
+        "voice": "Warm, precise, and thrilled by competence. It compliments people specifically rather than generally — not that they were brave, but that they went left when everyone else went right. It never raises its voice, never threatens, and has genuinely never needed to.",
+        "secret": "It has no personal secret at all, which is the interesting thing about it. It passes on the Red Flag account because that is the account its leadership gave it, and it has not examined it, in the way that a decent officer does not examine the ministry's press. The only thing it is hiding is arithmetic: it knows the count was more than eleven, because it was standing there writing, and eleven is the number it has been given to say."
+      },
+      "body": "The party's first named Surveyor, and their handler at the top of the ladder for the whole of Act One. It should be warm, personally attentive, and impossible to dislike, because a table that likes it will be genuinely disturbed the first time it folds a street shut with people on it — which is scheduled for Act Two.\n\nRun it in both appearances of [[f-commission|THE COMMISSION]]: it is the Surveyor who congratulates them in the dust in [[b-comm-1|beat 1]], out of ceremonial dress, and the officiant who folds their badges in [[b-comm-3|beat 3]]. Let a player notice it is the same one. A world where one official takes a personal interest in you from the first minute is smaller and more watched than a world with a cast of thousands, and the children will feel that without being told.\n\nIts own name for itself is a fold rather than a sound — a precise gesture of the hands — and it will teach a hero to make it, badly, if asked. It is enormously pleased to be asked."
     },
-    "body": "WHAT THEY DO HERE. Rummage — give each hero one roll and let them turn up something strange; the stock is a licence to hand out oddities without them being magic items. Buy cheap gear. And, once they start going into creases, SELL, which makes this the party's first reliable buyer and gives crease-diving an economy.\n\nThe boots are the point of the shop and worth describing every visit. Sixty-one things that arrived without their other half is the Folding stated as a joke, and a table full of children will start looking for matches." },
-
-  { "schema": 1, "id": "loc-longtable", "type": "location",
-    "title": "The Long Table — the Draw crews' eating house",
-    "parent": "f-locations", "order": 60, "rev": 3,
-    "tags": ["city", "hub", "comedy"], "leadsTo": [],
-    "fields": {
-      "looks": "A handsome, prosperous eating hall — good dark timber, a great hearth, hanging lamps, and one enormous table running the whole length of the room, laid for sixty with proper plates. These were the best-paid workers in the world and they ate like it. Rooms upstairs, good ones. By the door, on a hook, a garland from the closing ceremony that nobody has taken down and nobody will touch.\n\nAND THEN: roughly half the room is dressed as clowns. Full white greasepaint, red noses, the whole business, and several of them are carrying horns and a drum they cannot play. The other half are dressed as bakers — tall white hats, aprons, flour on everything. Along one wall stands a knot of men in mismatched salvaged armor, and one of them is wearing a saucepan on his head, and he is arguing with a baker.\n\nEvery one of them is enormous and still has coal dust in the creases of his hands.",
-      "who_is_here": "The Cinder Draw's crews, four days unemployed and retraining at speed, in two factions and a splinter group. THE CLOWNS want to start a circus. THE BAKERS want to start a bakery. Both have already spent money on the outfits, which is precisely why neither can back down. The argument is conducted at full volume across the length of the table and has been running since Thursday.\n\nThe cook has fed all of them since they were apprentices and is the closest thing the room has to a mayor.",
-      "hidden": "The hiring board by the kitchen door, which for a lifetime was the busiest board in the city, is empty. Everyone in the room can see it from where they are sitting, and nobody is looking at it."
+    {
+      "schema": 1,
+      "id": "npc-sela",
+      "type": "npc",
+      "title": "Sela Orrin — the woman on the steps",
+      "parent": "f-npcs",
+      "order": 60,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "taken",
+        "haunted"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "Forty, in yesterday's clothes, having sat on a wet step long enough to dry the stone under her. She has a five-year-old with her, Rab, who holds her hand except for the ten seconds in which he does the bravest thing anybody does in this scene.",
+        "wants": "Her son back. Beneath that, and harder to give her, she wants somebody official to write his name down, because the count is eleven and her son is not on any list of families, and a boy who is not on a list has not, in the only sense the state recognizes, been lost.",
+        "voice": "Flat and practical, because she has been awake for thirty hours and has already cried everything she is going to cry in front of strangers. She does not plead. She states the position and waits, and it is much worse than pleading.",
+        "secret": "She has no secret and she is not a plant, which the DM should hold onto, because this campaign is full of people who turn out to be something. She is exactly what she appears to be: one of the haunted, twenty-four hours in, before anybody has reached her. Both Green Fields and Red Flag will come for her within the month, and which one gets there first is worth deciding at the table rather than in advance."
+      },
+      "body": "Sela exists to put a face and a name on the count. She appears in [[b-comm-6|the last beat of THE COMMISSION]], on the steps, for under a minute, and she says the name of the boy the party watched be taken — [[npc-finch|Finch]] — which nobody in a building full of officials said all morning.\n\nRAB. Five. He carries a paper bird that a Surveyor folded for him at the fair the day before, and he gives it away to a stranger with a badge because he has worked out, in the way five-year-olds do, that this is a thing he can do to help. He does it without being told and without letting go of it easily. Play the bent wing.\n\nWHERE SHE GOES. She should come back. A mother who appears once and is never seen again is a prop, and this campaign has enough of those; a mother the party keeps running into — at a Green Fields meeting, at a rope line, eventually in a dark house with a candle in the window — is the whole argument of Act One happening to one family in the background. Her arc is a standing invitation and is deliberately unscheduled."
     },
-    "body": "WHAT THEY DO HERE. Eat extremely well, sleep upstairs, and hear absolutely everything — this is the rumor hub, and any news the party needs can arrive at this table without contrivance.\n\nHOW TO PLAY THE ROOM. The argument stops dead when strangers walk in. Then both factions immediately try to recruit the strangers, at once, over each other. A party that takes a side will be hugged. A party that refuses to take a side will be pursued to the door. Do not explain the joke — it is a room full of enormous filthy men in clown makeup shouting about pastry, and it explains itself from the doorway.\n\nTHE MEN IN ARMOR. A dozen or so, in breastplates cut from ore-cart panels and helmets with the lamp brackets still bolted on, and one saucepan. They think both factions are being ridiculous and want to form a guard company. Unlike the other two, they can actually do the job: these are people who spent thirty years inside the exact canyon the party has been sent to walk the rim of, and they know it better than any map exists for. THEY ARE HIREABLE, cheaply, and they will take it desperately seriously. Four more names the party becomes responsible for.\n\nTHE FAST FAVOR. The cook's brother is at [[loc-petition|the petition rail]] again, several drinks in, working up to saying the thing that gets a man written down, and she would like somebody to walk him home. Five minutes, no dice unless the party wants them.\n\nWHAT IS UNDERNEATH. Nobody in this room has any idea what to do and all of them are doing something. The garland is still on the hook. Play the comedy completely straight and do not undercut it with a sad beat; the sadness is already in the costumes." },
-
-  { "schema": 1, "id": "loc-rationhall", "type": "location",
-    "title": "The Emporium — everything, under one roof",
-    "parent": "f-locations", "order": 70, "rev": 4,
-    "tags": ["city", "registry", "affluence"], "leadsTo": [],
-    "fields": {
-      "looks": "A covered market the size of a cathedral, and the proudest building in Dunlath. A vaulted stone roof on two ranks of pillars, a fountain at the crossing, and light coming down from high windows onto more goods than a person can take in at one look: cloth, boots, salt, oil, timber, rope, knives, cook-pots, saddlery, hides, honey, apples in barrels, lamps, and a whole aisle of nothing but bells.\n\nGarlands from the festival are still wound round every pillar. The floor is warm underfoot. There is no fire anywhere in the building and nobody remarks on it.",
-      "who_is_here": "Half the city, in good cloth, because the Emporium is somewhere to be seen as much as somewhere to go. Stallholders and their apprentices shouting across the aisles. A physician's stall near the fountain with a real surgeon at it and no queue. And porters — dozens of them, in green, with handcarts — who are the most determined people in Dunlath.\n\nAt the door sits a clerk with the roll, who marks down what each household takes.",
-      "hidden": "The roll is a census. Every portion drawn, every yard of cloth, every visit to the physician goes down under a name with a date, in the open, in front of the person concerned, because the record is exactly what makes the fairness real and auditable. It is the most honest institution in the city and it holds a complete history of everyone in it."
+    {
+      "schema": 1,
+      "id": "f-locations",
+      "type": "folder",
+      "title": "Locations — the places",
+      "parent": null,
+      "order": 40,
+      "rev": 1,
+      "tags": [
+        "places"
+      ],
+      "leadsTo": [],
+      "fields": {},
+      "body": "Every place in the campaign lives here — one sheet each, the single source of truth, no matter how many scenes use it. Scenes point at these sheets with wikilinks, the same way they point at people and creatures.\n\nStart at [[loc-index|▶ WHERE THEY CAN GO]], which lists the city in one screen and says what the party can actually DO at each place."
     },
-    "body": "WHAT THEY DO HERE. Get anything they need, in comfort, for nothing — a citizen's portion is a right rather than a favor, and taking it is the ordinary business of a Tuesday. The party equips here. The surgeon by the fountain is excellent and free, which is where a hurt party goes.\n\nTHE JOKE, visible from the door: THE PORTERS WILL NOT LET THEM CARRY ANYTHING. A porter takes a sack out of a hero's hands mid-sentence and puts it on his cart. Refuse, and a second porter is fetched to assist with the difficulty. Leave, and three of them follow the party through the streets with their shopping, at a respectful distance, and are still behind them an hour later. They will carry a drawn sword. They will carry the party's lunch. Losing them is a real problem the players have to solve, and rudeness does not work on them even slightly.\n\nWHAT IT COSTS. Their injuries are on the roll with dates, and so is everything they took and where it went. Nothing comes of this in Act One. It comes up in Act Two, when somebody produces the dates and asks where they were.\n\nWHY IT MATTERS NOW. This is why [[npc-tobin|Tobin]]'s hands are worth more than they look. A party that decides on its own that it would rather not be written down has understood the occupation better than a speech could teach them, and they will have decided it inside a beautiful building that was nothing but generous to them.\n\n⚠ OPEN QUESTION FOR JOBY. Whether this is plenty administered as a right of citizenship or a rich market with its supports dressed as service is undecided. The Emporium reads as either and nobody in Dunlath could tell you which." },
-
-  { "schema": 1, "id": "loc-wintergarden", "type": "location",
-    "title": "The Glasshouse — the great hall of pleasures",
-    "parent": "f-locations", "order": 75, "rev": 2,
-    "tags": ["city", "affluence", "comedy", "hub", "sunsalt"], "leadsTo": [],
-    "fields": {
-      "looks": "The single most extravagant building in the world, and everybody in Dunlath will tell you so within a minute of meeting you. A hall the size of a barn-field roofed in GLASS — thousands of leaded panes in an iron frame, which in a world where a good window is a wealthy man's boast is a wonder people travel to stand under.\n\nUnder it, a garden that has no business existing: fruit trees in tubs, vines up the pillars, flowers out of season, all of it kept warm through the winter by a floor that is warm underfoot with no fire under it anywhere. Long tables, a kitchen at one end going all day, casks along the wall, a raised floor where players and singers work in shifts and never stop, and lamps that burn without flame.\n\nEvery garland from the festival is still up and there are fresh ones.",
-      "who_is_here": "Everybody, loudly, at all hours. Families in the afternoon, crews at night. Servers at a run. A doorkeeper the size of a wardrobe who is extremely polite. Jugglers, a bear that is very obviously a man in a bear's hide and is beloved anyway, and a fire-eater who is not permitted indoors and works the door instead.\n\nChildren run free in the garden and the games yard, and are absolutely not allowed behind the curtain at the back, which is of course the only part any child wants to see.",
-      "hidden": "Nothing sinister, which in this campaign is restful. Two things are worth knowing. The floor is warm because there is a sunsalt stone in the undercroft the size of a loaf, and it cost more than the glass did. And the dice behind the curtain are honest and the house still wins, and a hero who works out why has learned something true about the whole world."
+    {
+      "schema": 1,
+      "id": "loc-index",
+      "type": "note",
+      "title": "▶ WHERE THEY CAN GO — Dunlath",
+      "parent": "f-locations",
+      "order": 10,
+      "rev": 6,
+      "tags": [
+        "places",
+        "index"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "places",
+          "▶ The city, and what they can do there"
+        ],
+        [
+          "land",
+          "The lie of the land"
+        ],
+        [
+          "ifthere",
+          "If there is time"
+        ],
+        [
+          "state",
+          "The state of the city this week"
+        ]
+      ],
+      "fields": {
+        "places": "[[loc-clockface|The Clock Face]] — meet people, leave word, hire a runner. The city's meeting place, by accident.\n[[loc-petition|The Petition Rail]] — formally demand anything at all, including a name added to the count. Every word is filed.\n[[loc-lampoffice|The Lamp Office]] — buy light. The register on the wall does not add up, and nobody has ever added it.\n[[loc-sixtyone|Sixty-One Pairs]] — rummage, one roll each. The first buyer for anything brought back out of a crease.\n[[loc-longtable|The Long Table]] — half the room is dressed as clowns, half as bakers, and they are fighting about it. Food, rooms, every rumor in the city, and a guard company for hire.\n[[loc-wintergarden|The Glasshouse]] — a garden under a glass roof, kept warm by no fire at all. Food, drink, players, a games yard, and dice behind a curtain. Where the party has a good night.\n[[loc-rationhall|The Emporium]] — a covered market the size of a cathedral. Take what your household needs; a clerk marks it on the roll. The porters will not let you carry anything.\n[[loc-foldingshop|The Folding Shop]] — commission a toy of anything. It gets the parts you did not say. The paper animals have got out.\n[[loc-ganny|Ganny Marle's Cellar]] — a painted sideshow banner and a coin to see THE IMPOSSIBLE CORNER. Something is coming through it.\n[[loc-scarline|The Scar-Line]] — walk where the canyon was. Their assignment, and the thinnest place in the city.\n[[loc-hearthspire|The Hearthspire]] — the tower, and the seam they actually saw open. The patch is loose at the bottom corner.\n[[loc-olddraws|The Old Draws]] — stand at the rim of a dead one and look down. Hundreds of feet, and you cannot see the floor.\n[[loc-darkwindow|The Dark Window]] — the one unlit window on any street after dark. Knock and be lied to politely.\n\nAlso here, used by [[f-commission|THE COMMISSION]]: [[loc-ossuary|the Ossuary]] and [[loc-setsquare|the Set Square]].",
+        "land": "West to east: [[loc-olddraws|the old Draws]] on the flats → the Cinder Draw, the last of them, now [[loc-scarline|the scar-line]] → [[loc-hearthspire|the Hearthspire]] standing over the fairground → rising ground → DUNLATH on the height behind its wall. Beneath all of it, the old sunsalt works running east from the Draws and up into the city's undercroft.\n\nFrom the west gate you look DOWN the slope: the tower first, canyon country beyond it, and the town above hanging over the whole business. The city is on the high ground and everything that fed it is below.",
+        "ifthere": "Two pieces are written to be dropped when the night has room for them, and they live in [[f-iftime|IF THERE IS TIME]]: [[b-slip|a slip]], which can happen anywhere at all and takes ninety seconds, and [[enc-ganny|the thing in Ganny's preserves]], which is fifteen minutes and is not a fight unless the party insists.",
+        "state": "THE CITY IS DUNLATH AND IT IS RICH. The blend to reach for: MEDIEVAL AESTHETICS, the material prosperity of ROME ON STEROIDS, the festive confidence of the GILDED AGE, all run by a totalitarian state. Colonnades, covered markets, fountains, porters with handcarts, crowds in good cloth at public games and feasts. No steam, no factories, no machinery — nothing more advanced than an ancient primitive flintlock, and one of those would be a marvel. This world was folded for plenty and the occupation's case rests on having delivered it. Nobody here is hungry.\n\nWHERE THE WONDER GOES: sunsalt. Heat and light without fire, seeded as hints and never explained — a floor warm underfoot with nothing burning under it, a hall lit with no flame in it, fruit trees under glass in winter. Marvel rather than machinery.\n\nAND THE DARK IS THE UNDERTOW, not the weather. The surface is a confident, wealthy, celebrating city, and the horror surfaces in the cracks — a thing said too courteously, a record being kept, two Surveyors at a corner table who never eat anything — while the table is still laughing at the clowns.\n\nAND THE CITY IS STILL DRESSED FOR A PARTY. Lastlight was a festival — garlands, bunting, stalls, a fair — and the disaster arrived in the middle of it, so none of it has come down. Decorations across every street going slowly brown. A carousel nobody has dismantled. Half-struck stalls. The correct image is a city in party clothes with a hole in it, not a city in mourning, and the decorations are the single fastest way to put that on the table.\n\nIt is the week after. The Cinder Draw was formally closed with garlands, so the best-paid trade in the world ended on a Tuesday and nobody has a job. Eleven people are officially missing and everyone who was there knows the number is wrong. The price of a lamp has doubled, which is the first limit anyone in Dunlath has met in living memory. The town overhead hangs where it has always hung."
+      },
+      "body": "HOW TO USE THIS. The party has no assigned business in the city except the errand [[npc-wenna|Wenna]] gave them, so this list exists to be pointed at. When they say \"what's around,\" read them three or four of these and let them pick.\n\nNothing here is a quest chain. Each place is a room with something to do in it, and two of them hold a thing that matters later — [[loc-lampoffice|the Lamp Office]] register and the hoard in [[loc-ganny|Ganny's cellar]] — which the party can walk straight past without losing anything. Both are written so that noticing them is a reward and missing them costs nothing."
     },
-    "body": "WHAT THEY DO HERE. Eat, drink, sleep upstairs, and — mainly — PLAY. This is the room where the boys act instead of listen, so stock it with more than they can get through in a night. Everything is one d20 against a number and nothing needs a new rule:\n\n• Skittles down the long alley — beat 12. The house champion is an eleven-year-old girl and she will take anybody on, for money.\n• The ring toss over the horns of a very patient goat — beat 15.\n• Arm-wrestling the doorkeeper — beat 17, and he goes easy on children in a way he thinks is subtle.\n• Climbing the greased pole for the ham at the top — beat 14, and everybody in the hall stops to watch.\n• Guessing which of three cups, run by a man who is cheating — beat 20, because he is cheating.\n\nBEHIND THE CURTAIN. Dice, and the party is grown and rich enough to be let through. One roll, win or lose, no systems — the point is the room, not an economy.\n\nWHY IT EXISTS. Dunlath had no tavern and the campaign had gone entirely somber. This is the room that proves the world is worth saving. Give the party a good night here EARLY, so everything that happens afterward has something to be measured against.\n\nTHE UNDERTOW, played light. There is one table in the corner where two Surveyors sit among the noise, quite still, not eating or drinking anything, watching the room with evident pleasure. Nobody minds them. They come most nights. Mention them once, do not explain them, and go back to the clowns." },
-
-  { "schema": 1, "id": "loc-foldingshop", "type": "location",
-    "title": "The Folding Shop — a Surveyor that makes toys",
-    "parent": "f-locations", "order": 80, "rev": 2,
-    "tags": ["city", "surveyors", "comedy"], "leadsTo": [],
-    "fields": {
-      "looks": "A single small room off a side street with a workbench and stacks of plain paper, and it is no longer tidy, because the animals got out. There are paper birds on every rafter, dozens of them, shuffling and resettling. A paper horse has been walking into the same wall for a week. A paper dog follows every customer to the door and stops dead at the threshold, every time, and looks up. A fish is doing lengths of the room near the ceiling. Everything for sale costs one coin.",
-      "who_is_here": "A Surveyor, which is not on ministry business and is not stationed here. It keeps the shop because it likes to. It is delighted to be visited and is very good with children, allowing for the half-second delay on every expression.",
-      "hidden": "It keeps the coins in a jar and has no use for them whatsoever. It does not know what it is saving them for and finds the question interesting when asked. Ask it what it does when the shop is shut and it says, truthfully, that it folds. It has stopped trying to catch the birds and is not troubled by any of it."
+    {
+      "schema": 1,
+      "id": "loc-clockface",
+      "type": "location",
+      "title": "The Clock Face — the meeting place",
+      "parent": "f-locations",
+      "order": 20,
+      "rev": 3,
+      "tags": [
+        "city",
+        "comedy"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "The face of the fallen clock tower lies in the middle of a street it is far too large to be taken out of — twelve feet across, glass gone, the numbers still legible, one hand snapped and the other bent. It came down through three roofs and the city has quietly given up on moving it. Bunting from the festival is still strung across the street above it, and somebody has run a line of it down to the clock and tied it off on the number nine.\n\nCHILDREN HAVE TAKEN THE CLOCK. There are six to ten of them on it at any hour, they have built a fort into the works, there is a rope ladder, and they charge adults a button to climb up. They have rules. The rules are extensive and are explained to anybody who will listen.",
+        "who_is_here": "Everyone, eventually. Two honey-cake stalls and a man selling hot roast nuts have set up around the rim within a week, and none of them can be moved on because nobody can work out whose job it is. Runners wait here for work. Notices are wedged into the crack across the face. The tea woman pays the children's button toll every single day without comment.",
+        "hidden": "Nothing is hidden here, and that is the point of it. This is the one place in the city where the party can be found by somebody who is looking for them, which will matter more than any secret."
+      },
+      "body": "WHAT THEY DO HERE. Meet people. Leave word. Hire a runner for a coin. Read the notices, which are mostly people looking for people. If the party needs to be found by an NPC — and over a long campaign they will, often — this is where it happens, and using one place for it every time makes the city feel like a place rather than a set of rooms.\n\nIt is also simply a good place to have a conversation, which a table with children in it needs more of than it needs another room with a door."
     },
-    "body": "WHAT THEY DO HERE. Commission a toy. Describe anything at all and it will fold it while they wait, in one unbroken motion, for one coin — and it will get the parts right that they did not describe, because it was listening to how they said it rather than what they said. A hero who asks for \"a dog\" gets their own dog, the one from when they were small, and will not be able to explain how.\n\nThis is where the bird in [[b-comm-6|Rab's hands]] was made, at the fair, the day before.\n\nHOW TO PLAY IT. Warm, generous, and slightly too accurate. The horror in the Surveyors is never cruelty; it is that they are better at knowing you than you are comfortable with, and they use it to be kind. A table that loves this shop is a table that will feel Act Two properly." },
-
-  { "schema": 1, "id": "loc-ganny", "type": "location",
-    "title": "Ganny Marle's Cellar — THE IMPOSSIBLE CORNER, one coin",
-    "parent": "f-locations", "order": 90, "rev": 2,
-    "tags": ["city", "wrinkle", "clue", "comedy"], "leadsTo": [],
-    "fields": {
-      "looks": "A sideshow, run out of a house. There is a painted banner nailed across the whole front of the building — THE IMPOSSIBLE CORNER, in four colors, with an artist's impression that is wildly inaccurate — a lamp over the door, and a boy on a box outside doing the patter. One coin gets you down six steps into the cellar and a look through a hand-sized hole in the back wall.\n\nThrough the hole the cellar does not meet itself. The far corner is about two feet further away than the near one says it should be, and there is a draught coming out of it that smells of somewhere else.",
-      "who_is_here": "Ganny Marle, eighty, in a good hat, entirely uninterested in what the wrinkle is or what it means and extremely interested in the coin. The boy outside, who is her grandson and is on commission.\n\nDIRECTLY ACROSS THE STREET: her neighbor has painted a bigger banner — A BETTER HOLE, HALF PRICE — and he does not have a hole. He has never had a hole. The banners have been escalating for a month and both of them are now running out of wall.",
-      "hidden": "Something small has been coming through at night and eating her preserves, and she has not mentioned this to anybody because she does not want the ministry in her cellar. It has a hoard behind the wall. See [[enc-ganny|the thing in Ganny's preserves]]."
+    {
+      "schema": 1,
+      "id": "loc-petition",
+      "type": "location",
+      "title": "The Petition Rail — where you may say anything",
+      "parent": "f-locations",
+      "order": 30,
+      "rev": 1,
+      "tags": [
+        "city",
+        "registry"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "A brass rail outside the Registry, polished to a shine by a lifetime of hands, with a canvas awning over it and a clerk's desk at either end. Anyone at all may take the rail and say their grievance out loud. A human clerk writes down every word, reads it back, thanks them sincerely, and files it.",
+        "who_is_here": "The queue, which today runs the length of the street and around the corner. Clerks who are unfailingly kind and slightly hollowed out. A hoarse man near the front who is here every single week and says the same thing: that the Fold is the best thing that ever happened to anybody, and that not one word of that explains why no human sits at any table where anything is decided.",
+        "hidden": "Nothing has ever come of a petition. Not one, in a lifetime of them. The clerks do not know this, because each of them only sees their own share, and the filing is genuine — the words go into a real archive that is really kept. It is simply that the archive is where petitions are for."
+      },
+      "body": "WHAT THEY DO HERE. Formally demand anything, and be taken completely seriously. The most useful thing a party can do at this rail in Act One is get a name added to the count of the missing, which is exactly what [[npc-sela|Sela Orrin]] cannot do on her own and what the party's badges make possible in an afternoon.\n\nIt works, slowly, and it costs nothing, and every word said at the rail is written down with the speaker's name on it. Let that sit without comment.\n\nThe queue is its own resource: it is eleven days long, everyone in it is angry and talking, and it is the best place in the city to hear what people actually think. A man near the front will trade his place for a favor."
     },
-    "body": "WHAT THEY DO HERE. Pay a coin and look, which is worth doing on its own — this is the first time most of the party will have seen a wrinkle up close and had time to study it, rather than being in a fight beside one.\n\nThen, if there is room in the night, [[enc-ganny|the preserves]]. Fifteen minutes, and the thing that comes out of the hole is not a fight unless the party makes it one.\n\nWHY THIS PLACE EXISTS. It is cheap, it is weird, and it is exactly the sort of thing children ask to go back to. It also quietly establishes that the fold has small holes in it all over the city, which is the fact the whole of Act One is built on and which nobody has to say out loud." },
-
-  { "schema": 1, "id": "loc-scarline", "type": "location",
-    "title": "The Scar-Line — where the canyon was",
-    "parent": "f-locations", "order": 100, "rev": 2,
-    "tags": ["city", "act1", "assignment"], "leadsTo": [],
-    "fields": {
-      "looks": "A line in the earth, arrow-straight, miles long, where two days ago there was a channel dropping hundreds of feet with bridges across it and refinement towers built down its walls in tiers. All of that is inside the line now. On one side of it the grass is one green. On the other side it is another. A stream runs up to the line and does not quite meet itself on the far bank. A crow flies across and skips.\n\nIt is the newest thing in the world and it looks like it has always been there, which is the part people cannot stop staring at.",
-      "who_is_here": "People, walking out to look at it the way people visit a grave — Draw families mostly, standing at the line and not saying much. No fence, no guard, and no ceremony now the garlands are down.",
-      "hidden": "Where the stream fails to meet itself is the thinnest place in the city, and a hero who follows the water rather than the line will find it. It is not a way in. It is proof that a way in is possible, and it is the strongest argument the party can carry back to anybody."
+    {
+      "schema": 1,
+      "id": "loc-lampoffice",
+      "type": "location",
+      "title": "The Lamp Office — where the city buys light",
+      "parent": "f-locations",
+      "order": 40,
+      "rev": 4,
+      "tags": [
+        "city",
+        "sunsalt",
+        "clue"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "The lampwrights' hall: a stone room off the market with a long counter, and lamps hung in rows on chains from the beams — plain tin ones for a kitchen, and beside them, lit, the ones with shades of colored glass that cost four times as much and that half the street has bought because a neighbor bought one. Spare glass, wicks, grain-lanterns, and the sunsalt itself kept in a locked chest behind the counter and measured out with a spoon.\n\nOn the wall, a slate painted in two columns and chalked up fresh every week.\n\nSince the Draw closed, the price has doubled and there is a limit of one lamp to a household, written on the door in a hand that was angry when it wrote it. It is the first limit anyone in Dunlath has met in living memory and the street is taking it extremely badly.",
+        "who_is_here": "A queue that has become a small civilization, because these people have never queued for anything and have decided to do it properly. A man near the front has brought a folding table, a cloth, and lunch. Two women have hired boys to hold their places and the boys have unionized and are now charging double. Somebody is auctioning his position out loud and is up to nine coins. A clerk is doing his best.",
+        "hidden": "THE COLUMNS DO NOT MATCH. The left column is what came down from the Hearthspire this week. The right is what was issued to households. The right is smaller, and not by a little, and the gap has been there every week the board has been kept. The clerk has never added them, because the two columns are two different jobs and nobody has ever asked him to compare them."
+      },
+      "body": "WHAT THEY DO HERE. Buy light, fuel and spare glass — genuinely useful, and this is also where the Compass Spirit will eat later, so the party will come back.\n\nTHE CLUE, AND HOW TO PLAY IT. The slate is on the wall in plain sight. A player who reads it and does the arithmetic finds a shortfall the clerk cannot explain and is not hiding. Do not push it, do not have anyone react, and do not let the clerk turn out to be in on anything — he is not. If nobody looks at the board, nothing is lost.\n\nWhat it is worth later: this is [[npc-hettie|Hettie Sarn]]'s entire case, sitting on a wall for free. What the Reactors take in has never matched what comes out refined. When she finally opens her ledger and turns it around, a party that read this board already knows she is right, and the scene becomes a confirmation instead of a lecture."
     },
-    "body": "WHAT THEY DO HERE. This is the errand [[npc-wenna|Wenna]] gave them, and it is a real place to walk around in rather than a punishment for following orders. Let them spend an hour on it. There is a great deal to notice and none of it requires a roll.\n\nWHAT IT IS NOT. It is not a way into the fold. It was closed two days ago by Rectors in front of the entire city and it is shut. That is the point of the assignment, and [[npc-tobin|Tobin]] said so before they set out.\n\nWHAT THEY GET ANYWAY. The stream, the two greens, and the crow. A party that pays attention leaves with the beginnings of a working theory about where the fold is thin, which is worth more than the errand was ever meant to give them." },
-
-  { "schema": 1, "id": "loc-olddraws", "type": "location",
-    "title": "The Old Draws — the workings that came before",
-    "parent": "f-locations", "order": 104, "rev": 1,
-    "tags": ["city", "sunsalt", "act1"], "leadsTo": [],
-    "fields": {
-      "looks": "Channels cut into the flats west of the tower, straight as a ruled line, running for miles. Not trenches — they drop hundreds of feet, sheer, and from the rim you cannot see the floor. Hard edges, stepped ledges down the sides, ramps, bridges spanning the gap, and refinement towers built into the walls in tiers going down into the dark.\n\nAll of them dry, dead and silent. Worked out generations ago and never filled in, because nothing in the world is big enough to fill them.",
-      "who_is_here": "Nobody. A rope fence in the places nearest the road, mostly ignored. Children dare each other down the first two ledges and no further. Somebody has painted a line and a number on the wall of the nearest one, a long way down, and nobody knows who or when.",
-      "hidden": "At every Draw retired before the Cinder, THE GRAY STOPS DEAD AT THE RIM, level as a tide line, the year that working closed. No blight has ever been known to do that. [[npc-hettie|Hettie Sarn]] has the dates."
+    {
+      "schema": 1,
+      "id": "loc-sixtyone",
+      "type": "location",
+      "title": "Sixty-One Pairs — the crease-salvage shop",
+      "parent": "f-locations",
+      "order": 50,
+      "rev": 1,
+      "tags": [
+        "city",
+        "shop"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "A deep narrow shop with sixty-one unmatched boots hanging from the ceiling on strings, each waiting on a partner that has not turned up. Everything on the shelves came out of a crease at some point: objects that arrived folded and did not entirely open again, half a chair, a kettle that is also a little bit of a different kettle, a pair of spectacles with one lens that shows the room slightly earlier.",
+        "who_is_here": "The owner, who buys by weight and sells by the story, and who has never once been through a crease herself and is not curious about doing so.",
+        "hidden": "She pays cash for anything brought back out of a crease, no questions, better than anyone else in the city. She is not an agent of anybody. She simply has the only market for it, because everyone else is frightened of the stuff."
+      },
+      "body": "WHAT THEY DO HERE. Rummage — give each hero one roll and let them turn up something strange; the stock is a licence to hand out oddities without them being magic items. Buy cheap gear. And, once they start going into creases, SELL, which makes this the party's first reliable buyer and gives crease-diving an economy.\n\nThe boots are the point of the shop and worth describing every visit. Sixty-one things that arrived without their other half is the Folding stated as a joke, and a table full of children will start looking for matches."
     },
-    "body": "WHY THEY ARE HERE. Scale, mostly. Standing at the rim of a dead one is how the table understands what was taken out of this world to light it, and it is free — no encounter, no roll, just a place to stand and look down.\n\nBENEATH THEM: the old sunsalt works. Galleries, sluices and lifting shafts running east from the Draws and up into Dunlath's undercroft, which is how the city was fed for two hundred years before [[loc-hearthspire|the Hearthspire]] was raised. Sealed at both ends, unmapped, and entirely still there.\n\nMention the works once and move on. It is a road under the city for whenever this campaign needs one." },
-
-  { "schema": 1, "id": "loc-hearthspire", "type": "location",
-    "title": "The Hearthspire — the tower, and the seam",
-    "parent": "f-locations", "order": 105, "rev": 2,
-    "tags": ["city", "act1", "tear", "assignment"], "leadsTo": [],
-    "fields": {
-      "looks": "Not one shaft but a works: fat smooth cylinders and arches banded together at the base, clean pipework curving between them, stepped galleries around the outside — and out of the middle of it one spire going up and up to a crown. All of it white stone and something like porcelain. No soot, no rust, nothing weathered anywhere on it. It was finished eleven days ago and it gleams.\n\nIt stands on the flats below the city with the fairground at its foot and the canyon country behind it. The crown is broken open. A seam runs the whole height of the face, top to bottom, to a small door at the base built to take one offering — and the seam has been patched, and you can see the patch from a quarter mile away, and it does not match.",
-      "who_is_here": "A rope line, bored human guards who will wave a Writ of Search through without reading it, and a steady trickle of people who have come to stand and look. Two Rectors work the upper face on rotation, very high up, folding something slowly.",
-      "hidden": "The patch is not a repair. It is a fold laid over a tear in a hurry, and at the bottom corner, low down by the little door, it is loose — a hand's width where the world does not quite meet itself, with a draught coming out of it."
+    {
+      "schema": 1,
+      "id": "loc-longtable",
+      "type": "location",
+      "title": "The Long Table — the Draw crews' eating house",
+      "parent": "f-locations",
+      "order": 60,
+      "rev": 3,
+      "tags": [
+        "city",
+        "hub",
+        "comedy"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "A handsome, prosperous eating hall — good dark timber, a great hearth, hanging lamps, and one enormous table running the whole length of the room, laid for sixty with proper plates. These were the best-paid workers in the world and they ate like it. Rooms upstairs, good ones. By the door, on a hook, a garland from the closing ceremony that nobody has taken down and nobody will touch.\n\nAND THEN: roughly half the room is dressed as clowns. Full white greasepaint, red noses, the whole business, and several of them are carrying horns and a drum they cannot play. The other half are dressed as bakers — tall white hats, aprons, flour on everything. Along one wall stands a knot of men in mismatched salvaged armor, and one of them is wearing a saucepan on his head, and he is arguing with a baker.\n\nEvery one of them is enormous and still has coal dust in the creases of his hands.",
+        "who_is_here": "The Cinder Draw's crews, four days unemployed and retraining at speed, in two factions and a splinter group. THE CLOWNS want to start a circus. THE BAKERS want to start a bakery. Both have already spent money on the outfits, which is precisely why neither can back down. The argument is conducted at full volume across the length of the table and has been running since Thursday.\n\nThe cook has fed all of them since they were apprentices and is the closest thing the room has to a mayor.",
+        "hidden": "The hiring board by the kitchen door, which for a lifetime was the busiest board in the city, is empty. Everyone in the room can see it from where they are sitting, and nobody is looking at it."
+      },
+      "body": "WHAT THEY DO HERE. Eat extremely well, sleep upstairs, and hear absolutely everything — this is the rumor hub, and any news the party needs can arrive at this table without contrivance.\n\nHOW TO PLAY THE ROOM. The argument stops dead when strangers walk in. Then both factions immediately try to recruit the strangers, at once, over each other. A party that takes a side will be hugged. A party that refuses to take a side will be pursued to the door. Do not explain the joke — it is a room full of enormous filthy men in clown makeup shouting about pastry, and it explains itself from the doorway.\n\nTHE MEN IN ARMOR. A dozen or so, in breastplates cut from ore-cart panels and helmets with the lamp brackets still bolted on, and one saucepan. They think both factions are being ridiculous and want to form a guard company. Unlike the other two, they can actually do the job: these are people who spent thirty years inside the exact canyon the party has been sent to walk the rim of, and they know it better than any map exists for. THEY ARE HIREABLE, cheaply, and they will take it desperately seriously. Four more names the party becomes responsible for.\n\nTHE FAST FAVOR. The cook's brother is at [[loc-petition|the petition rail]] again, several drinks in, working up to saying the thing that gets a man written down, and she would like somebody to walk him home. Five minutes, no dice unless the party wants them.\n\nWHAT IS UNDERNEATH. Nobody in this room has any idea what to do and all of them are doing something. The garland is still on the hook. Play the comedy completely straight and do not undercut it with a sad beat; the sadness is already in the costumes."
     },
-    "body": "WHY IT MATTERS. This is where the tear actually happened and where eleven people actually went, and [[npc-tobin|Tobin]] says so on the road out of [[b-comm-5|Wenna's room]]. The party was sent to [[loc-scarline|the scar-line]] instead.\n\nWHAT A CLOSE LOOK GETS THEM. The loose corner. Nobody has to roll for it — walk to the foot of the tower and look at the bottom of the patch and it is there.\n\nRUN THE RECTORS AS SCENERY. They are far above, they are not guarding anything, and they will not come down. The obstacle here is the rope line and a conversation, not a fight." },
-
-  { "schema": 1, "id": "loc-darkwindow", "type": "location",
-    "title": "The Dark Window — the one unlit house",
-    "parent": "f-locations", "order": 110, "rev": 1,
-    "tags": ["city", "red-flag"], "leadsTo": [],
-    "fields": {
-      "looks": "After nightfall every window on every street in the city burns sunsalt, because light is the gift and the gift is free and refusing it would be strange. On any long street there is one window that does not. Behind the glass there is a small honest yellow flame of a kind most people in this city have never seen, and would not recognize as fire if asked.",
-      "who_is_here": "Whoever answers the door: polite, unhurried, and frightened in a way that is easy to miss. They will say they have run out of lamp oil and that it is being seen to, and they will not invite anybody in.",
-      "hidden": "It is a tallow candle. Tallow is not illegal and never has been — it is simply archaic, a thing the world has almost forgotten how to make, and no authority has ever thought to look for a house that refuses the gift rather than demanding more of it. The dark window is not a signal. It is an argument, addressed to nobody, and it has stayed safe for a generation precisely because nobody has worked out what it means."
+    {
+      "schema": 1,
+      "id": "loc-rationhall",
+      "type": "location",
+      "title": "The Emporium — everything, under one roof",
+      "parent": "f-locations",
+      "order": 70,
+      "rev": 4,
+      "tags": [
+        "city",
+        "registry",
+        "affluence"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "A covered market the size of a cathedral, and the proudest building in Dunlath. A vaulted stone roof on two ranks of pillars, a fountain at the crossing, and light coming down from high windows onto more goods than a person can take in at one look: cloth, boots, salt, oil, timber, rope, knives, cook-pots, saddlery, hides, honey, apples in barrels, lamps, and a whole aisle of nothing but bells.\n\nGarlands from the festival are still wound round every pillar. The floor is warm underfoot. There is no fire anywhere in the building and nobody remarks on it.",
+        "who_is_here": "Half the city, in good cloth, because the Emporium is somewhere to be seen as much as somewhere to go. Stallholders and their apprentices shouting across the aisles. A physician's stall near the fountain with a real surgeon at it and no queue. And porters — dozens of them, in green, with handcarts — who are the most determined people in Dunlath.\n\nAt the door sits a clerk with the roll, who marks down what each household takes.",
+        "hidden": "The roll is a census. Every portion drawn, every yard of cloth, every visit to the physician goes down under a name with a date, in the open, in front of the person concerned, because the record is exactly what makes the fairness real and auditable. It is the most honest institution in the city and it holds a complete history of everyone in it."
+      },
+      "body": "WHAT THEY DO HERE. Get anything they need, in comfort, for nothing — a citizen's portion is a right rather than a favor, and taking it is the ordinary business of a Tuesday. The party equips here. The surgeon by the fountain is excellent and free, which is where a hurt party goes.\n\nTHE JOKE, visible from the door: THE PORTERS WILL NOT LET THEM CARRY ANYTHING. A porter takes a sack out of a hero's hands mid-sentence and puts it on his cart. Refuse, and a second porter is fetched to assist with the difficulty. Leave, and three of them follow the party through the streets with their shopping, at a respectful distance, and are still behind them an hour later. They will carry a drawn sword. They will carry the party's lunch. Losing them is a real problem the players have to solve, and rudeness does not work on them even slightly.\n\nWHAT IT COSTS. Their injuries are on the roll with dates, and so is everything they took and where it went. Nothing comes of this in Act One. It comes up in Act Two, when somebody produces the dates and asks where they were.\n\nWHY IT MATTERS NOW. This is why [[npc-tobin|Tobin]]'s hands are worth more than they look. A party that decides on its own that it would rather not be written down has understood the occupation better than a speech could teach them, and they will have decided it inside a beautiful building that was nothing but generous to them.\n\n⚠ OPEN QUESTION FOR JOBY. Whether this is plenty administered as a right of citizenship or a rich market with its supports dressed as service is undecided. The Emporium reads as either and nobody in Dunlath could tell you which."
     },
-    "body": "WHAT THEY DO HERE. Notice it, which costs nothing and requires no roll — any hero who thinks to count windows on a dark street finds one. Then knock, if they like, and be lied to politely.\n\nHOW TO SEED IT. Mention one unlit window, once, in passing, on a night when the party is walking home from something else. Do not draw attention to it. Do not have anybody watch them from it. If they ask, the answer is lamp oil, and the door closes.\n\nWHEN IT PAYS OFF. Whenever you want. The party will meet Red Flag properly through [[npc-tobin|Tobin]] and eventually [[npc-hettie|Hettie Sarn]], and on the day somebody finally explains what an Unlit house is, a table that has already knocked on one will get there a beat ahead of the explanation.\n\nDO NOT let any authority investigate a dark window. The moment somebody in the ministry decodes it, the whole arrangement collapses and Red Flag stops being able to exist in plain sight." },
-
-  { "schema": 1, "id": "f-iftime", "type": "folder",
-    "title": "IF THERE IS TIME — fast pieces",
-    "parent": "act1", "order": 30, "rev": 1,
-    "tags": ["act1", "optional"], "leadsTo": [], "fields": {},
-    "body": "Short material to deploy when a session has room and skip when it does not. Nothing in here is load-bearing and nothing in here has to happen.\n\n[[b-slip|A slip]] — ninety seconds, anywhere at all, no preparation.\n[[enc-ganny|The thing in Ganny's preserves]] — fifteen minutes, at [[loc-ganny|Ganny Marle's cellar]], and it plants something worth calling back to." },
-
-  { "schema": 1, "id": "b-slip", "type": "beat",
-    "title": "A slip — drop it anywhere",
-    "parent": "f-iftime", "order": 10, "rev": 1,
-    "tags": ["act1", "optional", "droppable"], "leadsTo": [],
-    "fields": {
-      "hook": "For about a minute and a half, somewhere perfectly ordinary stops meeting itself. Then it stops, and the door is a door again. It can happen in any room, on any street, at any point in any session, and it needs no preparation whatsoever.",
-      "read_aloud": "Improvise from whatever is actually in the room. Three that work: \"The door you came through lets you out onto a street you know, three streets from the one you are on.\" · \"Going up, the stair has one step too many. Coming down, it has one too few. It does this twice more and then stops.\" · \"Somebody in the next room answers a question none of you asked, in a voice one of you knows.\"",
-      "if_they": "…investigate immediately, give them the full ninety seconds and let them get somewhere genuinely interesting — a wrong street, a room in a house nobody lives in — and then close it while they are still inside, and let them walk home the long way. Nobody is hurt by a slip. The fold is loose, not hostile.\n\n…ignore it, so does everybody else. People in this city have lived with slips their whole lives and treat them the way other worlds treat a draught.\n\n…ask an adult about it, they get the settling-joke: the world is still lying down, love, it does that.",
-      "outcome": "Nothing, most of the time, which is what makes it safe to use as often as you like. It costs no plot and buys atmosphere, and children will begin testing every doorway in the city, which is the correct response."
+    {
+      "schema": 1,
+      "id": "loc-wintergarden",
+      "type": "location",
+      "title": "The Glasshouse — the great hall of pleasures",
+      "parent": "f-locations",
+      "order": 75,
+      "rev": 2,
+      "tags": [
+        "city",
+        "affluence",
+        "comedy",
+        "hub",
+        "sunsalt"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "The single most extravagant building in the world, and everybody in Dunlath will tell you so within a minute of meeting you. A hall the size of a barn-field roofed in GLASS — thousands of leaded panes in an iron frame, which in a world where a good window is a wealthy man's boast is a wonder people travel to stand under.\n\nUnder it, a garden that has no business existing: fruit trees in tubs, vines up the pillars, flowers out of season, all of it kept warm through the winter by a floor that is warm underfoot with no fire under it anywhere. Long tables, a kitchen at one end going all day, casks along the wall, a raised floor where players and singers work in shifts and never stop, and lamps that burn without flame.\n\nEvery garland from the festival is still up and there are fresh ones.",
+        "who_is_here": "Everybody, loudly, at all hours. Families in the afternoon, crews at night. Servers at a run. A doorkeeper the size of a wardrobe who is extremely polite. Jugglers, a bear that is very obviously a man in a bear's hide and is beloved anyway, and a fire-eater who is not permitted indoors and works the door instead.\n\nChildren run free in the garden and the games yard, and are absolutely not allowed behind the curtain at the back, which is of course the only part any child wants to see.",
+        "hidden": "Nothing sinister, which in this campaign is restful. Two things are worth knowing. The floor is warm because there is a sunsalt stone in the undercroft the size of a loaf, and it cost more than the glass did. And the dice behind the curtain are honest and the house still wins, and a hero who works out why has learned something true about the whole world."
+      },
+      "body": "WHAT THEY DO HERE. Eat, drink, sleep upstairs, and — mainly — PLAY. This is the room where the boys act instead of listen, so stock it with more than they can get through in a night. Everything is one d20 against a number and nothing needs a new rule:\n\n• Skittles down the long alley — beat 12. The house champion is an eleven-year-old girl and she will take anybody on, for money.\n• The ring toss over the horns of a very patient goat — beat 15.\n• Arm-wrestling the doorkeeper — beat 17, and he goes easy on children in a way he thinks is subtle.\n• Climbing the greased pole for the ham at the top — beat 14, and everybody in the hall stops to watch.\n• Guessing which of three cups, run by a man who is cheating — beat 20, because he is cheating.\n\nBEHIND THE CURTAIN. Dice, and the party is grown and rich enough to be let through. One roll, win or lose, no systems — the point is the room, not an economy.\n\nWHY IT EXISTS. Dunlath had no tavern and the campaign had gone entirely somber. This is the room that proves the world is worth saving. Give the party a good night here EARLY, so everything that happens afterward has something to be measured against.\n\nTHE UNDERTOW, played light. There is one table in the corner where two Surveyors sit among the noise, quite still, not eating or drinking anything, watching the room with evident pleasure. Nobody minds them. They come most nights. Mention them once, do not explain them, and go back to the clowns."
     },
-    "body": "WHY IT IS WORTH HAVING. It is the campaign's whole cosmology delivered as a toy, it takes no preparation, and it can be dropped into a lull in any scene ever written.\n\nTHE CLUE IT PLANTS, IF YOU WANT IT. Slips cluster. They come in the days after a great pull of sunsalt, and a party that starts noting when they happen will eventually notice the pattern on their own. That is [[npc-hettie|Hettie Sarn]]'s ledger arriving through play rather than through a speech: when she finally opens the book and turns it around, the party is confirming something they already suspected instead of being told something new.\n\nTo use it that way, run slips deliberately rather than randomly — a cluster of two or three in the days after the Hearthspire draws, and none in the quiet weeks. Nobody needs to comment on it.\n\nESCALATION. Slips get more frequent as Act One goes on. That is not decoration; it is the same fact as everything else that is getting worse, and it needs no explanation at the table." },
-
-  { "schema": 1, "id": "enc-ganny", "type": "encounter",
-    "title": "The thing in Ganny's preserves",
-    "parent": "f-iftime", "order": 20, "rev": 1,
-    "tags": ["act1", "optional", "clue"], "leadsTo": [],
-    "fields": {
-      "setup": "[[loc-ganny|Ganny Marle]] mentions, once the party has paid their coin and had their look, that something has been at her preserves. Six jars in a fortnight, the lids off and set aside neatly rather than broken. She has not told the ministry because she does not want the ministry in her cellar.\n\nWait in the dark for twenty minutes of game time and something comes through the wrinkle.",
-      "creatures": "One [[cr-snatch-goblin|snatch-goblin]] kit — knee-high, thin, and by itself. Use the sheet's numbers if it comes to dice, but halve the hit points and give it no interest whatsoever in fighting. It wants the jam. It is frightened of everything and it is very fast.",
-      "tactics": "It is not an ambush and it does not attack. It freezes, it hides badly, and it bolts for the hole the moment anyone moves quickly. Anything the party does that is loud or sudden sends it back through the wrinkle, and it does not come back that night.\n\nWays this can go, all of them fine: corner it, catch it in a sack or a coat, feed it and watch what happens, block the hole and talk to it, follow it through the wrinkle before it closes, or kill it. If they are gentle it becomes almost tame within the hour, which children will find far more interesting than a corpse.",
-      "reward": "THE HOARD, behind a loose stone in the cellar wall, and they find it whether the kit lives or dies. It is a magpie's pile of shiny nothing: buttons, three spoons, a bootlace, a brass curtain ring, a good deal of broken glass.\n\nAnd one thing that does not belong. Something that was on a person at the fairground two days ago — a garland ribbon in the Draw's colors, a child's shoe, a lamplighter's brass key. Something the party can recognize."
+    {
+      "schema": 1,
+      "id": "loc-foldingshop",
+      "type": "location",
+      "title": "The Folding Shop — a Surveyor that makes toys",
+      "parent": "f-locations",
+      "order": 80,
+      "rev": 2,
+      "tags": [
+        "city",
+        "surveyors",
+        "comedy"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "A single small room off a side street with a workbench and stacks of plain paper, and it is no longer tidy, because the animals got out. There are paper birds on every rafter, dozens of them, shuffling and resettling. A paper horse has been walking into the same wall for a week. A paper dog follows every customer to the door and stops dead at the threshold, every time, and looks up. A fish is doing lengths of the room near the ceiling. Everything for sale costs one coin.",
+        "who_is_here": "A Surveyor, which is not on ministry business and is not stationed here. It keeps the shop because it likes to. It is delighted to be visited and is very good with children, allowing for the half-second delay on every expression.",
+        "hidden": "It keeps the coins in a jar and has no use for them whatsoever. It does not know what it is saving them for and finds the question interesting when asked. Ask it what it does when the shop is shut and it says, truthfully, that it folds. It has stopped trying to catch the birds and is not troubled by any of it."
+      },
+      "body": "WHAT THEY DO HERE. Commission a toy. Describe anything at all and it will fold it while they wait, in one unbroken motion, for one coin — and it will get the parts right that they did not describe, because it was listening to how they said it rather than what they said. A hero who asks for \"a dog\" gets their own dog, the one from when they were small, and will not be able to explain how.\n\nThis is where the bird in [[b-comm-6|Rab's hands]] was made, at the fair, the day before.\n\nHOW TO PLAY IT. Warm, generous, and slightly too accurate. The horror in the Surveyors is never cruelty; it is that they are better at knowing you than you are comfortable with, and they use it to be kind. A table that loves this shop is a table that will feel Act Two properly."
     },
-    "body": "THE POINT OF THIS, and why it is worth fifteen minutes: the wrinkle in an old woman's cellar and the tear at the foot of the Hearthspire open into the same place.\n\nThat is a real, concrete, physical clue delivered by a goblin stealing jam, and it does three things at once. It proves [[npc-tobin|Tobin]]'s suspicion before he has earned the right to say it out loud. It tells the party that the way in does not have to be a great seam that Rectors are watching — the city is full of small holes. And it makes the thing they saw at the fairground personal again, because whatever is in that hoard belonged to somebody who is on the far side of it right now.\n\nHOW HARD TO PUSH. Not at all. Put the object in the pile and describe the pile. If nobody picks it up, [[npc-tobin|Tobin]] does, and writes it down, and says nothing — and the party can find it in his notes later, which is arguably better.\n\nIT IS NOT A FIGHT. The scoreboard of this campaign is rescues rather than kills, and this is the first chance after Lastlight to teach that with something small and frightened instead of something dangerous. A party that catches the kit in a coat and feeds it has learned more about how these sessions work than a party that rolls initiative." },
-
-  { "schema": 1, "id": "f-reference", "type": "folder",
-    "title": "Quick reference — for the table",
-    "parent": null, "order": 50, "rev": 1,
-    "tags": ["reference"], "leadsTo": [], "fields": {},
-    "body": "Things to grab mid-session. Lists, not reading." },
-
-  { "schema": 1, "id": "ref-names", "type": "note",
-    "title": "Names — when you need one right now",
-    "parent": "f-reference", "order": 10, "rev": 1,
-    "tags": ["reference"], "leadsTo": [],
-    "fieldDefs": [
-      ["given", "Given names"],
-      ["family", "Family names"],
-      ["signs", "Shops, signs and inns"],
-      ["note", "The register"]
-    ],
-    "fields": {
-      "given": "Wenna · Hettie · Sela · Maud · Nell · Bry · Ossa · Tamsin · Annis · Perr · Ivy · Corrin\n\nTobin · Ellum · Rab · Bram · Ivo · Hask · Merrit · Pell · Osric · Wend · Dellow · Corr",
-      "family": "Ash · Sarn · Rell · Wick · Orrin · Marle · Delk · Tarrow · Bind · Crale · Hollam · Vane · Quist · Brede · Loom · Skell · Ganty · Pyle",
-      "signs": "The Bell and Barrow · Skell & Daughters · The Nine Lamps · Crale's Rope · The Good Hour · Bind the Younger · Tarrow's Salt · The Half Bushel · Pyle's, for Boots",
-      "note": "Short, hard, plain, Anglo. One or two syllables. No apostrophes, no invented letters, nothing that sounds elvish. If it would suit a nineteenth-century mill town, it suits Dunlath."
+    {
+      "schema": 1,
+      "id": "loc-ganny",
+      "type": "location",
+      "title": "Ganny Marle's Cellar — THE IMPOSSIBLE CORNER, one coin",
+      "parent": "f-locations",
+      "order": 90,
+      "rev": 2,
+      "tags": [
+        "city",
+        "wrinkle",
+        "clue",
+        "comedy"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "A sideshow, run out of a house. There is a painted banner nailed across the whole front of the building — THE IMPOSSIBLE CORNER, in four colors, with an artist's impression that is wildly inaccurate — a lamp over the door, and a boy on a box outside doing the patter. One coin gets you down six steps into the cellar and a look through a hand-sized hole in the back wall.\n\nThrough the hole the cellar does not meet itself. The far corner is about two feet further away than the near one says it should be, and there is a draught coming out of it that smells of somewhere else.",
+        "who_is_here": "Ganny Marle, eighty, in a good hat, entirely uninterested in what the wrinkle is or what it means and extremely interested in the coin. The boy outside, who is her grandson and is on commission.\n\nDIRECTLY ACROSS THE STREET: her neighbor has painted a bigger banner — A BETTER HOLE, HALF PRICE — and he does not have a hole. He has never had a hole. The banners have been escalating for a month and both of them are now running out of wall.",
+        "hidden": "Something small has been coming through at night and eating her preserves, and she has not mentioned this to anybody because she does not want the ministry in her cellar. It has a hoard behind the wall. See [[enc-ganny|the thing in Ganny's preserves]]."
+      },
+      "body": "WHAT THEY DO HERE. Pay a coin and look, which is worth doing on its own — this is the first time most of the party will have seen a wrinkle up close and had time to study it, rather than being in a fight beside one.\n\nThen, if there is room in the night, [[enc-ganny|the preserves]]. Fifteen minutes, and the thing that comes out of the hole is not a fight unless the party makes it one.\n\nWHY THIS PLACE EXISTS. It is cheap, it is weird, and it is exactly the sort of thing children ask to go back to. It also quietly establishes that the fold has small holes in it all over the city, which is the fact the whole of Act One is built on and which nobody has to say out loud."
     },
-    "body": "Take the next unused one. Cross it off in your own copy." },
-
-  { "schema": 1, "id": "ref-street", "type": "note",
-    "title": "Dunlath at street level",
-    "parent": "f-reference", "order": 20, "rev": 1,
-    "tags": ["reference", "city"], "leadsTo": [],
-    "fieldDefs": [
-      ["see", "What you see"],
-      ["hear", "What you hear and smell"],
-      ["sale", "What's for sale"],
-      ["wear", "What people are wearing"],
-      ["crack", "The crack it shows through"]
-    ],
-    "fields": {
-      "see": "Bunting across every street, a month up and going brown. A carousel nobody has dismantled. Half-struck stalls. Lamps burning in daylight because nobody has thought to put them out. Colonnades, fountains, handcarts, litters. The town overhead.",
-      "hear": "Hammering, always, somewhere. Hawkers. Somebody practicing an instrument badly. Bells on the hour from three directions, none of them agreeing. Hot fat, honey, wet stone, and the faint mineral smell of sunsalt near a good lamp.",
-      "sale": "Honey-cakes, blight-cakes, roast nuts, paper flags left over from the festival at half price, hot pies, ribbons, dyed feathers, small bells, salt in twists of paper, and lamp oil at a price people have started remarking on.",
-      "wear": "Good cloth on everybody, because everybody has it. Colors — this is a rich city and it dresses like one. Festival ribbons still pinned to coats a month later, which nobody has decided to stop doing.",
-      "crack": "One thing per session, mentioned once and not explained. A Surveyor writing at a corner. A white wagon going out through a gate with nobody watching it. A window that stays dark. A patch of ground where two paving stones do not quite meet."
+    {
+      "schema": 1,
+      "id": "loc-scarline",
+      "type": "location",
+      "title": "The Scar-Line — where the canyon was",
+      "parent": "f-locations",
+      "order": 100,
+      "rev": 2,
+      "tags": [
+        "city",
+        "act1",
+        "assignment"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "A line in the earth, arrow-straight, miles long, where two days ago there was a channel dropping hundreds of feet with bridges across it and refinement towers built down its walls in tiers. All of that is inside the line now. On one side of it the grass is one green. On the other side it is another. A stream runs up to the line and does not quite meet itself on the far bank. A crow flies across and skips.\n\nIt is the newest thing in the world and it looks like it has always been there, which is the part people cannot stop staring at.",
+        "who_is_here": "People, walking out to look at it the way people visit a grave — Draw families mostly, standing at the line and not saying much. No fence, no guard, and no ceremony now the garlands are down.",
+        "hidden": "Where the stream fails to meet itself is the thinnest place in the city, and a hero who follows the water rather than the line will find it. It is not a way in. It is proof that a way in is possible, and it is the strongest argument the party can carry back to anybody."
+      },
+      "body": "WHAT THEY DO HERE. This is the errand [[npc-wenna|Wenna]] gave them, and it is a real place to walk around in rather than a punishment for following orders. Let them spend an hour on it. There is a great deal to notice and none of it requires a roll.\n\nWHAT IT IS NOT. It is not a way into the fold. It was closed two days ago by Rectors in front of the entire city and it is shut. That is the point of the assignment, and [[npc-tobin|Tobin]] said so before they set out.\n\nWHAT THEY GET ANYWAY. The stream, the two greens, and the crow. A party that pays attention leaves with the beginnings of a working theory about where the fold is thin, which is worth more than the errand was ever meant to give them."
     },
-    "body": "Skim before any city session. Take one line from each field and you have a street." },
-
-  { "schema": 1, "id": "cr-snatch-goblin", "type": "creature",
-    "title": "Snatch-goblin",
-    "parent": "f-monsters", "order": 10, "rev": 1,
-    "tags": ["tear", "minion"], "leadsTo": [],
-    "fields": {
-      "hp": "10", "ac": "12", "speed": "30 feet",
-      "attack": "+3 to hit, 1d6 damage (small claws, smaller knives)",
-      "trick": "The Snatch: instead of hurting somebody, it grabs a person its own size or smaller and drags them 20 feet toward the tear each turn. A grabbed person can twist free by beating 11 — and ANY hit on the goblin makes it drop whoever it is holding."
+    {
+      "schema": 1,
+      "id": "loc-olddraws",
+      "type": "location",
+      "title": "The Old Draws — the workings that came before",
+      "parent": "f-locations",
+      "order": 104,
+      "rev": 1,
+      "tags": [
+        "city",
+        "sunsalt",
+        "act1"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "Channels cut into the flats west of the tower, straight as a ruled line, running for miles. Not trenches — they drop hundreds of feet, sheer, and from the rim you cannot see the floor. Hard edges, stepped ledges down the sides, ramps, bridges spanning the gap, and refinement towers built into the walls in tiers going down into the dark.\n\nAll of them dry, dead and silent. Worked out generations ago and never filled in, because nothing in the world is big enough to fill them.",
+        "who_is_here": "Nobody. A rope fence in the places nearest the road, mostly ignored. Children dare each other down the first two ledges and no further. Somebody has painted a line and a number on the wall of the nearest one, a long way down, and nobody knows who or when.",
+        "hidden": "At every Draw retired before the Cinder, THE GRAY STOPS DEAD AT THE RIM, level as a tide line, the year that working closed. No blight has ever been known to do that. [[npc-hettie|Hettie Sarn]] has the dates."
+      },
+      "body": "WHY THEY ARE HERE. Scale, mostly. Standing at the rim of a dead one is how the table understands what was taken out of this world to light it, and it is free — no encounter, no roll, just a place to stand and look down.\n\nBENEATH THEM: the old sunsalt works. Galleries, sluices and lifting shafts running east from the Draws and up into Dunlath's undercroft, which is how the city was fed for two hundred years before [[loc-hearthspire|the Hearthspire]] was raised. Sealed at both ends, unmapped, and entirely still there.\n\nMention the works once and move on. It is a road under the city for whenever this campaign needs one."
     },
-    "body": "The classic goblin of the bad time, come through the tear sideways — knee-high greed with a sack. It does not especially want to fight; it wants to leave with somebody. Kill-count is beside the point in a snatch-goblin fight: drop-count is the fight. (SRD goblin chassis, reworded and reskinned.)" },
-
-  { "schema": 1, "id": "cr-crease-wolf", "type": "creature",
-    "title": "Crease-wolf",
-    "parent": "f-monsters", "order": 20, "rev": 1,
-    "tags": ["tear"], "leadsTo": [],
-    "fields": {
-      "hp": "14", "ac": "13", "speed": "40 feet",
-      "attack": "+4 to hit, 2d4 damage (bite)",
-      "trick": "Hunts folded: it slips through any gap — fence rails, table legs, a panicked crowd — without slowing, and when a packmate stands beside its target, a bitten hero must beat 12 or be knocked down."
+    {
+      "schema": 1,
+      "id": "loc-hearthspire",
+      "type": "location",
+      "title": "The Hearthspire — the tower, and the seam",
+      "parent": "f-locations",
+      "order": 105,
+      "rev": 2,
+      "tags": [
+        "city",
+        "act1",
+        "tear",
+        "assignment"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "Not one shaft but a works: fat smooth cylinders and arches banded together at the base, clean pipework curving between them, stepped galleries around the outside — and out of the middle of it one spire going up and up to a crown. All of it white stone and something like porcelain. No soot, no rust, nothing weathered anywhere on it. It was finished eleven days ago and it gleams.\n\nIt stands on the flats below the city with the fairground at its foot and the canyon country behind it. The crown is broken open. A seam runs the whole height of the face, top to bottom, to a small door at the base built to take one offering — and the seam has been patched, and you can see the patch from a quarter mile away, and it does not match.",
+        "who_is_here": "A rope line, bored human guards who will wave a Writ of Search through without reading it, and a steady trickle of people who have come to stand and look. Two Rectors work the upper face on rotation, very high up, folding something slowly.",
+        "hidden": "The patch is not a repair. It is a fold laid over a tear in a hurry, and at the bottom corner, low down by the little door, it is loose — a hand's width where the world does not quite meet itself, with a draught coming out of it."
+      },
+      "body": "WHY IT MATTERS. This is where the tear actually happened and where eleven people actually went, and [[npc-tobin|Tobin]] says so on the road out of [[b-comm-5|Wenna's room]]. The party was sent to [[loc-scarline|the scar-line]] instead.\n\nWHAT A CLOSE LOOK GETS THEM. The loose corner. Nobody has to roll for it — walk to the foot of the tower and look at the bottom of the patch and it is there.\n\nRUN THE RECTORS AS SCENERY. They are far above, they are not guarding anything, and they will not come down. The obstacle here is the rope line and a conversation, not a fight."
     },
-    "body": "The wolf from every grandmother's story, wrong in the daylight — it moves the way scissors move, and it looks flat when it turns. It never carries anyone; it herds runners back toward the goblins, which is worse. (SRD wolf chassis, reworded and reskinned.)" },
-
-  { "schema": 1, "id": "cr-tear-ogre", "type": "creature",
-    "title": "Tear-ogre — the penned one",
-    "parent": "f-monsters", "order": 30, "rev": 1,
-    "tags": ["tear", "heavy"], "leadsTo": [],
-    "fields": {
-      "hp": "30", "ac": "13", "speed": "30 feet",
-      "attack": "+5 to hit, 1d8+3 damage (a fistful of fairground)",
-      "trick": "The Sweep: once a round, everything beside it must beat 13 or be thrown 10 feet and knocked down."
+    {
+      "schema": 1,
+      "id": "loc-darkwindow",
+      "type": "location",
+      "title": "The Dark Window — the one unlit house",
+      "parent": "f-locations",
+      "order": 110,
+      "rev": 1,
+      "tags": [
+        "city",
+        "red-flag"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "After nightfall every window on every street in the city burns sunsalt, because light is the gift and the gift is free and refusing it would be strange. On any long street there is one window that does not. Behind the glass there is a small honest yellow flame of a kind most people in this city have never seen, and would not recognize as fire if asked.",
+        "who_is_here": "Whoever answers the door: polite, unhurried, and frightened in a way that is easy to miss. They will say they have run out of lamp oil and that it is being seen to, and they will not invite anybody in.",
+        "hidden": "It is a tallow candle. Tallow is not illegal and never has been — it is simply archaic, a thing the world has almost forgotten how to make, and no authority has ever thought to look for a house that refuses the gift rather than demanding more of it. The dark window is not a signal. It is an argument, addressed to nobody, and it has stayed safe for a generation precisely because nobody has worked out what it means."
+      },
+      "body": "WHAT THEY DO HERE. Notice it, which costs nothing and requires no roll — any hero who thinks to count windows on a dark street finds one. Then knock, if they like, and be lied to politely.\n\nHOW TO SEED IT. Mention one unlit window, once, in passing, on a night when the party is walking home from something else. Do not draw attention to it. Do not have anybody watch them from it. If they ask, the answer is lamp oil, and the door closes.\n\nWHEN IT PAYS OFF. Whenever you want. The party will meet Red Flag properly through [[npc-tobin|Tobin]] and eventually [[npc-hettie|Hettie Sarn]], and on the day somebody finally explains what an Unlit house is, a table that has already knocked on one will get there a beat ahead of the explanation.\n\nDO NOT let any authority investigate a dark window. The moment somebody in the ministry decodes it, the whole arrangement collapses and Red Flag stops being able to exist in plain sight."
     },
-    "body": "The heavy that came through last at Lastlight — and the fight the party does NOT have. The Rectors pen it far off, a street folded shut around it, which is the crowd's first lesson in what the order can do and the table's first sight of the campaign's power ceiling. Statted here (Heroic band) for the day the party meets one inside, where no Rector is coming. (SRD ogre chassis, reworded and reskinned.)" },
-
-  { "schema": 1, "id": "npc-wenna", "type": "npc",
-    "title": "Wenna Ash — the recruiter",
-    "parent": "f-npcs", "order": 10, "rev": 2,
-    "tags": ["act1", "green-fields"], "leadsTo": [],
-    "fields": {
-      "looks": "Weathered and warm, dressed for standing all day. Scans every crowd face by face against a little sheaf of hand-drawn portraits, and does not run when the sky opens.",
-      "wants": "The taken found and brought home, and her movement believed. She lays four places at her table and has three children, and cannot say why.",
-      "voice": "Plain and steady. Never gives speeches; asks questions and then waits as long as it takes.",
-      "secret": "She has no secrets of her own, which is the tragedy. She has never heard of the Armature; she does not know her expeditions are steered from above her head; and she does not know that the fourth place at her table belongs to the one taking Green Fields will never name. Everything she tells the party, she believes."
+    {
+      "schema": 1,
+      "id": "f-iftime",
+      "type": "folder",
+      "title": "IF THERE IS TIME — fast pieces",
+      "parent": "act1",
+      "order": 30,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "optional"
+      ],
+      "leadsTo": [],
+      "fields": {},
+      "body": "Short material to deploy when a session has room and skip when it does not. Nothing in here is load-bearing and nothing in here has to happen.\n\n[[b-slip|A slip]] — ninety seconds, anywhere at all, no preparation.\n[[enc-ganny|The thing in Ganny's preserves]] — fifteen minutes, at [[loc-ganny|Ganny Marle's cellar]], and it plants something worth calling back to."
     },
-    "body": "Green Fields' recruiter, six years in. Session one she works the Lastlight crowd, stands through the fight, and closes the session with the interview in the dust — which is also the campaign's collection point for the players' own material. The betrayal, when it lands, lands through her and not on her; she must be a person to the party long before then. Appears in: [[f-lastlight|LASTLIGHT]]." },
-
-  { "schema": 1, "id": "npc-tobin", "type": "npc",
-    "title": "Tobin Rell — the clerk sent to watch them",
-    "parent": "f-npcs", "order": 20, "rev": 3,
-    "tags": ["act1", "registry", "red-flag"], "leadsTo": [],
-    "fields": {
-      "looks": "Young, inky, over-neat; carries a satchel of forms the way other men carry shields. Has never been in a fight and stands like it.",
-      "wants": "To do his job well — he has never once done a job badly — and to find out what happened to Ellum Wick, which are no longer the same ambition and have not been for about four months.",
-      "voice": "Apologetic precision. Clears his throat before bad news, and writes down what he sees, accurately, every night. When he says something dangerous he says it once, quietly, badly, and then apologizes for saying it.",
-      "secret": "THREE, discovered in this order, and the order is the whole design. FIRST, he is a mender — his grandmother's outlawed art, her hearth-spirit riding in a wooden darning egg in his coat pocket — which surfaces in the first bad fight and hands the party a secret to keep FOR him. SECOND, he files nightly to a Registry office above Wenna's head that she has never dealt with, which is a secret he kept FROM them. THIRD, he copies those filings to a house with a dark window, and has done since he read the last legible page of Ellum Wick's field book.\n\nHe is a double agent and both sets of books are honest, because he is incapable of writing anything down wrong. He does not think of himself as Red Flag. He thinks of himself as a careful man who has checked the arithmetic twice and cannot make it come out."
+    {
+      "schema": 1,
+      "id": "b-slip",
+      "type": "beat",
+      "title": "A slip — drop it anywhere",
+      "parent": "f-iftime",
+      "order": 10,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "optional",
+        "droppable"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hook": "For about a minute and a half, somewhere perfectly ordinary stops meeting itself. Then it stops, and the door is a door again. It can happen in any room, on any street, at any point in any session, and it needs no preparation whatsoever.",
+        "read_aloud": "Improvise from whatever is actually in the room. Three that work: \"The door you came through lets you out onto a street you know, three streets from the one you are on.\" · \"Going up, the stair has one step too many. Coming down, it has one too few. It does this twice more and then stops.\" · \"Somebody in the next room answers a question none of you asked, in a voice one of you knows.\"",
+        "if_they": "…investigate immediately, give them the full ninety seconds and let them get somewhere genuinely interesting — a wrong street, a room in a house nobody lives in — and then close it while they are still inside, and let them walk home the long way. Nobody is hurt by a slip. The fold is loose, not hostile.\n\n…ignore it, so does everybody else. People in this city have lived with slips their whole lives and treat them the way other worlds treat a draught.\n\n…ask an adult about it, they get the settling-joke: the world is still lying down, love, it does that.",
+        "outcome": "Nothing, most of the time, which is what makes it safe to use as often as you like. It costs no plot and buys atmosphere, and children will begin testing every doorway in the city, which is the correct response."
+      },
+      "body": "WHY IT IS WORTH HAVING. It is the campaign's whole cosmology delivered as a toy, it takes no preparation, and it can be dropped into a lull in any scene ever written.\n\nTHE CLUE IT PLANTS, IF YOU WANT IT. Slips cluster. They come in the days after a great pull of sunsalt, and a party that starts noting when they happen will eventually notice the pattern on their own. That is [[npc-hettie|Hettie Sarn]]'s ledger arriving through play rather than through a speech: when she finally opens the book and turns it around, the party is confirming something they already suspected instead of being told something new.\n\nTo use it that way, run slips deliberately rather than randomly — a cluster of two or three in the days after the Hearthspire draws, and none in the quiet weeks. Nobody needs to comment on it.\n\nESCALATION. Slips get more frequent as Act One goes on. That is not decoration; it is the same fact as everything else that is getting worse, and it needs no explanation at the table."
     },
-    "body": "Assigned to the party in [[b-comm-5|beat 5 of THE COMMISSION]], under the Accord's clause that no expedition enters the creases without a clerk to keep the record. Introduce him as an inconvenience. Through Act One he is the party's healer, and the inversion should be enjoyed: the ministry's watcher is the reason its quarry keeps getting back up.\n\nWHY HE IS ALREADY HALFWAY GONE (changed 2026-08-11). The campaign needs somebody who can put Red Flag's case to the party as a liberation fight rather than as the terrorism the Set Square describes, and it needs that in session two rather than session ten — otherwise the ministry's account stands unopposed for a third of the act. Tobin is that voice. He does not preach and he does not recruit; he asks one question at a time, and each one is a number that does not add up.\n\nHIS FIRST QUESTION, on the road out of [[b-comm-5|Wenna's room]]: they closed the Cinder Draw yesterday morning in front of the whole city, so why are we being sent to the one seam everybody watched them shut? He will not say the words goose chase and he will not say Red Flag. That question is the entire on-ramp.\n\nPLAYING THE BALANCE. He must stay likeable, useless in a fight, and easy to protect, because the children should own his safety long before they own his politics. Let them push him either way: a party that argues the ministry's case at him can genuinely slow him down, and a party that pushes will get further, faster, than anybody intended. He is not load-bearing — Red Flag reaches the party through [[npc-hettie|Hettie Sarn]] regardless, and Ellum's satchel can be found by anyone." },
-
-  { "schema": 1, "id": "npc-finch", "type": "npc",
-    "title": "Finch — the lamplighter",
-    "parent": "f-npcs", "order": 30, "rev": 3,
-    "tags": ["act1", "taken"], "leadsTo": [],
-    "fields": {
-      "looks": "Seven years old, best shirt, gap-toothed grin; was waving to the whole city right up until the sky reached out.",
-      "wants": "To go home.",
-      "voice": "Not yet — he is the face at the top of the rescue list, and for a whole day he is not even a name.",
-      "secret": "⚠ THE PARTY DOES NOT LEARN HIS NAME UNTIL HIS MOTHER SAYS IT. He is never named at the ceremony, never named in the dust, and never named by any official in the Set Square, because the ministry counts to eleven and does not distinguish among them. His name reaches the table for the first time in [[b-comm-6|the last beat of THE COMMISSION]], on a step outside, from [[npc-sela|Sela Orrin]], twenty-four hours after they watched him be taken. Keep it off the table until then; the whole scene is built on it.\n\nHe is not declared anything, and that is the point. He is one of eleven, in a number the ministry settles on by evening, and no official says his name in the party's hearing at any stage. In truth the first monster through the tear carried him off alive, best shirt, glass reliquary and all, in front of ten thousand people."
+    {
+      "schema": 1,
+      "id": "enc-ganny",
+      "type": "encounter",
+      "title": "The thing in Ganny's preserves",
+      "parent": "f-iftime",
+      "order": 20,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "optional",
+        "clue"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "setup": "[[loc-ganny|Ganny Marle]] mentions, once the party has paid their coin and had their look, that something has been at her preserves. Six jars in a fortnight, the lids off and set aside neatly rather than broken. She has not told the ministry because she does not want the ministry in her cellar.\n\nWait in the dark for twenty minutes of game time and something comes through the wrinkle.",
+        "creatures": "One [[cr-snatch-goblin|snatch-goblin]] kit — knee-high, thin, and by itself. Use the sheet's numbers if it comes to dice, but halve the hit points and give it no interest whatsoever in fighting. It wants the jam. It is frightened of everything and it is very fast.",
+        "tactics": "It is not an ambush and it does not attack. It freezes, it hides badly, and it bolts for the hole the moment anyone moves quickly. Anything the party does that is loud or sudden sends it back through the wrinkle, and it does not come back that night.\n\nWays this can go, all of them fine: corner it, catch it in a sack or a coat, feed it and watch what happens, block the hole and talk to it, follow it through the wrinkle before it closes, or kill it. If they are gentle it becomes almost tame within the hour, which children will find far more interesting than a corpse.",
+        "reward": "THE HOARD, behind a loose stone in the cellar wall, and they find it whether the kit lives or dies. It is a magpie's pile of shiny nothing: buttons, three spoons, a bootlace, a brass curtain ring, a good deal of broken glass.\n\nAnd one thing that does not belong. Something that was on a person at the fairground two days ago — a garland ribbon in the Draw's colors, a child's shoe, a lamplighter's brass key. Something the party can recognize."
+      },
+      "body": "THE POINT OF THIS, and why it is worth fifteen minutes: the wrinkle in an old woman's cellar and the tear at the foot of the Hearthspire open into the same place.\n\nThat is a real, concrete, physical clue delivered by a goblin stealing jam, and it does three things at once. It proves [[npc-tobin|Tobin]]'s suspicion before he has earned the right to say it out loud. It tells the party that the way in does not have to be a great seam that Rectors are watching — the city is full of small holes. And it makes the thing they saw at the fairground personal again, because whatever is in that hoard belonged to somebody who is on the far side of it right now.\n\nHOW HARD TO PUSH. Not at all. Put the object in the pile and describe the pile. If nobody picks it up, [[npc-tobin|Tobin]] does, and writes it down, and says nothing — and the party can find it in his notes later, which is arguably better.\n\nIT IS NOT A FIGHT. The scoreboard of this campaign is rescues rather than kills, and this is the first chance after Lastlight to teach that with something small and frightened instead of something dangerous. A party that catches the kit in a coat and feeds it has learned more about how these sessions work than a party that rolls initiative."
     },
-    "body": "Chosen by lottery to set the reliquary of the Cinder Draw's last crust into the Hearthspire's offering chamber. The tear ripped down the tower's face to the chamber; he outran the falling clock tower by a step and was taken by the first thing through. The party watched it happen, which makes them witnesses to something the state has since reduced to arithmetic.\n\nHis mother is [[npc-sela|Sela Orrin]] and his younger brother is Rab, five, who gives the party a paper bird in [[b-comm-6|the last beat of THE COMMISSION]]. Appears in: [[f-lastlight|LASTLIGHT]] (unnamed) and [[f-commission|THE COMMISSION]] (named, once, by his mother)." },
-
-  { "schema": 1, "id": "npc-hettie", "type": "npc",
-    "title": "Hettie Sarn — the woman who did not clap",
-    "parent": "f-npcs", "order": 40, "rev": 3,
-    "tags": ["act1", "red-flag"], "leadsTo": [],
-    "fields": {
-      "looks": "Old and square-built, gray as weathered fence-wood, with a ledger under one arm. At the ceremony she is the only still thing in ten thousand people. Two fingers gone on the left hand, taken by the work, and she uses the hand anyway and does not explain it.",
-      "wants": "To be proven wrong. She never is.",
-      "voice": "Numbers first. Her method of recruitment is to open the ledger, turn it around, and wait. She will let a silence run for as long as it takes and has never once filled one.",
-      "secret": "She ran the Cinder Draw for thirty-one years and accounted for more sunsalt than any living person. Her gray ledger shows the damage tracking the workings, the intake that never balances, and the shakes that follow the great pulls — and, kept quietest of all, a census of the faded, whose rest villages she has visited and found empty. Founder of the candle people."
+    {
+      "schema": 1,
+      "id": "f-reference",
+      "type": "folder",
+      "title": "Quick reference — for the table",
+      "parent": null,
+      "order": 50,
+      "rev": 1,
+      "tags": [
+        "reference"
+      ],
+      "leadsTo": [],
+      "fields": {},
+      "body": "Things to grab mid-session. Lists, not reading."
     },
-    "body": "Session one she is seen, not met: the old woman at the rope line, counting the white wagons into her ledger, not clapping. Local — the farmland the gray ate was her family's.\n\nPLAY HER AS THE MOST BORING PERSON IN THE ROOM until the ledger opens. She does not argue, does not persuade, and does not raise her voice. She hands you an arithmetic problem and lets you do it yourself, which is why she cannot be dismissed as a crank.\n\nWhen the party crosses to her is open. She is the one who carries the real rebellion after [[npc-tobin|Tobin]] goes. Appears in: [[f-lastlight|LASTLIGHT]] (unnamed, at the rope line)." }
-
+    {
+      "schema": 1,
+      "id": "ref-names",
+      "type": "note",
+      "title": "Names — when you need one right now",
+      "parent": "f-reference",
+      "order": 10,
+      "rev": 1,
+      "tags": [
+        "reference"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "given",
+          "Given names"
+        ],
+        [
+          "family",
+          "Family names"
+        ],
+        [
+          "signs",
+          "Shops, signs and inns"
+        ],
+        [
+          "note",
+          "The register"
+        ]
+      ],
+      "fields": {
+        "given": "Wenna · Hettie · Sela · Maud · Nell · Bry · Ossa · Tamsin · Annis · Perr · Ivy · Corrin\n\nTobin · Ellum · Rab · Bram · Ivo · Hask · Merrit · Pell · Osric · Wend · Dellow · Corr",
+        "family": "Ash · Sarn · Rell · Wick · Orrin · Marle · Delk · Tarrow · Bind · Crale · Hollam · Vane · Quist · Brede · Loom · Skell · Ganty · Pyle",
+        "signs": "The Bell and Barrow · Skell & Daughters · The Nine Lamps · Crale's Rope · The Good Hour · Bind the Younger · Tarrow's Salt · The Half Bushel · Pyle's, for Boots",
+        "note": "Short, hard, plain, Anglo. One or two syllables. No apostrophes, no invented letters, nothing that sounds elvish. If it would suit a nineteenth-century mill town, it suits Dunlath."
+      },
+      "body": "Take the next unused one. Cross it off in your own copy."
+    },
+    {
+      "schema": 1,
+      "id": "ref-street",
+      "type": "note",
+      "title": "Dunlath at street level",
+      "parent": "f-reference",
+      "order": 20,
+      "rev": 1,
+      "tags": [
+        "reference",
+        "city"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "see",
+          "What you see"
+        ],
+        [
+          "hear",
+          "What you hear and smell"
+        ],
+        [
+          "sale",
+          "What's for sale"
+        ],
+        [
+          "wear",
+          "What people are wearing"
+        ],
+        [
+          "crack",
+          "The crack it shows through"
+        ]
+      ],
+      "fields": {
+        "see": "Bunting across every street, a month up and going brown. A carousel nobody has dismantled. Half-struck stalls. Lamps burning in daylight because nobody has thought to put them out. Colonnades, fountains, handcarts, litters. The town overhead.",
+        "hear": "Hammering, always, somewhere. Hawkers. Somebody practicing an instrument badly. Bells on the hour from three directions, none of them agreeing. Hot fat, honey, wet stone, and the faint mineral smell of sunsalt near a good lamp.",
+        "sale": "Honey-cakes, blight-cakes, roast nuts, paper flags left over from the festival at half price, hot pies, ribbons, dyed feathers, small bells, salt in twists of paper, and lamp oil at a price people have started remarking on.",
+        "wear": "Good cloth on everybody, because everybody has it. Colors — this is a rich city and it dresses like one. Festival ribbons still pinned to coats a month later, which nobody has decided to stop doing.",
+        "crack": "One thing per session, mentioned once and not explained. A Surveyor writing at a corner. A white wagon going out through a gate with nobody watching it. A window that stays dark. A patch of ground where two paving stones do not quite meet."
+      },
+      "body": "Skim before any city session. Take one line from each field and you have a street."
+    },
+    {
+      "schema": 1,
+      "id": "cr-snatch-goblin",
+      "type": "creature",
+      "title": "Snatch-goblin",
+      "parent": "f-monsters",
+      "order": 10,
+      "rev": 1,
+      "tags": [
+        "tear",
+        "minion"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hp": "10",
+        "ac": "12",
+        "speed": "30 feet",
+        "attack": "+3 to hit, 1d6 damage (small claws, smaller knives)",
+        "trick": "The Snatch: instead of hurting somebody, it grabs a person its own size or smaller and drags them 20 feet toward the tear each turn. A grabbed person can twist free by beating 11 — and ANY hit on the goblin makes it drop whoever it is holding."
+      },
+      "body": "The classic goblin of the bad time, come through the tear sideways — knee-high greed with a sack. It does not especially want to fight; it wants to leave with somebody. Kill-count is beside the point in a snatch-goblin fight: drop-count is the fight. (SRD goblin chassis, reworded and reskinned.)"
+    },
+    {
+      "schema": 1,
+      "id": "cr-crease-wolf",
+      "type": "creature",
+      "title": "Crease-wolf",
+      "parent": "f-monsters",
+      "order": 20,
+      "rev": 1,
+      "tags": [
+        "tear"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hp": "14",
+        "ac": "13",
+        "speed": "40 feet",
+        "attack": "+4 to hit, 2d4 damage (bite)",
+        "trick": "Hunts folded: it slips through any gap — fence rails, table legs, a panicked crowd — without slowing, and when a packmate stands beside its target, a bitten hero must beat 12 or be knocked down."
+      },
+      "body": "The wolf from every grandmother's story, wrong in the daylight — it moves the way scissors move, and it looks flat when it turns. It never carries anyone; it herds runners back toward the goblins, which is worse. (SRD wolf chassis, reworded and reskinned.)"
+    },
+    {
+      "schema": 1,
+      "id": "cr-tear-ogre",
+      "type": "creature",
+      "title": "Tear-ogre — the penned one",
+      "parent": "f-monsters",
+      "order": 30,
+      "rev": 1,
+      "tags": [
+        "tear",
+        "heavy"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hp": "30",
+        "ac": "13",
+        "speed": "30 feet",
+        "attack": "+5 to hit, 1d8+3 damage (a fistful of fairground)",
+        "trick": "The Sweep: once a round, everything beside it must beat 13 or be thrown 10 feet and knocked down."
+      },
+      "body": "The heavy that came through last at Lastlight — and the fight the party does NOT have. The Rectors pen it far off, a street folded shut around it, which is the crowd's first lesson in what the order can do and the table's first sight of the campaign's power ceiling. Statted here (Heroic band) for the day the party meets one inside, where no Rector is coming. (SRD ogre chassis, reworded and reskinned.)"
+    },
+    {
+      "schema": 1,
+      "id": "npc-wenna",
+      "type": "npc",
+      "title": "Wenna Ash — the recruiter",
+      "parent": "f-npcs",
+      "order": 10,
+      "rev": 2,
+      "tags": [
+        "act1",
+        "green-fields"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "Weathered and warm, dressed for standing all day. Scans every crowd face by face against a little sheaf of hand-drawn portraits, and does not run when the sky opens.",
+        "wants": "The taken found and brought home, and her movement believed. She lays four places at her table and has three children, and cannot say why.",
+        "voice": "Plain and steady. Never gives speeches; asks questions and then waits as long as it takes.",
+        "secret": "She has no secrets of her own, which is the tragedy. She has never heard of the Armature; she does not know her expeditions are steered from above her head; and she does not know that the fourth place at her table belongs to the one taking Green Fields will never name. Everything she tells the party, she believes."
+      },
+      "body": "Green Fields' recruiter, six years in. Session one she works the Lastlight crowd, stands through the fight, and closes the session with the interview in the dust — which is also the campaign's collection point for the players' own material. The betrayal, when it lands, lands through her and not on her; she must be a person to the party long before then. Appears in: [[f-lastlight|LASTLIGHT]]."
+    },
+    {
+      "schema": 1,
+      "id": "npc-tobin",
+      "type": "npc",
+      "title": "Tobin Rell — the clerk sent to watch them",
+      "parent": "f-npcs",
+      "order": 20,
+      "rev": 3,
+      "tags": [
+        "act1",
+        "registry",
+        "red-flag"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "Young, inky, over-neat; carries a satchel of forms the way other men carry shields. Has never been in a fight and stands like it.",
+        "wants": "To do his job well — he has never once done a job badly — and to find out what happened to Ellum Wick, which are no longer the same ambition and have not been for about four months.",
+        "voice": "Apologetic precision. Clears his throat before bad news, and writes down what he sees, accurately, every night. When he says something dangerous he says it once, quietly, badly, and then apologizes for saying it.",
+        "secret": "THREE, discovered in this order, and the order is the whole design. FIRST, he is a mender — his grandmother's outlawed art, her hearth-spirit riding in a wooden darning egg in his coat pocket — which surfaces in the first bad fight and hands the party a secret to keep FOR him. SECOND, he files nightly to a Registry office above Wenna's head that she has never dealt with, which is a secret he kept FROM them. THIRD, he copies those filings to a house with a dark window, and has done since he read the last legible page of Ellum Wick's field book.\n\nHe is a double agent and both sets of books are honest, because he is incapable of writing anything down wrong. He does not think of himself as Red Flag. He thinks of himself as a careful man who has checked the arithmetic twice and cannot make it come out."
+      },
+      "body": "Assigned to the party in [[b-comm-5|beat 5 of THE COMMISSION]], under the Accord's clause that no expedition enters the creases without a clerk to keep the record. Introduce him as an inconvenience. Through Act One he is the party's healer, and the inversion should be enjoyed: the ministry's watcher is the reason its quarry keeps getting back up.\n\nWHY HE IS ALREADY HALFWAY GONE (changed 2026-08-11). The campaign needs somebody who can put Red Flag's case to the party as a liberation fight rather than as the terrorism the Set Square describes, and it needs that in session two rather than session ten — otherwise the ministry's account stands unopposed for a third of the act. Tobin is that voice. He does not preach and he does not recruit; he asks one question at a time, and each one is a number that does not add up.\n\nHIS FIRST QUESTION, on the road out of [[b-comm-5|Wenna's room]]: they closed the Cinder Draw yesterday morning in front of the whole city, so why are we being sent to the one seam everybody watched them shut? He will not say the words goose chase and he will not say Red Flag. That question is the entire on-ramp.\n\nPLAYING THE BALANCE. He must stay likeable, useless in a fight, and easy to protect, because the children should own his safety long before they own his politics. Let them push him either way: a party that argues the ministry's case at him can genuinely slow him down, and a party that pushes will get further, faster, than anybody intended. He is not load-bearing — Red Flag reaches the party through [[npc-hettie|Hettie Sarn]] regardless, and Ellum's satchel can be found by anyone."
+    },
+    {
+      "schema": 1,
+      "id": "npc-finch",
+      "type": "npc",
+      "title": "Finch — the lamplighter",
+      "parent": "f-npcs",
+      "order": 30,
+      "rev": 3,
+      "tags": [
+        "act1",
+        "taken"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "Seven years old, best shirt, gap-toothed grin; was waving to the whole city right up until the sky reached out.",
+        "wants": "To go home.",
+        "voice": "Not yet — he is the face at the top of the rescue list, and for a whole day he is not even a name.",
+        "secret": "⚠ THE PARTY DOES NOT LEARN HIS NAME UNTIL HIS MOTHER SAYS IT. He is never named at the ceremony, never named in the dust, and never named by any official in the Set Square, because the ministry counts to eleven and does not distinguish among them. His name reaches the table for the first time in [[b-comm-6|the last beat of THE COMMISSION]], on a step outside, from [[npc-sela|Sela Orrin]], twenty-four hours after they watched him be taken. Keep it off the table until then; the whole scene is built on it.\n\nHe is not declared anything, and that is the point. He is one of eleven, in a number the ministry settles on by evening, and no official says his name in the party's hearing at any stage. In truth the first monster through the tear carried him off alive, best shirt, glass reliquary and all, in front of ten thousand people."
+      },
+      "body": "Chosen by lottery to set the reliquary of the Cinder Draw's last crust into the Hearthspire's offering chamber. The tear ripped down the tower's face to the chamber; he outran the falling clock tower by a step and was taken by the first thing through. The party watched it happen, which makes them witnesses to something the state has since reduced to arithmetic.\n\nHis mother is [[npc-sela|Sela Orrin]] and his younger brother is Rab, five, who gives the party a paper bird in [[b-comm-6|the last beat of THE COMMISSION]]. Appears in: [[f-lastlight|LASTLIGHT]] (unnamed) and [[f-commission|THE COMMISSION]] (named, once, by his mother)."
+    },
+    {
+      "schema": 1,
+      "id": "npc-hettie",
+      "type": "npc",
+      "title": "Hettie Sarn — the woman who did not clap",
+      "parent": "f-npcs",
+      "order": 40,
+      "rev": 3,
+      "tags": [
+        "act1",
+        "red-flag"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "Old and square-built, gray as weathered fence-wood, with a ledger under one arm. At the ceremony she is the only still thing in ten thousand people. Two fingers gone on the left hand, taken by the work, and she uses the hand anyway and does not explain it.",
+        "wants": "To be proven wrong. She never is.",
+        "voice": "Numbers first. Her method of recruitment is to open the ledger, turn it around, and wait. She will let a silence run for as long as it takes and has never once filled one.",
+        "secret": "She ran the Cinder Draw for thirty-one years and accounted for more sunsalt than any living person. Her gray ledger shows the damage tracking the workings, the intake that never balances, and the shakes that follow the great pulls — and, kept quietest of all, a census of the faded, whose rest villages she has visited and found empty. Founder of the candle people."
+      },
+      "body": "Session one she is seen, not met: the old woman at the rope line, counting the white wagons into her ledger, not clapping. Local — the farmland the gray ate was her family's.\n\nPLAY HER AS THE MOST BORING PERSON IN THE ROOM until the ledger opens. She does not argue, does not persuade, and does not raise her voice. She hands you an arithmetic problem and lets you do it yourself, which is why she cannot be dismissed as a crank.\n\nWhen the party crosses to her is open. She is the one who carries the real rebellion after [[npc-tobin|Tobin]] goes. Appears in: [[f-lastlight|LASTLIGHT]] (unnamed, at the rope line)."
+    }
   ]
 };
