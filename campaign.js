@@ -943,7 +943,7 @@ window.DM_CAMPAIGN = {
       "title": "The Clock Face — the meeting place",
       "parent": "f-locations",
       "order": 20,
-      "rev": 3,
+      "rev": 4,
       "tags": [
         "city",
         "comedy"
@@ -954,7 +954,7 @@ window.DM_CAMPAIGN = {
         "who_is_here": "Everyone, eventually. Two honey-cake stalls and a man selling hot roast nuts have set up around the rim within a week, and none of them can be moved on because nobody can work out whose job it is. Runners wait here for work. Notices are wedged into the crack across the face. The tea woman pays the children's button toll every single day without comment.",
         "hidden": "Nothing is hidden here, and that is the point of it. This is the one place in the city where the party can be found by somebody who is looking for them, which will matter more than any secret."
       },
-      "body": "WHAT THEY DO HERE. Meet people. Leave word. Hire a runner for a coin. Read the notices, which are mostly people looking for people. If the party needs to be found by an NPC — and over a long campaign they will, often — this is where it happens, and using one place for it every time makes the city feel like a place rather than a set of rooms.\n\nIt is also simply a good place to have a conversation, which a table with children in it needs more of than it needs another room with a door."
+      "body": "WHAT THEY DO HERE. Meet people. Leave word. Hire a runner for a coin. Read the notices, which are mostly people looking for people. If the party needs to be found by an NPC — and over a long campaign they will, often — this is where it happens, and using one place for it every time makes the city feel like a place rather than a set of rooms.\n\nIt is also simply a good place to have a conversation, which a table with children in it needs more of than it needs another room with a door.\n\nRUNNERS, AND THIS IS THE USEFUL PART. A penny hires a boy who will find anybody in Dunlath inside the hour and is weirdly good at it. The party will use this to send messages — and it also runs the other way, which is how a folded slip from [[f-unanswered|THE UNANSWERED]] reaches them wherever they happen to be standing, with no scene needed to deliver it."
     },
     {
       "schema": 1,
@@ -1501,7 +1501,7 @@ window.DM_CAMPAIGN = {
       "title": "Tobin Rell — the clerk sent to watch them",
       "parent": "f-npcs",
       "order": 20,
-      "rev": 4,
+      "rev": 5,
       "tags": [
         "act1",
         "registry",
@@ -1514,7 +1514,7 @@ window.DM_CAMPAIGN = {
         "voice": "Apologetic precision. Clears his throat before bad news, and writes down what he sees, accurately, every night. When he says something dangerous he says it once, quietly, badly, and then apologizes for saying it.",
         "secret": "THREE, discovered in this order, and the order is the whole design. FIRST, he is a mender — his grandmother's outlawed art, her hearth-spirit riding in a wooden darning egg in his coat pocket — which surfaces in the first bad fight and hands the party a secret to keep FOR him. SECOND, he files nightly to a Registry office above Wenna's head that she has never dealt with, which is a secret he kept FROM them. THIRD, he copies those filings to a house with a dark window, and has done since he read the last legible page of Ellum Wick's field book.\n\nHe is a double agent and both sets of books are honest, because he is incapable of writing anything down wrong. He does not think of himself as Red Flag. He thinks of himself as a careful man who has checked the arithmetic twice and cannot make it come out."
       },
-      "body": "Assigned to the party in [[b-comm-5|beat 5 of THE COMMISSION]], under the Accord's clause that no expedition enters the creases without a clerk to keep the record. Introduce him as an inconvenience. Through Act One he is the party's healer, and the inversion should be enjoyed: the ministry's watcher is the reason its quarry keeps getting back up.\n\nWHY HE IS ALREADY HALFWAY GONE (changed 2026-08-11). The campaign needs somebody who can put Red Flag's case to the party as a liberation fight rather than as the terrorism the Set Square describes, and it needs that in session two rather than session ten — otherwise the ministry's account stands unopposed for a third of the act. Tobin is that voice. He does not preach and he does not recruit; he asks one question at a time, and each one is a number that does not add up.\n\nHIS FIRST QUESTION IS NOT ASKED ON DAY ONE (changed 2026-08-14). He does not volunteer a dangerous thought to four strangers he met an hour ago; a careful man does not, and saying it out loud is what gets a man folded away. On the first day he is an inconvenience with a satchel. The on-ramp comes after they have been inside the tower together and he has written the day up — because what he cannot do is record something he did not see, and the ministry's account of that tower and his own eyes are about to stop matching.\n\nPLAYING THE BALANCE. He must stay likeable, useless in a fight, and easy to protect, because the children should own his safety long before they own his politics. Let them push him either way: a party that argues the ministry's case at him can genuinely slow him down, and a party that pushes will get further, faster, than anybody intended. He is not load-bearing — Red Flag reaches the party through [[npc-hettie|Hettie Sarn]] regardless, and Ellum's satchel can be found by anyone."
+      "body": "Assigned to the party in [[b-comm-5|beat 5 of THE COMMISSION]], under the Accord's clause that no expedition enters the creases without a clerk to keep the record. Introduce him as an inconvenience. Through Act One he is the party's healer, and the inversion should be enjoyed: the ministry's watcher is the reason its quarry keeps getting back up.\n\nWHY HE IS ALREADY HALFWAY GONE (changed 2026-08-11). The campaign needs somebody who can put Red Flag's case to the party as a liberation fight rather than as the terrorism the Set Square describes, and it needs that in session two rather than session ten — otherwise the ministry's account stands unopposed for a third of the act. Tobin is that voice. He does not preach and he does not recruit; he asks one question at a time, and each one is a number that does not add up.\n\nWHAT IS IN THE BOTTOM OF HIS SATCHEL. Petitions he has copied out and kept, which is not allowed and which he knows is not allowed. He files them every night, nothing has ever come of a single one, and he cannot let it alone — a man who records the truth faithfully cannot bear a record that goes nowhere. He mentions it once, on the road, as an embarrassed complaint about his own job rather than as an offer, and the party asks to see them. That is [[f-unanswered|THE UNANSWERED]], and it is how side work reaches them for the rest of the campaign.\n\nHIS FIRST QUESTION IS NOT ASKED ON DAY ONE (changed 2026-08-14). He does not volunteer a dangerous thought to four strangers he met an hour ago; a careful man does not, and saying it out loud is what gets a man folded away. On the first day he is an inconvenience with a satchel. The on-ramp comes after they have been inside the tower together and he has written the day up — because what he cannot do is record something he did not see, and the ministry's account of that tower and his own eyes are about to stop matching.\n\nPLAYING THE BALANCE. He must stay likeable, useless in a fight, and easy to protect, because the children should own his safety long before they own his politics. Let them push him either way: a party that argues the ministry's case at him can genuinely slow him down, and a party that pushes will get further, faster, than anybody intended. He is not load-bearing — Red Flag reaches the party through [[npc-hettie|Hettie Sarn]] regardless, and Ellum's satchel can be found by anyone."
     },
     {
       "schema": 1,
@@ -1820,9 +1820,9 @@ window.DM_CAMPAIGN = {
       "id": "f-unanswered",
       "type": "folder",
       "title": "THE UNANSWERED — jobs nobody was ever going to do",
-      "parent": null,
-      "order": 45,
-      "rev": 1,
+      "parent": "act1",
+      "order": 35,
+      "rev": 2,
       "tags": [
         "jobs"
       ],
@@ -1837,7 +1837,7 @@ window.DM_CAMPAIGN = {
       "title": "▶ THE BOARD — take one, any time",
       "parent": "f-unanswered",
       "order": 10,
-      "rev": 7,
+      "rev": 9,
       "tags": [
         "jobs",
         "index"
@@ -1862,12 +1862,12 @@ window.DM_CAMPAIGN = {
         ]
       ],
       "fields": {
-        "how": "Nothing has ever come of a petition at [[loc-petition|the Petition Rail]] — not one, ever — and the archive behind the Registry is where they go.\n\nA clerk at the third desk has worked that rail nine years and never seen anything come back. Four people turn up with badges that open every door in the city, so she starts saving the ones with teeth in them and slipping them across the desk. That is the whole setup. Say it once and move on.",
+        "how": "TWO STEPS, and neither of them needs the party to go looking for anything.\n\nFIRST, [[npc-tobin|TOBIN]] MENTIONS IT ONCE, on the road, as a complaint about his own job. He files petitions every night, nothing has ever come of one, and he has started keeping the ones that bother him in the bottom of his satchel — which he is embarrassed about, because it is not his to keep. He does not pitch it as work. He says it the way somebody tells you about a thing at the office that is quietly driving them mad, and then the party asks to see them, which is the whole handoff.\n\nAFTER THAT IT IS A RUNNER. A boy from [[loc-clockface|the Clock Face]] finds them wherever they are, hands over a folded slip, and holds his hand out for the penny. That costs one line and it works anywhere, at any time, in the middle of anything — which means a job can be put in front of the party whenever an evening needs one, with no scene required to deliver it.\n\nWHY THIS WAY. The party never has to be told a job board exists, nobody has to be recruited into anything, and the clerk at the third desk stays offstage where she costs nothing.",
         "open": "1. [[unans-bakehouse|The thing under the bakehouse]] · it came up through the floor. Dark, close, and it bites\n2. [[unans-aisle|Aisle nine]] · the Emporium's porters will not go down one aisle anymore\n3. [[unans-garden|The garden guest]] · something landed in a rich family's garden and will not leave\n4. [[unans-dog|The dog in the Old Draws]] · four days down a canyon, and something else is down there too\n\nNone expires. Take one, take all four, or come back in Act Two and they are still here.",
         "rule": "EVERY ONE IS: GO SOMEWHERE, DEAL WITH SOMETHING, GET PAID. Half an hour to an hour each. Three of the four have a monster in them and all four have coin and one thing worth keeping. Pay runs eight to fifty gold, which is deliberately calibrated so that one good job buys a healing potion at [[loc-bottles|Nine Hundred Bottles]].\n\nThe party's badge gets them through the gate, the rope line or the front door. After that it is entirely on them.",
         "more": "WRITING A NEW ONE takes four lines: somebody wants something dealt with, it is somewhere you can walk to, there is a thing there, and it pays. Reuse the bestiary and change the room.\n\nThe pile is bottomless by design, so a new slip can be produced at the table whenever an evening needs one."
       },
-      "body": "WHY A PETITION PILE AND NOT A NOTICE BOARD. It costs one sentence and it means the jobs come from ordinary people who asked the government first and got nothing, which is worth having in the background. But it is background. The jobs themselves are: there is a thing, go and deal with it, here is your money."
+      "body": "WHY A PETITION PILE AND NOT A NOTICE BOARD. It costs one sentence, and it means the jobs come from ordinary people who asked the government first and got nothing. But that is background. The jobs are: there is a thing, go and deal with it, here is your money.\n\nTHE ONE LINE TO HAVE READY, if a runner turns up and the table wants to know what this is: \"Tobin's stack. The ones nobody was ever going to do.\" That is enough and nothing else needs saying."
     },
     {
       "schema": 1,
