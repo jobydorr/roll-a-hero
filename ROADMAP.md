@@ -26,7 +26,37 @@
 >
 > ---
 >
-> **▶ HANDOFF — 2026-08-11, app-work session (this is the newest; older handoff follows).**
+> **▶ HANDOFF — 2026-08-13, campaign session (this is the newest; older handoffs follow).**
+>
+> **Read these before touching anything, in this order:** `CLAUDE.md`'s new rule *Brainstorming is free, canon is not* → `STYLE.md` (three rules added this session) → the DM OS itself, starting at **▶ THE FOLDED WORLD** at the top of the tree. Live asset versions are on `dm.html`; as of now dmos-ui `v42`, dmos-store `v16`, dmos.css `v32`, campaign `v28`. All pushed.
+>
+> **THE RULE THAT MATTERS MOST.** Nothing goes into `CAMPAIGN.md`, `ACT1.md` or `campaign.js` without Joby saying yes first — names, world details, motivations, history, rules about how something works, however small. It exists because a session once decided unasked that the clock tower overhead had been stopped for a lifetime and started running the morning of the disaster, filed it straight into the run sheet as fact, and Joby found it months later unable to explain his own campaign. **Propose, then build.** Corollary: reorganizing the DM OS is also a change, so propose the shape first.
+>
+> **THE HOUSE VOICE MOVED, twice, and both are in `STYLE.md`.** (1) *We are not always misty-eyed* — there are two nine-year-old boys at this table and everything built before this session was somber. Comic relief, hijinks and the occasional zany thing get sprinkled in deliberately, and the jokes must be **visible from the doorway**, not subtle social comedy nobody catches. (2) *Lean toward prosperity*, and the blend is precise: **medieval aesthetics, the material prosperity of Rome on steroids, the festive confidence of the Gilded Age, run by a totalitarian state.** No steam, no factories, nothing past a rare primitive flintlock — I imported plate glass, a cage lift and a delivery van by taking "midtown Manhattan" literally, and it was wrong. Sunsalt is where the wonder goes: heat and light without fire, hinted, never explained. The dark is the undertow, not the weather. (3) *Sketches, not prose* — the long-form register governs `CAMPAIGN.md` and NOT the DM OS. A doc there is read mid-session with four people waiting: hit the note and stop, keep bodies short, leave Joby room to improvise.
+>
+> **THE STANDING LAYOUT, confirmed and to be used for every scene and encounter from here:** one index doc titled so it cannot be missed (`▶ RUN THESE IN ORDER — <scene>`), whose first field is a numbered list of `[[wikilinks]]`, one beat doc per step, places and people linked alongside. Joby runs the table off the index and opens the rest as each step arrives. LASTLIGHT and THE COMMISSION are both built this way; copy them.
+>
+> **Shipped this session (all live):**
+> - **▶ THE FOLDED WORLD** at the top of the tree — the cosmology in words a nine-year-old can hold (the world folded like a letter into an envelope; flat faces like a paper lantern; the land overhead is *another face of the same structure seen across the inside*), the history the world tells itself, and a DM-only field for what is actually true. **The geometry is player-facing** and Joby shows nested-polyhedron pictures alongside it. Several such structures orbit one sun; the Surveyors are **interdimensional**, through portals from their own dimension, and are NOT one of those structures.
+> - **Dunlath**, the city, with a `Locations` master folder: the Clock Face, the Petition Rail, the Lamp Office, Sixty-One Pairs, the Long Table, the Emporium, the Glasshouse, the Folding Shop, Ganny Marle's Cellar, the Scar-Line, the Hearthspire, the Old Draws, the Dark Window, the Ossuary, the Set Square. Plus a `Quick reference` folder (names list, street-level sketch).
+> - **The geography, from Joby's own sketch** — west to east: the old Draws on the flats → the Cinder Draw (now the scar-line) → the Hearthspire over the fairground → rising ground → Dunlath on the height. Old sunsalt works run underground from the Draws up into the city's undercroft: sealed, unmapped, and available as a road under the city whenever wanted.
+> - **LASTLIGHT rebuilt** as five beats plus the encounter, with the walk up through the city, the fairground view and six one-roll games, the ceremony's arrangement, and the tear.
+> - **THE COMMISSION** — six beats, and its senses. Wenna's office is now **on the government complex**, three doors from the Rector, the smallest door on a grand corridor: the permitted rebellion has a desk inside the building it petitions. The Rector's room is an **oval office**, not a hall. The government quarter is **folded rather than built** — matched creases up every façade, and here and there one that does not match, and the mismatched ones are newer.
+> - **`campaign.js` is now written programmatically** (`json.dumps`) and validates as JSON on every write. Do not hand-splice it; I broke it that way twice this session. Round-trip it in Python instead.
+>
+> **Open threads — ask Joby, do not decide:**
+> - **The clock hands.** He still does not accept why the sky-clock started moving. I argued it is a machine jammed by the same jam, so the hands moving = the grip slipping, but he never ruled. It is currently canon in the run sheet. Resolve or cut.
+> - **The Red Flag frame-up** (the ministry blaming them for the tear) lives only in the beat doc. It has not been promoted to `CAMPAIGN.md` §3.
+> - **The economy** is deliberately undecided and flagged inside the Emporium: universal plenty as a right, or a rich market with supports dressed as service.
+> - **Two bits of session-zero machinery he may want gone**, since he cut the reason cards: the "name one thing you carry you would run back for" question in Lastlight beat 4, and the rescued-civilian bounded choice (family / teacher / somebody you owe) on the encounter sheet.
+> - **The Hearthspire "against the wall"** was changed to follow his sketch, which puts it out on the flats. Flagged, not confirmed.
+> - `dm-workspace-2026-08-13 LastLight.json` — his workspace export — got swept into a commit by a `git add -A` of mine. Offered to remove it; no answer yet.
+>
+> **Still unbuilt from the audit:** the Registry, the fairground fight's how-to-run note, a doc for the items the party now carries (writ, purse, fold, paper bird), the rescue list, a session log, and Beat 4's physical anchor.
+>
+> ---
+>
+> **▶ HANDOFF — 2026-08-11, app-work session.**
 >
 > **Casting is GONE. A document lives in exactly one folder, and everywhere else names it with a `[[wikilink]]`.** v33–v36 built "casting" (a scene borrowing a sheet filed elsewhere, shown as an extra tree row and an extra feed card) and it failed at the table: a borrowed row was drawn by the same code as a real one, so it looked identical while behaving nothing like it — dragging it refiled the underlying sheet without moving the row, removing it trashed the whole sheet, and an act plus a scene inside it could borrow the same person into three indistinguishable rows. It is removed from the tree, the feed, and the ＋ menu. **The reasoning is in `DECISIONS.md`, 2026-08-11 — read that before re-proposing anything shaped like it.** Old workspaces keep their `cast` entries as inert data; the story map and connection editors already filtered them out and still do.
 >
