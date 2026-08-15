@@ -515,10 +515,30 @@
 
   // Add an entry. For a doc/hero ref, refuse a duplicate so a name can't be
   // added to the same fight twice. Returns the new entry, or the existing one.
+  /* Adding the same creature twice is the normal case — six goblins is six rows,
+     each with its own hit points. So there is deliberately NO de-duplication
+     here. (There used to be, and it silently returned the existing row, which
+     made a wave of identical monsters impossible to run.)
+
+     Player heroes are still effectively one-per-fight, because the party list
+     shows a ✓ instead of a ＋ once a hero is in.
+
+     Copies get a number so the table can tell them apart. The row's name comes
+     from the referenced document, so the number lives on the entry as `tag` and
+     resolveEntry() appends it. The first copy is tagged retroactively when the
+     second arrives, so a lone monster stays plain. */
   function rosterAdd(entry) {
     const s = getInitiative();
     const e = Object.assign({ id: iniId(), kind: 'custom', ref: null, name: 'New', init: null }, entry || {});
-    if (e.ref) { const dup = s.entries.find(x => x.ref === e.ref); if (dup) return dup; }
+    // Match on the sheet where there is one, and on the name for a creature
+    // dropped straight in from Lookup, which has no document behind it.
+    const same = e.ref
+      ? s.entries.filter(x => x.ref === e.ref)
+      : (e.kind === 'creature' && e.name ? s.entries.filter(x => x.kind === 'creature' && x.name === e.name) : []);
+    if (same.length) {
+      if (same.length === 1 && !same[0].tag) same[0].tag = '1';
+      e.tag = String(same.length + 1);
+    }
     s.entries.push(e);
     writeInit(s);
     return e;

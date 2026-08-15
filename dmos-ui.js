@@ -624,21 +624,24 @@
 
   // What a roster entry resolves to right now — its ref doc may have been edited
   // or deleted since it was added. `side` drives the row's left-edge colour.
+  // A copy's number (set by rosterAdd when a second of the same sheet arrives).
+  const tagged = (name, e) => (e && e.tag) ? name + ' ' + e.tag : name;
+
   function resolveEntry(e) {
     if (e.kind === 'doc' && e.ref) {
       const d = STORE.get(e.ref);
       if (d) {
         const T = DOC_TYPES[d.type] || {};
-        return { name: d.title, side: d.type === 'npc' ? 'npc' : 'foe', icon: T.icon || 'shield', typeLabel: T.label || '', doc: d };
+        return { name: tagged(d.title, e), side: d.type === 'npc' ? 'npc' : 'foe', icon: T.icon || 'shield', typeLabel: T.label || '', doc: d };
       }
-      return { name: e.name || 'Removed', side: 'foe', icon: 'shield', typeLabel: 'No longer in the workspace', doc: null };
+      return { name: tagged(e.name || 'Removed', e), side: 'foe', icon: 'shield', typeLabel: 'No longer in the workspace', doc: null };
     }
     if (e.kind === 'hero') return { name: e.name || 'Hero', side: 'party', icon: 'star', typeLabel: 'Player character', doc: null };
     // A creature dropped straight onto the roster from Lookup — no story page, so
     // synthesize a doc-shaped object from its inline stats for the card/peek.
     if (e.kind === 'creature' && e.stats) {
       const synth = { type: 'creature', title: e.name, fields: e.stats, body: e.stats.notes || '' };
-      return { name: e.name || 'Creature', side: 'foe', icon: 'shield', typeLabel: 'Creature', doc: synth };
+      return { name: tagged(e.name || 'Creature', e), side: 'foe', icon: 'shield', typeLabel: 'Creature', doc: synth };
     }
     return { name: e.name || 'Combatant', side: 'foe', icon: 'sword', typeLabel: 'One-off', doc: null };
   }
@@ -790,11 +793,10 @@
   // wikilink's peek. Opens the rail if it was collapsed so the add is visible.
   ACT['roster-add-doc'] = (el) => {
     const d = STORE.get(el.dataset.doc); if (!d) return;
-    const already = STORE.getInitiative().entries.some(e => e.ref === d.id);
-    STORE.rosterAdd(Object.assign({ kind: 'doc', ref: d.id, name: d.title }, hpFromDoc(d) || {}));
+    const e = STORE.rosterAdd(Object.assign({ kind: 'doc', ref: d.id, name: d.title }, hpFromDoc(d) || {}));
     hidePeek();
     if (!ui().railB) { STORE.setUi({ railB: true }); applyRails(); }
-    announce(already ? d.title + ' is already at the table.' : 'Added ' + d.title + ' to the table.');
+    announce('Added ' + d.title + (e && e.tag ? ' ' + e.tag : '') + ' to the table.');
   };
   ACT['roster-add-custom'] = (el) => {
     const name = (el.dataset.name || '').trim(); if (!name) return;
