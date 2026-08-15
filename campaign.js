@@ -626,7 +626,7 @@ window.DM_CAMPAIGN = {
       "title": "3 — The Set Square: the walk up, and the awarding",
       "parent": "f-commission",
       "order": 40,
-      "rev": 4,
+      "rev": 5,
       "tags": [
         "act1",
         "session2",
@@ -636,10 +636,33 @@ window.DM_CAMPAIGN = {
       "fields": {
         "hook": "The medal scene, played straight, in the most important room in the city. Forty chairs carried into an office that was never meant to hold them, and every person in them is there because these four went toward the monsters.",
         "read_aloud": "THE WALK. \"The city on the way is wrong in a way that takes a minute to place, and then you have it: the festival is still up. Bunting across every street, garlands on every door, sodden now and dripping. [[loc-rationhall|The Emporium]] is packed to the pillars. And on three corners between here and there, somebody is standing in the rain showing a little drawing to strangers.\n\nAt every crossing a board has gone up overnight, and each one carries a warrant with three names on it that nobody in this city has ever heard, and BY ORDER, FOR THE BREAKING OF THE HEARTHSPIRE along the bottom. People are stopping to read them in the rain. Under one of them somebody has written something, and somebody else has already scrubbed it half away.\n\nThen the government quarter, and it is beautiful. White colonnades down both sides of a processional way, fountains running in the wet, plane trees in rows, courtyards opening off courtyards, clerks going between the buildings under oiled cloth.\n\nAnd the whole quarter looks like architecture and is not quite. The colonnades are right, the pediments are right, every corner is exactly a corner — and then you notice the CREASES. Long clean fold-lines running up the face of a building, mostly matched left to right the way a paper boat matches itself. A stair rail folded out of the same piece as the stair. A doorway whose whole surround is one continuous sheet with the wall, pleated into moulding. Nothing is stuck on. Nothing is jointed. Nothing was carried here.\n\nAnd here and there, one crease that does not match: a pilaster with a fold through it that runs off at a slight angle and never comes back.\"\n\nTHE OFFICE. \"They take you up to the top of the Set Square, and it is not a hall. It is an office — the highest office in Dunlath, and you can feel that in the doorway. Very large, near enough oval, with a great pale desk at the far end, rugs deep enough to lose a coin in, and tall windows down one whole side looking out over the quarter to the tower beyond it.\n\nForty chairs have been carried in for this, which is plainly not what the room is for, and they are full: the people you pulled out of the dust, and the families of the ones you did not. More are standing along the walls. Nobody claps when you come in. They stand up.\n\nThe Rector is waiting beside the desk, dressed differently today, pleated into a great fan of a collar that opens behind its head like a hand of cards. On the desk there are three things and a stack of plain paper.\"\n\nTHE FOLDING. \"It takes one blank sheet and it does not hurry. Its hands move for about eight seconds, and they never once go back to correct anything, and the room is completely silent while they do. What it holds out to you afterward has your name written inside the fold in a hand that never lifted, and edges like a knife, and it is warm.\"",
+        "env": "• WEATHER — it rained in the night and has not stopped. The first bad weather in a fortnight, and the whole city is sodden.\n• THE FESTIVAL, STILL UP — bunting sagging and dripping across every street, garlands going brown on the doors, a carousel nobody has dismantled. Nobody has taken any of it down and nobody has said why not.\n• SOUNDS — rain on oiled cloth, and the fountains in the government quarter running anyway, in the wet, because nobody thought to turn them off.\n• SMELLS — wet stone, wet wool, and bunting starting to go sour.\n• THE QUARTER — white colonnades, plane trees in rows, courtyards opening off courtyards. Long clean fold-lines up every façade, matched left to right — and here and there one that does not match, running off at a slight angle and never coming back.\n• THE OFFICE — deep rugs, warm underfoot, and no fire in it anywhere. Forty mismatched chairs carried in for this, and the sound of forty people getting to their feet at once.",
         "if_they": "…refuse the honors, the Rector accepts this with real grace, sets their share aside, and says the offer does not expire. It genuinely does not. Nothing in this scene requires them to accept anything.\n\n…ask what the fold is made of, the Rector says: paper. It is telling the truth and the truth is not reassuring.\n\n…try to open a fold on a living thing, it will not close. It simply refuses, gently, the way a door refuses. The Rector, if present, says only that this was thought best.",
         "outcome": "Three gifts, given one hero at a time, by name, in front of the room.\n\nTHE BADGE. A Writ of Search, folded from one blank sheet in a single unbroken motion that takes about eight seconds and never doubles back. It carries their name inside the fold and it opens every checkpoint, gate, and rope line in the city. It is not magic. It is a leash, and it is the reason this act is called what it is called.\n\nTHE PURSE. A month's wages each, in coin, counted out loud. Concrete, unglamorous, and more money than two of them have ever held.\n\nTHE FOLD. One each: a stiff pale card the size of a hand, which opens along creases into a deep case that holds far more than the card could, and closes back to a card. It must be opened and closed by hand, and it will not close on anything living. Nobody explains why that rule was necessary."
       },
-      "body": "This is the beat the children came for, so give it the full ceremony: names read out, the room standing, the Rector coming down off the platform to hand each thing over personally. Do not undercut it. The scene is only worth anything later if it is worth something now.\n\nThe folding itself is the spectacle, and it is worth slowing down for. A Rector at work is meant to be seen — that is the entire point of the ritual grade — so describe the hands and the eight seconds and the fact that it never goes back to correct anything, and let a player ask to watch closely. They can. It is happy to be watched.\n\nON THE FOLD AS AN ITEM. No dice attach to it. It is a pocket that holds a great deal, it is delightful, and it will quietly teach the table that this world folds space as a matter of course, which is the cosmology arriving as a toy rather than as a lecture."
+      "body": "This is the beat the children came for, so give it the full ceremony: names read out, the room standing, the Rector coming down off the platform to hand each thing over personally. Do not undercut it. The scene is only worth anything later if it is worth something now.\n\nThe folding itself is the spectacle, and it is worth slowing down for. A Rector at work is meant to be seen — that is the entire point of the ritual grade — so describe the hands and the eight seconds and the fact that it never goes back to correct anything, and let a player ask to watch closely. They can. It is happy to be watched.\n\nON THE FOLD AS AN ITEM. No dice attach to it. It is a pocket that holds a great deal, it is delightful, and it will quietly teach the table that this world folds space as a matter of course, which is the cosmology arriving as a toy rather than as a lecture.",
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
     },
     {
       "schema": 1,
@@ -648,7 +671,7 @@ window.DM_CAMPAIGN = {
       "title": "4 — The commission and the lie",
       "parent": "f-commission",
       "order": 50,
-      "rev": 7,
+      "rev": 8,
       "tags": [
         "act1",
         "session2",
@@ -658,10 +681,33 @@ window.DM_CAMPAIGN = {
       "fields": {
         "hook": "They are offered a job by the most powerful institution in the world, and they are told who to blame. One of those two things is false, and it is not the one they will doubt.",
         "read_aloud": "\"'Eleven people went through that seam,' the Rector says, 'and they are alive, and they are not coming back on their own. We would go in after them ourselves. We cannot. There are only so many of us — there have only ever been so many of us — and we have not been able to make more since the world stopped moving. So the work that is done in this world by hands is done by human hands, and it has been that way since before your grandmothers.'\n\nIt lets that sit.\n\n'What we are forming is a task force. Human, small, sanctioned, and paid. You would be the first four names on it.'\"\n\nTHE NAME, and it must be unmistakable — say it close to as written:\n\n\"'You will have heard it in the street by now,' the Rector says, 'and I would rather you heard it here as well, plainly, so that nobody has to guess at what is being asked of them.\n\n'The Hearthspire did not fail. It was broken. A cell calling itself Red Flag — refusers left over from the Fence War, who kept the old banner when the movement furled it — put a hand into the lighting, in order to break the Accord and put this world back to war. There are not many of them and they are not fools. Eleven people are on the far side of a seam this morning because of them, and one of those is a child.\n\n'We are not asking you to hunt anybody. Four people do not hunt anybody, and it is not what you are for. We are asking you to bring back anything at all that shows a human hand in it.'\n\nIt says all of this the way one reports weather, and then it waits, courteously, in case they have questions.\"",
+        "env": "• THE SAME ROOM, MINUTES LATER — and the staff are already carrying the forty chairs back out around them while this conversation happens. They are not listening. This is their fourth trip.\n• SOUNDS — chair legs on stone, rain on tall windows, and the Rector's voice, which never once rises.\n• THE DESK — the three gifts are gone off it now. The stack of plain paper is still there, and it is a very large stack.\n• LIGHT — grey wet morning through the windows, and the room is warm and well lit with nothing burning in it.\n• IN THEIR HANDS — the writ, which is warm, and which none of them has quite stopped noticing.\n• THE ROOM'S MOOD — brisk and kind and slightly hurried, the way any office is when the ceremony is over and there is a day to get on with.",
         "if_they": "…ask why them, the answer is honest and slightly chilling: because everyone else ran, and because it was standing there with a pen.\n\n…ask why the order does not go in itself, it says it cannot spare anyone, and that those who go in do not come out. It is telling the truth and it does not elaborate.\n\n…ask why the movement and not the ministry, it says the searching is theirs and that it is glad they exist. Warmly, and it means it. One line, and then move on — a being explaining its own treaty at length is exposition, and a being cheerfully handing over the one job it cannot do is the whole relationship in four seconds.\n\n…ask what caused the tear, the Rector answers before they have finished asking. The words are in the read-aloud and it is worth saying them close to as written, as settled fact rather than as an accusation.\n\n…ask about the boy at the tower's foot, the Rector says the count is eleven and does not distinguish among them. It will not name him. Nobody in this building names him all morning.\n\n…ask to see the tear themselves, the Rector says the site is contained. It uses that word and no other, and it is telling the exact truth: containment is being maintained at this moment by members of its own order who will not be leaving. It does not say closed, it is not asked what is at the crown, and it does not volunteer.",
         "outcome": "THE LIE IS NOW ON THE RECORD, said out loud by the highest official in the city: Red Flag broke the tower, and the party is asked to bring back anything showing a human hand in it. This is the fourth time in under a day they have been given the name — the crier in the dust, the sheet at the Ossuary, the warrants on the walk up — and it is the one that carries a signature.\n\nTHE DIRECTIVE, and it should be as plain as this: 'Eleven people are on the other side of that seam. Go in, and bring back who you can. My order will open the way for you and hold it while you are inside, and that is the whole of what we are able to do.'\n\nTHEN IT WALKS THEM DOWNSTAIRS ITSELF. The searching belongs to the movement — it says so in one line and does not explain the history — so the highest official in the city takes four strangers down a flight to a junior clerk in the smallest office on the corridor, and is perfectly cheerful about it. That walk states the whole relationship and nobody has to describe it. See [[b-comm-5|beat 5]]."
       },
-      "body": "KEEP THE DIRECTIVE SIMPLE. Go in, bring back who you can, we will open it and hold it. That is the entire brief and it should take fifteen seconds. Everything about who is allowed to do what stays in the walk downstairs, where it is shown rather than said.\n\nWHY THE LIE IS THE RIGHT ONE. Canon already has the criers blaming the veiled figure on the high seat, which is where the world's cosmic anger is meant to go. This is the operational version, issued to people who are actually being sent somewhere, and it does a job the veil cannot: it makes the candle houses radioactive, so that every grieving person in the city walks toward Green Fields — which the occupation owns — instead of toward Red Flag, which it does not. It is recorded in CAMPAIGN.md §3 as standing practice.\n\nWHAT THE PARTY NOW BELIEVES. That there are terrorists, that the terrorists made the hole, and that they have been hired to help clean up after them. They will carry that for several sessions, and they will carry it while traveling with a man who has been reading a dead friend's field book and can no longer make the numbers work.\n\nDO NOT WINK. The Rector is not smirking, and it is not lying in the sense it would recognize. It has been given an account of the disaster by its own leadership and it is passing that account on. Everything else in the room is true: the eleven, the offer, the pay, and the fact that its order cannot spare a single one of itself to go in."
+      "body": "KEEP THE DIRECTIVE SIMPLE. Go in, bring back who you can, we will open it and hold it. That is the entire brief and it should take fifteen seconds. Everything about who is allowed to do what stays in the walk downstairs, where it is shown rather than said.\n\nWHY THE LIE IS THE RIGHT ONE. Canon already has the criers blaming the veiled figure on the high seat, which is where the world's cosmic anger is meant to go. This is the operational version, issued to people who are actually being sent somewhere, and it does a job the veil cannot: it makes the candle houses radioactive, so that every grieving person in the city walks toward Green Fields — which the occupation owns — instead of toward Red Flag, which it does not. It is recorded in CAMPAIGN.md §3 as standing practice.\n\nWHAT THE PARTY NOW BELIEVES. That there are terrorists, that the terrorists made the hole, and that they have been hired to help clean up after them. They will carry that for several sessions, and they will carry it while traveling with a man who has been reading a dead friend's field book and can no longer make the numbers work.\n\nDO NOT WINK. The Rector is not smirking, and it is not lying in the sense it would recognize. It has been given an account of the disaster by its own leadership and it is passing that account on. Everything else in the room is true: the eleven, the offer, the pay, and the fact that its order cannot spare a single one of itself to go in.",
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
     },
     {
       "schema": 1,
