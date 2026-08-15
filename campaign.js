@@ -190,7 +190,7 @@ window.DM_CAMPAIGN = {
       "title": "2 — The fairground: the view, and the games",
       "parent": "f-lastlight",
       "order": 20,
-      "rev": 2,
+      "rev": 6,
       "tags": [
         "act1",
         "session1",
@@ -199,12 +199,12 @@ window.DM_CAMPAIGN = {
       "leadsTo": [],
       "fields": {
         "hook": "The establishing shot of the entire campaign, and then half an hour of a fair. Let them play. Everything that happens later is measured against how good this was.",
-        "read_aloud": "\"Below the gate the ground opens out, and you can see the whole of it at once.\n\nThe fairground first — tents, ropes, banners, ten thousand people and more coming. Beyond it, standing over everything, the Hearthspire: white and new and gleaming, banded towers and arches at the base with pipework curving between them, and out of the middle one spire going up and up to a crown that is not lit yet.\n\nAnd past the tower, the country of the Draws. Straight-sided channels cut into the flats, running for miles, dropping so far down you cannot see the bottom of them from here. All of them dead and dry except the last one, and along the rim of that one, tall folded figures are taking their places.\"",
-        "env": "• SIGHTS — tents, rope lines and banners; the Hearthspire white and unlit standing over all of it; the grandstand being fussed over by people in good coats; the Draws beyond, going down out of sight.\n• SOUNDS — a drum, a barker, a hundred children, and under it the crowd, which is the noise of people certain today will be good.\n• SMELLS — hot fat, sugar, trampled grass, animals, and ten thousand warm people.\n• UNDERFOOT — churned grass going to mud in the busy lanes, sawdust laid over the worst of it, dropped food everywhere.\n• IN THEIR HANDS — a gray-iced blight-cake, a paper lantern with one grain of sunsalt in it, a ribbon, a dyed feather.\n• ODD, said once and not explained — a stair with one step too many, a verse of the song nobody else seems to hear, a name that draws a blank from somebody who should know it.",
-        "if_they": "…want to play, see the games below. Give each a single roll and move on fast.\n\n…wander the stalls: gray-iced blight-cakes for a coin, paper lanterns with one glowing grain of sunsalt inside for anyone small enough to be given one free, ribbons, dyed feathers, roast nuts, and a man at a petition rail saying what he says every week — grateful for the Fold, and whose world is this exactly — while half the crowd nods and keeps walking toward the food.\n\n…find the paper people, there is one at the rope line folding toy birds that actually flap, patient under a heap of children. It will fold one for any hero who asks. THIS MATTERS LATER — it is the same shop and the same hands as the bird in [[b-comm-6|the last beat of THE COMMISSION]].",
+        "read_aloud": "\"Below the gate the ground opens out, and you can see the whole of it at once.\n\nThe fairground first — tents, ropes, banners, ten thousand people and more coming. Beyond it, standing over everything, the Hearthspire: white and new and gleaming, banded towers and arches at the base with pipework curving between them, and out of the middle one spire going up and up to a crown that is not lit yet.\n\nAnd past the tower, the country of the Draws. Straight-sided channels cut into the flats, running for miles, dropping so far down you cannot see the bottom of them from here. All of them dead and dry except the last one, and along the rim of that one, tall folded figures are taking their places.\n\nAnd down at the rope line, sitting on the grass with a heap of children all over it, there is one of the paper people. It is folding birds. It takes a square of paper, its hands move for a second or two, and it hands the bird to whichever child is nearest — and the birds FLAP. Properly flap, on their own, and get a little way up before they come down. It has been doing this since the gates opened. It does not appear to want anything.\"",
+        "env": "• SIGHTS — tents, rope lines and banners; the Hearthspire white and unlit standing over all of it; the grandstand being fussed over by people in good coats; the Draws beyond, going down out of sight.\n• SOUNDS — a drum, a barker, a hundred children, and under it the crowd, which is the noise of people certain today will be good.\n• SMELLS — hot fat, sugar, trampled grass, animals, and ten thousand warm people.\n• UNDERFOOT — churned grass going to mud in the busy lanes, sawdust laid over the worst of it, dropped food everywhere.\n• IN THEIR HANDS — a gray-iced blight-cake, a paper lantern with one grain of sunsalt in it, a ribbon, a dyed feather.\n• THE BIRD-FOLDER — a paper person at the rope line, buried in children, folding birds that flap. Give one to any hero who goes near it. This is the single most important object in the session and nobody at the table should know that.\n• ODD, said once and not explained — a stair with one step too many, a verse of the song nobody else seems to hear, a name that draws a blank from somebody who should know it.",
+        "if_they": "…want to play, see the games below. Give each a single roll and move on fast.\n\n…wander the stalls: gray-iced blight-cakes for a coin, paper lanterns with one glowing grain of sunsalt inside for anyone small enough to be given one free, ribbons, dyed feathers, roast nuts, and a man at a petition rail saying what he says every week — grateful for the Fold, and whose world is this exactly — while half the crowd nods and keeps walking toward the food.\n\n…go to the bird-folder, it will fold one for any hero who asks, and for any hero who does not ask but stands there long enough. It is endlessly patient, it is being climbed on, and it is having a lovely time. Ask the player what their bird looks like.\n\n…ask it anything, it answers honestly and at slightly too much length, the way somebody does when a child has finally asked them about their hobby.",
         "outcome": "Fed, hot, carrying a paper bird and a ribbon, and enjoying themselves. Then the drums change and everybody starts moving toward the grandstand — [[b-last-3|the ceremony]]."
       },
-      "body": "THE GAMES. One roll each, no consequences, purely for the fun of it. Award something silly and worthless for a win.\n\n• Knock the hat off the post with a beanbag — beat 12.\n• Guess the weight of a stone brought up out of the Draw — beat 15. Nobody has ever won this and the stone is heavier than it has any right to be.\n• The greased pole, with a ham on the top — beat 14, and a crowd gathers.\n• Race a paper bird against another child's, down the length of a rope — beat 10, and you may cheat.\n• Have your trade guessed by a man in a red coat, or win a cake — beat 13 to stump him. He will guess a hero's trade correctly and unnervingly fast.\n• Blight-cake eating, against a nine-year-old, for a ribbon — beat 16, and the nine-year-old is a professional.\n\nAlso here and NOT to be pointed at: an old woman at the rope line with a ledger under her arm, writing, not smiling. That is [[npc-hettie|Hettie Sarn]]. And a woman working through the crowd looking at faces against a sheaf of little drawings — [[npc-wenna|Wenna Ash]], who will find them properly this evening.",
+      "body": "THE GAMES. One roll each, no consequences, purely for the fun of it. Award something silly and worthless for a win.\n\n• Knock the hat off the post with a beanbag — beat 12.\n• Guess the weight of a stone brought up out of the Draw — beat 15. Nobody has ever won this and the stone is heavier than it has any right to be.\n• The greased pole, with a ham on the top — beat 14, and a crowd gathers.\n• Race a paper bird against another child's, down the length of a rope — beat 10, and you may cheat.\n• Have your trade guessed by a man in a red coat, or win a cake — beat 13 to stump him. He will guess a hero's trade correctly and unnervingly fast.\n• Blight-cake eating, against a nine-year-old, for a ribbon — beat 16, and the nine-year-old is a professional.\n\nTHE BIRD-FOLDER IS THE ONE THING TO MAKE SURE THEY SEE. It is in the read-aloud on purpose, so it cannot be missed: the same hands, the same fold and the same toy come back in [[b-comm-6|the last beat of THE COMMISSION]], where a five-year-old hands the party a bent one on a step. That payoff is worth more than anything else in this session and it costs nothing here — just let the kids have a paper bird each.\n\nAlso here and NOT to be pointed at: an old woman at the rope line with a ledger under her arm, writing, not smiling. That is [[npc-hettie|Hettie Sarn]]. And a woman working through the crowd looking at faces against a sheaf of little drawings — [[npc-wenna|Wenna Ash]], who will find them properly this evening.",
       "fieldDefs": [
         [
           "hook",
@@ -279,7 +279,7 @@ window.DM_CAMPAIGN = {
       "title": "4 — The lighting, and the tear",
       "parent": "f-lastlight",
       "order": 40,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "session1"
@@ -288,10 +288,33 @@ window.DM_CAMPAIGN = {
       "fields": {
         "hook": "Ninety seconds from the most beautiful thing any of them has ever seen to the worst. Do not rush it and do not warn them.",
         "read_aloud": "THE LIGHTING: \"No lever. No torch. There is a small door at the tower's foot, built to take one offering, and a boy in his best shirt, seven or so, picked by lottery, carries a glass case holding the last crust of sunsalt ever scraped from the Cinder Draw. He sets the old light into the new tower while the whole city holds its breath. Far above him, the crown begins to glow.\"\n\nTHE TEAR: \"The light goes wrong. The crown of the Hearthspire comes apart — and the tear does not stay at the crown. It rips DOWN the tower's face like a seam giving way: down, and down, to the little door, toward the boy. The sky bucks. The clock tower — the one that started ticking this morning — comes loose from the ceiling of the world and falls, end over end, three seconds, into the fairground. The boy runs. He is fast, and he is lucky, and he clears the falling stone in front of everybody — and then something long and gray comes out of the tear sideways, unfolds, and takes him. Then the rest come through. You know them. Everybody knows them. They are the monsters from every story your grandmother ever told — the ones the Folding sealed away. And they are not just hungry. They are taking people. Roll initiative — if you choose to stand.\"",
+        "env": "• BEFORE — the drums stop and ten thousand people go quiet at once. It is the quietest the day ever gets and it is worth a real silence at the table.\n• LIGHT — the crown waking is warm, slow and genuinely lovely. What comes after is not a color anybody here has a word for.\n• SOUNDS — the tower opening is not a crack or a bang. It is a long tearing, and it comes from directly overhead.\n• UNDERFOOT — the ground bucks once, hard, and everybody standing goes down or nearly.\n• THE FALL — three seconds, end over end, and it lands in the fairground.\n• AFTER — dropped grain-lanterns all through the grass, still glowing. That is what the fight is lit by.",
         "if_they": "…try to reach the boy, they are four hundred yards away in a crowd of ten thousand that has just begun to run. Nobody gets there. This is not a failure and should never be framed as one.\n\n…run instead of standing, let them, and let them get somebody out. Initiative is opt-in and the fight starts when they choose it.",
         "outcome": "Straight into [[enc-lastlight|the fairground fight]]. Nobody has said the boy's name, and nobody will until [[b-comm-6|his mother says it]] tomorrow."
       },
-      "body": "THE BOY IS NOT NAMED. Not by the criers, not by an official, not by you. See [[npc-finch|his sheet]].\n\nBEFORE THE LIGHTING, ask each hero: name one thing you carry that you would run back into danger for. Then threaten it in the collapse.\n\nThe clock tower falling is three seconds long. Count it out loud."
+      "body": "THE BOY IS NOT NAMED. Not by the criers, not by an official, not by you. See [[npc-finch|his sheet]].\n\nBEFORE THE LIGHTING, ask each hero: name one thing you carry that you would run back into danger for. Then threaten it in the collapse.\n\nThe clock tower falling is three seconds long. Count it out loud.",
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
     },
     {
       "schema": 1,
@@ -300,7 +323,7 @@ window.DM_CAMPAIGN = {
       "title": "5 — The dust",
       "parent": "f-lastlight",
       "order": 60,
-      "rev": 4,
+      "rev": 5,
       "tags": [
         "act1",
         "session1"
@@ -309,10 +332,33 @@ window.DM_CAMPAIGN = {
       "fields": {
         "hook": "Ten minutes that felt like an hour, and then the quiet. Let it be quiet for a moment before anybody official arrives.",
         "read_aloud": "\"It is over fast — ten minutes that felt like an hour. Whatever the paper people have done to the tower they are still doing: a ring of them has come down off the ceremony and taken places on the ground at its foot, evenly spaced, facing outward, and none of them has moved since. The rest bow to the survivors and go back to writing down faces. The clock face lies broken in the road, and its hands are still moving. Nobody can tell you how many people went through. The number the ministry settles on by evening is eleven, and everybody who was standing where you were standing knows it was more than that.\"\n\nBY DUSK, IF THEY ARE STILL OUT: \"A crier comes up the road with a bell and a paper, and he is not shouting a number. He is shouting a name. Red Flag — refusers, the ones who kept the war banner when the movement furled it — broke the Hearthspire. Sabotage at the lighting. Enemies of the Accord. Anyone with knowledge is to present themselves at the Registry, and there is a reward. He rings the bell and goes on to the next corner, and behind him the crowd begins saying the name to each other as though they had known it all along.\"",
+        "env": "• SIGHTS — the festival is still up: bunting, half-struck stalls, a carousel nobody has dismantled. The clock face lying broken in the road with its hands still moving.\n• SOUNDS — ten thousand people calling names, which does not sound like screaming at all; it sounds like a crowd looking for its coats. A bell ringing somewhere that nobody is answering.\n• SMELLS — hot fat still coming off a stall nobody went back to turn off. Crushed sugar, and dust over everything.\n• UNDERFOOT — mud, trampled paper flags, and grain-lanterns still glowing in the grass.\n• THE RING — a dozen paper people walk down off the ceremony, take places on the ground at the tower's foot, and do not move again. Say it once. Do not explain it.\n• LIGHT — an ordinary bright afternoon carrying on as though nothing has happened, which is the worst of it.",
         "if_they": "…look for the boy from the tower, he is gone, and so are others, and nobody official will say a number until evening.\n\n…help, there is a great deal of it to do and they should be allowed to do it until they are exhausted. It will be noticed.\n\n…count for themselves, they will get more than eleven, and so will everyone else who tries.\n\n…press the crier, he does not know anything. He was handed the paper an hour ago, he is on his ninth corner, he is nineteen, and he is thrilled to have been given something important to do.",
         "outcome": "Two Surveyors at the edge of the ground have written down four new faces and will file them by evening.\n\nAnd one of them is walking over. Hand straight to [[b-comm-1|THE COMMISSION, beat 1]] — the congratulations, the rooms at [[loc-ossuary|the Ossuary]], and the summons in the morning."
       },
-      "body": "Play the quiet. The fight is over, the paper people are bowing to survivors and going back to writing down faces, and the hands on the broken clock are still moving in the road.\n\nTHE COUNT IS THE ONLY THING TO PLANT. Eleven is the number the ministry settles on. Everyone who was standing where the party was standing knows it was more. Say it once and let it sit.\n\nNobody recruits them today. [[npc-wenna|Wenna]] does not appear until [[b-comm-5|THE COMMISSION, beat 5]], where she is their contact between the awarding and going off with [[npc-tobin|Tobin]].\n\nTHE NAME GOES OUT BEFORE ANYBODY ASKS THE PARTY FOR ANYTHING, and that order matters. By the time [[b-comm-4|the Rector says it to their faces]] tomorrow they will have heard it from a crier, read it on a sheet at the Ossuary, and seen it on a warrant board on the walk up. An accusation the whole city is already repeating is much harder to doubt than one official saying it in a warm room."
+      "body": "Play the quiet. The fight is over, the paper people are bowing to survivors and going back to writing down faces, and the hands on the broken clock are still moving in the road.\n\nTHE COUNT IS THE ONLY THING TO PLANT. Eleven is the number the ministry settles on. Everyone who was standing where the party was standing knows it was more. Say it once and let it sit.\n\nNobody recruits them today. [[npc-wenna|Wenna]] does not appear until [[b-comm-5|THE COMMISSION, beat 5]], where she is their contact between the awarding and going off with [[npc-tobin|Tobin]].\n\nTHE NAME GOES OUT BEFORE ANYBODY ASKS THE PARTY FOR ANYTHING, and that order matters. By the time [[b-comm-4|the Rector says it to their faces]] tomorrow they will have heard it from a crier, read it on a sheet at the Ossuary, and seen it on a warrant board on the walk up. An accusation the whole city is already repeating is much harder to doubt than one official saying it in a warm room.",
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
     },
     {
       "schema": 1,
