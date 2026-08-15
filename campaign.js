@@ -213,7 +213,7 @@ window.DM_CAMPAIGN = {
       "title": "2 — The fairground: the view, and the games",
       "parent": "f-lastlight",
       "order": 20,
-      "rev": 6,
+      "rev": 7,
       "tags": [
         "act1",
         "session1",
@@ -227,7 +227,7 @@ window.DM_CAMPAIGN = {
         "if_they": "…want to play, see the games below. Give each a single roll and move on fast.\n\n…wander the stalls: gray-iced blight-cakes for a coin, paper lanterns with one glowing grain of sunsalt inside for anyone small enough to be given one free, ribbons, dyed feathers, roast nuts, and a man at a petition rail saying what he says every week — grateful for the Fold, and whose world is this exactly — while half the crowd nods and keeps walking toward the food.\n\n…go to the bird-folder, it will fold one for any hero who asks, and for any hero who does not ask but stands there long enough. It is endlessly patient, it is being climbed on, and it is having a lovely time. Ask the player what their bird looks like.\n\n…ask it anything, it answers honestly and at slightly too much length, the way somebody does when a child has finally asked them about their hobby.",
         "outcome": "Fed, hot, carrying a paper bird and a ribbon, and enjoying themselves. Then the drums change and everybody starts moving toward the grandstand — [[b-last-3|the ceremony]]."
       },
-      "body": "THE GAMES. One roll each, no consequences, purely for the fun of it. Award something silly and worthless for a win.\n\n• Knock the hat off the post with a beanbag — beat 12.\n• Guess the weight of a stone brought up out of the Draw — beat 15. Nobody has ever won this and the stone is heavier than it has any right to be.\n• The greased pole, with a ham on the top — beat 14, and a crowd gathers.\n• Race a paper bird against another child's, down the length of a rope — beat 10, and you may cheat.\n• Have your trade guessed by a man in a red coat, or win a cake — beat 13 to stump him. He will guess a hero's trade correctly and unnervingly fast.\n• Blight-cake eating, against a nine-year-old, for a ribbon — beat 16, and the nine-year-old is a professional.\n\nTHE BIRD-FOLDER IS THE ONE THING TO MAKE SURE THEY SEE. It is in the read-aloud on purpose, so it cannot be missed: the same hands, the same fold and the same toy come back in [[b-comm-6|the last beat of THE COMMISSION]], where a five-year-old hands the party a bent one on a step. That payoff is worth more than anything else in this session and it costs nothing here — just let the kids have a paper bird each.\n\nAlso here and NOT to be pointed at: an old woman at the rope line with a ledger under her arm, writing, not smiling. That is [[npc-hettie|Hettie Sarn]]. And a woman working through the crowd looking at faces against a sheaf of little drawings — [[npc-wenna|Wenna Ash]], who will find them properly this evening.",
+      "body": "THE GAMES. One roll each, no consequences, purely for the fun of it — and every one has a real prize, because a worthless prize is not worth rolling for. All of it is junk and all of it should be described like treasure.\n\n• Knock the hat off the post with a beanbag — beat 12 — WIN: the hat.\n• Guess the weight of a stone brought up out of the Draw — beat 15 — WIN: a whole silver piece, and nobody has ever won it, and the stone is heavier than it has any right to be.\n• The greased pole, with a ham on the top — beat 14 — WIN: the ham. It is an enormous ham and a crowd gathers.\n• Race a paper bird against another child's, down the length of a rope — beat 10, and you may cheat — WIN: the other child's bird, which you should absolutely give back.\n• Have your trade guessed by a man in a red coat — beat 13 to stump him — WIN: a cake. He will guess one hero's trade correctly and unnervingly fast, and that hero gets no cake.\n• Blight-cake eating against a nine-year-old — beat 16 — WIN: a blue ribbon that says CHAMPION, and the nine-year-old is a professional and will want a rematch all day.\n\nTHE BIRD-FOLDER IS THE ONE THING TO MAKE SURE THEY SEE. It is in the read-aloud on purpose, so it cannot be missed: the same hands, the same fold and the same toy come back in [[b-comm-6|the last beat of THE COMMISSION]], where a five-year-old hands the party a bent one on a step. That payoff is worth more than anything else in this session and it costs nothing here — just let the kids have a paper bird each.\n\nAlso here and NOT to be pointed at: an old woman at the rope line with a ledger under her arm, writing, not smiling. That is [[npc-hettie|Hettie Sarn]]. And a woman working through the crowd looking at faces against a sheaf of little drawings — [[npc-wenna|Wenna Ash]], who will find them properly this evening.",
       "fieldDefs": [
         [
           "hook",
@@ -983,7 +983,7 @@ window.DM_CAMPAIGN = {
       "title": "The Lamp Office — where the city buys light",
       "parent": "f-locations",
       "order": 40,
-      "rev": 4,
+      "rev": 5,
       "tags": [
         "city",
         "sunsalt",
@@ -993,9 +993,33 @@ window.DM_CAMPAIGN = {
       "fields": {
         "looks": "The lampwrights' hall: a stone room off the market with a long counter, and lamps hung in rows on chains from the beams — plain tin ones for a kitchen, and beside them, lit, the ones with shades of colored glass that cost four times as much and that half the street has bought because a neighbor bought one. Spare glass, wicks, grain-lanterns, and the sunsalt itself kept in a locked chest behind the counter and measured out with a spoon.\n\nOn the wall, a slate painted in two columns and chalked up fresh every week.\n\nSince the Draw closed, the price has doubled and there is a limit of one lamp to a household, written on the door in a hand that was angry when it wrote it. It is the first limit anyone in Dunlath has met in living memory and the street is taking it extremely badly.",
         "who_is_here": "A queue that has become a small civilization, because these people have never queued for anything and have decided to do it properly. A man near the front has brought a folding table, a cloth, and lunch. Two women have hired boys to hold their places and the boys have unionized and are now charging double. Somebody is auctioning his position out loud and is up to nine coins. A clerk is doing his best.",
+        "stock": "PRICES DOUBLED THIS WEEK and everybody is talking about it. Both numbers are given because the old one is what people quote at you in outrage.\n\nHousehold cell, one month of light · was 2 sp · NOW 4 sp\nPocket cell, about eight hours · was 5 cp · NOW 1 sp\nLantern, the fitting itself · 5 sp · one-off, they last for years\nGrain-lantern, paper, one grain, children's · 1 cp · these are the fairground ones\nStanding stone, warms a room, one year · 4 gp · what a well-off house has under the floor\nLamplighter's pole cell · not for sale at any price · issued to the trade only",
+        "game": "THE REGISTER IS PUBLIC AND ANYBODY MAY ASK. That is the toy, and it is free.\n\nTHE RULE: name a household or an address at the counter and the clerk reads out what it has drawn, out loud, from the register. No roll, no fee, no permission. It has always worked this way and nobody has ever thought it strange.\n\nWHAT THEY GET: anybody's consumption, going back years. Who is burning far more than a house that size should. Who stopped drawing anything at all on a particular date. Who has never drawn a single cell — which is what an Unlit house looks like on paper, and which nobody in this office has ever noticed.\n\nDO NOT POINT AT ANY OF THAT. Answer exactly what they ask and let them work out what to ask.",
         "hidden": "THE COLUMNS DO NOT MATCH. The left column is what came down from the Hearthspire this week. The right is what was issued to households. The right is smaller, and not by a little, and the gap has been there every week the board has been kept. The clerk has never added them, because the two columns are two different jobs and nobody has ever asked him to compare them."
       },
-      "body": "WHAT THEY DO HERE. Buy light, fuel and spare glass — genuinely useful, and this is also where the Compass Spirit will eat later, so the party will come back.\n\nTHE CLUE, AND HOW TO PLAY IT. The slate is on the wall in plain sight. A player who reads it and does the arithmetic finds a shortfall the clerk cannot explain and is not hiding. Do not push it, do not have anyone react, and do not let the clerk turn out to be in on anything — he is not. If nobody looks at the board, nothing is lost.\n\nWhat it is worth later: this is [[npc-hettie|Hettie Sarn]]'s entire case, sitting on a wall for free. What the Reactors take in has never matched what comes out refined. When she finally opens her ledger and turns it around, a party that read this board already knows she is right, and the scene becomes a confirmation instead of a lecture."
+      "body": "WHAT THEY DO HERE. Buy light, fuel and spare glass — genuinely useful, and this is also where the Compass Spirit will eat later, so the party will come back.\n\nTHE CLUE, AND HOW TO PLAY IT. The slate is on the wall in plain sight. A player who reads it and does the arithmetic finds a shortfall the clerk cannot explain and is not hiding. Do not push it, do not have anyone react, and do not let the clerk turn out to be in on anything — he is not. If nobody looks at the board, nothing is lost.\n\nWhat it is worth later: this is [[npc-hettie|Hettie Sarn]]'s entire case, sitting on a wall for free. What the Reactors take in has never matched what comes out refined. When she finally opens her ledger and turns it around, a party that read this board already knows she is right, and the scene becomes a confirmation instead of a lecture.",
+      "fieldDefs": [
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "who_is_here",
+          "Who is here"
+        ],
+        [
+          "stock",
+          "What they sell"
+        ],
+        [
+          "game",
+          "The game, and what you win"
+        ],
+        [
+          "hidden",
+          "Hidden here"
+        ]
+      ]
     },
     {
       "schema": 1,
@@ -1004,7 +1028,7 @@ window.DM_CAMPAIGN = {
       "title": "Sixty-One Pairs — the crease-salvage shop",
       "parent": "f-locations",
       "order": 50,
-      "rev": 2,
+      "rev": 3,
       "tags": [
         "city",
         "shop"
@@ -1013,10 +1037,100 @@ window.DM_CAMPAIGN = {
       "fields": {
         "looks": "A deep narrow shop with sixty-one unmatched boots hanging from the ceiling on strings, each waiting on a partner that has not turned up. Everything on the shelves came out of a crease at some point: objects that arrived folded and did not entirely open again, half a chair, a kettle that is also a little bit of a different kettle, a pair of spectacles with one lens that shows the room slightly earlier.",
         "who_is_here": "The owner, who buys by weight and sells by the story, and who has never once been through a crease herself and is not curious about doing so.",
-        "stock": "Nothing is priced and everything is negotiable. The rule of the shop is ONE ROLL EACH per visit — roll a d10 and that is what the pile gives up today, and they can haggle from there.\n\n1 · A boot. Just the one. It is a very good boot.\n2 · Forty feet of rope, sound, with somebody else's knot in the middle of it.\n3 · A lamp-cell with about an hour left in it. 5 sp, and worth it.\n4 · A key. No lock. The shopkeeper has a box of these and will let them dig.\n5 · A tool nobody can identify. It is a Draw crew's tool and an old Draw hand would know it instantly.\n6 · Somebody's spectacles, and they are somehow the right prescription for whoever picked them up.\n7 · A ledger, water-damaged, from an office nobody has heard of. Three pages legible.\n8 · A good knife. Actually good. 3 gp and the shopkeeper knows what he has.\n9 · A coat that does not fit anybody and is warmer than it should be.\n10 · Something out of a crease, and the shopkeeper does not know it: roll again and it is that, except it is subtly wrong and it is the best thing in the shop.",
+        "stock": "NOTHING IS PRICED AND EVERYTHING IS NEGOTIABLE. Whatever the pile gives up, he names a price of a few coppers to a few silver, and a hero who haggles gets it for half. He enjoys being haggled with and thinks less of anybody who does not.",
+        "game": "THE RULE: ONE ROLL EACH per visit. Roll a d10 and that is what the pile gives up today.\n\n1 · A boot. Just the one. It is a very good boot. · 2 cp\n2 · Forty feet of sound rope with somebody else's knot in the middle · 5 sp\n3 · A lamp-cell with about an hour left in it · 5 sp\n4 · A key with no lock. He has a whole box and will let them dig. · 1 cp\n5 · A Draw crew's tool nobody can identify. An old Draw hand would know it instantly. · 2 sp\n6 · Spectacles that are somehow right for whoever picked them up · 1 sp\n7 · A water-damaged ledger from an office nobody has heard of. Three pages legible. · 3 cp\n8 · A genuinely good knife, and he knows what he has · 3 gp\n9 · A coat that fits nobody and is warmer than it should be · 8 sp\n10 · Something that came out of a crease and he does not know it. Roll again — it is that, except subtly wrong, and it is the best thing in the shop. · he charges the normal price",
         "hidden": "She pays cash for anything brought back out of a crease, no questions, better than anyone else in the city. She is not an agent of anybody. She simply has the only market for it, because everyone else is frightened of the stuff."
       },
       "body": "WHAT THEY DO HERE. Rummage — give each hero one roll and let them turn up something strange; the stock is a licence to hand out oddities without them being magic items. Buy cheap gear. And, once they start going into creases, SELL, which makes this the party's first reliable buyer and gives crease-diving an economy.\n\nThe boots are the point of the shop and worth describing every visit. Sixty-one things that arrived without their other half is the Folding stated as a joke, and a table full of children will start looking for matches.",
+      "fieldDefs": [
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "who_is_here",
+          "Who is here"
+        ],
+        [
+          "stock",
+          "What they sell"
+        ],
+        [
+          "game",
+          "The game, and what you win"
+        ],
+        [
+          "hidden",
+          "Hidden here"
+        ]
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "loc-longtable",
+      "type": "location",
+      "title": "The Long Table — the Draw crews' eating house",
+      "parent": "f-locations",
+      "order": 60,
+      "rev": 4,
+      "tags": [
+        "city",
+        "hub",
+        "comedy"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "A handsome, prosperous eating hall — good dark timber, a great hearth, hanging lamps, and one enormous table running the whole length of the room, laid for sixty with proper plates. These were the best-paid workers in the world and they ate like it. Rooms upstairs, good ones. By the door, on a hook, a garland from the closing ceremony that nobody has taken down and nobody will touch.\n\nAND THEN: roughly half the room is dressed as clowns. Full white greasepaint, red noses, the whole business, and several of them are carrying horns and a drum they cannot play. The other half are dressed as bakers — tall white hats, aprons, flour on everything. Along one wall stands a knot of men in mismatched salvaged armor, and one of them is wearing a saucepan on his head, and he is arguing with a baker.\n\nEvery one of them is enormous and still has coal dust in the creases of his hands.",
+        "who_is_here": "The Cinder Draw's crews, four days unemployed and retraining at speed, in two factions and a splinter group. THE CLOWNS want to start a circus. THE BAKERS want to start a bakery. Both have already spent money on the outfits, which is precisely why neither can back down. The argument is conducted at full volume across the length of the table and has been running since Thursday.\n\nThe cook has fed all of them since they were apprentices and is the closest thing the room has to a mayor.",
+        "stock": "FOOD AND BEDS · price\nA bowl and bread · 3 cp\nThe proper dinner, three courses, enormous · 8 cp\nAle · 1 cp · Good wine, by the jug · 4 cp\nA bed in the long room, twenty snoring strangers · 2 cp\nA real room with a door · 5 sp a night\nTravel rations bought outright, 10 days · 5 gp · no roll, no clerk, no limit — this is where the party solves the Emporium\n\nHIRE, and they are used to being asked\nA guide who knows the old workings · 1 gp a day\nTwo porters and a handcart · 5 sp a day\nA guard company, six men, out-of-work Draw crew · 3 gp a day · they are brave, sober, unemployed since Tuesday, and they will not go into a crease for any money",
+        "game": "THE WAGER BOARD. A slate by the door where anybody may post a bet and anybody may take it. The house holds the money and takes a tenth. It pays out the same day, every time, which is why the room trusts it.\n\nTHE RULE: take a wager, roll a d20 against the number on the slate, and the room watches. Win and you take the stake. Lose and it goes on the slate as a new bet against you, which is how feuds start in here.\n\nPOSTED THIS WEEK (roll a d6 or pick):\n1 · Eat the whole dinner in the time it takes the kitchen to cook another · beat 15 · stake 2 sp\n2 · Carry both porters across the room at once · beat 16 · stake 5 sp\n3 · Name every crew that worked the Cinder Draw, in order · beat 18 · stake 1 gp · nobody has done it\n4 · Get the clowns and the bakers to sit at one table · beat 17 · stake 3 sp · and the whole room will help or hinder\n5 · Hold a full jug at arm's length while the room counts to fifty · beat 14 · stake 2 sp\n6 · Out-sing the woman by the fire · beat 16 · stake 4 sp · she is very good and she is extremely gracious about losing\n\nTHE COSTUME WAR runs under all of it and never resolves. Half the room is dressed as clowns and half as bakers, both are adamant they were here first, and any hero who takes a side is immediately and permanently a hero to one half of the room.",
+        "hidden": "The hiring board by the kitchen door, which for a lifetime was the busiest board in the city, is empty. Everyone in the room can see it from where they are sitting, and nobody is looking at it."
+      },
+      "body": "WHAT THEY DO HERE. Eat extremely well, sleep upstairs, and hear absolutely everything — this is the rumor hub, and any news the party needs can arrive at this table without contrivance.\n\nHOW TO PLAY THE ROOM. The argument stops dead when strangers walk in. Then both factions immediately try to recruit the strangers, at once, over each other. A party that takes a side will be hugged. A party that refuses to take a side will be pursued to the door. Do not explain the joke — it is a room full of enormous filthy men in clown makeup shouting about pastry, and it explains itself from the doorway.\n\nTHE MEN IN ARMOR. A dozen or so, in breastplates cut from ore-cart panels and helmets with the lamp brackets still bolted on, and one saucepan. They think both factions are being ridiculous and want to form a guard company. Unlike the other two, they can actually do the job: these are people who spent thirty years inside the exact canyon the party has been sent to walk the rim of, and they know it better than any map exists for. THEY ARE HIREABLE, cheaply, and they will take it desperately seriously. Four more names the party becomes responsible for.\n\nTHE FAST FAVOR. The cook's brother is at [[loc-petition|the petition rail]] again, several drinks in, working up to saying the thing that gets a man written down, and she would like somebody to walk him home. Five minutes, no dice unless the party wants them.\n\nWHAT IS UNDERNEATH. Nobody in this room has any idea what to do and all of them are doing something. The garland is still on the hook. Play the comedy completely straight and do not undercut it with a sad beat; the sadness is already in the costumes.",
+      "fieldDefs": [
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "who_is_here",
+          "Who is here"
+        ],
+        [
+          "stock",
+          "What they sell"
+        ],
+        [
+          "game",
+          "The game, and what you win"
+        ],
+        [
+          "hidden",
+          "Hidden here"
+        ]
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "loc-rationhall",
+      "type": "location",
+      "title": "The Emporium — everything, under one roof",
+      "parent": "f-locations",
+      "order": 70,
+      "rev": 5,
+      "tags": [
+        "city",
+        "registry",
+        "affluence"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "looks": "A covered market the size of a cathedral, and the proudest building in Dunlath. A vaulted stone roof on two ranks of pillars, a fountain at the crossing, and light coming down from high windows onto more goods than a person can take in at one look: cloth, boots, salt, oil, timber, rope, knives, cook-pots, saddlery, hides, honey, apples in barrels, lamps, and a whole aisle of nothing but bells.\n\nGarlands from the festival are still wound round every pillar. The floor is warm underfoot. There is no fire anywhere in the building and nobody remarks on it.",
+        "who_is_here": "Half the city, in good cloth, because the Emporium is somewhere to be seen as much as somewhere to go. Stallholders and their apprentices shouting across the aisles. A physician's stall near the fountain with a real surgeon at it and no queue. And porters — dozens of them, in green, with handcarts — who are the most determined people in Dunlath.\n\nAt the door sits a clerk with the roll, who marks down what each household takes.",
+        "stock": "NOTHING HERE IS BOUGHT. Everything on the roll is free, and a clerk marks what you take against your household. That is the whole system and it works, which is the point of it.\n\nON THE ROLL · per household · per month\nBread and meal · as much as you can eat · nobody has ever been refused\nSalt, oil, dried fish, apples, root vegetables · unlimited\nPreserved rations, travel · 10 days per person · THIS is the one with a limit\nCloth · one bolt · plain colors free, dyed costs money\nBlankets, pots, brooms, crockery · one of each, replaced when broken\nSoap, candles for a shrine, needles and thread · unlimited\n\nNOT ON THE ROLL, and this is what sends the party elsewhere:\nRope, tools, lamp-cells, weapons, armor, anything in quantity, anything dyed, anything anybody would call nice. The roll feeds a household. It does not equip an expedition.\n\nTHE FRICTION, and use it: four heroes drawing ten days' rations each is FORTY DAYS and that is four households' worth. The clerk is apologetic, immovable, and will suggest they come back next month. A writ does not help. Buying it outright at the Long Table does.",
+        "hidden": "The roll is a census. Every portion drawn, every yard of cloth, every visit to the physician goes down under a name with a date, in the open, in front of the person concerned, because the record is exactly what makes the fairness real and auditable. It is the most honest institution in the city and it holds a complete history of everyone in it."
+      },
+      "body": "WHAT THEY DO HERE. Get anything they need, in comfort, for nothing — a citizen's portion is a right rather than a favor, and taking it is the ordinary business of a Tuesday. The party equips here. The surgeon by the fountain is excellent and free, which is where a hurt party goes.\n\nTHE JOKE, visible from the door: THE PORTERS WILL NOT LET THEM CARRY ANYTHING. A porter takes a sack out of a hero's hands mid-sentence and puts it on his cart. Refuse, and a second porter is fetched to assist with the difficulty. Leave, and three of them follow the party through the streets with their shopping, at a respectful distance, and are still behind them an hour later. They will carry a drawn sword. They will carry the party's lunch. Losing them is a real problem the players have to solve, and rudeness does not work on them even slightly.\n\nWHAT IT COSTS. Their injuries are on the roll with dates, and so is everything they took and where it went. Nothing comes of this in Act One. It comes up in Act Two, when somebody produces the dates and asks where they were.\n\nWHY IT MATTERS NOW. This is why [[npc-tobin|Tobin]]'s hands are worth more than they look. A party that decides on its own that it would rather not be written down has understood the occupation better than a speech could teach them, and they will have decided it inside a beautiful building that was nothing but generous to them.\n\n⚠ OPEN QUESTION FOR JOBY. Whether this is plenty administered as a right of citizenship or a rich market with its supports dressed as service is undecided. The Emporium reads as either and nobody in Dunlath could tell you which.",
       "fieldDefs": [
         [
           "looks",
@@ -1038,54 +1152,12 @@ window.DM_CAMPAIGN = {
     },
     {
       "schema": 1,
-      "id": "loc-longtable",
-      "type": "location",
-      "title": "The Long Table — the Draw crews' eating house",
-      "parent": "f-locations",
-      "order": 60,
-      "rev": 3,
-      "tags": [
-        "city",
-        "hub",
-        "comedy"
-      ],
-      "leadsTo": [],
-      "fields": {
-        "looks": "A handsome, prosperous eating hall — good dark timber, a great hearth, hanging lamps, and one enormous table running the whole length of the room, laid for sixty with proper plates. These were the best-paid workers in the world and they ate like it. Rooms upstairs, good ones. By the door, on a hook, a garland from the closing ceremony that nobody has taken down and nobody will touch.\n\nAND THEN: roughly half the room is dressed as clowns. Full white greasepaint, red noses, the whole business, and several of them are carrying horns and a drum they cannot play. The other half are dressed as bakers — tall white hats, aprons, flour on everything. Along one wall stands a knot of men in mismatched salvaged armor, and one of them is wearing a saucepan on his head, and he is arguing with a baker.\n\nEvery one of them is enormous and still has coal dust in the creases of his hands.",
-        "who_is_here": "The Cinder Draw's crews, four days unemployed and retraining at speed, in two factions and a splinter group. THE CLOWNS want to start a circus. THE BAKERS want to start a bakery. Both have already spent money on the outfits, which is precisely why neither can back down. The argument is conducted at full volume across the length of the table and has been running since Thursday.\n\nThe cook has fed all of them since they were apprentices and is the closest thing the room has to a mayor.",
-        "hidden": "The hiring board by the kitchen door, which for a lifetime was the busiest board in the city, is empty. Everyone in the room can see it from where they are sitting, and nobody is looking at it."
-      },
-      "body": "WHAT THEY DO HERE. Eat extremely well, sleep upstairs, and hear absolutely everything — this is the rumor hub, and any news the party needs can arrive at this table without contrivance.\n\nHOW TO PLAY THE ROOM. The argument stops dead when strangers walk in. Then both factions immediately try to recruit the strangers, at once, over each other. A party that takes a side will be hugged. A party that refuses to take a side will be pursued to the door. Do not explain the joke — it is a room full of enormous filthy men in clown makeup shouting about pastry, and it explains itself from the doorway.\n\nTHE MEN IN ARMOR. A dozen or so, in breastplates cut from ore-cart panels and helmets with the lamp brackets still bolted on, and one saucepan. They think both factions are being ridiculous and want to form a guard company. Unlike the other two, they can actually do the job: these are people who spent thirty years inside the exact canyon the party has been sent to walk the rim of, and they know it better than any map exists for. THEY ARE HIREABLE, cheaply, and they will take it desperately seriously. Four more names the party becomes responsible for.\n\nTHE FAST FAVOR. The cook's brother is at [[loc-petition|the petition rail]] again, several drinks in, working up to saying the thing that gets a man written down, and she would like somebody to walk him home. Five minutes, no dice unless the party wants them.\n\nWHAT IS UNDERNEATH. Nobody in this room has any idea what to do and all of them are doing something. The garland is still on the hook. Play the comedy completely straight and do not undercut it with a sad beat; the sadness is already in the costumes."
-    },
-    {
-      "schema": 1,
-      "id": "loc-rationhall",
-      "type": "location",
-      "title": "The Emporium — everything, under one roof",
-      "parent": "f-locations",
-      "order": 70,
-      "rev": 4,
-      "tags": [
-        "city",
-        "registry",
-        "affluence"
-      ],
-      "leadsTo": [],
-      "fields": {
-        "looks": "A covered market the size of a cathedral, and the proudest building in Dunlath. A vaulted stone roof on two ranks of pillars, a fountain at the crossing, and light coming down from high windows onto more goods than a person can take in at one look: cloth, boots, salt, oil, timber, rope, knives, cook-pots, saddlery, hides, honey, apples in barrels, lamps, and a whole aisle of nothing but bells.\n\nGarlands from the festival are still wound round every pillar. The floor is warm underfoot. There is no fire anywhere in the building and nobody remarks on it.",
-        "who_is_here": "Half the city, in good cloth, because the Emporium is somewhere to be seen as much as somewhere to go. Stallholders and their apprentices shouting across the aisles. A physician's stall near the fountain with a real surgeon at it and no queue. And porters — dozens of them, in green, with handcarts — who are the most determined people in Dunlath.\n\nAt the door sits a clerk with the roll, who marks down what each household takes.",
-        "hidden": "The roll is a census. Every portion drawn, every yard of cloth, every visit to the physician goes down under a name with a date, in the open, in front of the person concerned, because the record is exactly what makes the fairness real and auditable. It is the most honest institution in the city and it holds a complete history of everyone in it."
-      },
-      "body": "WHAT THEY DO HERE. Get anything they need, in comfort, for nothing — a citizen's portion is a right rather than a favor, and taking it is the ordinary business of a Tuesday. The party equips here. The surgeon by the fountain is excellent and free, which is where a hurt party goes.\n\nTHE JOKE, visible from the door: THE PORTERS WILL NOT LET THEM CARRY ANYTHING. A porter takes a sack out of a hero's hands mid-sentence and puts it on his cart. Refuse, and a second porter is fetched to assist with the difficulty. Leave, and three of them follow the party through the streets with their shopping, at a respectful distance, and are still behind them an hour later. They will carry a drawn sword. They will carry the party's lunch. Losing them is a real problem the players have to solve, and rudeness does not work on them even slightly.\n\nWHAT IT COSTS. Their injuries are on the roll with dates, and so is everything they took and where it went. Nothing comes of this in Act One. It comes up in Act Two, when somebody produces the dates and asks where they were.\n\nWHY IT MATTERS NOW. This is why [[npc-tobin|Tobin]]'s hands are worth more than they look. A party that decides on its own that it would rather not be written down has understood the occupation better than a speech could teach them, and they will have decided it inside a beautiful building that was nothing but generous to them.\n\n⚠ OPEN QUESTION FOR JOBY. Whether this is plenty administered as a right of citizenship or a rich market with its supports dressed as service is undecided. The Emporium reads as either and nobody in Dunlath could tell you which."
-    },
-    {
-      "schema": 1,
       "id": "loc-wintergarden",
       "type": "location",
       "title": "The Glasshouse — the great hall of pleasures",
       "parent": "f-locations",
       "order": 75,
-      "rev": 2,
+      "rev": 3,
       "tags": [
         "city",
         "affluence",
@@ -1097,9 +1169,33 @@ window.DM_CAMPAIGN = {
       "fields": {
         "looks": "The single most extravagant building in the world, and everybody in Dunlath will tell you so within a minute of meeting you. A hall the size of a barn-field roofed in GLASS — thousands of leaded panes in an iron frame, which in a world where a good window is a wealthy man's boast is a wonder people travel to stand under.\n\nUnder it, a garden that has no business existing: fruit trees in tubs, vines up the pillars, flowers out of season, all of it kept warm through the winter by a floor that is warm underfoot with no fire under it anywhere. Long tables, a kitchen at one end going all day, casks along the wall, a raised floor where players and singers work in shifts and never stop, and lamps that burn without flame.\n\nEvery garland from the festival is still up and there are fresh ones.",
         "who_is_here": "Everybody, loudly, at all hours. Families in the afternoon, crews at night. Servers at a run. A doorkeeper the size of a wardrobe who is extremely polite. Jugglers, a bear that is very obviously a man in a bear's hide and is beloved anyway, and a fire-eater who is not permitted indoors and works the door instead.\n\nChildren run free in the garden and the games yard, and are absolutely not allowed behind the curtain at the back, which is of course the only part any child wants to see.",
+        "stock": "FOOD, DRINK AND A BED · price\nSupper, and it is very good · 1 sp\nA jug of anything · 3 cp\nA room upstairs · 8 sp a night · the best beds in Dunlath and they know it\nThe bath house, an afternoon · 2 sp · the water is hot and no fire heats it\nA place in the garden for the day, with a chair · free · this is why the city loves it",
+        "game": "EVERYTHING IS ONE d20 AGAINST A NUMBER. A copper to enter unless said otherwise.\n\nSKITTLES, down the long alley · beat 12 · 1 cp to play\nWIN: three coppers. Beat the house champion — an eleven-year-old girl who will take anybody on — and it is 1 sp and the room applauds. She wins on a 14 or better.\n\nRING TOSS over the horns of a very patient goat · beat 15 · 1 cp\nWIN: a paper flower, and the goat is yours for the evening. People take the goat seriously. The goat does not.\n\nARM-WRESTLING THE DOORKEEPER · beat 17 · free\nWIN: your drinks are free all night and he tells everyone. He goes easy on children and loses to them theatrically, which they should be allowed to enjoy.\n\nTHE LONG SLIDE, the glasshouse's polished floor with a run-up · beat 10 · free\nWIN: nothing at all, and every child in the building joins in within two minutes. Fail and you go into a tub of fruit trees.\n\nDICE BEHIND THE CURTAIN · adults only, and the doorkeeper means it · stake what you like\nWIN: double. Beat 13 to win a round, and let them play as many rounds as they like.\nTHE HOUSE STILL WINS OVER A NIGHT and the dice are honest. A hero who works out why has learned something true about the whole world.",
         "hidden": "Nothing sinister, which in this campaign is restful. Two things are worth knowing. The floor is warm because there is a sunsalt stone in the undercroft the size of a loaf, and it cost more than the glass did. And the dice behind the curtain are honest and the house still wins, and a hero who works out why has learned something true about the whole world."
       },
-      "body": "WHAT THEY DO HERE. Eat, drink, sleep upstairs, and — mainly — PLAY. This is the room where the boys act instead of listen, so stock it with more than they can get through in a night. Everything is one d20 against a number and nothing needs a new rule:\n\n• Skittles down the long alley — beat 12. The house champion is an eleven-year-old girl and she will take anybody on, for money.\n• The ring toss over the horns of a very patient goat — beat 15.\n• Arm-wrestling the doorkeeper — beat 17, and he goes easy on children in a way he thinks is subtle.\n• Climbing the greased pole for the ham at the top — beat 14, and everybody in the hall stops to watch.\n• Guessing which of three cups, run by a man who is cheating — beat 20, because he is cheating.\n\nBEHIND THE CURTAIN. Dice, and the party is grown and rich enough to be let through. One roll, win or lose, no systems — the point is the room, not an economy.\n\nWHY IT EXISTS. Dunlath had no tavern and the campaign had gone entirely somber. This is the room that proves the world is worth saving. Give the party a good night here EARLY, so everything that happens afterward has something to be measured against.\n\nTHE UNDERTOW, played light. There is one table in the corner where two Surveyors sit among the noise, quite still, not eating or drinking anything, watching the room with evident pleasure. Nobody minds them. They come most nights. Mention them once, do not explain them, and go back to the clowns."
+      "body": "WHAT THEY DO HERE. Eat, drink, sleep upstairs, and — mainly — PLAY. This is the room where the boys act instead of listen, so stock it with more than they can get through in a night. Everything is one d20 against a number and nothing needs a new rule:\n\n• Skittles down the long alley — beat 12. The house champion is an eleven-year-old girl and she will take anybody on, for money.\n• The ring toss over the horns of a very patient goat — beat 15.\n• Arm-wrestling the doorkeeper — beat 17, and he goes easy on children in a way he thinks is subtle.\n• Climbing the greased pole for the ham at the top — beat 14, and everybody in the hall stops to watch.\n• Guessing which of three cups, run by a man who is cheating — beat 20, because he is cheating.\n\nBEHIND THE CURTAIN. Dice, and the party is grown and rich enough to be let through. One roll, win or lose, no systems — the point is the room, not an economy.\n\nWHY IT EXISTS. Dunlath had no tavern and the campaign had gone entirely somber. This is the room that proves the world is worth saving. Give the party a good night here EARLY, so everything that happens afterward has something to be measured against.\n\nTHE UNDERTOW, played light. There is one table in the corner where two Surveyors sit among the noise, quite still, not eating or drinking anything, watching the room with evident pleasure. Nobody minds them. They come most nights. Mention them once, do not explain them, and go back to the clowns.",
+      "fieldDefs": [
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "who_is_here",
+          "Who is here"
+        ],
+        [
+          "stock",
+          "What they sell"
+        ],
+        [
+          "game",
+          "The game, and what you win"
+        ],
+        [
+          "hidden",
+          "Hidden here"
+        ]
+      ]
     },
     {
       "schema": 1,
@@ -1108,7 +1204,7 @@ window.DM_CAMPAIGN = {
       "title": "The Folding Shop — a Surveyor that makes toys",
       "parent": "f-locations",
       "order": 80,
-      "rev": 2,
+      "rev": 3,
       "tags": [
         "city",
         "surveyors",
@@ -1118,9 +1214,33 @@ window.DM_CAMPAIGN = {
       "fields": {
         "looks": "A single small room off a side street with a workbench and stacks of plain paper, and it is no longer tidy, because the animals got out. There are paper birds on every rafter, dozens of them, shuffling and resettling. A paper horse has been walking into the same wall for a week. A paper dog follows every customer to the door and stops dead at the threshold, every time, and looks up. A fish is doing lengths of the room near the ceiling. Everything for sale costs one coin.",
         "who_is_here": "A Surveyor, which is not on ministry business and is not stationed here. It keeps the shop because it likes to. It is delighted to be visited and is very good with children, allowing for the half-second delay on every expression.",
+        "stock": "COMMISSIONS · price · ready when\nPalm-sized, still — a bird, a mouse, a flower · 2 sp · while you wait\nPalm-sized, moving — it flaps, it hops, it opens · 5 sp · while you wait\nCat-sized, moving · 1 gp · next day\nDog-sized, moving · 5 gp · three days\nChild-sized · 20 gp · a week, and he will want to talk about it at length\nA portrait of somebody, folded · 3 gp · two days, and it is uncanny\n\nTHEY LAST until somebody unfolds them, which is difficult on purpose and which a paper animal will resist. They are not magic and they take no damage rolls. They are toys, and they are wonderful, and the party will get more out of them than out of most magic items.",
+        "game": "THE RULE: describe what you want in ONE SENTENCE. He builds exactly that — and adds one thing you did not ask for, every single time, and he does not think of this as a flaw.\n\nWHAT IT ADDED (roll a d6, or pick):\n1 · It has your face. Slightly. Enough that other people notice before you do.\n2 · It has an extra pair of legs, and they work, and it is much faster than it should be.\n3 · It is hollow, and something rattles inside it, and he will not say what.\n4 · It is wearing something — a tiny hat, a collar, a coat — that nobody mentioned.\n5 · It is a matched pair. You asked for one. There are two, and they stay together.\n6 · It does one thing on its own, once a day, at the same time each day. Decide what at the table and never explain it.\n\nHE IS A SURVEYOR and he is the same hands that fold the writs and the birds at the fairground. He is delighted by children and works cheaply for them.",
         "hidden": "It keeps the coins in a jar and has no use for them whatsoever. It does not know what it is saving them for and finds the question interesting when asked. Ask it what it does when the shop is shut and it says, truthfully, that it folds. It has stopped trying to catch the birds and is not troubled by any of it."
       },
-      "body": "WHAT THEY DO HERE. Commission a toy. Describe anything at all and it will fold it while they wait, in one unbroken motion, for one coin — and it will get the parts right that they did not describe, because it was listening to how they said it rather than what they said. A hero who asks for \"a dog\" gets their own dog, the one from when they were small, and will not be able to explain how.\n\nThis is where the bird in [[b-comm-6|Rab's hands]] was made, at the fair, the day before.\n\nHOW TO PLAY IT. Warm, generous, and slightly too accurate. The horror in the Surveyors is never cruelty; it is that they are better at knowing you than you are comfortable with, and they use it to be kind. A table that loves this shop is a table that will feel Act Two properly."
+      "body": "WHAT THEY DO HERE. Commission a toy. Describe anything at all and it will fold it while they wait, in one unbroken motion, for one coin — and it will get the parts right that they did not describe, because it was listening to how they said it rather than what they said. A hero who asks for \"a dog\" gets their own dog, the one from when they were small, and will not be able to explain how.\n\nThis is where the bird in [[b-comm-6|Rab's hands]] was made, at the fair, the day before.\n\nHOW TO PLAY IT. Warm, generous, and slightly too accurate. The horror in the Surveyors is never cruelty; it is that they are better at knowing you than you are comfortable with, and they use it to be kind. A table that loves this shop is a table that will feel Act Two properly.",
+      "fieldDefs": [
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "who_is_here",
+          "Who is here"
+        ],
+        [
+          "stock",
+          "What they sell"
+        ],
+        [
+          "game",
+          "The game, and what you win"
+        ],
+        [
+          "hidden",
+          "Hidden here"
+        ]
+      ]
     },
     {
       "schema": 1,
@@ -1129,7 +1249,7 @@ window.DM_CAMPAIGN = {
       "title": "Ganny Marle's Cellar — THE IMPOSSIBLE CORNER, one coin",
       "parent": "f-locations",
       "order": 90,
-      "rev": 4,
+      "rev": 5,
       "tags": [
         "city",
         "wrinkle",
@@ -1140,9 +1260,28 @@ window.DM_CAMPAIGN = {
       "fields": {
         "looks": "A sideshow, run out of a house. There is a painted banner nailed across the whole front of the building — THE IMPOSSIBLE CORNER, in four colors, with an artist's impression that is wildly inaccurate — a lamp over the door, and a boy on a box outside doing the patter. One coin gets you down six steps into the cellar and a look through a hand-sized hole in the back wall.\n\nThrough the hole the cellar does not meet itself. The far corner is about two feet further away than the near one says it should be, and there is a draught coming out of it that smells of somewhere else.",
         "who_is_here": "Ganny Marle, eighty, in a good hat, entirely uninterested in what the wrinkle is or what it means and extremely interested in the coin. The boy outside, who is her grandson and is on commission.\n\nDIRECTLY ACROSS THE STREET: her neighbor has painted a bigger banner — A BETTER HOLE, HALF PRICE — and he does not have a hole. He has never had a hole. The banners have been escalating for a month and both of them are now running out of wall.",
+        "game": "THE LOOK · 1 cp · six steps down and a look through a hand-sized hole. No roll. Everybody pays, including the party, and Ganny will not waive it for badges.\n\nTHE MEASURING · a second coin and a promise · this is the real business here.\nTHE RULE: no roll and no skill check. However they choose to measure it — a hand, a string, a chalk line, a coin held up to it — works, and the answer is that the far corner is about two feet further away than the near one says it should be.\nTHEN SHE PRODUCES THE OFFCUTS: three pieces cut out of her own wall in a year to keep the viewing hole matching the hole. Finger's width, then two fingers, then a hand.\nWHAT THEY WIN: the plainest evidence in Act One that the fold is opening on a schedule, and a decision nobody can make for them.\n\nTHE BANNER WAR, across the street, free entertainment, never resolves. He does not have a hole. He is now advertising two. Any hero who gets involved on either side has made a friend and an enemy for the rest of the campaign.",
         "hidden": "Two things she is not telling anybody, and she is not telling anybody the same thing twice.\n\nThe first is that something small has been coming through at night and eating her preserves, and she has a hoard behind the wall — see [[enc-ganny|the thing in Ganny's preserves]].\n\nThe second is worse and she knows it: THE HOLE IS GETTING BIGGER. It was a finger's width when her husband found it. It is a hand's width now and most of that happened this year. She has been quietly re-cutting the viewing hole to keep the banner honest, and she has the offcuts, and she has never shown them to anybody. A wrinkle that grows is a ministry matter, and a ministry matter in your cellar means you do not have a cellar or a house."
       },
-      "body": "WHAT THEY DO HERE. Pay a coin and look, which is worth doing on its own — the first time most of the party sees a wrinkle up close with time to study it rather than in a fight.\n\nTHEN GIVE THEM SOMETHING TO DO WITH IT. Ganny will let them measure it for the price of a second coin and a promise, because she wants to be told she is imagining it. Any way they choose to measure works: a hand, a string, a chalk line on the floor, a coin held up. She produces her offcuts, and the offcuts say she is not imagining it.\n\nAND THEN SHE HAS A DECISION SHE CANNOT MAKE, and she will hand it to them because they have badges and nobody else has ever been kind to her about it. Report it and she loses the house. Do not report it and it goes on growing under a street full of people. There is no right answer, nobody is punished for either, and a party of children will argue about it for twenty minutes.\n\nTHE BANNER WAR ACROSS THE STREET runs underneath all of this and never stops being funny. The neighbor still does not have a hole. He is now advertising two.\n\nWHY THIS PLACE EXISTS. It is cheap, it is weird, and it is exactly the sort of thing children ask to go back to. It also establishes that the fold has small holes all over the city — the fact Act One is built on, which nobody ever has to say out loud."
+      "body": "WHAT THEY DO HERE. Pay a coin and look, which is worth doing on its own — the first time most of the party sees a wrinkle up close with time to study it rather than in a fight.\n\nTHEN GIVE THEM SOMETHING TO DO WITH IT. Ganny will let them measure it for the price of a second coin and a promise, because she wants to be told she is imagining it. Any way they choose to measure works: a hand, a string, a chalk line on the floor, a coin held up. She produces her offcuts, and the offcuts say she is not imagining it.\n\nAND THEN SHE HAS A DECISION SHE CANNOT MAKE, and she will hand it to them because they have badges and nobody else has ever been kind to her about it. Report it and she loses the house. Do not report it and it goes on growing under a street full of people. There is no right answer, nobody is punished for either, and a party of children will argue about it for twenty minutes.\n\nTHE BANNER WAR ACROSS THE STREET runs underneath all of this and never stops being funny. The neighbor still does not have a hole. He is now advertising two.\n\nWHY THIS PLACE EXISTS. It is cheap, it is weird, and it is exactly the sort of thing children ask to go back to. It also establishes that the fold has small holes all over the city — the fact Act One is built on, which nobody ever has to say out loud.",
+      "fieldDefs": [
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "who_is_here",
+          "Who is here"
+        ],
+        [
+          "game",
+          "The game, and what you win"
+        ],
+        [
+          "hidden",
+          "Hidden here"
+        ]
+      ]
     },
     {
       "schema": 1,
@@ -2094,7 +2233,7 @@ window.DM_CAMPAIGN = {
       "type": "location",
       "parent": "f-locations",
       "leadsTo": [],
-      "rev": 2,
+      "rev": 3,
       "title": "The Proving Floor — arms, armor, and a range out the back",
       "order": 64,
       "tags": [
@@ -2105,6 +2244,7 @@ window.DM_CAMPAIGN = {
         "looks": "Not a forge and not a junk shop — a showroom. A long marble hall with weapons mounted in racks down both sides at eye height, each with a little brass plate, and armor on stands in the middle like statues wearing it. Everything is polished. Nothing is dusty. There is a carpet.",
         "who_is_here": "Fitters rather than smiths, in aprons over good clothes, who will take a hero's measurements without being asked and bring things over unprompted. They are pushy in the way of very good salespeople and they are extremely nice about it.",
         "stock": "Everything here matches what a hero can carry on their own sheet, so a purchase can be written straight onto it.\n\nMELEE · price · damage · notes\nDagger · 2 gp · 1d4 piercing · finesse, light, throw 20 ft\nQuarterstaff · 2 sp · 1d6 bludgeoning\nHandaxe · 5 gp · 1d6 slashing · light, throw 20 ft\nMace · 5 gp · 1d6 bludgeoning\nShortsword · 10 gp · 1d6 piercing · finesse, light\nBattleaxe · 10 gp · 1d8 slashing\nLongsword · 15 gp · 1d8 slashing\nWarhammer · 15 gp · 1d8 bludgeoning\nRapier · 25 gp · 1d8 piercing · finesse\nHalberd · 20 gp · 1d10 slashing · two-handed, reach — hits from 10 ft\nGreataxe · 30 gp · 1d12 slashing · two-handed\nGreatsword · 50 gp · 2d6 slashing · two-handed\n\nRANGED\nShortbow · 25 gp · 1d6 piercing · range 80 ft\nLongbow · 50 gp · 1d8 piercing · range 150 ft, two-handed\nArrows, 20 · 1 gp\n\nARMOR · price · Armor Class\nLeather · 10 gp · 11 + your Dex modifier\nStudded leather · 45 gp · 12 + your Dex modifier\nScale mail · 50 gp · 14 + your Dex modifier, maximum +2\nChain mail · 75 gp · 16, flat. Dex does not apply.\nShield · 10 gp · +2 Armor. Takes a hand.\n\nKIT, on a table by the door\nRope, 50 ft · 1 gp · Torches, 10 · 1 sp · Tinderbox · 5 sp · Bedroll · 1 gp · Rations, 10 days · 5 gp · Waterskin · 2 sp · Backpack · 2 gp · Crowbar · 2 gp · Grappling hook · 2 gp · Explorer's pack, the lot · 10 gp",
+        "game": "THE RANGE, out the back. Sixty yards, straw targets, a sand bank, and a bored man who resets everything.\n\nTHE RULE: anybody may try anything in the shop that they are thinking of buying, free, as many times as they like. Give every hero one roll with whatever they pick and describe what happens. Nobody is charged and nobody is hurried.\n\nTHE HOUSE SHOT · beat 18 · the small target at the full sixty yards. Free to attempt, once a day.\nWIN: your name goes on the board by the door, and the shop gives you a quiver of twenty arrows and a tenth off anything you buy that day, forever, because they remember.\nTHERE ARE ELEVEN NAMES ON THE BOARD. One has been there forty years and the fitters will tell you about him unprompted.\n\nAND THE PLATE ON THE STAND. It is enormous, nobody is buying it, and the fitters will help anybody into it who asks. Beat 12 to walk in it without going over. There is no prize. Everybody wants to do it.",
         "hidden": "The back half of the building is a covered range — sixty yards, straw targets, a sand bank, and a bored man who resets everything. Anybody may try anything they are thinking of buying, and most of the shop's custom comes from people who came in to look."
       },
       "body": "WHAT THEY BUY. Everything in the Player's Handbook equipment lists, at book prices. This is the party's armory and it should be simple.\n\nTHE TOY IS THE RANGE, and it is why this place exists. They can shoot, throw, or swing anything in the shop before buying it. Give every hero one roll on the range with whatever they want to try and describe what happens. That is fifteen minutes of pure fun and it costs the campaign nothing.\n\nLET THEM TRY ON THE PLATE. It is on a stand, it is enormous, and the fitters will help anybody into it who asks. Nobody is buying it. Everybody wants to wear it.\n\nTHE HOUSE COMPETITION: hit the small target at sixty yards and your name goes on the board by the door. There are eleven names on it. One of them has been there forty years.",
@@ -2120,6 +2260,10 @@ window.DM_CAMPAIGN = {
         [
           "stock",
           "What they sell"
+        ],
+        [
+          "game",
+          "The game, and what you win"
         ],
         [
           "hidden",
