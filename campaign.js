@@ -1004,7 +1004,7 @@ window.DM_CAMPAIGN = {
       "title": "Sixty-One Pairs — the crease-salvage shop",
       "parent": "f-locations",
       "order": 50,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "city",
         "shop"
@@ -1013,9 +1013,28 @@ window.DM_CAMPAIGN = {
       "fields": {
         "looks": "A deep narrow shop with sixty-one unmatched boots hanging from the ceiling on strings, each waiting on a partner that has not turned up. Everything on the shelves came out of a crease at some point: objects that arrived folded and did not entirely open again, half a chair, a kettle that is also a little bit of a different kettle, a pair of spectacles with one lens that shows the room slightly earlier.",
         "who_is_here": "The owner, who buys by weight and sells by the story, and who has never once been through a crease herself and is not curious about doing so.",
+        "stock": "Nothing is priced and everything is negotiable. The rule of the shop is ONE ROLL EACH per visit — roll a d10 and that is what the pile gives up today, and they can haggle from there.\n\n1 · A boot. Just the one. It is a very good boot.\n2 · Forty feet of rope, sound, with somebody else's knot in the middle of it.\n3 · A lamp-cell with about an hour left in it. 5 sp, and worth it.\n4 · A key. No lock. The shopkeeper has a box of these and will let them dig.\n5 · A tool nobody can identify. It is a Draw crew's tool and an old Draw hand would know it instantly.\n6 · Somebody's spectacles, and they are somehow the right prescription for whoever picked them up.\n7 · A ledger, water-damaged, from an office nobody has heard of. Three pages legible.\n8 · A good knife. Actually good. 3 gp and the shopkeeper knows what he has.\n9 · A coat that does not fit anybody and is warmer than it should be.\n10 · Something out of a crease, and the shopkeeper does not know it: roll again and it is that, except it is subtly wrong and it is the best thing in the shop.",
         "hidden": "She pays cash for anything brought back out of a crease, no questions, better than anyone else in the city. She is not an agent of anybody. She simply has the only market for it, because everyone else is frightened of the stuff."
       },
-      "body": "WHAT THEY DO HERE. Rummage — give each hero one roll and let them turn up something strange; the stock is a licence to hand out oddities without them being magic items. Buy cheap gear. And, once they start going into creases, SELL, which makes this the party's first reliable buyer and gives crease-diving an economy.\n\nThe boots are the point of the shop and worth describing every visit. Sixty-one things that arrived without their other half is the Folding stated as a joke, and a table full of children will start looking for matches."
+      "body": "WHAT THEY DO HERE. Rummage — give each hero one roll and let them turn up something strange; the stock is a licence to hand out oddities without them being magic items. Buy cheap gear. And, once they start going into creases, SELL, which makes this the party's first reliable buyer and gives crease-diving an economy.\n\nThe boots are the point of the shop and worth describing every visit. Sixty-one things that arrived without their other half is the Folding stated as a joke, and a table full of children will start looking for matches.",
+      "fieldDefs": [
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "who_is_here",
+          "Who is here"
+        ],
+        [
+          "stock",
+          "What they sell"
+        ],
+        [
+          "hidden",
+          "Hidden here"
+        ]
+      ]
     },
     {
       "schema": 1,
@@ -1818,7 +1837,7 @@ window.DM_CAMPAIGN = {
       "title": "▶ THE BOARD — take one, any time",
       "parent": "f-unanswered",
       "order": 10,
-      "rev": 6,
+      "rev": 7,
       "tags": [
         "jobs",
         "index"
@@ -1845,7 +1864,7 @@ window.DM_CAMPAIGN = {
       "fields": {
         "how": "Nothing has ever come of a petition at [[loc-petition|the Petition Rail]] — not one, ever — and the archive behind the Registry is where they go.\n\nA clerk at the third desk has worked that rail nine years and never seen anything come back. Four people turn up with badges that open every door in the city, so she starts saving the ones with teeth in them and slipping them across the desk. That is the whole setup. Say it once and move on.",
         "open": "1. [[unans-bakehouse|The thing under the bakehouse]] · it came up through the floor. Dark, close, and it bites\n2. [[unans-aisle|Aisle nine]] · the Emporium's porters will not go down one aisle anymore\n3. [[unans-garden|The garden guest]] · something landed in a rich family's garden and will not leave\n4. [[unans-dog|The dog in the Old Draws]] · four days down a canyon, and something else is down there too\n\nNone expires. Take one, take all four, or come back in Act Two and they are still here.",
-        "rule": "EVERY ONE IS: GO SOMEWHERE, DEAL WITH SOMETHING, GET PAID. Half an hour to an hour each. Three of the four have a monster in them and all four have coin and one thing worth keeping.\n\nThe party's badge gets them through the gate, the rope line or the front door. After that it is entirely on them.",
+        "rule": "EVERY ONE IS: GO SOMEWHERE, DEAL WITH SOMETHING, GET PAID. Half an hour to an hour each. Three of the four have a monster in them and all four have coin and one thing worth keeping. Pay runs eight to fifty gold, which is deliberately calibrated so that one good job buys a healing potion at [[loc-bottles|Nine Hundred Bottles]].\n\nThe party's badge gets them through the gate, the rope line or the front door. After that it is entirely on them.",
         "more": "WRITING A NEW ONE takes four lines: somebody wants something dealt with, it is somewhere you can walk to, there is a thing there, and it pays. Reuse the bestiary and change the room.\n\nThe pile is bottomless by design, so a new slip can be produced at the table whenever an evening needs one."
       },
       "body": "WHY A PETITION PILE AND NOT A NOTICE BOARD. It costs one sentence and it means the jobs come from ordinary people who asked the government first and got nothing, which is worth having in the background. But it is background. The jobs themselves are: there is a thing, go and deal with it, here is your money."
@@ -1855,7 +1874,7 @@ window.DM_CAMPAIGN = {
       "id": "unans-dog",
       "type": "beat",
       "leadsTo": [],
-      "rev": 4,
+      "rev": 5,
       "title": "The dog in the Old Draws",
       "parent": "f-unanswered",
       "order": 50,
@@ -1868,7 +1887,7 @@ window.DM_CAMPAIGN = {
         "read_aloud": "PETITION 4,502:\n\n\"There is a dog down in the third old working. It has been down there four days. You can hear it from the rim. The ministry says the workings are sealed and it is still down there, and now it has stopped barking at night, which it did not used to do.\"",
         "env": "• THE RIM — a canyon edge, hundreds of feet, and you cannot see the floor. Everyone in Dunlath has dropped something in and counted.\n• THE SOUND — it echoes wrong. It sounds close, then far, then close. The fold does that and nobody here knows why.\n• THE LEDGES — old stepped workings going down the wall in tiers, some sound, some not, all of them older than anybody watching.\n• THE AUDIENCE — half a dozen people at the rim who all have an opinion and none of whom is going down.\n• GEAR — rope is cheap and the Long Table will lend it. Nobody has to buy anything.",
         "if_they": "…go down, it is a climb with real consequence — rope, old ledges, one bad step, somebody on belay. Three or four checks, and a failure costs time or gear rather than a hero.\n\n…follow the sound, it lies. The echo is folded and the dog is not where it sounds. Working that out halves the descent.\n\n…find out why it stopped barking at night, that is because something else moved in on the second day. Two [[cr-snatch-goblin|snatch-goblins]] have a nest on the fourth ledge and have been feeding the dog, which is either sweet or sinister depending on how they are played, and both are fine.\n\n…fight them, it is a fight on ledges over a drop, which is as good as this campaign's terrain gets.",
-        "outcome": "THE PAY: eight silver, which is everything she has, and she will try to give them more.\n\nTHE LOOT: whatever has been keeping the dog alive down there has a stash — a Draw crew's abandoned kit, forty years old and bone dry. A good rope, a crowbar, two sealed ration tins, and a foreman's brass whistle that is much louder than it has any right to be.\n\nAND THE DOG, which is filthy, delighted, uninjured, and now theirs if they want it."
+        "outcome": "THE PAY: eight gold, which is everything she has, and she will try to give them more.\n\nTHE LOOT: whatever has been keeping the dog alive down there has a stash — a Draw crew's abandoned kit, forty years old and bone dry. A good rope, a crowbar, two sealed ration tins, and a foreman's brass whistle that is much louder than it has any right to be.\n\nAND THE DOG, which is filthy, delighted, uninjured, and now theirs if they want it."
       },
       "body": "WHY IT EARNS ITS PLACE. It is a rescue with a rope and a canyon and no enemy, the scoreboard of this campaign is rescues, and the boys will remember the dog longer than they remember any villain.\n\nTHE ECHO IS THE ONLY STRANGE THING and it is never explained. Sound folds. Leave it.",
       "fieldDefs": [
@@ -1899,7 +1918,7 @@ window.DM_CAMPAIGN = {
       "id": "unans-bakehouse",
       "type": "beat",
       "leadsTo": [],
-      "rev": 1,
+      "rev": 2,
       "title": "The thing under the bakehouse",
       "parent": "f-unanswered",
       "order": 20,
@@ -1913,7 +1932,7 @@ window.DM_CAMPAIGN = {
         "read_aloud": "PETITION 4,530:\n\n\"There is a hole in my bakehouse floor that was not there on Tuesday and something came up out of it and took a whole tray of buns and bit my boy on the arm. I have boarded it over. It is pushing the boards up at night. I have asked twice.\"",
         "env": "• THE BAKEHOUSE — hot, floury, and lovely, and there is a hole in the middle of the floor with a flour barrel standing on the boards.\n• THE HOLE — drops eight feet into the old sunsalt works. Brick, arched, dry, and going both ways into the dark.\n• DOWN THERE — cold, smells of stone and something sweetish. Old rails in the floor. Sound carries much too far.\n• THE FLOOR IS COVERED IN CRUMBS, all the way along, which is the trail and which nobody needs a roll to follow.\n• THE BAKER — furious, generous, and will absolutely feed them first.",
         "if_they": "…go down, it is a proper little dungeon crawl: three chambers, a collapsed section they have to squeeze or clear, and a chamber at the end with the nest in it.\n\n…follow the crumbs, it works, and it is the right answer, and let them feel clever for it.\n\n…fight, it is two [[cr-snatch-goblin|snatch-goblins]] and they are NOT frightened kits — these are grown, they are cornered, and they will use the dark. Add a third if the party is fresh.\n\n…try to talk to them, that works too and is harder, and a party that gets them out alive should be rewarded for it exactly as well as a party that fights.",
-        "outcome": "THE PAY: fifteen silver from the baker, and bread for the party for as long as they are in Dunlath, which he means literally and will honor forever.\n\nTHE LOOT: the nest is lined with stolen everything, and in it is a working lamplighter's pole with a good sunsalt cell still in it — a light source that never goes out, which is worth more than the silver and which they will use constantly."
+        "outcome": "THE PAY: fifteen gold from the baker, and bread for the party for as long as they are in Dunlath, which he means literally and will honor forever.\n\nTHE LOOT: the nest is lined with stolen everything, and in it is a working lamplighter's pole with a good sunsalt cell still in it — a light source that never goes out, which is worth more than the coin and which they will use constantly."
       },
       "body": "WHY IT WORKS. Hole, dark, monster, loot, bread forever. Nothing in it needs explaining and a nine-year-old knows exactly what to do from the first sentence.\n\nAND IT PLANTS THE UNDERCROFT. The old sunsalt works run under the whole city, sealed and unmapped, and this is the party's first time in them. Do not point at that. They will remember the tunnels on their own the next time they need a road nobody watches.",
       "fieldDefs": [
@@ -1944,7 +1963,7 @@ window.DM_CAMPAIGN = {
       "id": "unans-aisle",
       "type": "beat",
       "leadsTo": [],
-      "rev": 1,
+      "rev": 2,
       "title": "Aisle nine",
       "parent": "f-unanswered",
       "order": 30,
@@ -1958,7 +1977,7 @@ window.DM_CAMPAIGN = {
         "read_aloud": "PETITION 4,544, filed by the porters' guild:\n\n\"Nobody will work aisle nine. Three of my lads have been bitten and one has been up on the shelving since Thursday morning. Management says there is nothing in aisle nine. Management has not been down aisle nine.\"",
         "env": "• [[loc-rationhall|THE EMPORIUM]] — a covered market the size of a cathedral, pillars, galleries, and shelving thirty feet high.\n• AISLE NINE — dry goods. Sacks, barrels, crates, bolts of cloth, and a great deal of it stacked far higher than anybody should have stacked it.\n• THE LIGHT — good everywhere else and bad here, because three lamp-cells in this aisle have been taken.\n• THE NOISE — the whole market going on around them, cheerfully, fifty feet away.\n• THE MAN ON THE SHELVING — still up there. Has been since Thursday. He is fine and he is not coming down.",
         "if_they": "…go in, it is one [[cr-crease-wolf|crease-wolf]], and this is the perfect room for it: it goes flat, it goes THROUGH the shelving, and it is never where they swung.\n\n…climb, absolutely, and everything they climb can fall over. Encourage this. Toppling a run of shelving onto it should work and should be spectacular.\n\n…use the goods — flour to see it, oil to slow it, a bolt of cloth as a net, barrels rolled down the aisle. Say yes to all of it.\n\n…worry about the damage, the porters do not care in the slightest and management will care enormously.",
-        "outcome": "THE PAY: twenty silver from the porters' guild, out of their own pockets, which matters to them.\n\nTHE LOOT: whatever they broke open in the fight is on the floor and nobody is counting. One good coil of rope, a lamp-cell, and a crate of something ridiculous — let a player decide what was in the crate they landed on.\n\nAND: the porters now know them, which means the party has friends who carry everything in this city and hear everything in it."
+        "outcome": "THE PAY: twenty gold from the porters' guild, out of their own pockets, which matters to them.\n\nTHE LOOT: whatever they broke open in the fight is on the floor and nobody is counting. One good coil of rope, a lamp-cell, and a crate of something ridiculous — let a player decide what was in the crate they landed on.\n\nAND: the porters now know them, which means the party has friends who carry everything in this city and hear everything in it."
       },
       "body": "WHY IT WORKS. It is a fight in a toy shop. The room is the weapon, everything is climbable, everything falls over, and there is no penalty for wrecking any of it.\n\nSAY YES. Every improvised idea in this fight should work. That is the entire point of running it in a warehouse.",
       "fieldDefs": [
@@ -1989,7 +2008,7 @@ window.DM_CAMPAIGN = {
       "id": "unans-garden",
       "type": "beat",
       "leadsTo": [],
-      "rev": 1,
+      "rev": 2,
       "title": "The garden guest",
       "parent": "f-unanswered",
       "order": 40,
@@ -2004,7 +2023,7 @@ window.DM_CAMPAIGN = {
         "read_aloud": "PETITION 4,551, on much better paper than the others:\n\n\"There is an animal in the garden. It came over the wall on Tuesday, or possibly through it. It has eaten the fish, it has ruined the lawn, and it is sleeping in my wife's summerhouse. We are hosting on Saturday. I will pay anything. ANYTHING.\"",
         "env": "• THE HOUSE — marble, colonnades, a fountain, and a garden under glass at one end with fruit trees that have no business growing here.\n• THE GARDEN — wrecked. Beds flattened, an ornamental pond with no fish in it, and a set of tracks across the lawn that stop dead in the middle of it.\n• THE SUMMERHOUSE — painted, delicate, and there is something the size of a cart asleep in it, breathing.\n• THE FAMILY — watching from the upstairs windows. All of them. Including three children who are absolutely thrilled and will shout advice.\n• THE STAFF — have quietly stopped going outside and are enjoying themselves.",
         "if_they": "…look at the tracks, they start in the middle of the lawn. It did not come over the wall. It came through a wrinkle and the wrinkle is gone.\n\n…fight it, it is a [[cr-tear-ogre|tear-ogre]] and that is a hard fight for level three. It is also asleep, slow to wake, and not hunting anybody.\n\n…be clever, this is the intended route and it should work: it is hungry and lost, and it will follow food. A cart of meat from the Long Table walks it out through the gates and down to the flats, slowly, in front of the entire street.\n\n…let the children out to help, the parents will faint and the kids at the table will love it.",
-        "outcome": "THE PAY: he said anything and he meant it — fifty silver, and he is embarrassed it is not more, and he will tell everyone at Saturday's party who did it.\n\nTHE LOOT: the wife insists they take something from the house. Let a player pick from a shelf of genuinely lovely useless things, and let one of them turn out to be useful later.\n\nAND: an invitation to Saturday. Which is a whole other evening if you want one."
+        "outcome": "THE PAY: he said anything and he meant it — fifty gold, and he is embarrassed it is not more, and he will tell everyone at Saturday's party who did it.\n\nTHE LOOT: the wife insists they take something from the house. Let a player pick from a shelf of genuinely lovely useless things, and let one of them turn out to be useful later.\n\nAND: an invitation to Saturday. Which is a whole other evening if you want one."
       },
       "body": "WHY IT WORKS. Big animal, beautiful house, rich people panicking, and two routes that both pay — hit it, or lead it out with a cart of meat in front of the whole street.\n\nTHE TEAR-OGRE IS A REAL THREAT and the party has seen one penned at Lastlight. If they pick the fight, let it be genuinely frightening, and let them run if they need to. Nothing here punishes them for choosing the sausages.",
       "fieldDefs": [
@@ -2036,7 +2055,7 @@ window.DM_CAMPAIGN = {
       "type": "location",
       "parent": "f-locations",
       "leadsTo": [],
-      "rev": 1,
+      "rev": 3,
       "title": "Nine Hundred Bottles — potions, tonics and remedies",
       "order": 62,
       "tags": [
@@ -2046,9 +2065,28 @@ window.DM_CAMPAIGN = {
       "fields": {
         "looks": "A tall narrow shop with every wall shelved floor to ceiling, and every shelf packed with small stoppered bottles, and every bottle lit from behind. Hundreds of them. Ladders on brass rails run the length of both walls and the shop boy goes up and down them at terrifying speed. The sign outside is a painted count, and somebody repaints the number whenever the stock changes; it currently reads NINE HUNDRED AND FOUR.",
         "who_is_here": "The proprietor, who does not sell you anything until they have asked three questions: where does it hurt, when did it start, and did anything touch you. Then they send the boy up a ladder and he comes down with one specific bottle. They are never wrong and they are quietly delighted with themselves about it.",
+        "stock": "THE ONES THAT MATTER. Always in stock, no permit, no questions.\n\nPotion of Healing · 50 gp · drink it, roll 2d4+2, get that many hit points back. Takes your action.\nPotion of Greater Healing · 150 gp · 4d4+4. They keep four behind the counter and will look pleased if somebody buys one.\nAntitoxin · 50 gp · advantage on saves against poison for one hour.\nPotion of Climbing · 75 gp · climb speed equal to your walking speed, and advantage on climbing, for one hour.\nPotion of Water Breathing · 180 gp · breathe underwater for one hour. Two in stock and they have been there a while.\n\nTHE CHEAP SHELF, by the door. A few coppers to a couple of silver each, no rolls, no mechanics, and the party should buy these constantly.\n\nGlowdrop · 2 sp · you glow, faintly and unhelpfully, for an hour.\nA Good Bellow · 2 sp · your voice is enormous for ten minutes. Cannot be turned down.\nFastcolor · 1 sp · your hair is whatever color is on the label until you wash it. Twice.\nHearthdrop · 3 sp · you do not feel the cold for two hours. Genuinely useful in autumn and not worth a single die roll.\nSavor · 5 cp · whatever you eat next tastes of whatever you said out loud. Extremely popular with children and with soldiers.\nStopnose · 1 sp · you cannot smell anything for an hour. Sells better than anybody expects.",
         "hidden": "Nothing sinister. It is a good shop run by good people at fair prices. The one thing worth knowing is that everything on these walls is made with refined sunsalt, which is why it works, and why the price of every bottle went up the same week the price of a lamp did."
       },
-      "body": "WHAT THEY BUY. Healing potions, and this is where the party restocks. Standard prices, no restrictions, no permits, nothing complicated. A potion of healing is 50gp and they can buy as many as they can afford.\n\nALSO ON THE SHELVES, cheap and fun and not game-breaking: something that makes you glow faintly for an hour, something that makes your voice enormous, something that turns your hair a color, something that stops you feeling cold, something that makes food taste of whatever you say out loud. Let players buy these constantly.\n\nTHE TOY IS THE THREE QUESTIONS. Do not let the party point at a shelf. Make them describe the complaint and then produce the bottle. Kids will invent injuries purely to find out what comes back down the ladder.\n\nTHE LADDERS ARE CLIMBABLE and the boy will race anybody."
+      "body": "WHAT THEY BUY. Healing potions, and this is where the party restocks. Full list in WHAT THEY SELL. No restrictions, no permits, nothing complicated — they buy as many as they can afford.\n\nSTOCK LIMIT, the only one: four Greater Healing and two Water Breathing at any time, and the shelf refills in about a week. Everything else is unlimited.\n\nTHE TOY IS THE THREE QUESTIONS. Do not let the party point at a shelf. Make them describe the complaint and then produce the bottle. Kids will invent injuries purely to find out what comes back down the ladder.\n\nTHE LADDERS ARE CLIMBABLE and the boy will race anybody.",
+      "fieldDefs": [
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "who_is_here",
+          "Who is here"
+        ],
+        [
+          "stock",
+          "What they sell"
+        ],
+        [
+          "hidden",
+          "Hidden here"
+        ]
+      ]
     },
     {
       "schema": 1,
@@ -2056,7 +2094,7 @@ window.DM_CAMPAIGN = {
       "type": "location",
       "parent": "f-locations",
       "leadsTo": [],
-      "rev": 1,
+      "rev": 2,
       "title": "The Proving Floor — arms, armor, and a range out the back",
       "order": 64,
       "tags": [
@@ -2066,9 +2104,28 @@ window.DM_CAMPAIGN = {
       "fields": {
         "looks": "Not a forge and not a junk shop — a showroom. A long marble hall with weapons mounted in racks down both sides at eye height, each with a little brass plate, and armor on stands in the middle like statues wearing it. Everything is polished. Nothing is dusty. There is a carpet.",
         "who_is_here": "Fitters rather than smiths, in aprons over good clothes, who will take a hero's measurements without being asked and bring things over unprompted. They are pushy in the way of very good salespeople and they are extremely nice about it.",
+        "stock": "Everything here matches what a hero can carry on their own sheet, so a purchase can be written straight onto it.\n\nMELEE · price · damage · notes\nDagger · 2 gp · 1d4 piercing · finesse, light, throw 20 ft\nQuarterstaff · 2 sp · 1d6 bludgeoning\nHandaxe · 5 gp · 1d6 slashing · light, throw 20 ft\nMace · 5 gp · 1d6 bludgeoning\nShortsword · 10 gp · 1d6 piercing · finesse, light\nBattleaxe · 10 gp · 1d8 slashing\nLongsword · 15 gp · 1d8 slashing\nWarhammer · 15 gp · 1d8 bludgeoning\nRapier · 25 gp · 1d8 piercing · finesse\nHalberd · 20 gp · 1d10 slashing · two-handed, reach — hits from 10 ft\nGreataxe · 30 gp · 1d12 slashing · two-handed\nGreatsword · 50 gp · 2d6 slashing · two-handed\n\nRANGED\nShortbow · 25 gp · 1d6 piercing · range 80 ft\nLongbow · 50 gp · 1d8 piercing · range 150 ft, two-handed\nArrows, 20 · 1 gp\n\nARMOR · price · Armor Class\nLeather · 10 gp · 11 + your Dex modifier\nStudded leather · 45 gp · 12 + your Dex modifier\nScale mail · 50 gp · 14 + your Dex modifier, maximum +2\nChain mail · 75 gp · 16, flat. Dex does not apply.\nShield · 10 gp · +2 Armor. Takes a hand.\n\nKIT, on a table by the door\nRope, 50 ft · 1 gp · Torches, 10 · 1 sp · Tinderbox · 5 sp · Bedroll · 1 gp · Rations, 10 days · 5 gp · Waterskin · 2 sp · Backpack · 2 gp · Crowbar · 2 gp · Grappling hook · 2 gp · Explorer's pack, the lot · 10 gp",
         "hidden": "The back half of the building is a covered range — sixty yards, straw targets, a sand bank, and a bored man who resets everything. Anybody may try anything they are thinking of buying, and most of the shop's custom comes from people who came in to look."
       },
-      "body": "WHAT THEY BUY. Everything in the Player's Handbook equipment lists, at book prices. This is the party's armory and it should be simple.\n\nTHE TOY IS THE RANGE, and it is why this place exists. They can shoot, throw, or swing anything in the shop before buying it. Give every hero one roll on the range with whatever they want to try and describe what happens. That is fifteen minutes of pure fun and it costs the campaign nothing.\n\nLET THEM TRY ON THE PLATE. It is on a stand, it is enormous, and the fitters will help anybody into it who asks. Nobody is buying it. Everybody wants to wear it.\n\nTHE HOUSE COMPETITION: hit the small target at sixty yards and your name goes on the board by the door. There are eleven names on it. One of them has been there forty years."
+      "body": "WHAT THEY BUY. Everything in the Player's Handbook equipment lists, at book prices. This is the party's armory and it should be simple.\n\nTHE TOY IS THE RANGE, and it is why this place exists. They can shoot, throw, or swing anything in the shop before buying it. Give every hero one roll on the range with whatever they want to try and describe what happens. That is fifteen minutes of pure fun and it costs the campaign nothing.\n\nLET THEM TRY ON THE PLATE. It is on a stand, it is enormous, and the fitters will help anybody into it who asks. Nobody is buying it. Everybody wants to wear it.\n\nTHE HOUSE COMPETITION: hit the small target at sixty yards and your name goes on the board by the door. There are eleven names on it. One of them has been there forty years.",
+      "fieldDefs": [
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "who_is_here",
+          "Who is here"
+        ],
+        [
+          "stock",
+          "What they sell"
+        ],
+        [
+          "hidden",
+          "Hidden here"
+        ]
+      ]
     },
     {
       "schema": 1,
@@ -2076,7 +2133,7 @@ window.DM_CAMPAIGN = {
       "type": "location",
       "parent": "f-locations",
       "leadsTo": [],
-      "rev": 1,
+      "rev": 2,
       "title": "The Sugar Vault — a confectioner with a ridiculous reputation",
       "order": 66,
       "tags": [
@@ -2087,9 +2144,28 @@ window.DM_CAMPAIGN = {
       "fields": {
         "looks": "A shop built to look like a bank, because the joke has been running for sixty years. Marble counter, brass grilles, and behind them a wall of small numbered drawers going up two storeys with a rolling ladder in front of them. You do not browse. You present yourself at the counter and make a withdrawal.",
         "who_is_here": "Clerks in green visors who take the order with total gravity, write it in a ledger, and hand it over in a paper packet sealed with wax. Nobody in this building has ever smiled at a customer and the whole city finds this hilarious.",
+        "stock": "A copper a packet unless marked. The printed list on the counter has numbers and no descriptions, so ordering is a gamble unless somebody tells you what is good — and everybody in Dunlath has an opinion about the numbers.\n\nWHAT COMES BACK, if they order blind (roll a d8, or just pick):\n1 · Glass buttons. Hard, sour, and they last an hour. Universally agreed to be the best value in the city.\n2 · Something that fizzes so violently that children hold their mouths open to show each other.\n3 · A single enormous humbug. One. It is the size of an egg and it costs the same as everything else.\n4 · Salt liquorice. Nobody likes this. Everybody orders it once.\n5 · Honeycomb shards, and the packet is mostly dust, and the dust is the good part.\n6 · Little sugar animals, and no two packets have the same animals in them.\n7 · Something faintly warm that stays faintly warm. Nobody will explain it. It is delicious.\n8 · A packet of thirty tiny different things, which is the one to order if the table cannot decide.\n\nNAMED DRAWERS, the ones people ask for:\nDrawer 12 · 1 cp · the glass buttons. What a local orders.\nDrawer 88 · 2 cp · the fizzing ones. What a nine-year-old orders.\nDrawer 201 · 5 cp · a packet you are not allowed to open in the shop. The clerks are firm about this and will not say why.\nDrawer 400 · 4 gp · more than a week's wages, and the clerks will not say what is in it. Not dangerous, not magic, and genuinely worth the money.",
         "hidden": "Drawer 400 is the one everybody asks about and nobody has bought from in years, because it costs more than a week's wages and because the clerks will not say what is in it. It is not dangerous, it is not magic, and it is genuinely worth the money."
       },
-      "body": "WHY THIS EXISTS. It is a sweet shop run like a bank vault, it is enormously silly, and the boys will want to go back every single session. Opulence at pocket-money prices.\n\nTHE TOY IS THE DRAWERS. Four hundred numbered drawers and a printed list on the counter with numbers but no descriptions. Ordering is a gamble unless somebody tells you what is good, and everybody in Dunlath has an opinion about the numbers.\n\nCHEAP, HARMLESS, MEMORABLE: a copper each. Let players order by number and roll for what comes back if you like. Nothing here has a mechanical effect and nothing needs one.\n\nDRAWER 400 IS DELIBERATELY UNDECIDED. Somebody will eventually spend the money. Decide then, at the table, and make it worth it."
+      "body": "WHY THIS EXISTS. It is a sweet shop run like a bank vault, it is enormously silly, and the boys will want to go back every single session. Opulence at pocket-money prices.\n\nTHE TOY IS THE DRAWERS. Four hundred numbered drawers and a printed list on the counter with numbers but no descriptions. Ordering is a gamble unless somebody tells you what is good, and everybody in Dunlath has an opinion about the numbers.\n\nCHEAP, HARMLESS, MEMORABLE: a copper each. Let players order by number and roll for what comes back if you like. Nothing here has a mechanical effect and nothing needs one.\n\nDRAWER 400 IS DELIBERATELY UNDECIDED. Somebody will eventually spend the money. Decide then, at the table, and make it worth it.",
+      "fieldDefs": [
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "who_is_here",
+          "Who is here"
+        ],
+        [
+          "stock",
+          "What they sell"
+        ],
+        [
+          "hidden",
+          "Hidden here"
+        ]
+      ]
     }
   ]
 };
