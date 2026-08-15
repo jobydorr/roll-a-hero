@@ -26,7 +26,11 @@ The act runs from the Hearthspire ceremony to the turn — Ellum Wick's field bo
 
 ## 2. Scenes
 
-### Scene 1 — LASTLIGHT *(LOCKED 2026-08-10 — matches the bible's §6 opening; ready to stage for the DM OS)*
+### Scene 1 — LASTLIGHT *(SUPERSEDED 2026-08-14 — the DM OS is the source of truth for this scene; the draft below is kept for its reasoning only)*
+
+> **Do not run the scene from this section.** Run it from the DM OS: `LASTLIGHT › ▶ RUN THESE IN ORDER — Lastlight`, and the five beats and the encounter filed under it. The draft below predates the Dunlath build and is wrong in seven specific ways, all of which the OS settles: the city is on the height behind its wall and the Draws are out on the flats below and west of it, not sharing a spine with it; the Hearthspire stands on the flats over the fairground, not against the city wall; the harbor verse is cut; the criers name the tyrant *and* Red Flag, and no official names the boy at all until his mother does on the steps the next morning, so there is no state funeral and no "name at the top everyone shares"; Wenna is not in the dust and conducts no interview there — she is met the following morning in her office; the reason cards are cut, and the opening line is said once and then left alone; and the white wagons go to a far Reactor rather than to rest villages.
+>
+> Kept because the reasoning in it is still good and because the session-zero thinking below is the origin of what the OS now runs. **Retiring this section entirely, and replacing it with a pointer, is proposed and not yet agreed.**
 
 **The ground.** The city is long and thin, built the way cities in this world are built — along a crease, following the folded landscape's strange changes of angle. Beside and below it runs the Cinder Draw: not a wide expanse but a canyon, an engineered channel folded into itself and pushed down into depths that do not add up, lined with bridges, refinement towers, and stranger structures descending out of sight. The land around it is mostly healthy — the damage is pockets of gray and fouled wells, the scars of the old way of drawing sunsalt. The fairground runs along the rim. The Hearthspire stands against the city wall, its crown almost brushing the underside of the town above — near the roots of the clock tower whose hands the children of this city have watched all their lives.
 
@@ -110,7 +114,7 @@ The chosen collection, in Joby's words "the collection for now" — each shape i
 | Prop | For | Status |
 |---|---|---|
 | The folded sheet (sealed map) | handed out in Act One like a pamphlet | to make |
-| Reason cards (kids' homework menu) | Scene 1, top of session | to make — four seeds in Scene 1 |
+| Reason cards (kids' homework menu) | Scene 1, top of session | CUT — the opening line is said once and then left alone |
 | The Lastlight program | sells the day's three beats; later rereads as a confession | idea |
 | A grain-lantern | crowd texture; maybe a real paper lantern on the table | idea |
 | The paper bird | if the Toy Recall shape is chosen | idea |
@@ -156,4 +160,6 @@ The chosen collection, in Joby's words "the collection for now" — each shape i
 
 ## 8. Canon Deltas Pending — CAMPAIGN.md edits owed
 
-*None. The 2026-08-09 delta list (canyon Draws, mostly-healthy scarred land, linear cities, far-Reactor wagons, classic tear-monsters, the capture instrument) was absorbed into the bible on 2026-08-10 along with the locked opening — see `DECISIONS.md`, revision nine. This section stays as the mechanism: when a brainstorm settles something the bible hasn't absorbed yet, it gets listed here, and this section outranks the bible until the pass is made.*
+*None outstanding. A reconciliation pass ran on 2026-08-14 in the other direction, under a rule Joby set that day: **the DM OS is the source of truth for what actually happens in the campaign, and where the bible disagrees with it, whatever is consistent with the rest of the OS wins.** That pass rewrote `CAMPAIGN.md` §6's geography, its account of the criers, its recruitment sequence, and its session-zero kit to match what the OS runs, added the Red Flag frame-up to §3 as standing practice, and named Dunlath in §8 Q6. One tension is left deliberately unresolved and is Joby's to rule on: §2 still states as a world-wide rule that a city and its Draw share a spine, which is exactly what Dunlath does not do.*
+
+*The 2026-08-09 delta list (canyon Draws, mostly-healthy scarred land, linear cities, far-Reactor wagons, classic tear-monsters, the capture instrument) was absorbed into the bible on 2026-08-10 along with the locked opening — see `DECISIONS.md`, revision nine. This section stays as the mechanism: when a brainstorm settles something the bible hasn't absorbed yet, it gets listed here, and this section outranks the bible until the pass is made.*
