@@ -14,7 +14,7 @@ The act runs from the Hearthspire ceremony to the turn — Ellum Wick's field bo
 
 1. **Lastlight.** The ceremony, the disaster, the captures, the interview. Session one, and it doubles as session zero (see Scene 1).
 2. **The transition.** Between the fight and the first venture: how the party ends up going in. **Shape undecided — candidates in Scene 2.**
-3. **The wreck.** The party enters the dead Hearthspire and passes through the patched tear. The sealed door and the deeps are planted here.
+3. **The way in.** The order opens the ground at the Hearthspire's foot and holds it while the party steps through. The tower itself is never entered.
 4. **The first lost place.** Partly gray, under a sky that has never held a lamp. Ellum's blaze-marks. The Lastlight captives recovered — Finch among them, or deeper. The bible's saved cards: the Compass Spirit, the Foldwright glimpsed in the creases.
 5. **Home between doors.** Tobin's healing surfaces (before his filings do), the first filing Wenna wasn't told about, the gray arithmetic beginning to itch.
 6. **The satchel.** Ellum's cached field book. Routes assigned from above; a page that names a town with a dark window.
@@ -26,54 +26,34 @@ The act runs from the Hearthspire ceremony to the turn — Ellum Wick's field bo
 
 ## 2. Scenes
 
-### Scene 1 — LASTLIGHT *(SUPERSEDED 2026-08-14 — the DM OS is the source of truth for this scene; the draft below is kept for its reasoning only)*
+### Scene 1 — LASTLIGHT *(RETIRED 2026-08-14 — runs from the DM OS)*
 
-> **Do not run the scene from this section.** Run it from the DM OS: `LASTLIGHT › ▶ RUN THESE IN ORDER — Lastlight`, and the five beats and the encounter filed under it. The draft below predates the Dunlath build and is wrong in seven specific ways, all of which the OS settles: the city is on the height behind its wall and the Draws are out on the flats below and west of it, not sharing a spine with it; the Hearthspire stands on the flats over the fairground, not against the city wall; the harbor verse is cut; the criers name the tyrant *and* Red Flag, and no official names the boy at all until his mother does on the steps the next morning, so there is no state funeral and no "name at the top everyone shares"; Wenna is not in the dust and conducts no interview there — she is met the following morning in her office; the reason cards are cut, and the opening line is said once and then left alone; and the white wagons go to a far Reactor rather than to rest villages.
->
-> Kept because the reasoning in it is still good and because the session-zero thinking below is the origin of what the OS now runs. **Retiring this section entirely, and replacing it with a pointer, is proposed and not yet agreed.**
+Run it from **`LASTLIGHT › ▶ RUN THESE IN ORDER — Lastlight`** and the five beats and the encounter filed under it. The draft that stood here is deleted rather than corrected, because a second copy of a scene is how the two of them drift apart; the OS is the source of truth for what happens at the table, and this document's job is the material that has not been built yet.
 
-**The ground.** The city is long and thin, built the way cities in this world are built — along a crease, following the folded landscape's strange changes of angle. Beside and below it runs the Cinder Draw: not a wide expanse but a canyon, an engineered channel folded into itself and pushed down into depths that do not add up, lined with bridges, refinement towers, and stranger structures descending out of sight. The land around it is mostly healthy — the damage is pockets of gray and fouled wells, the scars of the old way of drawing sunsalt. The fairground runs along the rim. The Hearthspire stands against the city wall, its crown almost brushing the underside of the town above — near the roots of the clock tower whose hands the children of this city have watched all their lives.
+### Scene 2 — THE COMMISSION *(BUILT 2026-08-13 — runs from the DM OS)*
 
-**The morning.** The ministry has declared the holiday and called it Lastlight. Vendors sell blight-cakes (ash-gray icing; eat the blight and be done with it). Every child is handed a grain-lantern — one crumb of sunsalt glowing in paper, compliments of the Foldwright's mercy. The crowd sings the holiday song, which has a verse about a harbor nobody has ever seen. Two oddities, noticed only by children: the clock tower in the sky, which has never run, is running this morning ("the wind up there," the grownups say); and at the rope line a Surveyor is folding toy birds that actually flap, patient with the heap of children around it, its smile arriving a half-second late every time. During the speeches the ground shivers; the crowd does its little settling-joke laugh and carries on.
+Run it from **`THE COMMISSION › ▶ RUN THESE IN ORDER — the commission`**. Six beats, from the Surveyor in the dust to the woman and the boy on the steps.
 
-**Beat one — the honored crews.** The Cinder Draw's last workers walk the aisle in garlands, and at the back come the faded, who do not walk so much as arrive, and when the crowd cheers they wave — all together, once, like one hand. They are helped onto white wagons bound, the criers say, for the rest villages, and the departure is celebrated as the start of a well-earned paradise. The wagons roll out through the cheering; nobody watches which way they turn. *(Truth, for the DM only: the destination is a Reactor far away — a future rescue.)* At the rope line, an old woman with a ledger writes as each wagon passes, lips moving, counting.
+### Scene 3 — THE WAY IN *(BUILT 2026-08-14 — runs from the DM OS)*
 
-**Beat two — the healing.** The ceremony is led by the Rectors — the order's ritual grade, Surveyors pleated into ceremonial forms like fans and crowns, the first open display of high power most of this crowd has ever seen. At their word the canyon closes: seam by seam along its miles, the old bridges and towers folding down into it like furniture into a shutting drawer, the gray pockets and fouled wells sealed into scarred earth. What is left is the scar-line, running the length of the district — a join where the grass changes color mid-blade, where a stream approaches and does not quite meet itself, where a crow crossing it is, for half a wingbeat, simply elsewhere. Ten thousand people watch a wound being hidden and cheer a wound being healed.
+Run it from **`THE WAY IN › ▶ RUN THESE IN ORDER — the way in`**. Two beats and a stop: the tear site with its ring and the voices under the ground, then the order opening the way and the party stepping through, which is where the session ends.
 
-**Beat three — the lighting.** A lottery, because the ministry loves nothing better than a child of the city. The winner is Finch, seven, in his best shirt, given a glass reliquary holding the last crust ever scraped from the Cinder Draw — the old light to wake the new. There is no lever and no lift: there is a chamber at the Hearthspire's foot, built to take one small offering, and Finch carries the reliquary to it and sets it in while the whole city watches. Far above him the crown wakes, the condenser gathers for its first full pull, and the tower reaches into the world for slack.
+*Note: the party never enters the Hearthspire. The Reactor is not a dungeon, the fold is, and the tower's interior — salvage floors, wardens, the crown — was drafted and cut on 2026-08-14. The sealed door and the grinding moved to the middle-act Reactor template in the bible's §6.*
 
-**The disaster.** There is no slack. The condenser does not draw; it tears — and the tear does not stay at the crown. It rips down the Hearthspire's face like a seam giving way, from the broken condenser to the foot, to the chamber, to the boy. The town above jolts, and the clock tower that started running this morning comes loose from the ceiling of the world — end over end, three seconds down, into the fairground. Finch outruns the falling masonry, barely, in front of ten thousand people — **and the first monster through the tear takes him**, reliquary, best shirt, and all. Behind it come the rest: the classic things of the bad time, sealed away at the Folding and recognizable from every grandmother's story, coming through sideways and unfolding into the daylight. **Roll initiative, if the heroes choose to stand.**
 
-**During the fight.** The monsters do not only kill; they take. People are seized and carried back through the tear in front of everyone — and each hero gets both halves of the session-zero instrument: **the save** (a civilian staged into their path, who afterward says something that assumes a history) and **the one you couldn't reach** (someone carried into the tear beyond their help). The fight writes the rescue list, and Finch — first taken, witnessed by the party and by Wenna Ash — is the name at the top everyone shares.
-
-The Rectors join the fight, and the staging rule for them is firm: **they are spectacle, not allies with dice.** They handle the impossible far off — a falling slab folded away a yard above the grandstand, a street pinched shut to pen the worst of what came through, ceremonial forms opening into war-shapes — and they never enter the party's corner of the fairground, never roll, and never save anyone the heroes could have saved. Their display is the party's first education in what the order can do; the heroes' fight stays entirely the heroes' fight.
-
-**The dust.** The tear is patched — patched, not healed. The order bows to the survivors and resumes writing faces; the bird-folding Surveyor is one of the writers. By dusk the criers have the story threaded through the crowd: the tyrant's spite, an attack on the cure itself, and brave little Finch fallen — a hero, a state funeral to come. The party saw otherwise, because they were looking up. Wenna Ash finds them in the dust and conducts the interview (session-zero instrument four), and the two Surveyors file four new faces by evening, which is how the heroes acquire a clerk.
-
-**Session one doubles as session zero.** The five instruments are in `CAMPAIGN.md` §6; the fight adds the sixth (*the one you couldn't reach*, above). The homework protocol:
-
-- At the top of the session, Joby's line: *each of you has your reason for being here today — and I'll leave it to you to decide what that reason is.* Nobody has to answer now.
-- Adults: open homework. Kids: a reason card with four seeds, plus *or make up your own*:
-  1. Someone you know is among the honored crews being retired today.
-  2. You are looking for someone, and crowds are where you look.
-  3. Your family fought in the war, and came to see what the peace bought.
-  4. You came to work the crowd — perform, sell, compete, impress.
-- The due date lives in the fiction: Wenna's questions in the dust are the collection point; stragglers have until session two.
-- Every answer is canonized by saying it back, recorded in §7, and must visibly surface in the world within two sessions. Once spoken, a reason is a promise. No answer is wrong — attachment is the DM's work, not the player's.
-
-### Scene 2 — the transition *(collection CHOSEN 2026-08-10; details open — Joby has alteration ideas pending for all three)*
+### The transition collection *(CHOSEN 2026-08-10; unbuilt — Joby has alteration ideas pending for all three)*
 
 The chosen collection, in Joby's words "the collection for now" — each shape is settled as *present*, and none is settled in its details:
 
 1. **The Badge.** The Registry summons the party — and the interview is glowing: the ministry offers them positions as licensed breach-auxiliaries. Pay, a badge, lawful standing — and the unstated trap that auxiliaries are how the occupation points talented fighters away from the creases. Wenna must out-argue a salary; sneaky players can keep the badge as a double-cover.
 2. **The Empty Coffin.** Finch is declared fallen; the party, as heroes of Lastlight, stand at the front of a state funeral for a boy they watched carried away alive. Wenna's one true sentence: *he's not in that box — do you want to go get him?*
-3. **The Paper Bird.** The bird-folding Surveyor returns to confiscate the toys ("unaccounted folds must be recovered") with perfect courtesy — the only urgency any official shows all day. One hidden bird ends up with the party, quietly trying to unfold itself and drift toward the patched tear. **Joby has alteration ideas for this one specifically — do not build it further until they land.**
+3. **The Paper Bird.** The bird-folding Surveyor returns to confiscate the toys ("unaccounted folds must be recovered") with perfect courtesy — the only urgency any official shows all day. One hidden bird ends up with the party, quietly trying to unfold itself and drift toward the tear site. **Joby has alteration ideas for this one specifically — do not build it further until they land.**
 
 *Dropped or demoted to texture: the Forty-One Slips (the claims table can still operate at the funeral's edge) and the Recantation (available as connective tissue if needed). Sequencing of the three chosen shapes: undecided.*
 
-### Scene 3 — the wreck *(not yet drafted; note: the wagon-ruts/garland plant from the bible's First Door section is dead — see §8)*
+### Scene 4 — the first lost place *(NOT DRAFTED — this is the next thing to build)*
 
-### Scene 4 — the first lost place *(not yet drafted; blocked on player material and the zone build)*
+The party steps through at the end of Scene 3, so the session after opens on the far side. Blocked on nothing except the decision about what is in there; the bible's §6 has it partly gray, under a sky that has never held a lamp, with the first of Ellum Wick's blaze-marks somewhere in the gray country.
 
 ---
 
@@ -86,8 +66,8 @@ The chosen collection, in Joby's words "the collection for now" — each shape i
 | # | Encounter | Type | Where it runs | Status |
 |---|---|---|---|---|
 | 1 | Lastlight — the things through the tear | combat (initiative, opt-in) | Scene 1 | BUILT & PUSHED (campaign.js v5): 6 snatch-goblins in two waves + 3 crease-wolves; tear-ogre seen, penned, never fought; per-hero moments staged (fighter holds the grandstand gap, rangers' long shots force drops, bard steadies the crowd) |
-| 2 | Surveyor wardens in the ruined stairwells | combat | Scene 3 | not drafted — teaches coming-undone |
-| 3 | The climb to the patched tear | exploration | Scene 3 | not drafted |
+| 2 | *(none in Scene 3)* | — | THE WAY IN | Scene 3 has no fight: the party is let through, not fought through. The [[cr-warden]] sheet is in the bestiary, unused until a tower is climbed in the middle acts. |
+| 3 | The first lost place | not yet designed | Scene 4 | blocked on what is in there — the next build |
 
 **Monster policy (settled 2026-08-09).** What comes through tears is the classic bestiary — the monsters of the bad time, sealed at the Folding, recognizable from every grandmother's story. Mechanically: SRD-licensed creatures (`bestiary.js` pipeline) reskinned with folded-space flavor — they arrive sideways, unfold into daylight, and *take captives*; for product-identity classics, original analogues with our own names and wholly original prose (book text never enters the repo). Side effect worth playing: a breach full of storybook monsters *confirms* the ministry's story in the crowd's eyes — the Fold still protects.
 
@@ -140,7 +120,7 @@ The chosen collection, in Joby's words "the collection for now" — each shape i
 | Hettie counting wagons | rope line | 0 |
 | The Rectors' power, displayed as protection | the healing + the fight | 0 |
 | Tobin files something Wenna wasn't told | first three sessions | 0 |
-| The sealed door in the wreck | Scene 3 | 0 |
+| The sealed door, and the grinding below it | a Reactor, middle acts | 0 |
 
 **Consequence journal.** After each session, three player decisions and their logical implications; payoffs delayed three to five sessions. Start empty.
 
@@ -151,10 +131,10 @@ The chosen collection, in Joby's words "the collection for now" — each shape i
 - **Player reasons collected:** none yet — homework protocol not yet run.
 - **Keepsakes named:** none yet.
 - **Sessions played:** none. The campaign has not opened.
-- **Scene 1 is LOCKED** (2026-08-10), mirrored in the bible's §6 opening, and **PUSHED to the DM OS** — the runnable draft (read-alouds, beat sequence, staging rules, session-zero machinery) lives in `campaign.js` (v4) as the run sheet inside a **LASTLIGHT scene folder** (scenes are containers per Joby), alongside top-level master folders **NPCs — the cast** (Wenna, Tobin, Finch, Hettie) and **Monsters — the bestiary** (empty until the stat-block push). Verified in a local DM OS, both sync paths. Joby: hard-refresh `dm.html`, then — because the merge keeps *your* filing on updates — pull the new structure with **Tools → New workspace → Sync from campaign** (clean, backs up first) or just drag the five docs into the new folders if you've made edits you want to keep.
+- **Scenes 1 to 3 are BUILT and PUSHED** — LASTLIGHT, THE COMMISSION and THE WAY IN all run from the OS. *(Historical note, kept for the sync warning it carries:)* Scene 1 was locked 2026-08-10 and pushed to the DM OS — the runnable draft (read-alouds, beat sequence, staging rules, session-zero machinery) lives in `campaign.js` (v4) as the run sheet inside a **LASTLIGHT scene folder** (scenes are containers per Joby), alongside top-level master folders **NPCs — the cast** (Wenna, Tobin, Finch, Hettie) and **Monsters — the bestiary** (empty until the stat-block push). Verified in a local DM OS, both sync paths. Joby: hard-refresh `dm.html`, then — because the merge keeps *your* filing on updates — pull the new structure with **Tools → New workspace → Sync from campaign** (clean, backs up first) or just drag the five docs into the new folders if you've made edits you want to keep.
 - **Decisions due from Joby:** alteration ideas for the three chosen transition shapes (the Badge, the Empty Coffin, the Paper Bird) and their sequencing; the Rectors' name and faces; whether "Lastlight," "Finch," and the other working names stand.
 - **Encounter 1 is BUILT and PUSHED** (campaign.js v5, 2026-08-10): the tear family lives as creature sheets in the Monsters master folder (snatch-goblin HP 10/AC 12, the Snatch drag-and-drop-on-hit; crease-wolf HP 14/AC 13, hunts folded; tear-ogre HP 30/AC 13, Heroic band, statted for later), and the fairground encounter doc sits inside the LASTLIGHT scene folder with setup, waves, tactics, and per-hero moments. Verified as full stitched sheets in a fresh DM OS. **Masters contain, scenes cast** — the master folders hold the one true sheets as children, and a scene or encounter *casts* the ones it uses (the "Existing NPC/creature" picker), which makes the full sheet render read-only inside that container. LASTLIGHT casts its four NPCs; the fairground encounter casts its three monsters.
-- **Build queue (agreed order):** NPC stats locked (Wenna, Tobin as Act One healer, wardens) → Scene 3 (the wreck) → reason cards and the folded-sheet prop → transition scenes once Joby's alteration ideas land.
+- **Build queue:** Scene 4, the first lost place, is the next build — everything up to the party stepping through the portal is done and in the OS. Then NPC stats (Wenna, Tobin as Act One healer), the folded-sheet prop, and the transition collection once Joby's alteration ideas land. *(Reason cards are cut.)*
 
 ---
 
