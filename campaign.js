@@ -1607,13 +1607,36 @@ window.DM_CAMPAIGN = {
       "fields": {
         "hook": "They have seen the paper people be magnificent. This is the first time they see them working, and working is worse: a dozen of them standing in a field, doing nothing at all, and having done nothing at all for eleven days.",
         "read_aloud": "\"You can see it from the top of the slope. The tower is still white, still gleaming, without a mark of weather on it, and the crown at the top is still lit — eleven days on, at midday, glowing away up there like a lamp somebody forgot.\n\nAt the foot of it there is a ring of the paper people. A dozen or so, evenly spaced, facing outward, standing on the grass. They are not holding anything and not looking at anything, and every so often one of them is replaced by another and neither of them says a word about it.\n\nThe ground inside the ring is wrong. A bird flies into it and takes far too long to come out the other side. The grass moves in a wind that reaches you a moment later than it should. Somebody's dog will not go near it, and neither will the hot-nut woman, who has set her stall exactly as close as she is willing to stand and no closer.\n\nAnd if you stand still and stop talking, you can hear something under it. A long way off and very faint, and it is a great many people.\"",
+        "env": "• THE WALK OUT — west gate, down the slope, past the fairground, which is still half struck: stalls part dismantled, rope lines down, a carousel standing on its own with nobody near it.\n• SOUNDS — the city noise thins out about a hundred yards from the ring and then stops. People near the rope talk quietly without having decided to.\n• SMELLS — wet grass, and nothing whatsoever from the tower. No smoke, no burning, no dust. The worst disaster in living memory does not smell of anything.\n• UNDERFOOT — grass trampled flat by eleven days of people coming to look, and then a line where the trampling stops and nobody has walked at all.\n• WHO IS HERE — Draw families mostly, standing the way people stand at a grave. A bored human cordon. The hot-nut woman, doing steady business at the exact edge of where she is willing to stand.\n• AND UNDER ALL OF IT — voices, faint, a long way off, and only if everybody stops talking. Make them stop talking to hear it.",
         "if_they": "…show the writ, the human cordon waves them through without reading it. The ring is different: one of them turns, takes their names, thanks them with enormous sincerity, and is plainly expecting them, because Wenna's paper went across yesterday afternoon.\n\n…ask what the sound is, the answer is: the people who went through. It says this kindly and without drama, as though it had assumed they knew, and it is the reason the party is about to do something insane.\n\n…ask why the order does not go in and get them itself, the answer is polite and complete: it cannot spare anyone. Push, and it says that those who go in do not come out, and that this has been established. It will not say how many times.\n\n…ask about the crown still being lit, the warden on duty says it is being monitored. That is all it says, and it is not being evasive — it genuinely believes that is the answer.",
         "outcome": "Expected, thanked, and standing at the edge of ground that nobody else will walk on. Then [[b-wreck-2|they open the way]]."
       },
       "body": "THE IMAGE TO LAND is a dozen enormously powerful beings standing in a field doing nothing, forever, because it is the only thing anybody can do. Everything the party works out later about what this occupation is spending hangs off having seen it.\n\nKEEP THE HOT-NUT WOMAN. A catastrophe with a snack stall parked at the edge of it is exactly this city.\n\nTHE SOUND IS THE HOOK, and it should arrive before anybody asks them to go in. Voices, a long way off, from a place that is forty feet away. That is what makes the next beat a decision instead of an order.",
       "schema": 1,
-      "rev": 2,
-      "leadsTo": []
+      "rev": 3,
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
     },
     {
       "id": "b-wreck-2",
@@ -1629,13 +1652,36 @@ window.DM_CAMPAIGN = {
       "fields": {
         "hook": "Everything the party has been given this week was handed over by somebody being kind to them. This is the last of it, and it is a hole in the world.",
         "read_aloud": "\"Four of them come in off the ring and stand around a patch of ordinary grass, and they do not hurry. Their hands move for about eight seconds — the same unhurried, never-going-back-to-correct-anything way you watched one fold a writ in an office two days ago — and the air in front of you stops agreeing with itself.\n\nThere is a way. It is about the size of a door and it is not a door, and looking straight at it is difficult in a way you cannot explain to each other afterward. Through it, or past it, or under it, there is somewhere with a different light in it.\n\nAnd the sound is not faint anymore.\n\nThe one who took your names says: 'We will hold it open. We cannot hold it open indefinitely, and we cannot come with you.' It says the second part apologetically, the way you would decline an invitation you actually wanted. 'Bring back who you can.'\"",
+        "env": "• THE EIGHT SECONDS — the same unhurried hands they watched fold a writ two days ago. No chanting, no gesture anybody could copy, nothing anyone would call a ritual. It looks like competent work.\n• THE WAY ITSELF — about the size of a door, standing in open air with nothing holding it up and nothing around it. Looking straight at it is difficult in a way nobody manages to describe to each other afterward.\n• THROUGH IT — a different light, warmer than this one, and plainly the wrong time of day.\n• THE DRAUGHT — air coming out of it, and it is warm, and it smells of somewhere outdoors.\n• SOUND — the voices stop being faint. That is the change everybody at the table will feel, and it is the whole argument for going in.\n• THE AUDIENCE — the cordon, the people at the rope, and the hot-nut woman have all stopped what they were doing and are watching four young people decide.",
         "if_they": "…ask how long they have, it says as long as it can manage, and it will not give a number, because it does not have one and will not invent one to comfort them.\n\n…ask how they get back, it says: the same way. Do not resolve tonight whether that is true.\n\n…ask what is in there, every one of them says the same thing in slightly different words: nobody knows. They are not hiding anything. Nobody has ever come back to tell them.\n\n…refuse, nobody makes them, nobody is angry, and the offer does not expire. The eleven stay where they are, and so does the sound.\n\n…go through, go around the table and let each player say how their hero does it. That is the last thing that happens tonight.",
         "outcome": "STOP HERE, the moment the last hero is through. No description of the far side, no fight, no explanation. The table goes home standing in a doorway."
       },
       "body": "THIS IS THE CLIFFHANGER and it does not need dressing up. Four people who could not save a boy eleven days ago are walking into the place he went, on purpose, because they can hear him.\n\nPLAY THE OPENING AS A COURTESY, not a ritual. Nobody chants. It is four polite beings doing an eight-second piece of work for some young people they think very highly of, and the horror is entirely in how normal it is for them.\n\nDO NOT LET ANYONE SAY WHAT IS ON THE OTHER SIDE, including the party once they are through. Next session opens on it.",
       "schema": 1,
-      "rev": 2,
-      "leadsTo": []
+      "rev": 3,
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
     }
   ]
 };
