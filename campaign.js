@@ -169,7 +169,7 @@ window.DM_CAMPAIGN = {
       "title": "1 — The walk up: through Dunlath to the gate",
       "parent": "f-lastlight",
       "order": 10,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "session1"
@@ -178,10 +178,33 @@ window.DM_CAMPAIGN = {
       "fields": {
         "hook": "The best day of the year, and the whole city is walking the same direction. Open here so the players get twenty minutes of a world worth saving before anything happens to it.",
         "read_aloud": "\"The whole city is walking out through the west gate, and everyone is walking the same way you are. Overhead hangs the country in the sky — upside-down roofs, a road you could never follow, and the clock tower every kid here grew up watching. Somebody's little sister says it first: the hands are moving. They have never moved. The grownups say it must be the wind up there.\"",
+        "env": "• SIGHTS — fresh bunting across every street, not a day old. Garlands on every house door. The Emporium standing open and completely empty. Shutters down on the Glasshouse with a board reading BACK TONIGHT — LATE.\n• PEOPLE — best cloth, festival ribbons pinned on, everybody slightly too warm and determined not to mention it.\n• SOUNDS — bells from three directions not agreeing with each other. A drum somewhere ahead. The crowd, which is the sound of people certain that today is going to be good.\n• SMELLS — hot fat, honey, crushed grass once they are past the gate, and the faint mineral smell of sunsalt.\n• UNDERFOOT — swept stone, dropped ribbon, paper flags. Somebody is selling them on the corner and somebody else is giving them away.\n• ODD, and nobody can explain it — every window in the city has a lamp lit, in broad daylight. It is simply the custom on this day.",
         "if_they": "…look at anything, it is open, bright and free today. Every shop is shut with a note on the door. Every window has a lamp lit in broad daylight, which is the custom and which nobody can explain. Children have paper flags. Somebody is selling them at the corner and somebody else is giving them away.\n\n…dawdle, let them. The crowd carries them along at its own pace and they will not miss anything.\n\n…go through the gate, the ground drops away and the whole valley is in front of them. Hand straight to [[b-last-2|the fairground]].",
         "outcome": "Out through the west gate and down the slope, in a crowd, in the best mood any of them has been in for a year."
       },
-      "body": "SIGHTS: fresh bunting strung across every street, not a day old. Garlands on the door of every house. The Emporium standing open and completely empty. Shutters down on the Glasshouse with a board reading BACK TONIGHT — LATE. People in their best cloth, festival ribbons pinned on, everyone slightly too warm.\n\nSMELLS: hot fat, honey, crushed grass past the gate, and the faint mineral smell of sunsalt off ten thousand lit lamps burning for no reason but the day.\n\nSOUNDS: bells from three directions not agreeing. A drum somewhere ahead. The crowd's noise, which is the sound of people who are certain that today is going to be good.\n\nSEED ONE THING PER HERO that does not line up, said once and not explained — a stair with one step too many, a verse of a song nobody else seems to hear, a name that draws a blank from someone who should know it. Do not follow up. These are the players' threads, not yours."
+      "body": "SEED ONE THING PER HERO that does not line up, said once and not explained — a stair with one step too many, a verse of a song nobody else seems to hear, a name that draws a blank from someone who should know it. Do not follow up. These are the players' threads, not yours.",
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
     },
     {
       "schema": 1,
@@ -515,7 +538,7 @@ window.DM_CAMPAIGN = {
       "title": "1 — In the dust: a Surveyor thanks them",
       "parent": "f-commission",
       "order": 20,
-      "rev": 2,
+      "rev": 3,
       "tags": [
         "act1",
         "session2"
@@ -524,10 +547,33 @@ window.DM_CAMPAIGN = {
       "fields": {
         "hook": "They have just fought monsters in front of ten thousand people, and the first thing the government does is walk over and be delighted with them. It is the warmest reception any of them has ever had, and it is being conducted by something that is not a person.",
         "read_aloud": "\"Ten minutes ago this was a fair. The grass is gone — it is mud and trampled sugar and paper flags pressed flat, and there is a smell of hot fat still coming off a stall nobody has gone back to turn off. Somewhere behind you a bell is ringing and nobody is answering it. And over all of it is the sound of ten thousand people calling names, which does not sound like screaming at all. It sounds like a crowd looking for its coats.\n\nOne of the paper people is coming toward you, and it is smiling. It has to arrange the smile first — the creases move, and then the expression arrives, a half-second late, the way a word arrives in a language you are still learning. It is very tall up close, and it is made of one piece.\n\n‘You stood,’ it says. ‘Ten thousand of you, and four stood. Do you know how rarely that happens? I have written it down. I have written all of it down.’\n\nIt looks at each of you in turn, and it says your name — and none of you has told it your name.\"",
+        "env": "• THE SURVEYOR UP CLOSE — very tall, and made of one piece. No seam, no join, nothing stuck on anywhere. It arranges the smile first and then the expression arrives, about half a second late.\n• ITS VOICE — unhurried, warm, and very slightly too loud for the distance, like somebody who learned volume out of a book.\n• WHAT IS NOT THERE — no bodies, and no blood. People were taken, not killed, and nobody has said that out loud yet. Let a player be the one to notice.\n• UNDERFOOT — churned mud, crushed sugar, paper flags pressed flat, and grain-lanterns still glowing in the muck.\n• AROUND THEM — survivors sitting down wherever they stopped. Somebody laughing much too loud, because that is a thing people do.\n• LIGHT — bright mid-afternoon, and the day has hours left in it, which feels wrong.",
         "if_they": "…ask how it knows their names, it is delighted to explain: it wrote them down, of course, that is what it is for, and it produces the page and shows them. Nothing is hidden and that is what makes it unsettling.\n\n…are hostile or suspicious, it is not offended in the least. It says that suspicion is reasonable after a day like this one, and offers the rooms anyway, and means it.\n\n…ask about the boy at the tower, it says it is very sorry and that the count is being taken and that they will be told. It will not be told. Nobody follows up. That is deliberate and should pass without comment.\n\n…ask what it wants, it says: nothing tonight. Tonight they should sleep somewhere warm. That is true.",
         "outcome": "The party is invited, as a token of the ministry's gratitude, to be guests at [[loc-ossuary|the Ossuary]] — the finest house in the city — for as long as they care to stay. A runner will bring word in the morning. Then it bows, and goes back to writing down faces."
       },
-      "body": "The Surveyor here is [[npc-rector|the Rector of the Set Square]], though it does not say so and is not in ceremonial form. Use the same being tomorrow at the awarding, and let a player be the one to notice it is the same one; a world in which one official handles you personally from the first minute is a smaller and more watched world than one with a cast of thousands.\n\nRun it warm. The temptation is to play the Surveyors cold, and cold is both wrong and boring at a table with children in it. This thing is thrilled with them. It behaves like a proud schoolteacher who happens to be folded out of a single sheet of something that is not quite paper, and the horror is entirely in the geometry and the timing rather than in the manner."
+      "body": "The Surveyor here is [[npc-rector|the Rector of the Set Square]], though it does not say so and is not in ceremonial form. Use the same being tomorrow at the awarding, and let a player be the one to notice it is the same one; a world in which one official handles you personally from the first minute is a smaller and more watched world than one with a cast of thousands.\n\nRun it warm. The temptation is to play the Surveyors cold, and cold is both wrong and boring at a table with children in it. This thing is thrilled with them. It behaves like a proud schoolteacher who happens to be folded out of a single sheet of something that is not quite paper, and the horror is entirely in the geometry and the timing rather than in the manner.",
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
     },
     {
       "schema": 1,
@@ -536,7 +582,7 @@ window.DM_CAMPAIGN = {
       "title": "2 — A night at the Ossuary",
       "parent": "f-commission",
       "order": 30,
-      "rev": 3,
+      "rev": 4,
       "tags": [
         "act1",
         "session2"
@@ -545,10 +591,33 @@ window.DM_CAMPAIGN = {
       "fields": {
         "hook": "Hot water, clean sheets, and more food than any of them has seen at one table, on the worst night the city has had in living memory. Let them enjoy it, and let the enjoying be slightly difficult.",
         "read_aloud": "\"[[loc-ossuary|The Ossuary]] was a bone-house three hundred years ago and the city never bothered to rename it. The vaults are still down there. They keep the wine in them now.\n\nAbove ground it is the finest house in Dunlath, and tonight every window on its face is lit while the rest of the street is dark. Hot water, deep as a cart. A bed each. Supper is a whole roast bird apiece, bread still warm, honey, and a bowl of small sharp apples — more food than your family eats at a wedding, and nobody is going to ask you to pay for any of it.\n\nThe window does not shut all the way. Four floors down and a long way off, people are still calling names.\n\nAnd there is a printed sheet on the table beside the supper, and the ink is new enough to smell, and there is one in every room in the house tonight. RED FLAG BREAKS THE HEARTHSPIRE. Refusers. Enemies of the Accord. Eleven souls. A reward, and an address.\"",
+        "env": "• WARMTH — the floors are warm underfoot and there is no fire anywhere in the building. Nobody who lives here finds that worth mentioning.\n• SIGHTS — every window on the face of the house lit while the whole street outside is dark. Marble, deep rugs, and three hundred years of somebody else's ancestors in the vaults downstairs.\n• SOUNDS — the house is very quiet. All the noise is outside and four floors down, and the window does not shut all the way.\n• SMELLS — hot water, soap, roast bird, warm bread. Under it, faintly, something mineral and old coming up the stairs from the vaults.\n• TEXTURE — more linen than any of them has touched in their lives, and a bell-pull beside each bed that genuinely summons a person.\n• THE STAFF — unfailingly kind and a little too attentive, and they have already unpacked everybody's belongings as a kindness.",
         "if_they": "…go back out to help, let them, and let it matter: they can find one person tonight, and it should be someone small and alive and not the one everyone is thinking about. The ministry does not stop them and notes it approvingly in the morning.\n\n…try to leave the city, the doors are not locked and nobody follows. There is simply nowhere to go and a summons finds them wherever they are.\n\n…search their rooms or ask who packed their things, the answer is that the staff did, they are very sorry, they assumed it would be a kindness. It was a kindness. It is also the second time today somebody has handled their belongings without being asked.\n\n…ask the staff who Red Flag is, they drop their voices without noticing they have done it, and everything they know came off the same sheet an hour ago. By morning they will know it the way people know things they have always known.\n\n…ask whether anybody doubts it, nobody in the building does. There is no dissenting voice in the Ossuary tonight and there should not be one.",
         "outcome": "Morning, and it has rained in the night — a low grey wet morning, the first bad weather in a fortnight.\n\nA human runner, sixteen and out of breath, brings four summonses on ordinary paper: their names, the hour, and the address of [[loc-setsquare|the Set Square]]. Nothing folds itself, nothing flaps. The state does not need to be strange when it is simply being obeyed."
       },
-      "body": "This beat exists to buy the scene its contrast. The party should be comfortable, fed, and well treated in a building full of light while the city grieves in the dark outside, because that is the arrangement the whole campaign is about, and it is much better felt in a bathtub than explained in a speech.\n\nKeep it short at the table — ten minutes — unless the players want to use the evening, in which case give them the night and let them find somebody."
+      "body": "This beat exists to buy the scene its contrast. The party should be comfortable, fed, and well treated in a building full of light while the city grieves in the dark outside, because that is the arrangement the whole campaign is about, and it is much better felt in a bathtub than explained in a speech.\n\nKeep it short at the table — ten minutes — unless the players want to use the evening, in which case give them the night and let them find somebody.",
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
     },
     {
       "schema": 1,
