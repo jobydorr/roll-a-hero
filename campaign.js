@@ -190,7 +190,7 @@ window.DM_CAMPAIGN = {
       "title": "2 — The fairground: the view, and the games",
       "parent": "f-lastlight",
       "order": 20,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "session1",
@@ -200,10 +200,33 @@ window.DM_CAMPAIGN = {
       "fields": {
         "hook": "The establishing shot of the entire campaign, and then half an hour of a fair. Let them play. Everything that happens later is measured against how good this was.",
         "read_aloud": "\"Below the gate the ground opens out, and you can see the whole of it at once.\n\nThe fairground first — tents, ropes, banners, ten thousand people and more coming. Beyond it, standing over everything, the Hearthspire: white and new and gleaming, banded towers and arches at the base with pipework curving between them, and out of the middle one spire going up and up to a crown that is not lit yet.\n\nAnd past the tower, the country of the Draws. Straight-sided channels cut into the flats, running for miles, dropping so far down you cannot see the bottom of them from here. All of them dead and dry except the last one, and along the rim of that one, tall folded figures are taking their places.\"",
+        "env": "• SIGHTS — tents, rope lines and banners; the Hearthspire white and unlit standing over all of it; the grandstand being fussed over by people in good coats; the Draws beyond, going down out of sight.\n• SOUNDS — a drum, a barker, a hundred children, and under it the crowd, which is the noise of people certain today will be good.\n• SMELLS — hot fat, sugar, trampled grass, animals, and ten thousand warm people.\n• UNDERFOOT — churned grass going to mud in the busy lanes, sawdust laid over the worst of it, dropped food everywhere.\n• IN THEIR HANDS — a gray-iced blight-cake, a paper lantern with one grain of sunsalt in it, a ribbon, a dyed feather.\n• ODD, said once and not explained — a stair with one step too many, a verse of the song nobody else seems to hear, a name that draws a blank from somebody who should know it.",
         "if_they": "…want to play, see the games below. Give each a single roll and move on fast.\n\n…wander the stalls: gray-iced blight-cakes for a coin, paper lanterns with one glowing grain of sunsalt inside for anyone small enough to be given one free, ribbons, dyed feathers, roast nuts, and a man at a petition rail saying what he says every week — grateful for the Fold, and whose world is this exactly — while half the crowd nods and keeps walking toward the food.\n\n…find the paper people, there is one at the rope line folding toy birds that actually flap, patient under a heap of children. It will fold one for any hero who asks. THIS MATTERS LATER — it is the same shop and the same hands as the bird in [[b-comm-6|the last beat of THE COMMISSION]].",
         "outcome": "Fed, hot, carrying a paper bird and a ribbon, and enjoying themselves. Then the drums change and everybody starts moving toward the grandstand — [[b-last-3|the ceremony]]."
       },
-      "body": "THE GAMES. One roll each, no consequences, purely for the fun of it. Award something silly and worthless for a win.\n\n• Knock the hat off the post with a beanbag — beat 12.\n• Guess the weight of a stone brought up out of the Draw — beat 15. Nobody has ever won this and the stone is heavier than it has any right to be.\n• The greased pole, with a ham on the top — beat 14, and a crowd gathers.\n• Race a paper bird against another child's, down the length of a rope — beat 10, and you may cheat.\n• Have your trade guessed by a man in a red coat, or win a cake — beat 13 to stump him. He will guess a hero's trade correctly and unnervingly fast.\n• Blight-cake eating, against a nine-year-old, for a ribbon — beat 16, and the nine-year-old is a professional.\n\nSMELLS: fat, sugar, trampled grass, animals, and ten thousand warm people.\n\nAlso here and NOT to be pointed at: an old woman at the rope line with a ledger under her arm, writing, not smiling. That is [[npc-hettie|Hettie Sarn]]. And a woman working through the crowd looking at faces against a sheaf of little drawings — [[npc-wenna|Wenna Ash]], who will find them properly this evening."
+      "body": "THE GAMES. One roll each, no consequences, purely for the fun of it. Award something silly and worthless for a win.\n\n• Knock the hat off the post with a beanbag — beat 12.\n• Guess the weight of a stone brought up out of the Draw — beat 15. Nobody has ever won this and the stone is heavier than it has any right to be.\n• The greased pole, with a ham on the top — beat 14, and a crowd gathers.\n• Race a paper bird against another child's, down the length of a rope — beat 10, and you may cheat.\n• Have your trade guessed by a man in a red coat, or win a cake — beat 13 to stump him. He will guess a hero's trade correctly and unnervingly fast.\n• Blight-cake eating, against a nine-year-old, for a ribbon — beat 16, and the nine-year-old is a professional.\n\nAlso here and NOT to be pointed at: an old woman at the rope line with a ledger under her arm, writing, not smiling. That is [[npc-hettie|Hettie Sarn]]. And a woman working through the crowd looking at faces against a sheaf of little drawings — [[npc-wenna|Wenna Ash]], who will find them properly this evening.",
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
     },
     {
       "schema": 1,
@@ -212,7 +235,7 @@ window.DM_CAMPAIGN = {
       "title": "3 — The ceremony: the crews, the wagons, the healing",
       "parent": "f-lastlight",
       "order": 30,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "session1"
@@ -221,10 +244,33 @@ window.DM_CAMPAIGN = {
       "fields": {
         "hook": "The state at its most generous and most beautiful, doing something enormous in public, and every disturbing thing in it is going past too fast and too pleasantly for anyone to catch.",
         "read_aloud": "THE CREWS: \"The Cinder Draw's last workers come down the aisle in garlands, and the noise is deafening, and they are loving it. And at the back come the faded — the ones who worked the deepest, longest. They do not walk so much as arrive. And when the crowd cheers them, they wave: all together, once, like one hand.\"\n\nTHE HEALING: \"The Rectors take their places along the canyon's rim — tall folded figures pleated into fans and crowns — and when they move, the Draw moves. The canyon closes down its whole length, bridges and towers and all, the way a drawer shuts on everything inside it. Where it was, there is a line in the earth. On one side of the line the grass is one green; on the other side, another. A stream runs up to the line and does not quite meet itself. A crow flies across and — skips. Ten thousand people watch a wound being hidden, and cheer a wound being healed.\"",
+        "env": "• SIGHTS — the roped aisle, garlands, the grandstand full; the Rectors spaced along the canyon rim a long way off and very visible; two Surveyors at the edge with tablets, writing all day.\n• SOUNDS — a roar for the crews, and then, when the Draw closes, nothing at all. The loudest thing that happens today is the silence after.\n• SMELLS — crushed grass, hot bodies in good cloth, and the faint mineral smell of sunsalt off the lamps.\n• UNDERFOOT — packed in shoulder to shoulder, and nobody can go anywhere. That is not hostility, it is ten thousand people.\n• LIGHT — flat midday, no shadows worth the name, everything a bit too bright to look at directly.\n• THE WAGONS — white, clean, quiet on their wheels, and gone before the main event.",
         "if_they": "…ask about the faded, anyone will tell them warmly: they gave the most, so they get the best rest. White wagons, a good village, and no more work ever again.\n\n…watch the wagons go, they roll out before the lighting and nobody watches which way they turn. The old woman at the rope line writes down each one as it passes, lips moving, counting.\n\n…try to reach the crews or the wagons, the crowd is ten thousand deep and cheerful and immovable. No hostility, no guards. They simply cannot get there, today.",
         "outcome": "The Draw is shut, the wagons are gone, the crowd is at its loudest, and the drums stop for [[b-last-4|the lighting]]."
       },
-      "body": "HOW IT IS LAID OUT. A grandstand for the ministry and the guilds. A roped aisle from the fairground to the tower's foot. Ten thousand standing. Rectors spaced along the rim of the Draw, a long way off and very visible. Two Surveyors at the edge of the ground with tablets, writing down faces, all day, cheerfully.\n\nWHO IS HERE: [[npc-hettie|Hettie Sarn]] at the rope line with her ledger. [[npc-wenna|Wenna Ash]] working the crowd. The honored crews. The faded. The Rectors. Everybody in Dunlath.\n\nTHE THREE THINGS GOING PAST TOO FAST: the faded waving in unison; the white wagons leaving before the main event with nobody watching them go; and an old woman counting them. Say each once. Do not linger and do not repeat them."
+      "body": "HOW IT IS LAID OUT. A grandstand for the ministry and the guilds. A roped aisle from the fairground to the tower's foot. Ten thousand standing. Rectors spaced along the rim of the Draw, a long way off and very visible. Two Surveyors at the edge of the ground with tablets, writing down faces, all day, cheerfully.\n\nWHO IS HERE: [[npc-hettie|Hettie Sarn]] at the rope line with her ledger. [[npc-wenna|Wenna Ash]] working the crowd. The honored crews. The faded. The Rectors. Everybody in Dunlath.\n\nTHE THREE THINGS GOING PAST TOO FAST: the faded waving in unison; the white wagons leaving before the main event with nobody watching them go; and an old woman counting them. Say each once. Do not linger and do not repeat them.",
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
     },
     {
       "schema": 1,
