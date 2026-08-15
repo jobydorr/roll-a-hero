@@ -1229,23 +1229,46 @@ window.DM_CAMPAIGN = {
       "schema": 1,
       "id": "b-slip",
       "type": "beat",
-      "title": "A slip — drop it anywhere",
+      "title": "THE ONE THAT GOT OUT — a paper animal, loose",
       "parent": "f-iftime",
       "order": 10,
-      "rev": 1,
+      "rev": 2,
       "tags": [
-        "act1",
-        "optional",
-        "droppable"
+        "city",
+        "side",
+        "comedy"
       ],
       "leadsTo": [],
       "fields": {
-        "hook": "For about a minute and a half, somewhere perfectly ordinary stops meeting itself. Then it stops, and the door is a door again. It can happen in any room, on any street, at any point in any session, and it needs no preparation whatsoever.",
-        "read_aloud": "Improvise from whatever is actually in the room. Three that work: \"The door you came through lets you out onto a street you know, three streets from the one you are on.\" · \"Going up, the stair has one step too many. Coming down, it has one too few. It does this twice more and then stops.\" · \"Somebody in the next room answers a question none of you asked, in a voice one of you knows.\"",
-        "if_they": "…investigate immediately, give them the full ninety seconds and let them get somewhere genuinely interesting — a wrong street, a room in a house nobody lives in — and then close it while they are still inside, and let them walk home the long way. Nobody is hurt by a slip. The fold is loose, not hostile.\n\n…ignore it, so does everybody else. People in this city have lived with slips their whole lives and treat them the way other worlds treat a draught.\n\n…ask an adult about it, they get the settling-joke: the world is still lying down, love, it does that.",
-        "outcome": "Nothing, most of the time, which is what makes it safe to use as often as you like. It costs no plot and buys atmosphere, and children will begin testing every doorway in the city, which is the correct response."
+        "hook": "Ten minutes, no dice needed, drop it into any street at any time. It announces itself from a hundred yards away and nobody has to notice anything subtle.",
+        "read_aloud": "\"Somebody up the street shouts. Then a lot of people shout. And then something comes round the corner at knee height, going flat out.\n\nIt is a horse. It is made of paper, it is about the size of a cat, and when it turns you can see it has no thickness at all. Behind it, in order: a man in an apron carrying a broom, three children, a dog having the best day of its life, and a woman shouting that it is HERS and that she PAID for it.\"",
+        "env": "• THE STREET — everything stops. Shutters go up, people come out to watch, and somebody is taking bets within about a minute.\n• THE HORSE — silent. That is the one unnerving note in an otherwise silly scene: it makes no sound at all, on stone or anywhere else.\n• IT IS ENJOYING ITSELF — it doubles back, it waits, it lets people almost reach it. This is not a frightened animal.\n• THE CROWD — helpful, loud, and actively making everything worse. At least one adult is taking it far too seriously.\n• THE OWNER — a woman with a receipt, which she will produce, twice.",
+        "if_they": "…grab it, they get it, and it goes flat in their hands and slides out between their fingers like a dropped card. No damage and no roll — purely funny.\n\n…corner it, it folds under the door behind it. There is no door in this city it cannot get under.\n\n…get clever — block the street, herd it, drop a coat over it — let that work. Any actual plan should succeed. Reward thinking, not rolling.\n\n…stop chasing it and put a hand out, it comes straight over. It was never running away, it was playing, and nobody in the street had thought of that.",
+        "outcome": "The woman gets her horse back. The man in the apron is from [[loc-foldingshop|the Folding Shop]], he is mortified, and he owes them one: a commission of their own, free, of anything they can describe. Do not mention the parts it adds that they did not ask for."
       },
-      "body": "WHY IT IS WORTH HAVING. It is the campaign's whole cosmology delivered as a toy, it takes no preparation, and it can be dropped into a lull in any scene ever written.\n\nTHE CLUE IT PLANTS, IF YOU WANT IT. Slips cluster. They come in the days after a great pull of sunsalt, and a party that starts noting when they happen will eventually notice the pattern on their own. That is [[npc-hettie|Hettie Sarn]]'s ledger arriving through play rather than through a speech: when she finally opens the book and turns it around, the party is confirming something they already suspected instead of being told something new.\n\nTo use it that way, run slips deliberately rather than randomly — a cluster of two or three in the days after the Hearthspire draws, and none in the quiet weeks. Nobody needs to comment on it.\n\nESCALATION. Slips get more frequent as Act One goes on. That is not decoration; it is the same fact as everything else that is getting worse, and it needs no explanation at the table."
+      "body": "WHY THIS ONE. It replaces the old slip, which asked the players to notice something subtle and was therefore dead on the table. This announces itself, needs no setup, and the solution is the opposite of the first thing everybody tries.\n\nTHE REAL PRIZE IS THE PAYOFF — a free commission at the Folding Shop is a toy the party will play with for a whole session.",
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
     },
     {
       "schema": 1,
@@ -1253,7 +1276,7 @@ window.DM_CAMPAIGN = {
       "type": "encounter",
       "title": "The thing in Ganny's preserves",
       "parent": "f-iftime",
-      "order": 20,
+      "order": 40,
       "rev": 1,
       "tags": [
         "act1",
@@ -1660,6 +1683,96 @@ window.DM_CAMPAIGN = {
       "schema": 1,
       "rev": 3,
       "leadsTo": [],
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "b-pantry",
+      "type": "beat",
+      "parent": "f-iftime",
+      "leadsTo": [],
+      "rev": 1,
+      "title": "THE WRONG ROOM — a man whose pantry is somewhere else",
+      "order": 20,
+      "tags": [
+        "city",
+        "side",
+        "comedy"
+      ],
+      "fields": {
+        "hook": "Ten minutes. The world folds space as a matter of course, and here that is not a horror, it is a man being extremely annoyed about his pantry.",
+        "read_aloud": "\"A man is standing in his own doorway holding a lamp. He has clearly been waiting all day for somebody official, and you have badges.\n\n'Right,' he says. 'Look at it. Just look at it.'\n\nHe opens the pantry door. Behind it is not a pantry. It is somebody else's cellar — barrels, a swept floor, a lamp burning that nobody lit, and a coat on a hook that is not his coat. The light in there is a different time of day.\n\n'That has been like that since Tuesday,' he says. 'My preserves are in there.'\"",
+        "env": "• THE FLAT — ordinary, tidy, and one door in it is wrong.\n• THROUGH THE DOOR — cool air, a different light, and the smell of somebody else's cooking.\n• THE MAN — not frightened in the slightest. He is annoyed, he has written it all down, and he would like somebody to sign something.\n• THE COAT — good cloth, and it has hung there since Tuesday, and nobody has come for it.\n• THE NEIGHBORS — completely uninterested. Two doors down a woman says hers did that last year and it sorted itself out.",
+        "if_they": "…go through, they can, and it is a cellar, and it is somebody's, and they should feel like burglars. Nothing in it is dangerous. Getting back is walking back.\n\n…ask what caused it, the honest answer is that the ministry pinched a street shut three streets over last week and this is the sort of thing that happens. Everybody knows this. Nobody finds it remarkable.\n\n…try to fix it, they cannot, and neither can anybody they can reach today.\n\n…take the coat, let them. Somebody is going to want it back eventually.",
+        "outcome": "He wants two things: his preserves, and somebody with a badge to witness his petition at [[loc-petition|the Petition Rail]] so it goes in properly. Both are easy and both cost the party nothing but an afternoon."
+      },
+      "body": "WHY THIS ONE. It is the cosmology arriving as an inconvenience rather than a lecture — a folded world is a place where a man loses his pantry and files a form about it, and that does more for the setting than any amount of explaining.\n\nIT IS NOT A PORTAL and must never be run as one. It is the edge of a wrinkle the ministry made on purpose, three streets away, for reasons nobody told this man.",
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "b-measuring",
+      "type": "beat",
+      "parent": "f-iftime",
+      "leadsTo": [],
+      "rev": 1,
+      "title": "THE MEASURING — a Surveyor that will not move",
+      "order": 30,
+      "tags": [
+        "city",
+        "side",
+        "comedy"
+      ],
+      "fields": {
+        "hook": "Fifteen minutes of comedy that teaches the table exactly what these beings are like. No danger, no dice, and one real fact handed over by accident.",
+        "read_aloud": "\"There is one of the paper people standing in the middle of the street. It has been there since dawn. Carts are going round it. A queue of three people has formed behind it for no reason anybody can explain.\n\nIt is holding one arm out and turning, very slowly, about a degree at a time. It has completed two full circles this morning.\"",
+        "env": "• THE STREET — has adapted completely. Traffic flows around it. A stall has moved six feet and nobody discussed it.\n• THE QUEUE — three people who do not know why they are queueing and are now far too committed to leave.\n• IT IS DELIGHTED TO BE ASKED anything at all, and answers at once, at length, and with total honesty.\n• AND THE ANSWERS ARE USELESS — not evasive and not coded. Genuinely honest, about a subject nobody present has the words for.\n• TIME — it will still be there tomorrow. It will be gone the day after, with no announcement.",
+        "if_they": "…ask what it is doing, it says it is measuring. Ask what it is measuring and it gives the true answer, which involves three words nobody at the table has ever heard and one gesture. It will repeat this as many times as they like.\n\n…ask why here, it says because this is where it is. That is not a joke and it does not have a second answer.\n\n…ask whether something is wrong, it says no. It is telling the truth, and it is the only reassuring thing it says all day.\n\n…keep at it politely, they get ONE real thing, given freely because they asked properly: it is measuring how far apart two things are, and the answer this morning is different from the answer yesterday.",
+        "outcome": "Nothing happens and nobody is in danger. The party walks away with a joke, a very clear sense of what these beings are, and one number that changed overnight."
+      },
+      "body": "WHY THIS ONE. The comedy and the dread are made of the same material, which is the whole trick with these beings — a table can laugh at this for fifteen minutes and still leave the street uneasy.\n\nTHE ONE REAL FACT is the distance changing. Give it freely rather than making them win it, do not explain it, do not have anybody react to it, and do not raise it again.",
       "fieldDefs": [
         [
           "hook",
