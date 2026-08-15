@@ -16,19 +16,25 @@
    ⚠ `campaign` must be a plain string — the UI renders it directly.
 
    ── CAMPAIGN ONE: THE FOLDED WORLD ──────────────────────────────────────────
-   v11 (2026-08-14): THE WRECK — Act One's third scene, and the party's first
-   entrance into the folded interior. The scar-line errand is CUT: there is no
-   goose chase, because the ministry cannot enter a crease and cannot order
-   anyone else to, so Wenna's signature is the one thing in the world that opens
-   the tower and the assignment was never false. The Hearthspire is no longer
-   "patched" anywhere — nothing was repaired, because repair needs slack; the
-   ground around its base came apart and a ring of Rectors holds it permanently,
-   which is the first visible evidence that the occupation spends what it cannot
-   replace. New: the warden (comes undone, re-forms upstairs, cannot be killed —
-   the win condition is the stair). Tobin no longer voices a suspicion on day
-   one. And the paper-as-material reading is gone from every document: the
-   Surveyors are folded things and the cosmology uses folding to teach a shape,
-   but a broken interdimensional condenser is not a torn page with tape on it.
+   v12 (2026-08-14): THE WAY IN. The Reactor is NOT a dungeon and the party never
+   goes inside the tower — the dungeon is the fold itself, and it belongs to the
+   session after this one. The directive is deliberately plain: eleven people are
+   on the other side, go in and bring back who you can, the order will open the
+   way and hold it. Two beats and then stop — the tear site with its ring and the
+   sound of voices under the ground, and the opening, which is where the session
+   ends with the party stepping through. Nothing on the far side is written yet
+   and nothing should be said about it at the table.
+
+   v11 (2026-08-14): the scar-line errand is CUT — there is no goose chase, and
+   the assignment was never false. The Hearthspire is no longer "patched"
+   anywhere: nothing was repaired, because repair needs slack; the ground around
+   its base came apart and a ring of Rectors holds it permanently, which is the
+   first visible evidence that the occupation spends what it cannot replace.
+   Tobin no longer voices a suspicion on day one. The warden sheet is in the
+   bestiary but unused in Act One. And the paper-as-material reading is gone from
+   every document: the Surveyors are folded things and the cosmology uses folding
+   to teach a shape, but a broken interdimensional condenser is not a torn page
+   with tape on it.
 
    v10 (2026-08-14): Red Flag becomes the public instrument of blame, and it is
    public before anybody asks the party for anything. A crier with a bell and a
@@ -481,7 +487,7 @@ window.DM_CAMPAIGN = {
       "title": "4 — The commission and the lie",
       "parent": "f-commission",
       "order": 50,
-      "rev": 4,
+      "rev": 7,
       "tags": [
         "act1",
         "session2",
@@ -491,10 +497,10 @@ window.DM_CAMPAIGN = {
       "fields": {
         "hook": "They are offered a job by the most powerful institution in the world, and they are told who to blame. One of those two things is false, and it is not the one they will doubt.",
         "read_aloud": "\"'Eleven people went through that seam,' the Rector says, 'and they are alive, and they are not coming back on their own. We would go in after them ourselves. We cannot. There are only so many of us — there have only ever been so many of us — and we have not been able to make more since the world stopped moving. So the work that is done in this world by hands is done by human hands, and it has been that way since before your grandmothers.'\n\nIt lets that sit.\n\n'What we are forming is a task force. Human, small, sanctioned, and paid. You would be the first four names on it.'\"\n\nTHE NAME, and it must be unmistakable — say it close to as written:\n\n\"'You will have heard it in the street by now,' the Rector says, 'and I would rather you heard it here as well, plainly, so that nobody has to guess at what is being asked of them.\n\n'The Hearthspire did not fail. It was broken. A cell calling itself Red Flag — refusers left over from the Fence War, who kept the old banner when the movement furled it — put a hand into the lighting, in order to break the Accord and put this world back to war. There are not many of them and they are not fools. Eleven people are on the far side of a seam this morning because of them, and one of those is a child.\n\n'We are not asking you to hunt anybody. Four people do not hunt anybody, and it is not what you are for. We are asking you to bring back anything at all that shows a human hand in it.'\n\nIt says all of this the way one reports weather, and then it waits, courteously, in case they have questions.\"",
-        "if_they": "…ask why them, the answer is honest and slightly chilling: because everyone else ran, and because it was standing there with a pen.\n\n…ask why the ministry does not simply go in itself, it says that the right of search belongs to the movement and that it is glad the movement exists. It says this warmly and it means every word. Do not let it elaborate — a being explaining its own treaty at length is exposition, and one being cheerfully unable to do something is the whole relationship in four seconds.\n\n…ask what caused the tear, the Rector answers before they have finished asking. The words are in the read-aloud and it is worth saying them close to as written, as settled fact rather than as an accusation.\n\n…ask about the boy at the tower's foot, the Rector says the count is eleven and does not distinguish among them. It will not name him. Nobody in this building names him all morning.\n\n…ask to see the tear themselves, the Rector says the site is contained. It uses that word and no other, and it is telling the exact truth: containment is being maintained at this moment by members of its own order who will not be leaving. It does not say closed, it is not asked what is at the crown, and it does not volunteer.",
-        "outcome": "THE LIE IS NOW ON THE RECORD, said out loud by the highest official in the city: Red Flag broke the tower, and the party is asked to bring back anything showing a human hand in it. This is the fourth time in under a day they have been given the name — the crier in the dust, the sheet at the Ossuary, the warrants on the walk up — and it is the one that carries a signature.\n\nTHEN IT REACHES THE ONE THING IT CANNOT DO, and this is where the arrangement gets stated without a word of explanation. It taps the writ it has just given them — the one that opens every checkpoint, gate and rope line in Dunlath — and says: 'That will open anything in this city. It will not open a crease. We do not go in, and we may not send anyone in. That was signed away a long while ago, and it was the best day's work anybody did that year.'\n\nAnd then it comes around the desk and walks them there itself. The highest official in the city takes four strangers down a flight of stairs to ask a favor of a junior clerk in the smallest office on the corridor, and is perfectly cheerful about it. See [[b-comm-5|beat 5]]."
+        "if_they": "…ask why them, the answer is honest and slightly chilling: because everyone else ran, and because it was standing there with a pen.\n\n…ask why the order does not go in itself, it says it cannot spare anyone, and that those who go in do not come out. It is telling the truth and it does not elaborate.\n\n…ask why the movement and not the ministry, it says the searching is theirs and that it is glad they exist. Warmly, and it means it. One line, and then move on — a being explaining its own treaty at length is exposition, and a being cheerfully handing over the one job it cannot do is the whole relationship in four seconds.\n\n…ask what caused the tear, the Rector answers before they have finished asking. The words are in the read-aloud and it is worth saying them close to as written, as settled fact rather than as an accusation.\n\n…ask about the boy at the tower's foot, the Rector says the count is eleven and does not distinguish among them. It will not name him. Nobody in this building names him all morning.\n\n…ask to see the tear themselves, the Rector says the site is contained. It uses that word and no other, and it is telling the exact truth: containment is being maintained at this moment by members of its own order who will not be leaving. It does not say closed, it is not asked what is at the crown, and it does not volunteer.",
+        "outcome": "THE LIE IS NOW ON THE RECORD, said out loud by the highest official in the city: Red Flag broke the tower, and the party is asked to bring back anything showing a human hand in it. This is the fourth time in under a day they have been given the name — the crier in the dust, the sheet at the Ossuary, the warrants on the walk up — and it is the one that carries a signature.\n\nTHE DIRECTIVE, and it should be as plain as this: 'Eleven people are on the other side of that seam. Go in, and bring back who you can. My order will open the way for you and hold it while you are inside, and that is the whole of what we are able to do.'\n\nTHEN IT WALKS THEM DOWNSTAIRS ITSELF. The searching belongs to the movement — it says so in one line and does not explain the history — so the highest official in the city takes four strangers down a flight to a junior clerk in the smallest office on the corridor, and is perfectly cheerful about it. That walk states the whole relationship and nobody has to describe it. See [[b-comm-5|beat 5]]."
       },
-      "body": "WHAT THE SCENE QUIETLY ESTABLISHES, and it should never be said outright: this government cannot enter a crease and cannot order anyone else to. The one power it does not hold is the one the party is about to be handed, by a woman in a room with mismatched chairs. Play the Rector's inability as a small, cheerful administrative fact and let the players work out later what it means.\n\nWHY THE LIE IS THE RIGHT ONE. Canon already has the criers blaming the veiled figure on the high seat, which is where the world's cosmic anger is meant to go. This is the operational version, issued to people who are actually being sent somewhere, and it does a job the veil cannot: it makes the candle houses radioactive, so that every grieving person in the city walks toward Green Fields — which the occupation owns — instead of toward Red Flag, which it does not. It is recorded in CAMPAIGN.md §3 as standing practice.\n\nWHAT THE PARTY NOW BELIEVES. That there are terrorists, that the terrorists made the hole, and that they have been hired to help clean up after them. They will carry that for several sessions, and they will carry it while traveling with a man who has been reading a dead friend's field book and can no longer make the numbers work.\n\nDO NOT WINK. The Rector is not smirking, and it is not lying in the sense it would recognize. It has been given an account of the disaster by its own leadership and it is passing that account on. Everything else in the room is true: the eleven, the offer, the pay, and the fact that its order cannot spare a single one of itself to go in."
+      "body": "KEEP THE DIRECTIVE SIMPLE. Go in, bring back who you can, we will open it and hold it. That is the entire brief and it should take fifteen seconds. Everything about who is allowed to do what stays in the walk downstairs, where it is shown rather than said.\n\nWHY THE LIE IS THE RIGHT ONE. Canon already has the criers blaming the veiled figure on the high seat, which is where the world's cosmic anger is meant to go. This is the operational version, issued to people who are actually being sent somewhere, and it does a job the veil cannot: it makes the candle houses radioactive, so that every grieving person in the city walks toward Green Fields — which the occupation owns — instead of toward Red Flag, which it does not. It is recorded in CAMPAIGN.md §3 as standing practice.\n\nWHAT THE PARTY NOW BELIEVES. That there are terrorists, that the terrorists made the hole, and that they have been hired to help clean up after them. They will carry that for several sessions, and they will carry it while traveling with a man who has been reading a dead friend's field book and can no longer make the numbers work.\n\nDO NOT WINK. The Rector is not smirking, and it is not lying in the sense it would recognize. It has been given an account of the disaster by its own leadership and it is passing that account on. Everything else in the room is true: the eleven, the offer, the pay, and the fact that its order cannot spare a single one of itself to go in."
     },
     {
       "schema": 1,
@@ -503,7 +509,7 @@ window.DM_CAMPAIGN = {
       "title": "5 — Wenna's office, and a clerk",
       "parent": "f-commission",
       "order": 60,
-      "rev": 3,
+      "rev": 5,
       "tags": [
         "act1",
         "session2"
@@ -513,7 +519,7 @@ window.DM_CAMPAIGN = {
         "hook": "A junior clerk in the smallest office on a very grand corridor holds the one power the beings who run the world signed away and cannot take back. Nobody in the room mentions this, least of all her.",
         "read_aloud": "\"Across a courtyard in the rain, into a lesser building, down a corridor of very large doors — and hers is the last one and the smallest. GREEN FIELDS · OFFICE OF SEARCH, on a card in a brass frame built for something longer.\n\nInside: one room, a kettle going, mismatched chairs, and nine people in a space meant for four. Half of them have the look you saw all over the fairground yesterday, which is the look of somebody counting a room to see who is missing.\n\n[[npc-wenna|Wenna Ash]] is standing on a chair pinning a paper to the wall, and the paper is a list of names, and it is not finished. When she sees you in the doorway she gets down so fast she nearly goes over.\"",
         "if_they": "…tell her the ministry named Red Flag, she goes quiet, and then she says carefully that she has heard the name and that she does not know, and that the people she has met who went that way were not monsters, they were just tired. It is the first crack of light in the whole scene and she does not know she has opened it.\n\n…ask why her and not the ministry, she gives the true answer, warmly and with pride: the right of search belongs to the movement, it was bought with the Accord, and it is the only thing in this world that human hands may do without asking.\n\n…ask what happens if she says no, she laughs, because it has never once occurred to her to say no to somebody volunteering to go in. Then she stops laughing, because she has just realized it is a real question and that the answer is nothing at all would happen. Nobody would make them go.\n\n…ask about the boy at the tower, she says she does not know his name either, and that she is sorry, and that she has been trying since last night to find out. She has been. Nobody will tell her.",
-        "outcome": "SHE SIGNS THEM ONTO THE ROLL, and this is the actual moment the party joins something. Their names go on a movement's list in her own hand, and the writ in their pocket becomes usable on the only door it was never going to open by itself.\n\nTHE ASSIGNMENT is the tower. Eleven people went through the crown of the Hearthspire in front of the whole city, it is the one opening in the world with an address, and the right of search is invoked within the week. She is right, everybody is right, and nobody is being sent anywhere false.\n\nTHE CLERK. Every expedition under the right of search carries a Registry man to keep the record; it is in the Accord. Theirs is [[npc-tobin|Tobin Rell]], junior, cheap, apologetic, and carrying a satchel too big for him. Introduce him as an inconvenience. He is their healer and their most dangerous secret and they have no idea.\n\nThey leave employed by [[npc-wenna|Wenna]], paid by the ministry, and accompanied by a clerk who files nightly to an office none of them has heard of. Three masters on the first day, every strand of it handed over as a kindness. Then [[f-wreck|THE WRECK]]."
+        "outcome": "SHE SIGNS THEM ONTO THE ROLL, and this is the actual moment the party joins something. Their names go on a movement's list in her own hand, and the writ in their pocket becomes usable on the only door it was never going to open by itself.\n\nTHE ASSIGNMENT is the tear site, tomorrow morning. Not the tower — there is nothing in the tower. The ground at its foot is where the world came open, the order will open a way there and hold it, and the party goes in and brings back who they can. She sends the paper across that afternoon so they are expected. Nobody is being sent anywhere false.\n\nTHE CLERK. Every expedition under the right of search carries a Registry man to keep the record; it is in the Accord. Theirs is [[npc-tobin|Tobin Rell]], junior, cheap, apologetic, and carrying a satchel too big for him. Introduce him as an inconvenience. He is their healer and their most dangerous secret and they have no idea.\n\nThey leave employed by [[npc-wenna|Wenna]], paid by the ministry, and accompanied by a clerk who files nightly to an office none of them has heard of. Three masters on the first day, every strand of it handed over as a kindness. Then [[f-wreck|THE WAY IN]]."
       },
       "body": "SHE IS PROUD OF THE OFFICE and will say so unprompted: the movement has a door inside the ministry's own walls, which she reads as human hands finally at the table. She is not naive to be proud of it. She is simply looking at it from underneath.\n\nGIVE THE PARTY THE VERB HERE. This is the first thing in two sessions that is not handed to them — she has to put their names down, and she is allowed to want a reason first. Let them give her one. Whatever they say is the closest thing to a stated motive this campaign will have for a while, so write it down.\n\nTOBIN SAYS NOTHING DANGEROUS TODAY. He is an inconvenience with a satchel and a form to be signed, he is bad at introductions, and that is all. He does not raise a suspicion with people he met an hour ago, because he is a careful man and because it would get him folded away. His turn comes when the party has been somewhere with him. See [[npc-tobin|his sheet]]."
     },
@@ -915,7 +921,7 @@ window.DM_CAMPAIGN = {
       "title": "The Hearthspire — the tower, and the seam",
       "parent": "f-locations",
       "order": 105,
-      "rev": 3,
+      "rev": 4,
       "tags": [
         "city",
         "act1",
@@ -928,7 +934,7 @@ window.DM_CAMPAIGN = {
         "who_is_here": "A ring of Rectors standing on the ground at the tower's foot, evenly spaced, facing outward, in shifts that change without a word. They have been there since the hour it happened. Outside them a human cordon of bored guards, and outside that a steady trickle of people who have come to stand and look, and a woman selling hot nuts to them, because this is Dunlath.",
         "hidden": "The ring is not guarding the tower. It is holding the ground, because time and distance came apart around the base and have not gone back, and holding it is the only thing anybody can do — repair would need slack and there is none. So the ring is permanent, and it is being paid for out of a population that cannot make more of itself. Every Rector standing in that field is one that is never doing anything else again."
       },
-      "body": "WHY IT MATTERS. This is where the tear happened, where eleven people went, and where the party is going. [[f-wreck|THE WRECK]] is the whole of it.\n\nWHAT A LOOK FROM THE ROPE LINE GETS THEM, no roll required: the crown is still lit eleven days on, and nobody official has said one word about that. The ring has not moved. And the ground at the base does something to everything that crosses it.\n\nTHE WORD THE MINISTRY USES IS CONTAINED. Never closed, never healed, never repaired. It is a status rather than a claim about the world, and it happens to be entirely true."
+      "body": "WHY IT MATTERS. This is where the tear happened, where eleven people went, and where the party goes in. [[f-wreck|THE WAY IN]] is the whole of it. Nobody enters the tower and there is no reason to — the way through is in the ground at its foot, and the order opens it for them.\n\nWHAT A LOOK FROM THE ROPE LINE GETS THEM, no roll required: the crown is still lit eleven days on, and nobody official has said one word about that. The ring has not moved. And the ground at the base does something to everything that crosses it.\n\nTHE WORD THE MINISTRY USES IS CONTAINED. Never closed, never healed, never repaired. It is a status rather than a claim about the world, and it happens to be entirely true."
     },
     {
       "schema": 1,
@@ -1274,15 +1280,15 @@ window.DM_CAMPAIGN = {
         "attack": "+5 to hit, 2d6 damage — it opens an arm into an edge and closes it again",
         "trick": "COMES UNDONE, NEVER DIES. At 0 hp it parts along its creases into a drift of flat panes that slide away through the air and are gone. It is not dead, nothing is left on the floor, and three rounds later it re-forms at the top of the next flight — unless the party has already gone past it. The way to beat a warden is to stop trying to beat it."
       },
-      "body": "The order's working grade, not its ritual grade: no fans, no crowns, nothing ceremonial. Very tall, very plain, and unfailingly polite even while fighting — it will apologize for the stairs. Two is a real fight for four level-3 heroes and three is a hard one.\n\nTHIS IS WHERE THE TABLE LEARNS THE CAMPAIGN'S COMBAT GRAMMAR, so let the first one come apart dramatically and then let the party hear it re-forming above them. Nobody in this campaign kills a paper man. They get past him, and they meet him again, and he remembers.",
+      "body": "The order's working grade, not its ritual grade: no fans, no crowns, nothing ceremonial. Very tall, very plain, and unfailingly polite even while fighting — it will apologize for the stairs. Two is a real fight for four level-3 heroes and three is a hard one. Not used in Act One as written — the party is let past the ring rather than fighting through it — and kept here because this is the order's working grade and the party will meet it eventually.\n\nTHIS IS WHERE THE TABLE LEARNS THE CAMPAIGN'S COMBAT GRAMMAR, so let the first one come apart dramatically and then let the party hear it re-forming above them. Nobody in this campaign kills a paper man. They get past him, and they meet him again, and he remembers.",
       "schema": 1,
-      "rev": 1,
+      "rev": 2,
       "leadsTo": []
     },
     {
       "id": "f-wreck",
       "type": "folder",
-      "title": "THE WRECK — into the Hearthspire",
+      "title": "THE WAY IN — the tear site",
       "parent": "act1",
       "order": 25,
       "tags": [
@@ -1292,13 +1298,13 @@ window.DM_CAMPAIGN = {
       "fields": {},
       "body": "",
       "schema": 1,
-      "rev": 1,
+      "rev": 2,
       "leadsTo": []
     },
     {
       "id": "sc-wreck",
       "type": "scene",
-      "title": "▶ RUN THESE IN ORDER — the wreck",
+      "title": "▶ RUN THESE IN ORDER — the way in",
       "parent": "f-wreck",
       "order": 10,
       "tags": [
@@ -1325,20 +1331,20 @@ window.DM_CAMPAIGN = {
         ]
       ],
       "fields": {
-        "order": "1. [[b-wreck-1|The ring]] · the held ground, and being let through it in front of a crowd\n2. [[b-wreck-2|The lower floors]] · salvage crews, tally-rooms, and a foreman who looks the other way\n3. [[b-wreck-3|Up into Surveyor country]] · the stairwells, and what unfolds out of them\n4. [[enc-wreck|The wardens]] · the first fight against something that cannot be killed\n5. [[b-wreck-4|The crown]] · the broken condenser, still lit, and the way through\n6. [[b-wreck-5|The other side]] · somewhere else, under a sky that has never held a lamp\n\nSteps 1 to 4 are one climb and should feel like one. Step 6 is where you stop.",
-        "setting": "[[loc-hearthspire|The Hearthspire]], eleven days old and dead, on the flats below Dunlath with the fairground at its foot. The wreck runs vertically and the whole dungeon is a climb: human floors at the bottom, the order's floors above them, the broken crown at the top. The ring of Rectors holds the ground at the base and does not come inside.",
-        "before": "Have ready: [[cr-warden|the warden]] sheet, and a decision about what the party's writ gets them at the rope line. Know that nobody in the lower half of this building is an enemy and that the first fight is two thirds of the way up. Know that the party is going to come out the far side somewhere else, and that this is where you stop for the night.",
-        "after": "On the other side of the world, with a way back they have not tested, standing in a country that is not on any map they have ever seen, part of which is dead in exactly the way the old Draw-flats are dead."
+        "order": "1. [[b-wreck-1|The tear site]] · the held ground, the ring, and the sound coming out of it\n2. [[b-wreck-2|They open the way]] · the order opens it, the party walks through, STOP\n\nThis is short on purpose. It is the last half hour of the session and the whole of it is getting them to the edge and letting them step over it.",
+        "setting": "[[loc-hearthspire|The Hearthspire]] on the flats below Dunlath, eleven days dead and still lit at the crown. Nobody goes into the tower — there is nothing in the tower. The ground at its foot is where the world came open, and that ground is being held by a ring of Rectors who have not moved since the day of the fair.",
+        "before": "Know that the directive is simple and was given yesterday: eleven people are on the other side, go in and bring back who you can. Know that the order is going to open the way for them, in daylight, politely, and that this is a favor rather than a breach. And know that you are stopping the session the moment the last hero is through.",
+        "after": "Inside. Whatever is in there is next session and the table should go home not knowing."
       },
-      "body": "HOW TO RUN IT. Three movements and they escalate by kind, not by difficulty. The bottom is people, and the problems are talk, nerve and not being noticed. The middle is the order, and the problem is that the things in the way do not die. The top is the machine, and the problem is whether they are willing to climb into it.\n\nTHE PARTY IS HERE LEGALLY AND EVERYONE KNOWS IT. Nobody is sneaking past the front door. The right of search is real, the writ is real, and the strangeness is that a government has handed four young people a piece of paper and let them walk into the worst place in the world with its blessing and no help whatsoever.\n\nPACING. One full session. If it runs long, thin out the lower floors — they are texture and a foreman — and never cut the crown.",
+      "body": "HOW TO RUN IT. Do not put an obstacle in front of this. The party has a writ, a signature, and an appointment, and every single person they meet is expecting them and glad they came. The tension is not whether they will be allowed in. It is that they are being allowed in.\n\nTHIRTY MINUTES, AND THEN STOP. If the session has run long, this is still worth reaching — walking through the hole is a far better place to leave the table than anywhere else in the evening.",
       "schema": 1,
-      "rev": 1,
+      "rev": 2,
       "leadsTo": []
     },
     {
       "id": "b-wreck-1",
       "type": "beat",
-      "title": "1 — The ring: the ground that will not hold still",
+      "title": "1 — The tear site: the ring, and what is under it",
       "parent": "f-wreck",
       "order": 20,
       "tags": [
@@ -1346,120 +1352,36 @@ window.DM_CAMPAIGN = {
         "session3"
       ],
       "fields": {
-        "hook": "They have seen the paper people be magnificent. This is the first time they see them working, and working is worse — a dozen of them standing in a field, doing nothing at all, and having done nothing at all for eleven days.",
-        "read_aloud": "\"You can see it from the top of the slope. The tower is still white, still gleaming, still without a mark of weather on it, and the crown at the top of it is still lit — eleven days on, at midday, glowing away up there like a lamp somebody forgot.\n\nAt the foot of it there is a ring of the paper people. A dozen or so, evenly spaced, facing outward, standing on the grass. They are not holding anything and not looking at anything. Every so often one of them is replaced by another and neither of them says anything about it.\n\nAnd the ground inside the ring is wrong. A bird goes into it and takes far too long to come out the other side. The grass moves in a wind that reaches you a moment later than it should. Somebody's dog will not go near it, and neither will the hot-nut woman, who has set her stall exactly as close as she is willing to stand and no closer.\"",
-        "if_they": "…show the writ, the human cordon waves them through without reading it. The ring is different: one of them turns, takes their names, thanks them with enormous sincerity, and opens a gap by stepping aside — and the moment it steps aside the ground between them and the door goes quiet and behaves. That is the whole permission system and nobody explains it.\n\n…ask what happens if they go in without being let through, they can try. The fifty yards to the door takes them twenty minutes and they arrive tired, separated, and about forty feet from where they aimed. Nobody stops them and nobody helps.\n\n…ask why the order does not go in and get the eleven itself, the answer is polite and complete and given without hesitation: it cannot spare anyone. Push, and it says that those who go in do not come out, and that this has been established. It will not say how many times.\n\n…ask about the crown still being lit, the warden on duty says it is being monitored. That is all it says and it is not being evasive; it genuinely believes that is the answer to the question.",
-        "outcome": "Through the ring, across ground that behaves itself only while somebody holds it, and in at the little door the boy walked to. Then [[b-wreck-2|the lower floors]]."
+        "hook": "They have seen the paper people be magnificent. This is the first time they see them working, and working is worse: a dozen of them standing in a field, doing nothing at all, and having done nothing at all for eleven days.",
+        "read_aloud": "\"You can see it from the top of the slope. The tower is still white, still gleaming, without a mark of weather on it, and the crown at the top is still lit — eleven days on, at midday, glowing away up there like a lamp somebody forgot.\n\nAt the foot of it there is a ring of the paper people. A dozen or so, evenly spaced, facing outward, standing on the grass. They are not holding anything and not looking at anything, and every so often one of them is replaced by another and neither of them says a word about it.\n\nThe ground inside the ring is wrong. A bird flies into it and takes far too long to come out the other side. The grass moves in a wind that reaches you a moment later than it should. Somebody's dog will not go near it, and neither will the hot-nut woman, who has set her stall exactly as close as she is willing to stand and no closer.\n\nAnd if you stand still and stop talking, you can hear something under it. A long way off and very faint, and it is a great many people.\"",
+        "if_they": "…show the writ, the human cordon waves them through without reading it. The ring is different: one of them turns, takes their names, thanks them with enormous sincerity, and is plainly expecting them, because Wenna's paper went across yesterday afternoon.\n\n…ask what the sound is, the answer is: the people who went through. It says this kindly and without drama, as though it had assumed they knew, and it is the reason the party is about to do something insane.\n\n…ask why the order does not go in and get them itself, the answer is polite and complete: it cannot spare anyone. Push, and it says that those who go in do not come out, and that this has been established. It will not say how many times.\n\n…ask about the crown still being lit, the warden on duty says it is being monitored. That is all it says, and it is not being evasive — it genuinely believes that is the answer.",
+        "outcome": "Expected, thanked, and standing at the edge of ground that nobody else will walk on. Then [[b-wreck-2|they open the way]]."
       },
-      "body": "THE IMAGE TO LAND is a dozen enormously powerful beings standing in a field doing nothing forever. Everything the party learns later about what this is costing hangs off having seen it.\n\nKEEP THE HOT-NUT WOMAN. A catastrophe with a snack stall parked at the edge of it is exactly this city, and the boys will remember her.\n\nTHE PERMISSION IS THE POINT. The party goes in because they are let in, through a gap a courteous being makes by stepping sideways. Nobody picks a lock and nobody sneaks. The way into the worst place in the world is a kindness, and it is worth a beat of quiet after the gap closes behind them.",
+      "body": "THE IMAGE TO LAND is a dozen enormously powerful beings standing in a field doing nothing, forever, because it is the only thing anybody can do. Everything the party works out later about what this occupation is spending hangs off having seen it.\n\nKEEP THE HOT-NUT WOMAN. A catastrophe with a snack stall parked at the edge of it is exactly this city.\n\nTHE SOUND IS THE HOOK, and it should arrive before anybody asks them to go in. Voices, a long way off, from a place that is forty feet away. That is what makes the next beat a decision instead of an order.",
       "schema": 1,
-      "rev": 1,
+      "rev": 2,
       "leadsTo": []
     },
     {
       "id": "b-wreck-2",
       "type": "beat",
-      "title": "2 — The lower floors: salvage, tally-rooms, a foreman",
+      "title": "2 — They open the way",
       "parent": "f-wreck",
       "order": 30,
-      "tags": [
-        "act1",
-        "session3"
-      ],
-      "fields": {
-        "hook": "The first two hundred feet of the worst place in the world is an ordinary workplace having an ordinary bad week, and not one person in it is an enemy.",
-        "read_aloud": "\"Inside, it is a building. Wide floors, good stone, warm underfoot with nothing burning anywhere — and a great deal of it is completely undamaged, because whatever happened happened at the top.\n\nThere are people working. Salvage crews carrying out fittings and stacking them in the yard, a canteen with the urn still going, a tally-room where the ink on the last day's entries has not been touched since the day it was written. Somebody has pinned a paper flag from the fair to a doorframe and nobody has taken it down.\"",
-        "if_they": "…talk to the crews, they are frightened, bored, and extremely willing to gossip, because nobody has told them anything either. They will say the crown is still lit and that they have stopped asking. They will say the top four floors are not theirs to go to.\n\n…read the tally-room, the last entries are the morning of the lighting and they are perfectly ordinary, which is its own kind of awful.\n\n…try to go up openly, a foreman stops them, checks the writ, looks at it for slightly too long, and then looks the other way for reasons of his own that he does not give and that are not yet decided. He tells them which stair is safe and does not ask their names.\n\n…go looking for trouble, there is none here. Let them be surprised by that.",
-        "outcome": "Up the stair the foreman pointed at, and the noise of people stops about a floor before anybody expects it. Then [[b-wreck-3|Surveyor country]]."
-      },
-      "body": "TWO THINGS ARE PLANTED HERE AND NEITHER IS EVER EXPLAINED, today or for a long time.\n\nTHE DOOR THAT GOES DOWN. Sealed, cold to the hand in a building that is warm everywhere else, and humming. It is on no plan the party can get hold of and no ledger the Registry keeps. If they ask a worker about it, the worker does not know what they mean, and is not lying.\n\nTHE GRINDING. Steady, patient, somewhere well below the sealed door. Any salvage worker will tell you cheerfully that it is the roots settling, and that is a completely satisfying answer, and it should be delivered as one.\n\nNOBODY HERE IS AN ENEMY. Rule one holds in this building. The problems on these floors are nerve, talk, and being somewhere you have a piece of paper for but no business in.",
-      "schema": 1,
-      "rev": 1,
-      "leadsTo": []
-    },
-    {
-      "id": "b-wreck-3",
-      "type": "beat",
-      "title": "3 — Up into Surveyor country",
-      "parent": "f-wreck",
-      "order": 40,
-      "tags": [
-        "act1",
-        "session3"
-      ],
-      "fields": {
-        "hook": "The building stops being a workplace between one landing and the next, and the party will feel the change before you tell them what it is.",
-        "read_aloud": "\"The stair keeps going and the building stops. No crews up here, no urn, no flag on a doorframe. The damage starts — walls opened, floors gone in places, a whole gallery hanging out into open air — and the light coming down the shaft from above is the wrong color and does not flicker.\n\nAnd it is not empty. There is a sound of something large moving without footsteps, and paper does not creak, so you get no warning at all.\"",
-        "if_they": "…try to be quiet, good, and it works for a while: the first warden is avoidable entirely by a party that thinks about it, and letting them dodge one makes fighting the next mean something.\n\n…talk to a warden, it will talk. It is courteous, it is not angry, and it explains that they should not be here — and their writ, which opens every door in Dunlath, is not a thing it recognizes, because this is not Dunlath.\n\n…fight, see [[enc-wreck|the wardens]].",
-        "outcome": "Past them one way or another, and the last stair goes up into the light. Then [[b-wreck-4|the crown]]."
-      },
-      "body": "RUN THE CHANGE PHYSICALLY. The party should notice the absence of people before they notice anything else. Warmth underfoot stops. The stone stops being finished.\n\nTHE WARDENS ARE NOT GUARDING THE CROWN. They are working — doing whatever the order does up here, unhurriedly, and the party is an interruption. That is scarier than a patrol and it costs nothing to play.",
-      "schema": 1,
-      "rev": 1,
-      "leadsTo": []
-    },
-    {
-      "id": "enc-wreck",
-      "type": "encounter",
-      "title": "The wardens — the first thing that does not die",
-      "parent": "f-wreck",
-      "order": 50,
-      "tags": [
-        "act1",
-        "session3"
-      ],
-      "fields": {
-        "setup": "A ruined stairwell and the gallery it opens onto, six floors up, with a long drop on one side and no railing left. The objective is the stair above, not the room — this fight is won by getting past it. Terrain to use hard: the open drop, a floor that gives, hanging pipework that can be swung or dropped, and the fact that a folded thing can go under, through, or around anything the party puts in its way.",
-        "creatures": "Two [[cr-warden|wardens]] for four level-3 heroes; three if the party is fresh, confident, and has already dodged one. Shed one per empty chair.",
-        "tactics": "They do not chase and they do not finish anybody off. A warden's whole intent is to stop the party going up, so it blocks, herds, and puts itself in doorways, and it will step aside for anyone going back down. It fights by opening an arm into an edge and closing it again, and it apologizes while doing it.\n\nWHEN THE FIRST ONE HITS 0 it comes apart into a drift of flat panes that slide away and are gone, and there is nothing on the floor. Let the table have a moment of triumph. Then, three rounds later, let them hear it re-forming on the landing above.",
-        "reward": "No treasure and no bodies. What they leave with is the campaign's combat grammar learned the hard way — that these things cannot be killed, that the win condition is the stair, and that the one they beat is going to remember them."
-      },
-      "body": "THE LESSON IS THE POINT and it should cost them one wasted fight to learn it. A party that works out mid-combat that they should stop swinging and start climbing has just been taught how the next twenty sessions work.\n\nNO CORPSES, EVER (§7 rule 2). Nothing dies here. If a hero drops, a warden steps over them and goes back to blocking the stair, because it was never trying to kill anybody — it was trying to keep them downstairs.",
-      "schema": 1,
-      "rev": 1,
-      "leadsTo": []
-    },
-    {
-      "id": "b-wreck-4",
-      "type": "beat",
-      "title": "4 — The crown, and the way through",
-      "parent": "f-wreck",
-      "order": 60,
-      "tags": [
-        "act1",
-        "session3"
-      ],
-      "fields": {
-        "hook": "The top of a machine the size of a mountain, opened like a fist, still running eleven days after it killed a fairground — and the way onward is to climb into the part that is broken.",
-        "read_aloud": "\"The last stair comes out into the open and there is no roof, because there is no more tower. The crown is a ring of something enormous that has been opened outward, and in the middle of it the light is still going: not a flame, not warm, and not any color you have a word for. It has been doing this since the day of the fair.\n\nThe wound is here. Not a hole and not a crack — a place where the far edge of the crown does not line up with the near edge, and the space between them is not space. Look at it too long and you can hear, faintly and from an enormous distance, a great many people who are not up here.\"",
-        "if_they": "…look for the eleven, there is no sign of anybody, and no blood, and nothing dropped. Whatever the taking is, it is not a killing, and the party should be allowed to notice that on their own.\n\n…try to shut it off, they cannot, and neither can anybody else, and a party that spends twenty minutes trying should be treated seriously and should fail. Turning it off would need slack. There is none.\n\n…throw something in, it does not come back and it does not make a sound.\n\n…refuse to go through, that is entirely allowed and nobody makes them. The way back down is open and the ring will let them out as politely as it let them in — and the eleven stay where they are.",
-        "outcome": "They climb in. Whoever goes first should get to say so out loud. Then [[b-wreck-5|the other side]]."
-      },
-      "body": "DO NOT MAKE THIS A ROLL. Going through is a decision, and the whole session has been walking toward whether they will. Ask each player, by name, and let them answer.\n\nTHE SOUND IS THE HOOK. A great many people, a long way off, from a place that is nine feet away. It is the first evidence the party has that the taken are somewhere rather than gone, and it is the reason they climb in.",
-      "schema": 1,
-      "rev": 1,
-      "leadsTo": []
-    },
-    {
-      "id": "b-wreck-5",
-      "type": "beat",
-      "title": "5 — The other side",
-      "parent": "f-wreck",
-      "order": 70,
       "tags": [
         "act1",
         "session3",
         "payoff"
       ],
       "fields": {
-        "hook": "Somewhere else. Stop the session on it — this is the whole promise of the campaign arriving as a view, and it should be the last thing anybody sees before the table packs up.",
-        "read_aloud": "\"And then you are through, and standing on grass.\n\nIt is a country. Hills, a river going the wrong way down them, a road, and a long way off what might be a town. The air is warm and it smells green and it is the middle of the afternoon, which it was not a moment ago.\n\nAbove you there is a sky, and it is enormous, and there is not one lamp under it anywhere. No town above. No creases. Whatever this is, it is not folded.\n\nAnd away to your left, running up over the shoulder of the nearest hill and out of sight, there is a swath of ground that is gray. Not burned and not dry. Gray in the exact way the old flats outside Dunlath are gray — and nobody has ever told a story about a blight here.\"",
-        "if_they": "…look back, the way through is behind them and it is visible, and it is exactly as hard to see as it will be to find again from this side. Do not resolve that tonight.\n\n…go toward the gray, next session.\n\n…go toward the town, next session.\n\n…ask [[npc-tobin|Tobin]] what he is writing, he says he does not know yet. It is the first honest thing he has been unable to file.",
-        "outcome": "STOP HERE. That is the end of the session and it wants no resolution, no fight, and no explanation."
+        "hook": "Everything the party has been given this week was handed over by somebody being kind to them. This is the last of it, and it is a hole in the world.",
+        "read_aloud": "\"Four of them come in off the ring and stand around a patch of ordinary grass, and they do not hurry. Their hands move for about eight seconds — the same unhurried, never-going-back-to-correct-anything way you watched one fold a writ in an office two days ago — and the air in front of you stops agreeing with itself.\n\nThere is a way. It is about the size of a door and it is not a door, and looking straight at it is difficult in a way you cannot explain to each other afterward. Through it, or past it, or under it, there is somewhere with a different light in it.\n\nAnd the sound is not faint anymore.\n\nThe one who took your names says: 'We will hold it open. We cannot hold it open indefinitely, and we cannot come with you.' It says the second part apologetically, the way you would decline an invitation you actually wanted. 'Bring back who you can.'\"",
+        "if_they": "…ask how long they have, it says as long as it can manage, and it will not give a number, because it does not have one and will not invent one to comfort them.\n\n…ask how they get back, it says: the same way. Do not resolve tonight whether that is true.\n\n…ask what is in there, every one of them says the same thing in slightly different words: nobody knows. They are not hiding anything. Nobody has ever come back to tell them.\n\n…refuse, nobody makes them, nobody is angry, and the offer does not expire. The eleven stay where they are, and so does the sound.\n\n…go through, go around the table and let each player say how their hero does it. That is the last thing that happens tonight.",
+        "outcome": "STOP HERE, the moment the last hero is through. No description of the far side, no fight, no explanation. The table goes home standing in a doorway."
       },
-      "body": "WHAT IS PLANTED, and none of it is explained tonight: a country under an unfolded sky, which is the first proof the party has that there is a world in there rather than a cupboard; and the gray, which is the clean cure's wound, put somewhere no witness who would be believed can ever see it.\n\nELLUM'S FIRST BLAZE-MARK is somewhere in the gray country, scratched at a clerk's eye level. It is not found tonight. It is found the moment the party walks that way next session, and it is how a dead friend starts writing to [[npc-tobin|Tobin]].\n\nDO NOT NAME THIS PLACE at the table. Nobody in the party has a word for it, and the campaign is better off letting the players call it whatever they call it.",
+      "body": "THIS IS THE CLIFFHANGER and it does not need dressing up. Four people who could not save a boy eleven days ago are walking into the place he went, on purpose, because they can hear him.\n\nPLAY THE OPENING AS A COURTESY, not a ritual. Nobody chants. It is four polite beings doing an eight-second piece of work for some young people they think very highly of, and the horror is entirely in how normal it is for them.\n\nDO NOT LET ANYONE SAY WHAT IS ON THE OTHER SIDE, including the party once they are through. Next session opens on it.",
       "schema": 1,
-      "rev": 1,
+      "rev": 2,
       "leadsTo": []
     }
   ]
