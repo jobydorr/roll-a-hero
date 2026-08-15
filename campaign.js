@@ -904,7 +904,7 @@ window.DM_CAMPAIGN = {
       "title": "▶ WHERE THEY CAN GO — Dunlath",
       "parent": "f-locations",
       "order": 10,
-      "rev": 7,
+      "rev": 8,
       "tags": [
         "places",
         "index"
@@ -929,7 +929,7 @@ window.DM_CAMPAIGN = {
         ]
       ],
       "fields": {
-        "places": "[[loc-clockface|The Clock Face]] — meet people, leave word, hire a runner. The city's meeting place, by accident.\n[[loc-petition|The Petition Rail]] — formally demand anything at all, including a name added to the count. Every word is filed.\n[[loc-lampoffice|The Lamp Office]] — buy light. The register on the wall does not add up, and nobody has ever added it.\n[[loc-sixtyone|Sixty-One Pairs]] — rummage, one roll each. The first buyer for anything brought back out of a crease.\n[[loc-longtable|The Long Table]] — half the room is dressed as clowns, half as bakers, and they are fighting about it. Food, rooms, every rumor in the city, and a guard company for hire.\n[[loc-wintergarden|The Glasshouse]] — a garden under a glass roof, kept warm by no fire at all. Food, drink, players, a games yard, and dice behind a curtain. Where the party has a good night.\n[[loc-rationhall|The Emporium]] — a covered market the size of a cathedral. Take what your household needs; a clerk marks it on the roll. The porters will not let you carry anything.\n[[loc-foldingshop|The Folding Shop]] — commission a toy of anything. It gets the parts you did not say. The paper animals have got out.\n[[loc-ganny|Ganny Marle's Cellar]] — a painted sideshow banner and a coin to see THE IMPOSSIBLE CORNER. Something is coming through it.\n[[loc-scarline|The Scar-Line]] — walk where the canyon was. Their assignment, and the thinnest place in the city.\n[[loc-hearthspire|The Hearthspire]] — the tower, and the wound they watched open. A ring of Rectors has been standing on the ground at its foot for eleven days.\n[[loc-olddraws|The Old Draws]] — stand at the rim of a dead one and look down. Hundreds of feet, and you cannot see the floor.\n[[loc-darkwindow|The Dark Window]] — the one unlit window on any street after dark. Knock and be lied to politely.\n\nAlso here, used by [[f-commission|THE COMMISSION]]: [[loc-ossuary|the Ossuary]] and [[loc-setsquare|the Set Square]].",
+        "places": "[[loc-clockface|The Clock Face]] — meet people, leave word, hire a runner. The city's meeting place, by accident.\n[[loc-petition|The Petition Rail]] — formally demand anything at all, including a name added to the count. Every word is filed.\n[[loc-lampoffice|The Lamp Office]] — buy light. The register on the wall does not add up, and nobody has ever added it.\n[[loc-sixtyone|Sixty-One Pairs]] — rummage, one roll each. The first buyer for anything brought back out of a crease.\n[[loc-longtable|The Long Table]] — half the room is dressed as clowns, half as bakers, and they are fighting about it. Food, rooms, every rumor in the city, and a guard company for hire.\n[[loc-wintergarden|The Glasshouse]] — a garden under a glass roof, kept warm by no fire at all. Food, drink, players, a games yard, and dice behind a curtain. Where the party has a good night.\n[[loc-rationhall|The Emporium]] — a covered market the size of a cathedral. Take what your household needs; a clerk marks it on the roll. The porters will not let you carry anything.\n[[loc-bottles|Nine Hundred Bottles]] — potions and remedies. Describe the complaint and a boy goes up a ladder and brings back one specific bottle.\n[[loc-proving|The Proving Floor]] — arms and armor, showroom-style, with a sixty-yard range out the back where they can try anything before buying.\n[[loc-sugar|The Sugar Vault]] — a sweet shop run like a bank. Four hundred numbered drawers and no descriptions.\n[[loc-foldingshop|The Folding Shop]] — commission a toy of anything. It gets the parts you did not say. The paper animals have got out.\n[[loc-ganny|Ganny Marle's Cellar]] — a painted sideshow banner and a coin to see THE IMPOSSIBLE CORNER. Something is coming through it.\n[[loc-scarline|The Scar-Line]] — walk where the canyon was. Their assignment, and the thinnest place in the city.\n[[loc-hearthspire|The Hearthspire]] — the tower, and the wound they watched open. A ring of Rectors has been standing on the ground at its foot for eleven days.\n[[loc-olddraws|The Old Draws]] — stand at the rim of a dead one and look down. Hundreds of feet, and you cannot see the floor.\n[[loc-darkwindow|The Dark Window]] — the one unlit window on any street after dark. Knock and be lied to politely.\n\nAlso here, used by [[f-commission|THE COMMISSION]]: [[loc-ossuary|the Ossuary]] and [[loc-setsquare|the Set Square]].",
         "land": "West to east: [[loc-olddraws|the old Draws]] on the flats → the Cinder Draw, the last of them, now [[loc-scarline|the scar-line]] → [[loc-hearthspire|the Hearthspire]] standing over the fairground → rising ground → DUNLATH on the height behind its wall. Beneath all of it, the old sunsalt works running east from the Draws and up into the city's undercroft.\n\nFrom the west gate you look DOWN the slope: the tower first, canyon country beyond it, and the town above hanging over the whole business. The city is on the high ground and everything that fed it is below.",
         "ifthere": "Two pieces are written to be dropped when the night has room for them, and they live in [[f-iftime|IF THERE IS TIME]]: [[b-slip|a slip]], which can happen anywhere at all and takes ninety seconds, and [[enc-ganny|the thing in Ganny's preserves]], which is fifteen minutes and is not a fight unless the party insists.",
         "state": "THE CITY IS DUNLATH AND IT IS RICH. The blend to reach for: MEDIEVAL AESTHETICS, the material prosperity of ROME ON STEROIDS, the festive confidence of the GILDED AGE, all run by a totalitarian state. Colonnades, covered markets, fountains, porters with handcarts, crowds in good cloth at public games and feasts. No steam, no factories, no machinery — nothing more advanced than an ancient primitive flintlock, and one of those would be a marvel. This world was folded for plenty and the occupation's case rests on having delivered it. Nobody here is hungry.\n\nWHERE THE WONDER GOES: sunsalt. Heat and light without fire, seeded as hints and never explained — a floor warm underfoot with nothing burning under it, a hall lit with no flame in it, fruit trees under glass in winter. Marvel rather than machinery.\n\nAND THE DARK IS THE UNDERTOW, not the weather. The surface is a confident, wealthy, celebrating city, and the horror surfaces in the cracks — a thing said too courteously, a record being kept, two Surveyors at a corner table who never eat anything — while the table is still laughing at the clowns.\n\nAND THE CITY IS STILL DRESSED FOR A PARTY. Lastlight was a festival — garlands, bunting, stalls, a fair — and the disaster arrived in the middle of it, so none of it has come down. Decorations across every street going slowly brown. A carousel nobody has dismantled. Half-struck stalls. The correct image is a city in party clothes with a hole in it, not a city in mourning, and the decorations are the single fastest way to put that on the table.\n\nIt is the week after. The Cinder Draw was formally closed with garlands, so the best-paid trade in the world ended on a Tuesday and nobody has a job. Eleven people are officially missing and everyone who was there knows the number is wrong. The price of a lamp has doubled, which is the first limit anyone in Dunlath has met in living memory. The warrants are still up on the boards with three names on them that nobody has ever heard, and nobody has been arrested. The town overhead hangs where it has always hung."
@@ -1818,7 +1818,7 @@ window.DM_CAMPAIGN = {
       "title": "▶ THE BOARD — take one, any time",
       "parent": "f-unanswered",
       "order": 10,
-      "rev": 1,
+      "rev": 6,
       "tags": [
         "jobs",
         "index"
@@ -1843,76 +1843,32 @@ window.DM_CAMPAIGN = {
         ]
       ],
       "fields": {
-        "how": "Nothing has ever come of a petition at [[loc-petition|the Petition Rail]] — not one, in a lifetime of them — and the archive behind the Registry is where they go. It is real, it is genuinely kept, and it is enormous.\n\nA clerk at the third desk has worked that rail for nine years and has never once seen anything come back. When four people walk up with badges that open every door in Dunlath and ask a question nobody asks, they will start setting things aside — quietly, without ever saying what they are doing, a few slips at a time. That is the job board, and it is made of the state's own paperwork.",
-        "open": "1. [[unans-name|The name on the roll]] · a widow, eleven petitions, one letter wrong\n2. [[unans-dog|The dog in the Old Draws]] · you can hear it. Nobody will go down\n3. [[unans-street|The street that is not on the roll]] · six years' wages to light lamps that are not there\n4. [[unans-shadow|The house the morning stopped reaching]] · a wall where the sun used to be\n\nNone expires. They can take one, all four, or none, and come back to the pile in Act Two and it will still be there.",
-        "rule": "EACH ONE IS ONE SESSION'S SIDE ERRAND AT MOST, and most are half an hour. None of them is a fight. Every one is a real person who asked the government for something and was thanked, and filed, and never answered.\n\nThe party's badge is the whole mechanic: it opens gates, rope lines and checkpoints, which is exactly what every one of these petitions needed and could not get.",
-        "more": "WRITING A NEW ONE takes about four lines. Somebody wants a thing. The thing is small. The reason nobody did it is bureaucratic rather than sinister. And the party's badge or their nerve is enough to fix it in an afternoon.\n\nThe pile is bottomless by design — it is a lifetime of a city asking for things — so a new slip can be produced at the table whenever an evening needs one."
+        "how": "Nothing has ever come of a petition at [[loc-petition|the Petition Rail]] — not one, ever — and the archive behind the Registry is where they go.\n\nA clerk at the third desk has worked that rail nine years and never seen anything come back. Four people turn up with badges that open every door in the city, so she starts saving the ones with teeth in them and slipping them across the desk. That is the whole setup. Say it once and move on.",
+        "open": "1. [[unans-bakehouse|The thing under the bakehouse]] · it came up through the floor. Dark, close, and it bites\n2. [[unans-aisle|Aisle nine]] · the Emporium's porters will not go down one aisle anymore\n3. [[unans-garden|The garden guest]] · something landed in a rich family's garden and will not leave\n4. [[unans-dog|The dog in the Old Draws]] · four days down a canyon, and something else is down there too\n\nNone expires. Take one, take all four, or come back in Act Two and they are still here.",
+        "rule": "EVERY ONE IS: GO SOMEWHERE, DEAL WITH SOMETHING, GET PAID. Half an hour to an hour each. Three of the four have a monster in them and all four have coin and one thing worth keeping.\n\nThe party's badge gets them through the gate, the rope line or the front door. After that it is entirely on them.",
+        "more": "WRITING A NEW ONE takes four lines: somebody wants something dealt with, it is somewhere you can walk to, there is a thing there, and it pays. Reuse the bestiary and change the room.\n\nThe pile is bottomless by design, so a new slip can be produced at the table whenever an evening needs one."
       },
-      "body": "WHY THIS AND NOT A NOTICE BOARD IN A TAVERN. A job board made out of ignored petitions does three things a cork board cannot. It hands the party a moral engine that has nothing to do with killing anything. It makes the state's central quiet cruelty — we write it all down and we do none of it — into something the players personally fix, one slip at a time. And it means every good deed in this campaign is also evidence.\n\nTHE CLERK NEEDS A NAME and does not have one; that is Joby's. Everything else here is built from [[loc-petition|the rail]] as already written."
-    },
-    {
-      "schema": 1,
-      "id": "unans-name",
-      "type": "beat",
-      "leadsTo": [],
-      "rev": 1,
-      "title": "The name on the roll",
-      "parent": "f-unanswered",
-      "order": 20,
-      "tags": [
-        "jobs",
-        "city"
-      ],
-      "fields": {
-        "hook": "Half an hour, no dice, and it is the smallest thing in the world until you meet her.",
-        "read_aloud": "PETITION 4,411, taken at the rail and filed. In the petitioner's own words as far as the clerk could keep up:\n\n\"His name was Aldon with a D. It is cut into the roll of the honored crews as Alton with a T. He worked that Draw for thirty years and he is on the stone at the fairground with somebody else's name on him. I have asked eleven times. I am not asking for money.\"",
-        "env": "• THE STONE — the honored-crews roll, cut and set up for Lastlight, still standing on the fairground among the half-struck stalls.\n• THE LETTER — plainly wrong once you look, and nobody has looked.\n• HER — practical, tidy, not tearful, and she has brought the eleven receipts.\n• THE MASON'S YARD — busy, cheerful, and completely willing, once somebody with authority says the word.",
-        "if_they": "…take it to the Registry, the clerks are sympathetic and the form goes into the same archive as the last eleven. That route genuinely does not work and they should be allowed to try it.\n\n…take it to the mason instead, he says of course, it is an afternoon's work, and he needs an authorization — and their writ IS an authorization, which nobody involved had thought of.\n\n…just do it themselves with a chisel, that also works and she will love them for it, and somebody official will have a word.",
-        "outcome": "One letter. She will not make a speech about it. She will, however, tell other people what these four did, and the party's name starts moving through the sort of streets where nobody has ever been helped by anybody with a badge."
-      },
-      "body": "THE POINT. It is a single letter, it cost nothing, and eleven petitions could not do it. The party's badge could, in an afternoon. That is the whole argument of this campaign delivered as an errand.",
-      "fieldDefs": [
-        [
-          "hook",
-          "The hook — why do they care?"
-        ],
-        [
-          "read_aloud",
-          "Read aloud"
-        ],
-        [
-          "env",
-          "The place — quick sketch"
-        ],
-        [
-          "if_they",
-          "If they…"
-        ],
-        [
-          "outcome",
-          "Where it leaves them"
-        ]
-      ]
+      "body": "WHY A PETITION PILE AND NOT A NOTICE BOARD. It costs one sentence and it means the jobs come from ordinary people who asked the government first and got nothing, which is worth having in the background. But it is background. The jobs themselves are: there is a thing, go and deal with it, here is your money."
     },
     {
       "schema": 1,
       "id": "unans-dog",
       "type": "beat",
       "leadsTo": [],
-      "rev": 1,
+      "rev": 4,
       "title": "The dog in the Old Draws",
       "parent": "f-unanswered",
-      "order": 30,
+      "order": 50,
       "tags": [
         "jobs",
         "city"
       ],
       "fields": {
         "hook": "Twenty minutes, entirely physical, and it is the one on this board a nine-year-old will pick.",
-        "read_aloud": "PETITION 4,502, taken at the rail and filed:\n\n\"There is a dog down in the third old working. It has been down there four days. You can hear it from the rim. I have asked the ministry and they say the workings are sealed and that is the answer they keep giving me and it is still down there.\"",
+        "read_aloud": "PETITION 4,502:\n\n\"There is a dog down in the third old working. It has been down there four days. You can hear it from the rim. The ministry says the workings are sealed and it is still down there, and now it has stopped barking at night, which it did not used to do.\"",
         "env": "• THE RIM — a canyon edge, hundreds of feet, and you cannot see the floor. Everyone in Dunlath has dropped something in and counted.\n• THE SOUND — it echoes wrong. It sounds close, then far, then close. The fold does that and nobody here knows why.\n• THE LEDGES — old stepped workings going down the wall in tiers, some sound, some not, all of them older than anybody watching.\n• THE AUDIENCE — half a dozen people at the rim who all have an opinion and none of whom is going down.\n• GEAR — rope is cheap and the Long Table will lend it. Nobody has to buy anything.",
-        "if_they": "…go down, this is a climb with real consequence and no monster. Rope, ledges, one bad step, and somebody has to belay. Make it three or four checks and let a failure cost time or gear rather than a hero.\n\n…follow the sound, it lies. The echo is folded and the dog is not where it sounds. A hero who works that out finds it in half the time.\n\n…lower somebody in a sling, sensible, and it works.\n\n…bring it up, it is filthy, delighted, and completely uninjured, and it has been eating something down there that it should not have been able to find.",
-        "outcome": "One dog, returned. And a party that has now been a little way down into an old working and heard how sound behaves in there, which is the cheapest possible rehearsal for everything Act Two does."
+        "if_they": "…go down, it is a climb with real consequence — rope, old ledges, one bad step, somebody on belay. Three or four checks, and a failure costs time or gear rather than a hero.\n\n…follow the sound, it lies. The echo is folded and the dog is not where it sounds. Working that out halves the descent.\n\n…find out why it stopped barking at night, that is because something else moved in on the second day. Two [[cr-snatch-goblin|snatch-goblins]] have a nest on the fourth ledge and have been feeding the dog, which is either sweet or sinister depending on how they are played, and both are fine.\n\n…fight them, it is a fight on ledges over a drop, which is as good as this campaign's terrain gets.",
+        "outcome": "THE PAY: eight silver, which is everything she has, and she will try to give them more.\n\nTHE LOOT: whatever has been keeping the dog alive down there has a stash — a Draw crew's abandoned kit, forty years old and bone dry. A good rope, a crowbar, two sealed ration tins, and a foreman's brass whistle that is much louder than it has any right to be.\n\nAND THE DOG, which is filthy, delighted, uninjured, and now theirs if they want it."
       },
       "body": "WHY IT EARNS ITS PLACE. It is a rescue with a rope and a canyon and no enemy, the scoreboard of this campaign is rescues, and the boys will remember the dog longer than they remember any villain.\n\nTHE ECHO IS THE ONLY STRANGE THING and it is never explained. Sound folds. Leave it.",
       "fieldDefs": [
@@ -1940,26 +1896,26 @@ window.DM_CAMPAIGN = {
     },
     {
       "schema": 1,
-      "id": "unans-street",
+      "id": "unans-bakehouse",
       "type": "beat",
       "leadsTo": [],
       "rev": 1,
-      "title": "The street that is not on the roll",
+      "title": "The thing under the bakehouse",
       "parent": "f-unanswered",
-      "order": 40,
+      "order": 20,
       "tags": [
         "jobs",
         "city",
-        "haunted"
+        "fight"
       ],
       "fields": {
-        "hook": "Half an hour, no danger at all, and it is the one that will keep an adult awake.",
-        "read_aloud": "PETITION 3,988, taken at the rail and filed, four years ago and again every year since:\n\n\"I am a lamplighter. My round is Cadger's Row, eleven lamps, and I have been paid for it every quarter for six years. I cannot find Cadger's Row. It is not on the ward map. My father lit that round before me. I am not asking to be excused the wages. I am asking somebody to tell me where the street went.\"",
-        "env": "• HIM — sixty, entirely sober, entirely serious, and braced to be laughed at again.\n• HIS EVIDENCE — six years of pay slips, a ward map with no such street on it, and a brass key he has no lock for.\n• THE WARD OFFICE — helpful, patient, and certain he is confused. The roll pays the round because the roll has always paid the round.\n• WHERE HE THINKS IT IS — a perfectly ordinary junction where three streets meet and there is plainly room for a fourth.\n• NOBODY ELSE REMEMBERS IT. Not one person. That is the whole of the horror and it should be delivered completely flatly.",
-        "if_they": "…check the records, the street is on the payroll and on no map. Both are correct and nobody finds this odd but them.\n\n…ask around the junction, people are friendly and blank. An old woman says her mother used to say something about it and cannot remember what.\n\n…look for the lamps, they find brackets. Eleven of them, on the walls at the junction, with nothing to light and no street under them.\n\n…try to solve it, they cannot, and they should not be able to. There is no answer available in Act One.",
-        "outcome": "Nothing is fixed. What the party can do is believe him, which nobody has done in six years, and that is the entire job.\n\nKeep the brass key. He will give it to them if they ask."
+        "hook": "Forty minutes. A hole in a floor, a dark space under a city, and something down there that bites. The most straightforward fight on the board.",
+        "read_aloud": "PETITION 4,530:\n\n\"There is a hole in my bakehouse floor that was not there on Tuesday and something came up out of it and took a whole tray of buns and bit my boy on the arm. I have boarded it over. It is pushing the boards up at night. I have asked twice.\"",
+        "env": "• THE BAKEHOUSE — hot, floury, and lovely, and there is a hole in the middle of the floor with a flour barrel standing on the boards.\n• THE HOLE — drops eight feet into the old sunsalt works. Brick, arched, dry, and going both ways into the dark.\n• DOWN THERE — cold, smells of stone and something sweetish. Old rails in the floor. Sound carries much too far.\n• THE FLOOR IS COVERED IN CRUMBS, all the way along, which is the trail and which nobody needs a roll to follow.\n• THE BAKER — furious, generous, and will absolutely feed them first.",
+        "if_they": "…go down, it is a proper little dungeon crawl: three chambers, a collapsed section they have to squeeze or clear, and a chamber at the end with the nest in it.\n\n…follow the crumbs, it works, and it is the right answer, and let them feel clever for it.\n\n…fight, it is two [[cr-snatch-goblin|snatch-goblins]] and they are NOT frightened kits — these are grown, they are cornered, and they will use the dark. Add a third if the party is fresh.\n\n…try to talk to them, that works too and is harder, and a party that gets them out alive should be rewarded for it exactly as well as a party that fights.",
+        "outcome": "THE PAY: fifteen silver from the baker, and bread for the party for as long as they are in Dunlath, which he means literally and will honor forever.\n\nTHE LOOT: the nest is lined with stolen everything, and in it is a working lamplighter's pole with a good sunsalt cell still in it — a light source that never goes out, which is worth more than the silver and which they will use constantly."
       },
-      "body": "THIS ONE IS A SEED, NOT AN ERRAND. He is one of the haunted, and this is the Folding's memory-theft arriving as a payroll anomaly — a thread with one end in a man's hand and the other end inside the fold. Do not explain any of that and do not let anybody in the fiction get near it.\n\nIT PAYS OFF WHENEVER YOU WANT IT TO, in any zone, at any depth: eleven lamps and a street that is somewhere. The brass key is the marker.\n\n*(The name Cadger's Row is a placeholder — Joby's to keep or replace.)*",
+      "body": "WHY IT WORKS. Hole, dark, monster, loot, bread forever. Nothing in it needs explaining and a nine-year-old knows exactly what to do from the first sentence.\n\nAND IT PLANTS THE UNDERCROFT. The old sunsalt works run under the whole city, sealed and unmapped, and this is the party's first time in them. Do not point at that. They will remember the tunnels on their own the next time they need a road nobody watches.",
       "fieldDefs": [
         [
           "hook",
@@ -1985,25 +1941,26 @@ window.DM_CAMPAIGN = {
     },
     {
       "schema": 1,
-      "id": "unans-shadow",
+      "id": "unans-aisle",
       "type": "beat",
       "leadsTo": [],
       "rev": 1,
-      "title": "The house the morning stopped reaching",
+      "title": "Aisle nine",
       "parent": "f-unanswered",
-      "order": 50,
+      "order": 30,
       "tags": [
         "jobs",
-        "city"
+        "city",
+        "fight"
       ],
       "fields": {
-        "hook": "Twenty minutes and a genuinely satisfying practical problem with no correct answer written down.",
-        "read_aloud": "PETITION 4,120, taken at the rail and filed:\n\n\"They shut Fell Lane six years ago, which I do not argue with. But shutting it put a wall across the end of my yard and my house has not had a morning since. My wife's chair is where the sun used to come in. I would like somebody to look at it. That is all I want, somebody to come and look at it.\"",
-        "env": "• THE WALL — not built, folded. Seamless, unclimbable in any way that helps, and it is not going anywhere.\n• THE HOUSE — cold in a way that is not about temperature. Everything in it is arranged around a window that stopped working.\n• THE CHAIR — still there, still by the window, and he has not moved it.\n• THE YARD — small, walled on three sides now, and there is a great deal of good light about twelve feet above it going to waste.\n• HIM — apologetic for taking their time, and he will offer them tea he cannot really spare.",
-        "if_they": "…try to get the wall moved, they cannot. Nothing in Act One moves a wrinkle and the ministry will be courteous about it.\n\n…get practical, this is the point of the job — a mirror, a lime-washed wall, a polished sheet on the neighbor's gable, moving the chair, cutting a new window on the other side. Any workable idea should work. Let them design it.\n\n…throw money at it, that works too, and it is less fun, and let them find that out.\n\n…ask the neighbors for help, half the lane turns up, because this is a street where nobody has been able to do anything for anybody in six years.",
-        "outcome": "Light in a room, by whatever means the party invented, and one street that now knows their faces. No reward is offered and the tea is terrible."
+        "hook": "Half an hour. A fight in a warehouse the size of a cathedral, on top of a mountain of other people's shopping. Pure playground.",
+        "read_aloud": "PETITION 4,544, filed by the porters' guild:\n\n\"Nobody will work aisle nine. Three of my lads have been bitten and one has been up on the shelving since Thursday morning. Management says there is nothing in aisle nine. Management has not been down aisle nine.\"",
+        "env": "• [[loc-rationhall|THE EMPORIUM]] — a covered market the size of a cathedral, pillars, galleries, and shelving thirty feet high.\n• AISLE NINE — dry goods. Sacks, barrels, crates, bolts of cloth, and a great deal of it stacked far higher than anybody should have stacked it.\n• THE LIGHT — good everywhere else and bad here, because three lamp-cells in this aisle have been taken.\n• THE NOISE — the whole market going on around them, cheerfully, fifty feet away.\n• THE MAN ON THE SHELVING — still up there. Has been since Thursday. He is fine and he is not coming down.",
+        "if_they": "…go in, it is one [[cr-crease-wolf|crease-wolf]], and this is the perfect room for it: it goes flat, it goes THROUGH the shelving, and it is never where they swung.\n\n…climb, absolutely, and everything they climb can fall over. Encourage this. Toppling a run of shelving onto it should work and should be spectacular.\n\n…use the goods — flour to see it, oil to slow it, a bolt of cloth as a net, barrels rolled down the aisle. Say yes to all of it.\n\n…worry about the damage, the porters do not care in the slightest and management will care enormously.",
+        "outcome": "THE PAY: twenty silver from the porters' guild, out of their own pockets, which matters to them.\n\nTHE LOOT: whatever they broke open in the fight is on the floor and nobody is counting. One good coil of rope, a lamp-cell, and a crate of something ridiculous — let a player decide what was in the crate they landed on.\n\nAND: the porters now know them, which means the party has friends who carry everything in this city and hear everything in it."
       },
-      "body": "WHY IT WORKS. It is a problem with no printed solution, which means the answer is whatever the players build — and that is the most reliably satisfying kind of side errand there is.\n\nDO NOT SOLVE IT FOR THEM and do not have anybody suggest the mirror.\n\n*(Fell Lane is a placeholder name — Joby's to keep or replace.)*",
+      "body": "WHY IT WORKS. It is a fight in a toy shop. The room is the weapon, everything is climbable, everything falls over, and there is no penalty for wrecking any of it.\n\nSAY YES. Every improvised idea in this fight should work. That is the entire point of running it in a warehouse.",
       "fieldDefs": [
         [
           "hook",
@@ -2026,6 +1983,113 @@ window.DM_CAMPAIGN = {
           "Where it leaves them"
         ]
       ]
+    },
+    {
+      "schema": 1,
+      "id": "unans-garden",
+      "type": "beat",
+      "leadsTo": [],
+      "rev": 1,
+      "title": "The garden guest",
+      "parent": "f-unanswered",
+      "order": 40,
+      "tags": [
+        "jobs",
+        "city",
+        "fight",
+        "comedy"
+      ],
+      "fields": {
+        "hook": "Half an hour, and it is the funny one. Something enormous is in a very rich family's very beautiful garden, and it will not leave, and they are beside themselves.",
+        "read_aloud": "PETITION 4,551, on much better paper than the others:\n\n\"There is an animal in the garden. It came over the wall on Tuesday, or possibly through it. It has eaten the fish, it has ruined the lawn, and it is sleeping in my wife's summerhouse. We are hosting on Saturday. I will pay anything. ANYTHING.\"",
+        "env": "• THE HOUSE — marble, colonnades, a fountain, and a garden under glass at one end with fruit trees that have no business growing here.\n• THE GARDEN — wrecked. Beds flattened, an ornamental pond with no fish in it, and a set of tracks across the lawn that stop dead in the middle of it.\n• THE SUMMERHOUSE — painted, delicate, and there is something the size of a cart asleep in it, breathing.\n• THE FAMILY — watching from the upstairs windows. All of them. Including three children who are absolutely thrilled and will shout advice.\n• THE STAFF — have quietly stopped going outside and are enjoying themselves.",
+        "if_they": "…look at the tracks, they start in the middle of the lawn. It did not come over the wall. It came through a wrinkle and the wrinkle is gone.\n\n…fight it, it is a [[cr-tear-ogre|tear-ogre]] and that is a hard fight for level three. It is also asleep, slow to wake, and not hunting anybody.\n\n…be clever, this is the intended route and it should work: it is hungry and lost, and it will follow food. A cart of meat from the Long Table walks it out through the gates and down to the flats, slowly, in front of the entire street.\n\n…let the children out to help, the parents will faint and the kids at the table will love it.",
+        "outcome": "THE PAY: he said anything and he meant it — fifty silver, and he is embarrassed it is not more, and he will tell everyone at Saturday's party who did it.\n\nTHE LOOT: the wife insists they take something from the house. Let a player pick from a shelf of genuinely lovely useless things, and let one of them turn out to be useful later.\n\nAND: an invitation to Saturday. Which is a whole other evening if you want one."
+      },
+      "body": "WHY IT WORKS. Big animal, beautiful house, rich people panicking, and two routes that both pay — hit it, or lead it out with a cart of meat in front of the whole street.\n\nTHE TEAR-OGRE IS A REAL THREAT and the party has seen one penned at Lastlight. If they pick the fight, let it be genuinely frightening, and let them run if they need to. Nothing here punishes them for choosing the sausages.",
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "loc-bottles",
+      "type": "location",
+      "parent": "f-locations",
+      "leadsTo": [],
+      "rev": 1,
+      "title": "Nine Hundred Bottles — potions, tonics and remedies",
+      "order": 62,
+      "tags": [
+        "city",
+        "shop"
+      ],
+      "fields": {
+        "looks": "A tall narrow shop with every wall shelved floor to ceiling, and every shelf packed with small stoppered bottles, and every bottle lit from behind. Hundreds of them. Ladders on brass rails run the length of both walls and the shop boy goes up and down them at terrifying speed. The sign outside is a painted count, and somebody repaints the number whenever the stock changes; it currently reads NINE HUNDRED AND FOUR.",
+        "who_is_here": "The proprietor, who does not sell you anything until they have asked three questions: where does it hurt, when did it start, and did anything touch you. Then they send the boy up a ladder and he comes down with one specific bottle. They are never wrong and they are quietly delighted with themselves about it.",
+        "hidden": "Nothing sinister. It is a good shop run by good people at fair prices. The one thing worth knowing is that everything on these walls is made with refined sunsalt, which is why it works, and why the price of every bottle went up the same week the price of a lamp did."
+      },
+      "body": "WHAT THEY BUY. Healing potions, and this is where the party restocks. Standard prices, no restrictions, no permits, nothing complicated. A potion of healing is 50gp and they can buy as many as they can afford.\n\nALSO ON THE SHELVES, cheap and fun and not game-breaking: something that makes you glow faintly for an hour, something that makes your voice enormous, something that turns your hair a color, something that stops you feeling cold, something that makes food taste of whatever you say out loud. Let players buy these constantly.\n\nTHE TOY IS THE THREE QUESTIONS. Do not let the party point at a shelf. Make them describe the complaint and then produce the bottle. Kids will invent injuries purely to find out what comes back down the ladder.\n\nTHE LADDERS ARE CLIMBABLE and the boy will race anybody."
+    },
+    {
+      "schema": 1,
+      "id": "loc-proving",
+      "type": "location",
+      "parent": "f-locations",
+      "leadsTo": [],
+      "rev": 1,
+      "title": "The Proving Floor — arms, armor, and a range out the back",
+      "order": 64,
+      "tags": [
+        "city",
+        "shop"
+      ],
+      "fields": {
+        "looks": "Not a forge and not a junk shop — a showroom. A long marble hall with weapons mounted in racks down both sides at eye height, each with a little brass plate, and armor on stands in the middle like statues wearing it. Everything is polished. Nothing is dusty. There is a carpet.",
+        "who_is_here": "Fitters rather than smiths, in aprons over good clothes, who will take a hero's measurements without being asked and bring things over unprompted. They are pushy in the way of very good salespeople and they are extremely nice about it.",
+        "hidden": "The back half of the building is a covered range — sixty yards, straw targets, a sand bank, and a bored man who resets everything. Anybody may try anything they are thinking of buying, and most of the shop's custom comes from people who came in to look."
+      },
+      "body": "WHAT THEY BUY. Everything in the Player's Handbook equipment lists, at book prices. This is the party's armory and it should be simple.\n\nTHE TOY IS THE RANGE, and it is why this place exists. They can shoot, throw, or swing anything in the shop before buying it. Give every hero one roll on the range with whatever they want to try and describe what happens. That is fifteen minutes of pure fun and it costs the campaign nothing.\n\nLET THEM TRY ON THE PLATE. It is on a stand, it is enormous, and the fitters will help anybody into it who asks. Nobody is buying it. Everybody wants to wear it.\n\nTHE HOUSE COMPETITION: hit the small target at sixty yards and your name goes on the board by the door. There are eleven names on it. One of them has been there forty years."
+    },
+    {
+      "schema": 1,
+      "id": "loc-sugar",
+      "type": "location",
+      "parent": "f-locations",
+      "leadsTo": [],
+      "rev": 1,
+      "title": "The Sugar Vault — a confectioner with a ridiculous reputation",
+      "order": 66,
+      "tags": [
+        "city",
+        "shop",
+        "comedy"
+      ],
+      "fields": {
+        "looks": "A shop built to look like a bank, because the joke has been running for sixty years. Marble counter, brass grilles, and behind them a wall of small numbered drawers going up two storeys with a rolling ladder in front of them. You do not browse. You present yourself at the counter and make a withdrawal.",
+        "who_is_here": "Clerks in green visors who take the order with total gravity, write it in a ledger, and hand it over in a paper packet sealed with wax. Nobody in this building has ever smiled at a customer and the whole city finds this hilarious.",
+        "hidden": "Drawer 400 is the one everybody asks about and nobody has bought from in years, because it costs more than a week's wages and because the clerks will not say what is in it. It is not dangerous, it is not magic, and it is genuinely worth the money."
+      },
+      "body": "WHY THIS EXISTS. It is a sweet shop run like a bank vault, it is enormously silly, and the boys will want to go back every single session. Opulence at pocket-money prices.\n\nTHE TOY IS THE DRAWERS. Four hundred numbered drawers and a printed list on the counter with numbers but no descriptions. Ordering is a gamble unless somebody tells you what is good, and everybody in Dunlath has an opinion about the numbers.\n\nCHEAP, HARMLESS, MEMORABLE: a copper each. Let players order by number and roll for what comes back if you like. Nothing here has a mechanical effect and nothing needs one.\n\nDRAWER 400 IS DELIBERATELY UNDECIDED. Somebody will eventually spend the money. Decide then, at the table, and make it worth it."
     }
   ]
 };
