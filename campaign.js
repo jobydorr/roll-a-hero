@@ -1110,7 +1110,7 @@ window.DM_CAMPAIGN = {
       "title": "Ganny Marle's Cellar — THE IMPOSSIBLE CORNER, one coin",
       "parent": "f-locations",
       "order": 90,
-      "rev": 2,
+      "rev": 4,
       "tags": [
         "city",
         "wrinkle",
@@ -1121,9 +1121,9 @@ window.DM_CAMPAIGN = {
       "fields": {
         "looks": "A sideshow, run out of a house. There is a painted banner nailed across the whole front of the building — THE IMPOSSIBLE CORNER, in four colors, with an artist's impression that is wildly inaccurate — a lamp over the door, and a boy on a box outside doing the patter. One coin gets you down six steps into the cellar and a look through a hand-sized hole in the back wall.\n\nThrough the hole the cellar does not meet itself. The far corner is about two feet further away than the near one says it should be, and there is a draught coming out of it that smells of somewhere else.",
         "who_is_here": "Ganny Marle, eighty, in a good hat, entirely uninterested in what the wrinkle is or what it means and extremely interested in the coin. The boy outside, who is her grandson and is on commission.\n\nDIRECTLY ACROSS THE STREET: her neighbor has painted a bigger banner — A BETTER HOLE, HALF PRICE — and he does not have a hole. He has never had a hole. The banners have been escalating for a month and both of them are now running out of wall.",
-        "hidden": "Something small has been coming through at night and eating her preserves, and she has not mentioned this to anybody because she does not want the ministry in her cellar. It has a hoard behind the wall. See [[enc-ganny|the thing in Ganny's preserves]]."
+        "hidden": "Two things she is not telling anybody, and she is not telling anybody the same thing twice.\n\nThe first is that something small has been coming through at night and eating her preserves, and she has a hoard behind the wall — see [[enc-ganny|the thing in Ganny's preserves]].\n\nThe second is worse and she knows it: THE HOLE IS GETTING BIGGER. It was a finger's width when her husband found it. It is a hand's width now and most of that happened this year. She has been quietly re-cutting the viewing hole to keep the banner honest, and she has the offcuts, and she has never shown them to anybody. A wrinkle that grows is a ministry matter, and a ministry matter in your cellar means you do not have a cellar or a house."
       },
-      "body": "WHAT THEY DO HERE. Pay a coin and look, which is worth doing on its own — this is the first time most of the party will have seen a wrinkle up close and had time to study it, rather than being in a fight beside one.\n\nThen, if there is room in the night, [[enc-ganny|the preserves]]. Fifteen minutes, and the thing that comes out of the hole is not a fight unless the party makes it one.\n\nWHY THIS PLACE EXISTS. It is cheap, it is weird, and it is exactly the sort of thing children ask to go back to. It also quietly establishes that the fold has small holes in it all over the city, which is the fact the whole of Act One is built on and which nobody has to say out loud."
+      "body": "WHAT THEY DO HERE. Pay a coin and look, which is worth doing on its own — the first time most of the party sees a wrinkle up close with time to study it rather than in a fight.\n\nTHEN GIVE THEM SOMETHING TO DO WITH IT. Ganny will let them measure it for the price of a second coin and a promise, because she wants to be told she is imagining it. Any way they choose to measure works: a hand, a string, a chalk line on the floor, a coin held up. She produces her offcuts, and the offcuts say she is not imagining it.\n\nAND THEN SHE HAS A DECISION SHE CANNOT MAKE, and she will hand it to them because they have badges and nobody else has ever been kind to her about it. Report it and she loses the house. Do not report it and it goes on growing under a street full of people. There is no right answer, nobody is punished for either, and a party of children will argue about it for twenty minutes.\n\nTHE BANNER WAR ACROSS THE STREET runs underneath all of this and never stops being funny. The neighbor still does not have a hole. He is now advertising two.\n\nWHY THIS PLACE EXISTS. It is cheap, it is weird, and it is exactly the sort of thing children ask to go back to. It also establishes that the fold has small holes all over the city — the fact Act One is built on, which nobody ever has to say out loud."
     },
     {
       "schema": 1,
@@ -1277,7 +1277,7 @@ window.DM_CAMPAIGN = {
       "title": "The thing in Ganny's preserves",
       "parent": "f-iftime",
       "order": 40,
-      "rev": 1,
+      "rev": 3,
       "tags": [
         "act1",
         "optional",
@@ -1288,9 +1288,9 @@ window.DM_CAMPAIGN = {
         "setup": "[[loc-ganny|Ganny Marle]] mentions, once the party has paid their coin and had their look, that something has been at her preserves. Six jars in a fortnight, the lids off and set aside neatly rather than broken. She has not told the ministry because she does not want the ministry in her cellar.\n\nWait in the dark for twenty minutes of game time and something comes through the wrinkle.",
         "creatures": "One [[cr-snatch-goblin|snatch-goblin]] kit — knee-high, thin, and by itself. Use the sheet's numbers if it comes to dice, but halve the hit points and give it no interest whatsoever in fighting. It wants the jam. It is frightened of everything and it is very fast.",
         "tactics": "It is not an ambush and it does not attack. It freezes, it hides badly, and it bolts for the hole the moment anyone moves quickly. Anything the party does that is loud or sudden sends it back through the wrinkle, and it does not come back that night.\n\nWays this can go, all of them fine: corner it, catch it in a sack or a coat, feed it and watch what happens, block the hole and talk to it, follow it through the wrinkle before it closes, or kill it. If they are gentle it becomes almost tame within the hour, which children will find far more interesting than a corpse.",
-        "reward": "THE HOARD, behind a loose stone in the cellar wall, and they find it whether the kit lives or dies. It is a magpie's pile of shiny nothing: buttons, three spoons, a bootlace, a brass curtain ring, a good deal of broken glass.\n\nAnd one thing that does not belong. Something that was on a person at the fairground two days ago — a garland ribbon in the Draw's colors, a child's shoe, a lamplighter's brass key. Something the party can recognize."
+        "reward": "THE HOARD, behind a loose stone in the cellar wall, and they find it whether the kit lives or dies. A magpie's pile of shiny nothing: buttons, three spoons, a bootlace, a brass curtain ring, a good deal of broken glass.\n\nAnd one thing that does not belong — something that was on a person at the fairground two days ago, and that the party can recognize: a garland ribbon in the Draw's colors, a child's shoe, a lamplighter's brass key.\n\nAND GANNY'S OFFCUTS, if they have earned them: the pieces she has cut out of her own wall three times in a year to keep the viewing hole matching the hole. She has never shown anybody. They are the plainest evidence in Act One that the fold is opening on a schedule, and they are held by an eighty-year-old woman in a good hat who charges a coin to look at it."
       },
-      "body": "THE POINT OF THIS, and why it is worth fifteen minutes: the wrinkle in an old woman's cellar and the tear at the foot of the Hearthspire open into the same place.\n\nThat is a real, concrete, physical clue delivered by a goblin stealing jam, and it does three things at once. It proves [[npc-tobin|Tobin]]'s suspicion before he has earned the right to say it out loud. It tells the party that the way in does not have to be a great seam that Rectors are watching — the city is full of small holes. And it makes the thing they saw at the fairground personal again, because whatever is in that hoard belonged to somebody who is on the far side of it right now.\n\nHOW HARD TO PUSH. Not at all. Put the object in the pile and describe the pile. If nobody picks it up, [[npc-tobin|Tobin]] does, and writes it down, and says nothing — and the party can find it in his notes later, which is arguably better.\n\nIT IS NOT A FIGHT. The scoreboard of this campaign is rescues rather than kills, and this is the first chance after Lastlight to teach that with something small and frightened instead of something dangerous. A party that catches the kit in a coat and feeds it has learned more about how these sessions work than a party that rolls initiative."
+      "body": "THE POINT OF THIS, and why it is worth fifteen minutes: the wrinkle in an old woman's cellar and the tear at the foot of the Hearthspire open into the same place.\n\nThat is a real, concrete, physical clue delivered by a goblin stealing jam, and it does three things at once. It proves what [[npc-tobin|Tobin]] suspects before he has earned the right to say it out loud. It tells the party the way in does not have to be a great seam with Rectors standing on it. And it makes the fairground personal again, because whatever is in that hoard belonged to somebody who is on the far side of it right now.\n\nHOW HARD TO PUSH. Not at all. Put the object in the pile and describe the pile. If nobody picks it up, [[npc-tobin|Tobin]] does, and writes it down, and says nothing, and the party finds it in his notes later, which is arguably better.\n\nIT IS NOT A FIGHT. The scoreboard is rescues rather than kills, and this is the first chance after Lastlight to teach that with something small and frightened instead of something dangerous. A party that catches the kit in a coat and feeds it has learned more about how these sessions work than a party that rolls initiative.\n\n⚠ DO NOT LET THEM FOLLOW IT THROUGH. The hole is a hand's width and it is not a door; a kit gets through because a kit is the size of a cat. The party's first entrance into the fold is [[f-wreck|THE WAY IN]] and it is the end of a session, so do not spend it in a cellar. If somebody tries, the answer is simply that they do not fit."
     },
     {
       "schema": 1,
@@ -1712,22 +1712,22 @@ window.DM_CAMPAIGN = {
       "type": "beat",
       "parent": "f-iftime",
       "leadsTo": [],
-      "rev": 1,
-      "title": "THE WRONG ROOM — a man whose pantry is somewhere else",
+      "rev": 2,
+      "title": "THE WRONG ROOM — a door that shows a different room every time",
       "order": 20,
       "tags": [
         "city",
         "side",
-        "comedy"
+        "toy"
       ],
       "fields": {
-        "hook": "Ten minutes. The world folds space as a matter of course, and here that is not a horror, it is a man being extremely annoyed about his pantry.",
-        "read_aloud": "\"A man is standing in his own doorway holding a lamp. He has clearly been waiting all day for somebody official, and you have badges.\n\n'Right,' he says. 'Look at it. Just look at it.'\n\nHe opens the pantry door. Behind it is not a pantry. It is somebody else's cellar — barrels, a swept floor, a lamp burning that nobody lit, and a coat on a hook that is not his coat. The light in there is a different time of day.\n\n'That has been like that since Tuesday,' he says. 'My preserves are in there.'\"",
-        "env": "• THE FLAT — ordinary, tidy, and one door in it is wrong.\n• THROUGH THE DOOR — cool air, a different light, and the smell of somebody else's cooking.\n• THE MAN — not frightened in the slightest. He is annoyed, he has written it all down, and he would like somebody to sign something.\n• THE COAT — good cloth, and it has hung there since Tuesday, and nobody has come for it.\n• THE NEIGHBORS — completely uninterested. Two doors down a woman says hers did that last year and it sorted itself out.",
-        "if_they": "…go through, they can, and it is a cellar, and it is somebody's, and they should feel like burglars. Nothing in it is dangerous. Getting back is walking back.\n\n…ask what caused it, the honest answer is that the ministry pinched a street shut three streets over last week and this is the sort of thing that happens. Everybody knows this. Nobody finds it remarkable.\n\n…try to fix it, they cannot, and neither can anybody they can reach today.\n\n…take the coat, let them. Somebody is going to want it back eventually.",
-        "outcome": "He wants two things: his preserves, and somebody with a badge to witness his petition at [[loc-petition|the Petition Rail]] so it goes in properly. Both are easy and both cost the party nothing but an afternoon."
+        "hook": "Ten to fifteen minutes. A door the players can operate, a rule they can work out by trying it, and a stranger on the other side doing exactly the same thing.",
+        "read_aloud": "\"A man is standing in his own doorway holding a lamp, and he has been waiting all day for somebody official, and you have badges.\n\n'Right,' he says. 'Watch. Just watch.'\n\nHe opens the pantry door. Behind it is a stairwell going down, lit, with somebody's boots on the third step. He shuts it. He opens it again. Now it is a kitchen with a meal half-made on the table and nobody in it. He shuts it. He opens it again. Dark. Something dripping.\n\n'Since Tuesday,' he says. 'And once — ONCE, mind — it was my pantry. My preserves are in there.'\"",
+        "env": "• THE FLAT — ordinary, tidy, and one door in it is wrong.\n• EACH ROOM — a different light, a different temperature, a different smell coming out. The dark one is colder than the others and they will notice.\n• THE MAN — not frightened, ANNOYED, and he has been keeping a tally in chalk on the doorframe. It is not a very good tally.\n• THE NEIGHBORS — completely uninterested. Two doors down a woman says hers did that last year and it sorted itself out.\n• NO DANGER ANYWHERE IN THIS. Nothing comes through at them. The tension is entirely whether they can work the door.",
+        "if_they": "…just start opening and shutting it, good, that is the whole game. There are SIX rooms and they come round in a fixed order: stairwell, kitchen, dark one, a cellar with barrels, a room with a window and rain on it, and the pantry. Then it repeats. Tell them nothing and let them count.\n\n…work out the cycle, the task is to be standing there with the door open when the pantry comes round and get an arm in fast. No roll needed if they have counted. One roll if they are guessing.\n\n…hold the door open, the room stays. It only changes when it is shut and opened again, and they will discover this by accident within about four tries.\n\n…go through into one of them, they can, and they had better be back before somebody shuts the door. That is the only real danger and it is one they invent themselves.\n\n…look at the cellar with the barrels, there is a note on the floor, weighted with a cup. Somebody on the other side has been doing exactly this since Tuesday and has written: WHO IS DOING THIS. There are five earlier notes under it.",
+        "outcome": "The preserves, if they timed it. And a correspondent — the party can leave a note in the cellar room and get an answer next cycle, which is a two-way door onto somewhere nobody has identified, opening on a schedule they now know. Let them invent uses for that; they will."
       },
-      "body": "WHY THIS ONE. It is the cosmology arriving as an inconvenience rather than a lecture — a folded world is a place where a man loses his pantry and files a form about it, and that does more for the setting than any amount of explaining.\n\nIT IS NOT A PORTAL and must never be run as one. It is the edge of a wrinkle the ministry made on purpose, three streets away, for reasons nobody told this man.",
+      "body": "WHY THE OVERHAUL. The old version was a door to look at and an errand to run. This one is a machine with a rule the players discover by operating it, which is the difference between a side piece and window dressing.\n\nSIX ROOMS, FIXED ORDER, AND IT ONLY CHANGES WHEN THE DOOR SHUTS. That is the entire ruleset. Do not explain it, do not let anybody in the fiction explain it, and let the table have the pleasure of working it out.\n\nIT IS NOT A PORTAL and must never be run as one. It is the ragged edge of a wrinkle the ministry pinched three streets over last week, and the rooms are all somewhere perfectly ordinary.\n\nTHE CORRESPONDENT IS UNDECIDED ON PURPOSE. Nobody has said who is on the other end. Leave it that way until it is wanted.",
       "fieldDefs": [
         [
           "hook",
@@ -1757,22 +1757,253 @@ window.DM_CAMPAIGN = {
       "type": "beat",
       "parent": "f-iftime",
       "leadsTo": [],
-      "rev": 1,
-      "title": "THE MEASURING — a Surveyor that will not move",
+      "rev": 2,
+      "title": "THE MEASURING — a Surveyor that needs a second pair of hands",
       "order": 30,
       "tags": [
         "city",
         "side",
-        "comedy"
+        "toy"
       ],
       "fields": {
-        "hook": "Fifteen minutes of comedy that teaches the table exactly what these beings are like. No danger, no dice, and one real fact handed over by accident.",
-        "read_aloud": "\"There is one of the paper people standing in the middle of the street. It has been there since dawn. Carts are going round it. A queue of three people has formed behind it for no reason anybody can explain.\n\nIt is holding one arm out and turning, very slowly, about a degree at a time. It has completed two full circles this morning.\"",
-        "env": "• THE STREET — has adapted completely. Traffic flows around it. A stall has moved six feet and nobody discussed it.\n• THE QUEUE — three people who do not know why they are queueing and are now far too committed to leave.\n• IT IS DELIGHTED TO BE ASKED anything at all, and answers at once, at length, and with total honesty.\n• AND THE ANSWERS ARE USELESS — not evasive and not coded. Genuinely honest, about a subject nobody present has the words for.\n• TIME — it will still be there tomorrow. It will be gone the day after, with no announcement.",
-        "if_they": "…ask what it is doing, it says it is measuring. Ask what it is measuring and it gives the true answer, which involves three words nobody at the table has ever heard and one gesture. It will repeat this as many times as they like.\n\n…ask why here, it says because this is where it is. That is not a joke and it does not have a second answer.\n\n…ask whether something is wrong, it says no. It is telling the truth, and it is the only reassuring thing it says all day.\n\n…keep at it politely, they get ONE real thing, given freely because they asked properly: it is measuring how far apart two things are, and the answer this morning is different from the answer yesterday.",
-        "outcome": "Nothing happens and nobody is in danger. The party walks away with a joke, a very clear sense of what these beings are, and one number that changed overnight."
+        "hook": "Fifteen minutes. The players do a completely absurd job with total precision while a city goes about its business around them, and they take the reading themselves.",
+        "read_aloud": "\"There is one of the paper people standing in the middle of the street. It has been there since dawn. Carts are going round it. A queue of three people has formed behind it for no reason anybody can explain.\n\nIt turns and looks at you — which takes a moment, because it has to arrange the face first — and it says: 'Oh. Oh, good. Are your arms steady? Mine are, but I cannot be in two places, and I have been standing here since dawn hoping somebody sensible would come past.'\"",
+        "env": "• THE STREET — has adapted completely. Traffic flows round it. A stall has moved six feet and nobody discussed it.\n• THE QUEUE — three people who do not know why they are queueing and are now far too committed to leave.\n• THE JOB — hold a thin rod perfectly upright, somewhere awkward, and call out the instant it says now.\n• WHERE IT WANTS THEM — pick the worst place available: a roof ridge, a windowsill over the street, the middle of a busy junction, the back of a cart that will not stop moving.\n• INTERRUPTIONS, one per attempt, and always mundane — a cart, a dog, a kid asking what they are doing, the stall-holder wanting his roof back.",
+        "if_they": "…help, run it as three or four attempts. Each one fails for an ordinary reason and each failure is funny. Let them solve the logistics themselves — somebody has to hold the ladder, somebody has to shoo the dog.\n\n…ask what they are measuring, it says: how far apart two things are. It points at one of them. The other one is not visible from here.\n\n…ask why it matters, it says it does not know, and that this is not its part of the work. Entirely honest and weirdly reassuring.\n\n…refuse or wander off, it thanks them anyway, with real warmth, and is still there tomorrow.\n\n…succeed, THEY read the number off the rod and call it out. It writes it down. Then it asks them to do it once more, please, if they would not mind.",
+        "outcome": "The second reading does not match the first. Nor does the third. It thanks them with total sincerity, writes all three down, says 'yes' in the tone of somebody whose suspicion has been confirmed, and goes back to standing there.\n\nThe party has personally taken a measurement between two fixed things and got a different answer three times in ten minutes. Nobody explains it and nobody ever brings it up."
       },
-      "body": "WHY THIS ONE. The comedy and the dread are made of the same material, which is the whole trick with these beings — a table can laugh at this for fifteen minutes and still leave the street uneasy.\n\nTHE ONE REAL FACT is the distance changing. Give it freely rather than making them win it, do not explain it, do not have anybody react to it, and do not raise it again.",
+      "body": "WHY THE OVERHAUL. The old version was a bit performed at the table — ask a question, receive a useless answer. Now the players do the work and produce the unsettling fact themselves, which is worth ten times as much and is also much funnier.\n\nPLAY IT AS A NICE DAY OUT. It is grateful, it is chatty, it apologizes for the roof. The dread is entirely in the numbers and should never be in its manner.\n\nTHE FACT IS THE ACT ONE CLOCK, arriving sideways: the ground is not steady, and the distances are moving. Do not connect it to anything for them.",
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "f-unanswered",
+      "type": "folder",
+      "title": "THE UNANSWERED — jobs nobody was ever going to do",
+      "parent": null,
+      "order": 45,
+      "rev": 1,
+      "tags": [
+        "jobs"
+      ],
+      "leadsTo": [],
+      "fields": {},
+      "body": ""
+    },
+    {
+      "schema": 1,
+      "id": "unans-index",
+      "type": "note",
+      "title": "▶ THE BOARD — take one, any time",
+      "parent": "f-unanswered",
+      "order": 10,
+      "rev": 1,
+      "tags": [
+        "jobs",
+        "index"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "how",
+          "▶ How the party gets these"
+        ],
+        [
+          "open",
+          "On the board now"
+        ],
+        [
+          "rule",
+          "How to run one"
+        ],
+        [
+          "more",
+          "Writing a new one"
+        ]
+      ],
+      "fields": {
+        "how": "Nothing has ever come of a petition at [[loc-petition|the Petition Rail]] — not one, in a lifetime of them — and the archive behind the Registry is where they go. It is real, it is genuinely kept, and it is enormous.\n\nA clerk at the third desk has worked that rail for nine years and has never once seen anything come back. When four people walk up with badges that open every door in Dunlath and ask a question nobody asks, they will start setting things aside — quietly, without ever saying what they are doing, a few slips at a time. That is the job board, and it is made of the state's own paperwork.",
+        "open": "1. [[unans-name|The name on the roll]] · a widow, eleven petitions, one letter wrong\n2. [[unans-dog|The dog in the Old Draws]] · you can hear it. Nobody will go down\n3. [[unans-street|The street that is not on the roll]] · six years' wages to light lamps that are not there\n4. [[unans-shadow|The house the morning stopped reaching]] · a wall where the sun used to be\n\nNone expires. They can take one, all four, or none, and come back to the pile in Act Two and it will still be there.",
+        "rule": "EACH ONE IS ONE SESSION'S SIDE ERRAND AT MOST, and most are half an hour. None of them is a fight. Every one is a real person who asked the government for something and was thanked, and filed, and never answered.\n\nThe party's badge is the whole mechanic: it opens gates, rope lines and checkpoints, which is exactly what every one of these petitions needed and could not get.",
+        "more": "WRITING A NEW ONE takes about four lines. Somebody wants a thing. The thing is small. The reason nobody did it is bureaucratic rather than sinister. And the party's badge or their nerve is enough to fix it in an afternoon.\n\nThe pile is bottomless by design — it is a lifetime of a city asking for things — so a new slip can be produced at the table whenever an evening needs one."
+      },
+      "body": "WHY THIS AND NOT A NOTICE BOARD IN A TAVERN. A job board made out of ignored petitions does three things a cork board cannot. It hands the party a moral engine that has nothing to do with killing anything. It makes the state's central quiet cruelty — we write it all down and we do none of it — into something the players personally fix, one slip at a time. And it means every good deed in this campaign is also evidence.\n\nTHE CLERK NEEDS A NAME and does not have one; that is Joby's. Everything else here is built from [[loc-petition|the rail]] as already written."
+    },
+    {
+      "schema": 1,
+      "id": "unans-name",
+      "type": "beat",
+      "leadsTo": [],
+      "rev": 1,
+      "title": "The name on the roll",
+      "parent": "f-unanswered",
+      "order": 20,
+      "tags": [
+        "jobs",
+        "city"
+      ],
+      "fields": {
+        "hook": "Half an hour, no dice, and it is the smallest thing in the world until you meet her.",
+        "read_aloud": "PETITION 4,411, taken at the rail and filed. In the petitioner's own words as far as the clerk could keep up:\n\n\"His name was Aldon with a D. It is cut into the roll of the honored crews as Alton with a T. He worked that Draw for thirty years and he is on the stone at the fairground with somebody else's name on him. I have asked eleven times. I am not asking for money.\"",
+        "env": "• THE STONE — the honored-crews roll, cut and set up for Lastlight, still standing on the fairground among the half-struck stalls.\n• THE LETTER — plainly wrong once you look, and nobody has looked.\n• HER — practical, tidy, not tearful, and she has brought the eleven receipts.\n• THE MASON'S YARD — busy, cheerful, and completely willing, once somebody with authority says the word.",
+        "if_they": "…take it to the Registry, the clerks are sympathetic and the form goes into the same archive as the last eleven. That route genuinely does not work and they should be allowed to try it.\n\n…take it to the mason instead, he says of course, it is an afternoon's work, and he needs an authorization — and their writ IS an authorization, which nobody involved had thought of.\n\n…just do it themselves with a chisel, that also works and she will love them for it, and somebody official will have a word.",
+        "outcome": "One letter. She will not make a speech about it. She will, however, tell other people what these four did, and the party's name starts moving through the sort of streets where nobody has ever been helped by anybody with a badge."
+      },
+      "body": "THE POINT. It is a single letter, it cost nothing, and eleven petitions could not do it. The party's badge could, in an afternoon. That is the whole argument of this campaign delivered as an errand.",
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "unans-dog",
+      "type": "beat",
+      "leadsTo": [],
+      "rev": 1,
+      "title": "The dog in the Old Draws",
+      "parent": "f-unanswered",
+      "order": 30,
+      "tags": [
+        "jobs",
+        "city"
+      ],
+      "fields": {
+        "hook": "Twenty minutes, entirely physical, and it is the one on this board a nine-year-old will pick.",
+        "read_aloud": "PETITION 4,502, taken at the rail and filed:\n\n\"There is a dog down in the third old working. It has been down there four days. You can hear it from the rim. I have asked the ministry and they say the workings are sealed and that is the answer they keep giving me and it is still down there.\"",
+        "env": "• THE RIM — a canyon edge, hundreds of feet, and you cannot see the floor. Everyone in Dunlath has dropped something in and counted.\n• THE SOUND — it echoes wrong. It sounds close, then far, then close. The fold does that and nobody here knows why.\n• THE LEDGES — old stepped workings going down the wall in tiers, some sound, some not, all of them older than anybody watching.\n• THE AUDIENCE — half a dozen people at the rim who all have an opinion and none of whom is going down.\n• GEAR — rope is cheap and the Long Table will lend it. Nobody has to buy anything.",
+        "if_they": "…go down, this is a climb with real consequence and no monster. Rope, ledges, one bad step, and somebody has to belay. Make it three or four checks and let a failure cost time or gear rather than a hero.\n\n…follow the sound, it lies. The echo is folded and the dog is not where it sounds. A hero who works that out finds it in half the time.\n\n…lower somebody in a sling, sensible, and it works.\n\n…bring it up, it is filthy, delighted, and completely uninjured, and it has been eating something down there that it should not have been able to find.",
+        "outcome": "One dog, returned. And a party that has now been a little way down into an old working and heard how sound behaves in there, which is the cheapest possible rehearsal for everything Act Two does."
+      },
+      "body": "WHY IT EARNS ITS PLACE. It is a rescue with a rope and a canyon and no enemy, the scoreboard of this campaign is rescues, and the boys will remember the dog longer than they remember any villain.\n\nTHE ECHO IS THE ONLY STRANGE THING and it is never explained. Sound folds. Leave it.",
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "unans-street",
+      "type": "beat",
+      "leadsTo": [],
+      "rev": 1,
+      "title": "The street that is not on the roll",
+      "parent": "f-unanswered",
+      "order": 40,
+      "tags": [
+        "jobs",
+        "city",
+        "haunted"
+      ],
+      "fields": {
+        "hook": "Half an hour, no danger at all, and it is the one that will keep an adult awake.",
+        "read_aloud": "PETITION 3,988, taken at the rail and filed, four years ago and again every year since:\n\n\"I am a lamplighter. My round is Cadger's Row, eleven lamps, and I have been paid for it every quarter for six years. I cannot find Cadger's Row. It is not on the ward map. My father lit that round before me. I am not asking to be excused the wages. I am asking somebody to tell me where the street went.\"",
+        "env": "• HIM — sixty, entirely sober, entirely serious, and braced to be laughed at again.\n• HIS EVIDENCE — six years of pay slips, a ward map with no such street on it, and a brass key he has no lock for.\n• THE WARD OFFICE — helpful, patient, and certain he is confused. The roll pays the round because the roll has always paid the round.\n• WHERE HE THINKS IT IS — a perfectly ordinary junction where three streets meet and there is plainly room for a fourth.\n• NOBODY ELSE REMEMBERS IT. Not one person. That is the whole of the horror and it should be delivered completely flatly.",
+        "if_they": "…check the records, the street is on the payroll and on no map. Both are correct and nobody finds this odd but them.\n\n…ask around the junction, people are friendly and blank. An old woman says her mother used to say something about it and cannot remember what.\n\n…look for the lamps, they find brackets. Eleven of them, on the walls at the junction, with nothing to light and no street under them.\n\n…try to solve it, they cannot, and they should not be able to. There is no answer available in Act One.",
+        "outcome": "Nothing is fixed. What the party can do is believe him, which nobody has done in six years, and that is the entire job.\n\nKeep the brass key. He will give it to them if they ask."
+      },
+      "body": "THIS ONE IS A SEED, NOT AN ERRAND. He is one of the haunted, and this is the Folding's memory-theft arriving as a payroll anomaly — a thread with one end in a man's hand and the other end inside the fold. Do not explain any of that and do not let anybody in the fiction get near it.\n\nIT PAYS OFF WHENEVER YOU WANT IT TO, in any zone, at any depth: eleven lamps and a street that is somewhere. The brass key is the marker.\n\n*(The name Cadger's Row is a placeholder — Joby's to keep or replace.)*",
+      "fieldDefs": [
+        [
+          "hook",
+          "The hook — why do they care?"
+        ],
+        [
+          "read_aloud",
+          "Read aloud"
+        ],
+        [
+          "env",
+          "The place — quick sketch"
+        ],
+        [
+          "if_they",
+          "If they…"
+        ],
+        [
+          "outcome",
+          "Where it leaves them"
+        ]
+      ]
+    },
+    {
+      "schema": 1,
+      "id": "unans-shadow",
+      "type": "beat",
+      "leadsTo": [],
+      "rev": 1,
+      "title": "The house the morning stopped reaching",
+      "parent": "f-unanswered",
+      "order": 50,
+      "tags": [
+        "jobs",
+        "city"
+      ],
+      "fields": {
+        "hook": "Twenty minutes and a genuinely satisfying practical problem with no correct answer written down.",
+        "read_aloud": "PETITION 4,120, taken at the rail and filed:\n\n\"They shut Fell Lane six years ago, which I do not argue with. But shutting it put a wall across the end of my yard and my house has not had a morning since. My wife's chair is where the sun used to come in. I would like somebody to look at it. That is all I want, somebody to come and look at it.\"",
+        "env": "• THE WALL — not built, folded. Seamless, unclimbable in any way that helps, and it is not going anywhere.\n• THE HOUSE — cold in a way that is not about temperature. Everything in it is arranged around a window that stopped working.\n• THE CHAIR — still there, still by the window, and he has not moved it.\n• THE YARD — small, walled on three sides now, and there is a great deal of good light about twelve feet above it going to waste.\n• HIM — apologetic for taking their time, and he will offer them tea he cannot really spare.",
+        "if_they": "…try to get the wall moved, they cannot. Nothing in Act One moves a wrinkle and the ministry will be courteous about it.\n\n…get practical, this is the point of the job — a mirror, a lime-washed wall, a polished sheet on the neighbor's gable, moving the chair, cutting a new window on the other side. Any workable idea should work. Let them design it.\n\n…throw money at it, that works too, and it is less fun, and let them find that out.\n\n…ask the neighbors for help, half the lane turns up, because this is a street where nobody has been able to do anything for anybody in six years.",
+        "outcome": "Light in a room, by whatever means the party invented, and one street that now knows their faces. No reward is offered and the tea is terrible."
+      },
+      "body": "WHY IT WORKS. It is a problem with no printed solution, which means the answer is whatever the players build — and that is the most reliably satisfying kind of side errand there is.\n\nDO NOT SOLVE IT FOR THEM and do not have anybody suggest the mirror.\n\n*(Fell Lane is a placeholder name — Joby's to keep or replace.)*",
       "fieldDefs": [
         [
           "hook",
