@@ -498,7 +498,7 @@ window.DM_CAMPAIGN = {
       "title": "▶ RUN THESE IN ORDER — the commission",
       "parent": "f-commission",
       "order": 10,
-      "rev": 4,
+      "rev": 5,
       "tags": [
         "act1",
         "session2",
@@ -524,7 +524,7 @@ window.DM_CAMPAIGN = {
         ]
       ],
       "fields": {
-        "order": "1. [[b-comm-1|In the dust — a Surveyor thanks them]] · the fairground, minutes after the fight\n2. [[b-comm-2|A night at the Ossuary]] · [[loc-ossuary|the hotel]], that evening\n3. [[b-comm-3|The Set Square]] · the walk up through the government quarter, then badges, purse, and a fold each\n4. [[b-comm-4|The commission and the lie]] · the same room, minutes later — the task force, and who they are told did this\n5. [[b-comm-5|Wenna's office]] · across the courtyard — the one signature that opens a crease, and a clerk to carry the paper\n6. [[b-comm-6|The woman and the boy]] · the steps outside, on the way out\n\nSteps 3 and 4 are one conversation and should not be broken up. Everything else can breathe.",
+        "order": "⚠ BEAT 1 WAS PLAYED AT THE END OF SESSION ONE. Session two opens at step 2.\n\n1. [[b-comm-1|In the dust — a Surveyor thanks them]] · the fairground, minutes after the fight\n2. [[b-comm-2|A night at the Ossuary]] · [[loc-ossuary|the hotel]], that evening\n3. [[b-comm-3|The Set Square]] · the walk up through the government quarter, then badges, purse, and a fold each\n4. [[b-comm-4|The commission and the lie]] · the same room, minutes later — the task force, and who they are told did this\n5. [[b-comm-5|Wenna's office]] · across the courtyard — the one signature that opens a crease, and a clerk to carry the paper\n6. [[b-comm-6|The woman and the boy]] · the steps outside, on the way out\n\nSteps 3 and 4 are one conversation and should not be broken up. Everything else can breathe.",
         "before": "Have ready: the three things the Rector hands over (see [[b-comm-3|the awarding]]), and one folded paper bird made for real, which is given away in [[b-comm-6|the last beat]] and is the only prop that matters. Know that [[npc-tobin|Tobin Rell]] joins the party in step 5 and that he is already further gone than he looks. Know that nobody today says the name of the boy from the tower's foot until the last thirty seconds of the scene.",
         "truth": "The tear was not caused by anybody. It is the jam in the great fold, and it has been coming for a lifetime. The ministry names Red Flag because a public enemy with a human face keeps the grieving flowing into Green Fields, which the occupation owns, and away from the candle houses, which it does not. Every human in the scene believes what they are saying. The Rector knows better and is not lying either, in its own reckoning, because a useful account of a disaster is a kind of order and order is mercy.\n\nThe public campaign started before the dust settled — criers by dusk, printed sheets that night, warrants on the boards by morning — so the Rector in step 4 is confirming something the party has already been handed three times rather than breaking news to them. That is what makes it hard to argue with.",
         "after": "Employed, decorated, and pointed at the wrong crease. They leave with a badge that opens checkpoints, coin, a folded case each, a handler who disagrees with their orders, their names on a movement's roll, an assignment at the tower they watched break, and a paper bird from a five-year-old. The next session goes into the Hearthspire."
@@ -2360,6 +2360,42 @@ window.DM_CAMPAIGN = {
         "use": "NOT CANON. Nothing below has been agreed and none of it should be run without Joby saying yes. It is here so the openings are visible.\n\nCENTURY is a man looking for someone worth serving, in a campaign that will offer him three false answers before the true one — the ministry that decorates him, the movement that recruits him, and the faction that is right about everything and wrong about the method. A leader who was killed also rhymes hard with what is actually at the center of this world, and that rhyme is free.\n\nSAM is the only hero with nothing at stake, which makes him the one whose stake, when it arrives, will land hardest. Passing through also means he is not from Dunlath and can have known other places, which is worth something in a world that has forgotten some of them.\n\nARAMIL IS THE MOST URGENT OF THE FOUR. A nine-year-old radicalizing on his own means the campaign's central trap — that the permitted rebellion is owned by the occupation — is going to be personal rather than theoretical, and it means Red Flag may reach the party through a player instead of through [[npc-tobin|Tobin]] or [[npc-hettie|Hettie]]. Do not slow him down. Let him get there early and let the betrayal cost him something.\n\nJEF sets a pacing rule for every session from here: put something in front of him to hit, early, and do not make him sit through half an evening of talking to earn it."
       },
       "body": "WHY THIS DOCUMENT EXISTS. `CAMPAIGN.md` §8 lists the missing player material as the highest-priority open question in the entire campaign, by a wide margin — the note there is that until each region holds a piece of a PLAYER's story, the emotional spine of twenty sessions belongs to a non-player character. Session one was built to collect it. This is the collection.\n\nKEEP ADDING TO IT. Anything a player says in character that sounds like a fact about their hero goes in here the same night, in their words, before it is forgotten."
+    },
+    {
+      "schema": 1,
+      "id": "f-sessions",
+      "type": "folder",
+      "title": "SESSION LOGS — what actually happened",
+      "parent": null,
+      "order": 60,
+      "rev": 1,
+      "tags": [
+        "log"
+      ],
+      "leadsTo": [],
+      "fields": {},
+      "body": ""
+    },
+    {
+      "schema": 1,
+      "id": "log-01",
+      "type": "session",
+      "title": "Session 1 — Lastlight",
+      "parent": "f-sessions",
+      "order": 10,
+      "rev": 1,
+      "tags": [
+        "log",
+        "session1"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "date": "Played shortly before 2026-08-18. FILL IN THE ACTUAL DATE.",
+        "recap": "WHAT WAS RUN: [[f-lastlight|LASTLIGHT]] end to end — the walk up through Dunlath, the fairground and its games, the ceremony (the crews, the faded, the white wagons, the healing of the Cinder Draw), the lighting and the tear, and [[enc-lastlight|the fairground fight]].\n\nWHERE IT STOPPED: after the fight, with the party invited to stay at [[loc-ossuary|the Ossuary]] and told they would be awarded the following day. That is [[b-comm-1|THE COMMISSION beat 1]], so session one ran one beat into scene two.\n\nIT WENT WELL.\n\n⚠ THE REST OF THIS FIELD IS BLANK ON PURPOSE. What the heroes actually did in the fight, who they saved, who they could not reach, what they said to each other, what the players found funny — none of that is recorded here, because only Joby was at the table. Fill it in, or paste it from your own notes.",
+        "plan": "SESSION TWO PICKS UP AT [[b-comm-2|THE COMMISSION beat 2]] — the night at the Ossuary — because beat 1 is already played. Run beats 2 through 6: the Ossuary and the printed sheet naming Red Flag, the walk up through the wet city past the warrant boards, the awarding, the commission and the lie, Wenna's office and the clerk, and the woman and the boy on the steps.\n\nHAVE READY: a real folded paper bird for [[b-comm-6|beat 6]].\n\nSOMETHING FOR JEF TO HIT. Scene two has no fight in it and neither does [[f-wreck|THE WAY IN]]. If the evening needs one, [[f-unanswered|the board]] and [[f-iftime|IF THERE IS TIME]] are both stocked.",
+        "loose_ends": "PLANTED AND NOT YET PAID: the white wagons nobody watched leave; the scar-line and its skipping crow; the clock hands that started that morning; the bird-folder at the rope line and any birds the heroes were given; [[npc-hettie|Hettie]] counting at the rope line; the boy at the tower's foot, still unnamed; the one each hero could not reach; and the criers naming Red Flag by dusk.\n\nTO RECORD WHEN KNOWN: the rescue list from the fight, any keepsakes named, and anything a player said in character that sounds like a fact about their hero — that goes to [[ref-party|▶ THE PARTY]] the same night."
+      },
+      "body": "HOW THIS FOLDER WORKS. One document per session. The recap is what happened, the plan is what the next one opens on, and the loose ends are the promises the table is now owed.\n\nJOBY KEEPS HIS OWN NOTES IN THE OS TOO, and those are the primary record — this log is the tidied version. When he says the notes are ready, they get read and anything not already here gets folded in. Nothing is copied across automatically and nothing here should contradict them.\n\n⚠ NOTHING IN A RECAP IS INVENTED. If it was not witnessed or reported, the field says so and stays blank."
     }
   ]
 };

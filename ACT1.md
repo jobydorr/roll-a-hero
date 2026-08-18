@@ -128,7 +128,7 @@ The party steps through at the end of Scene 3, so the session after opens on the
 
 ## 7. State of Play
 
-- **SESSION ONE IS PLAYED (Lastlight) and it went well.** The campaign has opened.
+- **SESSION ONE IS PLAYED (Lastlight) and it went well.** The campaign has opened. It ran LASTLIGHT end to end and stopped after the fairground fight, on the invitation to the Ossuary and the promise of an awarding the next day — which is THE COMMISSION beat 1, so session one ran one beat into scene two. **Session two opens at THE COMMISSION beat 2, the night at the Ossuary.** Logs live in the DM OS at `SESSION LOGS`, one document per session.
 - **Player material collected — the single most important thing in this file.** Century once served a powerful, benevolent leader who was killed and now wanders looking for purpose. Sam Silkweed is retiring: world-weary, done with the life he has led, a last hurrah, passing through. Aramil Quingalor is showing a strong revolutionary spirit and started radicalizing on nothing more than hearing the world is a colonial domain. Jef Blackstone has a usable backstory on his shared sheet and is most engaged when he is hitting something. Full notes, with suggested uses kept clearly separate from the facts, are in the DM OS at **`Quick reference › ▶ THE PARTY — what the table actually told us`**.
 - **Aramil is the live wire.** A nine-year-old radicalizing on his own means Red Flag may reach this party through a player rather than through Tobin or Hettie, and the act's central betrayal is going to be personal instead of theoretical.
 - **Keepsakes named:** to be recorded.
