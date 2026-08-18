@@ -2,8 +2,31 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-08-07.*
+*Last updated: 2026-08-18.*
 
+> **▶▶ START HERE — 2026-08-18. This block is the newest; everything below it is history.**
+>
+> **SESSION ONE HAS BEEN PLAYED AND IT WENT WELL.** The campaign is live. It ran LASTLIGHT end to end and stopped one beat into scene two — on the invitation to the Ossuary and the promise of an awarding — so **session two opens at `THE COMMISSION › 2`, the night at the Ossuary.**
+>
+> **THE PLAYERS ARE IN THE DOCUMENT AT LAST.** `CAMPAIGN.md` §8 has called this the highest-priority open item since revision five. Three of four heroes now have a stake, in their own players' words, recorded in the OS at **`Quick reference › ▶ THE PARTY`**: Century once served a powerful, benevolent leader who was killed and now wanders looking for purpose; Sam Silkweed is retiring, world-weary, a last hurrah, passing through; Aramil Quingalor is radicalizing on nothing more than hearing the world is a colonial domain; Jef Blackstone has a backstory on his own sheet and is most engaged when hitting something, which is a pacing rule rather than a character note. **This material is player-authored and outranks anything invented in this repo.** Aramil is the live wire — Red Flag may reach this party through a player rather than through Tobin or Hettie.
+>
+> **⏸ PARKED, AWAITING JOBY'S DECISION — the shared Notebook.** He wants the OS Notebook to be readable by both of us, so that he writes notes in it, Claude reads them, and the session log gets built from three sources: his notes, Claude's reading of them, and this conversation. **The mechanism is proven, not guessed:** Firestore is already wired up for shared heroes, and a Claude session can sign in anonymously with the app's public config from the browser pane and read a campaign path (verified 2026-08-18). A `notebook` path currently returns `permission-denied`, so it needs rules published. **The build is: a sync layer in `dmos-store.js`, a notebook-id field and status indicator in the UI, and a new match block in `firestore.rules` that only Joby can publish from the Firebase console.** One decision outstanding: the notebook must sit under a long, unguessable id rather than the party's campaign code, because players know that code and DM notes are spoilers — a curtain, not a vault, same stance as `dm.html`'s passcode. **Do not build this until he says go.**
+>
+> **What shipped this session (all committed; check `git log`).**
+> - **Red Flag became the public instrument of blame.** It existed in one beat doc; it now arrives four times — a crier while the dust is still settling, a printed sheet in every room at the Ossuary, warrants on the boards on the walk up, and then the Rector saying it in quoted dialogue as the one telling that carries a signature. `CAMPAIGN.md` §3 records the frame-up as standing practice.
+> - **The bible was reconciled to the OS** under a rule Joby set: *the DM OS is the source of truth for what actually happens in the campaign, and where the bible disagrees, whatever is consistent with the rest of the OS wins.* §6's geography, criers, recruitment sequence and session-zero kit all now match what the OS runs.
+> - **THE WAY IN replaced the wreck.** The Reactor is NOT a dungeon — the fold is. The party never enters the tower; the order opens the ground at its foot and holds it while they step through, and that is the session-three cliffhanger. The scar-line goose chase is cut entirely; there was never supposed to be one.
+> - **The paper-as-material reading is gone.** The Surveyors are folded things and the cosmology uses folding to teach a shape, but a broken interdimensional condenser is not a torn page with tape on it. Nothing is "patched" anywhere.
+> - **Every beat has an environment sketch** — a real draggable `env` header, bullets not prose.
+> - **Shops, jobs and toys.** Nine Hundred Bottles (potions, with stats), the Proving Floor (arms, matched to `data.js`'s own `WEAPON_STATS`, with a range out the back), the Sugar Vault. Every shop has a priced inventory; every mini-game has a number to beat and a stated prize. THE UNANSWERED is a job board with things to fight, surfaced through Tobin's satchel and delivered by runners.
+> - **DM OS bug fix:** the same creature can now go on the initiative list as many times as you like, numbered. `rosterAdd` used to de-duplicate by ref and silently return the existing row.
+>
+> **Standing lesson from this session, worth carrying.** Repeated corrections all had one root: material that was literary rather than playable. Jobs with nothing to hit, side pieces the players could only look at, a cliffhanger made of arithmetic. **Two nine-year-olds are at this table.** The test for any new piece is whether a player can *operate* it — a thing that pushes back with a rule they can learn — not whether it reads well. Ganny's cellar and the paper horse are the models; the first drafts of the pantry, the measuring and the job board are the anti-models.
+>
+> **Next up:** Tobin's full cleric NPC sheet (owed, requested, not built); Scene 4, the first lost place, which is what session three's cliffhanger opens onto; and the parked Notebook decision above.
+>
+> ---
+>
 > **▶▶ START HERE — fresh session, 2026-08-11. Everything below this block is history; read this first.**
 >
 > **Where we are.** Campaign One (*The Folded World*) is designed through revision nine, the opening scene is locked and written, and the first session's material is live in the DM OS. All work is committed and pushed; working tree clean; local == `origin/main`.
