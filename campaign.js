@@ -2310,6 +2310,56 @@ window.DM_CAMPAIGN = {
           "Hidden here"
         ]
       ]
+    },
+    {
+      "schema": 1,
+      "id": "ref-party",
+      "type": "note",
+      "title": "▶ THE PARTY — what the table actually told us",
+      "parent": "f-reference",
+      "order": 5,
+      "rev": 1,
+      "tags": [
+        "party",
+        "players",
+        "session1"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "source",
+          "Where this came from"
+        ],
+        [
+          "century",
+          "Century (Ben)"
+        ],
+        [
+          "sam",
+          "Sam Silkweed (Harlan)"
+        ],
+        [
+          "aramil",
+          "Aramil Quingalor (Harlan)"
+        ],
+        [
+          "jef",
+          "Jef Blackstone (Rowan)"
+        ],
+        [
+          "use",
+          "How to use it — suggestions, not canon"
+        ]
+      ],
+      "fields": {
+        "source": "Collected in play at SESSION ONE (Lastlight), which is the session that was built to harvest exactly this. Everything in the four boxes below is what Joby heard at his own table. It is player-authored and it outranks anything invented in this repo.\n\nJef's fuller backstory lives on his shared character sheet in the OS rather than here.",
+        "century": "Once served a powerful and benevolent leader, who was killed. Century now wanders looking for purpose.",
+        "sam": "Essentially retiring. World-weary and done with the life he has led until now. This is a last hurrah, and he is passing through.",
+        "aramil": "Backstory is still thin, but a strong revolutionary spirit is already showing. Hearing that the world is a colonial domain of the Surveyors — with none of the political detail — was enough on its own to start him radicalizing.",
+        "jef": "Has a workable backstory already, on his shared sheet in the OS. What the table showed is that he is most engaged when he is hitting something.",
+        "use": "NOT CANON. Nothing below has been agreed and none of it should be run without Joby saying yes. It is here so the openings are visible.\n\nCENTURY is a man looking for someone worth serving, in a campaign that will offer him three false answers before the true one — the ministry that decorates him, the movement that recruits him, and the faction that is right about everything and wrong about the method. A leader who was killed also rhymes hard with what is actually at the center of this world, and that rhyme is free.\n\nSAM is the only hero with nothing at stake, which makes him the one whose stake, when it arrives, will land hardest. Passing through also means he is not from Dunlath and can have known other places, which is worth something in a world that has forgotten some of them.\n\nARAMIL IS THE MOST URGENT OF THE FOUR. A nine-year-old radicalizing on his own means the campaign's central trap — that the permitted rebellion is owned by the occupation — is going to be personal rather than theoretical, and it means Red Flag may reach the party through a player instead of through [[npc-tobin|Tobin]] or [[npc-hettie|Hettie]]. Do not slow him down. Let him get there early and let the betrayal cost him something.\n\nJEF sets a pacing rule for every session from here: put something in front of him to hit, early, and do not make him sit through half an evening of talking to earn it."
+      },
+      "body": "WHY THIS DOCUMENT EXISTS. `CAMPAIGN.md` §8 lists the missing player material as the highest-priority open question in the entire campaign, by a wide margin — the note there is that until each region holds a piece of a PLAYER's story, the emotional spine of twenty sessions belongs to a non-player character. Session one was built to collect it. This is the collection.\n\nKEEP ADDING TO IT. Anything a player says in character that sounds like a fact about their hero goes in here the same night, in their words, before it is forgotten."
     }
   ]
 };
