@@ -2416,14 +2416,14 @@ window.DM_CAMPAIGN = {
       "title": "Session 1 — Lastlight",
       "parent": "f-sessions",
       "order": 10,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "log",
         "session1"
       ],
       "leadsTo": [],
       "fields": {
-        "date": "Played shortly before 2026-08-18. FILL IN THE ACTUAL DATE.",
+        "date": "Played shortly before 2026-08-27. FILL IN THE ACTUAL DATE.",
         "recap": "WHAT WAS RUN: [[f-lastlight|LASTLIGHT]] end to end — the walk up through Dunlath, the fairground and its games, the ceremony (the crews, the faded, the white wagons, the healing of the Cinder Draw), the lighting and the tear, and [[enc-lastlight|the fairground fight]].\n\nWHERE IT STOPPED: after the fight, with the party invited to stay at [[loc-ossuary|the Ossuary]] and told they would be awarded the following day. That is [[b-comm-1|THE COMMISSION beat 1]], so session one ran one beat into scene two.\n\nIT WENT WELL.\n\n⚠ THE REST OF THIS FIELD IS BLANK ON PURPOSE. What the heroes actually did in the fight, who they saved, who they could not reach, what they said to each other, what the players found funny — none of that is recorded here, because only Joby was at the table. Fill it in, or paste it from your own notes.",
         "plan": "SESSION TWO PICKS UP AT [[b-comm-2|THE COMMISSION beat 2]] — the night at the Ossuary — because beat 1 is already played. Run beats 2 through 6: the Ossuary and the printed sheet naming Red Flag, the walk up through the wet city past the warrant boards, the awarding, the commission and the lie, Wenna's office and the clerk, and the woman and the boy on the steps.\n\nHAVE READY: a real folded paper bird for [[b-comm-6|beat 6]].\n\nSOMETHING FOR JEF TO HIT. Scene two has no fight in it and neither does [[f-wreck|THE WAY IN]]. If the evening needs one, [[f-unanswered|the board]] and [[f-iftime|IF THERE IS TIME]] are both stocked.",
         "loose_ends": "PLANTED AND NOT YET PAID: the white wagons nobody watched leave; the scar-line and its skipping crow; the clock hands that started that morning; the bird-folder at the rope line and any birds the heroes were given; [[npc-hettie|Hettie]] counting at the rope line; the boy at the tower's foot, still unnamed; the one each hero could not reach; and the criers naming Red Flag by dusk.\n\nTO RECORD WHEN KNOWN: the rescue list from the fight, any keepsakes named, and anything a player said in character that sounds like a fact about their hero — that goes to [[ref-party|▶ THE PARTY]] the same night."

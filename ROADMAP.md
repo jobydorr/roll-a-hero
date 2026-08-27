@@ -2,15 +2,52 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-08-18.*
+*Last updated: 2026-08-27.*
 
-> **▶▶ START HERE — 2026-08-18. This block is the newest; everything below it is history.**
+> **▶▶ START HERE — 2026-08-27 (evening). This is the newest block; everything below it is history, including the earlier 2026-08-27 block.**
+>
+> **STATE:** working tree clean, `HEAD` == `origin/main`, everything pushed. Live asset versions on `dm.html`: campaign `v50`, dmos-ui `v45`, dmos-store `v17`, dmos-notes-sync `v1`, dmos.css `v32`. Joby runs from `localhost:8000` (`python -m http.server 8000`, or the `roll-a-hero` entry in `.claude/launch.json`).
+>
+> **⚠ READ FIRST, IN THIS ORDER:** `CLAUDE.md` → this block → the DM OS itself, starting at **`▶ THE FOLDED WORLD`** and **`Quick reference › ▶ THE PARTY`** → `STYLE.md` before writing any prose.
+>
+> ---
+>
+> **THE BIG CANON CHANGE THIS SESSION: THERE IS NO THRONE.** Joby ran session one without naming the Foldwright or presenting him as a ruling power, and rather than retcon the table we took it as canon. It is better than what it replaced, and it touched eighteen passages in the bible and six documents in the OS.
+>
+> The Surveyors never claimed his name and never seated anyone. They have said **nothing whatsoever** about the man for three generations, and the official account of the Folding is written in the passive voice with no author in it. There is no figure at the top of this world — an Accord, a ministry, a procedure, and a procedure cannot be hated properly, which is exactly why they chose one. The name survived anyway, **detached from the deed**: meaningless to some, a name to conjure with or to spit for others, and to most an old word out of a song. That the Foldwright and the man who folded the world are the same person is **not common knowledge** — it is a mythos that will not die, because the one institution that could settle it has never acknowledged there is a question.
+>
+> **Red Flag has filled that silence with hope.** `THE FOLDWRIGHT LIVES` is their article of faith and their graffiti — prisoner, hiding, or working still in the creases, depending who you ask. Find him, restore him, and the resistance becomes a war it could win. They are right that he lives, roughly right about where, and **catastrophically wrong about what finding him gets them.** Act Two's reveal is no longer *the tyrant is a puppet* but ***the messiah is the culprit***, and the heroes carry that news back to the people who have been praying for him. Hettie is the exception: she does not paint the wall, because she keeps a ledger.
+>
+> ---
+>
+> **ALSO SHIPPED TODAY**
+> - **Tobin is a full cleric** — level 3, Healer (Life Domain), stats/spells/how-he-plays on his sheet, all pulled from `data.js` so both sides of the screen use identical wording. Healing is **not** outlawed for him any more; that layer is cut. ❗ His old first secret (the outlawed mending the party would keep *for* him) is gone and **nothing replaces it** — that secret was what made the kids love him early. Flagged on his sheet, Joby's to solve.
+> - **NOTEBOOK SYNC IS LIVE AND PROVEN.** `dmos-notes-sync.js` mirrors Joby's OS Notebook to Firestore; the rules are published; a full loop was verified (note filed → pushed → read back from a Claude session). **This is how a session reads his notes.** See the memory note — it is manual (he presses Push in Tools → Notebook sync) and it is a mirror, never storage.
+> - The graffiti moved to the **walk up to the Set Square** (`THE COMMISSION › 3`), in **red**, half-scrubbed in the rain, on the same walk as the Red Flag warrant boards.
+> - **A plain low-grade Surveyor escorts them**, not the Rector — who does not run errands, now recorded on its sheet. The escort has *no procedure* for questions about the Foldwright ("I do not have that"), and if pushed it **writes the question down.**
+> - Session one's log, and the correction that play stopped one beat into scene two.
+>
+> ---
+>
+> **⚠ THE THING MOST LIKELY TO BE GOT WRONG NEXT.** Nearly every correction Joby gave across a long session traced to one root: **material that was literary rather than playable.** Jobs with nothing to hit, side pieces the players could only look at, a cliffhanger made of arithmetic, a clue that needed a paragraph of backstory to land. **Two nine-year-olds are at this table.** The test for any new piece is whether a player can *operate* it — a thing that pushes back with a rule they can learn. Ganny's cellar, the paper horse and the door that cycles rooms are the models. And **Jef's note is a pacing rule**: something to hit, early, every session.
+>
+> **OPEN, AND ALL JOBY'S TO RULE:**
+> - **The Rector in the dust.** It appears personally at the fairground in `THE COMMISSION › 1`, which either proves the errand rule (a catastrophe at its own ceremony) or contradicts it. Flagged on its sheet, undecided.
+> - **Tobin's replacement secret** (above).
+> - **Scene 4 — the first lost place.** Unbuilt, and it is what session three's cliffhanger opens onto. Nothing about what is in there is decided.
+> - The transition collection (the Badge, the Empty Coffin, the Paper Bird) still waits on Joby's alteration ideas.
+>
+> **RUN ORDER AS IT STANDS:** session one = LASTLIGHT (played, stopped at `THE COMMISSION › 1`). Session two opens at `THE COMMISSION › 2`, the night at the Ossuary. Session three = `THE WAY IN`, two beats, ending on the party stepping through the portal. Then Scene 4, which does not exist yet.
+>
+> ---
+>
+> **▶▶ START HERE — 2026-08-27. This block is the newest; everything below it is history.**
 >
 > **SESSION ONE HAS BEEN PLAYED AND IT WENT WELL.** The campaign is live. It ran LASTLIGHT end to end and stopped one beat into scene two — on the invitation to the Ossuary and the promise of an awarding — so **session two opens at `THE COMMISSION › 2`, the night at the Ossuary.**
 >
 > **THE PLAYERS ARE IN THE DOCUMENT AT LAST.** `CAMPAIGN.md` §8 has called this the highest-priority open item since revision five. Three of four heroes now have a stake, in their own players' words, recorded in the OS at **`Quick reference › ▶ THE PARTY`**: Century once served a powerful, benevolent leader who was killed and now wanders looking for purpose; Sam Silkweed is retiring, world-weary, a last hurrah, passing through; Aramil Quingalor is radicalizing on nothing more than hearing the world is a colonial domain; Jef Blackstone has a backstory on his own sheet and is most engaged when hitting something, which is a pacing rule rather than a character note. **This material is player-authored and outranks anything invented in this repo.** Aramil is the live wire — Red Flag may reach this party through a player rather than through Tobin or Hettie.
 >
-> **⏸ PARKED, AWAITING JOBY'S DECISION — the shared Notebook.** He wants the OS Notebook to be readable by both of us, so that he writes notes in it, Claude reads them, and the session log gets built from three sources: his notes, Claude's reading of them, and this conversation. **The mechanism is proven, not guessed:** Firestore is already wired up for shared heroes, and a Claude session can sign in anonymously with the app's public config from the browser pane and read a campaign path (verified 2026-08-18). A `notebook` path currently returns `permission-denied`, so it needs rules published. **The build is: a sync layer in `dmos-store.js`, a notebook-id field and status indicator in the UI, and a new match block in `firestore.rules` that only Joby can publish from the Firebase console.** One decision outstanding: the notebook must sit under a long, unguessable id rather than the party's campaign code, because players know that code and DM notes are spoilers — a curtain, not a vault, same stance as `dm.html`'s passcode. **Do not build this until he says go.**
+> **⏸ PARKED, AWAITING JOBY'S DECISION — the shared Notebook.** He wants the OS Notebook to be readable by both of us, so that he writes notes in it, Claude reads them, and the session log gets built from three sources: his notes, Claude's reading of them, and this conversation. **The mechanism is proven, not guessed:** Firestore is already wired up for shared heroes, and a Claude session can sign in anonymously with the app's public config from the browser pane and read a campaign path (verified 2026-08-27). A `notebook` path currently returns `permission-denied`, so it needs rules published. **The build is: a sync layer in `dmos-store.js`, a notebook-id field and status indicator in the UI, and a new match block in `firestore.rules` that only Joby can publish from the Firebase console.** One decision outstanding: the notebook must sit under a long, unguessable id rather than the party's campaign code, because players know that code and DM notes are spoilers — a curtain, not a vault, same stance as `dm.html`'s passcode. **Do not build this until he says go.**
 >
 > **What shipped this session (all committed; check `git log`).**
 > - **Red Flag became the public instrument of blame.** It existed in one beat doc; it now arrives four times — a crier while the dust is still settling, a printed sheet in every room at the Ossuary, warrants on the boards on the walk up, and then the Rector saying it in quoted dialogue as the one telling that carries a signature. `CAMPAIGN.md` §3 records the frame-up as standing practice.
