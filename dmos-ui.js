@@ -2651,7 +2651,7 @@
     return `
       <div class="field">
         <label for="nsId">Notebook id</label>
-        <input type="text" id="nsId" data-act="ns-id:change" value="${esc(c.id || '')}"
+        <input type="text" id="nsId" data-act="ns-id" value="${esc(c.id || '')}"
                placeholder="nb-…" autocomplete="off" spellcheck="false" />
       </div>
       <p class="modal-hint">A long, random id that only you have. <strong>Do not use the party's campaign code</strong> —
@@ -2668,9 +2668,20 @@
       <p class="modal-hint" id="nsMsg" role="status"></p>`;
   }
 
-  ACT['notes-sync'] = () => openModal({ title: 'Notebook sync', body: notesSyncHTML() });
-  ACT['ns-id:change'] = (el) => { window.DMNotesSync.setId(el.value); };
-  const nsMsg = (t) => { const el = document.getElementById('nsMsg'); if (el) el.textContent = t; };
+  ACT['notes-sync'] = () => {
+    openModal(`<div class="modal-title">Notebook sync</div>${notesSyncHTML()}
+      <div class="modal-actions">
+        <div class="spacer"></div>
+        <button class="btn btn-sm btn-ghost" data-act="close-modal">Close</button>
+      </div>`);
+    const inp = ROOT.modal.querySelector('#nsId'); if (inp) { inp.focus(); inp.select(); }
+  };
+  // ROOT.modal delegates click and input only — no change event reaches here.
+  ACT['ns-id:input'] = (el) => {
+    const id = window.DMNotesSync.setId(el.value).id;
+    nsMsg(id ? 'Notebook id saved.' : 'Enter a notebook id.');
+  };
+  function nsMsg(t) { const el = document.getElementById('nsMsg'); if (el) el.textContent = t; }
   ACT['ns-push'] = async () => {
     nsMsg('Pushing…');
     try { const r = await window.DMNotesSync.push(); nsMsg(`Pushed ${r.pushed} note${r.pushed === 1 ? '' : 's'}.`); announce('Notebook pushed.'); }
