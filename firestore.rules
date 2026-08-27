@@ -33,6 +33,20 @@ service cloud.firestore {
         && resource.data.ownerUid == request.auth.uid;
     }
 
+    // The DM's notebook — a MIRROR of what lives in the DM's browser, so that a
+    // Claude Code session can read the notes and help build the session log.
+    // localStorage stays authoritative; nothing here is the only copy of anything.
+    //
+    // The gate is the notebook id, which is long and random and known only to the
+    // DM. That is a curtain, not a vault — the same stance dm.html's passcode
+    // takes — and it is deliberate: anonymous auth cannot tell one person from
+    // another, so there is no stronger rule available without real accounts.
+    // Nothing secret goes in here. Campaign spoilers do, which is why the id must
+    // NOT be the party's campaign code: the players know that one.
+    match /dmnotes/{notebookId}/docs/{docId} {
+      allow read, write: if request.auth != null;
+    }
+
     // Everything else is closed by default.
     match /{document=**} {
       allow read, write: if false;

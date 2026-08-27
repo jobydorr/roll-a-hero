@@ -495,6 +495,7 @@
           <li><button class="tool" data-act="story-map">${icon('flow')} <span>Story map</span></button></li>
           <li><button class="tool" data-act="sync">${icon('scroll')} <span>Sync from campaign</span></button></li>
           <li><button class="tool" data-act="new-workspace">${icon('star')} <span>New workspace</span></button></li>
+          <li><button class="tool" data-act="notes-sync">${icon('flow')} <span>Notebook sync</span></button></li>
           <li><button class="tool" data-act="export">${icon('print')} <span>Export workspace</span></button></li>
           <li><button class="tool" data-act="import">${icon('check')} <span>Import workspace</span></button></li>
           <li><button class="tool tool-lock" data-act="lock"
@@ -2634,6 +2635,55 @@
   // Re-gate the DM OS: clear the remembered unlock and reload, so boot shows the
   // passcode again. Non-destructive — the workspace content stays in localStorage.
   ACT['lock'] = () => { STORE.setUi({ passOk: false }); location.reload(); };
+
+  /* --------------------- Notebook sync (Firestore mirror) ------------------
+     A MIRROR, not storage. Push overwrites the remote copy; pull only ever ADDS
+     notes that are missing locally. Nothing here can delete or overwrite a local
+     note, which is the whole reason this is safe to leave switched on. */
+  function notesSyncHTML() {
+    const NS = window.DMNotesSync;
+    if (!NS || !NS.available) {
+      return `<p class="modal-hint">Notebook sync is unavailable: ${esc((NS && NS.reason) || 'Firebase did not load')}.
+        Your notes are unaffected — they live in this browser as always.</p>`;
+    }
+    const c = NS.getConfig();
+    const when = (iso) => iso ? new Date(iso).toLocaleString() : 'never';
+    return `
+      <div class="field">
+        <label for="nsId">Notebook id</label>
+        <input type="text" id="nsId" data-act="ns-id:change" value="${esc(c.id || '')}"
+               placeholder="nb-…" autocomplete="off" spellcheck="false" />
+      </div>
+      <p class="modal-hint">A long, random id that only you have. <strong>Do not use the party's campaign code</strong> —
+        the players know that one and these are spoilers. Anyone signed in who has this id can read the notes,
+        so treat it as a curtain rather than a lock, and keep anything genuinely private out of the Notebook.</p>
+      <p class="modal-hint">Last pushed: <strong>${esc(when(c.lastPush))}</strong>${c.lastCount != null ? ` (${c.lastCount} notes)` : ''}
+        &nbsp;·&nbsp; Last pulled: <strong>${esc(when(c.lastPull))}</strong></p>
+      <div class="actions">
+        <button class="btn btn-primary" data-act="ns-push">Push notes up</button>
+        <button class="btn btn-ghost" data-act="ns-pull">Pull missing notes</button>
+      </div>
+      <p class="modal-hint">Push copies this browser's Notebook up, overwriting the copy there.
+        Pull only adds notes you do not already have — it never overwrites or deletes anything local.</p>
+      <p class="modal-hint" id="nsMsg" role="status"></p>`;
+  }
+
+  ACT['notes-sync'] = () => openModal({ title: 'Notebook sync', body: notesSyncHTML() });
+  ACT['ns-id:change'] = (el) => { window.DMNotesSync.setId(el.value); };
+  const nsMsg = (t) => { const el = document.getElementById('nsMsg'); if (el) el.textContent = t; };
+  ACT['ns-push'] = async () => {
+    nsMsg('Pushing…');
+    try { const r = await window.DMNotesSync.push(); nsMsg(`Pushed ${r.pushed} note${r.pushed === 1 ? '' : 's'}.`); announce('Notebook pushed.'); }
+    catch (e) { nsMsg('Could not push: ' + (e && e.message)); }
+  };
+  ACT['ns-pull'] = async () => {
+    nsMsg('Pulling…');
+    try {
+      const r = await window.DMNotesSync.pull();
+      nsMsg(`Added ${r.added}. Left ${r.skipped} already here untouched.`);
+      announce('Notebook pulled.');
+    } catch (e) { nsMsg('Could not pull: ' + (e && e.message)); }
+  };
 
   /* ------------------------- Quick note + notebook ------------------------ */
   ACT['quick-note'] = () => { focusPadOnPaint = true; STORE.setUi({ quickNoteOpen: true }); mark('float'); };

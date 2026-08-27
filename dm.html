@@ -106,7 +106,12 @@
        library lives in their browser only. -->
   <script src="bestiary.js?v=1"></script>
   <script src="dmos-store.js?v=17"></script>
-  <script src="dmos-ui.js?v=43"></script>
+  <!-- Mirrors the DM's Notebook to Firestore so a Claude Code session can read
+       it. A mirror, never storage: localStorage stays authoritative and nothing
+       in it can delete a local note. Delete this tag to remove the feature
+       entirely — the Notebook keeps working exactly as before. -->
+  <script src="dmos-notes-sync.js?v=1"></script>
+  <script src="dmos-ui.js?v=44"></script>
   <script src="dmos-boot.js?v=3"></script>
 </body>
 </html>
