@@ -156,20 +156,83 @@
     return t ? t.title : id.trim();
   });
 
-  function linkify(text) {
-    return esc(text)
-      .replace(RX_LINK, (m, id, label) => {
-        id = id.trim();
-        const target = STORE.get(id);
-        const name = label ? label.trim() : (target ? target.title : id);
-        return target
-          ? `<a class="wikilink" href="#/d/${id}" data-act="jump" data-target="${id}">${name}</a>`
-          : `<span class="wikilink broken" title="No document with id &quot;${id}&quot;">${name}</span>`;
-      })
-      .split(/\n{2,}/)
-      .map(p => '<p>' + p.replace(/\n/g, '<br>') + '</p>')
-      .join('');
+  // Escape, then turn [[links]] into anchors. escapeHtml only touches &<>"' so
+  // the pipes and brackets a table is written with survive it untouched.
+  const inlineLinked = (text) => esc(text).replace(RX_LINK, (m, id, label) => {
+    id = id.trim();
+    const target = STORE.get(id);
+    const name = label ? label.trim() : (target ? target.title : id);
+    return target
+      ? `<a class="wikilink" href="#/d/${id}" data-act="jump" data-target="${id}">${name}</a>`
+      : `<span class="wikilink broken" title="No document with id &quot;${id}&quot;">${name}</span>`;
+  });
+
+  /* Pipe tables. A shop is a price list and a price list wants a grid, so any
+     field (or body) may hold a GitHub-style table and it renders as one:
+
+       | Weapon    | Price | Damage |
+       |---|---|---|
+       | Longsword | 15 gp | 1d8    |
+
+     The header row is optional — without a separator line every row is a body
+     row. Everything that is not a run of pipe lines stays ordinary prose, so
+     nothing already written changes. Screen and print share this splitter and
+     differ only in `inline`, which means a table prints as a table. */
+  const RX_TSEP = /^\|?(?:\s*:?-{2,}:?\s*\|)+\s*:?-{2,}:?\s*\|?$/;
+  const isRow = (l) => l.trim().startsWith('|') && l.trim().length > 1;
+  /* Cells are pipe-separated and so is a [[link|label]], so a naive split()
+     tears every labelled wikilink in a table in half. Scan instead, and treat
+     pipes inside [[ ]] as part of the link. */
+  const cellsOf = (l) => {
+    let s = l.trim();
+    if (s.startsWith('|')) s = s.slice(1);
+    if (s.endsWith('|')) s = s.slice(0, -1);
+    const out = [];
+    let cur = '', inLink = false;
+    for (let k = 0; k < s.length; k++) {
+      if (!inLink && s[k] === '[' && s[k + 1] === '[') { inLink = true; cur += '[['; k++; continue; }
+      if (inLink && s[k] === ']' && s[k + 1] === ']') { inLink = false; cur += ']]'; k++; continue; }
+      if (!inLink && s[k] === '|') { out.push(cur.trim()); cur = ''; continue; }
+      cur += s[k];
+    }
+    out.push(cur.trim());
+    return out;
+  };
+
+  function blocks(text, inline) {
+    const out = [];
+    let prose = [], rows = [];
+    const flushProse = () => {
+      const chunk = prose.join('\n'); prose = [];
+      if (!chunk.trim()) return;
+      chunk.split(/\n{2,}/).forEach(p => {
+        if (p.trim()) out.push('<p>' + inline(p).replace(/\n/g, '<br>') + '</p>');
+      });
+    };
+    const flushTable = () => {
+      if (!rows.length) return;
+      let grid = rows.map(cellsOf), head = null;
+      if (grid.length >= 2 && RX_TSEP.test(rows[1].trim())) { head = grid[0]; grid = grid.slice(2); }
+      rows = [];
+      // Ragged rows would tear the grid open, so every row is padded to the
+      // widest one rather than trusted to be well formed.
+      const width = Math.max(head ? head.length : 0, 1, ...grid.map(r => r.length));
+      const pad = (r) => r.concat(new Array(Math.max(0, width - r.length)).fill(''));
+      const th = head
+        ? '<thead><tr>' + pad(head).map(c => `<th>${inline(c)}</th>`).join('') + '</tr></thead>' : '';
+      const tb = grid.length
+        ? '<tbody>' + grid.map(r => '<tr>' + pad(r).map(c => `<td>${inline(c)}</td>`).join('') + '</tr>').join('') + '</tbody>' : '';
+      out.push(`<div class="doc-table-wrap"><table class="doc-table">${th}${tb}</table></div>`);
+    };
+    String(text == null ? '' : text).split('\n').forEach(line => {
+      if (isRow(line)) { flushProse(); rows.push(line); }
+      else { flushTable(); prose.push(line); }
+    });
+    flushTable(); flushProse();
+    return out.join('');
   }
+
+  function linkify(text) { return blocks(text, inlineLinked); }
 
   /* ============================ The feed pane ============================== */
   function conflictStripHTML(d) {
@@ -3264,11 +3327,11 @@
   // its line 8 hides .app-header/.app/#live.)
   function fillPrint() {
     const docs = feedDocs();
-    const para = (s) => esc(unlink(s)).split(/\n{2,}/).map(p => '<p>' + p.replace(/\n/g, '<br>') + '</p>').join('');
+    const para = (s) => blocks(s, (t) => esc(unlink(t)));
     ROOT.print.innerHTML = docs.length
       ? docs.map(d => `<section class="p-doc">
           <h2>${esc(d.title)}</h2>
-          ${DOC_TYPES[d.type].fields.map(([k, prompt]) => (d.fields || {})[k]
+          ${fieldDefsOf(d).map(([k, prompt]) => (d.fields || {})[k]
             ? `<h3>${esc(prompt)}</h3>${para(d.fields[k])}` : '').join('')}
           ${d.body ? `<div>${para(d.body)}</div>` : ''}
         </section>`).join('')

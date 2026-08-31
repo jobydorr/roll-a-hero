@@ -656,6 +656,26 @@ body.dmos-row-dragging, body.dmos-row-dragging * { cursor: grabbing !important; 
   border: 2px solid var(--panel-edge); background: var(--surface-active); color: var(--ink);
 }
 .diff-wrap { max-height: 46vh; overflow: auto; margin: 8px 0 4px; }
+/* ---------------------- Tables inside a document -------------------------- */
+/* A shop is a price list and a price list wants a grid, so any field may hold a
+   pipe table (see `blocks` in dmos-ui.js). The wrapper scrolls on its own axis
+   rather than letting a wide stock list shove the whole card out of column. */
+.doc-table-wrap { overflow-x: auto; margin: 8px 0 12px; }
+.doc-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 14px; line-height: 1.35;
+}
+.doc-table th, .doc-table td {
+  border: 1px solid var(--panel-edge);
+  padding: 5px 9px; text-align: left; vertical-align: top;
+}
+.doc-table thead th {
+  background: rgba(107, 74, 35, 0.12);
+  font-family: var(--font-display); font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.7px; white-space: nowrap;
+}
+.doc-table tbody tr:nth-child(even) { background: rgba(107, 74, 35, 0.05); }
+
 table.diff { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 table.diff th, table.diff td { border: 1px solid var(--panel-edge); padding: 6px 8px; text-align: left; vertical-align: top; }
 table.diff thead th { background: rgba(107, 74, 35, 0.12); font-family: var(--font-display); }
@@ -961,6 +981,21 @@ table.diff tbody th { width: 22%; font-family: var(--font-display); font-weight:
     letter-spacing: 1.2px; margin: 10pt 0 2pt; color: #000;
   }
   #dmosPrint p { font-family: 'Spectral', Georgia, serif; font-size: 11pt; line-height: 1.4; margin: 0 0 6pt; }
+  /* A price list is the one thing at this table somebody actually reads off
+     paper, so it prints as a grid rather than collapsing back into lines. */
+  #dmosPrint .doc-table-wrap { overflow: visible; margin: 3pt 0 7pt; }
+  #dmosPrint .doc-table {
+    width: 100%; border-collapse: collapse;
+    font-family: 'Spectral', Georgia, serif; font-size: 9.5pt;
+    page-break-inside: avoid;
+  }
+  #dmosPrint .doc-table th, #dmosPrint .doc-table td {
+    border: 0.5pt solid #000; padding: 2pt 4pt; text-align: left; vertical-align: top;
+  }
+  #dmosPrint .doc-table thead th {
+    font-family: 'Cinzel', Georgia, serif; font-size: 8pt;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
 }
 
 /* ------------------------------- Narrow ----------------------------------- */
