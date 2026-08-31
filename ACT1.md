@@ -32,7 +32,7 @@ Run it from **`LASTLIGHT › ▶ RUN THESE IN ORDER — Lastlight`** and the fiv
 
 ### Scene 2 — THE COMMISSION *(BUILT 2026-08-13 — runs from the DM OS)*
 
-Run it from **`THE COMMISSION › ▶ RUN THESE IN ORDER — the commission`**. Six beats, from the Surveyor in the dust to the woman and the boy on the steps.
+Run it from **`THE COMMISSION › ▶ RUN THESE IN ORDER — the commission`**. Seven beats, from the Surveyor in the dust to the woman and the boy on the steps. A step 2 was added on 2026-08-31 and everything after it renumbered: the field as the light goes, where Merrit Quist, Hask Bind and Ganny Marle come to the party with gifts and one job, and where the evening can end in Ganny's cellar instead of the hotel.
 
 ### Scene 3 — THE WAY IN *(BUILT 2026-08-14 — runs from the DM OS)*
 

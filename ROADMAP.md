@@ -37,7 +37,7 @@
 > - **Scene 4 — the first lost place.** Unbuilt, and it is what session three's cliffhanger opens onto. Nothing about what is in there is decided.
 > - The transition collection (the Badge, the Empty Coffin, the Paper Bird) still waits on Joby's alteration ideas.
 >
-> **RUN ORDER AS IT STANDS:** session one = LASTLIGHT (played, stopped at `THE COMMISSION › 1`). Session two opens at `THE COMMISSION › 2`, the night at the Ossuary. Session three = `THE WAY IN`, two beats, ending on the party stepping through the portal. Then Scene 4, which does not exist yet.
+> **RUN ORDER AS IT STANDS:** session one = LASTLIGHT (played, stopped at `THE COMMISSION › 1`). Session two opens at `THE COMMISSION › 2` — which as of 2026-08-31 is a NEW beat, the field as the light goes, where Merrit Quist, Hask Bind and Ganny Marle come to them; the Ossuary night is now › 3 and the scene renumbered to seven beats. Session three = `THE WAY IN`, two beats, ending on the party stepping through the portal. Then Scene 4, which does not exist yet.
 >
 > ---
 >
