@@ -2,9 +2,57 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-08-27.*
+*Last updated: 2026-08-31.*
 
-> **▶▶ START HERE — 2026-08-27 (evening). This is the newest block; everything below it is history, including the earlier 2026-08-27 block.**
+> **▶▶ START HERE — 2026-08-31. This is the newest block; everything below it is history.**
+>
+> **STATE:** working tree clean apart from three untracked images in `Folded world imagery/`, which are Joby's and were deliberately left alone. `HEAD` == `origin/main`. Live asset versions on `dm.html`: campaign `v55`, dmos-ui `v46`, dmos-store `v17`, dmos-notes-sync `v1`, dmos.css `v33`. Joby runs from `localhost:8000`.
+>
+> **⚠ READ FIRST, IN THIS ORDER:** `CLAUDE.md` → this block → the DM OS itself, starting at **`▶ THE FOLDED WORLD`** and **`Quick reference › ▶ THE PARTY`** → `STYLE.md` before writing any prose.
+>
+> ---
+>
+> **TWO STANDING RULES CAME OUT OF THIS SESSION, BOTH FROM JOBY, AND BOTH ARE IN MEMORY.**
+>
+> The first is that **nobody counts sessions.** Material is referred to by its name in the OS — LASTLIGHT, THE COMMISSION, THE WAY IN, the beat's own title — and never as "session three," because session numbering is derived state that goes stale the moment a beat is added or an evening runs long. It broke within a minute of being used: a doc written weeks earlier called THE WAY IN "the next session," which stopped being true as soon as a beat and an hour-long fight went in ahead of it. Elapsed days are tracked from Joby's own session notes as they arrive, and where the notes are unclear the answer is to ask rather than assume.
+>
+> The second is that **no document states how long ago anything happened, or how long anything will take.** Joby does not know those numbers either and the players' pace changes them on a dime. This was not a style preference — it was a real error. THE WAY IN and the Hearthspire's sheet said the tower was "eleven days dead" while a line in the same scene chain gave the assignment for the next morning, and the slip had spread to eight places plus the bible. Anchors replaced every count: *since the hour it happened*, *until the morning of the lighting*, *after watching him be taken*. Historical background that predates the party is untouched, and so is table pacing.
+>
+> ---
+>
+> **WHAT SHIPPED**
+>
+> - **THE COMMISSION has a new step 2 and now runs to seven beats.** Between the Surveyor in the dust and the night at the Ossuary, the fairground turns into a market as the light goes and three people come to the party. **Merrit Quist** of Nine Hundred Bottles is already there working, and gives each hero one bottle of any type they wish — he takes a complaint rather than an order, which is what sets the ceiling on that gift. **Hask Bind** of the Sugar Vault stands mud to the knee making a formal presentation of Drawer 400 and a drawer of the party's own. **Ganny Marle** came down to look at the big tear and leaves with four people coming to her cellar that night. Both shopkeepers have NPC sheets. Everything after step 2 was renumbered and every cross-reference in the corpus went with it.
+> - **Ganny is rebuilt and she is Red Flag.** THE IMPOSSIBLE CORNER is a swindle and always was — a mirror, a paint job and a length of pipe — which makes it the best cover in Dunlath, because the ministry has already been down those steps and written NOVELTY on a form. The real hole is at the back behind the preserves: a literal hole and a tear in the fold, going across the city and, newly, into the fold itself. She is a courier node rather than a believer, which is what keeps her likeable and leaves Hettie as the one who makes the argument. The offcuts are cut entirely.
+> - **Her cellar is now the evening's fight.** The jam was reconnaissance: three snatch-goblin kits have been working the mortar from the far side and nothing has ever happened to them, so they force the crease properly and bring a **tear-ogre** up through it, into a low room with one lamp and no healer, because Tobin has not joined yet. Three outcomes reach the same fact by different verbs — kill it and search the body, catch a kit and search or talk to it, or let one go and follow it across the city to another hole in another cellar. All three find raw sunsalt, which is the ingredient and deliberately not the procedure, so §8 Q10 stays open. The crease snaps shut afterward so THE WAY IN keeps its cliffhanger.
+> - **The DM OS renders tables.** `dmos-ui.js` grew a pipe-table block renderer shared by the screen and the printed page, so any field may hold a grid. Every shop inventory was converted. It also fixed a pre-existing print bug it surfaced: `fillPrint` listed the doc *type's* default fields rather than the doc's own, so Ctrl+P had been silently dropping every custom field — every beat's environment sketch, every location's game, and Tobin's whole stat block.
+>
+> ---
+>
+> **⚠ RULINGS JOBY GAVE IN CONVERSATION THAT ARE NOT YET IN THE DOCUMENTS.** These are the most likely things to be lost over a break, and none of them is a proposal — they are decisions.
+>
+> - **The Rector at the fairground is settled and it is not an errand.** It was there to inaugurate the lighting of the final Reactor, which is the biggest thing the ministry does, so of course the most senior official in the city attended. It never left; its own ceremony became a catastrophe around it. `npc-rector`'s sheet still carries the old "⚠ WORTH A RULING" flag and must be updated. **One thing still needs Joby:** he said *the final reactor*, and the bible only calls the Hearthspire *the first Reactor raised at a living city's door*. Those are compatible, but "final" — the last in the whole programme, so the lighting completes the rollout and the Draw era formally ends that day — is a real upgrade to the ceremony's stakes and should come from him rather than be inferred.
+> - **Tobin's secret needs no replacement.** He feeds a house with a dark window, which makes him Red Flag's man, and that is a far bigger secret than the outlawed healing ever was. The open item was mis-framed: what the old secret bought was an *early likeability beat*, where the party keeps a secret FOR him, and the Red Flag one cannot do that job because it lands as betrayal much later. His sheet still carries the "❓ OPEN, FOR JOBY" block and should be rewritten to say this.
+> - **The Empty Coffin is cut.** There are no dead — citizens were dragged through the rip alive and screaming, and the operation is a rescue as much as an investigation. It also contradicted the commission outright, since the Rector cannot bury Finch and fund his rescue in the same week. `ACT1.md` still lists it in the transition collection. That collection is now mostly redundant anyway: the Badge is already the writ in the awarding, and only the Paper Bird survives as a distinct idea.
+>
+> ---
+>
+> **OPEN, AND ALL JOBY'S TO RULE.** Each of these is flagged in its own document as proposed rather than decided, so nothing is silently canon.
+>
+> - **Drawer 400's contents** — twelve numbered pieces with a card giving the order to eat them in, plus the party's own named drawer behind the brass grille.
+> - **Merrit's and Hask's private notes** — that Merrit noticed remedies and lamps got dearer the same week, and that the Vault never sent Hask.
+> - **Whether Ganny's hole is still growing** — kept as one plain sentence with no props attached.
+> - **Whether a snatch-goblin kit can talk.** It works either way and both are written.
+> - **Whether the party may follow a kit THROUGH the hole** rather than across the city. Following it through would put them inside the fold far too early and blow up THE WAY IN entirely, which is why it is written as a city chase.
+> - **Scene 4, the first lost place.** Still unbuilt, and it is what the portal opens onto.
+>
+> **SMALLER, AND EASY TO PICK UP:** the games with stakes and DCs (the Long Table's contests, the Glasshouse, the Proving Floor's range, Ganny's) are still written as lines and could be tabled the same way the inventories were; and `enc-ganny` is still filed under `IF THERE IS TIME — fast pieces`, which it very much no longer is, so it wants dragging somewhere better.
+>
+> **THE TEST FOR ANY NEW PIECE, unchanged and still the thing most likely to be got wrong:** whether a player can *operate* it. Two nine-year-olds are at this table. Ganny's cellar, the paper horse and the door that cycles rooms are the models, and Jef's note is a pacing rule — something to hit, early.
+>
+> ---
+>
+> **▶▶ 2026-08-27 (evening) — history now; the 2026-08-31 block above supersedes it. Everything below this line is older still.**
 >
 > **STATE:** working tree clean, `HEAD` == `origin/main`, everything pushed. Live asset versions on `dm.html`: campaign `v50`, dmos-ui `v45`, dmos-store `v17`, dmos-notes-sync `v1`, dmos.css `v32`. Joby runs from `localhost:8000` (`python -m http.server 8000`, or the `roll-a-hero` entry in `.claude/launch.json`).
 >
