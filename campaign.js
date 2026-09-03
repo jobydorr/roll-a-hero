@@ -2548,6 +2548,61 @@ window.DM_CAMPAIGN = {
         "voice": "Complete sentences, no contractions, no volume at all. He answers the question he was asked and then stops, which reads as rudeness and is not.",
         "secret": "⚠ PROPOSED, NOT RULED. The Vault did not send him. He put it to the owner across the counter, the owner said do it if you like, and he has been rehearsing the wording since. He will not tell anybody this, and if the party ever gets it out of him it should cost him something to admit."
       }
+    },
+    {
+      "schema": 1,
+      "id": "bb-fold",
+      "type": "note",
+      "title": "▶▶ BACK BURNER — the Fold, and where it is going",
+      "parent": null,
+      "order": 7,
+      "rev": 1,
+      "tags": [
+        "fold",
+        "planning",
+        "not-canon"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "status",
+          "⚠ Read this first"
+        ],
+        [
+          "shape",
+          "The shape of the Fold"
+        ],
+        [
+          "arrival",
+          "The first entry, and where to stop"
+        ],
+        [
+          "memory",
+          "The memory effect"
+        ],
+        [
+          "ship",
+          "The ship, and the bay"
+        ],
+        [
+          "tower",
+          "The folded-away tower"
+        ],
+        [
+          "open",
+          "Undecided — Joby's"
+        ]
+      ],
+      "body": "WHAT THIS IS. A holding place for everything settled or half-settled about what the Fold is like on the inside, so that none of it has to be remembered and none of it leaks into a runnable document before it is ready.\n\nNOTHING IN HERE IS CANON. It is not in [[world-fold|THE FOLDED WORLD]], it is not in the bible, and it must not be run off. When a piece of it is ready it gets built properly and taken out of here.\n\nIt exists because the Fold went from a blank to a whole design in one conversation, and a design that lives only in a conversation is a design that gets rebuilt from scratch later, differently.",
+      "fields": {
+        "status": "NOT CANON. Working notes only. Nothing here has been agreed except where a line says JOBY'S, which marks something he stated outright.\n\nWHAT IS ALREADY BUILT AND IS CANON, for the avoidance of doubt: the way into the Fold is opened with raw sunsalt pressed into a socket in a small worn object and held against a crease that is already there — see [[enc-ganny|the chamber under Ganny's cellar]] and [[b-wreck-2|THE WAY IN]]. Everything past the threshold is unwritten.",
+        "shape": "JOBY'S, AND IT IS THE FRAME EVERYTHING ELSE HANGS ON. Being in the Fold is being inside an unfathomably immense and complex STRUCTURE. In places it closes to something like the inside of a cathedral. In others it opens into spaces that would reach a sky if there were one — and those are not empty: there are substructures inside them, visible and enterable. What the party will come to understand is a vast labyrinth.\n\nTHE RECONCILIATION WITH THE BIBLE, proposed and not yet ruled. The bible already holds two things it never connected: the banished zones are sealed pockets holding the world's swallowed places (a forest that loops back, a town where the same street occurs three times, a mountain larger inside than out), and the Snarl is the deep interior that nothing navigates — but it never said what the Snarl LOOKS like.\n\nSo: THE STRUCTURE IS THE SNARL, and THE SWALLOWED PLACES HANG INSIDE IT AS CELLS. That costs nothing and it gives the Fold two registers a nine-year-old can tell apart on sight — the structure, which is built, wrong-sized and empty, and the places, which are stolen, green, and have people in them. It also gives the gray somewhere to live: the Reactors bleed the CELLS from within, where no witness who would be believed can go.\n\nONE DETAIL WORTH KEEPING FROM THE BRAINSTORM: everything in the structure is sized slightly wrong for people. Steps too tall, doorways too narrow and far too high. Nobody explains it and nobody has to — it says THIS WAS NOT MADE FOR YOU in about four seconds.",
+        "arrival": "JOBY'S: the first entry lands them in a SMALLER SPACE that soon opens into a MUCH LARGER one — a curved space big enough to hold an inner substructure the size of a mountain. THE SESSION ENDS AS THEY COME INTO THE INITIAL SMALL SPACE, so the great space is next time and none of the reveal is spent.\n\nTHE SMALL SPACE should be tight, unimpressive and clearly a service space rather than a grand hall — somewhere two faces nearly meet, or a landing on a stair running further up and down than the light reaches. Not built for them.\n\nTHE SOUND IS THE CLIFFHANGER, and it is free. The voices got louder and louder as the way opened; that is the entire reason they went in. THEY STEP THROUGH AND IT IS SILENT. They came for a sound and the sound is gone. Then, moving toward the opening at the far end, it comes back — not as voices but as REVERBERATION, with a delay so long it tells them the space beyond is miles across before they can see an inch of it. Stop there.\n\nALSO FROM THE BRAINSTORM, unused and available: nothing casts a shadow, because there is no sun in there and the light comes in through the gaps; the way back is visible from everywhere until they walk round something and it is not, because the cell is densely folded; and direction does not survive the crossing, so a party that went in as a line arrives in the wrong order.",
+        "memory": "JOBY'S, AND IT REPLACES AN EARLIER IDEA THAT IS DEAD. (The dead one: place-names not sticking unless written down. Cut — do not revive it.)\n\nTHE RULE: every entry into the Fold carries a POSSIBILITY of some sort of memory effect. Not guaranteed, not uniform, and not the same effect twice.\n\nWHAT HE WANTS ON THE FIRST ENTRY, specifically:\n· ONE PLAYER LOSES THEIR ENTIRE MEMORY. They keep their essential abilities and skills and nothing else. They know how to do what they can do and they do not know who they are.\n· ANOTHER PLAYER REMEMBERS SOMETHING FROM THEIR PAST THEY DID NOT KNOW THEY HAD FORGOTTEN. It is absolutely a memory — it has the weight and the detail of one — and it comes with an uneasy certainty that they never actually lived it.\n\nWHY IT FITS THE WORLD, and this is the thing that makes it more than a stunt: the bible already says the Folding took memory, that a memory is a thread from a person to a place, and that the folding creased those threads shut along with everything else. The Fold is full of other people's threads. Somebody standing inside it losing their own, or picking up one that was never theirs, is the setting doing exactly what the setting is.\n\n⚠ NOT YET DESIGNED: how it is chosen (rolled, picked, volunteered), whether it wears off, whether the recovered memory is true, and what a player does at the table for an evening with no past. All Joby's.",
+        "ship": "JOBY'S: there is a SHIP that carries them around inside the Fold, docked in a HOLDING BAY near one of their entries. It is found on a later entry — the first entry is the rescue — and it is what really opens the Fold up as somewhere to adventure in.\n\n⚠ THE PROBLEM TO SOLVE FIRST, and it is load-bearing: the bible says only two things navigate the Snarl, the Armature and the Compass Spirit, and everyone else who went in wandered until they stopped. A ship that sails it contradicts that outright unless it is answered.\n\nTHE ANSWER PROPOSED IN THE BRAINSTORM: IT DOES NOT NAVIGATE, IT RUNS A ROUTE. It goes where its line goes and cannot deviate, like a funicular. The party gets access rather than freedom, new destinations become things they have to earn, and the rule survives untouched.\n\nTHE IMAGE, proposed: it does not look like a ship. It looks like a BUILDING THAT HAS COME LOOSE — a room you get into, with the door shut and the windows showing somewhere else by the time it opens. Refuse the wooden galleon.\n\nAND THE BAY IS WHERE THE HISTORY GOES: not a ship, but TWELVE BERTHS AND ONE SHIP LEFT. That single image says there was a service, it ran, it stopped, and somebody used to be here, with no exposition at all.",
+        "tower": "JOBY'S: a wizard's tower that was FOLDED AWAY, stayed in use for a long time afterward, and has since been abandoned. Creatures in the zones have been getting sunsalt and worked things out of it, peacefully or otherwise. It sits on or in the mountain-sized substructure in the first great space, and it is where the party learns THE PART OF THE MECHANISM THEY ARE MISSING — the reason [[enc-ganny|the object]] will not work in their hands.\n\n⚠ THE PACING FLAG THAT MATTERS MOST HERE: DO NOT SPEND THE TOWER ON THE RESCUE TRIP. It is the answer to the object in their pocket, and walking into it while fetching the eleven burns that mystery in one evening. Let them SEE it on the first entry — it should be impossible not to see — and not reach it. Then the trip after has two destinations, the tower and the bay.\n\nCANDIDATE, tidy and therefore suspicious, and entirely Joby's: the tower's people built the line the ship runs on, which would explain the berths, the object the goblins carry, and why creatures living along the route have salt and worked things.",
+        "open": "· Whether the structure-is-the-Snarl reconciliation is adopted. Everything above assumes it.\n· WHERE THE TAKEN CITIZENS ARE KEPT — being brainstormed now; nothing decided.\n· How the memory effect is chosen and whether it wears off.\n· Whether the ship runs a fixed route, and who laid it.\n· Whether the tower built the line.\n· What the mountain-sized substructure actually is — a cell of swallowed country is the proposal, not a ruling.\n· The gray: the bible says the first lost place is partly gray. On the cell, presumably. Unconfirmed."
+      }
     }
   ]
 };
