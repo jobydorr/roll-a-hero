@@ -36,7 +36,7 @@ Run it from **`THE COMMISSION › ▶ RUN THESE IN ORDER — the commission`**. 
 
 ### Scene 3 — THE WAY IN *(BUILT 2026-08-14 — runs from the DM OS)*
 
-Run it from **`THE WAY IN › ▶ RUN THESE IN ORDER — the way in`**. Two beats and a stop: the tear site with its ring and the voices under the ground, then the order opening the way and the party stepping through, which is where the session ends.
+Run it from **`THE WAY IN › ▶ RUN THESE IN ORDER — the way in`**. Three beats: the tear site with its ring and the voices under the ground, then the order opening the way with sunsalt and an object the party has seen used before, then the room on the far side — sealed, silent and shadowless — which is where the evening ends. Stepping through stopped being the stop on 2026-08-31; Joby wants them inside at the end of the night.
 
 *Note: the party never enters the Hearthspire. The Reactor is not a dungeon, the fold is, and the tower's interior — salvage floors, wardens, the crown — was drafted and cut on 2026-08-14. The sealed door and the grinding moved to the middle-act Reactor template in the bible's §6.*
 
