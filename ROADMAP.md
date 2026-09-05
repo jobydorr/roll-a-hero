@@ -2,23 +2,25 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-08-31.*
+*Last updated: 2026-09-04.*
 
-> **▶▶ START HERE — 2026-08-31. This is the newest block; everything below it is history.**
+> **▶▶ START HERE — 2026-09-04. This is the newest block; everything below it is history.**
 >
-> **⚠⚠ THERE IS A SESSION TOMORROW (2026-09-01), AND TWO THINGS ARE OWED BEFORE IT.** Both are Joby's, both were raised at the end of the session, and neither is started:
-> 1. **Hask Bind** — he is not sure what is happening with that character. The sheet exists (`npc-hask`) and so does his beat, but the concept is unsettled and he wants to work on it.
-> 2. **More potions and bottles at [[Nine Hundred Bottles]]** (`loc-bottles`). The shelf is currently five real potions plus six cheap-shelf novelties, and he wants more range. The stock field is already a table, so additions are rows.
+> **✅ THE TWO THINGS OWED BEFORE THE GAME ARE BOTH DONE (2026-09-04).**
+> 1. **Hask Bind is rebuilt.** He was a punchline to a joke the table had not heard — he walked up in the mud and said "Drawer four hundred" to a party that has never been to the Sugar Vault, gave them no reason to do anything, and handed over a locker they had no use for. **Now he takes an order:** the Vault means to name four sweets after the heroes, and he needs a FLAVOR, a TEXTURE and a NAME from each of them, which he writes down and reads back flatly however ridiculous it gets. The players invent the content, drawers 401–404 hold it with their names on the brass, and Drawer 400 went back to being the unbought legend it was.
+> 2. **Nine Hundred Bottles has a real catalog.** Thirteen bottles on the gp shelf instead of five — Stitch, Knitbone, Ironhide, Backbone, Second Wind, Windward, Longspeak and Bright Eyes joining the originals — nine on the cheap shelf, and a grated CASE behind the counter whose labels cannot be read from outside. **Prices are anchored to `▶ THE BOARD`,** which already states its eight-to-fifty gold pay is calibrated so one good job buys one good bottle; the new shelf sits in the forty-to-seventy-five band to keep that true. **Merrit now hands the party a Stitch and a Knitbone on the field**, unasked, because they may go under Ganny's cellar the same night with no healer. The Lastlight debt is FOUR bottles for the party — two given, two more of their choosing at the shop — not four each.
+>
+> **❓ WHETHER THE GAME ON 2026-09-01 WAS ACTUALLY PLAYED IS NOT KNOWN HERE. ASK; DO NOT ASSUME.** Nothing in this repo records it, `SESSION LOGS` has only the Lastlight entry, and elapsed days are tracked from Joby's own notes rather than inferred.
 >
 > **AND ONE DECISION IS DUE BEFORE THE WAY IN CAN BE RUN AT ALL:** the memory effect. Every entry into the Fold carries a possibility of one, and the first entry is meant to carry two — one player losing their entire memory but keeping their abilities, another recovering a real memory they never knew they had lost and which feels like it was never theirs. **What must be decided is WHEN it fires:** as the last thing that happens in the room, which is an enormous stop but drops a hard job on a player with no warning, or at the top of the following session. It is flagged in `b-wreck-3` and designed nowhere.
 >
 > ---
 >
-> **STATE:** working tree clean apart from three untracked images in `Folded world imagery/`, which are Joby's and were deliberately left alone. `HEAD` == `origin/main`, everything pushed. Live asset versions on `dm.html`: campaign `v62`, dmos-ui `v46`, dmos-store `v17`, dmos-notes-sync `v1`, dmos.css `v33`. Joby runs from `localhost:8000`.
+> **STATE:** working tree clean apart from three untracked images in `Folded world imagery/`, which are Joby's and were deliberately left alone. `HEAD` == `origin/main`, everything pushed. Live asset versions on `dm.html`: campaign `v65`, dmos-ui `v46`, dmos-store `v17`, dmos-notes-sync `v1`, dmos.css `v33`. Joby runs from `localhost:8000`.
 >
 > **⚠ READ FIRST, IN THIS ORDER:** `CLAUDE.md` → this block → the DM OS, starting at **`▶ THE FOLDED WORLD`**, then **`▶▶ BACK BURNER — the Fold`**, then **`Quick reference › ▶ THE PARTY`** → `STYLE.md` before writing any prose.
 >
-> **WHAT RUNS TOMORROW, and it is all built and verified:** `THE COMMISSION` from **step 2** (step 1 was played at the end of the last session), which is now seven beats; the evening can end at **Ganny's cellar** instead of the hotel; and `THE WAY IN`, which is now three beats and ends with the party **inside the Fold**, in a sealed room. Every wikilink in the corpus resolves and the whole path from the dust to that room is continuous.
+> **WHAT IS READY TO RUN, and it is all built and verified:** `THE COMMISSION` from **step 2** (step 1 was played at the end of the last session), which is now seven beats; the evening can end at **Ganny's cellar** instead of the hotel; and `THE WAY IN`, which is now three beats and ends with the party **inside the Fold**, in a sealed room. Every wikilink in the corpus resolves and the whole path from the dust to that room is continuous.
 >
 > ---
 >
