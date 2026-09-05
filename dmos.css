@@ -910,7 +910,21 @@ table.diff tbody th { width: 22%; font-family: var(--font-display); font-weight:
 }
 
 /* The floating "🔗 Link" marker over a highlighted body selection. */
-.link-marker { position: fixed; z-index: var(--z-modal); animation: rise 0.12s ease both; }
+.link-marker {
+  position: fixed; z-index: var(--z-modal); animation: rise 0.12s ease both;
+  display: flex; align-items: center; gap: 4px;
+}
+/* B / I / U / AA, alongside Link on the same floating marker. Deliberately
+   quieter than the gold Link pill: these are everyday, Link is the event. */
+.mark-btn {
+  display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+  min-width: 28px; height: 28px; padding: 0 6px;
+  font-family: var(--font-display); font-size: 13px; line-height: 1;
+  color: var(--ink); background: var(--panel);
+  border: 1px solid var(--panel-edge); border-radius: 7px;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+.mark-btn:hover { background: var(--gold-bright); color: var(--on-gold); }
 .link-marker-btn {
   display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
   font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: 0.3px;

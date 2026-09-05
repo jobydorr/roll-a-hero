@@ -232,7 +232,22 @@
     return out.join('');
   }
 
-  function linkify(text) { return blocks(text, inlineLinked); }
+  /* Emphasis. Three markers and no more, because a DM mid-session is not going
+     to remember a fourth: **bold**, __underline__, *italic*. Run last, on text
+     that has already been escaped and linkified, which is safe because nothing
+     this renderer generates contains an asterisk or an underscore — ids are
+     hyphenated and the attributes it writes are fixed. Bold goes before italic
+     so that ** is consumed as a pair rather than read as two singles. CAPS is
+     deliberately not a marker: the editor uppercases the letters themselves,
+     because this repo's house style uses real capitals everywhere already. */
+  const emphasize = (html) => html
+    .replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/__([^_]+?)__/g, '<u>$1</u>')
+    .replace(/\*([^*]+?)\*/g, '<em>$1</em>');
+
+  const inlineRich = (t) => emphasize(inlineLinked(t));
+
+  function linkify(text) { return blocks(text, inlineRich); }
 
   /* ============================ The feed pane ============================== */
   function conflictStripHTML(d) {
@@ -330,7 +345,7 @@
           </div>
           ${editingFieldOf(d.id) === k
             ? `<textarea rows="1" class="doc-field-edit" data-act="edit-field" data-doc="${d.id}" data-field="${esc(k)}"
-                         placeholder="Write here. Type [[ to link another sheet.">${esc(val)}</textarea>`
+                         placeholder="Write here. Type [[ to link a sheet. Select words for B / I / U.">${esc(val)}</textarea>`
             : `<div class="doc-field-read" data-act="open-field" data-doc="${d.id}" data-field="${esc(k)}">${
                 val ? linkify(val) : '<p class="doc-empty">Click to write…</p>'}</div>`}
         </div>`;
@@ -340,7 +355,7 @@
       <div class="doc-bodywrap">
         ${editingBody
           ? `<textarea class="doc-body-edit" data-act="edit-body" data-doc="${d.id}"
-                       placeholder="Write here. Link to another document with [[its_id]].">${esc(d.body || '')}</textarea>`
+                       placeholder="Write here. Type [[ to link a sheet. Select words for B / I / U.">${esc(d.body || '')}</textarea>`
           : `<div class="doc-body" data-act="open-body" data-doc="${d.id}">${
               d.body ? linkify(d.body) : '<p class="doc-empty">Click to write…</p>'}</div>`}
       </div>`;
@@ -2328,9 +2343,40 @@
     if (el.dataset.field) patchDebounced(el.dataset.doc, { fields: { [el.dataset.field]: el.value } });
     else patchDebounced(el.dataset.doc, { body: el.value });
   }
+  /* ------------------------------ Emphasis -------------------------------- */
+  /* Wrap the selection in markers, or uppercase it. One function serves both
+     the keyboard shortcuts and the buttons on the selection marker, so the two
+     can never drift. It writes through writeEditor rather than waiting for an
+     input event, because setting .value programmatically does not fire one. */
+  const MARK = { b: '**', u: '__', i: '*' };
+
+  function applyEmphasis(ta, kind) {
+    if (!ta) return;
+    const s = ta.selectionStart, e = ta.selectionEnd;
+    if (s == null || s === e) return;          // nothing selected, nothing to do
+    const before = ta.value.slice(0, s), mid = ta.value.slice(s, e), after = ta.value.slice(e);
+    if (kind === 'caps') {
+      ta.value = before + mid.toUpperCase() + after;
+      ta.setSelectionRange(s, e);
+    } else {
+      const m = MARK[kind]; if (!m) return;
+      ta.value = before + m + mid + m + after;
+      ta.setSelectionRange(s + m.length, e + m.length);   // keep the words selected, not the markers
+    }
+    autosize(ta);
+    writeEditor(ta);
+  }
+
   function editorKeydown(el, e) {
     if (linkAutoKeydown(e)) return;
     if (e.key === 'Escape') { e.stopPropagation(); el.blur(); }
+    // Ctrl/Cmd+B, +I, +U wrap; add Shift to +U for capitals. preventDefault
+    // matters on U in particular, which is View Source in a browser.
+    if ((e.ctrlKey || e.metaKey) && !e.altKey) {
+      const k = e.key.toLowerCase();
+      const kind = k === 'b' ? 'b' : k === 'i' ? 'i' : k === 'u' ? (e.shiftKey ? 'caps' : 'u') : null;
+      if (kind) { e.preventDefault(); e.stopPropagation(); applyEmphasis(el, kind); }
+    }
   }
 
   /* ------------------------ Type [[ to link a sheet ----------------------- */
@@ -2557,17 +2603,25 @@
     const r = el.getBoundingClientRect();       // no pointer point for keyboard selection
     maybeShowLinkMarker(el, Math.min(r.right - 30, window.innerWidth - 60), r.top + 24);
   };
+  // Fields hold most of the writing in this campaign, so the marker belongs on
+  // them too — it was body-only when Link was the one thing it could do.
+  ACT['edit-field:mouseup'] = ACT['edit-body:mouseup'];
+  ACT['edit-field:keyup'] = ACT['edit-body:keyup'];
   function maybeShowLinkMarker(el, x, y) {
     const s = el.selectionStart, en = el.selectionEnd;
     if (s == null || s === en) { hideLinkMarker(); return; }
-    linkSel = { docId: el.dataset.doc, start: s, end: en, value: el.value, text: el.value.slice(s, en) };
+    linkSel = { docId: el.dataset.doc, start: s, end: en, value: el.value, text: el.value.slice(s, en), ta: el };
     showLinkMarker(x, y);
   }
   function showLinkMarker(x, y) {
     hideLinkMarker();
     const el = document.createElement('div');
     el.className = 'link-marker';
-    el.innerHTML = `<button type="button" class="link-marker-btn">${icon('scroll')} Link</button>`;
+    el.innerHTML = `<button type="button" class="mark-btn" data-mark="b" title="Bold (Ctrl+B)"><b>B</b></button>`
+      + `<button type="button" class="mark-btn" data-mark="i" title="Italic (Ctrl+I)"><i>I</i></button>`
+      + `<button type="button" class="mark-btn" data-mark="u" title="Underline (Ctrl+U)"><u>U</u></button>`
+      + `<button type="button" class="mark-btn" data-mark="caps" title="Capitals (Ctrl+Shift+U)">AA</button>`
+      + `<button type="button" class="link-marker-btn">${icon('scroll')} Link</button>`;
     document.body.appendChild(el);
     el.style.left = Math.max(8, Math.min(x, window.innerWidth - el.offsetWidth - 8)) + 'px';
     el.style.top = Math.max(8, y - el.offsetHeight - 8) + 'px';
@@ -2578,6 +2632,16 @@
       ev.preventDefault(); ev.stopPropagation();
       openLinkPicker();
     });
+    // Same mousedown-not-click reason: the textarea must not blur before we act.
+    el.querySelectorAll('.mark-btn').forEach(btn => btn.addEventListener('mousedown', (ev) => {
+      ev.preventDefault(); ev.stopPropagation();
+      const sel = linkSel;
+      hideLinkMarker();
+      if (!sel || !sel.ta) return;
+      sel.ta.focus();
+      sel.ta.setSelectionRange(sel.start, sel.end);   // restore what was highlighted
+      applyEmphasis(sel.ta, btn.dataset.mark);
+    }));
     linkMarkerEl = el;
     document.addEventListener('mousedown', onMarkerOutside, true);
     ROOT.feed.addEventListener('scroll', hideLinkMarker, { passive: true });
@@ -3327,7 +3391,7 @@
   // its line 8 hides .app-header/.app/#live.)
   function fillPrint() {
     const docs = feedDocs();
-    const para = (s) => blocks(s, (t) => esc(unlink(t)));
+    const para = (s) => blocks(s, (t) => emphasize(esc(unlink(t))));
     ROOT.print.innerHTML = docs.length
       ? docs.map(d => `<section class="p-doc">
           <h2>${esc(d.title)}</h2>
