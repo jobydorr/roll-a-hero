@@ -344,7 +344,7 @@
                     title="Remove this header from this card">✕</button>
           </div>
           ${editingFieldOf(d.id) === k
-            ? `<textarea rows="1" class="doc-field-edit" data-act="edit-field" data-doc="${d.id}" data-field="${esc(k)}"
+            ? `${glyphStripHTML()}<textarea rows="1" class="doc-field-edit" data-act="edit-field" data-doc="${d.id}" data-field="${esc(k)}"
                          placeholder="Write here. Type [[ to link a sheet. Select words for B / I / U.">${esc(val)}</textarea>`
             : `<div class="doc-field-read" data-act="open-field" data-doc="${d.id}" data-field="${esc(k)}">${
                 val ? linkify(val) : '<p class="doc-empty">Click to write…</p>'}</div>`}
@@ -354,7 +354,7 @@
       </div>
       <div class="doc-bodywrap">
         ${editingBody
-          ? `<textarea class="doc-body-edit" data-act="edit-body" data-doc="${d.id}"
+          ? `${glyphStripHTML()}<textarea class="doc-body-edit" data-act="edit-body" data-doc="${d.id}"
                        placeholder="Write here. Type [[ to link a sheet. Select words for B / I / U.">${esc(d.body || '')}</textarea>`
           : `<div class="doc-body" data-act="open-body" data-doc="${d.id}">${
               d.body ? linkify(d.body) : '<p class="doc-empty">Click to write…</p>'}</div>`}
@@ -2349,6 +2349,31 @@
      can never drift. It writes through writeEditor rather than waiting for an
      input event, because setting .value programmatically does not fire one. */
   const MARK = { b: '**', u: '__', i: '*' };
+
+  /* The marks this campaign's documents already lean on, made clickable so they
+     do not have to be pasted in from somewhere else. Several are emoji and come
+     coloured by the font, which is the whole of the "coloured icons" story —
+     no colour system, no new markup, just characters. */
+  const GLYPHS = ['▶', '★', '⚠️', '❗', '❓', '✅',
+                  '➕', '\u{1F534}', '\u{1F7E1}', '\u{1F7E2}', '\u{1F535}', '·'];
+  const glyphStripHTML = () => `<div class="mark-strip" aria-hidden="true">${
+    GLYPHS.map(g => `<button type="button" class="glyph-btn" data-act="glyph" data-g="${esc(g)}"
+      tabindex="-1" title="Insert ${esc(g)}">${esc(g)}</button>`).join('')}</div>`;
+
+  /* pointerdown, not click: it fires before the textarea blurs and closes the
+     editor out from under us. Same reason the link marker uses mousedown. */
+  ACT['glyph:pointerdown'] = (el, e) => {
+    e.preventDefault(); e.stopPropagation();
+    const ta = el.closest('.doc-field, .doc-bodywrap');
+    const t = ta && ta.querySelector('textarea');
+    if (!t) return;
+    const g = el.dataset.g, s = t.selectionStart, en = t.selectionEnd;
+    t.value = t.value.slice(0, s) + g + t.value.slice(en);
+    t.focus();
+    t.setSelectionRange(s + g.length, s + g.length);
+    autosize(t);
+    writeEditor(t);
+  };
 
   function applyEmphasis(ta, kind) {
     if (!ta) return;

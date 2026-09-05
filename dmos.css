@@ -1044,3 +1044,23 @@ table.diff tbody th { width: 22%; font-family: var(--font-display); font-weight:
 
 /* A sheet added to a scene renders as the same card it is at home — no special
    styling. The only marker is in the picker, where members carry a ✓ badge. */
+
+/* ------------------------ The glyph strip (editors) ----------------------- */
+/* Shown only while a field or body is open for editing. The marks this
+   campaign already uses, made clickable so they never have to be pasted in
+   from somewhere else — several are emoji and arrive coloured from the font,
+   which is why there is no colour system here to maintain. */
+.mark-strip {
+  display: flex; flex-wrap: wrap; gap: 3px;
+  margin: 0 0 5px; padding: 3px;
+  background: rgba(107, 74, 35, 0.06);
+  border: 1px solid var(--panel-edge); border-radius: 8px;
+}
+.glyph-btn {
+  cursor: pointer; min-width: 26px; height: 24px; padding: 0 4px;
+  font-size: 14px; line-height: 1;
+  background: transparent; border: 1px solid transparent; border-radius: 6px;
+  color: var(--ink);
+}
+.glyph-btn:hover { background: var(--surface-active); border-color: var(--panel-edge); }
+@media print { .mark-strip { display: none !important; } }
