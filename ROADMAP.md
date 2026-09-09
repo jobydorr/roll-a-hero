@@ -2,55 +2,54 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-09-04.*
+*Last updated: 2026-09-09.*
 
-> **▶▶ START HERE — 2026-09-04. This is the newest block; everything below it is history.**
+> **▶▶ START HERE — 2026-09-09. This is the newest block; everything below it is history.**
 >
-> **✅ THE TWO THINGS OWED BEFORE THE GAME ARE BOTH DONE (2026-09-04).**
-> 1. **Hask Bind is rebuilt.** He was a punchline to a joke the table had not heard — he walked up in the mud and said "Drawer four hundred" to a party that has never been to the Sugar Vault, gave them no reason to do anything, and handed over a locker they had no use for. **Now he takes an order:** the Vault means to name four sweets after the heroes, and he needs a FLAVOR, a TEXTURE and a NAME from each of them, which he writes down and reads back flatly however ridiculous it gets. The players invent the content, drawers 401–404 hold it with their names on the brass, and Drawer 400 went back to being the unbought legend it was.
-> 2. **Nine Hundred Bottles has a real catalog.** Thirteen bottles on the gp shelf instead of five — Stitch, Knitbone, Ironhide, Backbone, Second Wind, Windward, Longspeak and Bright Eyes joining the originals — nine on the cheap shelf, and a grated CASE behind the counter whose labels cannot be read from outside. **Prices are anchored to `▶ THE BOARD`,** which already states its eight-to-fifty gold pay is calibrated so one good job buys one good bottle; the new shelf sits in the forty-to-seventy-five band to keep that true. **Merrit now hands the party a Stitch and a Knitbone on the field**, unasked, because they may go under Ganny's cellar the same night with no healer. The Lastlight debt is FOUR bottles for the party — two given, two more of their choosing at the shop — not four each.
->
-> **❓ WHETHER THE GAME ON 2026-09-01 WAS ACTUALLY PLAYED IS NOT KNOWN HERE. ASK; DO NOT ASSUME.** Nothing in this repo records it, `SESSION LOGS` has only the Lastlight entry, and elapsed days are tracked from Joby's own notes rather than inferred.
->
-> **AND ONE DECISION IS DUE BEFORE THE WAY IN CAN BE RUN AT ALL:** the memory effect. Every entry into the Fold carries a possibility of one, and the first entry is meant to carry two — one player losing their entire memory but keeping their abilities, another recovering a real memory they never knew they had lost and which feels like it was never theirs. **What must be decided is WHEN it fires:** as the last thing that happens in the room, which is an enormous stop but drops a hard job on a player with no warning, or at the top of the following session. It is flagged in `b-wreck-3` and designed nowhere.
->
-> ---
->
-> **STATE:** working tree clean apart from three untracked images in `Folded world imagery/`, which are Joby's and were deliberately left alone. `HEAD` == `origin/main`, everything pushed. Live asset versions on `dm.html`: campaign `v65`, dmos-ui `v46`, dmos-store `v17`, dmos-notes-sync `v1`, dmos.css `v33`. Joby runs from `localhost:8000`.
+> **STATE:** working tree clean apart from three untracked images in `Folded world imagery/`, which are Joby's and were deliberately left alone. `HEAD` == `origin/main`, everything pushed and verified from the remote side. Live asset versions on `dm.html`: campaign `v69`, dmos-ui `v48`, dmos.css `v35`, dmos-store `v17`, dmos-notes-sync `v1`. 78 documents, every wikilink resolves. Joby runs from `localhost:8000`.
 >
 > **⚠ READ FIRST, IN THIS ORDER:** `CLAUDE.md` → this block → the DM OS, starting at **`▶ THE FOLDED WORLD`**, then **`▶▶ BACK BURNER — the Fold`**, then **`Quick reference › ▶ THE PARTY`** → `STYLE.md` before writing any prose.
 >
-> **WHAT IS READY TO RUN, and it is all built and verified:** `THE COMMISSION` from **step 2** (step 1 was played at the end of the last session), which is now seven beats; the evening can end at **Ganny's cellar** instead of the hotel; and `THE WAY IN`, which is now three beats and ends with the party **inside the Fold**, in a sealed room. Every wikilink in the corpus resolves and the whole path from the dust to that room is continuous.
+> ---
+>
+> **❓ WHETHER A GAME HAS BEEN PLAYED SINCE LASTLIGHT IS NOT KNOWN HERE. ASK; DO NOT ASSUME.** `SESSION LOGS` still holds only the Lastlight entry, and elapsed days are tracked from Joby's own notes rather than inferred. A game was expected around 2026-09-01 and nothing in this repo records whether it happened.
+>
+> **THE ONE DECISION THAT BLOCKS PLAY:** the memory effect in `b-wreck-3`. Its content is settled — on the first entry into the Fold one player loses their entire memory but keeps their abilities, and another recovers a real memory they never knew they had lost, which feels like it was never theirs. **What is not settled is WHEN it fires:** as the last thing that happens in the sealed room, which is an enormous stop but drops a hard job on a player with no warning, or at the top of the following sitting. Flagged in the beat and designed nowhere.
 >
 > ---
 >
-> **TWO STANDING RULES CAME OUT OF THIS SESSION, BOTH FROM JOBY, AND BOTH ARE IN MEMORY.**
+> **TWO STANDING RULES, BOTH JOBY'S, BOTH IN MEMORY.**
 >
-> The first is that **nobody counts sessions.** Material is referred to by its name in the OS and never as "session three," because session numbering is derived state that goes stale the moment a beat is added or an evening runs long. Elapsed days are tracked from Joby's own session notes as they arrive, and where the notes are unclear the answer is to ask rather than assume.
+> **Nobody counts sessions.** Material is named by its title in the OS, never as "session three." Derived state goes stale the moment a beat is added or an evening runs long, and it broke within a minute of being used.
 >
-> The second is that **no document states how long ago anything happened, or how long anything will take.** Joby does not know those numbers either and the players' pace changes them on a dime. This was a real error rather than a style note: THE WAY IN and the Hearthspire's sheet said the tower was "eleven days dead" while a line in the same scene chain gave the assignment for the next morning, and it had spread to eight places plus the bible. Anchors replaced every count. Historical background that predates the party is untouched, and so is table pacing.
->
-> ---
->
-> **WHAT SHIPPED, IN ORDER**
->
-> - **`THE COMMISSION` gained a new step 2 and renumbered to seven beats.** As the light goes on the fairground, three people come to the party: **Merrit Quist** of Nine Hundred Bottles, working, who gives each hero one bottle of any type they wish and takes a complaint rather than an order; **Hask Bind** of the Sugar Vault, mud to the knee, presenting Drawer 400 and a drawer of the party's own; and **Ganny Marle**, who came down to look at the big tear and leaves with four people coming to her cellar that night. It closes on the crier and the name.
-> - **Ganny is rebuilt, and she is Red Flag.** The Impossible Corner is a swindle and always was, which is why the ministry has already looked and written NOVELTY on a form. **The fight moved underground:** a hatch under her preserve shelves opens onto the old sunsalt works — already canon, running from the Draws under the city — and that road is the underground's. Separately, in a worked-out chamber off it, the fabric is thin. Red Flag has been working toward that weak point because a door into the fold is what the movement actually wants; **the goblins got there first**, which is why it is a mess she cannot report. Her cover story is written to be thin, with four tells.
-> - **The door mechanic exists now, and it answers §8 Q10 deliberately.** Raw sunsalt pressed into a socket in a small worn object, held against a crease that is already there; the rock does not break, it goes soft and then goes wide. Three outcomes in the chamber all reach it — kill and search, catch a kit and make it show you, or let one go and watch it work the seam. **The object does not work for the party**, identically every time, and what is missing is answered at the folded-away tower and written nowhere. **The plant pays off in THE WAY IN**, where a Rector opens the Hearthspire ground holding something that looks very like it, held low and never mentioned.
-> - **The DM OS renders tables**, and every shop inventory is a grid. It also fixed a real print bug: `fillPrint` listed the doc *type's* fields rather than the doc's own, so Ctrl+P had been silently dropping every custom field.
-> - **`▶▶ BACK BURNER — the Fold`**, a top-level not-canon note holding the whole design of the inside: the structure-is-the-Snarl reconciliation, the layout from Joby's sketch, the arrival and its puzzle, the memory effect, the ship, the tower, the sunsalt thread, and the small societies still living in there.
+> **No document states how long ago anything happened, or how long anything will take.** Joby does not know those numbers either and the players' pace changes them. This was a real error, not a style note — "eleven days dead" had spread to eight places plus the bible while contradicting a line in its own scene chain. Anchors replaced every count. Historical background predating the party is untouched, and so is table pacing.
 >
 > ---
 >
-> **⚠ THREE RULINGS JOBY GAVE IN CONVERSATION THAT ARE STILL NOT IN THE DOCUMENTS.** These are decisions, not proposals, and they were offered for clearing and not yet cleared.
+> **WHAT IS READY TO RUN, ALL BUILT AND VERIFIED.** `THE COMMISSION` from **step 2** (step 1 was played at the end of Lastlight), seven beats. The evening can end in **Ganny's chamber** instead of the hotel. Then `THE WAY IN`, three beats, finishing with the party **inside the Fold** in a sealed room. The path is continuous from the dust to that room.
 >
-> - **The Rector at the fairground is settled and it was not an errand** — it was there to inaugurate the lighting of the final Reactor, so it never left, and its own ceremony became a catastrophe around it. `npc-rector` still carries the old "⚠ WORTH A RULING" flag. *(One sub-question still needs him: he said the FINAL Reactor, and the bible only calls the Hearthspire the first raised at a living city's door. Compatible, but "final" is a real upgrade to the stakes and should come from him.)*
-> - **Tobin's secret needs no replacement.** He feeds a house with a dark window, which makes him Red Flag's man, and that is far bigger than the outlawed healing ever was. What the old secret actually bought was an early likeability beat. `npc-tobin` still carries the "❓ OPEN, FOR JOBY" block.
+> **WHAT SHIPPED SINCE THE LAST BLOCK**
+>
+> - **The Ossuary is now THE KEYSTONE, and it is a bridge.** Gothic was wrong for the most opulent house in the city, so the bone-house origin and the wine vaults went with the name. It spans the concourse wall to wall on arches with the whole traffic of Dunlath passing underneath, so the finest house in the city is the thing everyone walks under — and on that night every window on both faces is lit above a dark concourse full of people who have just lost somebody. The ministry calls it the Keystone; the city calls it **the Span**. Its doc id stays `loc-ossuary` deliberately: a new id would land in an already-synced workspace as a second hotel beside the old one.
+> - **The city's cross-section is now in `CAMPAIGN.md` §2.** Two great walls along the spine with a public concourse between them; the walls ARE the city rather than fortifications, cut into and stacked up and roofed along the top, so a family lives a hundred feet above the street where it buys its bread — and every crowd is a crowd in a channel, so a procession, a market, a riot and a funeral all take the same route.
+> - **Ganny Marle has an NPC sheet.** One trick to run her: she has two voices, the patter and what is left when she stops performing, and the switch is the only signal she ever gives. Her secret deliberately is NOT copied onto it — it points at the HIDDEN field on her location sheet, one true copy pointed at from everywhere.
+> - **The badge is a licence**, not only a key: shown to an ordinary person it carries the authority of a minor official, told to the players plainly, and it does not compel and never needed to. It is still a leash, and being useful is what makes it one. **DM-only and saved:** a revoked writ unfolds into a bird and flies away.
+> - **The Registry exists at last** — it had been referred to in five places with no page. Tobin's employer, where the crier sent the city, and an enormous searchable record of what crossed a road and who was standing nearby, which the party may use with a writ, and every question goes in a ledger with their names on it. Not sinister; the most honest institution in Dunlath, which is what makes it dangerous. Its `What it will answer` field is the at-table ruling aid.
+> - **`THE UNANSWERED` is a real cork board** on the corridor wall outside Wenna's office — the only shabby thing on a wall of enormous polished doors, layered inches deep, never once emptied. Tobin's satchel and the runner survive as the second and third ways in.
+> - **The Rector's speech is written into the awarding**, between the room standing and the folding of the writs, with 🏅 and 🗣️ markers to find it by. **The four compliments are deliberately blank** — the Rector praises specifically, never generally, so invented specifics would be wrong ones; only Joby knows what happened in that fight.
+> - **DM OS gained two things.** `**bold**`, `__underline__`, `*italic*` render on screen and on paper, with Ctrl+B/I/U and buttons on the selection marker, plus Ctrl+Shift+U for capitals; the marker now appears on fields, not just bodies. And a **glyph strip** above any open editor inserts the marks these documents use, several of them coloured emoji.
+>
+> ---
+>
+> **⚠ THREE RULINGS JOBY GAVE IN CONVERSATION THAT ARE STILL NOT IN THEIR DOCUMENTS.** Offered for clearing several times and still not cleared. These are decisions, not proposals, and they are the likeliest thing to rot.
+>
+> - **The Rector at the fairground was not running an errand** — it was there to inaugurate the lighting of the final Reactor, so it never left and its own ceremony became a catastrophe around it. `npc-rector` still carries the stale "⚠ WORTH A RULING" flag. *(Sub-question still open: he said the FINAL Reactor, and the bible only calls the Hearthspire the first raised at a living city's door. Compatible, but "final" is a real upgrade to the stakes and should come from him.)*
+> - **Tobin's secret needs no replacement.** He feeds a house with a dark window, which makes him Red Flag's man. What the old secret bought was an early likeability beat, which is a different problem. `npc-tobin` still carries the "❓ OPEN, FOR JOBY" block.
 > - **The Empty Coffin is cut** — there are no dead, and it contradicted the commission outright. `ACT1.md` still lists it in the transition collection.
 >
 > ---
 >
-> **OPEN, AND ALL FLAGGED IN THEIR OWN DOCUMENTS AS PROPOSED RATHER THAN CANON:** Drawer 400's contents; Merrit's and Hask's private notes; whether Ganny's crease is still widening on its own; whether a goblin kit can talk; whether the Surveyor at the Hearthspire remarks on the party's object or lets it pass; and, on the back burner, everything about the Fold — who is buying people, whether the tower laid the ship's line, whether the tower is in view from the town, and how the memory effect is chosen.
+> **OPEN, AND FLAGGED IN THEIR OWN DOCUMENTS AS PROPOSED RATHER THAN CANON:** Drawer 400's contents; Merrit's and Hask's private notes; whether Ganny's crease widens on its own; whether a goblin kit can talk; whether the Surveyor at the Hearthspire remarks on the party's object; the Registry being built-not-folded; and the whole Fold design on the back burner — who is buying people, whether the tower laid the ship's line, whether the tower is in view from the town, and how the memory effect is chosen.
 >
 > **THE TEST FOR ANY NEW PIECE, unchanged and still the thing most likely to be got wrong:** whether a player can *operate* it. Two nine-year-olds are at this table. Ganny's chamber, the paper horse and the door that cycles rooms are the models, and Jef's note is a pacing rule — something to hit, early.
 >
