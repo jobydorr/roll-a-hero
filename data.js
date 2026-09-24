@@ -215,7 +215,7 @@
       blurb: 'A scholar of true magic. Wizards study a spellbook full of incredible spells — fireballs, shields, illusions, and more. Squishy, but the most flexible spellcaster of all.',
       bestAbility: 'Intelligence',
       spellcaster: true,
-      spell: { listTag: 'wizard', ability: 'int', cantrips: 3, prepared: 'full', maxLevel: 2, forced: [] }, // prepares Int mod + level
+      spell: { listTag: 'wizard', ability: 'int', cantrips: 3, prepared: 'full', spellbook: true, maxLevel: 2, forced: [] }, // prepares Int mod + level from a spellbook of 6 + 2 per level after 1st
       features: [
         { name: 'Spellbook', desc: 'You cast spells using Intelligence. You know cantrips you can cast forever, plus stronger spells you use a limited number of times each day.' },
         { name: 'Arcane Recovery', desc: 'Once a day you can take a short rest to recover some of your spent magic.' },
@@ -735,8 +735,9 @@
             'finesse' — the better of Strength and Dexterity.
        dueling: true  — a one-handed weapon with nothing in the other hand but a
                         shield, so the Dueling style adds +2 damage.
-       heavy: true    — a Small hero (halfling, gnome) attacks with it at
-                        disadvantage.
+       heavy: true    — HOUSE RULE (Joby, 2026-09-24): a Small hero (halfling,
+                        gnome) can wield it, but rolls with disadvantage when
+                        the DM calls for it. Standard 5E makes it every attack.
        offhand: true  — the second weapon of a two-weapon pair. Its bonus-action
                         hit adds no modifier to damage unless the hero has the
                         Two-Weapon style.

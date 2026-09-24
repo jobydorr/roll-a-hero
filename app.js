@@ -20,7 +20,7 @@
       rollMethod: '4d6', pool: null, lastRoll: null, rollsUsed: 0, assigned: blankAssign(),
       race: null, raceChoice: {},
       klass: null, archetype: null, fightingStyle: null, classChoice: {}, archetypeChoice: {},
-      spells: [], equipment: {}, motiveShown: null, magicItems: [],
+      spells: [], spellbook: [], equipment: {}, motiveShown: null, magicItems: [],
       story: { name: '', traits: [], backstory: '', motivations: [] },
     };
   }
@@ -33,6 +33,9 @@
     if (!snap.classChoice || typeof snap.classChoice !== 'object') snap.classChoice = {};
     if (!snap.raceChoice || typeof snap.raceChoice !== 'object') snap.raceChoice = {};
     if (!Array.isArray(snap.spells)) snap.spells = [];
+    // A wizard saved before spellbooks existed starts with the spells it had ready.
+    if (!Array.isArray(snap.spellbook)) snap.spellbook = snap.klass === 'wizard'
+      ? snap.spells.filter(id => { const sp = SPELLS.find(x => x.id === id); return sp && sp.lvl >= 1; }) : [];
     if (!snap.equipment || typeof snap.equipment !== 'object') snap.equipment = {};
     if (!Array.isArray(snap.magicItems)) snap.magicItems = [];
     if (!snap.assigned) snap.assigned = blankAssign();
@@ -127,7 +130,20 @@
       const L = charLevel(), part = base.prepared === 'half' ? Math.floor(L / 2) : L;
       plan.leveled = Math.max(1, abilMod(base.ability) + part);
     }
+    if (base.spellbook) plan.bookSize = 6 + 2 * (charLevel() - 1);
     return plan;
+  }
+  // A caster who PREPARES has a book of spells and chooses some of them to have
+  // ready each day. Clerics and paladins get their whole class list (their god or
+  // oath grants it); a wizard gets the spells written in their spellbook.
+  // Returns null for casters who simply know their spells.
+  function spellBook() {
+    const p = spellPlan(); if (!p || !p.prepared) return null;
+    const always = p.always || [];
+    const ids = p.spellbook
+      ? (state.spellbook || []).slice()
+      : SPELLS.filter(s => s.lists.includes(p.listTag) && s.lvl >= 1 && s.lvl <= p.maxLevel).map(s => s.id);
+    return { plan: p, always: always, ids: ids.filter(id => !always.includes(id)) };
   }
   // Every spell on the hero's sheet: the ones they picked plus any always-prepared.
   function heroSpellIds() {
@@ -177,7 +193,13 @@
   function magicComplete() {
     const p = spellPlan(); if (!p) return true;
     const chosen = state.spells.map(getSpell).filter(Boolean);
-    return chosen.filter(s => s.lvl === 0).length === p.cantrips && countedLeveled(p) === p.leveled;
+    if (chosen.filter(s => s.lvl === 0).length !== p.cantrips) return false;
+    if (p.spellbook) {
+      const book = state.spellbook || [];
+      if (book.length !== p.bookSize) return false;
+      if (chosen.some(s => s.lvl >= 1 && !book.includes(s.id))) return false; // ready spells come from the book
+    }
+    return countedLeveled(p) === p.leveled;
   }
   const storyComplete = () => state.story.name.trim().length > 0;
   // An option marked `only` needs one of those archetypes (e.g. a cleric's chain mail).
@@ -1152,7 +1174,7 @@
   function applyRecommendation(rec) {
     state.race = rec.race.id; state.raceChoice = {};
     state.klass = rec.klass.id; state.archetype = rec.arch.id;
-    state.fightingStyle = null; state.spells = []; state.equipment = {};
+    state.fightingStyle = null; state.spells = []; state.spellbook = []; state.equipment = {};
     go('roll');
   }
 
@@ -1278,7 +1300,7 @@
         <div class="cc-head"><span class="cc-icon">${icon(cls.icon)}</span><span class="cc-name">${cls.name}</span></div>
         <div class="cc-meta"><span class="tag">HP ${cls.hitDie * LEVEL}+</span><span class="tag bonus">Best: ${cls.bestAbility.split('(')[0].trim()}</span>${cls.spellcaster ? '<span class="tag magic">Magic</span>' : ''}</div>
         <div class="cc-desc">${cls.blurb}</div>`;
-      card.onclick = () => { if (state.klass !== cls.id) { state.klass = cls.id; state.archetype = null; state.fightingStyle = null; state.archetypeChoice = {}; state.classChoice = {}; state.spells = []; state.equipment = {}; } render(); };
+      card.onclick = () => { if (state.klass !== cls.id) { state.klass = cls.id; state.archetype = null; state.fightingStyle = null; state.archetypeChoice = {}; state.classChoice = {}; state.spells = []; state.spellbook = []; state.equipment = {}; } render(); };
       grid.appendChild(card);
     });
     if (c) renderClassExtra(c);
@@ -1301,7 +1323,7 @@
         <div class="cc-desc">${a.desc}</div>
         <div class="cc-meta">${a.grantsSpells ? '<span class="tag magic">Learns a few spells</span>' : a.alwaysPrepared ? '<span class="tag magic">+' + a.alwaysPrepared.length + ' spells always prepared</span>' : c.spellcaster ? '' : '<span class="tag">No spells</span>'}</div>
         <div class="signature"><span class="sig-name">${a.feature.name}.</span> ${a.feature.desc}</div>`;
-      card.onclick = () => { if (state.archetype !== a.id) { state.archetype = a.id; state.spells = []; state.archetypeChoice = {}; } render(); };
+      card.onclick = () => { if (state.archetype !== a.id) { state.archetype = a.id; state.spells = []; state.spellbook = []; state.archetypeChoice = {}; } render(); };
       ag.appendChild(card);
     });
 
@@ -1439,6 +1461,41 @@
     order.forEach((key, idx) => { if (sorted[idx]) state.assigned[key] = sorted[idx].i; });
   }
 
+  // The "ready today" checklist for casters who prepare (cleric, paladin, wizard).
+  // Always-prepared spells come first, ticked and locked. `interactive` makes the
+  // boxes live; otherwise they just show what is ready.
+  const sortSpellIds = (ids) => ids.map(getSpell).filter(Boolean).sort((x, y) => x.lvl - y.lvl || x.name.localeCompare(y.name)).map(sp => sp.id);
+  function readyChecklistHTML(interactive) {
+    const b = spellBook(); if (!b) return '';
+    const p = b.plan, n = countedLeveled(p);
+    const row = (id, locked) => {
+      const sp = getSpell(id); if (!sp) return '';
+      const on = locked || state.spells.includes(id);
+      const full = !on && n >= p.leveled;
+      return `<label class="ready-row${on ? ' on' : ''}${locked ? ' locked' : ''}${full && interactive ? ' full' : ''}">
+        <input type="checkbox" data-ready="${sp.id}" ${on ? 'checked' : ''} ${(locked || !interactive || full) ? 'disabled' : ''}>
+        <span class="rr-text"><span class="rr-name">${escapeHtml(sp.name)}</span> <span class="rr-lvl">Level ${sp.lvl}${locked ? ' · always ready' : ''}</span>
+        <span class="rr-desc">${sp.desc}</span></span></label>`;
+    };
+    return `<div class="ready-list">
+      <div class="ready-head">Ready today: <strong>${n} of ${p.leveled}</strong>${interactive ? ' — tick the spells you want ready. You can swap them after every long rest.' : ''}</div>
+      ${sortSpellIds(b.always).map(id => row(id, true)).join('')}
+      ${sortSpellIds(b.ids).map(id => row(id, false)).join('')}
+      ${b.ids.length ? '' : '<p class="ready-note">Your spellbook is empty — pick its spells first.</p>'}
+      <p class="ready-note">A ready spell costs one spell slot each time you cast it.</p>
+    </div>`;
+  }
+  function wireReadyChecklist(root, onChange) {
+    root.querySelectorAll('input[data-ready]').forEach(cb => {
+      cb.onchange = () => {
+        const id = cb.dataset.ready;
+        if (cb.checked) { if (!state.spells.includes(id)) state.spells.push(id); }
+        else state.spells = state.spells.filter(x => x !== id);
+        onChange();
+      };
+    });
+  }
+
   RENDER.magic = (host) => {
     const plan = spellPlan();
     const forced = plan.forced || [];
@@ -1448,39 +1505,69 @@
     const cantrips = avail.filter(s => s.lvl === 0), leveled = avail.filter(s => s.lvl >= 1);
     const chosenC = state.spells.map(getSpell).filter(s => s && s.lvl === 0).length;
     const chosenL = countedLeveled(plan);
+    const book = state.spellbook || [];
     const c = getClass(), a = getArchetype();
+    const grantor = c.id === 'cleric' ? 'Your god' : 'Your oath';
+    // Three kinds of caster, each told plainly how their magic works.
+    let spellsBlock;
+    if (plan.spellbook) {
+      spellsBlock = `
+        <div class="spell-section-head">Your spellbook <span class="pick-counter">— write in ${plan.bookSize} spells (${book.length}/${plan.bookSize})</span></div>
+        <p class="lead" style="font-size:14px;margin:-4px 0 8px;">These are all the spells you have learned. You can’t have them all ready at once — below, you choose which ones are ready today.</p>
+        <div class="card-grid" id="spellGrid"></div>
+        <div class="spell-section-head">Ready today <span class="pick-counter">— pick ${plan.leveled} from your spellbook</span></div>
+        <div id="readyArea">${readyChecklistHTML(true)}</div>`;
+    } else if (plan.prepared) {
+      spellsBlock = `
+        <div class="spell-section-head">Ready today <span class="pick-counter">— pick ${plan.leveled} (${chosenL}/${plan.leveled})${always.length ? ' — plus ' + always.length + ' always ready' : ''}</span></div>
+        <p class="lead" style="font-size:14px;margin:-4px 0 8px;">${grantor} gives you <strong>every</strong> ${escapeHtml(c.name.toLowerCase())} spell below. You can’t have them all ready at once, so pick ${plan.leveled} for today. After every long rest you can swap them — right on your hero page.</p>
+        <div class="card-grid" id="spellGrid"></div>`;
+    } else {
+      spellsBlock = `
+        <div class="spell-section-head">Spells you know <span class="pick-counter">— pick ${plan.leveled} (${chosenL}/${plan.leveled})</span></div>
+        <p class="lead" style="font-size:14px;margin:-4px 0 8px;">You always know these, so they are always ready.</p>
+        <div class="card-grid" id="spellGrid"></div>`;
+    }
     host.innerHTML = `
       <div class="step">
         <p class="eyebrow">Step 5 · Your spellbook</p>
         <h2 class="title">Choose your magic</h2>
         <p class="lead">${c.spellcaster ? `As a ${c.name}, you weave magic into your adventuring.` : `Your ${a.name} specialty lets you learn a little magic.`}
-        ${plan.cantrips > 0 ? '<strong>Cantrips</strong> can be cast forever; <strong>spells</strong> are stronger but limited each day.' : 'Your <strong>spells</strong> are powerful magic you can use a limited number of times each day.'} When you cast at an enemy, you roll to hit (or they roll to dodge) — beat <strong>${spellNumbers().dc}</strong>.</p>
+        ${plan.cantrips > 0 ? '<strong>Cantrips</strong> can be cast forever; <strong>spells</strong> are stronger, and each cast uses a spell slot.' : 'Your <strong>spells</strong> are powerful magic, and each cast uses a spell slot.'} When you cast at an enemy, you roll to hit (or they roll to dodge) — beat <strong>${spellNumbers().dc}</strong>.</p>
         ${plan.cantrips > 0 ? `<div class="spell-section-head">Cantrips <span class="pick-counter">— pick ${plan.cantrips} (${chosenC}/${plan.cantrips})</span></div>
         <div class="card-grid" id="cantripGrid"></div>` : ''}
-        <div class="spell-section-head">Spells <span class="pick-counter">— pick ${plan.leveled} (${chosenL}/${plan.leveled})${always.length ? ' — plus ' + always.length + ' always prepared' : ''}</span></div>
-        <div class="card-grid" id="spellGrid"></div>
+        ${spellsBlock}
         ${footer({ nextDisabled: !magicComplete(), nextLabel: 'Next: Your Story →' })}
       </div>`;
-    const render1 = (gridId, spellsArr, limit, isCantrip) => {
+    const render1 = (gridId, spellsArr, limit, count, has, toggle) => {
       const grid = document.getElementById(gridId);
       spellsArr.forEach(s => {
         const isAlways = always.includes(s.id);
-        const sel = state.spells.includes(s.id) || isAlways;
+        const sel = has(s.id) || isAlways;
         const isForced = forced.includes(s.id) || isAlways;
-        const count = isCantrip ? chosenC : chosenL;
         const atLimit = count >= limit && !sel;
         const card = document.createElement('button');
         card.className = 'choice-card spell-card' + (sel ? ' selected' : '') + (isForced ? ' forced' : '') + (atLimit ? ' disabled' : '');
-        card.innerHTML = `${isForced ? `<span class="rec-badge">${icon('check')} ${isAlways ? 'Always prepared' : 'Always known'}</span>` : ''}
+        card.innerHTML = `${isForced ? `<span class="rec-badge">${icon('check')} ${isAlways ? 'Always ready' : 'Always known'}</span>` : ''}
           <div class="cc-head"><span class="cc-icon">${icon('spell')}</span><span class="cc-name">${s.name}</span></div>
           <div class="cc-meta"><span class="tag ${s.lvl === 0 ? '' : 'magic'}">${s.lvl === 0 ? 'Cantrip' : 'Level ' + s.lvl}</span><span class="tag">${s.type}</span></div>
           <div class="cc-desc">${s.desc}</div>`;
-        if (!isForced) card.onclick = () => { if (sel) state.spells = state.spells.filter(x => x !== s.id); else if (!atLimit) state.spells.push(s.id); render(); };
+        if (!isForced) card.onclick = () => { if (sel) toggle(s.id, false); else if (!atLimit) toggle(s.id, true); render(); };
         grid.appendChild(card);
       });
     };
-    if (plan.cantrips > 0) render1('cantripGrid', cantrips, plan.cantrips, true);
-    render1('spellGrid', leveled, plan.leveled, false);
+    const inSpells = (id) => state.spells.includes(id);
+    const toggleSpell = (id, on) => { state.spells = on ? state.spells.concat([id]) : state.spells.filter(x => x !== id); };
+    if (plan.cantrips > 0) render1('cantripGrid', cantrips, plan.cantrips, chosenC, inSpells, toggleSpell);
+    if (plan.spellbook) {
+      render1('spellGrid', leveled.filter(s => !always.includes(s.id)), plan.bookSize, book.length, (id) => book.includes(id), (id, on) => {
+        state.spellbook = on ? book.concat([id]) : book.filter(x => x !== id);
+        if (!on) state.spells = state.spells.filter(x => x !== id);   // a spell no longer in the book can't be ready
+      });
+      wireReadyChecklist(host, render);
+    } else {
+      render1('spellGrid', leveled, plan.leveled, chosenL, inSpells, toggleSpell);
+    }
     wireFooter(host);
   };
 
@@ -1568,7 +1655,7 @@
       ch.options.filter(optionAllowed).forEach(o => {
         const sel = state.equipment[ch.key] === o.id;
         const card = document.createElement('button'); card.className = 'choice-card' + (sel ? ' selected' : '');
-        card.innerHTML = `<div class="cc-head"><span class="cc-icon">${icon(ch.key === 'armor' ? 'armor' : 'weapon')}</span><span class="cc-name" style="font-size:16px;">${o.name}</span></div><div class="cc-desc">${o.note}${WEAPON_STATS[o.id] && WEAPON_STATS[o.id].some(w => w.heavy) && (getRace() || {}).small ? ' <strong>Heavy:</strong> a Small hero attacks with it at disadvantage.' : ''}</div>`;
+        card.innerHTML = `<div class="cc-head"><span class="cc-icon">${icon(ch.key === 'armor' ? 'armor' : 'weapon')}</span><span class="cc-name" style="font-size:16px;">${o.name}</span></div><div class="cc-desc">${o.note}${WEAPON_STATS[o.id] && WEAPON_STATS[o.id].some(w => w.heavy) && (getRace() || {}).small ? ' <strong>Heavy:</strong> you can wield it, but when the DM calls for it you roll with disadvantage (house rule).' : ''}</div>`;
         card.onclick = () => { state.equipment[ch.key] = o.id; render(); };
         grid.appendChild(card);
       });
@@ -1655,6 +1742,7 @@
         </div>
       </div>`;
     document.getElementById('printBtn').onclick = () => { populateSheet(); populateReference(); window.print(); };
+    if (!viewCtx) wireReadyChecklist(host, render);   // render() saves the hero again
     document.getElementById('exportBtn').onclick = () => exportCharacter(JSON.parse(JSON.stringify(state)));
     const howtoBtn = document.getElementById('howtoBtn'); if (howtoBtn) howtoBtn.onclick = () => go('howto');
     const newBtn = document.getElementById('newBtn'); if (newBtn) newBtn.onclick = () => { state = newCharacter(); viewCtx = null; go('quiz'); };
@@ -1673,11 +1761,14 @@
     wireFooter(host);
   };
   function renderFinishSpells() {
-    const g = chosenSpellsGrouped(); const sn = spellNumbers();
-    if (!g.cant.length && !g.lev.length) return '';
-    return `<h3 class="spell-section-head">Spells ${sn ? `<span class="pick-counter">(to hit +${sn.atk}, dodge DC ${sn.dc})</span>` : ''}</h3>
-      ${g.cant.length ? `<p style="margin:4px 0;"><strong>Cantrips:</strong> ${g.cant.join(', ')}</p>` : ''}
-      ${g.lev.length ? `<p style="margin:4px 0;"><strong>Spells:</strong> ${g.lev.join(', ')}</p>` : ''}`;
+    const g = chosenSpellsGrouped(); const sn = spellNumbers(); const book = spellBook();
+    if (!g.cant.length && !g.lev.length && !book) return '';
+    const head = `<h3 class="spell-section-head">Spells ${sn ? `<span class="pick-counter">(to hit +${sn.atk}, dodge DC ${sn.dc})</span>` : ''}</h3>
+      ${g.cant.length ? `<p style="margin:4px 0;"><strong>Cantrips:</strong> ${g.cant.join(', ')} <em>(cast them as often as you like)</em></p>` : ''}`;
+    // Casters who prepare get the checklist: live on their own hero, read-only for the DM.
+    if (book) return head + readyChecklistHTML(!viewCtx);
+    return head + (g.lev.length ? `<p style="margin:4px 0;"><strong>Spells you know:</strong> ${g.lev.join(', ')}</p>
+      <p class="ready-note">You always know these. Each one you cast uses a spell slot.</p>` : '');
   }
   function renderFinishCompanion() {
     const comp = getCompanion(); if (!comp) return '';
@@ -1874,7 +1965,8 @@
     if (g.cant.length || g.lev.length) {
       sp += `<div style="margin-top:5px"><span class="feat-name">Magic${sn ? ` (to-hit +${sn.atk}, dodge DC ${sn.dc})` : ''}:</span></div>`;
       if (g.cant.length) sp += `<div><strong>Cantrips:</strong> ${g.cant.join(', ')}</div>`;
-      if (g.lev.length) sp += `<div><strong>Spells:</strong> ${g.lev.join(', ')}</div>`;
+      if (spellBook()) sp += `<div><strong>Spells:</strong> tick ${spellPlan().leveled} to have ready on page 2.</div>`;
+      else if (g.lev.length) sp += `<div><strong>Spells:</strong> ${g.lev.join(', ')}</div>`;
     }
     set('spells', sp);
     set('uses', usesRowsHTML());
@@ -1946,14 +2038,24 @@
         </ul></div>`;
     }
     const chosen = heroSpellIds().map(getSpell).filter(Boolean);
-    if (chosen.length) {
+    const book = spellBook();
+    if (chosen.length || book) {
       const sn = spellNumbers();
       const cant = chosen.filter(s => s.lvl === 0), lev = chosen.filter(s => s.lvl >= 1).sort((x, y) => x.lvl - y.lvl);
       const line = (s) => `<li><span class="pr-name">${escapeHtml(s.name)}${s.lvl === 0 ? ' (cantrip)' : ` (level ${s.lvl})`}:</span> ${s.desc}</li>`;
       let sp = sn ? `<p class="pr-note">Casting at an enemy: your spell attack is <strong>+${sn.atk}</strong>, or they must beat <strong>${sn.dc}</strong> to resist.</p>` : '';
       if (cant.length) sp += `<ul>${cant.map(line).join('')}</ul>`;
-      if (lev.length) sp += `<ul>${lev.map(line).join('')}</ul>`;
-      html += `<div class="pr-section"><h3>Your Spells</h3>${sp}</div>`;
+      if (book) {
+        // Printed: empty boxes to tick in pencil. On screen: shows what is ready now.
+        const n = book.plan.leveled;
+        const box = (on) => includeHead ? '<span class="usebox"></span> ' : (on ? '☑ ' : '☐ ');
+        const bline = (s, locked) => `<li class="ready-li">${locked ? '★ ' : box(state.spells.includes(s.id))}<span class="pr-name">${escapeHtml(s.name)} (level ${s.lvl})${locked ? ' — always ready' : ''}:</span> ${s.desc}</li>`;
+        sp += `<p class="pr-note"><strong>Ready spells: tick ${n}.</strong> Only ticked spells can be cast today. After a long rest you can change your ticks. A ready spell costs one spell slot each time you cast it.</p>`;
+        sp += `<ul class="ready-ul">${sortSpellIds(book.always).map(getSpell).map(s => bline(s, true)).join('')}${sortSpellIds(book.ids).map(getSpell).map(s => bline(s, false)).join('')}</ul>`;
+      } else if (lev.length) {
+        sp += `<p class="pr-note">You always know these spells. Each one you cast uses a spell slot.</p><ul>${lev.map(line).join('')}</ul>`;
+      }
+      html += `<div class="pr-section"><h3>${book ? (book.plan.spellbook ? 'Your Spellbook' : 'Your Spells') : 'Your Spells'}</h3>${sp}</div>`;
     }
     // Weapons & Equipment — per-item stats, derived from the chosen gear ids so
     // they appear on the sheet AND in the DM OS with no re-share needed.
@@ -1964,7 +2066,7 @@
         const bits = [`${w.die}${w.dmg ? fmtMod(w.dmg) : ''} ${w.type}`];
         if (w.range) bits.push(`range ${w.range}`);
         if (w.note) bits.push(w.note);
-        if (w.heavy && (getRace() || {}).small) bits.push('heavy — a Small hero attacks with it at disadvantage');
+        if (w.heavy && (getRace() || {}).small) bits.push('heavy — house rule: a Small hero rolls with disadvantage when the DM calls for it');
         if (w.offhand) bits.push(state.fightingStyle === 'two-weapon'
           ? 'bonus-action hit with your other hand'
           : 'bonus-action hit with your other hand — no modifier added to its damage');
