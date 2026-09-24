@@ -293,7 +293,7 @@
     {
       id: 'paladin', name: 'Paladin', icon: 'shield', hitDie: 10, hp: 22,
       primary: ['str', 'cha'], save: 'cha',
-      armor: { base: 16, label: 'Chain Mail + Shield', dexCap: 0 },
+      armor: { base: 16, label: 'Chain Mail', dexCap: 0 },
       blurb: 'A holy knight bound by a sacred oath. Paladins are armored champions who heal their friends, smite their foes with divine power, and inspire everyone around them.',
       bestAbility: 'Strength and Charisma',
       spellcaster: true,
@@ -716,31 +716,42 @@
   };
 
   /* ---------------------------------------------------------------------------
-     WEAPON STATS — die + damage type + range/notes for each weapon option in
-     EQUIPMENT above, keyed by its option id. The To-Hit number and the damage
-     bonus come from the hero's ability (weaponAttackBonus in app.js); these just
-     add the die, type, and any reach/range so a weapon reads like a real D&D
-     weapon on the sheet and in the DM OS. Simplified, but standard-flavored.
+     WEAPON STATS — the attacks each weapon option in EQUIPMENT gives the hero,
+     keyed by its option id. A pair like "Battleaxe & Handaxe" is two attacks.
+     The To-Hit and damage bonus are worked out per attack in app.js
+     (attackLines), following the 5E rules:
+       use: 'str'     — a normal melee weapon (or a thrown one): Strength.
+            'dex'     — a bow: Dexterity. Archery style adds +2 to hit.
+            'finesse' — the better of Strength and Dexterity.
+       dueling: true  — a one-handed weapon with nothing in the other hand but a
+                        shield, so the Dueling style adds +2 damage.
+       offhand: true  — the second weapon of a two-weapon pair. Its bonus-action
+                        hit adds no modifier to damage unless the hero has the
+                        Two-Weapon style.
   --------------------------------------------------------------------------- */
   const WEAPON_STATS = {
-    'longsword-shield':    { die: '1d8',  type: 'slashing',    note: 'one-handed, with a shield (+2 Armor)' },
-    'greatsword':          { die: '2d6',  type: 'slashing',    note: 'two-handed' },
-    'battleaxe-shield':    { die: '1d8',  type: 'slashing',    note: 'one-handed, with a shield (+2 Armor)' },
-    'longbow':             { die: '1d8',  type: 'piercing',    range: '150 ft', note: 'two-handed bow' },
-    'rapier':              { die: '1d8',  type: 'piercing',    note: 'finesse' },
-    'shortsword':          { die: '1d6',  type: 'piercing',    note: 'finesse, light' },
-    'shortbow':            { die: '1d6',  type: 'piercing',    range: '80 ft' },
-    'quarterstaff':        { die: '1d6',  type: 'bludgeoning' },
-    'dagger':              { die: '1d4',  type: 'piercing',    range: '20 ft thrown', note: 'finesse, light' },
-    'mace':                { die: '1d6',  type: 'bludgeoning' },
-    'warhammer':           { die: '1d8',  type: 'bludgeoning' },
-    'greataxe':            { die: '1d12', type: 'slashing',    note: 'two-handed' },
-    'battleaxe-handaxe':   { die: '1d8',  type: 'slashing',    note: 'plus a handaxe (1d6, thrown 20 ft)' },
-    'two-handaxes':        { die: '1d6',  type: 'slashing',    note: 'one in each hand, each thrown 20 ft' },
-    'warhammer-shield':    { die: '1d8',  type: 'bludgeoning', note: 'one-handed, with a shield (+2 Armor)' },
-    'halberd':             { die: '1d10', type: 'slashing',    note: 'two-handed, reach — hits from 10 ft' },
-    'two-shortswords':     { die: '1d6',  type: 'piercing',    note: 'a blade in each hand (finesse, light)' },
-    'shortsword-shortbow': { die: '1d6',  type: 'piercing',    note: 'shortsword up close; shortbow 1d6 at 80 ft' },
+    'longsword-shield':    [{ name: 'Longsword', die: '1d8', type: 'slashing', use: 'str', dueling: true, note: 'one-handed, with a shield (+2 Armor)' }],
+    'greatsword':          [{ name: 'Greatsword', die: '2d6', type: 'slashing', use: 'str', note: 'two-handed' }],
+    'battleaxe-shield':    [{ name: 'Battleaxe', die: '1d8', type: 'slashing', use: 'str', dueling: true, note: 'one-handed, with a shield (+2 Armor)' }],
+    'longbow':             [{ name: 'Longbow', die: '1d8', type: 'piercing', use: 'dex', range: '150 ft', note: 'two-handed bow' }],
+    'rapier':              [{ name: 'Rapier', die: '1d8', type: 'piercing', use: 'finesse', dueling: true, note: 'finesse' }],
+    'shortsword':          [{ name: 'Shortsword', die: '1d6', type: 'piercing', use: 'finesse', dueling: true, note: 'finesse, light' }],
+    'shortbow':            [{ name: 'Shortbow', die: '1d6', type: 'piercing', use: 'dex', range: '80 ft' }],
+    'quarterstaff':        [{ name: 'Quarterstaff', die: '1d6', type: 'bludgeoning', use: 'str', note: '1d8 if swung with both hands' }],
+    'dagger':              [{ name: 'Dagger', die: '1d4', type: 'piercing', use: 'finesse', dueling: true, range: '20 ft thrown', note: 'finesse, light' }],
+    'mace':                [{ name: 'Mace', die: '1d6', type: 'bludgeoning', use: 'str', dueling: true }],
+    'warhammer':           [{ name: 'Warhammer', die: '1d8', type: 'bludgeoning', use: 'str', dueling: true }],
+    'greataxe':            [{ name: 'Greataxe', die: '1d12', type: 'slashing', use: 'str', note: 'two-handed' }],
+    'battleaxe-handaxe':   [{ name: 'Battleaxe', die: '1d8', type: 'slashing', use: 'str' },
+                            { name: 'Handaxe', die: '1d6', type: 'slashing', use: 'str', offhand: true, range: '20 ft thrown', note: 'light' }],
+    'two-handaxes':        [{ name: 'Handaxe', die: '1d6', type: 'slashing', use: 'str', range: '20 ft thrown', note: 'light' },
+                            { name: 'Second handaxe', die: '1d6', type: 'slashing', use: 'str', offhand: true, range: '20 ft thrown', note: 'light' }],
+    'warhammer-shield':    [{ name: 'Warhammer', die: '1d8', type: 'bludgeoning', use: 'str', dueling: true, note: 'one-handed, with a shield (+2 Armor)' }],
+    'halberd':             [{ name: 'Halberd', die: '1d10', type: 'slashing', use: 'str', note: 'two-handed, reach — hits from 10 ft' }],
+    'two-shortswords':     [{ name: 'Shortsword', die: '1d6', type: 'piercing', use: 'finesse', note: 'finesse, light' },
+                            { name: 'Second shortsword', die: '1d6', type: 'piercing', use: 'finesse', offhand: true, note: 'finesse, light' }],
+    'shortsword-shortbow': [{ name: 'Shortsword', die: '1d6', type: 'piercing', use: 'finesse', note: 'finesse, light' },
+                            { name: 'Shortbow', die: '1d6', type: 'piercing', use: 'dex', range: '80 ft' }],
   };
 
   /* ---------------------------------------------------------------------------

@@ -4,7 +4,7 @@
 
   const {
     ABILITIES, DC_TABLE, RACES, CLASSES, SPELLS, EQUIPMENT, ADVENTURING_PACK, WEAPON_STATS,
-    TRAITS, MOTIVATIONS, QUIZ, GLOSSARY, LEVEL, XP, PROFICIENCY, STANDARD_ARRAY,
+    TRAITS, MOTIVATIONS, QUIZ, GLOSSARY, LEVEL, XP, STANDARD_ARRAY,
     COMPANIONS, COMPANION_GROUPS, COMPANION_TIERS, COMPANION_ROLES,
   } = window.DATA;
 
@@ -85,15 +85,37 @@
     if (state.fightingStyle === 'defense') ac += 1;
     return ac;
   }
-  function weaponAttackBonus() {
-    const c = getClass(); if (!c) return PROFICIENCY;
-    let key = 'str';
-    if (c.id === 'rogue' || c.id === 'wizard' || c.id === 'ranger' || c.id === 'bard') key = 'dex';
-    else if (c.id === 'fighter' || c.id === 'paladin') key = (finalScore('dex') > finalScore('str')) ? 'dex' : 'str';
-    return PROFICIENCY + modOf(finalScore(key) || 10);
+  // 5E proficiency bonus by level: +2 at 1–4, +3 at 5–8, +4 at 9–12, and so on.
+  const profBonus = () => 2 + Math.floor((charLevel() - 1) / 4);
+  const abilMod = (key) => modOf(finalScore(key) || 10);
+  // Every attack the hero's chosen weapons give them, with To-Hit and damage bonus
+  // worked out per weapon: Strength for ordinary melee and thrown weapons,
+  // Dexterity for bows, the better of the two for finesse weapons. Fighting
+  // styles apply where the PHB says they do.
+  function attackLines() {
+    const c = getClass(); if (!c) return [];
+    const stats = WEAPON_STATS[state.equipment.weapon]; if (!stats) return [];
+    const style = state.fightingStyle;
+    return stats.map(w => {
+      const mod = w.use === 'dex' ? abilMod('dex')
+        : w.use === 'finesse' ? Math.max(abilMod('str'), abilMod('dex'))
+        : abilMod('str');
+      let hit = profBonus() + mod, dmg = mod;
+      if (style === 'archery' && w.use === 'dex') hit += 2;
+      if (style === 'dueling' && w.dueling) dmg += 2;
+      if (w.offhand && style !== 'two-weapon' && dmg > 0) dmg = 0; // off-hand adds no positive modifier
+      return Object.assign({}, w, { hit: hit, dmg: dmg });
+    });
   }
+  // The headline To-Hit on the hero's badges: their main (first) weapon.
+  function weaponAttackBonus() {
+    const a = attackLines()[0];
+    return a ? a.hit : profBonus() + abilMod('str');
+  }
+  // Dragonborn breath weapon: 8 + Constitution modifier + proficiency bonus.
+  const breathDC = () => 8 + abilMod('con') + profBonus();
   function spellPlan() { const c = getClass(); if (!c) return null; if (c.spellcaster) return c.spell; const a = getArchetype(); return a && a.spell ? a.spell : null; }
-  function spellNumbers() { const p = spellPlan(); if (!p) return null; const m = modOf(finalScore(p.ability) || 10); return { atk: PROFICIENCY + m, dc: 8 + PROFICIENCY + m }; }
+  function spellNumbers() { const p = spellPlan(); if (!p) return null; const m = abilMod(p.ability); return { atk: profBonus() + m, dc: 8 + profBonus() + m }; }
   const buildHasSpells = () => !!spellPlan();
 
   /* ------------------------------ Flow ---------------------------------- */
@@ -1852,7 +1874,7 @@
       items += r.traits.map(t => `<li>${escapeHtml(t)}</li>`).join('');
       if (r.id === 'dragonborn' && state.raceChoice.ancestry) {
         const anc = r.choice.options.find(o => o.id === state.raceChoice.ancestry);
-        items += `<li><span class="pr-name">Breath Weapon:</span> breathe ${anc.shape} of ${anc.damage} (2d6; enemies roll Dexterity for half). You also resist ${anc.damage}.</li>`;
+        items += `<li><span class="pr-name">Breath Weapon:</span> breathe ${anc.shape} of ${anc.damage} (2d6; enemies must beat ${breathDC()} with Dexterity or take it all, half if they do). You also resist ${anc.damage}.</li>`;
       }
       html += `<div class="pr-section"><h3>Racial Abilities — ${escapeHtml(r.name)}</h3><ul>${items}</ul></div>`;
     }
@@ -1895,23 +1917,19 @@
     // they appear on the sheet AND in the DM OS with no re-share needed.
     if (c) {
       const eq = EQUIPMENT[c.id] || { auto: [], choices: [] };
-      const toHit = weaponAttackBonus();
-      const dmgMod = toHit - PROFICIENCY;                      // ability mod → damage bonus
-      const modStr = dmgMod >= 0 ? '+' + dmgMod : String(dmgMod);
       const gear = [];
-      (eq.choices || []).forEach(ch => {
-        if (ch.key !== 'weapon') return;
-        const opt = ch.options.find(o => o.id === state.equipment[ch.key]); if (!opt) return;
-        const w = WEAPON_STATS[opt.id];
-        if (!w) { gear.push(`<li>${escapeHtml(opt.name)}</li>`); return; }
-        const bits = [`${w.die}${modStr} ${w.type}`];
+      attackLines().forEach(w => {
+        const bits = [`${w.die}${w.dmg ? fmtMod(w.dmg) : ''} ${w.type}`];
         if (w.range) bits.push(`range ${w.range}`);
         if (w.note) bits.push(w.note);
-        gear.push(`<li><span class="pr-name">${escapeHtml(opt.name)}:</span> ${bits.join(' · ')} — <strong>+${toHit}</strong> to hit</li>`);
+        if (w.offhand) bits.push(state.fightingStyle === 'two-weapon'
+          ? 'bonus-action hit with your other hand'
+          : 'bonus-action hit with your other hand — no modifier added to its damage');
+        gear.push(`<li><span class="pr-name">${escapeHtml(w.name)}:</span> ${bits.join(' · ')} — <strong>${fmtMod(w.hit)}</strong> to hit</li>`);
       });
       const armorLabel = (c.id === 'cleric')
         ? ((state.equipment.armor === 'chain-mail' ? 'Chain Mail' : 'Scale Mail') + ' &amp; Shield')
-        : escapeHtml((c.armor && c.armor.label) || 'Unarmored');
+        : escapeHtml((c.armor && c.armor.label) || 'Unarmored') + (weaponHasShield() ? ' &amp; Shield' : '');
       gear.push(`<li><span class="pr-name">${armorLabel}:</span> <strong>AC ${computeAC()}</strong></li>`);
       const also = (eq.auto || []).filter(x => !/armor/i.test(x));   // armor shown as the AC line above
       (eq.choices || []).forEach(ch => {                              // non-weapon picks (e.g. a bard's instrument)
