@@ -67,7 +67,7 @@
       tags: { elf: 1 },
     },
     {
-      id: 'halfling', name: 'Halfling', icon: 'star', speed: 25,
+      id: 'halfling', name: 'Halfling', icon: 'star', speed: 25, small: true,
       bonuses: { dex: 2 },
       blurb: 'Small, cheerful, and surprisingly brave. Halflings are lucky little folk who slip out of trouble, dodge danger, and always seem to land on their feet.',
       signature: { name: 'Lucky', desc: 'When you roll a 1 on a d20, you can re-roll it — and you must keep the new roll.' },
@@ -95,7 +95,7 @@
       },
     },
     {
-      id: 'gnome', name: 'Gnome', icon: 'int', speed: 25,
+      id: 'gnome', name: 'Gnome', icon: 'int', speed: 25, small: true,
       bonuses: { int: 2 },
       blurb: 'Tiny, brilliant, and bursting with curiosity. Gnomes are clever inventors and tricksters who love gadgets, jokes, and magic of all kinds.',
       signature: { name: 'Gnome Cunning', desc: 'Your mind is slippery and sharp — you are very hard to fool with magic that targets your thoughts.' },
@@ -142,6 +142,9 @@
      CLASSES  (the 4 Basic classes, each with 2-3 simplified archetypes)
      hp: total HP at level 3 BEFORE adding 3x Constitution modifier.
      spell: { listTag, ability, cantrips, leveled, maxLevel, forced } when caster.
+     prepared: 'full' | 'half' replaces a fixed `leveled` for casters who prepare
+     (ability mod + level, or + half level; minimum 1). An archetype's
+     alwaysPrepared lists its domain/oath spells: always on, never counted.
   --------------------------------------------------------------------------- */
   const CLASSES = [
     {
@@ -212,7 +215,7 @@
       blurb: 'A scholar of true magic. Wizards study a spellbook full of incredible spells — fireballs, shields, illusions, and more. Squishy, but the most flexible spellcaster of all.',
       bestAbility: 'Intelligence',
       spellcaster: true,
-      spell: { listTag: 'wizard', ability: 'int', cantrips: 3, leveled: 4, maxLevel: 2, forced: [] },
+      spell: { listTag: 'wizard', ability: 'int', cantrips: 3, prepared: 'full', maxLevel: 2, forced: [] }, // prepares Int mod + level
       features: [
         { name: 'Spellbook', desc: 'You cast spells using Intelligence. You know cantrips you can cast forever, plus stronger spells you use a limited number of times each day.' },
         { name: 'Arcane Recovery', desc: 'Once a day you can take a short rest to recover some of your spent magic.' },
@@ -240,22 +243,22 @@
       blurb: 'A holy healer and warrior of the gods. Clerics heal and protect their friends, blast foes with divine power, and can fight in armor on the front line.',
       bestAbility: 'Wisdom',
       spellcaster: true,
-      spell: { listTag: 'cleric', ability: 'wis', cantrips: 3, leveled: 4, maxLevel: 2, forced: [] },
+      spell: { listTag: 'cleric', ability: 'wis', cantrips: 3, prepared: 'full', maxLevel: 2, forced: [] }, // prepares Wis mod + level
       features: [
         { name: 'Divine Spells', desc: 'You cast spells using Wisdom, granted by your god. You heal, protect, and smite with holy power.' },
         { name: 'Channel Divinity', desc: 'Once per fight, call on your god for a special power (it depends on your calling, below).' },
         { name: 'Turn Undead', desc: 'You can also use Channel Divinity to make zombies, skeletons, and ghosts flee in terror.' },
       ],
       archetypes: [
-        { id: 'life', name: 'Healer', sub: 'Life Domain', grantsSpells: false,
+        { id: 'life', name: 'Healer', sub: 'Life Domain', grantsSpells: false, alwaysPrepared: ['bless', 'cure-wounds', 'lesser-restoration', 'spiritual-weapon'],
           desc: 'The greatest healer of all. Your healing spells restore even more HP, and you wear heavy armor to stand strong.',
           feature: { name: 'Disciple of Life', desc: 'Whenever you heal someone with a spell, they get back extra HP. Your Channel Divinity heals a burst of HP to everyone nearby.' },
           tags: { cleric: 2, life: 3 } },
-        { id: 'light', name: 'Light-Bringer', sub: 'Light Domain', grantsSpells: false,
+        { id: 'light', name: 'Light-Bringer', sub: 'Light Domain', grantsSpells: false, alwaysPrepared: ['burning-hands', 'faerie-fire', 'flaming-sphere', 'scorching-ray'],
           desc: 'A beacon of radiant fire. You blast foes with searing sunlight and shield allies from harm.',
           feature: { name: 'Warding Flare', desc: 'Flash light to spoil an attacker’s aim. Your Channel Divinity unleashes a burst of sunlight that burns nearby enemies.' },
           tags: { cleric: 2, light: 3 } },
-        { id: 'war', name: 'Battle Priest', sub: 'War Domain', grantsSpells: false,
+        { id: 'war', name: 'Battle Priest', sub: 'War Domain', grantsSpells: false, alwaysPrepared: ['divine-favor', 'shield-of-faith', 'magic-weapon', 'spiritual-weapon'],
           desc: 'A warrior blessed by a god of battle. You fight on the front line in heavy armor and strike with holy fury.',
           feature: { name: 'War Priest', desc: 'Make an extra weapon attack as a bonus action. Your Channel Divinity adds +10 to a roll to hit.' },
           tags: { cleric: 2, war: 3, hybrid: 1 } },
@@ -297,7 +300,7 @@
       blurb: 'A holy knight bound by a sacred oath. Paladins are armored champions who heal their friends, smite their foes with divine power, and inspire everyone around them.',
       bestAbility: 'Strength and Charisma',
       spellcaster: true,
-      spell: { listTag: 'paladin', ability: 'cha', cantrips: 0, leveled: 3, maxLevel: 1, forced: [] },
+      spell: { listTag: 'paladin', ability: 'cha', cantrips: 0, prepared: 'half', maxLevel: 1, forced: [] }, // prepares Cha mod + half level
       features: [
         { name: 'Divine Smite', desc: 'When you hit with a weapon, you can spend a spell to unleash holy energy for a burst of extra radiant damage (2d8 or more!).' },
         { name: 'Lay on Hands', desc: 'You have a well of healing power you can lay onto yourself or an ally by touch to heal wounds or cure poison.' },
@@ -310,15 +313,15 @@
         { id: 'protection', name: 'Protection', desc: 'Use your shield to make an attacker miss a friend right next to you.' },
       ],
       archetypes: [
-        { id: 'devotion', name: 'Holy Knight', sub: 'Oath of Devotion', grantsSpells: false,
+        { id: 'devotion', name: 'Holy Knight', sub: 'Oath of Devotion', grantsSpells: false, alwaysPrepared: ['protection-from-evil', 'sanctuary'],
           desc: 'The classic shining paladin — honest, brave, and merciful. Your holy power makes your weapon deadly to evil.',
           feature: { name: 'Sacred Weapon', desc: 'Your Channel Divinity blesses your weapon to hit more easily and glow with light, and you can frighten away fiends and undead.' },
           tags: { paladin: 2, devotion: 3 } },
-        { id: 'vengeance', name: 'Avenger', sub: 'Oath of Vengeance', grantsSpells: false,
+        { id: 'vengeance', name: 'Avenger', sub: 'Oath of Vengeance', grantsSpells: false, alwaysPrepared: ['bane', 'hunters-mark'],
           desc: 'A grim hunter who punishes wrongdoers. You single out the worst foe and pursue them relentlessly.',
           feature: { name: 'Vow of Enmity', desc: 'Your Channel Divinity marks one enemy — you attack them with advantage until one of you falls.' },
           tags: { paladin: 2, vengeance: 3 } },
-        { id: 'ancients', name: 'Green Knight', sub: 'Oath of the Ancients', grantsSpells: false,
+        { id: 'ancients', name: 'Green Knight', sub: 'Oath of the Ancients', grantsSpells: false, alwaysPrepared: ['ensnaring-strike', 'speak-with-animals'],
           desc: 'A guardian of light, life, and the wild. You fight to keep joy and beauty alive in the world.',
           feature: { name: 'Nature’s Wrath', desc: 'Your Channel Divinity snares foes in spectral vines, and your magic helps you shrug off harmful spells.' },
           tags: { paladin: 2, ancients: 3 } },
@@ -415,7 +418,7 @@
       blurb: 'A magical performer who weaves spells through music and words. Bards do a little of everything — cast clever spells, heal and inspire their friends, charm their way past trouble, and hold their own in a fight.',
       bestAbility: 'Charisma',
       spellcaster: true,
-      spell: { listTag: 'bard', ability: 'cha', cantrips: 2, leveled: 4, maxLevel: 2, forced: [] },
+      spell: { listTag: 'bard', ability: 'cha', cantrips: 2, leveled: 6, maxLevel: 2, forced: [] }, // 5E: 6 spells known at level 3
       features: [
         { name: 'Spellcasting', desc: 'You cast bard spells using Charisma — a flexible mix of magic for blasting, charming, healing, and trickery.' },
         { name: 'Bardic Inspiration', desc: 'As a bonus action, give an ally a glowing Inspiration die (d6). They can add it to a roll later for a clutch boost. You can do this a few times per rest.' },
@@ -451,7 +454,7 @@
     { id: 'ray-of-frost', name: 'Ray of Frost', lvl: 0, lists: ['wizard', 'ek', 'at'], type: 'attack',
       desc: 'A freezing beam. Roll to hit for 1d8 cold damage and slow the target down.' },
     { id: 'shocking-grasp', name: 'Shocking Grasp', lvl: 0, lists: ['wizard', 'ek'], type: 'attack',
-      desc: 'Lightning leaps from your hand. Roll to hit for 1d8 lightning damage; the target can’t fight back this turn.' },
+      desc: 'Lightning leaps from your hand. Roll to hit for 1d8 lightning damage (easier against a foe in metal armor), and the target can’t take reactions until its next turn.' },
     { id: 'mage-hand', name: 'Mage Hand', lvl: 0, lists: ['wizard', 'at'], type: 'utility',
       desc: 'Create a floating, ghostly hand to grab, push, or carry things from a distance.' },
     { id: 'minor-illusion', name: 'Minor Illusion', lvl: 0, lists: ['wizard', 'at'], type: 'utility',
@@ -491,12 +494,12 @@
     { id: 'invisibility', name: 'Invisibility', lvl: 2, lists: ['wizard'], type: 'utility',
       desc: 'Turn invisible until you attack or cast a spell. Perfect for sneaking or surprising a foe.' },
     { id: 'hold-person', name: 'Hold Person', lvl: 2, lists: ['wizard', 'cleric'], type: 'control',
-      desc: 'Freeze a humanoid in place (Wisdom save). While held, every hit on them is a critical!' },
+      desc: 'Freeze a humanoid in place (Wisdom save; it tries again at the end of each of its turns). Attacks against it have advantage, and a hit from right next to it is a critical!' },
     // Cleric 1st level
     { id: 'cure-wounds', name: 'Cure Wounds', lvl: 1, lists: ['cleric'], type: 'heal',
-      desc: 'Touch a wounded friend to heal 1d8 + your Wisdom HP. Your go-to heal.' },
+      desc: 'Touch a wounded friend to heal 1d8 + your spellcasting modifier in HP. Your go-to heal.' },
     { id: 'healing-word', name: 'Healing Word', lvl: 1, lists: ['cleric'], type: 'heal',
-      desc: 'Heal an ally 1d4 + your Wisdom HP from across the battlefield — and still do something else this turn.' },
+      desc: 'Heal an ally 1d4 + your spellcasting modifier in HP from across the battlefield — as a bonus action, so you still do something else this turn.' },
     { id: 'bless', name: 'Bless', lvl: 1, lists: ['cleric'], type: 'buff',
       desc: 'Bless up to three allies — they each add 1d4 to their attacks and saves for the fight.' },
     { id: 'guiding-bolt', name: 'Guiding Bolt', lvl: 1, lists: ['cleric'], type: 'attack',
@@ -511,7 +514,7 @@
     { id: 'lesser-restoration', name: 'Lesser Restoration', lvl: 2, lists: ['cleric'], type: 'heal',
       desc: 'Cure a disease, or end being poisoned, blinded, deafened, or paralyzed.' },
     { id: 'aid', name: 'Aid', lvl: 2, lists: ['cleric'], type: 'buff',
-      desc: 'Bless up to three allies with +5 maximum HP for the whole adventure — and heal them 5 right now.' },
+      desc: 'Bless up to three allies with +5 maximum HP for 8 hours — and heal them 5 right now.' },
 
     // --- More cantrips ---
     { id: 'chill-touch', name: 'Chill Touch', lvl: 0, lists: ['wizard', 'ek'], type: 'attack',
@@ -541,13 +544,18 @@
     { id: 'silent-image', name: 'Silent Image', lvl: 1, lists: ['wizard', 'at'], type: 'utility',
       desc: 'Create a moving, person-sized illusion — a fake wall, a scary beast, a hidden door. It looks real (but makes no sound).' },
     { id: 'color-spray', name: 'Color Spray', lvl: 1, lists: ['wizard', 'at'], type: 'control',
-      desc: 'A dazzling flash of colors leaves nearby enemies blinded and unable to act. Great for a quick escape.' },
+      desc: 'A dazzling flash of colors blinds the weakest creatures in front of you (6d10 HP worth, no save) until the end of your next turn. Great for a quick escape.' },
     { id: 'inflict-wounds', name: 'Inflict Wounds', lvl: 1, lists: ['cleric'], type: 'attack',
       desc: 'Channel dark power into a touch. Roll to hit for a huge 3d10 necrotic damage — risky but devastating.' },
     { id: 'bane', name: 'Bane', lvl: 1, lists: ['cleric'], type: 'control',
       desc: 'Curse up to three foes (Charisma save). Each one subtracts 1d4 from their attacks and saves — the opposite of Bless.' },
     { id: 'sanctuary', name: 'Sanctuary', lvl: 1, lists: ['cleric'], type: 'buff',
       desc: 'Ward an ally so foes must resist (Wisdom) just to attack them — perfect for protecting the wounded.' },
+
+    { id: 'fog-cloud', name: 'Fog Cloud', lvl: 1, lists: ['wizard', 'ranger'], type: 'utility',
+      desc: 'Fill a 20-ft ball with thick fog that nobody can see through. Perfect for escaping or sneaking past.' },
+    { id: 'protection-from-evil', name: 'Protection from Evil and Good', lvl: 1, lists: ['wizard', 'cleric', 'paladin'], type: 'buff',
+      desc: 'Guard an ally against aberrations, celestials, elementals, fey, fiends, and undead: those creatures attack them with disadvantage and can’t charm, frighten, or possess them.' },
 
     // --- More 2nd-level spells ---
     { id: 'flaming-sphere', name: 'Flaming Sphere', lvl: 2, lists: ['wizard'], type: 'save',
@@ -558,6 +566,8 @@
       desc: 'Fill an area with thick, sticky webbing that traps and slows any enemies caught inside.' },
     { id: 'blur', name: 'Blur', lvl: 2, lists: ['wizard'], type: 'buff',
       desc: 'Your body becomes a blurry, shifting image — attackers have trouble even seeing where to hit you.' },
+    { id: 'magic-weapon', name: 'Magic Weapon', lvl: 2, lists: ['wizard'], type: 'buff',
+      desc: 'Touch a weapon to make it magic for an hour: +1 to hit and +1 damage.' },
     { id: 'prayer-of-healing', name: 'Prayer of Healing', lvl: 2, lists: ['cleric'], type: 'heal',
       desc: 'A short prayer heals up to six friends at once, restoring 2d8 + your Wisdom HP to each. Great after a fight.' },
     { id: 'silence', name: 'Silence', lvl: 2, lists: ['cleric'], type: 'control',
@@ -569,7 +579,7 @@
     { id: 'divine-favor', name: 'Divine Favor', lvl: 1, lists: ['paladin'], type: 'buff',
       desc: 'Your weapon glows with holy light, dealing an extra 1d4 radiant damage on every hit for the whole fight.' },
     { id: 'heroism', name: 'Heroism', lvl: 1, lists: ['paladin', 'bard'], type: 'buff',
-      desc: 'Fill an ally with bravery — they can’t be frightened and gain a few temporary HP at the start of each of their turns.' },
+      desc: 'Fill an ally with bravery — they can’t be frightened and gain temporary HP equal to your spellcasting modifier at the start of each of their turns.' },
     { id: 'searing-smite', name: 'Searing Smite', lvl: 1, lists: ['paladin'], type: 'buff',
       desc: 'Your next weapon hit bursts into flame for an extra 1d6 fire damage and leaves the foe burning for more each turn.' },
     { id: 'hunters-mark', name: 'Hunter’s Mark', lvl: 1, lists: ['ranger'], type: 'buff',
@@ -596,7 +606,7 @@
     bard: ['mage-hand', 'minor-illusion', 'prestidigitation', 'light', 'dancing-lights', 'message', 'mending',
       'healing-word', 'cure-wounds', 'charm-person', 'disguise-self', 'sleep', 'detect-magic', 'thunderwave',
       'invisibility', 'hold-person', 'shatter', 'silence', 'lesser-restoration'],
-    paladin: ['bless', 'cure-wounds', 'shield-of-faith', 'command'],
+    paladin: ['bless', 'cure-wounds', 'shield-of-faith', 'command', 'detect-magic'],
     ranger: ['cure-wounds', 'fog-cloud', 'detect-magic'],
   };
   Object.keys(ADD_SPELL_LISTS).forEach(tag => ADD_SPELL_LISTS[tag].forEach(id => {
@@ -651,12 +661,12 @@
         { key: 'weapon', prompt: 'Pick your weapon:',
           options: [
             { id: 'mace', name: 'Mace', note: 'A classic blunt weapon for a holy warrior.' },
-            { id: 'warhammer', name: 'Warhammer', note: 'Heavier hits, divine fury.' },
+            { id: 'warhammer', name: 'Warhammer', note: 'Heavier hits, divine fury. (Battle Priests only — it takes martial training.)', only: ['war'] },
           ] },
         { key: 'armor', prompt: 'Pick your armor:',
           options: [
             { id: 'scale-mail', name: 'Scale Mail', note: 'Armor 14 + a little Dexterity.' },
-            { id: 'chain-mail', name: 'Chain Mail', note: 'Armor 16, no Dexterity needed (best for Healers & Battle Priests).' },
+            { id: 'chain-mail', name: 'Chain Mail', note: 'Armor 16, no Dexterity needed. (Healers & Battle Priests only — it takes heavy-armor training.)', only: ['life', 'war'] },
           ] },
       ],
     },
@@ -725,15 +735,17 @@
             'finesse' — the better of Strength and Dexterity.
        dueling: true  — a one-handed weapon with nothing in the other hand but a
                         shield, so the Dueling style adds +2 damage.
+       heavy: true    — a Small hero (halfling, gnome) attacks with it at
+                        disadvantage.
        offhand: true  — the second weapon of a two-weapon pair. Its bonus-action
                         hit adds no modifier to damage unless the hero has the
                         Two-Weapon style.
   --------------------------------------------------------------------------- */
   const WEAPON_STATS = {
     'longsword-shield':    [{ name: 'Longsword', die: '1d8', type: 'slashing', use: 'str', dueling: true, note: 'one-handed, with a shield (+2 Armor)' }],
-    'greatsword':          [{ name: 'Greatsword', die: '2d6', type: 'slashing', use: 'str', note: 'two-handed' }],
+    'greatsword':          [{ name: 'Greatsword', die: '2d6', type: 'slashing', heavy: true, use: 'str', note: 'two-handed' }],
     'battleaxe-shield':    [{ name: 'Battleaxe', die: '1d8', type: 'slashing', use: 'str', dueling: true, note: 'one-handed, with a shield (+2 Armor)' }],
-    'longbow':             [{ name: 'Longbow', die: '1d8', type: 'piercing', use: 'dex', range: '150 ft', note: 'two-handed bow' }],
+    'longbow':             [{ name: 'Longbow', die: '1d8', type: 'piercing', heavy: true, use: 'dex', range: '150 ft', note: 'two-handed bow' }],
     'rapier':              [{ name: 'Rapier', die: '1d8', type: 'piercing', use: 'finesse', dueling: true, note: 'finesse' }],
     'shortsword':          [{ name: 'Shortsword', die: '1d6', type: 'piercing', use: 'finesse', dueling: true, note: 'finesse, light' }],
     'shortbow':            [{ name: 'Shortbow', die: '1d6', type: 'piercing', use: 'dex', range: '80 ft' }],
@@ -741,17 +753,25 @@
     'dagger':              [{ name: 'Dagger', die: '1d4', type: 'piercing', use: 'finesse', dueling: true, range: '20 ft thrown', note: 'finesse, light' }],
     'mace':                [{ name: 'Mace', die: '1d6', type: 'bludgeoning', use: 'str', dueling: true }],
     'warhammer':           [{ name: 'Warhammer', die: '1d8', type: 'bludgeoning', use: 'str', dueling: true }],
-    'greataxe':            [{ name: 'Greataxe', die: '1d12', type: 'slashing', use: 'str', note: 'two-handed' }],
+    'greataxe':            [{ name: 'Greataxe', die: '1d12', type: 'slashing', heavy: true, use: 'str', note: 'two-handed' }],
     'battleaxe-handaxe':   [{ name: 'Battleaxe', die: '1d8', type: 'slashing', use: 'str' },
                             { name: 'Handaxe', die: '1d6', type: 'slashing', use: 'str', offhand: true, range: '20 ft thrown', note: 'light' }],
     'two-handaxes':        [{ name: 'Handaxe', die: '1d6', type: 'slashing', use: 'str', range: '20 ft thrown', note: 'light' },
                             { name: 'Second handaxe', die: '1d6', type: 'slashing', use: 'str', offhand: true, range: '20 ft thrown', note: 'light' }],
     'warhammer-shield':    [{ name: 'Warhammer', die: '1d8', type: 'bludgeoning', use: 'str', dueling: true, note: 'one-handed, with a shield (+2 Armor)' }],
-    'halberd':             [{ name: 'Halberd', die: '1d10', type: 'slashing', use: 'str', note: 'two-handed, reach — hits from 10 ft' }],
+    'halberd':             [{ name: 'Halberd', die: '1d10', type: 'slashing', heavy: true, use: 'str', note: 'two-handed, reach — hits from 10 ft' }],
     'two-shortswords':     [{ name: 'Shortsword', die: '1d6', type: 'piercing', use: 'finesse', note: 'finesse, light' },
                             { name: 'Second shortsword', die: '1d6', type: 'piercing', use: 'finesse', offhand: true, note: 'finesse, light' }],
     'shortsword-shortbow': [{ name: 'Shortsword', die: '1d6', type: 'piercing', use: 'finesse', note: 'finesse, light' },
                             { name: 'Shortbow', die: '1d6', type: 'piercing', use: 'dex', range: '80 ft' }],
+  };
+
+  // Weapons that come in a class's kit automatically (EQUIPMENT.auto), so they
+  // get attack lines on the sheet too. Same fields as WEAPON_STATS.
+  const AUTO_WEAPONS = {
+    rogue:     [{ name: 'Two daggers', die: '1d4', type: 'piercing', use: 'finesse', range: '20 ft thrown', note: 'finesse, light' }],
+    barbarian: [{ name: 'Javelins (4)', die: '1d6', type: 'piercing', use: 'str', range: '30 ft thrown' }],
+    bard:      [{ name: 'Dagger', die: '1d4', type: 'piercing', use: 'finesse', range: '20 ft thrown', note: 'finesse, light' }],
   };
 
   /* ---------------------------------------------------------------------------
@@ -986,23 +1006,76 @@
   /* ------------------- Beast Master animal companions --------------------
      The roster is every Beast the rules actually allow: Challenge 1/4 or lower,
      size Medium or smaller. Name / size / speed / base Armor were cross-referenced
-     against the Monster Manual; everything else is translated into OUR simplified
-     system (see DECISIONS.md — the books are flavor and inspiration, not the rules).
+     against the Monster Manual, and so are the attacks below (2026-09-24).
 
      Straight from the PHB's Ranger's Companion:
-       • Hit Points = 4 x your ranger level  (so 12 at level 3 — and it scales itself
-         the moment leveling arrives; nothing here needs changing).
+       • Hit Points = its normal maximum or 4 x your ranger level, whichever is
+         higher (12 at level 3 for most beasts; it scales itself with level).
        • "Add your proficiency bonus to the beast's AC, attack rolls, and damage
-         rolls." That +2 is ALREADY baked into the numbers below, so nobody does
-         arithmetic at the table.
+         rolls." The +2 is already in each `ac` below; app.js adds it to attacks.
 
-     Instead of 42 bespoke stat lines we use three tiers keyed to the animal's role.
-     'gentle' beasts genuinely have no attack — the card says so plainly, so a kid
-     finds out before a fight, not during one. */
-  const COMPANION_TIERS = {
-    fierce: { label: 'Fierce', hit: 6, dmg: '1d6+4', note: 'A real fighter.' },
-    swift: { label: 'Swift', hit: 6, dmg: '1d4+3', note: 'Quick and scrappy.' },
-    gentle: { label: 'Gentle', hit: null, dmg: null, note: 'Does not fight — a scout and a friend.' },
+     Sea horse and frog genuinely have no attack. The card says so plainly, so a
+     kid finds out before a fight, not during one. The `tier` field on each beast
+     is left over from an older simplified system and nothing reads it. */
+  /* Each companion's attacks exactly as the Monster Manual prints them
+     (checked stat block by stat block, 2026-09-24). app.js adds the ranger's
+     proficiency bonus to the to-hit and the damage, as the PHB's Ranger's
+     Companion says to. A companion attacks once when commanded, so a beast with
+     two attacks uses one or the other. `extra` is the rider, in plain words. */
+  const COMPANION_ATTACKS = {
+    'wolf': [{ name: 'Bite', hit: 4, dmg: '2d4+2', type: 'piercing', extra: 'DC 11 Strength or knocked flat' }],
+    'panther': [{ name: 'Bite', hit: 4, dmg: '1d6+2', type: 'piercing' }, { name: 'Claw', hit: 4, dmg: '1d4+2', type: 'slashing' }],
+    'mastiff': [{ name: 'Bite', hit: 3, dmg: '1d6+1', type: 'piercing', extra: 'DC 11 Strength or knocked flat' }],
+    'boar': [{ name: 'Tusk', hit: 3, dmg: '1d6+1', type: 'slashing' }],
+    'hyena': [{ name: 'Bite', hit: 2, dmg: '1d6', type: 'piercing' }],
+    'giant-badger': [{ name: 'Claws', hit: 3, dmg: '2d4+1', type: 'slashing' }, { name: 'Bite', hit: 3, dmg: '1d6+1', type: 'piercing' }],
+    'giant-weasel': [{ name: 'Bite', hit: 5, dmg: '1d4+3', type: 'piercing' }],
+    'jackal': [{ name: 'Bite', hit: 1, dmg: '1d4-1', type: 'piercing' }],
+    'baboon': [{ name: 'Bite', hit: 1, dmg: '1d4-1', type: 'piercing' }],
+    'giant-rat': [{ name: 'Bite', hit: 4, dmg: '1d4+2', type: 'piercing' }],
+    'cat': [{ name: 'Claws', hit: 0, dmg: '1', type: 'slashing' }],
+    'weasel': [{ name: 'Bite', hit: 5, dmg: '1', type: 'piercing' }],
+    'badger': [{ name: 'Bite', hit: 2, dmg: '1', type: 'piercing' }],
+    'rat': [{ name: 'Bite', hit: 0, dmg: '1', type: 'piercing' }],
+    'hawk': [{ name: 'Talons', hit: 5, dmg: '1', type: 'slashing' }],
+    'owl': [{ name: 'Talons', hit: 3, dmg: '1', type: 'slashing' }],
+    'raven': [{ name: 'Beak', hit: 4, dmg: '1', type: 'piercing' }],
+    'eagle': [{ name: 'Talons', hit: 4, dmg: '1d4+2', type: 'slashing' }],
+    'blood-hawk': [{ name: 'Beak', hit: 4, dmg: '1d4+2', type: 'piercing' }],
+    'bat': [{ name: 'Bite', hit: 0, dmg: '1', type: 'piercing' }],
+    'pteranodon': [{ name: 'Bite', hit: 3, dmg: '2d4+1', type: 'piercing' }],
+    'flying-snake': [{ name: 'Bite', hit: 6, dmg: '1', type: 'piercing', extra: 'plus 3d4 poison, no save' }],
+    'giant-wolf-spider': [{ name: 'Bite', hit: 3, dmg: '1d6+1', type: 'piercing', extra: 'plus 2d6 poison, DC 11 Constitution for half' }],
+    'giant-venomous-snake': [{ name: 'Bite', hit: 6, dmg: '1d4+4', type: 'piercing', extra: 'reaches 10 ft; plus 3d6 poison, DC 11 Constitution for half' }],
+    'giant-centipede': [{ name: 'Bite', hit: 4, dmg: '1d4+2', type: 'piercing', extra: 'plus 3d6 poison unless the foe beats DC 11 Constitution' }],
+    'venomous-snake': [{ name: 'Bite', hit: 5, dmg: '1', type: 'piercing', extra: 'plus 2d4 poison, DC 10 Constitution for half' }],
+    'spider': [{ name: 'Bite', hit: 4, dmg: '1', type: 'piercing', extra: 'plus 1d4 poison unless the foe beats DC 9 Constitution' }],
+    'scorpion': [{ name: 'Sting', hit: 2, dmg: '1', type: 'piercing', extra: 'plus 1d8 poison, DC 9 Constitution for half' }],
+    'stirge': [{ name: 'Blood Drain', hit: 5, dmg: '1d4+3', type: 'piercing', extra: 'then it latches on and drains that much again each turn' }],
+    'giant-fire-beetle': [{ name: 'Bite', hit: 1, dmg: '1d6-1', type: 'slashing' }],
+    'lizard': [{ name: 'Bite', hit: 0, dmg: '1', type: 'piercing' }],
+    'giant-crab': [{ name: 'Claw', hit: 3, dmg: '1d6+1', type: 'bludgeoning', extra: 'and grabs the foe (escape DC 11)' }],
+    'giant-frog': [{ name: 'Bite', hit: 3, dmg: '1d6+1', type: 'piercing', extra: 'and grabs and holds the foe (escape DC 11)' }],
+    'octopus': [{ name: 'Tentacles', hit: 4, dmg: '1', type: 'bludgeoning', extra: 'and grabs the foe (escape DC 10)' }],
+    'quipper': [{ name: 'Bite', hit: 5, dmg: '1', type: 'piercing' }],
+    'crab': [{ name: 'Claw', hit: 0, dmg: '1', type: 'bludgeoning' }],
+    'sea-horse': [],
+    'frog': [],
+    'deer': [{ name: 'Bite', hit: 2, dmg: '1d4', type: 'piercing' }],
+    'goat': [{ name: 'Ram', hit: 3, dmg: '1d4+1', type: 'bludgeoning' }],
+    'pony': [{ name: 'Hooves', hit: 4, dmg: '2d4+2', type: 'bludgeoning' }],
+    'mule': [{ name: 'Hooves', hit: 2, dmg: '1d4+2', type: 'bludgeoning' }],
+  };
+  // Each companion's normal hit point maximum from the Monster Manual. The PHB
+  // uses this or 4 x ranger level, whichever is higher.
+  const COMPANION_BOOK_HP = {
+    'wolf': 11, 'panther': 13, 'mastiff': 5, 'boar': 11, 'hyena': 5, 'giant-badger': 13,
+    'giant-weasel': 9, 'jackal': 3, 'baboon': 3, 'giant-rat': 7, 'cat': 2, 'weasel': 1,
+    'badger': 3, 'rat': 1, 'hawk': 1, 'owl': 1, 'raven': 1, 'eagle': 3,
+    'blood-hawk': 7, 'bat': 1, 'pteranodon': 13, 'flying-snake': 5, 'giant-wolf-spider': 11, 'giant-venomous-snake': 11,
+    'giant-centipede': 4, 'venomous-snake': 2, 'spider': 1, 'scorpion': 1, 'stirge': 2, 'giant-fire-beetle': 4,
+    'lizard': 2, 'giant-crab': 13, 'giant-frog': 18, 'octopus': 3, 'quipper': 1, 'crab': 2,
+    'sea-horse': 1, 'frog': 1, 'deer': 4, 'goat': 4, 'pony': 11, 'mule': 11,
   };
   const COMPANION_ROLES = [
     { id: 'fight', label: '🗡️ Fight beside me' },
@@ -1014,7 +1087,7 @@
     { id: 'winged', name: '🦅 Winged', blurb: 'Fliers that scout far ahead.' },
     { id: 'crawly', name: '🐍 Creepy-Crawly', blurb: 'Small, sneaky, full of surprises.' },
     { id: 'water', name: '🐟 Water', blurb: 'Swimmers for rivers, lakes, and the deep.' },
-    { id: 'gentle', name: '🐴 Gentle Beasts', blurb: 'Friends and helpers — not fighters.' },
+    { id: 'gentle', name: '🐴 Gentle Beasts', blurb: 'Friends and helpers first, fighters last.' },
   ];
   const COMPANIONS = [
     // --- Hunters -------------------------------------------------------------
@@ -1028,7 +1101,7 @@
       attack: 'Bite', trick: { name: 'Keen Nose', desc: 'Advantage to track by smell — and its bite can bowl a foe right over.' },
       blurb: 'A big, brave, endlessly loyal dog.' },
     { id: 'boar', name: 'Boar', group: 'hunters', tier: 'fierce', size: 'Medium', ac: 13, speed: '40 ft.', roles: ['fight'],
-      attack: 'Tusks', trick: { name: 'Charge', desc: 'If it runs 20 ft. first, its hit knocks the foe to the ground.' },
+      attack: 'Tusks', trick: { name: 'Charge', desc: 'If it runs 20 ft. straight first, its hit deals an extra 1d6 and the foe must beat DC 11 Strength or be knocked flat.' },
       blurb: 'Stubborn, tough, and very hard to stop once it starts running.' },
     { id: 'hyena', name: 'Hyena', group: 'hunters', tier: 'fierce', size: 'Medium', ac: 13, speed: '50 ft.', roles: ['fight'],
       attack: 'Bite', trick: { name: 'Pack Tactics', desc: 'Attacks with advantage whenever one of your friends is right next to its target.' },
@@ -1049,7 +1122,7 @@
       attack: 'Bite', trick: { name: 'Pack Tactics', desc: 'Attacks with advantage whenever one of your friends is right next to its target.' },
       blurb: 'Bigger than a cat — and it brings friends.' },
     { id: 'cat', name: 'Cat', group: 'hunters', tier: 'swift', size: 'Tiny', ac: 14, speed: '40 ft., climb 30 ft.', roles: ['scout', 'friend'],
-      attack: 'Claws', trick: { name: 'Keen Nose', desc: 'Advantage to notice things by smell — and it always lands on its feet.' },
+      attack: 'Claws', trick: { name: 'Keen Nose', desc: 'Advantage to notice things by smell.' },
       blurb: 'Aloof, silent, and secretly entirely on your side.' },
     { id: 'weasel', name: 'Weasel', group: 'hunters', tier: 'swift', size: 'Tiny', ac: 15, speed: '30 ft.', roles: ['scout'],
       attack: 'Bite', trick: { name: 'Keen Senses', desc: 'Advantage to notice things by hearing or smell.' },
@@ -1107,7 +1180,7 @@
       attack: 'Venomous Sting', trick: { name: 'Armored Shell', desc: 'Its hard shell turns aside glancing blows.' },
       blurb: 'Tiny, armored, and best not stepped on.' },
     { id: 'stirge', name: 'Stirge', group: 'crawly', tier: 'swift', size: 'Tiny', ac: 16, speed: '10 ft., fly 40 ft.', roles: ['fight'],
-      attack: 'Prick', trick: { name: 'Latch On', desc: 'Clings tight to a foe and saps their strength until it is pulled off.' },
+      attack: 'Prick', trick: { name: 'Latch On', desc: 'After a hit it clings to the foe and keeps drinking blood each turn until it has drunk 10 HP or is pulled off.' },
       blurb: 'A darting, buzzing pest — on YOUR side, for once.' },
     { id: 'giant-fire-beetle', name: 'Giant Fire Beetle', group: 'crawly', tier: 'swift', size: 'Small', ac: 15, speed: '30 ft.', roles: ['friend', 'scout'],
       attack: 'Bite', trick: { name: 'Glowing', desc: 'Sheds a soft light 10 ft. all around it — a lantern that walks itself.' },
@@ -1121,7 +1194,7 @@
       attack: 'Pincer', trick: { name: 'Pincer Grab', desc: 'Catches a foe in its claw and holds them fast.' },
       blurb: 'An armored shell on legs — very, very hard to hurt.' },
     { id: 'giant-frog', name: 'Giant Frog', group: 'water', tier: 'fierce', size: 'Medium', ac: 13, speed: '30 ft., swim 30 ft.', roles: ['fight'],
-      attack: 'Tongue', trick: { name: 'Long Tongue', desc: 'Yanks a foe right off their feet and drags them close.' },
+      attack: 'Tongue', trick: { name: 'Standing Leap', desc: 'Leaps 20 ft. from a standstill, and its bite grabs a foe and holds it fast.' },
       blurb: 'A frog the size of a dog, with a tongue like a whip.' },
     { id: 'octopus', name: 'Octopus', group: 'water', tier: 'swift', size: 'Small', ac: 14, speed: '5 ft., swim 30 ft.', roles: ['scout'],
       attack: 'Tentacles', trick: { name: 'Ink Cloud', desc: 'Vanishes underwater in a sudden burst of ink.' },
@@ -1141,7 +1214,7 @@
 
     // --- Gentle Beasts -------------------------------------------------------
     { id: 'deer', name: 'Deer', group: 'gentle', tier: 'gentle', size: 'Medium', ac: 15, speed: '50 ft.', roles: ['friend', 'scout'],
-      attack: null, trick: { name: 'Fleet', desc: 'Faster than almost anything on four legs. It runs — it does not fight.' },
+      attack: null, trick: { name: 'Fleet', desc: 'Faster than almost anything on four legs.' },
       blurb: 'Swift, graceful, and gentle.' },
     { id: 'goat', name: 'Goat', group: 'gentle', tier: 'gentle', size: 'Medium', ac: 12, speed: '40 ft.', roles: ['friend'],
       attack: null, trick: { name: 'Sure-Footed', desc: 'Climbs cliffs and narrow ledges without ever slipping.' },
@@ -1155,9 +1228,9 @@
   ];
 
   window.DATA = {
-    ABILITIES, DC_TABLE, RACES, CLASSES, SPELLS, EQUIPMENT, ADVENTURING_PACK, WEAPON_STATS,
+    ABILITIES, DC_TABLE, RACES, CLASSES, SPELLS, EQUIPMENT, ADVENTURING_PACK, WEAPON_STATS, AUTO_WEAPONS,
     TRAITS, MOTIVATIONS, QUIZ, GLOSSARY,
-    COMPANIONS, COMPANION_GROUPS, COMPANION_TIERS, COMPANION_ROLES,
+    COMPANIONS, COMPANION_GROUPS, COMPANION_ROLES, COMPANION_ATTACKS, COMPANION_BOOK_HP,
     LEVEL: 3, XP: 900, PROFICIENCY: 2,
     STANDARD_ARRAY: [15, 14, 13, 12, 10, 8],
   };

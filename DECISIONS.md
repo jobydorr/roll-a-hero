@@ -2,11 +2,23 @@
 
 *What this is:* a short record of the important calls we made and **why** — especially the moments the project changed direction. A pivot is never "lost": come back here to see what we were thinking.
 
-*Newest first. Last updated: 2026-08-11.*
+*Newest first. Last updated: 2026-09-24.*
 
 ---
 
-### 2026-08-11 (latest) — Casting is removed: one sheet, one folder, referenced by link
+### 2026-09-24 (latest) — Hero numbers follow the standard 5E rules for spells, equipment and companions
+
+Joby asked for every sheet to carry level-appropriate numbers and for the builder to be "in line with standard rules as far as spells and equipment go," streamlined but mostly accurate. The walkthrough stays simple; what changed is that the numbers it prints are now the Player's Handbook numbers rather than approximations.
+
+Attacks are worked out per weapon rather than per class, so Strength drives ordinary and thrown melee weapons, Dexterity drives bows, and finesse weapons take the better of the two. The Archery and Dueling styles now apply, off-hand attacks add no modifier to damage without the Two-Weapon style, weapons a class carries automatically (daggers, javelins) get their own attack lines, and a Small hero is told on the sheet that a heavy weapon attacks at disadvantage. The proficiency bonus is derived from level. Clerics can only pick chain mail or a warhammer when their domain grants the training.
+
+Spells follow the book: a bard knows six at level 3; clerics and wizards prepare their ability modifier plus their level, and paladins their modifier plus half their level; and domain and oath spells are always prepared and never counted. Several descriptions that named the wrong ability or overstated an effect were corrected.
+
+Beast Master companions now use their real Monster Manual attacks plus the ranger's proficiency bonus, and their hit points are the book maximum or four times the ranger's level, whichever is higher. This replaces the three-tier approximation recorded on 2026-07-08, which gave every "fierce" beast the same bite and treated four beasts that do have attacks as unable to fight.
+
+Two things were deliberately kept. Hit points stay at the maximum every level, a house rule Joby confirmed. The ranger's starting kit (studded leather, and a single weapon choice rather than a longbow and two shortswords) is parked at his request, because changing it would force the two existing rangers to re-pick their armor.
+
+### 2026-08-11 — Casting is removed: one sheet, one folder, referenced by link
 
 The DM OS spent four releases (v33–v36) building "casting": a scene could borrow a person or a creature that lived in a master folder, and the borrowed sheet would render inside the scene's feed and as an extra row in the story tree. The idea was that a name belongs in the scene that uses it, and the idea was not wrong. The execution was the problem, and Joby found the edge of it at the table.
 

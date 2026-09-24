@@ -3,9 +3,9 @@
   'use strict';
 
   const {
-    ABILITIES, DC_TABLE, RACES, CLASSES, SPELLS, EQUIPMENT, ADVENTURING_PACK, WEAPON_STATS,
+    ABILITIES, DC_TABLE, RACES, CLASSES, SPELLS, EQUIPMENT, ADVENTURING_PACK, WEAPON_STATS, AUTO_WEAPONS,
     TRAITS, MOTIVATIONS, QUIZ, GLOSSARY, LEVEL, XP, STANDARD_ARRAY,
-    COMPANIONS, COMPANION_GROUPS, COMPANION_TIERS, COMPANION_ROLES,
+    COMPANIONS, COMPANION_GROUPS, COMPANION_ROLES, COMPANION_ATTACKS, COMPANION_BOOK_HP,
   } = window.DATA;
 
   const STORAGE_KEY = 'rollAHeroCharacters';
@@ -94,7 +94,7 @@
   // styles apply where the PHB says they do.
   function attackLines() {
     const c = getClass(); if (!c) return [];
-    const stats = WEAPON_STATS[state.equipment.weapon]; if (!stats) return [];
+    const stats = (WEAPON_STATS[state.equipment.weapon] || []).concat(AUTO_WEAPONS[c.id] || []);
     const style = state.fightingStyle;
     return stats.map(w => {
       const mod = w.use === 'dex' ? abilMod('dex')
@@ -114,7 +114,29 @@
   }
   // Dragonborn breath weapon: 8 + Constitution modifier + proficiency bonus.
   const breathDC = () => 8 + abilMod('con') + profBonus();
-  function spellPlan() { const c = getClass(); if (!c) return null; if (c.spellcaster) return c.spell; const a = getArchetype(); return a && a.spell ? a.spell : null; }
+  // The hero's spell plan at their level. Casters who PREPARE (cleric, wizard,
+  // paladin) get ability mod + level (paladin: + half level), minimum 1, as in
+  // the PHB. Domain and oath spells are always prepared and never counted.
+  function spellPlan() {
+    const c = getClass(); if (!c) return null;
+    const a = getArchetype();
+    const base = c.spellcaster ? c.spell : (a && a.spell ? a.spell : null);
+    if (!base) return null;
+    const plan = Object.assign({}, base, { always: (a && a.alwaysPrepared) || [] });
+    if (base.prepared) {
+      const L = charLevel(), part = base.prepared === 'half' ? Math.floor(L / 2) : L;
+      plan.leveled = Math.max(1, abilMod(base.ability) + part);
+    }
+    return plan;
+  }
+  // Every spell on the hero's sheet: the ones they picked plus any always-prepared.
+  function heroSpellIds() {
+    const p = spellPlan(), ids = state.spells.slice();
+    ((p && p.always) || []).forEach(id => { if (!ids.includes(id)) ids.push(id); });
+    return ids;
+  }
+  // Picked leveled spells that count against the limit (always-prepared ones don't).
+  const countedLeveled = (p) => state.spells.map(getSpell).filter(s => s && s.lvl >= 1 && !(p.always || []).includes(s.id)).length;
   function spellNumbers() { const p = spellPlan(); if (!p) return null; const m = abilMod(p.ability); return { atk: profBonus() + m, dc: 8 + profBonus() + m }; }
   const buildHasSpells = () => !!spellPlan();
 
@@ -155,19 +177,37 @@
   function magicComplete() {
     const p = spellPlan(); if (!p) return true;
     const chosen = state.spells.map(getSpell).filter(Boolean);
-    return chosen.filter(s => s.lvl === 0).length === p.cantrips && chosen.filter(s => s.lvl >= 1).length === p.leveled;
+    return chosen.filter(s => s.lvl === 0).length === p.cantrips && countedLeveled(p) === p.leveled;
   }
   const storyComplete = () => state.story.name.trim().length > 0;
-  function gearComplete() { const c = getClass(); if (!c) return false; return EQUIPMENT[c.id].choices.every(ch => state.equipment[ch.key]); }
+  // An option marked `only` needs one of those archetypes (e.g. a cleric's chain mail).
+  const optionAllowed = (o) => !o.only || o.only.includes(state.archetype);
+  function gearComplete() {
+    const c = getClass(); if (!c) return false;
+    return EQUIPMENT[c.id].choices.every(ch => { const o = ch.options.find(x => x.id === state.equipment[ch.key]); return o && optionAllowed(o); });
+  }
 
   /* ------------------------ Animal companion ---------------------------- */
   const getCompanion = () => COMPANIONS.find(x => x.id === (state.archetypeChoice || {}).companion) || null;
-  // Straight from the PHB: "its hit point maximum equals four times your ranger level."
-  const companionHP = () => 4 * charLevel();
-  function companionStats(comp) {
-    const t = COMPANION_TIERS[comp.tier];
-    return { hp: companionHP(), ac: comp.ac, speed: comp.speed, hit: t.hit, dmg: t.dmg, fights: !!comp.attack };
+  // Straight from the PHB: "its hit point maximum equals its normal maximum or
+  // four times your ranger level, whichever is higher."
+  const companionHP = (comp) => Math.max(COMPANION_BOOK_HP[comp.id] || 0, 4 * charLevel());
+  // "Add your proficiency bonus to the beast's AC, attack rolls, and damage rolls."
+  // AC already carries it in data.js; attacks come from the Monster Manual and
+  // get it added here, so the sheet shows the numbers to roll.
+  function addToDamage(dmg, n) {
+    const m = /^(\d+d\d+)?([+-]\d+)?$/.exec(dmg.replace(/\s/g, '')); if (!m) return dmg;
+    if (!m[1]) return String(parseInt(dmg, 10) + n);          // flat damage, e.g. a weasel's 1
+    const b = (m[2] ? parseInt(m[2], 10) : 0) + n;
+    return m[1] + (b ? fmtMod(b) : '');
   }
+  function companionStats(comp) {
+    const pb = profBonus();
+    const attacks = (COMPANION_ATTACKS[comp.id] || []).map(a => Object.assign({}, a, { hit: a.hit + pb, dmg: addToDamage(a.dmg, pb) }));
+    return { hp: companionHP(comp), ac: comp.ac, speed: comp.speed, attacks: attacks, fights: attacks.length > 0 };
+  }
+  // "Bite +6 to hit, 2d4+4 piercing (DC 11 Strength or knocked flat)", or two joined by "or".
+  const companionAttackText = (s, html) => s.attacks.map(a => `${escapeHtml(a.name)} ${html ? '<strong>' : ''}${fmtMod(a.hit)}${html ? '</strong>' : ''} to hit, ${html ? '<strong>' : ''}${a.dmg}${html ? '</strong>' : ''} ${a.type}` + (a.extra ? ` (${escapeHtml(a.extra)})` : '')).join(' — or — ');
 
   /* ------------------------- Requirements engine -------------------------
      ONE place that answers "what does this hero still owe?" Everything else —
@@ -358,7 +398,7 @@
         <span class="tag bonus">AC ${s.ac}</span>
         <span class="tag">${escapeHtml(comp.speed)}</span>
         ${s.fights
-          ? `<span class="tag">${escapeHtml(comp.attack)} +${s.hit} (${s.dmg})</span>`
+          ? s.attacks.map(a => `<span class="tag">${escapeHtml(a.name)} ${fmtMod(a.hit)} (${a.dmg})</span>`).join('')
           : `<span class="tag magic">Doesn't fight</span>`}
       </div>
       <div class="signature"><span class="sig-name">${escapeHtml(comp.trick.name)}.</span> ${escapeHtml(comp.trick.desc)}</div>`;
@@ -368,7 +408,7 @@
     const current = (state.archetypeChoice || {}).companion || null;
     openModal(`
       <h3 class="modal-title">${icon('star')} Choose your animal companion</h3>
-      <p class="modal-sub">Your beast fights on your command and takes its turn with you. It has <strong>${companionHP()} HP</strong> (four times your level), and every number below already includes your bonus — no maths at the table.</p>
+      <p class="modal-sub">Your beast fights on your command and takes its turn with you. It has at least <strong>${4 * charLevel()} HP</strong> (four times your level, or more for a big beast), and every number below already includes your bonus — no maths at the table.</p>
       <div class="chip-row" id="compRoles">
         <button class="chip selected" data-role="all">Show me everything</button>
         ${COMPANION_ROLES.map(r => `<button class="chip" data-role="${r.id}">${r.label}</button>`).join('')}
@@ -651,7 +691,7 @@
       list.push({
         name: 'Animal Companion: ' + comp.name,
         desc: `${s.hp} HP, AC ${s.ac}, Speed ${comp.speed}. ` +
-          (s.fights ? `${comp.attack} +${s.hit} to hit for ${s.dmg} damage. ` : 'It does not fight. ') +
+          (s.fights ? companionAttackText(s, false) + '. ' : 'It does not fight. ') +
           `<em>${comp.trick.name}:</em> ${comp.trick.desc}`,
       });
     }
@@ -661,11 +701,11 @@
     const comp = getCompanion(); if (!comp) return '';
     const s = companionStats(comp);
     return `<div><span class="feat-name">${escapeHtml(comp.name)}</span> (${escapeHtml(comp.size)}) — ${s.hp} HP · AC ${s.ac} · Speed ${escapeHtml(comp.speed)}` +
-      (s.fights ? ` · ${escapeHtml(comp.attack)} <strong>+${s.hit}</strong> to hit, <strong>${s.dmg}</strong> damage` : ' · does not fight') + `</div>` +
+      (s.fights ? ` · ${companionAttackText(s, true)}` : ' · does not fight') + `</div>` +
       `<div style="margin-top:3px"><span class="feat-name">${escapeHtml(comp.trick.name)}.</span> ${escapeHtml(comp.trick.desc)}</div>`;
   }
   function chosenSpellsGrouped() {
-    const chosen = state.spells.map(getSpell).filter(Boolean);
+    const chosen = heroSpellIds().map(getSpell).filter(Boolean);
     return {
       cant: chosen.filter(s => s.lvl === 0).map(s => s.name),
       lev: chosen.filter(s => s.lvl >= 1).sort((a, b) => a.lvl - b.lvl).map(s => s.name + (s.lvl > 1 ? ` (lvl ${s.lvl})` : '')),
@@ -1259,7 +1299,7 @@
         <div class="cc-head"><span class="cc-name" style="font-size:17px;">${a.name}</span></div>
         <div class="cc-sub">${a.sub}</div>
         <div class="cc-desc">${a.desc}</div>
-        <div class="cc-meta">${a.grantsSpells ? '<span class="tag magic">Learns a few spells</span>' : '<span class="tag">No spells</span>'}</div>
+        <div class="cc-meta">${a.grantsSpells ? '<span class="tag magic">Learns a few spells</span>' : a.alwaysPrepared ? '<span class="tag magic">+' + a.alwaysPrepared.length + ' spells always prepared</span>' : c.spellcaster ? '' : '<span class="tag">No spells</span>'}</div>
         <div class="signature"><span class="sig-name">${a.feature.name}.</span> ${a.feature.desc}</div>`;
       card.onclick = () => { if (state.archetype !== a.id) { state.archetype = a.id; state.spells = []; state.archetypeChoice = {}; } render(); };
       ag.appendChild(card);
@@ -1272,7 +1312,7 @@
       if (arch.choice.kind === 'companion') {
         const comp = getCompanion();
         cp.innerHTML = `<h3 class="spell-section-head" style="margin-top:0;">${arch.choice.prompt}</h3>
-          <p style="margin:0 0 10px;color:var(--ink-soft);">Your loyal beast fights at your side and takes its turn with you. It has <strong>${companionHP()} HP</strong>.</p>
+          <p style="margin:0 0 10px;color:var(--ink-soft);">Your loyal beast fights at your side and takes its turn with you. It has at least <strong>${4 * charLevel()} HP</strong> — more for a big beast.</p>
           <div id="compChosen"></div>
           <button class="btn btn-sm ${comp ? 'btn-ghost' : 'btn-gold'}" id="pickCompBtn">${comp ? 'Change companion' : icon('star') + ' Choose your companion'}</button>`;
         wrap.appendChild(cp);
@@ -1403,10 +1443,11 @@
     const plan = spellPlan();
     const forced = plan.forced || [];
     forced.forEach(id => { if (!state.spells.includes(id)) state.spells.push(id); });
-    const avail = SPELLS.filter(s => s.lists.includes(plan.listTag) && s.lvl <= plan.maxLevel);
+    const always = plan.always || [];
+    const avail = SPELLS.filter(s => (s.lists.includes(plan.listTag) && s.lvl <= plan.maxLevel) || always.includes(s.id));
     const cantrips = avail.filter(s => s.lvl === 0), leveled = avail.filter(s => s.lvl >= 1);
     const chosenC = state.spells.map(getSpell).filter(s => s && s.lvl === 0).length;
-    const chosenL = state.spells.map(getSpell).filter(s => s && s.lvl >= 1).length;
+    const chosenL = countedLeveled(plan);
     const c = getClass(), a = getArchetype();
     host.innerHTML = `
       <div class="step">
@@ -1416,20 +1457,21 @@
         ${plan.cantrips > 0 ? '<strong>Cantrips</strong> can be cast forever; <strong>spells</strong> are stronger but limited each day.' : 'Your <strong>spells</strong> are powerful magic you can use a limited number of times each day.'} When you cast at an enemy, you roll to hit (or they roll to dodge) — beat <strong>${spellNumbers().dc}</strong>.</p>
         ${plan.cantrips > 0 ? `<div class="spell-section-head">Cantrips <span class="pick-counter">— pick ${plan.cantrips} (${chosenC}/${plan.cantrips})</span></div>
         <div class="card-grid" id="cantripGrid"></div>` : ''}
-        <div class="spell-section-head">Spells <span class="pick-counter">— pick ${plan.leveled} (${chosenL}/${plan.leveled})</span></div>
+        <div class="spell-section-head">Spells <span class="pick-counter">— pick ${plan.leveled} (${chosenL}/${plan.leveled})${always.length ? ' — plus ' + always.length + ' always prepared' : ''}</span></div>
         <div class="card-grid" id="spellGrid"></div>
         ${footer({ nextDisabled: !magicComplete(), nextLabel: 'Next: Your Story →' })}
       </div>`;
     const render1 = (gridId, spellsArr, limit, isCantrip) => {
       const grid = document.getElementById(gridId);
       spellsArr.forEach(s => {
-        const sel = state.spells.includes(s.id);
-        const isForced = forced.includes(s.id);
+        const isAlways = always.includes(s.id);
+        const sel = state.spells.includes(s.id) || isAlways;
+        const isForced = forced.includes(s.id) || isAlways;
         const count = isCantrip ? chosenC : chosenL;
         const atLimit = count >= limit && !sel;
         const card = document.createElement('button');
         card.className = 'choice-card spell-card' + (sel ? ' selected' : '') + (isForced ? ' forced' : '') + (atLimit ? ' disabled' : '');
-        card.innerHTML = `${isForced ? `<span class="rec-badge">${icon('check')} Always known</span>` : ''}
+        card.innerHTML = `${isForced ? `<span class="rec-badge">${icon('check')} ${isAlways ? 'Always prepared' : 'Always known'}</span>` : ''}
           <div class="cc-head"><span class="cc-icon">${icon('spell')}</span><span class="cc-name">${s.name}</span></div>
           <div class="cc-meta"><span class="tag ${s.lvl === 0 ? '' : 'magic'}">${s.lvl === 0 ? 'Cantrip' : 'Level ' + s.lvl}</span><span class="tag">${s.type}</span></div>
           <div class="cc-desc">${s.desc}</div>`;
@@ -1523,10 +1565,10 @@
       const p = document.createElement('div'); p.className = 'panel';
       p.innerHTML = `<h3 class="spell-section-head" style="margin-top:0;">${ch.prompt}</h3><div class="card-grid"></div>`;
       const grid = p.querySelector('.card-grid');
-      ch.options.forEach(o => {
+      ch.options.filter(optionAllowed).forEach(o => {
         const sel = state.equipment[ch.key] === o.id;
         const card = document.createElement('button'); card.className = 'choice-card' + (sel ? ' selected' : '');
-        card.innerHTML = `<div class="cc-head"><span class="cc-icon">${icon(ch.key === 'armor' ? 'armor' : 'weapon')}</span><span class="cc-name" style="font-size:16px;">${o.name}</span></div><div class="cc-desc">${o.note}</div>`;
+        card.innerHTML = `<div class="cc-head"><span class="cc-icon">${icon(ch.key === 'armor' ? 'armor' : 'weapon')}</span><span class="cc-name" style="font-size:16px;">${o.name}</span></div><div class="cc-desc">${o.note}${WEAPON_STATS[o.id] && WEAPON_STATS[o.id].some(w => w.heavy) && (getRace() || {}).small ? ' <strong>Heavy:</strong> a Small hero attacks with it at disadvantage.' : ''}</div>`;
         card.onclick = () => { state.equipment[ch.key] = o.id; render(); };
         grid.appendChild(card);
       });
@@ -1645,7 +1687,7 @@
         <div class="cs-name">${escapeHtml(comp.name)} <span class="cs-size">${escapeHtml(comp.size)}</span></div>
         <div class="cc-meta">
           <span class="tag">${s.hp} HP</span><span class="tag bonus">AC ${s.ac}</span><span class="tag">${escapeHtml(comp.speed)}</span>
-          ${s.fights ? `<span class="tag">${escapeHtml(comp.attack)} +${s.hit} (${s.dmg})</span>` : `<span class="tag magic">Doesn't fight</span>`}
+          ${s.fights ? s.attacks.map(a => `<span class="tag">${escapeHtml(a.name)} ${fmtMod(a.hit)} (${a.dmg})</span>`).join('') : `<span class="tag magic">Doesn't fight</span>`}
         </div>
         <div class="cs-trick"><strong>${escapeHtml(comp.trick.name)}.</strong> ${escapeHtml(comp.trick.desc)}</div>
       </div>`;
@@ -1800,7 +1842,7 @@
     return out;
   }
   const REST_LABEL = { long: 'per long rest', short: 'per short rest', day: 'per day' };
-  const buildHasCantrips = () => state.spells.map(getSpell).some(s => s && s.lvl === 0);
+  const buildHasCantrips = () => heroSpellIds().map(getSpell).some(s => s && s.lvl === 0);
   // Shared checkbox rows, used on both the printable sheet and the finish summary.
   function usesRowsHTML() {
     const res = limitedResources();
@@ -1896,14 +1938,14 @@
       const s = companionStats(comp);
       html += `<div class="pr-section"><h3>Animal Companion — ${escapeHtml(comp.name)}</h3>
         <p class="pr-note">${s.hp} HP · AC ${s.ac} · Speed ${escapeHtml(comp.speed)}` +
-        (s.fights ? ` · ${escapeHtml(comp.attack)} +${s.hit} to hit, ${s.dmg} damage` : ' · it does not fight') +
+        (s.fights ? ` · ${companionAttackText(s, false)}` : ' · it does not fight') +
         `. These numbers already include your bonus.</p>
         <ul>
           <li><span class="pr-name">${escapeHtml(comp.trick.name)}:</span> ${escapeHtml(comp.trick.desc)}</li>
           <li><span class="pr-name">How it acts:</span> It takes its turn right after yours. It moves when you point, and attacks when you command it to.</li>
         </ul></div>`;
     }
-    const chosen = state.spells.map(getSpell).filter(Boolean);
+    const chosen = heroSpellIds().map(getSpell).filter(Boolean);
     if (chosen.length) {
       const sn = spellNumbers();
       const cant = chosen.filter(s => s.lvl === 0), lev = chosen.filter(s => s.lvl >= 1).sort((x, y) => x.lvl - y.lvl);
@@ -1922,6 +1964,7 @@
         const bits = [`${w.die}${w.dmg ? fmtMod(w.dmg) : ''} ${w.type}`];
         if (w.range) bits.push(`range ${w.range}`);
         if (w.note) bits.push(w.note);
+        if (w.heavy && (getRace() || {}).small) bits.push('heavy — a Small hero attacks with it at disadvantage');
         if (w.offhand) bits.push(state.fightingStyle === 'two-weapon'
           ? 'bonus-action hit with your other hand'
           : 'bonus-action hit with your other hand — no modifier added to its damage');
@@ -1931,7 +1974,7 @@
         ? ((state.equipment.armor === 'chain-mail' ? 'Chain Mail' : 'Scale Mail') + ' &amp; Shield')
         : escapeHtml((c.armor && c.armor.label) || 'Unarmored') + (weaponHasShield() ? ' &amp; Shield' : '');
       gear.push(`<li><span class="pr-name">${armorLabel}:</span> <strong>AC ${computeAC()}</strong></li>`);
-      const also = (eq.auto || []).filter(x => !/armor/i.test(x));   // armor shown as the AC line above
+      const also = (eq.auto || []).filter(x => !/armor|dagger|javelin/i.test(x));   // armor and weapons have their own lines above
       (eq.choices || []).forEach(ch => {                              // non-weapon picks (e.g. a bard's instrument)
         if (ch.key === 'weapon') return;
         const opt = ch.options.find(o => o.id === state.equipment[ch.key]); if (opt) also.push(opt.name);
