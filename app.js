@@ -1483,6 +1483,7 @@
       ${sortSpellIds(b.ids).map(id => row(id, false)).join('')}
       ${b.ids.length ? '' : '<p class="ready-note">Your spellbook is empty — pick its spells first.</p>'}
       <p class="ready-note">A ready spell costs one spell slot each time you cast it.</p>
+      ${interactive && state.step === 'finish' ? '<p class="ready-note"><strong>Changed your ready spells?</strong> Tap <strong>Share with DM</strong> again so your DM sees them.</p>' : ''}
     </div>`;
   }
   function wireReadyChecklist(root, onChange) {
