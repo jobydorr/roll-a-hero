@@ -2,9 +2,45 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-09-09.*
+*Last updated: 2026-09-24.*
 
-> **▶▶ START HERE — 2026-09-09. This is the newest block; everything below it is history.**
+> **▶▶ START HERE — 2026-09-24. This is the newest block; everything below it is history.**
+>
+> **STATE:** working tree clean apart from the three untracked images in `Folded world imagery/`, which are Joby's and are still deliberately left alone. `HEAD` == `origin/main`, everything pushed, and the live GitHub Pages site was checked serving the new build. Live asset versions: `data.js` `v19`, `app.js` `v25`, `styles.css` `v18`, `print.css` `v16` (both pages), campaign `v70` on `dm.html`. Nothing in the campaign changed today except Tobin's stat block. Joby runs from `localhost:8000`.
+>
+> **⚠ READ FIRST:** `CLAUDE.md` → this block → `DECISIONS.md` 2026-09-24 for the rules reasoning. The 2026-09-09 block below still holds the campaign's open questions and is unchanged by today's work.
+>
+> ---
+>
+> **TODAY WAS BUILDER WORK: THE HERO RULES NOW FOLLOW STANDARD 5E.** Joby asked for every sheet to carry level-appropriate numbers and for spells and equipment to match the standard rules, streamlined but mostly accurate. Numbers are derived from choices whenever a sheet opens, so every existing hero picked up the fixes without being re-shared.
+>
+> - **Attacks** are worked out per weapon: Strength for melee and thrown, Dexterity for bows, the better of the two for finesse. Archery and Dueling now apply, off-hand hits add no modifier without Two-Weapon, kit weapons (daggers, javelins) have attack lines, proficiency is derived from level, and the dragonborn breath weapon shows its DC.
+> - **Spells:** bards know 6 at level 3; clerics and wizards prepare ability mod + level, paladins mod + half level; domain and oath spells are always prepared. Several descriptions were corrected, and Fog Cloud, Magic Weapon and Protection from Evil and Good were added.
+> - **Prepared casters get a "ready today" checklist.** Clerics and paladins tick from their whole class list; wizards fill a spellbook (6 + 2 per level after 1st) and tick from it. The hero page has live tick boxes with a count and a reminder to re-share; the printed sheet has empty pencil boxes. Every caster's sheet says a cast uses a spell slot.
+> - **Beast Master companions** use their real Monster Manual attacks plus proficiency, and HP is the book maximum or 4 × ranger level, whichever is higher. The old three-tier approximation is gone.
+> - **Cleric gear** is gated by domain: chain mail needs Life or War, the warhammer needs War.
+> - **Tobin** was corrected: Armor 11 (padded, Dex +0), HP 24, Spiritual Weapon listed as always prepared, prepared count stated.
+>
+> **JOBY'S RULINGS TODAY, all recorded in `DECISIONS.md`:** max HP every level stays as a house rule. **New house rule for Jef** (a halfling with a greatsword), applying to any Small hero: they can wield a heavy weapon and roll with disadvantage only when the DM calls for it. **The ranger starting kit is parked** (studded leather and one weapon choice, where the PHB gives leather or scale mail plus a longbow and two shortswords), because changing it would force Aramil and Sam to re-pick their armor.
+>
+> ---
+>
+> **THE PARTY'S HEROES** are read from Firestore under the party's campaign code, which is saved in Joby's Chrome at `localhost:8000` (the DM OS stores it in `rollAHeroDmUi`, the builder in `rollAHeroProfile`). The code is kept out of this public file on purpose; it is in the session memory, or ask Joby. The four sheets were checked against the new rules:
+>
+> - **Aramil** (ranger): longbow now +6 because Archery counts. Wolf bite +6, 2d4+4, with a knockdown.
+> - **Sam** (ranger): shortbow now +8 for the same reason. The weasel bites for 3, the book number.
+> - **Jef** (fighter): greatsword +6, 2d6+4, carrying the new house rule line.
+> - **Century** (bard): **still owes 2 spells**, because bards now learn 6. Only Ben can fix it: open Century on his own device, pick 2 spells, and tap Share again. It shows as ⚠ until then.
+>
+> **A NEW PLAYER IS JOINING.** Joby has a message to send them with the live link and the party code. Nothing about the new hero exists yet; when they share, the hero will appear under the party code.
+>
+> ---
+>
+> **OPEN, AND JOBY'S TO DECIDE:** the ranger starting kit (parked, above). Everything the 2026-09-09 block lists as open is still open.
+>
+> ---
+>
+> **▶▶ 2026-09-09 — history now; the 2026-09-24 block above supersedes it.**
 >
 > **STATE:** working tree clean apart from three untracked images in `Folded world imagery/`, which are Joby's and were deliberately left alone. `HEAD` == `origin/main`, everything pushed and verified from the remote side. Live asset versions on `dm.html`: campaign `v69`, dmos-ui `v48`, dmos.css `v35`, dmos-store `v17`, dmos-notes-sync `v1`. 78 documents, every wikilink resolves. Joby runs from `localhost:8000`.
 >
