@@ -2,9 +2,15 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-09-24.*
+*Last updated: 2026-09-28.*
 
-> **▶▶ START HERE — 2026-09-24. This is the newest block; everything below it is history.**
+> **▶▶ START HERE — 2026-09-24, with a 2026-09-28 addendum directly below. This is the newest block; everything below it is history.**
+>
+> **2026-09-28 ADDENDUM — LOST HEROES.** Ben found Century gone from his builder: a hero lives only in the browser that made it, and browsers forget (new device, cleared data, private window, Safari's seven-day clearing). Nothing was broken; his shared copy was intact. Four changes followed, all live, all in `DECISIONS.md` 2026-09-28. **The shared copy now follows every save** of a shared hero (debounced), so players never re-share and a restore is always current; the re-share reminder on the ready-spells checklist was removed. **The builder asks the browser to keep its storage** (`navigator.storage.persist`; Firefox may show a one-time prompt). **An empty hero list explains the rescue**: the party view on the Build a Hero page (a player-side screen, which Joby confirmed players are meant to use), then View, then Save to my heroes. **The party list shows only the newest copy of each hero** (deduped by `charId` in `firebase-sync.js`), because a hero re-shared from a new browser gets a second server copy that the old browser alone could delete.
+>
+> **WAITING ON BEN:** restore Century that way, pick his 2 new bard spells, and tap Share with DM once, which also switches automatic updates back on for that device. Joby has the instructions. A spare `roll-a-hero-century.json` was also made and is not needed.
+>
+> Live asset versions after the addendum: `app.js` `v26`, `firebase-sync.js` `v16`; the rest as stated below.
 >
 > **STATE:** working tree clean apart from the three untracked images in `Folded world imagery/`, which are Joby's and are still deliberately left alone. `HEAD` == `origin/main`, everything pushed, and the live GitHub Pages site was checked serving the new build. Live asset versions: `data.js` `v19`, `app.js` `v25`, `styles.css` `v18`, `print.css` `v16` (both pages), campaign `v70` on `dm.html`. Nothing in the campaign changed today except Tobin's stat block. Joby runs from `localhost:8000`.
 >
@@ -16,7 +22,7 @@
 >
 > - **Attacks** are worked out per weapon: Strength for melee and thrown, Dexterity for bows, the better of the two for finesse. Archery and Dueling now apply, off-hand hits add no modifier without Two-Weapon, kit weapons (daggers, javelins) have attack lines, proficiency is derived from level, and the dragonborn breath weapon shows its DC.
 > - **Spells:** bards know 6 at level 3; clerics and wizards prepare ability mod + level, paladins mod + half level; domain and oath spells are always prepared. Several descriptions were corrected, and Fog Cloud, Magic Weapon and Protection from Evil and Good were added.
-> - **Prepared casters get a "ready today" checklist.** Clerics and paladins tick from their whole class list; wizards fill a spellbook (6 + 2 per level after 1st) and tick from it. The hero page has live tick boxes with a count and a reminder to re-share; the printed sheet has empty pencil boxes. Every caster's sheet says a cast uses a spell slot.
+> - **Prepared casters get a "ready today" checklist.** Clerics and paladins tick from their whole class list; wizards fill a spellbook (6 + 2 per level after 1st) and tick from it. The hero page has live tick boxes with a count; the printed sheet has empty pencil boxes. Every caster's sheet says a cast uses a spell slot.
 > - **Beast Master companions** use their real Monster Manual attacks plus proficiency, and HP is the book maximum or 4 × ranger level, whichever is higher. The old three-tier approximation is gone.
 > - **Cleric gear** is gated by domain: chain mail needs Life or War, the warhammer needs War.
 > - **Tobin** was corrected: Armor 11 (padded, Dex +0), HP 24, Spiritual Weapon listed as always prepared, prepared count stated.
