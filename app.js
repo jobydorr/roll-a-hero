@@ -278,8 +278,35 @@
     const list = loadAll();
     const snap = JSON.parse(JSON.stringify(state));
     const i = list.findIndex(x => x.id === state.id);
+    const changed = i < 0 || heroKey(list[i]) !== heroKey(snap);
     if (i >= 0) list[i] = snap; else list.push(snap);
     saveAll(list);
+    keepStorage();
+    if (changed) scheduleResync(snap);
+  }
+  // What counts as a change worth sending to the DM: everything except which
+  // screen the hero was left on.
+  const heroKey = (snap) => JSON.stringify(Object.assign({}, snap, { step: null }));
+  // A shared hero's copy on the DM's side follows every save, so nobody has to
+  // remember to re-share, and a hero restored from the party is always current.
+  // Debounced so a burst of ticks sends once.
+  let resyncTimer = null;
+  function scheduleResync(snap) {
+    if (!sharingAvailable() || !sharedCampaignsOf(snap.id).length) return;
+    clearTimeout(resyncTimer);
+    resyncTimer = setTimeout(() => { resyncShares(snap); }, 1500);
+  }
+  // Ask the browser not to clear this site's saved heroes on its own (Safari
+  // otherwise may after 7 days without a visit). Once per page load, and only
+  // after there is a hero worth keeping. A refusal changes nothing.
+  let storageAsked = false;
+  function keepStorage() {
+    if (storageAsked) return; storageAsked = true;
+    try {
+      if (navigator.storage && navigator.storage.persist) {
+        navigator.storage.persisted().then(yes => { if (!yes) navigator.storage.persist(); }).catch(() => {});
+      }
+    } catch (e) {}
   }
   // Run a function with `state` temporarily pointed at another hero's snapshot
   // (used to compute/print a shared hero without disturbing the current one).
@@ -857,6 +884,9 @@
         <div class="saved-list" id="savedList"></div>
       </div>`
       : `<div class="welcome-tools"><button class="btn btn-sm btn-ghost" id="importBtn">${icon('book')} Import a hero from a file</button></div>`}
+      ${!saved.length ? `<div class="note lost-hero">${icon('shield')} <span><strong>Made a hero before and it's gone?</strong> Browsers sometimes forget. ${canShare
+        ? 'If you shared it, tap <strong>DM: view a shared party</strong> below, type your party code, tap <strong>View</strong> next to your hero, then <strong>Save to my heroes</strong>.'
+        : 'If you saved a backup file, tap <strong>Import a hero from a file</strong> below.'}</span></div>` : ''}
       ${canShare ? `<div class="welcome-tools"><button class="btn btn-sm btn-ghost" id="dmViewBtn">${icon('shield')} DM: view a shared party</button></div>` : ''}
       <input type="file" id="importInput" accept="application/json,.json" hidden>
     `;
@@ -968,6 +998,7 @@
       const btn = document.getElementById('editSave');
       btn.disabled = true; btn.innerHTML = 'Saving…';
       persist();
+      clearTimeout(resyncTimer);
       await resyncShares(JSON.parse(JSON.stringify(state)));
       editCtx = null; announce('Saved.'); go('welcome');
     };
@@ -1483,7 +1514,6 @@
       ${sortSpellIds(b.ids).map(id => row(id, false)).join('')}
       ${b.ids.length ? '' : '<p class="ready-note">Your spellbook is empty — pick its spells first.</p>'}
       <p class="ready-note">A ready spell costs one spell slot each time you cast it.</p>
-      ${interactive && state.step === 'finish' ? '<p class="ready-note"><strong>Changed your ready spells?</strong> Tap <strong>Share with DM</strong> again so your DM sees them.</p>' : ''}
     </div>`;
   }
   function wireReadyChecklist(root, onChange) {

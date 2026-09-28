@@ -2,11 +2,19 @@
 
 *What this is:* a short record of the important calls we made and **why** — especially the moments the project changed direction. A pivot is never "lost": come back here to see what we were thinking.
 
-*Newest first. Last updated: 2026-09-24.*
+*Newest first. Last updated: 2026-09-28.*
 
 ---
 
-### 2026-09-24 (latest) — Hero numbers follow the standard 5E rules for spells, equipment and companions
+### 2026-09-28 (latest) — A lost hero is made harmless rather than impossible
+
+Ben opened the builder and found Century gone, because a hero lives only in the browser that made it, and browsers forget: a new device, cleared history, a private window, or Safari clearing a site's data after seven days without a visit. Nothing short of real accounts prevents that, and accounts were ruled out for a children's table, so the aim became making a loss cheap to undo without the DM's help.
+
+The shared copy was already a backup, so three changes make it a good one. Every save of a shared hero now updates the copy the DM sees, a second and a half after the last change, so a restore always brings back the current hero and the re-share reminder is gone. The builder asks the browser to keep its storage, which guards against the automatic clearing but not against a new device. And an empty hero list tells the player how to get a shared hero back through the party view that already sits on the builder page.
+
+A hero restored on a new device and shared again produces a second copy on the server, because copies are filed under the browser that shared them and the old one cannot be deleted from the new browser. Both carry the same hero id, so the party list, on both the builder page and in the DM OS, now shows only the newest copy of each hero.
+
+### 2026-09-24 — Hero numbers follow the standard 5E rules for spells, equipment and companions
 
 Joby asked for every sheet to carry level-appropriate numbers and for the builder to be "in line with standard rules as far as spells and equipment go," streamlined but mostly accurate. The walkthrough stays simple; what changed is that the numbers it prints are now the Player's Handbook numbers rather than approximations.
 
