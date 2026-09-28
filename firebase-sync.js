@@ -84,10 +84,20 @@
 
     // All characters shared to a campaign (newest first) — the DM party view.
     // Each row carries its Firestore doc id under `_id` (for deleteShared).
+    // A hero re-shared from a new device (browser storage lost, hero restored with
+    // "Save to my heroes") gets a new doc, because docs are keyed by the sharing
+    // browser, and the old one can't be deleted from the new device. Both copies
+    // carry the same charId, so only the newest is shown.
     listCampaign: async function (campaign) {
       await authReady;
       const qs = await charCol(campaign).orderBy('sharedAt', 'desc').get();
-      return qs.docs.map(d => Object.assign({ _id: d.id }, d.data()));
+      const seen = new Set();
+      return qs.docs.map(d => Object.assign({ _id: d.id }, d.data())).filter(row => {
+        if (!row.charId) return true;
+        if (seen.has(row.charId)) return false;
+        seen.add(row.charId);
+        return true;
+      });
     },
 
     // Delete a specific shared doc by id (used by the DM party "Remove"). The
