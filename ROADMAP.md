@@ -2,8 +2,20 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-09-28.*
+*Last updated: 2026-10-12.*
 
+> **⏸ HIGH PRIORITY, PARKED 2026-10-12 — TOBIN IS CUT; BRANDON'S MORDRIN TAKES HIS PLACE.** Joby's ruling. A new player, Brandon, plays **Mordrin Fipplezepple**, a gnome wizard (illusionist), already shared to the party. Mordrin enters the story in Tobin's role, and Tobin is scratched. Brandon's backstory is player material and outranks canon: the Gilded Wheel Trading Co. family; a grandfather who backed the Surveyors early; an arcane college; secretly Red Flag, with a cover story to his family of scouting business ventures. **Joby is letting Brandon's ideas lead Red Flag's internal structure** (cells of 5–10, no contact between cells, higher-ups who contact only cell leaders). Joby will talk to Brandon before these are settled, so **NOTHING IS WRITTEN INTO CANON YET.** Open questions, as put to Joby on 2026-10-12:
+> 1. Is Mordrin literally the Registry clerk who files nightly on the party? (Proposed: yes, and his family bought him the posting.)
+> 2. What Red Flag actually does — sabotage and persuasion fit the table; violence against sympathizers would break the frame-up irony and the kid-safe tone.
+> 3. Who heals now that Tobin is gone? Only Sam's Cure Wounds remains. Separately, the bible's world rules still say healing is outlawed, a line left over from the Tobin cut of 2026-08-27.
+> 4. Ellum Wick, proposed as the clerk before Mordrin rather than Tobin's friend.
+> 5. The Act One turn moves to Mordrin discovering that his own filings are steering the expeditions.
+> 6. Mark Tobin's sheet CUT rather than delete it.
+>
+> Tobin appears in 13 of the 78 OS documents, which all need reworking once these are settled.
+>
+> **NEXT SESSION, AS JOBY RUNS IT (the session after Ganny's), IS THE TIGHTER DEADLINE AND IS BEING BUILT FIRST.** Last time, Ganny's encounter was played: the mob was beaten and the object was taken. Then a speed run carried the party into the Fold, which Joby is **rewinding** to just after Ganny's. The run is: Keystone night → awarding → commission → Wenna's office (Mordrin) → the woman and the boy → THE WAY IN → the sealed room, which is now a puzzle. **The memory effect fired on the speed run, and Joby keeps it as played:** every hero was struck with a vivid memory the player chose; **Sam lost his whole memory** apart from that one new memory he somehow knows is his, and keeps an instinct for his ranger skills.
+>
 > **▶▶ START HERE — 2026-09-24, with a 2026-09-28 addendum directly below. This is the newest block; everything below it is history.**
 >
 > **2026-09-28 ADDENDUM — LOST HEROES.** Ben found Century gone from his builder: a hero lives only in the browser that made it, and browsers forget (new device, cleared data, private window, Safari's seven-day clearing). Nothing was broken; his shared copy was intact. Four changes followed, all live, all in `DECISIONS.md` 2026-09-28. **The shared copy now follows every save** of a shared hero (debounced), so players never re-share and a restore is always current; the re-share reminder on the ready-spells checklist was removed. **The builder asks the browser to keep its storage** (`navigator.storage.persist`; Firefox may show a one-time prompt). **An empty hero list explains the rescue**: the party view on the Build a Hero page (a player-side screen, which Joby confirmed players are meant to use), then View, then Save to my heroes. **The party list shows only the newest copy of each hero** (deduped by `charId` in `firebase-sync.js`), because a hero re-shared from a new browser gets a second server copy that the old browser alone could delete.
