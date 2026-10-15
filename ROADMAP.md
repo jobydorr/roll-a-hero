@@ -8,6 +8,10 @@
 >
 > **STATE:** `HEAD` == `origin/main`; working tree clean apart from Joby's three untracked images in `Folded world imagery/`. DM OS assets: campaign `v78`, `app.js` `v26`, `data.js` `v19`, `firebase-sync.js` `v16`. 80 OS documents; every wikilink resolves. The party's heroes are in Firestore under the campaign code in session memory (`party-campaign-code`). Joby runs the OS from `localhost:8000` (the `roll-a-hero` launch config).
 >
+> **JOURNAL.md** is Joby's progress journal: a dated summary of where the campaign stands, newest entry first. It decides nothing; it records rulings and points at the canon.
+>
+> **HEALING IS NOT OUTLAWED (Joby, 2026-10-15):** standard D&D magic, gods and lore hold. The bible's Menders section and its echoes still say otherwise and are waiting on the shape of the rewrite. Proposed, not canon: the Surveyors can switch magic off and fold anything out of the way, which is why they permit nearly everything.
+>
 > **THE PARTY (5):** Aramil and Sam (Harlan, Beast Master rangers), Jef (Rowan, halfling fighter; house rule: Small heroes roll heavy weapons at disadvantage only when the DM calls it), Century (Ben, bard; restored on a new device, still needs to pick 2 spells and tap Share once), **Mordrin** (Brandon, gnome wizard illusionist, new: Tobin's replacement, see the parked block).
 >
 > **NEXT SESSION, ALL BUILT IN THE OS.** Rewound to just after Ganny's: the Keystone night, then the awarding, the commission, Wenna's office (where Mordrin arrives), the woman and the boy, then THE WAY IN. Beat 1 opens with THE FOLDWRIGHT LIVES on the west gate, moved here so the questions go to Mordrin. Beat 3 is the sealed room. Beat 4 is a two-minute trick of the eye: the doorway is two overlapping layers. Then `enc-cavern`: the convoy (a yoked tear-ogre with HP 45 carrying three cages, four goblin drivers, and a horn-goblin) below, the patrol (a boss, two crease-wolves, and four goblins) coming down from above, the party's choice, two clocks, and two loot piles including the tally. Joby wants that fight in the same session.
