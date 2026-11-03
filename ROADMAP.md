@@ -4,6 +4,13 @@
 
 *Last updated: 2026-11-03.*
 
+> **⏸ PAUSED 2026-11-03 AT JOBY'S REQUEST. ON START-UP, ADDRESS THESE THREE, IN THIS ORDER:**
+> 1. **THE PATROL IS NOT THE BAND THAT BROKE INTO GANNY'S (Joby).** That band is all dead. `enc-cavern` still says otherwise in three places, and they need reworking with him: the boss "wants the object back" because its band lost it (CREATURES); the crease-wolf hunts the object because "the band that lost it under Ganny's cellar has missed it" (TACTICS, proposed); and Ganny's half-eaten jam jar in the patrol's loot as "the same band that raided her cellar" (LOOT). Ask what, if anything, replaces the wolf's reason to come for the object and the jam jar.
+> 2. **MAKE THE BOSS'S WEAPON COOLER.** It is currently the +1 oversized shortsword in the patrol's loot (and a proposed hum near creases). Brainstorm first.
+> 3. **THE REST OF THE LOOSE ENDS:** the town and the way to the tower, and Sam's lost memory (both under PREP BRAINSTORM STILL OPEN below), then the carried-forward list under STILL WITH JOBY.
+>
+> Everything built this session (campaign `v82`–`v85`) is pushed: the game log, the four prisoners and the 5-4-3 tally, the no-execution reasons in §2, the magic-off ruling in §3, and the harder patrol with the salt-licker.
+>
 > **▶▶ START HERE — 2026-11-03, FRESH CHAT. Newest block; read this first. The 2026-10-15 block below it is the detailed reference for everything built before the game was played.**
 >
 > **STATE:** `HEAD` == `origin/main` at the time of writing; the working tree is clean apart from Joby's three untracked images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v85`, `app.js` `v26`, `data.js` `v19`, `firebase-sync.js` `v16`. Joby runs the OS from `localhost:8000`; start it with `preview_start` on the `roll-a-hero` launch config, and he reviews in his own Chrome with a hard refresh, because the pane's storage is empty.
