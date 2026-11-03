@@ -2,9 +2,31 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-10-15.*
+*Last updated: 2026-11-03.*
 
-> **▶▶ START HERE — 2026-10-15. Newest block; read this, then the parked and built blocks directly below it. Everything from the 2026-09-24 block down is history.**
+> **▶▶ START HERE — 2026-11-03, FRESH CHAT. Newest block; read this first. The 2026-10-15 block below it is the detailed reference for everything built before the game was played.**
+>
+> **STATE:** `HEAD` == `origin/main` at the time of writing; the working tree is clean apart from Joby's three untracked images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v81`, `app.js` `v26`, `data.js` `v19`, `firebase-sync.js` `v16`. Joby runs the OS from `localhost:8000`; start it with `preview_start` on the `roll-a-hero` launch config, and he reviews in his own Chrome with a hard refresh, because the pane's storage is empty.
+>
+> **A GAME HAS BEEN PLAYED SINCE THE LAST BLOCK, AND NOTHING ABOUT IT IS RECORDED HERE YET.** Joby reports that it was a great session and that it brought Brandon's character into the party. What was run, where it stopped, and what the players did are not known to this file. **The fresh chat opens by asking Joby for his update. Do not infer what was played from what was built.** Once he gives it, log it in the OS under `SESSION LOGS`, fold any player-stated facts into `▶ THE PARTY`, and add a dated entry to `JOURNAL.md`.
+>
+> **⚠ CHECK THE NAME.** Joby called the character "Mordrigan" on 2026-11-03. Everything in the repo and the OS says **Mordrin Fipplezepple**, from Brandon's own sheet. Ask whether that was a slip or a change before touching anything.
+>
+> **WHAT WAS BUILT FOR THAT GAME (2026-10-17 and 2026-10-18, campaign `v79`–`v81`):** the Rector's speech in `THE COMMISSION › 4`, with four italic stand-in compliment lines for Joby to swap; the morning bulletin and Merrit Quist's delivery (a Potion of Climbing, a Potion of Healing, three cheap-shelf bottles, and his note) in `THE COMMISSION › 3`; beat 6 rewritten as "Wenna's office, and Mordrin", with Mordrin as the liaison the Accord sends with every expedition (formerly "a Registry man"); and Brandon's answers recorded word for word in `▶ THE PARTY`. `JOURNAL.md` holds Joby's catch-up summary of the whole campaign as of 2026-10-15.
+>
+> **THE NEXT JOB IS PREP FOR THE NEXT GAME, AFTER JOBY'S UPDATE.** The built path ran from the Keystone night through the commission, THE WAY IN, and `enc-cavern` on the cliff face; how far the table actually got decides where prep starts. Beyond `enc-cavern` nothing is built: the folded town where the taken are kept, the tower in view and out of reach, and the bay are all on the back burner (`▶▶ BACK BURNER — the Fold`) and are not canon.
+>
+> **STILL WITH JOBY, carried forward:**
+> - The shape of the Menders rewrite (A: replace §2 The Menders with a short "Magic and the Gods" section; B: the same, keeping kitchen healing as a legal folk tradition and the raw-sunsalt boost). Healing is not outlawed and standard D&D magic holds; that is ruled.
+> - Whether the Surveyors' power to switch magic off becomes canon, and with what limit.
+> - Filing `JOURNAL.md` into his OS Notebook, which is parked and needs his notebook id (Tools → Notebook sync). Joby believes this was already set up; reading works through the mirror, but the id lives only in his browser.
+> - "Red Hats" in Brandon's answer, read as Red Flag and still to confirm; Brandon's Red Flag contact and cell-mate; his take on the wall; a memory on entry. A player-safe answer to Brandon's question about what the Fold is was drafted in chat on 2026-10-18 and may or may not have been sent.
+> - The remaining 11 Tobin documents, the Act One turn, who heals, and Ellum Wick.
+> - The Unfold-Rule portals redesign, where the other raids were, the top of the patrol's stair, the mark on the yoke, whether the blade hums near creases, the ranger starting kit, and a real puzzle room for later.
+>
+> **HOUSE RULES, unchanged:** brainstorm freely, write no canon without Joby's yes, and flag every gap filled. Read `STYLE.md` before writing OS prose. Commit and push your own work and verify it. Never state elapsed time or count sessions; refer to material by its OS name.
+>
+> **▶▶ 2026-10-15 block — history now; the 2026-11-03 block above supersedes it, but its parked and built blocks below still hold the detail.**
 >
 > **STATE:** `HEAD` == `origin/main`; working tree clean apart from Joby's three untracked images in `Folded world imagery/`. DM OS assets: campaign `v81`, `app.js` `v26`, `data.js` `v19`, `firebase-sync.js` `v16`. 80 OS documents; every wikilink resolves. The party's heroes are in Firestore under the campaign code in session memory (`party-campaign-code`). Joby runs the OS from `localhost:8000` (the `roll-a-hero` launch config).
 >
