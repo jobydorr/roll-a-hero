@@ -2465,6 +2465,27 @@ window.DM_CAMPAIGN = {
     },
     {
       "schema": 1,
+      "id": "log-mordrin-cavern",
+      "type": "session",
+      "title": "Mordrin joins, into the Fold, the convoy fight",
+      "parent": "f-sessions",
+      "order": 20,
+      "rev": 1,
+      "tags": [
+        "log",
+        "fold"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "date": "Played before 2026-11-03, when Joby reported it. FILL IN THE ACTUAL DATE.",
+        "recap": "AS JOBY REPORTED IT, 2026-11-03. It was a great game, and it brought Brandon into the party. The heroes met [[ref-party|Mordrin]] and went into the Fold, and the memory effect struck on arrival. The players have not yet said what their new memories are, because Joby has left them to think it over, and he will collect the memories before the next game. Sam lost his entire memory apart from the new one, and he keeps the instinct of his ranger skills, so he can still fight.\n\nThey came out onto [[enc-cavern|the face]] and saw both groups of goblins making for the town, with the convoy and its ogre carrying prisoners below them and the patrol above. They attacked the convoy first. The convoy blew its horn and the patrol answered from higher up, which differs from the sheet as built, where the horn brings nobody that night. The game stopped with the party clearing the convoy well and the patrol close enough to be on them almost as soon as the convoy is finished.\n\nNOT REPORTED, and left blank rather than guessed: which commission beats ran before Wenna's office, how Mordrin's entrance and THE FOLDWRIGHT LIVES went, and how the sealed room and the doorway played.",
+        "plan": "THE NEXT GAME OPENS MID-FIGHT on [[enc-cavern|the face]], with the convoy nearly cleared and the patrol arriving. Joby's prep list: the prisoners, of whom there are four and none of them from the tear at Lastlight; a harder patrol, with a bigger boss and a magic user; the town on the face and, eventually, the way up to the tower; and something for Sam's lost memory to touch.\n\nBEFORE PLAY, collect each player's new memory.",
+        "loose_ends": "· Who the four prisoners are, and how they were taken.\n· The horn was answered, so the patrol knows the party is here, and the town may too.\n· Each player's memory, still to come; whether Mordrin was struck as well is still open.\n· [[enc-cavern|The encounter sheet]] still says three captives from Dunlath and an unanswered horn, and it waits on the prep above."
+      },
+      "body": ""
+    },
+    {
+      "schema": 1,
       "id": "b-comm-dusk",
       "type": "beat",
       "title": "2 — Toward dusk: three people find them",

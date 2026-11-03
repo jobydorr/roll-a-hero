@@ -4,6 +4,26 @@
 
 ---
 
+## 2026-11-03 — into the Fold, and stopped mid-fight
+
+### In brief
+
+The party met Mordrin, which brought Brandon's gnome wizard into the game, and went into the Fold, where the memory effect struck every hero. They came out onto the face of the great space, attacked the convoy first, and were clearing it well when the game stopped, with the patrol close behind. The next game opens in the middle of that fight.
+
+### What was played (Joby's report)
+
+The memory effect landed as planned, and the players have been left to decide their new memories, which Joby will collect before the next game. Sam lost his entire memory apart from the new one and keeps the instinct of his ranger skills, so the loss has no mechanical effect yet, and Joby wants something in play that it touches. On the face the convoy blew its horn and the patrol answered it from higher up. That differs from the encounter as built, in which the horn brings nobody that night, and it means the party's arrival is known.
+
+### Rulings in this entry
+
+There are four prisoners on the convoy, and none of them were taken from the tear at Lastlight (Joby, 2026-11-03). Who they are and how they were taken is being prepped and is not yet canon, and the encounter sheet still describes three captives from Dunlath until that is settled.
+
+### What is being prepped
+
+Joby's list for the next game has four parts: the four prisoners and the story of their capture, a harder patrol with a bigger boss and a magic user, the town on the face together with the way the party will eventually reach the tower above it, and something for Sam's lost memory to do. The items carried forward from the 2026-10-15 entry below remain open.
+
+---
+
 ## 2026-10-15 — where we are, and what we are leading up to
 
 ### In brief
