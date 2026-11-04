@@ -2582,7 +2582,7 @@ window.DM_CAMPAIGN = {
       "title": "▶▶ BACK BURNER — the Fold, and where it is going",
       "parent": null,
       "order": 7,
-      "rev": 7,
+      "rev": 8,
       "tags": [
         "fold",
         "planning",
@@ -2635,7 +2635,7 @@ window.DM_CAMPAIGN = {
       "fields": {
         "status": "NOT CANON. Working notes only. Nothing here has been agreed except where a line says JOBY'S, which marks something he stated outright.\n\nWHAT IS ALREADY BUILT AND IS CANON, for the avoidance of doubt: the way into the Fold is opened with raw sunsalt pressed into a socket in a small worn object and held against a crease that is already there — see [[enc-ganny|the chamber under Ganny's cellar]] and [[b-wreck-2|THE WAY IN]]. Everything past the threshold is unwritten.",
         "shape": "JOBY'S, AND IT IS THE FRAME EVERYTHING ELSE HANGS ON. Being in the Fold is being inside an unfathomably immense and complex STRUCTURE. In places it closes to something like the inside of a cathedral. In others it opens into spaces that would reach a sky if there were one — and those are not empty: there are substructures inside them, visible and enterable. What the party will come to understand is a vast labyrinth.\n\nTHE RECONCILIATION WITH THE BIBLE, proposed and not yet ruled. The bible already holds two things it never connected: the banished zones are sealed pockets holding the world's swallowed places (a forest that loops back, a town where the same street occurs three times, a mountain larger inside than out), and the Snarl is the deep interior that nothing navigates — but it never said what the Snarl LOOKS like.\n\nSo: THE STRUCTURE IS THE SNARL, and THE SWALLOWED PLACES HANG INSIDE IT AS CELLS. That costs nothing and it gives the Fold two registers a nine-year-old can tell apart on sight — the structure, which is built, wrong-sized and empty, and the places, which are stolen, green, and have people in them. It also gives the gray somewhere to live: the Reactors bleed the CELLS from within, where no witness who would be believed can go.\n\nONE DETAIL WORTH KEEPING FROM THE BRAINSTORM: everything in the structure is sized slightly wrong for people. Steps too tall, doorways too narrow and far too high. Nobody explains it and nobody has to — it says THIS WAS NOT MADE FOR YOU in about four seconds.",
-        "arrival": "JOBY'S: the first entry lands them in a SMALLER SPACE that soon opens into a MUCH LARGER one — a curved space big enough to hold an inner substructure the size of a mountain. THE SESSION ENDS AS THEY COME INTO THE INITIAL SMALL SPACE, so the great space is next time and none of the reveal is spent.\n\nTHE SMALL SPACE should be tight, unimpressive and clearly a service space rather than a grand hall — somewhere two faces nearly meet, or a landing on a stair running further up and down than the light reaches. Not built for them.\n\nTHE SOUND IS THE CLIFFHANGER, and it is free. The voices got louder and louder as the way opened; that is the entire reason they went in. THEY STEP THROUGH AND IT IS SILENT. They came for a sound and the sound is gone. Then, moving toward the opening at the far end, it comes back — not as voices but as REVERBERATION, with a delay so long it tells them the space beyond is miles across before they can see an inch of it. Stop there.\n\nALSO FROM THE BRAINSTORM, unused and available: nothing casts a shadow, because there is no sun in there and the light comes in through the gaps; the way back is visible from everywhere until they walk round something and it is not, because the cell is densely folded; and direction does not survive the crossing, so a party that went in as a line arrives in the wrong order.\n\n★ THE ENTRY ROOM IS NOW BUILT and runs as [[b-wreck-3|THE WAY IN, beat 3]]. It ends the evening sealed, silent and shadowless, with no way on and no way back that the party can find.\n\n★ THE WAY OUT AS BUILT (2026-10-12): NO PUZZLE. Joby cut the puzzle because the session is full. The filled doorway is two overlapping layers of wall with a gap between them, found by looking from the side, and it runs as [[b-wreck-4|THE WAY IN, beat 4]].\n\n★ SAVED FOR A FUTURE PUZZLE ROOM, where solving it should teach the party something about the Fold and lead somewhere valuable: THE SHADOW PUZZLE. Light in the room comes from every direction, so nothing casts a shadow; bodies close together begin to, and the whole party standing in single file against a tall narrow doorway, with somebody on somebody's shoulders, throws a shadow the shape of the door, which opens it. Clues: huge old footprints facing the door, the doorway brighter than the walls, and an illusionist's sense that a shadow is only light something got in the way of.\n\nALSO BRAINSTORMED 2026-10-12 AND NOT USED: everyone speaking at once makes the first echo; standing in the order they came through; sitting along the chest-high step to be one tall thing; a detail shared across the heroes' memories, said aloud; unfolding the door along its creases with hands at several heights; walking backward through the blank wall they came in by.\n\n★ THE WAY OUT IS A MINI PUZZLE, and it is the top of the NEXT session, never the end of this one. Ending on an unsolved puzzle is a miserable stop.\n\nTHE DESIGN, proposed and not yet built — two ideas and no more:\n· IT DEPENDS WHERE YOU STAND. The room looks sealed from every ordinary vantage. From one position — low down, lying on the floor, along the wall from the corner — there is plainly a seam. The lesson is LOOK AT IT FROM SOMEWHERE ELSE, which is the single most useful habit this campaign could teach them about the Fold. Needs a nudge available in case nobody thinks to get down.\n· IT WAS NOT BUILT FOR PEOPLE. The seam has a catch on it, and the catch is set at a height meant for something eight feet tall. Nothing is hidden and nothing is clever — it is simply out of reach, and they have to boost each other.\n\nRUN THEM TOGETHER: get down, find the seam, then somebody goes up on somebody's shoulders. Ten minutes, two ideas, both physical, no dice needed, and it ends with a nine-year-old standing on a fighter. It cannot be failed, only fumbled, which is funnier. It also IS the theme rather than illustrating it — they prove THIS WAS NOT MADE FOR US with their own arms.\n\nA THIRD IDEA, NOT CHOSEN and kept in case it is wanted: the room is a folded thing under tension and responds to where weight sits, so the seam opens while people stand on the right parts and shuts when they step off. Best for a party of four because everybody gets a station, and the good bit is the last person out — but it is the fiddliest to explain at the table.\n\nAND WHAT THE SEAM OPENS ONTO: the face, warm wind, the enormous space, a ledge road going down toward roofs, and the floating mass hanging out there unreachable. See the LAYOUT field.",
+        "arrival": "JOBY'S: the first entry lands them in a SMALLER SPACE that soon opens into a MUCH LARGER one — a curved space big enough to hold an inner substructure the size of a mountain. THE SESSION ENDS AS THEY COME INTO THE INITIAL SMALL SPACE, so the great space is next time and none of the reveal is spent.\n\nTHE SMALL SPACE should be tight, unimpressive and clearly a service space rather than a grand hall — somewhere two faces nearly meet, or a landing on a stair running further up and down than the light reaches. Not built for them.\n\nTHE SOUND IS THE CLIFFHANGER, and it is free. The voices got louder and louder as the way opened; that is the entire reason they went in. THEY STEP THROUGH AND IT IS SILENT. They came for a sound and the sound is gone. Then, moving toward the opening at the far end, it comes back — not as voices but as REVERBERATION, with a delay so long it tells them the space beyond is miles across before they can see an inch of it. Stop there.\n\nALSO FROM THE BRAINSTORM, unused and available: nothing casts a shadow, because the light comes diffusely from everywhere and nowhere, a soft and eerie glow with no visible source (Joby, 2026-11-04), and there is no day or night in the Fold; the way back is visible from everywhere until they walk round something and it is not, because the cell is densely folded; and direction does not survive the crossing, so a party that went in as a line arrives in the wrong order.\n\n★ THE ENTRY ROOM IS NOW BUILT and runs as [[b-wreck-3|THE WAY IN, beat 3]]. It ends the evening sealed, silent and shadowless, with no way on and no way back that the party can find.\n\n★ THE WAY OUT AS BUILT (2026-10-12): NO PUZZLE. Joby cut the puzzle because the session is full. The filled doorway is two overlapping layers of wall with a gap between them, found by looking from the side, and it runs as [[b-wreck-4|THE WAY IN, beat 4]].\n\n★ SAVED FOR A FUTURE PUZZLE ROOM, where solving it should teach the party something about the Fold and lead somewhere valuable: THE SHADOW PUZZLE. Light in the room comes from every direction, so nothing casts a shadow; bodies close together begin to, and the whole party standing in single file against a tall narrow doorway, with somebody on somebody's shoulders, throws a shadow the shape of the door, which opens it. Clues: huge old footprints facing the door, the doorway brighter than the walls, and an illusionist's sense that a shadow is only light something got in the way of.\n\nALSO BRAINSTORMED 2026-10-12 AND NOT USED: everyone speaking at once makes the first echo; standing in the order they came through; sitting along the chest-high step to be one tall thing; a detail shared across the heroes' memories, said aloud; unfolding the door along its creases with hands at several heights; walking backward through the blank wall they came in by.\n\n★ THE WAY OUT IS A MINI PUZZLE, and it is the top of the NEXT session, never the end of this one. Ending on an unsolved puzzle is a miserable stop.\n\nTHE DESIGN, proposed and not yet built — two ideas and no more:\n· IT DEPENDS WHERE YOU STAND. The room looks sealed from every ordinary vantage. From one position — low down, lying on the floor, along the wall from the corner — there is plainly a seam. The lesson is LOOK AT IT FROM SOMEWHERE ELSE, which is the single most useful habit this campaign could teach them about the Fold. Needs a nudge available in case nobody thinks to get down.\n· IT WAS NOT BUILT FOR PEOPLE. The seam has a catch on it, and the catch is set at a height meant for something eight feet tall. Nothing is hidden and nothing is clever — it is simply out of reach, and they have to boost each other.\n\nRUN THEM TOGETHER: get down, find the seam, then somebody goes up on somebody's shoulders. Ten minutes, two ideas, both physical, no dice needed, and it ends with a nine-year-old standing on a fighter. It cannot be failed, only fumbled, which is funnier. It also IS the theme rather than illustrating it — they prove THIS WAS NOT MADE FOR US with their own arms.\n\nA THIRD IDEA, NOT CHOSEN and kept in case it is wanted: the room is a folded thing under tension and responds to where weight sits, so the seam opens while people stand on the right parts and shuts when they step off. Best for a party of four because everybody gets a station, and the good bit is the last person out — but it is the fiddliest to explain at the table.\n\nAND WHAT THE SEAM OPENS ONTO: the face, warm wind, the enormous space, a ledge road going down toward roofs, and the floating mass hanging out there unreachable. See the LAYOUT field.",
         "memory": "JOBY'S, AND IT REPLACES AN EARLIER IDEA THAT IS DEAD. (The dead one: place-names not sticking unless written down. Cut — do not revive it.)\n\nTHE RULE: every entry into the Fold carries a POSSIBILITY of some sort of memory effect. Not guaranteed, not uniform, and not the same effect twice.\n\nWHAT HE WANTS ON THE FIRST ENTRY, specifically:\n· ONE PLAYER LOSES THEIR ENTIRE MEMORY. They keep their essential abilities and skills and nothing else. They know how to do what they can do and they do not know who they are.\n· ANOTHER PLAYER REMEMBERS SOMETHING FROM THEIR PAST THEY DID NOT KNOW THEY HAD FORGOTTEN. It is absolutely a memory — it has the weight and the detail of one — and it comes with an uneasy certainty that they never actually lived it.\n\nWHY IT FITS THE WORLD, and this is the thing that makes it more than a stunt: the bible already says the Folding took memory, that a memory is a thread from a person to a place, and that the folding creased those threads shut along with everything else. The Fold is full of other people's threads. Somebody standing inside it losing their own, or picking up one that was never theirs, is the setting doing exactly what the setting is.\n\n⚠ NOT YET DESIGNED: how it is chosen (rolled, picked, volunteered), whether it wears off, whether the recovered memory is true, and what a player does at the table for an evening with no past. All Joby's.",
         "ship": "JOBY'S: there is a SHIP that carries them around inside the Fold, docked in a HOLDING BAY near one of their entries. It is found on a later entry — the first entry is the rescue — and it is what really opens the Fold up as somewhere to adventure in.\n\n⚠ THE PROBLEM TO SOLVE FIRST, and it is load-bearing: the bible says only two things navigate the Snarl, the Armature and the Compass Spirit, and everyone else who went in wandered until they stopped. A ship that sails it contradicts that outright unless it is answered.\n\nTHE ANSWER PROPOSED IN THE BRAINSTORM: IT DOES NOT NAVIGATE, IT RUNS A ROUTE. It goes where its line goes and cannot deviate, like a funicular. The party gets access rather than freedom, new destinations become things they have to earn, and the rule survives untouched.\n\nTHE IMAGE, proposed: it does not look like a ship. It looks like a BUILDING THAT HAS COME LOOSE — a room you get into, with the door shut and the windows showing somewhere else by the time it opens. Refuse the wooden galleon.\n\nAND THE BAY IS WHERE THE HISTORY GOES: not a ship, but TWELVE BERTHS AND ONE SHIP LEFT. That single image says there was a service, it ran, it stopped, and somebody used to be here, with no exposition at all.",
         "tower": "JOBY'S: a wizard's tower that was FOLDED AWAY, stayed in use for a long time afterward, and has since been abandoned. Creatures in the zones have been getting sunsalt and worked things out of it, peacefully or otherwise. It sits on or in the mountain-sized substructure in the first great space, and it is where the party learns THE PART OF THE MECHANISM THEY ARE MISSING — the reason [[enc-ganny|the object]] will not work in their hands.\n\n⚠ THE PACING FLAG THAT MATTERS MOST HERE: DO NOT SPEND THE TOWER ON THE RESCUE TRIP. It is the answer to the object in their pocket, and walking into it while fetching the five burns that mystery in one evening. Let them SEE it on the first entry — it should be impossible not to see — and not reach it. Then the trip after has two destinations, the tower and the bay.\n\nCANDIDATE, tidy and therefore suspicious, and entirely Joby's: the tower's people built the line the ship runs on, which would explain the berths, the object the goblins carry, and why creatures living along the route have salt and worked things.",
@@ -2845,6 +2845,308 @@ window.DM_CAMPAIGN = {
         "ask": "THE RULE: if it crossed a road, came down a tower, or happened where somebody was standing, it is in here. A writ gets it looked up. There is no roll — the answer is a clerk, a ladder, and a wait.\n\nWHAT IT WILL ANSWER\n· What crossed a given road on a given day, and who was on the gate.\n· Who was standing nearby when something happened, because faces get written down.\n· What came down out of a Reactor, in what quantity, signed for by whom.\n· Where a wagon went, if it went by road.\n· Who lives at an address, who used to, and when that changed.\n\nWHAT IT WILL NOT ANSWER, and always for the same reason — not secrecy, but that it was never written down here\n· Anything that happened inside a crease.\n· Anything the order did on its own account. The Surveyors do not file with the Registry; the Registry files for them.\n· Anything a Rector has marked, which a clerk will tell them plainly and without embarrassment.\n\nWHAT IT COSTS: nothing, and a wait, and a line in a ledger with their names on it.",
         "hidden": "[[npc-tobin|TOBIN FILES HERE NIGHTLY]], to an office upstairs that [[npc-wenna|Wenna]] has never dealt with and does not know exists. He is honest in both directions and that is the whole of the problem.\n\n⚠ OPEN, AND WORTH DECIDING BEFORE THE PARTY EVER COMES LOOKING: who reads those filings. [[unans-index|THE BOARD]] refers to a clerk at a third desk who is deliberately kept offstage. Whether that clerk is a person, a post, or a Surveyor wearing a coat is not settled.\n\nTHE THREE REMOVED PAGES from the [[loc-ossuary|Keystone]]'s register would have been copied here, because everything is. Nobody has thought to look."
       }
+    },
+    {
+      "schema": 1,
+      "id": "f-town",
+      "type": "folder",
+      "title": "THE TOWN ON THE FACE — the rescue",
+      "parent": "act1",
+      "order": 27,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "fold",
+        "town"
+      ],
+      "leadsTo": [],
+      "fields": {},
+      "body": ""
+    },
+    {
+      "schema": 1,
+      "id": "sc-town",
+      "type": "scene",
+      "title": "▶ RUN THESE IN ORDER — the town on the face",
+      "parent": "f-town",
+      "order": 10,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "fold",
+        "town",
+        "rescue",
+        "index"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "order",
+          "▶ The terraces, bottom to top"
+        ],
+        [
+          "setting",
+          "The lie of the land"
+        ],
+        [
+          "before",
+          "Before you start"
+        ],
+        [
+          "ways",
+          "Getting in, and getting out"
+        ],
+        [
+          "after",
+          "Where it leaves them"
+        ]
+      ],
+      "fields": {
+        "order": "1. [[t-gate|The lowest gate]] · 4 goblins and a gong, where the ledge road ends\n2. [[t-kennels|The kennels]] · 3 crease-wolves and 2 keepers, let out on the alarm\n3. [[t-mess|The mess]] · the old square, about 15 goblins, loud and cowardly\n4. [[t-hoist|The hoist]] · a treadwheel crane walked by a tear-ogre\n5. [[t-cistern|The cistern]] · four of the Lastlight five, under [[cr-hatch-toad|the hatch-toad]]\n6. [[t-top|The top terrace]] · under the tower; Finch was taken up there, and nobody goes up this trip",
+        "setting": "THE TOWN WAS BUILT FOR PEOPLE, which makes it the first thing in the Fold that is the right size: human doors, human stairs, window boxes gone wild. The goblins have cut a goblin-sized door into the bottom of every human door, like a cat flap, and that tells anyone at a glance who lives here now. It also means Jef and Mordrin are small enough to go where the goblins go.\n\nThe terraces climb the face and are joined by stairs, ladders, rope bridges and one great hoist. There is no day or night in the Fold and the light is the same soft, sourceless glow as everywhere else, so the goblins keep their own rhythm with a gong, eating and sleeping in shifts.",
+        "before": "THE NUMBERS. About 26 goblins in all, 3 crease-wolves, 1 tear-ogre and the hatch-toad, spread across the terraces, so the party never meets all of them at once. Goblins are frightened of everything (canon from Ganny's cellar), so noise, light and anything big will scatter them.\n\nTHE ALARM. Once the gong or a horn sounds, 1d4+2 goblins arrive each round for three rounds, and then the kennels are opened. The town is already uneasy, because the convoy's horn was answered and the convoy never arrived.\n\nTHE FOUR FROM THE CONVOY wait in the slot doorway the party came out of, which is safe. Bram insists on coming along and Annis flatly refuses.",
+        "ways": "IN, three ways, and the table picks.\n· THE DELIVERY. Heroes ride in the convoy's cages and the ogre walks them through the gate. This works only if the ogre was turned, and it gets them in quietly.\n· THE SMALL DOOR. Jef and Mordrin slip in through the goblin flaps, and Mordrin's illusions buy time.\n· THE FRONT GATE. A straight fight at the gatehouse, which gives Jef something to hit.\n\nOUT IS WHERE THE BIG FIGHT IS. The alarm goes, the kennels open, and the party retreats down the ledge road with four rescued people. Two shortcuts down are available: the goblins' rubbish chute, which runs down the face like a slide, and the hoist basket.",
+        "after": "Back at the slot doorway with however many they got out, and without Finch, who was taken up to the top terrace before they arrived. The tower is above them and still out of reach, and they now know that the boy everyone came for is somewhere up there."
+      },
+      "body": "HOW TO RUN IT. This is a rescue, and the party will probably have to fight its way in, out, or both. Draw the face for them as a stack of six terraces with the tower on top, because a child takes in the whole job from that drawing at once.\n\nTHE TURN IS IN THE CISTERN. They reach the Lastlight prisoners and find four, and the four say the goblins came down for the boy and took him up. Let that land before anybody starts hauling.\n\n⚠ WHAT IS JOBY'S AND WHAT IS FILLED IN. Joby's (2026-11-04): a rescue that is fought in or out or both; the town as pitched, with the goblin doors, the six terraces, the cistern and the hatch-toad; and Finch not in the cistern but taken up toward the tower. Filled in, and his to change: the numbers on each terrace, the alarm rule, the toad's stats, and the four from the convoy waiting in the doorway. STILL OPEN: the names of the other four of the Lastlight five; whether the town was swallowed at the Folding or built by the tower's people; what is on the top terrace; and what happens to Finch up there."
+    },
+    {
+      "schema": 1,
+      "id": "t-gate",
+      "type": "location",
+      "title": "1 — The lowest gate",
+      "parent": "f-town",
+      "order": 20,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "fold",
+        "town",
+        "rescue"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "who_is_here",
+          "Who is here"
+        ],
+        [
+          "use",
+          "What can be used"
+        ]
+      ],
+      "fields": {
+        "looks": "The ledge road runs into a stone gatehouse built for people, with a heavy human gate and a goblin flap cut into the bottom of it. A gong hangs in the arch.",
+        "who_is_here": "4 [[cr-snatch-goblin|snatch-goblins]] on the gate. They are expecting the convoy, it is late, and they are watching the road.",
+        "use": "THE GONG is the alarm, so a goblin that reaches it brings the town. Get to it first, or muffle it. THE GOBLIN FLAP lets a Small hero through without opening the gate."
+      },
+      "body": "Where the party arrives, whichever way they come in."
+    },
+    {
+      "schema": 1,
+      "id": "t-kennels",
+      "type": "location",
+      "title": "2 — The kennels",
+      "parent": "f-town",
+      "order": 30,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "fold",
+        "town",
+        "rescue"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "who_is_here",
+          "Who is here"
+        ],
+        [
+          "use",
+          "What can be used"
+        ]
+      ],
+      "fields": {
+        "looks": "A row of human stables on the second terrace, turned into kennels. Everything smells of wet dog, and the wolves pace in a way that looks flat when they turn.",
+        "who_is_here": "3 [[cr-crease-wolf|crease-wolves]] in the pens and 2 goblin keepers.",
+        "use": "THE PENS are shut until the alarm, and then the keepers open them. A party that gets here first can bar the gate on the wolves and take them out of the fight entirely."
+      },
+      "body": "The town's reserve. Once the alarm has sounded and three rounds have passed, the wolves are loose."
+    },
+    {
+      "schema": 1,
+      "id": "t-mess",
+      "type": "location",
+      "title": "3 — The mess",
+      "parent": "f-town",
+      "order": 40,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "fold",
+        "town",
+        "rescue"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "who_is_here",
+          "Who is here"
+        ],
+        [
+          "use",
+          "What can be used"
+        ]
+      ],
+      "fields": {
+        "looks": "The old town square, with a dry fountain and long tables dragged out of the houses. Goblins are eating, squabbling and gambling with stolen buttons.",
+        "who_is_here": "About 15 [[cr-snatch-goblin|snatch-goblins]], and most of them are not fighters. They are off shift and nobody is in charge.",
+        "use": "IT IS THE LOUDEST PLACE IN TOWN and the easiest to throw into chaos. A Silent Image of something big, a roar, a flash of light or a table kicked over will empty the square in every direction, which is also a very good distraction for whatever the rest of the party is doing."
+      },
+      "body": "Most of the town's numbers are here, and most of them would rather run than fight."
+    },
+    {
+      "schema": 1,
+      "id": "t-hoist",
+      "type": "location",
+      "title": "4 — The hoist",
+      "parent": "f-town",
+      "order": 50,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "fold",
+        "town",
+        "rescue"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "who_is_here",
+          "Who is here"
+        ],
+        [
+          "use",
+          "What can be used"
+        ]
+      ],
+      "fields": {
+        "looks": "A great wooden treadwheel crane on the fourth terrace, hauling baskets of goods up and down between the terraces. A tear-ogre walks inside the wheel.",
+        "who_is_here": "1 [[cr-tear-ogre|tear-ogre]] in the wheel and 2 goblins with goads minding it.",
+        "use": "THE BASKET goes up or down the whole face, and kids will want to ride it. THE OGRE hates its handlers, like the one on the convoy, and a hero who gets the goblins off it may find it stops walking and sits down. If it is let loose in a fight, it goes for the goblins first."
+      },
+      "body": "The quick way between terraces, and the slow way if the ogre is angry."
+    },
+    {
+      "schema": 1,
+      "id": "t-cistern",
+      "type": "location",
+      "title": "5 — The cistern",
+      "parent": "f-town",
+      "order": 60,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "fold",
+        "town",
+        "rescue"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "who_is_here",
+          "Who is here"
+        ],
+        [
+          "use",
+          "What can be used"
+        ]
+      ],
+      "fields": {
+        "looks": "A dry, bell-shaped water tank cut into the rock, thirty feet deep, with a single hatch in the top. Food goes down to the prisoners in a bucket on a rope.",
+        "who_is_here": "4 of the Lastlight five at the bottom, cold and frightened and unhurt. 3 goblin guards, and [[cr-hatch-toad|the hatch-toad]], which the goblins feed so that it will sit on the hatch.\n\nFINCH IS NOT HERE. The four say the goblins came down for the boy and took him up.",
+        "use": "THE LID IS A TOAD, so the toad has to be moved before the hatch can be opened (see its sheet). THE BUCKET ROPE is how the prisoners come up: hauling five people up thirty feet is a teamwork job, and Bram's strength pays off here if he came along."
+      },
+      "body": "The rescue itself. Moving the toad is the puzzle, the guards are the fight, and the hauling is the clock if the alarm has gone."
+    },
+    {
+      "schema": 1,
+      "id": "t-top",
+      "type": "location",
+      "title": "6 — The top terrace",
+      "parent": "f-town",
+      "order": 70,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "fold",
+        "town",
+        "rescue"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "who_is_here",
+          "Who is here"
+        ],
+        [
+          "use",
+          "What can be used"
+        ]
+      ],
+      "fields": {
+        "looks": "The last terrace, right under the tower. It is quiet and closed, and the goblins will not go up there.",
+        "who_is_here": "⚠ OPEN, JOBY'S. Finch was taken up here, and what is up here with him is not decided.",
+        "use": "THE PATROL'S STAIR, the one on the slate, passes above the town on the face and is the way to the tower for later. Nobody goes up this trip."
+      },
+      "body": "Seen and not reached. The tower stays out of reach on this trip."
+    },
+    {
+      "schema": 1,
+      "id": "cr-hatch-toad",
+      "type": "creature",
+      "title": "Hatch-toad",
+      "parent": "f-monsters",
+      "order": 50,
+      "rev": 1,
+      "tags": [
+        "fold",
+        "heavy"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hp": "40",
+        "ac": "11",
+        "speed": "20 feet, and it would rather not",
+        "attack": "+4 to hit, 1d10+2 damage (bite), or its tongue from 15 feet away",
+        "trick": "The Gulp: its tongue grabs a goblin or a Small hero from 15 feet away, pulls them in, and swallows them whole. Inside it is slimy and dark, and they take 1d4 each round. Any hit of 10 or more on the toad makes it spit them out, slimy and furious."
+      },
+      "body": "An enormous toad that is mostly asleep, kept by the goblins to sit on the hatch of [[t-cistern|the cistern]]. They feed it so that it stays put, and the lid of the prison is a toad.\n\nMOVING IT is the puzzle, and there are three ways. Feed it from somewhere else and it waddles over. Wake it and make it chase something. Or shove it, which takes two heroes beating 15 with Strength together.\n\n(SRD giant toad chassis, reworded and reskinned.) ⚠ Filled in: the stats and the three ways to move it."
     }
   ]
 };

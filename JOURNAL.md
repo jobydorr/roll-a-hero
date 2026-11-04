@@ -4,6 +4,24 @@
 
 ---
 
+## 2026-11-04 — the town on the face
+
+### In brief
+
+Prep continued for the game that opens mid-fight on the face. The patrol is not the band that raided Ganny's cellar, because that band is dead, and Joby has dropped the patrol's interest in Ganny's object as one more thing to track. The town below the tower is now built in the OS as a rescue, and Finch is not where the other prisoners are.
+
+### Rulings in this entry
+
+There is no day and night in the Fold, and the light there comes diffusely from everywhere and nowhere, as a soft and eerie glow with no visible source. Nothing inside the Fold can therefore run on time of day.
+
+The town clings to the face of the great space and is held by goblins, and the party's visit is a rescue that will probably be fought in, out, or both. Four of the five taken at Lastlight are kept in a dry cistern whose hatch is sat on by an enormous toad. Finch is not with them, because the goblins took him up to the top terrace beneath the tower, and what happens to him there is undecided.
+
+### Still being brainstormed
+
+Joby is considering whether the tower is where the extraction ritual takes place, and he does not think that would be too early a reveal. He also wants more kinds of creature in the town, so that the table does not tire of goblins, ogres and wolves, and Sam's lost memory still needs something in play that it touches.
+
+---
+
 ## 2026-11-03 — into the Fold, and stopped mid-fight
 
 ### In brief
