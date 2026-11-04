@@ -2870,7 +2870,7 @@ window.DM_CAMPAIGN = {
       "title": "▶ RUN THESE IN ORDER — the town on the face",
       "parent": "f-town",
       "order": 10,
-      "rev": 3,
+      "rev": 4,
       "tags": [
         "act1",
         "fold",
@@ -2902,9 +2902,9 @@ window.DM_CAMPAIGN = {
         ]
       ],
       "fields": {
-        "order": "1. [[t-gate|The lowest gate]] · 4 goblins and a gong, where the ledge road ends\n2. [[t-kennels|The kennels]] · 3 crease-wolves and 2 keepers, let out on the alarm\n3. [[t-mess|The mess]] · the old square, about 15 goblins, loud and cowardly, and [[cr-house-crab|the house-crab]] being bullied out of its home\n4. [[t-hoist|The hoist]] · a treadwheel crane walked by a tear-ogre\n5. [[t-cistern|The cistern]] · four of the Lastlight five, under [[cr-hatch-toad|the hatch-toad]]\n6. [[t-top|The top terrace]] · under the tower; Finch was taken up there, and nobody goes up this trip",
+        "order": "1. [[t-gate|The lowest gate]] · 4 goblins and a gong, where the ledge road ends\n2. [[t-kennels|The kennels]] · 3 crease-wolves and 2 keepers, let out on the alarm\n3. [[t-mess|The mess]] · the old square, about 15 goblins, loud and cowardly, and [[cr-house-crab|the house-crab]] being bullied out of its home\n4. [[t-hoist|The hoist]] · a treadwheel crane walked by a tear-ogre, with [[cr-cliff-rook|the rooks]] and [[cr-old-rook|the old rook]] on the roofs above it\n5. [[t-cistern|The cistern]] · four of the Lastlight five, under [[cr-hatch-toad|the hatch-toad]]\n6. [[t-top|The top terrace]] · under the tower; Finch was taken up there, and nobody goes up this trip",
         "setting": "THE TOWN WAS BUILT FOR PEOPLE, which makes it the first thing in the Fold that is the right size: human doors, human stairs, window boxes gone wild. The goblins have cut a goblin-sized door into the bottom of every human door, like a cat flap, and that tells anyone at a glance who lives here now. It also means Jef and Mordrin are small enough to go where the goblins go.\n\nThe terraces climb the face and are joined by stairs, ladders, rope bridges and one great hoist. There is no day or night in the Fold and the light is the same soft, sourceless glow as everywhere else, so the goblins keep their own rhythm with a gong, eating and sleeping in shifts.",
-        "before": "THE NUMBERS. About 26 goblins in all, 3 crease-wolves, 1 tear-ogre, the hatch-toad and [[cr-house-crab|the house-crab]], spread across the terraces, so the party never meets all of them at once. Goblins are frightened of everything (canon from Ganny's cellar), so noise, light and anything big will scatter them.\n\nTHE ALARM. Once the gong or a horn sounds, 1d4+2 goblins arrive each round for three rounds, and then the kennels are opened. The town is already uneasy, because the convoy's horn was answered and the convoy never arrived.\n\nTHE FOUR FROM THE CONVOY wait in the slot doorway the party came out of, which is safe. [[npc-bram|Bram]] insists on coming along and [[npc-annis|Annis]] flatly refuses.",
+        "before": "THE NUMBERS. About 26 goblins in all, 3 crease-wolves, 1 tear-ogre, the hatch-toad, [[cr-house-crab|the house-crab]], and 6 [[cr-cliff-rook|cliff-rooks]] with [[cr-old-rook|the old rook]] on the roofs, spread across the terraces, so the party never meets all of them at once. Goblins are frightened of everything (canon from Ganny's cellar), so noise, light and anything big will scatter them.\n\nTHE ALARM. Once the gong or a horn sounds, 1d4+2 goblins arrive each round for three rounds, and then the kennels are opened. The town is already uneasy, because the convoy's horn was answered and the convoy never arrived.\n\nTHE FOUR FROM THE CONVOY wait in the slot doorway the party came out of, which is safe. [[npc-bram|Bram]] insists on coming along and [[npc-annis|Annis]] flatly refuses.",
         "ways": "IN, three ways, and the table picks.\n· THE DELIVERY. Heroes ride in the convoy's cages and the ogre walks them through the gate. This works only if the ogre was turned, and it gets them in quietly.\n· THE SMALL DOOR. Jef and Mordrin slip in through the goblin flaps, and Mordrin's illusions buy time.\n· THE FRONT GATE. A straight fight at the gatehouse, which gives Jef something to hit.\n\nOUT IS WHERE THE BIG FIGHT IS. The alarm goes, the kennels open, and the party retreats down the ledge road with four rescued people. Two shortcuts down are available: the goblins' rubbish chute, which runs down the face like a slide, and the hoist basket.",
         "after": "Back at the slot doorway with however many they got out, and without Finch, who was taken up to the top terrace before they arrived. The tower is above them and still out of reach, and they now know that the boy everyone came for is somewhere up there."
       },
@@ -3025,7 +3025,7 @@ window.DM_CAMPAIGN = {
       "title": "4 — The hoist",
       "parent": "f-town",
       "order": 50,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "fold",
@@ -3049,8 +3049,8 @@ window.DM_CAMPAIGN = {
       ],
       "fields": {
         "looks": "A great wooden treadwheel crane on the fourth terrace, hauling baskets of goods up and down between the terraces. A tear-ogre walks inside the wheel.",
-        "who_is_here": "1 [[cr-tear-ogre|tear-ogre]] in the wheel and 2 goblins with goads minding it.",
-        "use": "THE BASKET goes up or down the whole face, and kids will want to ride it. THE OGRE hates its handlers, like the one on the convoy, and a hero who gets the goblins off it may find it stops walking and sits down. If it is let loose in a fight, it goes for the goblins first."
+        "who_is_here": "1 [[cr-tear-ogre|tear-ogre]] in the wheel and 2 goblins with goads minding it.\n\nON THE ROOFS ABOVE, 6 [[cr-cliff-rook|cliff-rooks]] and [[cr-old-rook|the old rook]], which dive at anybody on the rope bridges or in the basket, goblins included.",
+        "use": "THE BASKET goes up or down the whole face, and kids will want to ride it. It also reaches the old rook's nest on the tallest roof, which holds the rooks' hoard. THE OGRE hates its handlers, like the one on the convoy, and a hero who gets the goblins off it may find it stops walking and sits down. If it is let loose in a fight, it goes for the goblins first."
       },
       "body": "The quick way between terraces, and the slow way if the ogre is angry."
     },
@@ -3270,6 +3270,53 @@ window.DM_CAMPAIGN = {
         "trick": "Shut in: when it is hurt, it pulls into the cottage and slams the shutters. Its AC becomes 18 and it does not attack, and it stays shut in until the party backs off. Its mood shows at the chimney: a stream of bubbles when it is happy, and slammed shutters when it is angry."
       },
       "body": "A giant hermit crab that lived in [[sc-town|the town]] before the goblins came, and that took a cottage for its shell. It has outgrown the cottage, so its legs bulge out of the windows and the chimney sits crooked. Hermit crabs move into a bigger shell as they grow, but every bigger house is full of goblins, and they drive it off with goads whenever it tries to squeeze into one.\n\nMAKE IT A FRIEND QUICKLY, because the kids must see within a minute that this is not a fight. The first time the party sees it, goblins are poking it with goads while it tries to get into a house. Its cottage is the only door in town with no goblin flap cut into it, because the goblins do not go near it. And say the bubbles out loud the first time it is pleased: \"a stream of bubbles comes out of the chimney.\"\n\nWHAT WINS IT OVER IS A BIGGER HOUSE, and the biggest building in town is [[t-gate|the gatehouse]]. Clear the gate goblins, on the way in or the way out, and the crab moves in, which in the fight out puts it squarely in the gateway and stops the pursuit behind the party. A table slower to catch on can win it by chasing off the goblins with the goads, which earns bubbles.\n\nIF THEY ATTACK IT, the fight should feel like a mistake at once. It shuts itself in and waits them out, and it stops the moment they back off. Killing it is slow and pointless, and the table should learn that quickly.\n\nAS A FRIEND it can do one of two things: carry everyone down the face inside its house, or block a lane in the fight out.\n\nTHE LOOT IS IN THE COTTAGE IT LEAVES BEHIND, so the party gets it only by befriending the crab. When it moves into the gatehouse, the old cottage is empty, and wedged in the back of it is the jug that has been keeping the crab wet in a dry town: a DECANTER OF ENDLESS WATER. Say a word and it pours a splash, a fountain, or a geyser that knocks someone down if they fail to beat 13 with Strength. Kids will find twenty uses for it, starting with the toad.\n\n⚠ JOBY'S (2026-11-04): the crab itself, its outgrown cottage and the goblins bullying it, its loot, and the friend-or-enemy choice being plain to the table quickly. Filled in, and his to change: the stats, the bubbles, the gatehouse as the house it wants, and the decanter as the loot. (Hermit crab reskinned; decanter from the SRD.)"
+    },
+    {
+      "schema": 1,
+      "id": "cr-cliff-rook",
+      "type": "creature",
+      "title": "Cliff-rook",
+      "parent": "f-monsters",
+      "order": 70,
+      "rev": 1,
+      "tags": [
+        "fold",
+        "town",
+        "flying"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hp": "7",
+        "ac": "12",
+        "speed": "10 feet, flying 50 feet",
+        "attack": "+4 to hit, 1d4+2 damage (beak)",
+        "trick": "The Dive: if it flies at least 20 feet straight at its target before attacking, a hero it hits beats 12 with Dexterity or is knocked down. A hero knocked down on a rope bridge or at a ledge's edge goes over, lands on the terrace below, and takes 1d6."
+      },
+      "body": "Big black birds that nest on the rooftops of [[sc-town|the town]], above [[t-hoist|the hoist]] and the rope bridges. They belong to nobody, the goblins keep off the roofs because of them, and they dive at anything on a bridge or in the hoist basket, goblins included.\n\nLIKE ALL CORVIDS THEY STEAL SHINY THINGS, and the stolen buttons the goblins gamble with in the mess are the ones the rooks have not got yet. Their hoard is in [[cr-old-rook|the old rook]]'s nest.\n\nA FLOCK IS SIX. They make the fight out a scramble across the bridges, and noise or a sudden flash scatters them for a round.\n\n(SRD blood hawk chassis, reworded and reskinned.) ⚠ Filled in, and Joby's to change: the stats, the flock of six, and the Dive."
+    },
+    {
+      "schema": 1,
+      "id": "cr-old-rook",
+      "type": "creature",
+      "title": "The old rook — the one the flock follows",
+      "parent": "f-monsters",
+      "order": 80,
+      "rev": 1,
+      "tags": [
+        "fold",
+        "town",
+        "flying",
+        "boss"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hp": "30",
+        "ac": "13",
+        "speed": "10 feet, flying 40 feet",
+        "attack": "+5 to hit, 2d6+2 damage (beak)",
+        "trick": "The Lift: instead of biting, it grabs a Small hero in its talons and flies 30 feet with them. Any hit on it makes it drop them, onto whatever is below, for 1d6 if that is the next terrace down. The Caw: once a fight, every rook in the flock attacks the same hero this round."
+      },
+      "body": "A rook the size of a cart pony, ragged, white about the beak, and wearing a goblin's button on a string round its neck as though it were a medal. It leads [[cr-cliff-rook|the flock]] and it nests on the tallest roof above [[t-hoist|the hoist]], where the party can reach it by climbing or by riding the hoist basket up.\n\nIT IS A MINI-BOSS FOR THE FIGHT OUT, and it goes for the smallest hero first, the same as the goblins do. Bring it down and the flock scatters.\n\nTHE NEST IS THE LOOT, a heap of everything shiny the flock has stolen.\n• A BRASS SPYGLASS, the best thing in it. It is a long way to the top terrace and the tower, and through this they can see much more of both than with the naked eye. ⚠ What they see through it is Joby's.\n• A double handful of goblins' buttons, a few coins, and a spoon.\n• THREE ROOK'S EGGS, speckled blue-black. Eat one raw, which the kids will think is disgusting, and for one hour you fall as slowly as a feather and can glide 30 feet out for every 10 feet you drop. On a town built down a cliff, that is a way down nobody else has.\n\n⚠ JOBY'S (2026-11-04): the rooks as a creature to fight, a mini-boss rook, loot in the nest, and eggs that give a power-up when eaten. Filled in, and his to change: the stats, the Lift and the Caw, the button medal, the spyglass, the other loot, and the eggs' gliding effect. (SRD giant vulture chassis, reworded and reskinned.)"
     }
   ]
 };
