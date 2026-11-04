@@ -1723,7 +1723,7 @@ window.DM_CAMPAIGN = {
       "title": "Finch — the lamplighter",
       "parent": "f-npcs",
       "order": 30,
-      "rev": 5,
+      "rev": 6,
       "tags": [
         "act1",
         "taken"
@@ -1735,7 +1735,7 @@ window.DM_CAMPAIGN = {
         "voice": "Not yet — he is the face at the top of the rescue list, and for a whole day he is not even a name.",
         "secret": "⚠ THE PARTY DOES NOT LEARN HIS NAME UNTIL HIS MOTHER SAYS IT. He is never named at the ceremony, never named in the dust, and never named by any official in the Set Square, because the ministry counts to five and does not distinguish among them. His name reaches the table for the first time in [[b-comm-6|the last beat of THE COMMISSION]], on a step outside, from [[npc-sela|Sela Orrin]], after they watched him be taken. Keep it off the table until then; the whole scene is built on it.\n\nHe is not declared anything, and that is the point. He is one of five, in a number the ministry settles on by evening, and no official says his name in the party's hearing at any stage. In truth the first monster through the tear carried him off alive, best shirt, glass reliquary and all, in front of ten thousand people."
       },
-      "body": "Chosen by lottery to set the reliquary of the Cinder Draw's last crust into the Hearthspire's offering chamber. The tear ripped down the tower's face to the chamber; he outran the falling clock tower by a step and was taken by the first thing through. The party watched it happen, which makes them witnesses to something the state has since reduced to arithmetic.\n\nHis mother is [[npc-sela|Sela Orrin]] and his younger brother is Rab, five, who gives the party a paper bird in [[b-comm-6|the last beat of THE COMMISSION]]. Appears in: [[f-lastlight|LASTLIGHT]] (unnamed) and [[f-commission|THE COMMISSION]] (named, once, by his mother)."
+      "body": "Chosen by lottery to set the reliquary of the Cinder Draw's last crust into the Hearthspire's offering chamber. The tear ripped down the tower's face to the chamber; he outran the falling clock tower by a step and was taken by the first thing through. The party watched it happen, which makes them witnesses to something the state has since reduced to arithmetic.\n\nHis mother is [[npc-sela|Sela Orrin]] and his younger brother is Rab, five, who gives the party a paper bird in [[b-comm-6|the last beat of THE COMMISSION]]. Appears in: [[f-lastlight|LASTLIGHT]] (unnamed) and [[f-commission|THE COMMISSION]] (named, once, by his mother).\n\nIN THE FOLD (Joby, 2026-11-04): he was held in [[t-cistern|the cistern]] in [[sc-town|the town on the face]] with the other four, and then the goblins came down for him and took him up to [[t-top|the top terrace]], toward the tower. He is not there when the party arrives. [[npc-tamsin|Tamsin Brede]] watched them take him and counted the steps. ⚠ What happens to him up there is still open."
     },
     {
       "schema": 1,
@@ -3071,7 +3071,7 @@ window.DM_CAMPAIGN = {
       "title": "5 — The cistern",
       "parent": "f-town",
       "order": 60,
-      "rev": 2,
+      "rev": 3,
       "tags": [
         "act1",
         "fold",
@@ -3095,7 +3095,7 @@ window.DM_CAMPAIGN = {
       ],
       "fields": {
         "looks": "A dry, bell-shaped water tank cut into the rock, thirty feet deep, with a single hatch in the top. Food goes down to the prisoners in a bucket on a rope.",
-        "who_is_here": "4 of the Lastlight five at the bottom, cold and frightened and unhurt. 3 goblin guards, and [[cr-hatch-toad|the hatch-toad]], which the goblins feed so that it will sit on the hatch.\n\nFINCH IS NOT HERE. The four say the goblins came down for the boy and took him up.",
+        "who_is_here": "4 of the Lastlight five at the bottom, cold and frightened and unhurt: [[npc-tamsin|Tamsin Brede]], [[npc-pell|Pell Skell]], [[npc-ivy|Ivy Pyle]] and [[npc-ivo|Ivo Ganty]]. 3 goblin guards, and [[cr-hatch-toad|the hatch-toad]], which the goblins feed so that it will sit on the hatch.\n\nFINCH IS NOT HERE. The four say the goblins came down for the boy and took him up.",
         "use": "THE LID IS A TOAD, so the toad has to be moved before the hatch can be opened (see its sheet). THE BUCKET ROPE is how the prisoners come up: hauling five people up thirty feet is a teamwork job, and [[npc-bram|Bram]]'s strength pays off here if he came along."
       },
       "body": "The rescue itself. Moving the toad is the puzzle, the guards are the fight, and the hauling is the clock if the alarm has gone."
@@ -3427,6 +3427,106 @@ window.DM_CAMPAIGN = {
         "about": "The handout. It shows only what can be seen from the ledge, so it has no numbers, no prisoners, no counts and nothing hidden. Open it full size to print it or put it on a screen.\n\nThe DM version is [[map-town-side|here]]."
       },
       "body": ""
+    },
+    {
+      "schema": 1,
+      "id": "npc-tamsin",
+      "type": "npc",
+      "title": "Tamsin Brede — the girl who nearly lit the lamp",
+      "parent": "f-npcs",
+      "order": 140,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "taken",
+        "fold",
+        "rescued",
+        "kid"
+      ],
+      "leadsTo": [],
+      "fieldDefs": null,
+      "body": "One of the five taken at Lastlight, and one of the four the party finds in [[t-cistern|the cistern]] in [[sc-town|the town on the face]]. Still in festival clothes, cold, frightened and unhurt. She is eleven, and she is the one the kids at the table will care about first.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the name and everything on this sheet. The bible's design for the Lastlight fight had each hero see one person carried into the tear beyond their help. If anybody was described at the table that night, that person wins, and this sheet should be matched to them.",
+      "fields": {
+        "looks": "Eleven, in a ribbon-trimmed festival dress torn at the hem, with a lottery token still on a string round her neck.",
+        "wants": "To go after [[npc-finch|Finch]]. She will not leave the town without him, and she has to be talked round or carried.",
+        "voice": "Fierce, bossy and close to tears, and she covers the tears by giving orders.",
+        "secret": "SHE LOST THE LOTTERY TO FINCH. Her token was the runner-up for lighting the Hearthspire, and she was jealous of him all morning. In the cistern she looked after him like a big sister, and when the goblins came down for him she fought them and lost. She watched them take him up toward [[t-top|the top terrace]], and she counted the steps."
+      }
+    },
+    {
+      "schema": 1,
+      "id": "npc-pell",
+      "type": "npc",
+      "title": "Pell Skell — the pie man",
+      "parent": "f-npcs",
+      "order": 150,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "taken",
+        "fold",
+        "rescued",
+        "comedy"
+      ],
+      "leadsTo": [],
+      "fieldDefs": null,
+      "body": "One of the five taken at Lastlight, and one of the four the party finds in [[t-cistern|the cistern]] in [[sc-town|the town on the face]]. Still in festival clothes, cold, frightened and unhurt. He kept everybody in the cistern going.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the name and everything on this sheet. The bible's design for the Lastlight fight had each hero see one person carried into the tear beyond their help. If anybody was described at the table that night, that person wins, and this sheet should be matched to them.",
+      "fields": {
+        "looks": "Round and floury, with his pie tray still strapped to his front and nothing left on it.",
+        "wants": "To feed somebody. He fed the others in the cistern from his tray until it was empty, and he is worried about the toad.",
+        "voice": "Cheerful in a way that is plainly costing him, and he talks about food whenever he is frightened, which is constantly.",
+        "secret": "HE HAS BEEN FEEDING THE TOAD. He pushed crusts up through the crack of the hatch, and the toad shuffles toward the sound of a pie tray being tapped. That is one way to move [[cr-hatch-toad|the hatch-toad]], and he will tell the party if they ask how anybody gets past it."
+      }
+    },
+    {
+      "schema": 1,
+      "id": "npc-ivy",
+      "type": "npc",
+      "title": "Ivy Pyle — the carousel woman",
+      "parent": "f-npcs",
+      "order": 160,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "taken",
+        "fold",
+        "rescued",
+        "practical"
+      ],
+      "leadsTo": [],
+      "fieldDefs": null,
+      "body": "One of the five taken at Lastlight, and one of the four the party finds in [[t-cistern|the cistern]] in [[sc-town|the town on the face]]. Still in festival clothes, cold, frightened and unhurt. She is the one who can make the town's machinery work.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the name and everything on this sheet. The bible's design for the Lastlight fight had each hero see one person carried into the tear beyond their help. If anybody was described at the table that night, that person wins, and this sheet should be matched to them.",
+      "fields": {
+        "looks": "Fifty, sinewy, with grease on her festival sleeves and a spanner in her apron pocket that the goblins never thought to take.",
+        "wants": "To get back to her carousel, which she left running when the sky tore, and she is furious about it.",
+        "voice": "Short and practical, and she does not waste a word on anything she cannot fix.",
+        "secret": "SHE UNDERSTANDS GEARS. She ran the carousel at the Lastlight fair, and she can work out [[t-hoist|the treadwheel and the hoist]] at a glance: how to lock the brake, how to drop the basket fast, and how to jam the wheel so that it cannot follow them."
+      }
+    },
+    {
+      "schema": 1,
+      "id": "npc-ivo",
+      "type": "npc",
+      "title": "Ivo Ganty — the drummer",
+      "parent": "f-npcs",
+      "order": 170,
+      "rev": 1,
+      "tags": [
+        "act1",
+        "taken",
+        "fold",
+        "rescued",
+        "noise"
+      ],
+      "leadsTo": [],
+      "fieldDefs": null,
+      "body": "One of the five taken at Lastlight, and one of the four the party finds in [[t-cistern|the cistern]] in [[sc-town|the town on the face]]. Still in festival clothes, cold, frightened and unhurt. He kept time for everybody in the dark.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the name and everything on this sheet. The bible's design for the Lastlight fight had each hero see one person carried into the tear beyond their help. If anybody was described at the table that night, that person wins, and this sheet should be matched to them.",
+      "fields": {
+        "looks": "Lanky and young, in a bandsman's coat with the braid half torn off, and still holding his two drumsticks.",
+        "wants": "To be useful. He has never been in a fight and he would very much like to stay out of this one.",
+        "voice": "Quiet and polite, and he drums on whatever is nearest without noticing he is doing it.",
+        "secret": "HE IS LOUD WHEN HE WANTS TO BE, and goblins are frightened of noise. A drumroll on a gatehouse door or a cistern wall will scatter a stretch of goblins, and he can be talked into doing it at the right moment. He drummed on the cistern wall to keep the others' spirits up, which the guards hated."
+      }
     }
   ]
 };
