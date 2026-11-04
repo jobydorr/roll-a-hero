@@ -12,13 +12,17 @@
 >
 > **NPC SHEETS FOR THE CONVOY FOUR (campaign `v88`):** `npc-maud`, `npc-osric`, `npc-bram`, `npc-annis` in the NPC folder, linked from `enc-cavern` REWARD, `sc-town` and `t-cistern`. Looks, wants and voice are filled in and flagged. The other four of the Lastlight five still have no names and no sheets.
 >
+> **THE HOUSE-CRAB IS BUILT (Joby: "loving the crab 1000%", campaign `v89`):** `cr-house-crab`, placed on `t-mess` and `t-gate` and in the `sc-town` index. A giant hermit crab bullied out of its home by goblins; bubbles from the chimney mean happy; it wants the gatehouse, and moving in blocks the pursuit; attacked, it shuts in at AC 18 and waits. Its loot is a Decanter of Endless Water in the cottage it leaves behind, so befriending it is what pays. Stats, bubbles, gatehouse and decanter are filled in and flagged.
+>
+> **THE FOUNTAIN STATUE IS NOT BUILT.** Joby does not want sunsalt animating things just by being added, does not believe goblins would waste salt, and wants firm BOUNDS on what sunsalt can do so the party does not think it can do anything. Rethinking in chat.
+>
 > **STILL BRAINSTORMING with Joby (2026-11-04):** (1) Joby asks whether the TOWER is where the extraction ritual happens and thinks it is not too early. (2) He worries the table will tire of goblins, ogres and wolves; he likes the hatch-toad and wants more creatures for the town. (3) Sam's memory. Pitches are in chat; nothing is canon.
 >
 > Built 2026-11-03 (campaign `v82`–`v85`), all pushed: the game log, the four prisoners and the 5-4-3 tally, the no-execution reasons in §2, the magic-off ruling in §3, and the harder patrol with the salt-licker.
 >
 > **▶▶ START HERE — 2026-11-03, FRESH CHAT. Newest block; read this first. The 2026-10-15 block below it is the detailed reference for everything built before the game was played.**
 >
-> **STATE:** `HEAD` == `origin/main` at the time of writing; the working tree is clean apart from Joby's three untracked images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v88`, `app.js` `v26`, `data.js` `v19`, `firebase-sync.js` `v16`. Joby runs the OS from `localhost:8000`; start it with `preview_start` on the `roll-a-hero` launch config, and he reviews in his own Chrome with a hard refresh, because the pane's storage is empty.
+> **STATE:** `HEAD` == `origin/main` at the time of writing; the working tree is clean apart from Joby's three untracked images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v89`, `app.js` `v26`, `data.js` `v19`, `firebase-sync.js` `v16`. Joby runs the OS from `localhost:8000`; start it with `preview_start` on the `roll-a-hero` launch config, and he reviews in his own Chrome with a hard refresh, because the pane's storage is empty.
 >
 > **THE GAME IS LOGGED (later on 2026-11-03).** Joby's report is in the OS at `SESSION LOGS › Mordrin joins, into the Fold, the convoy fight` and in `JOURNAL.md`. In short: they met Mordrin, went in, and the memory effect struck; the players are still deciding their memories and Joby collects them before the next game. On the face they attacked the convoy first; its horn was ANSWERED by the patrol (the sheet said nobody answers). The game stopped with the convoy nearly cleared and the patrol about to arrive, so the next game opens mid-fight. "Mordrigan" was a slip; the name stays **Mordrin**.
 >

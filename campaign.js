@@ -2870,7 +2870,7 @@ window.DM_CAMPAIGN = {
       "title": "▶ RUN THESE IN ORDER — the town on the face",
       "parent": "f-town",
       "order": 10,
-      "rev": 2,
+      "rev": 3,
       "tags": [
         "act1",
         "fold",
@@ -2902,9 +2902,9 @@ window.DM_CAMPAIGN = {
         ]
       ],
       "fields": {
-        "order": "1. [[t-gate|The lowest gate]] · 4 goblins and a gong, where the ledge road ends\n2. [[t-kennels|The kennels]] · 3 crease-wolves and 2 keepers, let out on the alarm\n3. [[t-mess|The mess]] · the old square, about 15 goblins, loud and cowardly\n4. [[t-hoist|The hoist]] · a treadwheel crane walked by a tear-ogre\n5. [[t-cistern|The cistern]] · four of the Lastlight five, under [[cr-hatch-toad|the hatch-toad]]\n6. [[t-top|The top terrace]] · under the tower; Finch was taken up there, and nobody goes up this trip",
+        "order": "1. [[t-gate|The lowest gate]] · 4 goblins and a gong, where the ledge road ends\n2. [[t-kennels|The kennels]] · 3 crease-wolves and 2 keepers, let out on the alarm\n3. [[t-mess|The mess]] · the old square, about 15 goblins, loud and cowardly, and [[cr-house-crab|the house-crab]] being bullied out of its home\n4. [[t-hoist|The hoist]] · a treadwheel crane walked by a tear-ogre\n5. [[t-cistern|The cistern]] · four of the Lastlight five, under [[cr-hatch-toad|the hatch-toad]]\n6. [[t-top|The top terrace]] · under the tower; Finch was taken up there, and nobody goes up this trip",
         "setting": "THE TOWN WAS BUILT FOR PEOPLE, which makes it the first thing in the Fold that is the right size: human doors, human stairs, window boxes gone wild. The goblins have cut a goblin-sized door into the bottom of every human door, like a cat flap, and that tells anyone at a glance who lives here now. It also means Jef and Mordrin are small enough to go where the goblins go.\n\nThe terraces climb the face and are joined by stairs, ladders, rope bridges and one great hoist. There is no day or night in the Fold and the light is the same soft, sourceless glow as everywhere else, so the goblins keep their own rhythm with a gong, eating and sleeping in shifts.",
-        "before": "THE NUMBERS. About 26 goblins in all, 3 crease-wolves, 1 tear-ogre and the hatch-toad, spread across the terraces, so the party never meets all of them at once. Goblins are frightened of everything (canon from Ganny's cellar), so noise, light and anything big will scatter them.\n\nTHE ALARM. Once the gong or a horn sounds, 1d4+2 goblins arrive each round for three rounds, and then the kennels are opened. The town is already uneasy, because the convoy's horn was answered and the convoy never arrived.\n\nTHE FOUR FROM THE CONVOY wait in the slot doorway the party came out of, which is safe. [[npc-bram|Bram]] insists on coming along and [[npc-annis|Annis]] flatly refuses.",
+        "before": "THE NUMBERS. About 26 goblins in all, 3 crease-wolves, 1 tear-ogre, the hatch-toad and [[cr-house-crab|the house-crab]], spread across the terraces, so the party never meets all of them at once. Goblins are frightened of everything (canon from Ganny's cellar), so noise, light and anything big will scatter them.\n\nTHE ALARM. Once the gong or a horn sounds, 1d4+2 goblins arrive each round for three rounds, and then the kennels are opened. The town is already uneasy, because the convoy's horn was answered and the convoy never arrived.\n\nTHE FOUR FROM THE CONVOY wait in the slot doorway the party came out of, which is safe. [[npc-bram|Bram]] insists on coming along and [[npc-annis|Annis]] flatly refuses.",
         "ways": "IN, three ways, and the table picks.\n· THE DELIVERY. Heroes ride in the convoy's cages and the ogre walks them through the gate. This works only if the ogre was turned, and it gets them in quietly.\n· THE SMALL DOOR. Jef and Mordrin slip in through the goblin flaps, and Mordrin's illusions buy time.\n· THE FRONT GATE. A straight fight at the gatehouse, which gives Jef something to hit.\n\nOUT IS WHERE THE BIG FIGHT IS. The alarm goes, the kennels open, and the party retreats down the ledge road with four rescued people. Two shortcuts down are available: the goblins' rubbish chute, which runs down the face like a slide, and the hoist basket.",
         "after": "Back at the slot doorway with however many they got out, and without Finch, who was taken up to the top terrace before they arrived. The tower is above them and still out of reach, and they now know that the boy everyone came for is somewhere up there."
       },
@@ -2917,7 +2917,7 @@ window.DM_CAMPAIGN = {
       "title": "1 — The lowest gate",
       "parent": "f-town",
       "order": 20,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "fold",
@@ -2942,7 +2942,7 @@ window.DM_CAMPAIGN = {
       "fields": {
         "looks": "The ledge road runs into a stone gatehouse built for people, with a heavy human gate and a goblin flap cut into the bottom of it. A gong hangs in the arch.",
         "who_is_here": "4 [[cr-snatch-goblin|snatch-goblins]] on the gate. They are expecting the convoy, it is late, and they are watching the road.",
-        "use": "THE GONG is the alarm, so a goblin that reaches it brings the town. Get to it first, or muffle it. THE GOBLIN FLAP lets a Small hero through without opening the gate."
+        "use": "THE GONG is the alarm, so a goblin that reaches it brings the town. Get to it first, or muffle it. THE GOBLIN FLAP lets a Small hero through without opening the gate. THE GATEHOUSE ITSELF is the biggest building in town, and the house [[cr-house-crab|the house-crab]] wants: clear the goblins out and it moves in, which blocks the gate behind the party."
       },
       "body": "Where the party arrives, whichever way they come in."
     },
@@ -2989,7 +2989,7 @@ window.DM_CAMPAIGN = {
       "title": "3 — The mess",
       "parent": "f-town",
       "order": 40,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "fold",
@@ -3013,7 +3013,7 @@ window.DM_CAMPAIGN = {
       ],
       "fields": {
         "looks": "The old town square, with a dry fountain and long tables dragged out of the houses. Goblins are eating, squabbling and gambling with stolen buttons.",
-        "who_is_here": "About 15 [[cr-snatch-goblin|snatch-goblins]], and most of them are not fighters. They are off shift and nobody is in charge.",
+        "who_is_here": "About 15 [[cr-snatch-goblin|snatch-goblins]], and most of them are not fighters. They are off shift and nobody is in charge.\n\n[[cr-house-crab|THE HOUSE-CRAB]], in a cottage it has outgrown, trying to squeeze into a bigger house while goblins drive it off with goads. It is a friend waiting to happen, and its sheet says how.",
         "use": "IT IS THE LOUDEST PLACE IN TOWN and the easiest to throw into chaos. A Silent Image of something big, a roar, a flash of light or a table kicked over will empty the square in every direction, which is also a very good distraction for whatever the rest of the party is doing."
       },
       "body": "Most of the town's numbers are here, and most of them would rather run than fight."
@@ -3246,6 +3246,30 @@ window.DM_CAMPAIGN = {
         "voice": "Blunt, and she apologizes for the state of the robes as though it were her fault.",
         "secret": "SHE KNOWS SUNSALT BETTER THAN ANYONE IN THE PARTY. She can tell raw from refined by the smell, and she will not touch the goblins' pinches. She flatly refuses to go to [[sc-town|the town]].\n\n⚠ PROPOSED, NOT RULED: that she says the salt delivery smelled wrong on the morning of the tear, which would mean raw salt got into an ordinary delivery."
       }
+    },
+    {
+      "schema": 1,
+      "id": "cr-house-crab",
+      "type": "creature",
+      "title": "House-crab — the one being bullied out of its home",
+      "parent": "f-monsters",
+      "order": 60,
+      "rev": 1,
+      "tags": [
+        "fold",
+        "town",
+        "friendly",
+        "comedy"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hp": "60",
+        "ac": "14, or 18 while it is shut in",
+        "speed": "20 feet, and it climbs",
+        "attack": "Two claws, each +5 to hit, 1d8+3 damage",
+        "trick": "Shut in: when it is hurt, it pulls into the cottage and slams the shutters. Its AC becomes 18 and it does not attack, and it stays shut in until the party backs off. Its mood shows at the chimney: a stream of bubbles when it is happy, and slammed shutters when it is angry."
+      },
+      "body": "A giant hermit crab that lived in [[sc-town|the town]] before the goblins came, and that took a cottage for its shell. It has outgrown the cottage, so its legs bulge out of the windows and the chimney sits crooked. Hermit crabs move into a bigger shell as they grow, but every bigger house is full of goblins, and they drive it off with goads whenever it tries to squeeze into one.\n\nMAKE IT A FRIEND QUICKLY, because the kids must see within a minute that this is not a fight. The first time the party sees it, goblins are poking it with goads while it tries to get into a house. Its cottage is the only door in town with no goblin flap cut into it, because the goblins do not go near it. And say the bubbles out loud the first time it is pleased: \"a stream of bubbles comes out of the chimney.\"\n\nWHAT WINS IT OVER IS A BIGGER HOUSE, and the biggest building in town is [[t-gate|the gatehouse]]. Clear the gate goblins, on the way in or the way out, and the crab moves in, which in the fight out puts it squarely in the gateway and stops the pursuit behind the party. A table slower to catch on can win it by chasing off the goblins with the goads, which earns bubbles.\n\nIF THEY ATTACK IT, the fight should feel like a mistake at once. It shuts itself in and waits them out, and it stops the moment they back off. Killing it is slow and pointless, and the table should learn that quickly.\n\nAS A FRIEND it can do one of two things: carry everyone down the face inside its house, or block a lane in the fight out.\n\nTHE LOOT IS IN THE COTTAGE IT LEAVES BEHIND, so the party gets it only by befriending the crab. When it moves into the gatehouse, the old cottage is empty, and wedged in the back of it is the jug that has been keeping the crab wet in a dry town: a DECANTER OF ENDLESS WATER. Say a word and it pours a splash, a fountain, or a geyser that knocks someone down if they fail to beat 13 with Strength. Kids will find twenty uses for it, starting with the toad.\n\n⚠ JOBY'S (2026-11-04): the crab itself, its outgrown cottage and the goblins bullying it, its loot, and the friend-or-enemy choice being plain to the table quickly. Filled in, and his to change: the stats, the bubbles, the gatehouse as the house it wants, and the decanter as the loot. (Hermit crab reskinned; decanter from the SRD.)"
     }
   ]
 };
