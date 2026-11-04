@@ -2,8 +2,34 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-11-03.*
+*Last updated: 2026-11-04.*
 
+> **▶▶ TO DO WITH JOBY — 2026-11-04. The live list; work it top down.**
+>
+> **⭐ PARKED AT THE TOP, COME BACK TO IT AFTER THE REST (Joby): SAM MEETS PIECES OF HIMSELF.** Sam (Drew's hero) will encounter pieces of himself in the Fold that are literally himself, more than once. When he fights one and wins, he gets some memory back. That is all Joby has settled. Joby rejected the identity-only pitches (clean slate, taking others' word, being called another name) and also the puzzle box, the creature-knowledge roll and the ghost-reflex table. Nothing is built.
+>
+> **FOR THE NEXT GAME**
+> 1. **The tower and the top terrace.** Is the tower where the extraction happens (Joby does not think that is too early)? Pitched: an abandoned instrument that pays the goblins in raw salt for the people they deliver, so nobody is home yet. Also what is on the top terrace and what happens to Finch up there.
+> 2. **The sunsalt limits** (proposed, below). Adopt, change or drop.
+> 3. **The convoy's own object** in `enc-cavern` REWARD and LOOT. Keep it or cut it, as the patrol's was cut.
+> 4. **The goose,** still a maybe for the town.
+> 5. **The players' new memories,** which Joby collects before play, and whether Mordrin got one.
+>
+> **SMALL GAPS, ANY TIME**
+> - The bath town's name and its cover story; Annis's "the salt smelled wrong".
+> - The question Maud asked.
+> - Raw or refined salt for the ritual that restores magic.
+> - What the parade was for.
+> - Sam's animal companion.
+> - A top view of the town (the side view is built).
+>
+> **CARRIED FORWARD FROM EARLIER**
+> - The Menders rewrite, A or B.
+> - Filing `JOURNAL.md` into the OS Notebook (needs his notebook id).
+> - With Brandon: "Red Hats", his contact and cell-mate, his take on THE FOLDWRIGHT LIVES, a memory on entry, and whether the player-safe answer about the Fold was sent.
+> - The Tobin cut: 11 documents, the Act One turn, who heals, Ellum Wick.
+> - The Unfold-Rule portals made more epic; where the tally's last three knots came from; the top of the patrol's stair; the mark on the yoke; whether the blade hums near creases; the ranger starting kit; a real puzzle room later.
+>
 > **2026-11-04, RESUMED. Two of the three start-up items are settled (campaign `v86`):** the patrol is NOT Ganny's band, which is all dead; the jam jar stays, from some other raid on her cellar. Joby is dropping the patrol's interest in the object as one more thing to track, so the boss no longer wants it back, the wolf follows the party's scent because the horn called the patrol, and Unfasten just spills a pack. The boss's +1 shortsword stays as it is (Joby: it will go to a ranger or the bard). The convoy band's own object is still in REWARD and LOOT; ask whether it stays.
 >
 > **JOBY'S RULINGS ON THE FOLD, 2026-11-04 — do not build against these.** There is NO day and night in the Fold, so nothing there can run on time of day. The light comes diffusely from everywhere and nowhere: a soft, eerie glow with no visible source, which simply is (`bb-fold › arrival` corrected in `v87`). The town clings to the face of the great cavern space. It is a RESCUE: the party will probably fight its way into the town, out of it, or both. Joby rejected the "town that keeps its last day" pitch.
