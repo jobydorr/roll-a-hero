@@ -32,7 +32,7 @@
 >
 > **▶▶ START HERE — 2026-11-03, FRESH CHAT. Newest block; read this first. The 2026-10-15 block below it is the detailed reference for everything built before the game was played.**
 >
-> **STATE:** `HEAD` == `origin/main` at the time of writing; the working tree is clean apart from Joby's three untracked images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v93`, `app.js` `v26`, `data.js` `v19`, `firebase-sync.js` `v16`. Joby runs the OS from `localhost:8000`; start it with `preview_start` on the `roll-a-hero` launch config, and he reviews in his own Chrome with a hard refresh, because the pane's storage is empty.
+> **STATE:** `HEAD` == `origin/main` at the time of writing; the working tree is clean apart from Joby's three untracked images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v94`, `app.js` `v26`, `data.js` `v19`, `firebase-sync.js` `v16`. Joby runs the OS from `localhost:8000`; start it with `preview_start` on the `roll-a-hero` launch config, and he reviews in his own Chrome with a hard refresh, because the pane's storage is empty.
 >
 > **THE GAME IS LOGGED (later on 2026-11-03).** Joby's report is in the OS at `SESSION LOGS › Mordrin joins, into the Fold, the convoy fight` and in `JOURNAL.md`. In short: they met Mordrin, went in, and the memory effect struck; the players are still deciding their memories and Joby collects them before the next game. On the face they attacked the convoy first; its horn was ANSWERED by the patrol (the sheet said nobody answers). The game stopped with the convoy nearly cleared and the patrol about to arrive, so the next game opens mid-fight. "Mordrigan" was a slip; the name stays **Mordrin**.
 >
@@ -42,7 +42,7 @@
 > **THE PATROL IS BUILT (Joby's yes, 2026-11-03, campaign `v85`), on `enc-cavern` CREATURES:** the boss at HP 40 with two attacks and a bark that triggers a Snatch, and the SALT-LICKER (spit light, soften, unfasten; three pinches; knock the pouch away or it refills off a goblin). Includes a worn-party note (drop two goblins; capture leads into the town), a line in TACTICS, and the pouch in the patrol's loot.
 >
 > **PREP BRAINSTORM STILL OPEN (offered in chat 2026-11-03, NOT CANON):**
-> - **Sam.** His animal companion remembers what he doesn't and answers commands he didn't know he had (needs Sam's beast). When home, the Registry has a file on him and the ministry knows his past better than he does. Bigger, and Harlan's call: someone in the Fold knows him, by a different name. If the town is a sorting office, it can have a dead-letter room where lost threads end up.
+> - **Sam.** His animal companion remembers what he doesn't and answers commands he didn't know he had (needs Sam's beast). When home, the Registry has a file on him and the ministry knows his past better than he does. Bigger, and Drew's call: someone in the Fold knows him, by a different name. If the town is a sorting office, it can have a dead-letter room where lost threads end up.
 >
 > **WHAT WAS BUILT FOR THAT GAME (2026-10-17 and 2026-10-18, campaign `v79`–`v81`):** the Rector's speech in `THE COMMISSION › 4`, with four italic stand-in compliment lines for Joby to swap; the morning bulletin and Merrit Quist's delivery (a Potion of Climbing, a Potion of Healing, three cheap-shelf bottles, and his note) in `THE COMMISSION › 3`; beat 6 rewritten as "Wenna's office, and Mordrin", with Mordrin as the liaison the Accord sends with every expedition (formerly "a Registry man"); and Brandon's answers recorded word for word in `▶ THE PARTY`. `JOURNAL.md` holds Joby's catch-up summary of the whole campaign as of 2026-10-15.
 >
@@ -68,7 +68,7 @@
 >
 > **HEALING IS NOT OUTLAWED (Joby, 2026-10-15):** standard D&D magic, gods and lore hold. The bible's Menders section and its echoes still say otherwise and are waiting on the shape of the rewrite. Proposed, not canon: the Surveyors can switch magic off and fold anything out of the way, which is why they permit nearly everything.
 >
-> **THE PARTY (5):** Aramil and Sam (Harlan, Beast Master rangers), Jef (Rowan, halfling fighter; house rule: Small heroes roll heavy weapons at disadvantage only when the DM calls it), Century (Ben, bard; restored on a new device, still needs to pick 2 spells and tap Share once), **Mordrin** (Brandon, gnome wizard illusionist, new: Tobin's replacement, see the parked block).
+> **THE PARTY (5):** Aramil (Harlan, 10) and Sam (Drew, an adult), both Beast Master rangers, Jef (Rowan, halfling fighter; house rule: Small heroes roll heavy weapons at disadvantage only when the DM calls it), Century (Ben, bard; restored on a new device, still needs to pick 2 spells and tap Share once), **Mordrin** (Brandon, gnome wizard illusionist, new: Tobin's replacement, see the parked block).
 >
 > **NEXT SESSION, ALL BUILT IN THE OS.** (2026-10-17: the Rector's speech now has four stand-in compliment lines for Joby to swap; the Keystone morning has the ministry flyer and Merrit's delivery of the two owed bottles plus three cheap ones, with his note.) Rewound to just after Ganny's: the Keystone night, then the awarding, the commission, Wenna's office (where Mordrin arrives), the woman and the boy, then THE WAY IN. Beat 1 opens with THE FOLDWRIGHT LIVES on the west gate, moved here so the questions go to Mordrin. Beat 3 is the sealed room. Beat 4 is a two-minute trick of the eye: the doorway is two overlapping layers. Then `enc-cavern`: the convoy (a yoked tear-ogre with HP 45 carrying three cages, four goblin drivers, and a horn-goblin) below, the patrol (a boss, two crease-wolves, and four goblins) coming down from above, the party's choice, two clocks, and two loot piles including the tally. Joby wants that fight in the same session.
 >
@@ -354,7 +354,7 @@
 > - **Leveling is now structurally required** by the campaign's escalating-mission design (see CAMPAIGN HANDOFF). Player material is still the #1 DM-partner blocker.
 > - Standing backlog: grow the SRD bestiary, the in-app "DM's Assistant", private DM area / accounts.
 >
-> **Party (live `dungeon-dads`):** 4 shared heroes — Century (Ben), Aramil Quingalor (Harlan), Sam Silkweed (Harlan, was Drew), and a NEW one **Jef Blackstone (Rowan)** with a full backstory. Aramil/Sam/Century have no written backstory in their shares yet.
+> **Party (live `dungeon-dads`):** 4 shared heroes — Century (Ben), Aramil Quingalor (Harlan), Sam Silkweed (Drew; the builder may list Harlan as owner, an artifact), and a NEW one **Jef Blackstone (Rowan)** with a full backstory. Aramil/Sam/Century have no written backstory in their shares yet.
 
 > **▶ RESOLVED (2026-08-07) — the Surveyor species question: Joby settled it; revisions six through eight are applied**
 >
