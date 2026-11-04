@@ -148,9 +148,24 @@
   /* ========================= Prose & wikilinks ============================= */
   const RX_LINK = /\[\[([^\]|]+?)(?:\|([^\]]+?))?\]\]/g;
 
+  /* Pictures. A line on its own that reads ![[maps/town-side.svg|A caption]]
+     shows that file from the repo, captioned, wherever the text is shown. Only
+     a plain relative path to an image file is accepted, so nothing in a field
+     can point the page anywhere else. A picture is a block, never mid-sentence,
+     and it is not a link: stripImages keeps it out of summaries and the graph. */
+  const RX_IMG = /^\s*!\[\[([^\]|]+?)(?:\|([^\]]+?))?\]\]\s*$/;
+  const RX_IMG_ANY = /!\[\[[^\]]*\]\]/g;
+  const stripImages = (text) => String(text == null ? '' : text).replace(RX_IMG_ANY, '');
+  const safeImgSrc = (p) => /^[\w\- ./]+\.(svg|png|jpe?g|webp|gif)$/i.test(p) && !p.includes('..') && !p.startsWith('/');
+  const imageHTML = (src, caption) => safeImgSrc(src)
+    ? `<figure class="doc-image"><a href="${esc(src)}" target="_blank" rel="noopener" data-act="open-image" title="Open full size">` +
+      `<img src="${esc(src)}" alt="${esc(caption || src)}" loading="lazy"></a>` +
+      (caption ? `<figcaption>${esc(caption)}</figcaption>` : '') + '</figure>'
+    : `<p class="doc-image-broken">Picture not found: ${esc(src)}</p>`;
+
   // [[doc_npc_marla]] → "Marla Quickfoot". For anywhere a link can't be clicked:
   // the printed page and the peek summary. Never leak a raw id at the table.
-  const unlink = (text) => String(text == null ? '' : text).replace(RX_LINK, (m, id, label) => {
+  const unlink = (text) => stripImages(text).replace(RX_LINK, (m, id, label) => {
     if (label) return label.trim();
     const t = STORE.get(id.trim());
     return t ? t.title : id.trim();
@@ -225,7 +240,9 @@
       out.push(`<div class="doc-table-wrap"><table class="doc-table">${th}${tb}</table></div>`);
     };
     String(text == null ? '' : text).split('\n').forEach(line => {
-      if (isRow(line)) { flushProse(); rows.push(line); }
+      const img = RX_IMG.exec(line);
+      if (img) { flushTable(); flushProse(); out.push(imageHTML(img[1].trim(), img[2] && img[2].trim())); }
+      else if (isRow(line)) { flushProse(); rows.push(line); }
       else { flushTable(); prose.push(line); }
     });
     flushTable(); flushProse();
@@ -1430,7 +1447,7 @@
 
   const RX_LINK_G = /\[\[([^\]|]+?)(?:\|[^\]]+?)?\]\]/g;
   function linkTargetsIn(d) {
-    const text = [d.body].concat(Object.values(d.fields || {})).filter(Boolean).join('\n');
+    const text = stripImages([d.body].concat(Object.values(d.fields || {})).filter(Boolean).join('\n'));
     const rx = new RegExp(RX_LINK_G.source, 'g');
     const out = new Set(); let m;
     while ((m = rx.exec(text))) out.add(m[1].trim());

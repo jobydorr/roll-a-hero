@@ -1,0 +1,255 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1640" width="1500" height="1640" font-family="Georgia, 'Times New Roman', serif">
+<defs><pattern id="scree" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="3" cy="4" r="1.6" fill="#6b4a23" opacity="0.35"/><circle cx="10" cy="10" r="1.2" fill="#6b4a23" opacity="0.3"/></pattern><pattern id="rock" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M0 20 L18 14 L30 24 M34 50 L52 44 L60 48 M10 44 L20 38" stroke="#c4b28f" stroke-width="1.4" fill="none"/></pattern></defs>
+<rect width="1500" height="1640" fill="#d9ccb0"/><rect width="1500" height="1640" fill="url(#rock)"/>
+<rect x="0" y="0" width="1500" height="58" fill="#efe3c8" stroke="#6b4a23" stroke-width="2"/>
+<text x="24" y="39" font-size="27" font-weight="bold" fill="#2b2118" letter-spacing="2">THE TOWN ON THE FACE — side view · DM</text>
+<text x="1476" y="37" font-size="15" font-style="italic" fill="#6b4a23" text-anchor="end">Looking at the cliff from out in the great space. Not to scale.</text>
+<polygon points="1010,383 760,536 1100,675" fill="url(#scree)"/>
+<polygon points="760,536 1100,689 760,828" fill="url(#scree)"/>
+<polygon points="1100,689 760,842 1100,980" fill="url(#scree)"/>
+<polygon points="760,842 1100,994 760,1133" fill="url(#scree)"/>
+<polygon points="1100,994 760,1147 1100,1286" fill="url(#scree)"/>
+<polygon points="760,1147 1100,1300 760,1439" fill="url(#scree)"/>
+<polyline points="1010,375 760,528 1100,681 760,834 1100,986 760,1139 1100,1292 760,1445 612,1520" fill="none" stroke="#7a5a35" stroke-width="14" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="1010,375 760,528 1100,681 760,834 1100,986 760,1139 1100,1292 760,1445 612,1520" fill="none" stroke="#b89a6c" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="1010,330 1075,250 985,175 1050,95" fill="none" stroke="#7a5a35" stroke-width="8" stroke-dasharray="3 5" stroke-linecap="round"/>
+<text x="1066" y="92" font-size="30" font-weight="bold" fill="#2b2118">?</text>
+<rect x="1001" y="298" width="18" height="72" fill="#2b2118"/>
+<rect x="985" y="368" width="60" height="10" fill="#8a6a43"/>
+<line x1="652" y1="340" x2="652" y2="1520" stroke="#6b4a23" stroke-width="2.5"/>
+<line x1="640" y1="340" x2="674" y2="340" stroke="#6b4a23" stroke-width="5"/>
+<rect x="640" y="1175" width="24" height="18" fill="#c9a26b" stroke="#6b4a23" stroke-width="2"/>
+<rect x="260" y="370" width="300" height="16" fill="#8a6a43" rx="3"/>
+<rect x="365" y="150" width="70" height="220" fill="#efe3c8" stroke="#6b4a23" stroke-width="2"/>
+<polygon points="355,150 400,84 445,150" fill="#9c5b3b"/>
+<rect x="390" y="176" width="20" height="30" rx="10" fill="#2b2118"/>
+<rect x="285" y="320" width="50" height="50" fill="#efe3c8" stroke="#6b4a23" stroke-width="1.5"/>
+<polygon points="281,320 310.0,298 339,320" fill="#9c5b3b"/>
+<rect x="303.0" y="344" width="14" height="26" fill="#6b4a23"/>
+<rect x="470" y="324" width="60" height="46" fill="#efe3c8" stroke="#6b4a23" stroke-width="1.5"/>
+<polygon points="466,324 500.0,302 534,324" fill="#9c5b3b"/>
+<rect x="493.0" y="344" width="14" height="26" fill="#6b4a23"/>
+<rect x="200" y="600" width="145" height="16" fill="#8a6a43" rx="3"/>
+<rect x="430" y="600" width="170" height="16" fill="#8a6a43" rx="3"/>
+<path d="M345 604 Q387 628 430 604" fill="none" stroke="#6b4a23" stroke-width="2"/>
+<rect x="450" y="545" width="60" height="55" fill="#efe3c8" stroke="#6b4a23" stroke-width="1.5"/>
+<polygon points="446,545 480.0,523 514,545" fill="#9c5b3b"/>
+<rect x="473.0" y="574" width="14" height="26" fill="#6b4a23"/>
+<rect x="476.0" y="591" width="8" height="9" fill="#2b2118"/>
+<rect x="525" y="530" width="55" height="70" fill="#efe3c8" stroke="#6b4a23" stroke-width="1.5"/>
+<polygon points="521,530 552.5,508 584,530" fill="#9c5b3b"/>
+<rect x="545.5" y="574" width="14" height="26" fill="#6b4a23"/>
+<rect x="548.5" y="591" width="8" height="9" fill="#2b2118"/>
+<path d="M450 502 Q515.0 518 580 502" fill="none" stroke="#6b4a23" stroke-width="1"/>
+<polygon points="463.6,505.9 473.6,505.9 468.6,515.9" fill="#d9a441" opacity="0.75"/>
+<polygon points="482.1,508.5 492.1,508.5 487.1,518.5" fill="#5f7fa3" opacity="0.75"/>
+<polygon points="500.7,509.8 510.7,509.8 505.7,519.8" fill="#7a9a55" opacity="0.75"/>
+<polygon points="519.3,509.8 529.3,509.8 524.3,519.8" fill="#c0563f" opacity="0.75"/>
+<polygon points="537.9,508.5 547.9,508.5 542.9,518.5" fill="#d9a441" opacity="0.75"/>
+<polygon points="556.4,505.9 566.4,505.9 561.4,515.9" fill="#5f7fa3" opacity="0.75"/>
+<rect x="150" y="830" width="180" height="16" fill="#8a6a43" rx="3"/>
+<rect x="430" y="830" width="210" height="16" fill="#8a6a43" rx="3"/>
+<path d="M330 834 Q380 858 430 834" fill="none" stroke="#6b4a23" stroke-width="2"/>
+<rect x="165" y="784" width="50" height="46" fill="#efe3c8" stroke="#6b4a23" stroke-width="1.5"/>
+<polygon points="161,784 190.0,762 219,784" fill="#9c5b3b"/>
+<rect x="183.0" y="804" width="14" height="26" fill="#6b4a23"/>
+<rect x="186.0" y="821" width="8" height="9" fill="#2b2118"/>
+<rect x="250" y="780" width="55" height="50" fill="#efe3c8" stroke="#6b4a23" stroke-width="1.5"/>
+<polygon points="246,780 277.5,758 309,780" fill="#9c5b3b"/>
+<rect x="270.5" y="804" width="14" height="26" fill="#6b4a23"/>
+<rect x="273.5" y="821" width="8" height="9" fill="#2b2118"/>
+<rect x="445" y="680" width="55" height="150" fill="#efe3c8" stroke="#6b4a23" stroke-width="1.5"/>
+<polygon points="441,680 472.5,658 504,680" fill="#9c5b3b"/>
+<rect x="465.5" y="804" width="14" height="26" fill="#6b4a23"/>
+<rect x="468.5" y="821" width="8" height="9" fill="#2b2118"/>
+<ellipse cx="472" cy="654" rx="26" ry="9" fill="#7d5a32" stroke="#2b2118" stroke-width="1"/>
+<ellipse cx="462" cy="649" rx="4" ry="5" fill="#3d4a5c"/>
+<ellipse cx="472" cy="649" rx="4" ry="5" fill="#3d4a5c"/>
+<ellipse cx="482" cy="649" rx="4" ry="5" fill="#3d4a5c"/>
+<path d="M403 614 Q408 608 412 614 Q416 608 421 614" fill="none" stroke="#2b2118" stroke-width="2.2"/>
+<path d="M508 599 Q513 593 517 599 Q521 593 526 599" fill="none" stroke="#2b2118" stroke-width="2.2"/>
+<path d="M553 644 Q558 638 562 644 Q566 638 571 644" fill="none" stroke="#2b2118" stroke-width="2.2"/>
+<path d="M368 664 Q373 658 377 664 Q381 658 386 664" fill="none" stroke="#2b2118" stroke-width="2.2"/>
+<path d="M493 559 Q498 553 502 559 Q506 553 511 559" fill="none" stroke="#2b2118" stroke-width="2.2"/>
+<path d="M588 609 Q593 603 597 609 Q601 603 606 609" fill="none" stroke="#2b2118" stroke-width="2.2"/>
+<path d="M338 624 Q343 618 347 624 Q351 618 356 624" fill="none" stroke="#2b2118" stroke-width="2.2"/>
+<circle cx="592" cy="792" r="36" fill="none" stroke="#6b4a23" stroke-width="5"/>
+<line x1="592" y1="792" x2="628.0" y2="792.0" stroke="#6b4a23" stroke-width="2"/>
+<line x1="592" y1="792" x2="610.0" y2="823.2" stroke="#6b4a23" stroke-width="2"/>
+<line x1="592" y1="792" x2="574.0" y2="823.2" stroke="#6b4a23" stroke-width="2"/>
+<line x1="592" y1="792" x2="556.0" y2="792.0" stroke="#6b4a23" stroke-width="2"/>
+<line x1="592" y1="792" x2="574.0" y2="760.8" stroke="#6b4a23" stroke-width="2"/>
+<line x1="592" y1="792" x2="610.0" y2="760.8" stroke="#6b4a23" stroke-width="2"/>
+<path d="M505 826 L555 826 L563 808 L497 808 Z" fill="#5f7fa3" stroke="#2b2118" stroke-width="1"/>
+<circle cx="510" cy="827" r="4" fill="#2b2118"/><circle cx="550" cy="827" r="4" fill="#2b2118"/>
+<rect x="120" y="1060" width="540" height="16" fill="#8a6a43" rx="3"/>
+<rect x="270" y="1038" width="70" height="22" fill="#cdbb98" stroke="#6b4a23" stroke-width="1.5"/>
+<rect x="295" y="970" width="20" height="68" fill="#a7814d" stroke="#2b2118" stroke-width="1"/>
+<circle cx="305" cy="958" r="14" fill="#a7814d" stroke="#2b2118" stroke-width="1"/>
+<line x1="295" y1="982" x2="276" y2="1014" stroke="#a7814d" stroke-width="7"/>
+<line x1="315" y1="982" x2="334" y2="1014" stroke="#a7814d" stroke-width="7"/>
+<rect x="160" y="1044" width="90" height="6" fill="#6b4a23"/>
+<rect x="360" y="1044" width="100" height="6" fill="#6b4a23"/>
+<rect x="135" y="1004" width="46" height="56" fill="#efe3c8" stroke="#6b4a23" stroke-width="1.5"/>
+<polygon points="131,1004 158.0,982 185,1004" fill="#9c5b3b"/>
+<rect x="151.0" y="1034" width="14" height="26" fill="#6b4a23"/>
+<rect x="154.0" y="1051" width="8" height="9" fill="#2b2118"/>
+<rect x="500" y="1002" width="60" height="48" fill="#efe3c8" stroke="#6b4a23" stroke-width="1.5"/>
+<polygon points="496,1002 530.0,980 564,1002" fill="#9c5b3b"/>
+<rect x="523.0" y="1024" width="14" height="26" fill="#6b4a23"/>
+<path d="M498 1048 L488 1060" stroke="#b5452f" stroke-width="4" fill="none"/>
+<path d="M512 1048 L502 1060" stroke="#b5452f" stroke-width="4" fill="none"/>
+<path d="M548 1048 L558 1060" stroke="#b5452f" stroke-width="4" fill="none"/>
+<path d="M562 1048 L572 1060" stroke="#b5452f" stroke-width="4" fill="none"/>
+<path d="M490 1030 q-18 -6 -16 8" stroke="#b5452f" stroke-width="5" fill="none"/>
+<circle cx="540" cy="972" r="3" fill="#7fa7c9"/><circle cx="546" cy="961" r="4" fill="#7fa7c9"/><circle cx="541" cy="950" r="3" fill="#7fa7c9"/>
+<path d="M140 935 Q215.0 951 290 935" fill="none" stroke="#6b4a23" stroke-width="1"/>
+<polygon points="153.8,938.5 163.8,938.5 158.8,948.5" fill="#d9a441" opacity="0.75"/>
+<polygon points="172.5,941.0 182.5,941.0 177.5,951.0" fill="#5f7fa3" opacity="0.75"/>
+<polygon points="191.2,942.5 201.2,942.5 196.2,952.5" fill="#7a9a55" opacity="0.75"/>
+<polygon points="210.0,943.0 220.0,943.0 215.0,953.0" fill="#c0563f" opacity="0.75"/>
+<polygon points="228.8,942.5 238.8,942.5 233.8,952.5" fill="#d9a441" opacity="0.75"/>
+<polygon points="247.5,941.0 257.5,941.0 252.5,951.0" fill="#5f7fa3" opacity="0.75"/>
+<polygon points="266.2,938.5 276.2,938.5 271.2,948.5" fill="#7a9a55" opacity="0.75"/>
+<path d="M340 942 Q420.0 958 500 942" fill="none" stroke="#6b4a23" stroke-width="1"/>
+<polygon points="355.0,945.5 365.0,945.5 360.0,955.5" fill="#d9a441" opacity="0.75"/>
+<polygon points="375.0,948.0 385.0,948.0 380.0,958.0" fill="#5f7fa3" opacity="0.75"/>
+<polygon points="395.0,949.5 405.0,949.5 400.0,959.5" fill="#7a9a55" opacity="0.75"/>
+<polygon points="415.0,950.0 425.0,950.0 420.0,960.0" fill="#c0563f" opacity="0.75"/>
+<polygon points="435.0,949.5 445.0,949.5 440.0,959.5" fill="#d9a441" opacity="0.75"/>
+<polygon points="455.0,948.0 465.0,948.0 460.0,958.0" fill="#5f7fa3" opacity="0.75"/>
+<polygon points="475.0,945.5 485.0,945.5 480.0,955.5" fill="#7a9a55" opacity="0.75"/>
+<path d="M120 1068 C55 1280 150 1460 70 1620" fill="none" stroke="#6b4a23" stroke-width="6" stroke-dasharray="10 6"/>
+<rect x="140" y="1290" width="500" height="16" fill="#8a6a43" rx="3"/>
+<rect x="200" y="1246" width="56" height="44" fill="#efe3c8" stroke="#6b4a23" stroke-width="1.5"/>
+<rect x="212" y="1260" width="32" height="30" fill="#6b4a23" opacity="0.8"/>
+<rect x="262" y="1246" width="56" height="44" fill="#efe3c8" stroke="#6b4a23" stroke-width="1.5"/>
+<rect x="274" y="1260" width="32" height="30" fill="#6b4a23" opacity="0.8"/>
+<rect x="324" y="1246" width="56" height="44" fill="#efe3c8" stroke="#6b4a23" stroke-width="1.5"/>
+<rect x="336" y="1260" width="32" height="30" fill="#6b4a23" opacity="0.8"/>
+<rect x="386" y="1246" width="56" height="44" fill="#efe3c8" stroke="#6b4a23" stroke-width="1.5"/>
+<rect x="398" y="1260" width="32" height="30" fill="#6b4a23" opacity="0.8"/>
+<polygon points="194,1246 330,1226 452,1246" fill="#9c5b3b"/>
+<rect x="500" y="1232" width="60" height="58" fill="#efe3c8" stroke="#6b4a23" stroke-width="1.5"/>
+<polygon points="496,1232 530.0,1210 564,1232" fill="#9c5b3b"/>
+<rect x="523.0" y="1264" width="14" height="26" fill="#6b4a23"/>
+<rect x="526.0" y="1281" width="8" height="9" fill="#2b2118"/>
+<rect x="180" y="1520" width="445" height="16" fill="#8a6a43" rx="3"/>
+<rect x="220" y="1468" width="55" height="52" fill="#efe3c8" stroke="#6b4a23" stroke-width="1.5"/>
+<polygon points="216,1468 247.5,1446 279,1468" fill="#9c5b3b"/>
+<rect x="240.5" y="1494" width="14" height="26" fill="#6b4a23"/>
+<rect x="243.5" y="1511" width="8" height="9" fill="#2b2118"/>
+<rect x="300" y="1456" width="60" height="64" fill="#efe3c8" stroke="#6b4a23" stroke-width="1.5"/>
+<polygon points="296,1456 330.0,1434 364,1456" fill="#9c5b3b"/>
+<rect x="323.0" y="1494" width="14" height="26" fill="#6b4a23"/>
+<rect x="326.0" y="1511" width="8" height="9" fill="#2b2118"/>
+<rect x="505" y="1424" width="100" height="96" fill="#d8c8a6" stroke="#6b4a23" stroke-width="2"/>
+<path d="M530 1520 L530 1470 Q555 1444 580 1470 L580 1520 Z" fill="#6b4a23"/>
+<rect x="548" y="1506" width="14" height="14" fill="#2b2118"/>
+<circle cx="555" cy="1458" r="7" fill="#c79a3a" stroke="#2b2118" stroke-width="1"/>
+<rect x="505" y="1412" width="12" height="12" fill="#d8c8a6" stroke="#6b4a23" stroke-width="1.5"/>
+<rect x="527" y="1412" width="12" height="12" fill="#d8c8a6" stroke="#6b4a23" stroke-width="1.5"/>
+<rect x="549" y="1412" width="12" height="12" fill="#d8c8a6" stroke="#6b4a23" stroke-width="1.5"/>
+<rect x="571" y="1412" width="12" height="12" fill="#d8c8a6" stroke="#6b4a23" stroke-width="1.5"/>
+<rect x="593" y="1412" width="12" height="12" fill="#d8c8a6" stroke="#6b4a23" stroke-width="1.5"/>
+<path d="M505 1428 Q555.0 1444 605 1428" fill="none" stroke="#6b4a23" stroke-width="1"/>
+<polygon points="520.0,1433.1 530.0,1433.1 525.0,1443.1" fill="#d9a441" opacity="0.75"/>
+<polygon points="540.0,1435.7 550.0,1435.7 545.0,1445.7" fill="#5f7fa3" opacity="0.75"/>
+<polygon points="560.0,1435.7 570.0,1435.7 565.0,1445.7" fill="#7a9a55" opacity="0.75"/>
+<polygon points="580.0,1433.1 590.0,1433.1 585.0,1443.1" fill="#c0563f" opacity="0.75"/>
+<polyline points="270,378 300,489.0 220,600" fill="none" stroke="#7a5a35" stroke-width="5" stroke-dasharray="2 4"/>
+<polyline points="215,608 245,719.0 170,830" fill="none" stroke="#7a5a35" stroke-width="5" stroke-dasharray="2 4"/>
+<polyline points="160,838 190,949.0 135,1060" fill="none" stroke="#7a5a35" stroke-width="5" stroke-dasharray="2 4"/>
+<polyline points="130,1068 160,1179.0 155,1290" fill="none" stroke="#7a5a35" stroke-width="5" stroke-dasharray="2 4"/>
+<polyline points="150,1298 180,1409.0 195,1520" fill="none" stroke="#7a5a35" stroke-width="5" stroke-dasharray="2 4"/>
+<polyline points="985,175 720,140 445,160" fill="none" stroke="#a3352a" stroke-width="3" stroke-dasharray="8 7"/>
+<text x="720" y="128" font-size="13.5" font-style="italic" fill="#a3352a" text-anchor="middle">the way to the tower, for later</text>
+<text x="1092" y="230" font-size="13.5" font-style="italic" fill="#2b2118" text-anchor="start">the patrol's stair (on the slate)</text>
+<text x="1098" y="120" font-size="13.5" font-style="italic" fill="#6b4a23" text-anchor="start">the mark</text>
+<text x="992" y="320" font-size="15" font-style="italic" fill="#2b2118" text-anchor="end" font-weight="bold">THE SLOT DOORWAY</text>
+<text x="992" y="338" font-size="13.5" font-style="italic" fill="#6b4a23" text-anchor="end">the safe room;</text>
+<text x="992" y="355" font-size="13.5" font-style="italic" fill="#6b4a23" text-anchor="end">the convoy four wait here</text>
+<text x="833" y="673" font-size="12.5" font-style="italic" fill="#2b2118" text-anchor="middle">the convoy fight,</text>
+<text x="833" y="689" font-size="12.5" font-style="italic" fill="#2b2118" text-anchor="middle">on the switchbacks</text>
+<text x="833" y="1276" font-size="12.5" font-style="italic" fill="#6b4a23" text-anchor="middle">scree: slide it,</text>
+<text x="833" y="1292" font-size="12.5" font-style="italic" fill="#6b4a23" text-anchor="middle">beat 12 Dex; over</text>
+<text x="833" y="1308" font-size="12.5" font-style="italic" fill="#6b4a23" text-anchor="middle">the edge, next bend, 1d6</text>
+<path d="M248 616 C230 644 207 696 212 741 L330 741 C335 696 312 644 294 616 Z" fill="#e8dcc2" stroke="#a3352a" stroke-width="2.5" stroke-dasharray="7 5"/>
+<line x1="271" y1="620" x2="271" y2="712" stroke="#6b4a23" stroke-width="1.5"/>
+<rect x="263" y="710" width="16" height="12" fill="#c9a26b" stroke="#6b4a23"/>
+<circle cx="234" cy="729" r="6" fill="#2b2118"/>
+<circle cx="252" cy="729" r="6" fill="#2b2118"/>
+<circle cx="290" cy="729" r="6" fill="#2b2118"/>
+<circle cx="308" cy="729" r="6" fill="#2b2118"/>
+<ellipse cx="271" cy="586" rx="34" ry="16" fill="#6f8f4e" stroke="#2b2118" stroke-width="1.5"/>
+<circle cx="252" cy="574" r="5" fill="#e6d36a" stroke="#2b2118"/><circle cx="268" cy="572" r="5" fill="#e6d36a" stroke="#2b2118"/>
+<circle cx="400" cy="358" r="8" fill="#a3352a"/>
+<text x="400" y="406" font-size="13.5" font-style="italic" fill="#a3352a" text-anchor="middle" font-weight="bold">Finch was taken up here</text>
+<text x="455" y="230" font-size="15" font-style="italic" fill="#2b2118" text-anchor="start" font-weight="bold">the tower</text>
+<text x="212" y="560" font-size="13.5" font-style="italic" fill="#6b4a23" text-anchor="end">the hatch-toad</text>
+<text x="204" y="678" font-size="13.5" font-style="italic" fill="#a3352a" text-anchor="end">the cistern:</text>
+<text x="204" y="695" font-size="13.5" font-style="italic" fill="#a3352a" text-anchor="end">4 of the Lastlight</text>
+<text x="204" y="712" font-size="13.5" font-style="italic" fill="#a3352a" text-anchor="end">five, 30 ft down</text>
+<text x="510" y="624" font-size="13.5" font-style="italic" fill="#2b2118" text-anchor="start">the nest</text>
+<text x="395" y="584" font-size="13.5" font-style="italic" fill="#2b2118" text-anchor="middle">the rookery</text>
+<text x="592" y="746" font-size="13.5" font-style="italic" fill="#6b4a23" text-anchor="middle">treadwheel</text>
+<text x="530" y="864" font-size="13.5" font-style="italic" fill="#6b4a23" text-anchor="middle">the float</text>
+<text x="305" y="938" font-size="13.5" font-style="italic" fill="#2b2118" text-anchor="middle">parade giant</text>
+<text x="530" y="990" font-size="13.5" font-style="italic" fill="#2b2118" text-anchor="middle">house-crab</text>
+<text x="330" y="1324" font-size="13.5" font-style="italic" fill="#6b4a23" text-anchor="middle">the kennels</text>
+<text x="555" y="1554" font-size="13.5" font-style="italic" fill="#6b4a23" text-anchor="middle">gatehouse and gong</text>
+<text x="70" y="1606" font-size="13.5" font-style="italic" fill="#2b2118" text-anchor="middle">the chute</text>
+<text x="672" y="1189" font-size="13.5" font-style="italic" fill="#2b2118" text-anchor="start">hoist basket</text>
+<circle cx="70" cy="378" r="20" fill="#a3352a"/><text x="70" y="386" font-size="22" font-weight="bold" fill="#fff" text-anchor="middle">6</text>
+<circle cx="70" cy="608" r="20" fill="#a3352a"/><text x="70" y="616" font-size="22" font-weight="bold" fill="#fff" text-anchor="middle">5</text>
+<circle cx="70" cy="838" r="20" fill="#a3352a"/><text x="70" y="846" font-size="22" font-weight="bold" fill="#fff" text-anchor="middle">4</text>
+<circle cx="70" cy="1068" r="20" fill="#a3352a"/><text x="70" y="1076" font-size="22" font-weight="bold" fill="#fff" text-anchor="middle">3</text>
+<circle cx="70" cy="1298" r="20" fill="#a3352a"/><text x="70" y="1306" font-size="22" font-weight="bold" fill="#fff" text-anchor="middle">2</text>
+<circle cx="70" cy="1528" r="20" fill="#a3352a"/><text x="70" y="1536" font-size="22" font-weight="bold" fill="#fff" text-anchor="middle">1</text>
+<rect x="1126" y="256" width="360" height="1010" fill="#efe3c8" stroke="#6b4a23" stroke-width="2" rx="8" opacity="0.96"/>
+<text x="1140" y="284" font-size="17" font-weight="bold" fill="#2b2118" letter-spacing="2">THE KEY</text>
+<circle cx="1154" cy="308" r="13" fill="#a3352a"/><text x="1154" y="313" font-size="15" font-weight="bold" fill="#fff" text-anchor="middle">6</text>
+<text x="1176" y="314" font-size="15" font-weight="bold" fill="#a3352a" letter-spacing="1">THE TOP TERRACE</text>
+<text x="1176" y="334" font-size="13.5" fill="#2b2118">Finch was taken up here, toward</text>
+<text x="1176" y="351" font-size="13.5" fill="#2b2118">the tower. Nobody goes up this trip.</text>
+<circle cx="1154" cy="388" r="13" fill="#a3352a"/><text x="1154" y="393" font-size="15" font-weight="bold" fill="#fff" text-anchor="middle">5</text>
+<text x="1176" y="394" font-size="15" font-weight="bold" fill="#a3352a" letter-spacing="1">THE CISTERN</text>
+<text x="1176" y="414" font-size="13.5" fill="#2b2118">3 goblin guards; the hatch-toad sits</text>
+<text x="1176" y="431" font-size="13.5" fill="#2b2118">on the lid. 4 of the Lastlight five</text>
+<text x="1176" y="448" font-size="13.5" fill="#2b2118">are at the bottom. Haul them up</text>
+<text x="1176" y="465" font-size="13.5" fill="#2b2118">on the bucket rope.</text>
+<circle cx="1154" cy="502" r="13" fill="#a3352a"/><text x="1154" y="507" font-size="15" font-weight="bold" fill="#fff" text-anchor="middle">4</text>
+<text x="1176" y="508" font-size="15" font-weight="bold" fill="#a3352a" letter-spacing="1">THE HOIST</text>
+<text x="1176" y="528" font-size="13.5" fill="#2b2118">Tear-ogre in the treadwheel, 2 goblins.</text>
+<text x="1176" y="545" font-size="13.5" fill="#2b2118">Rope bridges. The float in the yard.</text>
+<text x="1176" y="562" font-size="13.5" fill="#2b2118">Rookery: 6 cliff-rooks and the old</text>
+<text x="1176" y="579" font-size="13.5" fill="#2b2118">rook. Nest: spyglass, 3 eggs.</text>
+<circle cx="1154" cy="616" r="13" fill="#a3352a"/><text x="1154" y="621" font-size="15" font-weight="bold" fill="#fff" text-anchor="middle">3</text>
+<text x="1176" y="622" font-size="15" font-weight="bold" fill="#a3352a" letter-spacing="1">THE MESS</text>
+<text x="1176" y="642" font-size="13.5" fill="#2b2118">About 15 goblins. The parade giant</text>
+<text x="1176" y="659" font-size="13.5" fill="#2b2118">on the fountain (3 goblins inside).</text>
+<text x="1176" y="676" font-size="13.5" fill="#2b2118">The house-crab in its tiny cottage.</text>
+<text x="1176" y="693" font-size="13.5" fill="#2b2118">The chute goes down from here.</text>
+<circle cx="1154" cy="730" r="13" fill="#a3352a"/><text x="1154" y="735" font-size="15" font-weight="bold" fill="#fff" text-anchor="middle">2</text>
+<text x="1176" y="736" font-size="15" font-weight="bold" fill="#a3352a" letter-spacing="1">THE KENNELS</text>
+<text x="1176" y="756" font-size="13.5" fill="#2b2118">3 crease-wolves, 2 keepers.</text>
+<text x="1176" y="773" font-size="13.5" fill="#2b2118">Opened on the alarm.</text>
+<circle cx="1154" cy="810" r="13" fill="#a3352a"/><text x="1154" y="815" font-size="15" font-weight="bold" fill="#fff" text-anchor="middle">1</text>
+<text x="1176" y="816" font-size="15" font-weight="bold" fill="#a3352a" letter-spacing="1">THE LOWEST GATE</text>
+<text x="1176" y="836" font-size="13.5" fill="#2b2118">4 goblins and the gong. The</text>
+<text x="1176" y="853" font-size="13.5" fill="#2b2118">gatehouse is the house the crab wants.</text>
+<line x1="1140" y1="874" x2="1470" y2="874" stroke="#6b4a23" stroke-width="1"/>
+<text x="1140" y="894" font-size="14" font-weight="bold" fill="#a3352a">THE ALARM</text>
+<text x="1140" y="913" font-size="13.5" fill="#2b2118">Gong or horn: 1d4+2 goblins a round</text>
+<text x="1140" y="930" font-size="13.5" fill="#2b2118">for 3 rounds, then the kennels open.</text>
+<text x="1140" y="966" font-size="14" font-weight="bold" fill="#a3352a">IN</text>
+<text x="1140" y="985" font-size="13.5" fill="#2b2118">The delivery, the small door,</text>
+<text x="1140" y="1002" font-size="13.5" fill="#2b2118">or the front gate.</text>
+<text x="1140" y="1038" font-size="14" font-weight="bold" fill="#a3352a">OUT</text>
+<text x="1140" y="1057" font-size="13.5" fill="#2b2118">The big fight, back down the road.</text>
+<text x="1140" y="1074" font-size="13.5" fill="#2b2118">Shortcuts: the chute, the hoist</text>
+<text x="1140" y="1091" font-size="13.5" fill="#2b2118">basket, the float, the rook's eggs.</text>
+<text x="1140" y="1127" font-size="14" font-weight="bold" fill="#a3352a">LIGHT</text>
+<text x="1140" y="1146" font-size="13.5" fill="#2b2118">From everywhere and nowhere.</text>
+<text x="1140" y="1163" font-size="13.5" fill="#2b2118">Nothing casts a shadow.</text>
+</svg>

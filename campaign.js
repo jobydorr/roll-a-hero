@@ -2740,7 +2740,7 @@ window.DM_CAMPAIGN = {
       "title": "On the face — the convoy below, the patrol above",
       "parent": "f-wreck",
       "order": 60,
-      "rev": 9,
+      "rev": 10,
       "tags": [
         "act1",
         "fold",
@@ -2749,6 +2749,10 @@ window.DM_CAMPAIGN = {
       ],
       "leadsTo": [],
       "fieldDefs": [
+        [
+          "map",
+          "🗺 MAP — the face, side view"
+        ],
         [
           "setup",
           "Setup"
@@ -2775,6 +2779,7 @@ window.DM_CAMPAIGN = {
         ]
       ],
       "fields": {
+        "map": "![[maps/town-side-dm.svg|The town on the face, side view (DM). Click to open it full size.]]\nThe fight is on the switchbacks, top right. The player handout is [[map-town-side-player|the player version]].",
         "setup": "THE SHAPE IS JOBY'S. The party comes out of the shadow-door onto the face of the enormous space and sees two things at once. Below them, on the ledge road and walking toward the town, is a convoy that looks to be carrying cages, and the thing carrying them is big and mean. Above them, and coming down, is a patrol. They have to decide what to fight, who goes where, and how, and the decision is the encounter.\n\nREAD ALOUD as they step out. \"The doorway lets you out onto a ledge no wider than a cart, and the wind that comes up off the drop is warm.\n\nYou are high on a wall, and the wall goes down further than the light does and up further than you can see. It is the inside of something, and the something is so large that the far side of it is a haze. Out in the middle of all that air there is a mountain, hanging in nothing, and it is built: you can see openings in it, and stairs, and the light going through it in places.\n\nBelow you and along to the left, a town is clinging to the wall. Roofs on terraces, stacked one above another, cut into the face like a swallow's nest. At the top of the cluster there is a tower.\n\nA road is cut into the face below you, switching back and forth as it goes down toward the town. On that road, moving away from you, there is something very large walking bent over under a heavy wooden yoke, and hanging from both ends of the yoke are cages. Small figures trot around its legs with long poles, prodding it along.\n\nAnd above you, on the stair that comes down the face toward this ledge, somebody is coming down.\"\n\nTHE SOUND. When anybody speaks out here, the voice comes back from the far side of the space a very long time later. Say it the first time somebody shouts. It tells the table how big this place is before anybody can see an inch of the far wall.",
         "creatures": "TUNED FOR FIVE LEVEL-3 HEROES AND TWO ANIMAL COMPANIONS (Joby, 2026-10-13: the party is bigger now, so both groups hit harder). Either group alone is a real fight. Both at once is very hard, and is meant to be: the table should feel that taking on everything at the same time is a choice with a cost.\n\nTHE CONVOY, BELOW.\n• ONE [[cr-tear-ogre|TEAR-OGRE]] UNDER A YOKE, carrying three cages with the four prisoners in them (see REWARD). Use the sheet, but this one is older and bigger than the one under Ganny's cellar: HP 45 instead of 30. It is mean in the plain way a worked animal is mean — prodded all day, sore under the yoke, and ready to lash out at whatever is nearest, including its own drivers.\n• FOUR [[cr-snatch-goblin|SNATCH-GOBLIN]] DRIVERS with long goads, using the sheet as written.\n• ONE GOBLIN WITH A HORN, walking in front. The sheet as written.\n\nTHE PATROL, ABOVE.\n• THE PATROL BOSS, a goblin bigger and steadier than the rest and wearing scraps of real armor. HP 40 · AC 15 · Speed 30 ft · two attacks a turn, each +5 to hit, 1d8+3 (a proper blade). Tricks: once a round, when a hero hits it, it can make a goblin standing next to it take the hit instead; and once a round it can bark an order that lets one goblin make a Snatch straight away. It is the one holding the wolf's cord.\n• THE SALT-LICKER, a goblin magic user whose fingers and mouth are stained with a faint glow, whose eyes are far too bright, and who fizzes when it talks. HP 16 · AC 12 · Speed 30 ft. It carries a pouch of three pinches of raw sunsalt and eats one for each spell, and because raw salt unfolds, its magic undoes things.\n  ▸ SPIT LIGHT. +5 to hit, range 60 ft, 2d6.\n  ▸ SOFTEN. A 10-foot patch of ledge goes soft like a crease. Everyone on it beats 12 with Dexterity or slides 10 feet toward the drop, and a cage on it slides too.\n  ▸ UNFASTEN. One hero beats 12 with Dexterity or a buckle, strap or pack comes undone, so a shield drops or a pack spills across the ledge.\n  ▸ ITS WEAKNESS IS THE POUCH. A hero who hits it can knock the pouch away instead of doing damage, and without salt it cannot cast. When the pouch is empty it spends its turn grabbing a pinch off the nearest goblin's rag, so a goblin standing beside it is a refill.\n• TWO [[cr-crease-wolf|CREASE-WOLVES]], one on the boss's cord (the sniffer) and one loose. The sheet as written, and two together means their knock-down trick is live.\n• FOUR [[cr-snatch-goblin|SNATCH-GOBLINS]], the sheet as written.\n\nA player missing? Take one goblin off each group and change nothing else. Two players missing? Also drop the loose crease-wolf.\n\nTHE PARTY WILL BE WORN when the patrol arrives, because it comes straight on the heels of the convoy fight. If they are badly hurt, drop two goblins from the patrol and keep the boss and the salt-licker. Capture is a good fail state here, because a hero dragged through the town gate is the party's first way into the town.",
         "terrain": "FIVE THINGS ON THE FACE CAN BE USED, and the party should find them rather than be handed them.\n\nTHE DOORWAY THEY CAME OUT OF. It stays open, it is as narrow as it was from the inside, and one hero standing in it can hold it against anything that has to come at them single file. It is also a safe room behind them: anybody freed can be put back in there, out of the wind and out of the fight.\n\nTHE STAIR ABOVE AND THE LEDGE ROAD BELOW are both one person wide in places and two in others. Nobody can get round anybody on a narrow stretch, so the order the party stands in matters again, the same lesson as the shadow-door.\n\nTHE SLOPE BETWEEN THE SWITCHBACKS. The road goes down in long zigzags, and the face between one switchback and the next is steep loose scree. Sliding straight down it is the fast way to reach the convoy: beat 12 with Dexterity to arrive on your feet, or arrive anyway, prone, and take 1d6. It is a shortcut and a gamble, and a nine-year-old will want to take it.\n\nTHE DROP. The outer edge of every ledge is open air. NOBODY FALLS TO THEIR DEATH: anybody who goes over the edge lands on the switchback below, takes 1d6, and is now on the convoy's level. Say this before it matters, so the drop is a risk the players weigh rather than a trap.\n\nTHE CAGES THEMSELVES. Once the ogre throws the yoke down, the three cages are lying on a sloping ledge, and an unattended cage slides ten feet toward the edge at the end of every round. Grabbing one and holding it is beat 10 with Strength. Opening one is a wooden peg and takes an action. A cage teetering at the edge with somebody inside it is the moment to hand to whichever hero needs one.",
@@ -2870,7 +2875,7 @@ window.DM_CAMPAIGN = {
       "title": "▶ RUN THESE IN ORDER — the town on the face",
       "parent": "f-town",
       "order": 10,
-      "rev": 5,
+      "rev": 6,
       "tags": [
         "act1",
         "fold",
@@ -2880,6 +2885,10 @@ window.DM_CAMPAIGN = {
       ],
       "leadsTo": [],
       "fieldDefs": [
+        [
+          "map",
+          "🗺 MAP — the town, side view"
+        ],
         [
           "order",
           "▶ The terraces, bottom to top"
@@ -2902,6 +2911,7 @@ window.DM_CAMPAIGN = {
         ]
       ],
       "fields": {
+        "map": "![[maps/town-side-dm.svg|The town on the face, side view (DM). Click to open it full size.]]\nThe player handout is [[map-town-side-player|the player version]], and every map is under MAPS in the sidebar.",
         "order": "1. [[t-gate|The lowest gate]] · 4 goblins and a gong, where the ledge road ends\n2. [[t-kennels|The kennels]] · 3 crease-wolves and 2 keepers, let out on the alarm\n3. [[t-mess|The mess]] · the old square, about 15 goblins, loud and cowardly, [[cr-parade-giant|the parade giant]] on the fountain, and [[cr-house-crab|the house-crab]] being bullied out of its home\n4. [[t-hoist|The hoist]] · a treadwheel crane walked by a tear-ogre, with [[cr-cliff-rook|the rooks]] and [[cr-old-rook|the old rook]] on the roofs above it\n5. [[t-cistern|The cistern]] · four of the Lastlight five, under [[cr-hatch-toad|the hatch-toad]]\n6. [[t-top|The top terrace]] · under the tower; Finch was taken up there, and nobody goes up this trip",
         "setting": "THE TOWN WAS BUILT FOR PEOPLE, which makes it the first thing in the Fold that is the right size: human doors, human stairs, window boxes gone wild. The goblins have cut a goblin-sized door into the bottom of every human door, like a cat flap, and that tells anyone at a glance who lives here now. It also means Jef and Mordrin are small enough to go where the goblins go.\n\nTHE TOWN WAS FOLDED AWAY IN THE MIDDLE OF A PARADE (Joby, 2026-11-04), and the remnants are everywhere: faded bunting strung between the terraces, paper streamers gone to pulp in the gutters, a parade float stuck in the hoist yard, and the parade giant standing on the fountain. ⚠ What the parade was for is still open, and the particular remnants are filled in.\n\nThe terraces climb the face and are joined by stairs, ladders, rope bridges and one great hoist. There is no day or night in the Fold and the light is the same soft, sourceless glow as everywhere else, so the goblins keep their own rhythm with a gong, eating and sleeping in shifts.",
         "before": "THE NUMBERS. About 26 goblins in all, 3 crease-wolves, 1 tear-ogre, the hatch-toad, [[cr-parade-giant|the parade giant]] with three goblins inside it, [[cr-house-crab|the house-crab]], and 6 [[cr-cliff-rook|cliff-rooks]] with [[cr-old-rook|the old rook]] on the roofs, spread across the terraces, so the party never meets all of them at once. Goblins are frightened of everything (canon from Ganny's cellar), so noise, light and anything big will scatter them.\n\nTHE ALARM. Once the gong or a horn sounds, 1d4+2 goblins arrive each round for three rounds, and then the kennels are opened. The town is already uneasy, because the convoy's horn was answered and the convoy never arrived.\n\nTHE FOUR FROM THE CONVOY wait in the slot doorway the party came out of, which is safe. [[npc-bram|Bram]] insists on coming along and [[npc-annis|Annis]] flatly refuses.",
@@ -3341,6 +3351,82 @@ window.DM_CAMPAIGN = {
         "trick": "Topple: two heroes side by side beat 13 with Strength together, and it goes over and three snatch-goblins spill out of its chest and run, shrieking. It burns easily as well, and if it catches fire the goblins bail out at once, unhurt."
       },
       "body": "THE TOWN'S PARADE GIANT, a huge festival figure of wood and wicker with a painted plaster head, built for people to carry and walk from inside. When it is not in use it stands on the dry fountain in [[t-mess|the mess]], painted to look like bronze, and the party should take it for a statue until it moves.\n\nTHREE GOBLINS RIDE INSIDE IT. Two at the bottom walk the legs, and one sits on their shoulders and swings the arms on poles. They have strapped pot lids on it for armor. It needed no engineering from them, because the town's people built it to be worn, and goblins frightened of everything only had to work out that the safest place in town is inside the biggest thing in it. It is the mess's champion, and the goblins there cheer it on.\n\nBREAK IT OR TOPPLE IT and the reveal is the payoff: three goblins tumbling out of a hole in its chest. Taking it to 0 hit points does the same.\n\n⚠ JOBY'S (2026-11-04): the goblin puppet as a parade giant. Filled in, and his to change: the stats, the three goblins and how they work it, the pot lids, and toppling and fire as the clever ways to win."
+    },
+    {
+      "schema": 1,
+      "id": "f-maps",
+      "type": "folder",
+      "title": "MAPS — every map in one place",
+      "parent": null,
+      "order": 45,
+      "rev": 1,
+      "tags": [
+        "maps"
+      ],
+      "leadsTo": [],
+      "fields": {},
+      "body": ""
+    },
+    {
+      "schema": 1,
+      "id": "map-town-side",
+      "type": "note",
+      "title": "The town on the face — side view (DM)",
+      "parent": "f-maps",
+      "order": 10,
+      "rev": 1,
+      "tags": [
+        "maps",
+        "fold",
+        "town"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "map",
+          "🗺 MAP"
+        ],
+        [
+          "about",
+          "About this map"
+        ]
+      ],
+      "fields": {
+        "map": "![[maps/town-side-dm.svg|The town on the face, side view (DM). Click to open it full size.]]",
+        "about": "Drawn for [[sc-town|THE TOWN ON THE FACE]] and [[enc-cavern|the fight on the face]]. It looks at the cliff from out in the great space, so the slot doorway is top right, the switchbacks run down to the lowest gate, and the six terraces climb to the tower. The red numbers match the run order, and the key down the side carries each terrace's numbers.\n\nThe handout for the table is [[map-town-side-player|the player version]].\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: where each house sits, the rope bridges, the chute's route, the way to the tower drawn from the patrol's stair, and the scale, which is not to scale at all."
+      },
+      "body": ""
+    },
+    {
+      "schema": 1,
+      "id": "map-town-side-player",
+      "type": "note",
+      "title": "The town on the face — side view (players)",
+      "parent": "f-maps",
+      "order": 20,
+      "rev": 1,
+      "tags": [
+        "maps",
+        "fold",
+        "town",
+        "handout"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "map",
+          "🗺 MAP"
+        ],
+        [
+          "about",
+          "About this map"
+        ]
+      ],
+      "fields": {
+        "map": "![[maps/town-side-player.svg|The town on the face, as the players see it from the ledge.]]",
+        "about": "The handout. It shows only what can be seen from the ledge, so it has no numbers, no prisoners, no counts and nothing hidden. Open it full size to print it or put it on a screen.\n\nThe DM version is [[map-town-side|here]]."
+      },
+      "body": ""
     }
   ]
 };

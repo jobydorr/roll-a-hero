@@ -676,6 +676,26 @@ body.dmos-row-dragging, body.dmos-row-dragging * { cursor: grabbing !important; 
 }
 .doc-table tbody tr:nth-child(even) { background: rgba(107, 74, 35, 0.05); }
 
+/* ---------------------- Pictures inside a document ------------------------ */
+/* A line reading ![[maps/file.svg|caption]] renders as a figure (see `blocks`
+   in dmos-ui.js). It fits the card's width and opens full size on a click. */
+.doc-image { margin: 8px 0 12px; }
+.doc-image a { display: block; cursor: zoom-in; }
+.doc-image img {
+  display: block; max-width: 100%; height: auto; margin: 0 auto;
+  border: 1px solid var(--panel-edge); border-radius: 8px; background: #fffaf0;
+}
+.doc-image figcaption {
+  margin-top: 4px; text-align: center; font-size: 13px; font-style: italic; color: var(--ink-soft);
+}
+.doc-image-broken { color: var(--red); font-style: italic; }
+/* A header whose key is `map` is the card's map, and it is meant to be found
+   at a glance: bigger, red, and ruled off from the headers around it. */
+.doc-field[data-field-key="map"] { border-top: 2px solid var(--red); border-bottom: 2px solid var(--red); padding: 6px 0; }
+.doc-field[data-field-key="map"] .doc-field-label {
+  font-size: 15px; letter-spacing: 2px; color: var(--red);
+}
+
 table.diff { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 table.diff th, table.diff td { border: 1px solid var(--panel-edge); padding: 6px 8px; text-align: left; vertical-align: top; }
 table.diff thead th { background: rgba(107, 74, 35, 0.12); font-family: var(--font-display); }
@@ -995,6 +1015,8 @@ table.diff tbody th { width: 22%; font-family: var(--font-display); font-weight:
     letter-spacing: 1.2px; margin: 10pt 0 2pt; color: #000;
   }
   #dmosPrint p { font-family: 'Spectral', Georgia, serif; font-size: 11pt; line-height: 1.4; margin: 0 0 6pt; }
+  #dmosPrint .doc-image img { max-width: 100%; height: auto; }
+  #dmosPrint .doc-image figcaption { font-size: 9pt; font-style: italic; text-align: center; }
   /* A price list is the one thing at this table somebody actually reads off
      paper, so it prints as a grid rather than collapsing back into lines. */
   #dmosPrint .doc-table-wrap { overflow: visible; margin: 3pt 0 7pt; }

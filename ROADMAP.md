@@ -22,7 +22,7 @@
 >
 > **JOBY, 2026-11-04: THE TOWN WAS FOLDED AWAY DURING A PARADE.** Remnants are filled in and flagged in `sc-town`, `t-gate` (bunting), `t-mess` (goblins in bits of costume) and `t-hoist` (a parade float that can be rolled down the stair). What the parade was for is open.
 >
-> **A MAP OF THE TOWN is being discussed;** the DM OS cannot show images inside docs.
+> **PICTURES IN THE DM OS, AND THE FIRST MAP (Joby, 2026-11-04; campaign `v92`, `dmos-ui.js` `v49`, `dmos.css` `v36`).** Any field or body can now hold a picture: a line on its own reading `![[maps/file.svg|caption]]` renders the repo file as a captioned figure that opens full size on a click, and prints. Only plain relative paths to image files are accepted. Pictures are kept out of peek summaries and the story graph. A header whose key is `map` renders big, red and ruled off, so a card's map is found at a glance. New sidebar section `MAPS — every map in one place` (`f-maps`) holds `map-town-side` (DM) and `map-town-side-player` (the handout). The DM map is also the first header on `sc-town` and `enc-cavern`. The SVGs are in `maps/`, drawn by `maps/make_town_side.py` (run it with the folder as its argument to regenerate both). Joby wants a TOP VIEW later. Uploading pictures from inside the OS is NOT supported; files go in the repo.
 >
 > **STILL BRAINSTORMING with Joby (2026-11-04):** (1) Joby asks whether the TOWER is where the extraction ritual happens and thinks it is not too early. (2) He worries the table will tire of goblins, ogres and wolves; he likes the hatch-toad and wants more creatures for the town. (3) Sam's memory. Pitches are in chat; nothing is canon.
 >
