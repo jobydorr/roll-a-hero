@@ -8,27 +8,17 @@
 >
 > **⭐ PARKED AT THE TOP, COME BACK TO IT AFTER THE REST (Joby): SAM MEETS PIECES OF HIMSELF.** Sam (Drew's hero) will encounter pieces of himself in the Fold that are literally himself, more than once. When he fights one and wins, he gets some memory back. That is all Joby has settled. Joby rejected the identity-only pitches (clean slate, taking others' word, being called another name) and also the puzzle box, the creature-knowledge roll and the ghost-reflex table. Nothing is built.
 >
-> **FOR THE NEXT GAME**
-> 1. **The tower and the top terrace.** Is the tower where the extraction happens (Joby does not think that is too early)? Pitched: an abandoned instrument that pays the goblins in raw salt for the people they deliver, so nobody is home yet. Also what is on the top terrace and what happens to Finch up there.
-> 2. **The sunsalt limits** (proposed, below). Adopt, change or drop.
-> 3. **The convoy's own object** in `enc-cavern` REWARD and LOOT. Keep it or cut it, as the patrol's was cut.
-> 4. **The goose,** still a maybe for the town.
-> 5. **The players' new memories,** which Joby collects before play, and whether Mordrin got one.
+> **CLOSED 2026-11-04 (campaign `v95`):**
+> - **The tower IS where the extraction happens** (Joby). It is semi-automated: goblins strap a person in at the top and leave. The yoke's mark is repeated there. The extracted salt is pumped back down and out through the lower levels, which lead into the bays where the ship is found. SAVED on `bb-fold` (tower and ship fields), not built, because the party does not reach the tower on this trip; `t-top` points there. Still to work out: clues to where the salt goes and for whom.
+> - **The sunsalt limits are canon** in `CAMPAIGN.md` §2 Sunsalt and the Reactors, squared with the bible's "does very nearly anything" (it always works through an instrument, a ritual or a creature born to it).
+> - **The convoy's object is cut** from `enc-cavern`.
+> - **"Red Hats" was Brandon's slip** for Red Flag; the party sheet says so.
+> - **Sam's companion is a weasel named Worm**, on the party sheet.
+> - **What the parade was for does not matter.**
 >
-> **SMALL GAPS, ANY TIME**
-> - The bath town's name and its cover story; Annis's "the salt smelled wrong".
-> - The question Maud asked.
-> - Raw or refined salt for the ritual that restores magic.
-> - What the parade was for.
-> - Sam's animal companion.
-> - A top view of the town (the side view is built).
+> **STILL A MAYBE:** the goose in the town.
 >
-> **CARRIED FORWARD FROM EARLIER**
-> - The Menders rewrite, A or B.
-> - Filing `JOURNAL.md` into the OS Notebook (needs his notebook id).
-> - With Brandon: "Red Hats", his contact and cell-mate, his take on THE FOLDWRIGHT LIVES, a memory on entry, and whether the player-safe answer about the Fold was sent.
-> - The Tobin cut: 11 documents, the Act One turn, who heals, Ellum Wick.
-> - The Unfold-Rule portals made more epic; where the tally's last three knots came from; the top of the patrol's stair; the mark on the yoke; whether the blade hums near creases; the ranger starting kit; a real puzzle room later.
+> **PARKED BY JOBY 2026-11-04, everything else:** the players' new memories (Joby collects them before play) and Mordrin's; the bath town's name and cover story and Annis's "the salt smelled wrong"; Maud's question; raw or refined salt for the ritual that restores magic; a top view of the town; the Menders rewrite; filing `JOURNAL.md` into the Notebook; Brandon's contact and cell-mate, his take on the wall, a memory on entry, and the player-safe answer; the Tobin cut (11 documents, the Act One turn, who heals, Ellum Wick); the Unfold-Rule portals; the tally's last three knots; the top of the patrol's stair; whether the blade hums near creases; the ranger kit; a puzzle room.
 >
 > **2026-11-04, RESUMED. Two of the three start-up items are settled (campaign `v86`):** the patrol is NOT Ganny's band, which is all dead; the jam jar stays, from some other raid on her cellar. Joby is dropping the patrol's interest in the object as one more thing to track, so the boss no longer wants it back, the wolf follows the party's scent because the horn called the patrol, and Unfasten just spills a pack. The boss's +1 shortsword stays as it is (Joby: it will go to a ranger or the bard). The convoy band's own object is still in REWARD and LOOT; ask whether it stays.
 >
@@ -58,7 +48,7 @@
 >
 > **▶▶ START HERE — 2026-11-03, FRESH CHAT. Newest block; read this first. The 2026-10-15 block below it is the detailed reference for everything built before the game was played.**
 >
-> **STATE:** `HEAD` == `origin/main` at the time of writing; the working tree is clean apart from Joby's three untracked images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v94`, `app.js` `v26`, `data.js` `v19`, `firebase-sync.js` `v16`. Joby runs the OS from `localhost:8000`; start it with `preview_start` on the `roll-a-hero` launch config, and he reviews in his own Chrome with a hard refresh, because the pane's storage is empty.
+> **STATE:** `HEAD` == `origin/main` at the time of writing; the working tree is clean apart from Joby's three untracked images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v95`, `app.js` `v26`, `data.js` `v19`, `firebase-sync.js` `v16`. Joby runs the OS from `localhost:8000`; start it with `preview_start` on the `roll-a-hero` launch config, and he reviews in his own Chrome with a hard refresh, because the pane's storage is empty.
 >
 > **THE GAME IS LOGGED (later on 2026-11-03).** Joby's report is in the OS at `SESSION LOGS › Mordrin joins, into the Fold, the convoy fight` and in `JOURNAL.md`. In short: they met Mordrin, went in, and the memory effect struck; the players are still deciding their memories and Joby collects them before the next game. On the face they attacked the convoy first; its horn was ANSWERED by the patrol (the sheet said nobody answers). The game stopped with the convoy nearly cleared and the patrol about to arrive, so the next game opens mid-fight. "Mordrigan" was a slip; the name stays **Mordrin**.
 >

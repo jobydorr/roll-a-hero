@@ -16,9 +16,13 @@ There is no day and night in the Fold, and the light there comes diffusely from 
 
 The town clings to the face of the great space and is held by goblins, and the party's visit is a rescue that will probably be fought in, out, or both. Four of the five taken at Lastlight are kept in a dry cistern whose hatch is sat on by an enormous toad. Finch is not with them, because the goblins took him up to the top terrace beneath the tower, and what happens to him there is undecided.
 
-### Still being brainstormed
+### Later rulings on the same day
 
-Joby is considering whether the tower is where the extraction ritual takes place, and he does not think that would be too early a reveal. He also wants more kinds of creature in the town, so that the table does not tire of goblins, ogres and wolves, and Sam's lost memory still needs something in play that it touches.
+The tower is where the extraction happens, and it is semi-automated: goblins bring a person in, strap them in at the top, and leave the process to run. The mark burned into the convoy ogre's yoke is repeated at the tower. The sunsalt drawn out is pumped back down and out through the tower's lower levels, which lead into the bays where the party will eventually find the ship, and where the salt goes and for whom will be found through clues still to be designed. None of this is built yet, because the party does not reach the tower on this trip, and the notes are saved on the back-burner page.
+
+Sunsalt now has four limits, recorded in the bible. Raw sunsalt only undoes and opens; refined sunsalt is the tame kind that holds; neither does anything except through an instrument, a ritual or a creature born to it; and raw sunsalt costs whoever handles it. The limits exist so that the party never treats sunsalt as the answer to every problem.
+
+The town now holds a house-crab that can be befriended, a goblin-worked parade giant, a rookery with a mini-boss, and sheets for all eight prisoners, and its side view is drawn as the first map in the OS. Sam is played by Drew, and his companion is a weasel named Worm. Joby wants Sam to meet pieces of himself in the Fold, more than once, and to win a memory back from each one he defeats, and that is parked at the top of the to-do list.
 
 ---
 
