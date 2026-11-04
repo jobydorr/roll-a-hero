@@ -6,6 +6,8 @@
 
 > **2026-11-04, RESUMED. Two of the three start-up items are settled (campaign `v86`):** the patrol is NOT Ganny's band, which is all dead; the jam jar stays, from some other raid on her cellar. Joby is dropping the patrol's interest in the object as one more thing to track, so the boss no longer wants it back, the wolf follows the party's scent because the horn called the patrol, and Unfasten just spills a pack. The boss's +1 shortsword stays as it is (Joby: it will go to a ranger or the bard). The convoy band's own object is still in REWARD and LOOT; ask whether it stays. **Now brainstorming the town, the tower and Sam's memory.**
 >
+> **JOBY'S RULINGS ON THE FOLD, 2026-11-04 — do not build against these.** There is NO day and night in the Fold, so nothing there can run on time of day. The light comes diffusely from everywhere and nowhere: a soft, eerie glow with no visible source, which simply is. (`bb-fold › arrival` still says the light "comes in through the gaps", and that line is wrong.) The town clings to the face of the great cavern space. It is a RESCUE: the party will probably fight its way into the town, out of it, or both. Joby rejected the "town that keeps its last day" pitch and wants to know what is in the town, where the prisoners are held, and how many goblins and other creatures there are.
+>
 > Built 2026-11-03 (campaign `v82`–`v85`), all pushed: the game log, the four prisoners and the 5-4-3 tally, the no-execution reasons in §2, the magic-off ruling in §3, and the harder patrol with the salt-licker.
 >
 > **▶▶ START HERE — 2026-11-03, FRESH CHAT. Newest block; read this first. The 2026-10-15 block below it is the detailed reference for everything built before the game was played.**
