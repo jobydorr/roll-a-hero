@@ -18,7 +18,11 @@
 >
 > **SUNSALT LIMITS, PROPOSED 2026-11-04, NOT CANON:** raw salt only undoes and opens (creases, fastenings, sealed magic, with a ritual); refined salt is the tame kind that holds; neither does anything without an instrument, a ritual, or a creature born to it; raw salt costs whoever handles it. To goblins, raw salt is their wages, which is why they gamble with buttons. Waiting on Joby.
 >
-> **THE FOUNTAIN STATUE IS NOT BUILT.** Joby does not want sunsalt animating things just by being added, does not believe goblins would waste salt, and wants firm BOUNDS on what sunsalt can do so the party does not think it can do anything. Rethinking in chat.
+> **THE PARADE GIANT IS BUILT (Joby, campaign `v91`), replacing the statue:** `cr-parade-giant`, a festival figure of wood and wicker on the dry fountain in `t-mess` that looks like bronze, with three goblins inside it working the legs and arms. HP 30, AC 13; topple it (two heroes beat 13 Strength together) or set it alight and the goblins spill out. No sunsalt involved.
+>
+> **JOBY, 2026-11-04: THE TOWN WAS FOLDED AWAY DURING A PARADE.** Remnants are filled in and flagged in `sc-town`, `t-gate` (bunting), `t-mess` (goblins in bits of costume) and `t-hoist` (a parade float that can be rolled down the stair). What the parade was for is open.
+>
+> **A MAP OF THE TOWN is being discussed;** the DM OS cannot show images inside docs.
 >
 > **STILL BRAINSTORMING with Joby (2026-11-04):** (1) Joby asks whether the TOWER is where the extraction ritual happens and thinks it is not too early. (2) He worries the table will tire of goblins, ogres and wolves; he likes the hatch-toad and wants more creatures for the town. (3) Sam's memory. Pitches are in chat; nothing is canon.
 >
@@ -26,7 +30,7 @@
 >
 > **▶▶ START HERE — 2026-11-03, FRESH CHAT. Newest block; read this first. The 2026-10-15 block below it is the detailed reference for everything built before the game was played.**
 >
-> **STATE:** `HEAD` == `origin/main` at the time of writing; the working tree is clean apart from Joby's three untracked images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v90`, `app.js` `v26`, `data.js` `v19`, `firebase-sync.js` `v16`. Joby runs the OS from `localhost:8000`; start it with `preview_start` on the `roll-a-hero` launch config, and he reviews in his own Chrome with a hard refresh, because the pane's storage is empty.
+> **STATE:** `HEAD` == `origin/main` at the time of writing; the working tree is clean apart from Joby's three untracked images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v91`, `app.js` `v26`, `data.js` `v19`, `firebase-sync.js` `v16`. Joby runs the OS from `localhost:8000`; start it with `preview_start` on the `roll-a-hero` launch config, and he reviews in his own Chrome with a hard refresh, because the pane's storage is empty.
 >
 > **THE GAME IS LOGGED (later on 2026-11-03).** Joby's report is in the OS at `SESSION LOGS › Mordrin joins, into the Fold, the convoy fight` and in `JOURNAL.md`. In short: they met Mordrin, went in, and the memory effect struck; the players are still deciding their memories and Joby collects them before the next game. On the face they attacked the convoy first; its horn was ANSWERED by the patrol (the sheet said nobody answers). The game stopped with the convoy nearly cleared and the patrol about to arrive, so the next game opens mid-fight. "Mordrigan" was a slip; the name stays **Mordrin**.
 >
