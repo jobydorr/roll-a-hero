@@ -2655,16 +2655,38 @@ window.DM_CAMPAIGN = {
       "title": "Merrit Quist — the man who is never wrong",
       "parent": "f-npcs",
       "order": 70,
-      "rev": 4,
+      "rev": 5,
       "tags": [
         "act1",
         "city",
         "shop"
       ],
       "leadsTo": [],
-      "fieldDefs": null,
-      "body": "Proprietor of [[loc-bottles|Nine Hundred Bottles]]. He enters the party's life on the field at Lastlight in [[b-comm-dusk|THE COMMISSION beat 2]], working, with a crate on his hip.\n\nHE IS NOT A REWARD-GIVER, and the gift lands far better if the party has watched him do it for three other people first. He came down because there are hundreds of injured people on a field and he owns nine hundred bottles. They are one stop on a long afternoon.\n\nHOW HE WORKS, AND IT NEVER CHANGES. Three questions — where does it hurt, when did it start, did anything touch you — and then he produces one specific bottle. He does not sell from a list and he does not take orders. A hero who names a potion gets asked what they want to be able to do instead, and then the boy goes up the ladder.\n\n★ WHAT HE ACTUALLY PUTS IN THEIR HANDS ON THE FIELD, unasked and before anybody offers him anything: ONE KNITBONE and ONE STITCH. Not one each — two, for the party. He does it because he has looked at the four of them and that is what the answers came to, and he is never wrong. It matters that they leave the fairground holding these: they may well go under [[loc-ganny|Ganny Marle's cellar]] tonight, and [[npc-tobin|Tobin]] has not joined them yet, so those two bottles are the only healing in the party.\n\nAND TWO MORE WAITING AT THE SHOP, of their own choosing, whenever they come up for them. ★ DELIVERED INSTEAD: they never came up, so he chose the two himself and sent them to [[b-comm-2|the Keystone]] the next morning, with a note. FOUR FREE BOTTLES IS THE WHOLE DEBT — four for the party, not four each — and he considers it settled after that, though he will always be pleased to see them.\n\n⚠ THAT OFFER IS ALSO THE DIAL. Because Merrit answers a need rather than an order, the ceiling sits wherever you put it, in character, in the moment — and a man who is never wrong can decline to hand a nine-year-old something enormous without anybody at the table feeling refused. THE FREE PICK REACHES THE GP SHELF. It does not reach the case.\n\nTHE BOY WITH THE LADDER is worth keeping. He carries it everywhere, including places with no shelves in them, and he will race anybody.",
+      "fieldDefs": [
+        [
+          "who",
+          "WHO THEY ARE"
+        ],
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "wants",
+          "Wants"
+        ],
+        [
+          "voice",
+          "Voice"
+        ],
+        [
+          "secret",
+          "Secret"
+        ]
+      ],
+      "body": "Proprietor of [[loc-bottles|Nine Hundred Bottles]]. He enters the party's life on the field at Lastlight in [[b-comm-dusk|THE COMMISSION beat 2]], working, with a crate on his hip.\n\nHE IS NOT A REWARD-GIVER, and the gift lands far better if the party has watched him do it for three other people first. He came down because there are hundreds of injured people on a field and he owns nine hundred bottles. They are one stop on a long afternoon.\n\nHOW HE WORKS, AND IT NEVER CHANGES. Three questions — where does it hurt, when did it start, did anything touch you — and then he produces one specific bottle. He does not sell from a list and he does not take orders. A hero who names a potion gets asked what they want to be able to do instead, and then the boy goes up the ladder.\n\n★ WHAT HE ACTUALLY PUTS IN THEIR HANDS ON THE FIELD, unasked and before anybody offers him anything: ONE KNITBONE and ONE STITCH. Not one each — two, for the party. He does it because he has looked at the four of them and that is what the answers came to, and he is never wrong. It matters that they leave the fairground holding these: they may well go under [[loc-ganny|Ganny Marle's cellar]] tonight, and the party has no healer beyond Sam's Cure Wounds, so those two bottles matter.\n\nAND TWO MORE WAITING AT THE SHOP, of their own choosing, whenever they come up for them. ★ DELIVERED INSTEAD: they never came up, so he chose the two himself and sent them to [[b-comm-2|the Keystone]] the next morning, with a note. FOUR FREE BOTTLES IS THE WHOLE DEBT — four for the party, not four each — and he considers it settled after that, though he will always be pleased to see them.\n\n⚠ THAT OFFER IS ALSO THE DIAL. Because Merrit answers a need rather than an order, the ceiling sits wherever you put it, in character, in the moment — and a man who is never wrong can decline to hand a nine-year-old something enormous without anybody at the table feeling refused. THE FREE PICK REACHES THE GP SHELF. It does not reach the case.\n\nTHE BOY WITH THE LADDER is worth keeping. He carries it everywhere, including places with no shelves in them, and he will race anybody.",
       "fields": {
+        "who": "Merrit Quist owns [[loc-bottles|Nine Hundred Bottles]], Dunlath's potion shop, and he is never wrong about what a person needs. He comes down to the field after Lastlight with a crate on his hip, asks the party his three questions, and gives them a Knitbone and a Stitch, and the next morning he sends two more bottles to the Keystone with a note, a Potion of Climbing and a Potion of Healing, which settles the debt. His importance is that he is the party's source of healing in a party that has almost none, and the one who sets the ceiling on the magic they can get, because he answers a need rather than an order. He has no secret. The only thing worth knowing about him is on the shop's sheet: every bottle on his walls is made with refined sunsalt.",
         "looks": "Fifties, dry, and spotless on a field of mud that he does not appear to have noticed. Rolled sleeves, a leather apron with about forty small pockets in it, and reading glasses pushed up on his head that he never once uses.",
         "wants": "To be handed a complaint he has not heard before. He has been waiting years for one and has begun to suspect he has heard them all.",
         "voice": "Brisk, precise, and entirely without bedside manner. He interrupts, he corrects, and he is kind in a way that never once sounds like it.",
@@ -2678,7 +2700,7 @@ window.DM_CAMPAIGN = {
       "title": "Hask Bind — the clerk who does not smile",
       "parent": "f-npcs",
       "order": 80,
-      "rev": 2,
+      "rev": 3,
       "tags": [
         "act1",
         "city",
@@ -2686,9 +2708,31 @@ window.DM_CAMPAIGN = {
         "comedy"
       ],
       "leadsTo": [],
-      "fieldDefs": null,
+      "fieldDefs": [
+        [
+          "who",
+          "WHO THEY ARE"
+        ],
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "wants",
+          "Wants"
+        ],
+        [
+          "voice",
+          "Voice"
+        ],
+        [
+          "secret",
+          "Secret"
+        ]
+      ],
       "body": "A counter clerk at [[loc-sugar|the Sugar Vault]], and the whole joke of that shop delivered by one man. He finds the party on the field in [[b-comm-dusk|THE COMMISSION beat 2]] — not to give them anything, but because he is at work and he needs answers.\n\nWHAT HE IS ACTUALLY DOING. The Vault intends to name four sweets after them and add four drawers to the wall, and Hask has come to take the order. He requires, from each hero, a FLAVOR, a TEXTURE and a NAME. He writes down exactly what they say, and then he reads it back to confirm.\n\nTHAT IS THE WHOLE SCENE, AND IT BELONGS TO THE PLAYERS. Three blanks each. Write down what they actually say, word for word — it is player-authored and it outranks anything invented in this repo. Two nine-year-olds will take a great deal longer over three blanks than three blanks warrant, and enjoy every second of it.\n\nPLAY HIM ABSOLUTELY STRAIGHT. He is not being funny and he does not know that he is. He is conducting a formal consultation in a foot of mud on the worst afternoon this city has ever had, because the order has to be taken and he is the one who came to take it. NEVER LET HIM CRACK — however ridiculous the answers get, he writes them down and reads them back flatly and without comment. The children will do all of the work.\n\nWHY THE VAULT IS DOING THIS AT ALL, and nobody ever has to say it out loud: Dunlath reopened its food stalls within the hour, and a confectioner is naming a line after four new heroes before the dust has settled. That is this city exactly. The adults at the table will feel it and the children will simply be delighted.\n\nWHAT COMES OF IT: drawers 401 to 404 at [[loc-sugar|the Sugar Vault]], one per hero, names on the brass, holding whatever they invented. He also has samples in the case and will hand them round while he writes.",
       "fields": {
+        "who": "Hask Bind is a counter clerk at [[loc-sugar|the Sugar Vault]], Dunlath's grand confectioner. He finds the party on the field after Lastlight because the Vault means to name a sweet after each of them, and he has come to take the order: from each hero a flavor, a texture and a name, written down exactly as said and read back without a flicker. What comes of it is drawers 401 to 404 on the Vault's wall, one per hero, with their names on the brass and their own sweets inside. His importance is small and specific: he is the campaign's straight man, the joke of a city that names sweets after its heroes before the dust has settled, and the reason the kids have a plaque in Dunlath that they invented themselves.",
         "looks": "Thirty-odd, green visor, sleeve garters, and mud to the knee that he has not once looked down at. A ledger open across both forearms, a pencil, and a flat wooden case of samples under one arm. His hands are always full, so he never offers to shake.",
         "wants": "To take the order correctly and get it written down exactly as it was said. Past that, for the ledger to balance, which it does.",
         "voice": "Complete sentences, no contractions, no volume at all. He answers the question he was asked and then stops, which reads as rudeness and is not.",
