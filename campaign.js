@@ -3756,7 +3756,7 @@ window.DM_CAMPAIGN = {
       "title": "Pell Skell — the pie man",
       "parent": "f-npcs",
       "order": 150,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "taken",
@@ -3765,9 +3765,31 @@ window.DM_CAMPAIGN = {
         "comedy"
       ],
       "leadsTo": [],
-      "fieldDefs": null,
+      "fieldDefs": [
+        [
+          "who",
+          "WHO THEY ARE"
+        ],
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "wants",
+          "Wants"
+        ],
+        [
+          "voice",
+          "Voice"
+        ],
+        [
+          "secret",
+          "Secret"
+        ]
+      ],
       "body": "One of the five taken at Lastlight, and one of the four the party finds in [[t-cistern|the cistern]] in [[sc-town|the town on the face]]. Still in festival clothes, cold, frightened and unhurt. He kept everybody in the cistern going.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the name and everything on this sheet. The bible's design for the Lastlight fight had each hero see one person carried into the tear beyond their help. If anybody was described at the table that night, that person wins, and this sheet should be matched to them.",
       "fields": {
+        "who": "Pell Skell is a pie man from the Lastlight fair, taken with the others and one of the four the party finds in [[t-cistern|the cistern]] of the town on the face. His tray is still strapped to his front and empty, because he fed everybody in the cistern from it, and he has been feeding [[cr-hatch-toad|the hatch-toad]] crusts through the crack in the lid. His importance is practical and kind: he is the one who knows the toad shuffles toward a tapped pie tray, which is the easiest way to move it off the hatch, and he is the warmth that kept the prisoners going.",
         "looks": "Round and floury, with his pie tray still strapped to his front and nothing left on it.",
         "wants": "To feed somebody. He fed the others in the cistern from his tray until it was empty, and he is worried about the toad.",
         "voice": "Cheerful in a way that is plainly costing him, and he talks about food whenever he is frightened, which is constantly.",
@@ -3781,7 +3803,7 @@ window.DM_CAMPAIGN = {
       "title": "Ivy Pyle — the carousel woman",
       "parent": "f-npcs",
       "order": 160,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "taken",
@@ -3790,9 +3812,31 @@ window.DM_CAMPAIGN = {
         "practical"
       ],
       "leadsTo": [],
-      "fieldDefs": null,
+      "fieldDefs": [
+        [
+          "who",
+          "WHO THEY ARE"
+        ],
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "wants",
+          "Wants"
+        ],
+        [
+          "voice",
+          "Voice"
+        ],
+        [
+          "secret",
+          "Secret"
+        ]
+      ],
       "body": "One of the five taken at Lastlight, and one of the four the party finds in [[t-cistern|the cistern]] in [[sc-town|the town on the face]]. Still in festival clothes, cold, frightened and unhurt. She is the one who can make the town's machinery work.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the name and everything on this sheet. The bible's design for the Lastlight fight had each hero see one person carried into the tear beyond their help. If anybody was described at the table that night, that person wins, and this sheet should be matched to them.",
       "fields": {
+        "who": "Ivy Pyle ran the carousel at the Lastlight fair, and she is still furious that she left it running when the sky tore. She was taken with the others and is one of the four the party finds in [[t-cistern|the cistern]] of the town on the face. She understands gears, so she can work out [[t-hoist|the hoist]] and its treadwheel at a glance. Her importance is the escape: she can lock the brake, drop the basket fast, or jam the wheel so that nothing can follow them down.",
         "looks": "Fifty, sinewy, with grease on her festival sleeves and a spanner in her apron pocket that the goblins never thought to take.",
         "wants": "To get back to her carousel, which she left running when the sky tore, and she is furious about it.",
         "voice": "Short and practical, and she does not waste a word on anything she cannot fix.",
@@ -3806,7 +3850,7 @@ window.DM_CAMPAIGN = {
       "title": "Ivo Ganty — the drummer",
       "parent": "f-npcs",
       "order": 170,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "taken",
@@ -3815,9 +3859,31 @@ window.DM_CAMPAIGN = {
         "noise"
       ],
       "leadsTo": [],
-      "fieldDefs": null,
+      "fieldDefs": [
+        [
+          "who",
+          "WHO THEY ARE"
+        ],
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "wants",
+          "Wants"
+        ],
+        [
+          "voice",
+          "Voice"
+        ],
+        [
+          "secret",
+          "Secret"
+        ]
+      ],
       "body": "One of the five taken at Lastlight, and one of the four the party finds in [[t-cistern|the cistern]] in [[sc-town|the town on the face]]. Still in festival clothes, cold, frightened and unhurt. He kept time for everybody in the dark.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the name and everything on this sheet. The bible's design for the Lastlight fight had each hero see one person carried into the tear beyond their help. If anybody was described at the table that night, that person wins, and this sheet should be matched to them.",
       "fields": {
+        "who": "Ivo Ganty is a young drummer from the Lastlight band, taken with the others and one of the four the party finds in [[t-cistern|the cistern]] of the town on the face. He still has his two drumsticks, and he kept everyone's spirits up by drumming on the cistern wall, which the guards hated. He has never been in a fight and would like to stay out of this one. His importance is noise: goblins are frightened of it, so a drumroll at the right moment will scatter a stretch of them, if the party can talk him into it.",
         "looks": "Lanky and young, in a bandsman's coat with the braid half torn off, and still holding his two drumsticks.",
         "wants": "To be useful. He has never been in a fight and he would very much like to stay out of this one.",
         "voice": "Quiet and polite, and he drums on whatever is nearest without noticing he is doing it.",
