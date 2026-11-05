@@ -2960,16 +2960,38 @@ window.DM_CAMPAIGN = {
       "title": "Ganny Marle — the woman with the fake hole",
       "parent": "f-npcs",
       "order": 90,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "city",
         "red-flag"
       ],
       "leadsTo": [],
-      "fieldDefs": null,
+      "fieldDefs": [
+        [
+          "who",
+          "WHO THEY ARE"
+        ],
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "wants",
+          "Wants"
+        ],
+        [
+          "voice",
+          "Voice"
+        ],
+        [
+          "secret",
+          "Secret"
+        ]
+      ],
       "body": "Eighty years old, in a good hat, running a swindle out of her own cellar — and the first person in this campaign to ask the party for something rather than give them something.\n\nWHERE SHE APPEARS. She crosses the fairground at dusk in [[b-comm-dusk|THE COMMISSION beat 2]] and asks them to come that night. The night itself is [[enc-ganny|under her cellar]]. The place, the swindle and the tunnels are on [[loc-ganny|her location sheet]], and her secret is on that sheet's HIDDEN field rather than repeated here, so that the two cannot drift apart.\n\nHOW TO RUN HER, AND IT IS ALL IN ONE TRICK: SHE HAS TWO VOICES. The first is the patter — nineteen years of standing at the top of six steps taking a penny off strangers, and it is warm, practiced, funny and completely hollow. The second is what is left when she stops performing, and it is flat, brief and much older. THE MOMENT SHE SWITCHES IS THE ONLY SIGNAL SHE EVER GIVES, and she gives it three times: when she says she came down to look at the big one, when she asks them to come tonight, and when somebody holds up a jar of preserves with the wrong handwriting on the label.\n\nSHE ASSESSES PEOPLE AND DOES NOT HIDE IT. She looks the party over the way somebody prices a horse. She is not being rude; she is deciding whether four armed strangers are worth the risk, and she decides yes.\n\nWHAT SHE MUST NOT DO IN ACT ONE: confess, recruit, explain, or make a case for anything. She is not a believer and she does not preach — [[npc-hettie|Hettie Sarn]] is the one who puts the argument. Ganny is infrastructure who happens to be lovable, and the party should leave her cellar certain she knew more than she said and unable to prove a word of it.\n\nSHE IS NOT A COMBATANT and she is in the chamber during the fight, on the wrong side of it, and cannot get up the ladder quickly. That is deliberate — see [[enc-ganny|the encounter]].",
       "fields": {
+        "who": "Ganny Marle is eighty, wears a very good hat, and runs THE IMPOSSIBLE CORNER, a penny sideshow swindle in her own cellar. She is the first person in the campaign to ask the party for something rather than give them something: she crossed the fairground at dusk after Lastlight and asked them to deal with the thing in her preserves, and that night [[enc-ganny|under her cellar]] is where they watched a goblin open a crease with raw sunsalt and a small worn object. Secretly she is Red Flag, a courier node rather than a believer, because the hatch under her cellar opens onto the old sunsalt works the underground uses as its road. Her importance is that she is the party's first thread to Red Flag, one they cannot prove, since she plainly knew more than she said. One of her jam jars turns up in the patrol's loot on [[enc-cavern|the face]].",
         "looks": "Eighty, small, and dressed better than the house. The hat is genuinely good and she is aware of it. She goes down a dark ladder without needing to look at her feet, which is the first thing about her that does not add up.",
         "wants": "The thing in her cellar gone, tonight, without anybody official ever hearing about it — and that is the whole of what she will say she wants. What she actually needs is for her road to stay open, and she cannot say that to anybody.",
         "voice": "The patter, until it is not. Warm, quick, practiced, and full of a showman's cheerful nonsense — and then it drops, mid-sentence, into something flat and brief, and then it comes back. She is not a good liar and she has never needed to be one, because nobody has ever asked her a serious question.",
@@ -3329,7 +3351,7 @@ window.DM_CAMPAIGN = {
       "title": "Maud Hollam — the recruiter who retired",
       "parent": "f-npcs",
       "order": 100,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "fold",
@@ -3337,9 +3359,31 @@ window.DM_CAMPAIGN = {
         "put-away"
       ],
       "leadsTo": [],
-      "fieldDefs": null,
+      "fieldDefs": [
+        [
+          "who",
+          "WHO THEY ARE"
+        ],
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "wants",
+          "Wants"
+        ],
+        [
+          "voice",
+          "Voice"
+        ],
+        [
+          "secret",
+          "Secret"
+        ]
+      ],
       "body": "One of the four in the cages on [[enc-cavern|the face]]. She was the Green Fields recruiter before [[npc-wenna|Wenna]], and Green Fields told its members she had retired to the country. In fact she was put away, and she does not know it: she woke up in the Fold, the goblins came for her soon afterward, and her memory is muddled.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the looks, wants and voice on this sheet.",
       "fields": {
+        "who": "Maud Hollam was the Green Fields recruiter before [[npc-wenna|Wenna Ash]], until she asked the wrong question at a meeting and was put away, and Green Fields told its members she had retired to the country. She is one of the four in the convoy's cages on [[enc-cavern|the face]], and she does not know she was put away, because she woke in the Fold with her memory muddled. Her importance is what she brings home: she is living proof that the movement the party works for lies about its own people, even though she cannot remember why, and walking her back into Wenna's office is a scene waiting to happen.",
         "looks": "Sixties, in a good coat gone filthy, and still wearing a Green Fields pin.",
         "wants": "To get home and back to work. She believes she has been ill.",
         "voice": "Warm and organizing, a practiced recruiter who cannot stop taking people's names. Muddled, she loses the thread of a sentence and picks up another one.",
