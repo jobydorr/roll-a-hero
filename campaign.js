@@ -846,19 +846,42 @@ window.DM_CAMPAIGN = {
       "title": "The Rector of the Set Square — the one who is delighted with them",
       "parent": "f-npcs",
       "order": 50,
-      "rev": 5,
+      "rev": 6,
       "tags": [
         "act1",
         "surveyors"
       ],
       "leadsTo": [],
       "fields": {
+        "who": "The Rector is a Surveyor of the ritual grade, the senior official at the Set Square, and the party's first named Surveyor. It congratulates them in the dust after Lastlight, folds their badges and their Writ of Search at the awarding, and gives them the commission with the ministry's account of Red Flag, so it is their handler at the top of the ladder for the whole of Act One. It is warm, specific with its praise, and impossible to dislike, and that is its importance: the table has to like it, so that the first time it folds a street shut with people on it, which is planned for Act Two, the table is genuinely disturbed. It believes the account it gives them, and the one thing it hides is that Dunlath is not the first place people have been taken from.",
         "looks": "Tall, narrow, and folded out of a single sheet of something between paper and porcelain. Its face is a pattern of creases and it builds an expression before it wears one, so every smile arrives about half a second after the moment that earned it. In the hall it wears the ritual grade: a great pleated collar that opens behind its head like a hand of cards.",
         "wants": "For the world to be finished, which it understands as the kindest thing that could possibly be done for anyone, and in the meantime for the five people in that seam to be brought home. It wants the second thing sincerely and will spend real money on it.",
         "voice": "Warm, precise, and thrilled by competence. It compliments people specifically rather than generally — not that they were brave, but that they went left when everyone else went right. It never raises its voice, never threatens, and has genuinely never needed to.",
         "secret": "It has no personal secret at all, which is the interesting thing about it. It passes on the Red Flag account because that is the account its leadership gave it, and it has not examined it, in the way that a decent officer does not examine the ministry's press. The only thing it is hiding is that Dunlath is not the first. It knows that people have been taken the same way from other places, and that the ministry has not said so anywhere."
       },
-      "body": "The party's first named Surveyor, and their handler at the top of the ladder for the whole of Act One. It should be warm, personally attentive, and impossible to dislike, because a table that likes it will be genuinely disturbed the first time it folds a street shut with people on it — which is scheduled for Act Two.\n\nRun it in both appearances of [[f-commission|THE COMMISSION]]: it is the Surveyor who congratulates them in the dust in [[b-comm-1|beat 1]], out of ceremonial dress, and the officiant who folds their badges in [[b-comm-3|beat 4]]. Let a player notice it is the same one. A world where one official takes a personal interest in you from the first minute is smaller and more watched than a world with a cast of thousands, and the children will feel that without being told.\n\nIts own name for itself is a fold rather than a sound — a precise gesture of the hands — and it will teach a hero to make it, badly, if asked. It is enormously pleased to be asked.\n\nWHAT IT DOES NOT DO (settled 2026-08-27). It does not run its own errands. It does not fetch people, deliver messages, or leave its own building for anybody's convenience, and public esteem does not change that — four decorated strangers are still four strangers. A plain tablet-carrying Surveyor walks the party up in [[b-comm-3|beat 4]]; the Rector is waiting at the top, where it already was.\n\n⚠ WORTH A RULING: it does appear personally in the dust at the fairground in [[b-comm-1|beat 1]], which is either the exception that proves it — a catastrophe at its own ceremony is where a senior official turns up — or a contradiction to fix. Joby's call.\n\nWHAT IT FOLDS FOR THEM, and it is worth knowing it is the one doing it personally: the Writ of Search, one blank sheet, eight seconds, never doubling back. That writ is a licence as much as a key — see [[b-comm-3|the awarding]] — and it is the warmest, most useful, most companionable leash anybody has ever been handed."
+      "body": "The party's first named Surveyor, and their handler at the top of the ladder for the whole of Act One. It should be warm, personally attentive, and impossible to dislike, because a table that likes it will be genuinely disturbed the first time it folds a street shut with people on it — which is scheduled for Act Two.\n\nRun it in both appearances of [[f-commission|THE COMMISSION]]: it is the Surveyor who congratulates them in the dust in [[b-comm-1|beat 1]], out of ceremonial dress, and the officiant who folds their badges in [[b-comm-3|beat 4]]. Let a player notice it is the same one. A world where one official takes a personal interest in you from the first minute is smaller and more watched than a world with a cast of thousands, and the children will feel that without being told.\n\nIts own name for itself is a fold rather than a sound — a precise gesture of the hands — and it will teach a hero to make it, badly, if asked. It is enormously pleased to be asked.\n\nWHAT IT DOES NOT DO (settled 2026-08-27). It does not run its own errands. It does not fetch people, deliver messages, or leave its own building for anybody's convenience, and public esteem does not change that — four decorated strangers are still four strangers. A plain tablet-carrying Surveyor walks the party up in [[b-comm-3|beat 4]]; the Rector is waiting at the top, where it already was.\n\n⚠ WORTH A RULING: it does appear personally in the dust at the fairground in [[b-comm-1|beat 1]], which is either the exception that proves it — a catastrophe at its own ceremony is where a senior official turns up — or a contradiction to fix. Joby's call.\n\nWHAT IT FOLDS FOR THEM, and it is worth knowing it is the one doing it personally: the Writ of Search, one blank sheet, eight seconds, never doubling back. That writ is a licence as much as a key — see [[b-comm-3|the awarding]] — and it is the warmest, most useful, most companionable leash anybody has ever been handed.",
+      "fieldDefs": [
+        [
+          "who",
+          "WHO THEY ARE"
+        ],
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "wants",
+          "Wants"
+        ],
+        [
+          "voice",
+          "Voice"
+        ],
+        [
+          "secret",
+          "Secret"
+        ]
+      ]
     },
     {
       "schema": 1,
@@ -867,7 +890,7 @@ window.DM_CAMPAIGN = {
       "title": "Sela Orrin — the woman on the steps",
       "parent": "f-npcs",
       "order": 60,
-      "rev": 3,
+      "rev": 4,
       "tags": [
         "act1",
         "taken",
@@ -875,12 +898,35 @@ window.DM_CAMPAIGN = {
       ],
       "leadsTo": [],
       "fields": {
+        "who": "Sela Orrin is [[npc-finch|Finch]]'s mother. She appears on the steps outside the Set Square at the end of THE COMMISSION, for under a minute, with her five-year-old Rab, and she says Finch's name, which no official said all morning. She exists to put a face and a name on the ministry's count of five, and her importance is that she is the haunted in the making: a mother the party should keep running into, at a Green Fields meeting, at a rope line, and eventually in a dark house with a candle in the window, so that the whole argument of Act One happens to one family in the background. She is exactly what she appears to be, and Green Fields and Red Flag will both come for her.",
         "looks": "Forty, in yesterday's clothes, having sat on a wet step long enough to dry the stone under her. She has a five-year-old with her, Rab, who holds her hand except for the ten seconds in which he does the bravest thing anybody does in this scene.",
         "wants": "Her son back. Beneath that, and harder to give her, she wants somebody official to write his name down, because the count is five and nobody official will say which five, and a boy whose name has not been written down has not, in the only sense the state recognizes, been lost.",
         "voice": "Flat and practical, because she has not slept and has already cried everything she is going to cry in front of strangers. She does not plead. She states the position and waits, and it is much worse than pleading.",
         "secret": "She has no secret and she is not a plant, which the DM should hold onto, because this campaign is full of people who turn out to be something. She is exactly what she appears to be: one of the haunted, newly so, before anybody has reached her. Both Green Fields and Red Flag will come for her, and which one gets there first is worth deciding at the table rather than in advance."
       },
-      "body": "Sela exists to put a face and a name on the count. She appears in [[b-comm-6|the last beat of THE COMMISSION]], on the steps, for under a minute, and she says the name of the boy the party watched be taken — [[npc-finch|Finch]] — which nobody in a building full of officials said all morning.\n\nRAB. Five. He carries a paper bird that a Surveyor folded for him at the fair, and he gives it away to a stranger with a badge because he has worked out, in the way five-year-olds do, that this is a thing he can do to help. He does it without being told and without letting go of it easily. Play the bent wing.\n\nWHERE SHE GOES. She should come back. A mother who appears once and is never seen again is a prop, and this campaign has enough of those; a mother the party keeps running into — at a Green Fields meeting, at a rope line, eventually in a dark house with a candle in the window — is the whole argument of Act One happening to one family in the background. Her arc is a standing invitation and is deliberately unscheduled."
+      "body": "Sela exists to put a face and a name on the count. She appears in [[b-comm-6|the last beat of THE COMMISSION]], on the steps, for under a minute, and she says the name of the boy the party watched be taken — [[npc-finch|Finch]] — which nobody in a building full of officials said all morning.\n\nRAB. Five. He carries a paper bird that a Surveyor folded for him at the fair, and he gives it away to a stranger with a badge because he has worked out, in the way five-year-olds do, that this is a thing he can do to help. He does it without being told and without letting go of it easily. Play the bent wing.\n\nWHERE SHE GOES. She should come back. A mother who appears once and is never seen again is a prop, and this campaign has enough of those; a mother the party keeps running into — at a Green Fields meeting, at a rope line, eventually in a dark house with a candle in the window — is the whole argument of Act One happening to one family in the background. Her arc is a standing invitation and is deliberately unscheduled.",
+      "fieldDefs": [
+        [
+          "who",
+          "WHO THEY ARE"
+        ],
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "wants",
+          "Wants"
+        ],
+        [
+          "voice",
+          "Voice"
+        ],
+        [
+          "secret",
+          "Secret"
+        ]
+      ]
     },
     {
       "schema": 1,
@@ -1795,7 +1841,7 @@ window.DM_CAMPAIGN = {
       "title": "Hettie Sarn — the woman who did not clap",
       "parent": "f-npcs",
       "order": 40,
-      "rev": 5,
+      "rev": 6,
       "tags": [
         "act1",
         "red-flag"
@@ -1808,7 +1854,7 @@ window.DM_CAMPAIGN = {
         "voice": "Numbers first. Her method of recruitment is to open the ledger, turn it around, and wait. She will let a silence run for as long as it takes and has never once filled one.",
         "secret": "She ran the Cinder Draw for thirty-one years and accounted for more sunsalt than any living person. Her gray ledger shows the damage tracking the workings, the intake that never balances, and the shakes that follow the great pulls — and, kept quietest of all, a census of the faded, whose rest villages she has visited and found empty. Founder of the candle people."
       },
-      "body": "Session one she is seen, not met: the old woman at the rope line, counting the white wagons into her ledger, not clapping. Local — the farmland the gray ate was her family's.\n\nPLAY HER AS THE MOST BORING PERSON IN THE ROOM until the ledger opens. She does not argue, does not persuade, and does not raise her voice. She hands you an arithmetic problem and lets you do it yourself, which is why she cannot be dismissed as a crank.\n\nWhen the party crosses to her is open. She is the one who carries the real rebellion after [[npc-tobin|Tobin]] goes. Appears in: [[f-lastlight|LASTLIGHT]] (unnamed, at the rope line).\n\nSHE DOES NOT PAINT THE WALL. Her own people believe the Foldwright lives and will come back and put it right; Hettie keeps a ledger. Asked about the three words she says she has no opinion on things she cannot count, and that if a man did this then a man could be found, and that she would like to ask him some questions about the intake figures. She is the only person in the movement whose hope is not a hope.",
+      "body": "At Lastlight she is seen, not met: the old woman at the rope line, counting the white wagons into her ledger, not clapping. Local — the farmland the gray ate was her family's.\n\nPLAY HER AS THE MOST BORING PERSON IN THE ROOM until the ledger opens. She does not argue, does not persuade, and does not raise her voice. She hands you an arithmetic problem and lets you do it yourself, which is why she cannot be dismissed as a crank.\n\nWhen the party crosses to her is open. She is the one who carries the real rebellion to the party now that [[npc-tobin|Tobin]] is cut. Appears in: [[f-lastlight|LASTLIGHT]] (unnamed, at the rope line).\n\nSHE DOES NOT PAINT THE WALL. Her own people believe the Foldwright lives and will come back and put it right; Hettie keeps a ledger. Asked about the three words she says she has no opinion on things she cannot count, and that if a man did this then a man could be found, and that she would like to ask him some questions about the intake figures. She is the only person in the movement whose hope is not a hope.",
       "fieldDefs": [
         [
           "who",
