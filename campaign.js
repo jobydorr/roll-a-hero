@@ -1751,19 +1751,42 @@ window.DM_CAMPAIGN = {
       "title": "Finch — the lamplighter",
       "parent": "f-npcs",
       "order": 30,
-      "rev": 6,
+      "rev": 7,
       "tags": [
         "act1",
         "taken"
       ],
       "leadsTo": [],
       "fields": {
+        "who": "Finch is the seven-year-old boy who was chosen by lottery to light the Hearthspire at Lastlight, and he was the first person carried off when the tower tore, in front of ten thousand people. He is the face at the top of the rescue list and the reason the party went into the Fold, although they do not learn his name until his mother, [[npc-sela|Sela Orrin]], says it on the steps at the end of THE COMMISSION. In the Fold he was held in [[t-cistern|the cistern]] of the town on the face with the other four taken at Lastlight, and then the goblins took him up toward the tower, so he is gone when the party arrives. He is the person the whole first trip is for, and the rescue is not finished until he is found.",
         "looks": "Seven years old, best shirt, gap-toothed grin; was waving to the whole city right up until the sky reached out.",
         "wants": "To go home.",
         "voice": "Not yet — he is the face at the top of the rescue list, and for a whole day he is not even a name.",
         "secret": "⚠ THE PARTY DOES NOT LEARN HIS NAME UNTIL HIS MOTHER SAYS IT. He is never named at the ceremony, never named in the dust, and never named by any official in the Set Square, because the ministry counts to five and does not distinguish among them. His name reaches the table for the first time in [[b-comm-6|the last beat of THE COMMISSION]], on a step outside, from [[npc-sela|Sela Orrin]], after they watched him be taken. Keep it off the table until then; the whole scene is built on it.\n\nHe is not declared anything, and that is the point. He is one of five, in a number the ministry settles on by evening, and no official says his name in the party's hearing at any stage. In truth the first monster through the tear carried him off alive, best shirt, glass reliquary and all, in front of ten thousand people."
       },
-      "body": "Chosen by lottery to set the reliquary of the Cinder Draw's last crust into the Hearthspire's offering chamber. The tear ripped down the tower's face to the chamber; he outran the falling clock tower by a step and was taken by the first thing through. The party watched it happen, which makes them witnesses to something the state has since reduced to arithmetic.\n\nHis mother is [[npc-sela|Sela Orrin]] and his younger brother is Rab, five, who gives the party a paper bird in [[b-comm-6|the last beat of THE COMMISSION]]. Appears in: [[f-lastlight|LASTLIGHT]] (unnamed) and [[f-commission|THE COMMISSION]] (named, once, by his mother).\n\nIN THE FOLD (Joby, 2026-11-04): he was held in [[t-cistern|the cistern]] in [[sc-town|the town on the face]] with the other four, and then the goblins came down for him and took him up to [[t-top|the top terrace]], toward the tower. He is not there when the party arrives. [[npc-tamsin|Tamsin Brede]] watched them take him and counted the steps. ⚠ What happens to him up there is still open."
+      "body": "Chosen by lottery to set the reliquary of the Cinder Draw's last crust into the Hearthspire's offering chamber. The tear ripped down the tower's face to the chamber; he outran the falling clock tower by a step and was taken by the first thing through. The party watched it happen, which makes them witnesses to something the state has since reduced to arithmetic.\n\nHis mother is [[npc-sela|Sela Orrin]] and his younger brother is Rab, five, who gives the party a paper bird in [[b-comm-6|the last beat of THE COMMISSION]]. Appears in: [[f-lastlight|LASTLIGHT]] (unnamed) and [[f-commission|THE COMMISSION]] (named, once, by his mother).\n\nIN THE FOLD (Joby, 2026-11-04): he was held in [[t-cistern|the cistern]] in [[sc-town|the town on the face]] with the other four, and then the goblins came down for him and took him up to [[t-top|the top terrace]], toward the tower. He is not there when the party arrives. [[npc-tamsin|Tamsin Brede]] watched them take him and counted the steps. ⚠ What happens to him up there is still open.",
+      "fieldDefs": [
+        [
+          "who",
+          "WHO THEY ARE"
+        ],
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "wants",
+          "Wants"
+        ],
+        [
+          "voice",
+          "Voice"
+        ],
+        [
+          "secret",
+          "Secret"
+        ]
+      ]
     },
     {
       "schema": 1,
@@ -1772,19 +1795,42 @@ window.DM_CAMPAIGN = {
       "title": "Hettie Sarn — the woman who did not clap",
       "parent": "f-npcs",
       "order": 40,
-      "rev": 4,
+      "rev": 5,
       "tags": [
         "act1",
         "red-flag"
       ],
       "leadsTo": [],
       "fields": {
+        "who": "Hettie Sarn ran the Cinder Draw for thirty-one years, and she founded the candle people, the Red Flag households the ministry blames for Lastlight. She is the one who will put Red Flag's case to the party. She does it without speeches, by turning her gray ledger around and letting them do the arithmetic: the damage tracking the workings, sunsalt intake that never balances, and a census of the faded whose rest villages stand empty. So far the party has only seen her, an old woman at the Lastlight rope line counting the white wagons and not clapping. Her importance is that she is Red Flag's honest voice, the one whose hope is not a hope, and the most direct route by which the real rebellion reaches the party.",
         "looks": "Old and square-built, gray as weathered fence-wood, with a ledger under one arm. At the ceremony she is the only still thing in ten thousand people. Two fingers gone on the left hand, taken by the work, and she uses the hand anyway and does not explain it.",
         "wants": "To be proven wrong. She never is.",
         "voice": "Numbers first. Her method of recruitment is to open the ledger, turn it around, and wait. She will let a silence run for as long as it takes and has never once filled one.",
         "secret": "She ran the Cinder Draw for thirty-one years and accounted for more sunsalt than any living person. Her gray ledger shows the damage tracking the workings, the intake that never balances, and the shakes that follow the great pulls — and, kept quietest of all, a census of the faded, whose rest villages she has visited and found empty. Founder of the candle people."
       },
-      "body": "Session one she is seen, not met: the old woman at the rope line, counting the white wagons into her ledger, not clapping. Local — the farmland the gray ate was her family's.\n\nPLAY HER AS THE MOST BORING PERSON IN THE ROOM until the ledger opens. She does not argue, does not persuade, and does not raise her voice. She hands you an arithmetic problem and lets you do it yourself, which is why she cannot be dismissed as a crank.\n\nWhen the party crosses to her is open. She is the one who carries the real rebellion after [[npc-tobin|Tobin]] goes. Appears in: [[f-lastlight|LASTLIGHT]] (unnamed, at the rope line).\n\nSHE DOES NOT PAINT THE WALL. Her own people believe the Foldwright lives and will come back and put it right; Hettie keeps a ledger. Asked about the three words she says she has no opinion on things she cannot count, and that if a man did this then a man could be found, and that she would like to ask him some questions about the intake figures. She is the only person in the movement whose hope is not a hope."
+      "body": "Session one she is seen, not met: the old woman at the rope line, counting the white wagons into her ledger, not clapping. Local — the farmland the gray ate was her family's.\n\nPLAY HER AS THE MOST BORING PERSON IN THE ROOM until the ledger opens. She does not argue, does not persuade, and does not raise her voice. She hands you an arithmetic problem and lets you do it yourself, which is why she cannot be dismissed as a crank.\n\nWhen the party crosses to her is open. She is the one who carries the real rebellion after [[npc-tobin|Tobin]] goes. Appears in: [[f-lastlight|LASTLIGHT]] (unnamed, at the rope line).\n\nSHE DOES NOT PAINT THE WALL. Her own people believe the Foldwright lives and will come back and put it right; Hettie keeps a ledger. Asked about the three words she says she has no opinion on things she cannot count, and that if a man did this then a man could be found, and that she would like to ask him some questions about the intake figures. She is the only person in the movement whose hope is not a hope.",
+      "fieldDefs": [
+        [
+          "who",
+          "WHO THEY ARE"
+        ],
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "wants",
+          "Wants"
+        ],
+        [
+          "voice",
+          "Voice"
+        ],
+        [
+          "secret",
+          "Secret"
+        ]
+      ]
     },
     {
       "id": "cr-warden",
