@@ -2,8 +2,10 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-11-04.*
+*Last updated: 2026-11-05.*
 
+> **⏸ PAUSED 2026-11-05 AT JOBY'S REQUEST.** Everything is committed and pushed (`HEAD` == `origin/main`); the only untracked files are Joby's three images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v105`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Last work: every NPC sheet got a WHO THEY ARE header. On resume, read the list below; nothing is mid-edit.
+>
 > **▶▶ TO DO WITH JOBY — 2026-11-04. The live list; work it top down.**
 >
 > # ⚠️ WHEN PREP FOR THE TOWER BEGINS: THE MARK ON THE OGRE'S YOKE MUST APPEAR SOMEWHERE ON THE TOWER — PROBABLY ON THE DOOR. (Joby, 2026-11-05)
