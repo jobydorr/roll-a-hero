@@ -3397,7 +3397,7 @@ window.DM_CAMPAIGN = {
       "title": "Osric Vane — the magistrate who would not sign",
       "parent": "f-npcs",
       "order": 110,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "fold",
@@ -3406,9 +3406,31 @@ window.DM_CAMPAIGN = {
         "magic"
       ],
       "leadsTo": [],
-      "fieldDefs": null,
+      "fieldDefs": [
+        [
+          "who",
+          "WHO THEY ARE"
+        ],
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "wants",
+          "Wants"
+        ],
+        [
+          "voice",
+          "Voice"
+        ],
+        [
+          "secret",
+          "Secret"
+        ]
+      ],
       "body": "One of the four in the cages on [[enc-cavern|the face]]. He was a magistrate in Dunlath and a trained mage. He was put away and does not know it: he woke up in the Fold, the goblins came for him soon afterward, and his memory is muddled.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the looks, wants and voice on this sheet.",
       "fields": {
+        "who": "Osric Vane was a magistrate in Dunlath and a trained mage. He refused to sign an order putting someone away, and he was put away himself, with his magic switched off. He is one of the four in the convoy's cages on [[enc-cavern|the face]], and he remembers neither the order nor his refusal, because he woke in the Fold with his memory muddled; his hands keep making the shape of a spell, and nothing happens. His importance is twofold. He shows that the ministry's gentle system turns on its own officials, and he is the campaign's first case of switched-off magic, which a human can restore only through a costly and painful sunsalt ritual.",
         "looks": "A magistrate's black, rumpled and torn. His hands keep making the shape of a spell out of habit, and nothing happens.",
         "wants": "To understand why his hands are empty.",
         "voice": "Formal and procedural, and he insists on due process even with goblins.",
@@ -3422,7 +3444,7 @@ window.DM_CAMPAIGN = {
       "title": "Bram Tarrow — the champion nobody remembers",
       "parent": "f-npcs",
       "order": 120,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "fold",
@@ -3431,9 +3453,31 @@ window.DM_CAMPAIGN = {
         "comedy"
       ],
       "leadsTo": [],
-      "fieldDefs": null,
+      "fieldDefs": [
+        [
+          "who",
+          "WHO THEY ARE"
+        ],
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "wants",
+          "Wants"
+        ],
+        [
+          "voice",
+          "Voice"
+        ],
+        [
+          "secret",
+          "Secret"
+        ]
+      ],
       "body": "One of the four in the cages on [[enc-cavern|the face]], taken from a bath town elsewhere in the world when a tear opened in the hot room of its public baths. He is still in the baths' robe, filthy, with one sandal.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the looks, wants and voice on this sheet.",
       "fields": {
+        "who": "Bram Tarrow is a retired champion wrestler from the arena games. He was taken from a bath town elsewhere in the world when a tear opened in the hot room of its public baths. He is one of the four in the convoy's cages on [[enc-cavern|the face]], still in a filthy bath robe and one sandal. He will not fight and he is terrified of the wolves, but he is strong enough to lift a cage, hold a door or carry a downed hero, and he insists on coming to [[sc-town|the town]], where his strength helps haul the Lastlight four out of [[t-cistern|the cistern]]. His importance is that he and [[npc-annis|Annis]] are living proof that people are being taken from places other than Dunlath, and he is comic relief with a sad edge: a champion nobody remembers.",
         "looks": "Big, soft and old, a retired champion wrestler from the arena games who was taking the waters for his knees.",
         "wants": "To be recognized. He keeps telling people who he used to be, and nobody has ever heard of him.",
         "voice": "Loud and boastful until something growls, and then very quiet.",
