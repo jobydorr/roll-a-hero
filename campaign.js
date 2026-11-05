@@ -1647,28 +1647,51 @@ window.DM_CAMPAIGN = {
       "title": "Wenna Ash — the recruiter",
       "parent": "f-npcs",
       "order": 10,
-      "rev": 2,
+      "rev": 3,
       "tags": [
         "act1",
         "green-fields"
       ],
       "leadsTo": [],
       "fields": {
+        "who": "Wenna Ash is the Green Fields recruiter in Dunlath, and she is the party's employer. In her office inside the ministry she signs their names onto the movement's roll, gives them the assignment to the tear site, and brings [[ref-party|Mordrin]] in as the liaison the Accord sends with them, so the whole rescue runs through her. She believes everything she tells them, and that is her importance to the campaign: Green Fields is steered from above her head without her knowledge, so when Act One's betrayal comes, it reaches the party through her rather than from her. The party has to like her and trust her long before then. Her predecessor in the job, [[npc-maud|Maud Hollam]], is one of the prisoners the party frees on the face.",
         "looks": "Weathered and warm, dressed for standing all day. Scans every crowd face by face against a little sheaf of hand-drawn portraits, and does not run when the sky opens.",
         "wants": "The taken found and brought home, and her movement believed. She lays four places at her table and has three children, and cannot say why.",
         "voice": "Plain and steady. Never gives speeches; asks questions and then waits as long as it takes.",
         "secret": "She has no secrets of her own, which is the tragedy. She has never heard of the Armature; she does not know her expeditions are steered from above her head; and she does not know that the fourth place at her table belongs to the one taking Green Fields will never name. Everything she tells the party, she believes."
       },
-      "body": "Green Fields' recruiter, six years in. Session one she works the Lastlight crowd, stands through the fight, and closes the session with the interview in the dust — which is also the campaign's collection point for the players' own material. The betrayal, when it lands, lands through her and not on her; she must be a person to the party long before then. Appears in: [[f-lastlight|LASTLIGHT]]."
+      "body": "Green Fields' recruiter, six years in. At Lastlight she is only seen, working the crowd with her sheaf of drawings, and she stands through the fight. The party meets her properly in her office in [[b-comm-5|THE COMMISSION, beat 6]], which is where she signs them on. The betrayal, when it lands, lands through her and not on her; she must be a person to the party long before then. Appears in: [[f-lastlight|LASTLIGHT]] (seen, not met) and [[f-commission|THE COMMISSION]].",
+      "fieldDefs": [
+        [
+          "who",
+          "WHO THEY ARE"
+        ],
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "wants",
+          "Wants"
+        ],
+        [
+          "voice",
+          "Voice"
+        ],
+        [
+          "secret",
+          "Secret"
+        ]
+      ]
     },
     {
       "schema": 1,
       "id": "npc-tobin",
       "type": "npc",
-      "title": "Tobin Rell — the clerk sent to watch them",
+      "title": "Tobin Rell — CUT",
       "parent": "f-npcs",
       "order": 20,
-      "rev": 9,
+      "rev": 10,
       "tags": [
         "act1",
         "registry",
@@ -1676,6 +1699,7 @@ window.DM_CAMPAIGN = {
       ],
       "leadsTo": [],
       "fields": {
+        "who": "⚠ CUT (Joby, 2026-10-12). Tobin Rell no longer appears in the campaign. Brandon's [[ref-party|Mordrin]] took his place as the liaison the Accord sends with the party, and nobody has yet taken over Tobin's other role as the party's healer. The sheet stays in the list because he could still come back later (Joby, 2026-11-05), because eleven other documents still mention him and are waiting to be reworked, and because some of his material may be reused: Ellum Wick's field book, the satchel of copied petitions that led to THE UNANSWERED, and his grandmother's darning egg.",
         "looks": "Young, inky, over-neat; carries a satchel of forms the way other men carry shields. Has never been in a fight and stands like it.",
         "wants": "To do his job well — he has never once done a job badly — and to find out what happened to Ellum Wick, which are no longer the same ambition and have not been for about four months.",
         "voice": "Apologetic precision. Clears his throat before bad news, and writes down what he sees, accurately, every night. When he says something dangerous he says it once, quietly, badly, and then apologizes for saying it.",
@@ -1686,6 +1710,10 @@ window.DM_CAMPAIGN = {
       },
       "body": "Assigned to the party in [[b-comm-5|beat 6 of THE COMMISSION]], under the Accord's clause that no expedition enters the creases without a clerk to keep the record. Introduce him as an inconvenience. Through Act One he is the party's healer, and the inversion should be enjoyed: the ministry's watcher is the reason its quarry keeps getting back up.\n\nWHY HE IS ALREADY HALFWAY GONE (changed 2026-08-11). The campaign needs somebody who can put Red Flag's case to the party as a liberation fight rather than as the terrorism the Set Square describes, and it needs that early rather than late — otherwise the ministry's account stands unopposed for a third of the act. Tobin is that voice. He does not preach and he does not recruit; he asks one question at a time, and each one is a number that does not add up.\n\nWHAT IS IN THE BOTTOM OF HIS SATCHEL. Petitions he has copied out and kept, which is not allowed and which he knows is not allowed. He files them every night, nothing has ever come of a single one, and he cannot let it alone — a man who records the truth faithfully cannot bear a record that goes nowhere. He mentions it once, on the road, as an embarrassed complaint about his own job rather than as an offer, and the party asks to see them. That is [[f-unanswered|THE UNANSWERED]], and it is how side work reaches them for the rest of the campaign.\n\nHIS FIRST QUESTION IS NOT ASKED ON DAY ONE (changed 2026-08-14). He does not volunteer a dangerous thought to four strangers he met an hour ago; a careful man does not, and saying it out loud is what gets a man folded away. On the first day he is an inconvenience with a satchel. The on-ramp comes after they have been inside the tower together and he has written the day up — because what he cannot do is record something he did not see, and the ministry's account of that tower and his own eyes are about to stop matching.\n\nPLAYING THE BALANCE. He must stay likeable, useless in a fight, and easy to protect, because the children should own his safety long before they own his politics. Let them push him either way: a party that argues the ministry's case at him can genuinely slow him down, and a party that pushes will get further, faster, than anybody intended. He is not load-bearing — Red Flag reaches the party through [[npc-hettie|Hettie Sarn]] regardless, and Ellum's satchel can be found by anyone.",
       "fieldDefs": [
+        [
+          "who",
+          "WHO THEY ARE"
+        ],
         [
           "looks",
           "Looks like"
