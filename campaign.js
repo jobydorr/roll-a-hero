@@ -3491,7 +3491,7 @@ window.DM_CAMPAIGN = {
       "title": "Annis Crale — the stoker",
       "parent": "f-npcs",
       "order": 130,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "fold",
@@ -3500,9 +3500,31 @@ window.DM_CAMPAIGN = {
         "sunsalt"
       ],
       "leadsTo": [],
-      "fieldDefs": null,
+      "fieldDefs": [
+        [
+          "who",
+          "WHO THEY ARE"
+        ],
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "wants",
+          "Wants"
+        ],
+        [
+          "voice",
+          "Voice"
+        ],
+        [
+          "secret",
+          "Secret"
+        ]
+      ],
       "body": "One of the four in the cages on [[enc-cavern|the face]], taken from a bath town elsewhere in the world when a tear opened in the hot room of its public baths. She is still in the baths' robe, filthy, with one sandal.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the looks, wants and voice on this sheet.",
       "fields": {
+        "who": "Annis Crale is the stoker at the public baths of a bath town elsewhere in the world, the one who runs the sunsalt beds under the hot room, and she was taken with [[npc-bram|Bram Tarrow]] when a tear opened there. She is one of the four in the convoy's cages on [[enc-cavern|the face]], and she flatly refuses to go into the town. She knows sunsalt better than anyone in the party, can tell raw from refined by the smell, and will not touch the goblins' pinches. Her importance is that she is the party's expert on the substance at the heart of the campaign, and with Bram she is proof that the raids reach beyond Dunlath.",
         "looks": "Small, quick and burn-scarred about the forearms, the baths' stoker, who runs the sunsalt beds under the hot room.",
         "wants": "To get back to her beds before somebody else ruins them.",
         "voice": "Blunt, and she apologizes for the state of the robes as though it were her fault.",
@@ -3687,7 +3709,7 @@ window.DM_CAMPAIGN = {
       "title": "Tamsin Brede — the girl who nearly lit the lamp",
       "parent": "f-npcs",
       "order": 140,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "taken",
@@ -3696,9 +3718,31 @@ window.DM_CAMPAIGN = {
         "kid"
       ],
       "leadsTo": [],
-      "fieldDefs": null,
+      "fieldDefs": [
+        [
+          "who",
+          "WHO THEY ARE"
+        ],
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "wants",
+          "Wants"
+        ],
+        [
+          "voice",
+          "Voice"
+        ],
+        [
+          "secret",
+          "Secret"
+        ]
+      ],
       "body": "One of the five taken at Lastlight, and one of the four the party finds in [[t-cistern|the cistern]] in [[sc-town|the town on the face]]. Still in festival clothes, cold, frightened and unhurt. She is eleven, and she is the one the kids at the table will care about first.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the name and everything on this sheet. The bible's design for the Lastlight fight had each hero see one person carried into the tear beyond their help. If anybody was described at the table that night, that person wins, and this sheet should be matched to them.",
       "fields": {
+        "who": "Tamsin Brede is eleven, and she lost the lottery to light the Hearthspire to [[npc-finch|Finch]]. She was taken at Lastlight and is one of the four the party finds in [[t-cistern|the cistern]] of the town on the face. She looked after Finch there like a big sister, fought the goblins when they came for him, and watched them take him up toward the tower, counting the steps. Her importance is that she is the kids' way into the rescue and also its complication: she will not leave the town without Finch, so the party must talk her round or carry her, and the steps she counted are their best clue to where he went.",
         "looks": "Eleven, in a ribbon-trimmed festival dress torn at the hem, with a lottery token still on a string round her neck.",
         "wants": "To go after [[npc-finch|Finch]]. She will not leave the town without him, and she has to be talked round or carried.",
         "voice": "Fierce, bossy and close to tears, and she covers the tears by giving orders.",
