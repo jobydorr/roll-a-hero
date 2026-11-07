@@ -2499,7 +2499,7 @@ window.DM_CAMPAIGN = {
       "title": "▶ THE PARTY — what the table actually told us",
       "parent": "f-reference",
       "order": 5,
-      "rev": 4,
+      "rev": 5,
       "tags": [
         "party",
         "players",
@@ -2538,7 +2538,7 @@ window.DM_CAMPAIGN = {
       ],
       "fields": {
         "source": "Collected in play at SESSION ONE (Lastlight), which is the session that was built to harvest exactly this. Everything in the boxes below is what Joby heard at his own table, or, for Mordrin, what Brandon told him directly. It is player-authored and it outranks anything invented in this repo.\n\nJef's fuller backstory lives on his shared character sheet in the OS rather than here.",
-        "century": "Once served a powerful and benevolent leader, who was killed. Century now wanders looking for purpose.",
+        "century": "Once served a powerful and benevolent leader, who was killed. Century now wanders looking for purpose.\n\nHIS MEMORY FROM THE FOLD (Ben, passed on by Joby, 2026-11-07): \"Playing chase with his friends out in the wild as a boy.\"",
         "sam": "Essentially retiring. World-weary and done with the life he has led until now. This is a last hurrah, and he is passing through.\n\nHis animal companion is a weasel named Worm (Joby, 2026-11-04).",
         "aramil": "Backstory is still thin, but a strong revolutionary spirit is already showing. Hearing that the world is a colonial domain of the Surveyors — with none of the political detail — was enough on its own to start him radicalizing.",
         "jef": "Has a workable backstory already, on his shared sheet in the OS. What the table showed is that he is most engaged when he is hitting something.",
