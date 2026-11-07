@@ -4,7 +4,7 @@
 
 *Last updated: 2026-11-05.*
 
-> **⏸ PAUSED 2026-11-05 AT JOBY'S REQUEST.** Everything is committed and pushed (`HEAD` == `origin/main`); the only untracked files are Joby's three images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v105`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Last work: every NPC sheet got a WHO THEY ARE header. On resume, read the list below; nothing is mid-edit.
+> **⏸ PAUSED 2026-11-05 AT JOBY'S REQUEST.** Everything is committed and pushed (`HEAD` == `origin/main`); the only untracked files are Joby's three images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v106`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Last work: every NPC sheet got a WHO THEY ARE header. On resume, read the list below; nothing is mid-edit.
 >
 > **▶▶ TO DO WITH JOBY — 2026-11-04. The live list; work it top down.**
 >
@@ -54,7 +54,7 @@
 >
 > **▶▶ START HERE — 2026-11-03, FRESH CHAT. Newest block; read this first. The 2026-10-15 block below it is the detailed reference for everything built before the game was played.**
 >
-> **STATE:** `HEAD` == `origin/main` at the time of writing; the working tree is clean apart from Joby's three untracked images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v105`, `app.js` `v26`, `data.js` `v19`, `firebase-sync.js` `v16`. Joby runs the OS from `localhost:8000`; start it with `preview_start` on the `roll-a-hero` launch config, and he reviews in his own Chrome with a hard refresh, because the pane's storage is empty.
+> **STATE:** `HEAD` == `origin/main` at the time of writing; the working tree is clean apart from Joby's three untracked images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v106`, `app.js` `v26`, `data.js` `v19`, `firebase-sync.js` `v16`. Joby runs the OS from `localhost:8000`; start it with `preview_start` on the `roll-a-hero` launch config, and he reviews in his own Chrome with a hard refresh, because the pane's storage is empty.
 >
 > **THE GAME IS LOGGED (later on 2026-11-03).** Joby's report is in the OS at `SESSION LOGS › Mordrin joins, into the Fold, the convoy fight` and in `JOURNAL.md`. In short: they met Mordrin, went in, and the memory effect struck; the players are still deciding their memories and Joby collects them before the next game. On the face they attacked the convoy first; its horn was ANSWERED by the patrol (the sheet said nobody answers). The game stopped with the convoy nearly cleared and the patrol about to arrive, so the next game opens mid-fight. "Mordrigan" was a slip; the name stays **Mordrin**.
 >
