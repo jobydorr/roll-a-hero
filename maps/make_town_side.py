@@ -222,6 +222,8 @@ def svg(dm):
     tag(592, wy - 46, "treadwheel", anchor="middle")
     tag(530, T[4] + 34, "the float", anchor="middle")
     tag(305, T[3] - 122, "parade giant", anchor="middle", color=INK)
+    a(f'<rect x="322" y="{T[3]-15}" width="12" height="9" fill="#c79a3a" stroke="{RED}" stroke-width="2"/>')
+    tag(305, T[3] + 34, "the hoard, behind a loose stone", anchor="middle", color=RED, bold=True)
     tag(530, T[3] - 70, "house-crab", anchor="middle", color=INK)
     tag(330, T[2] + 34, "the kennels", anchor="middle")
     tag(555, T[1] + 34, "gatehouse and gong", anchor="middle")
@@ -240,7 +242,7 @@ def svg(dm):
         ("6", "THE TOP TERRACE", ["Finch was taken up here, toward", "the tower. Nobody goes up this trip."]),
         ("5", "THE CISTERN", ["3 goblin guards; the hatch-toad sits", "on the lid. 4 of the Lastlight five", "are at the bottom. Haul them up", "on the bucket rope."]),
         ("4", "THE HOIST", ["Tear-ogre in the treadwheel, 2 goblins.", "Rope bridges. The float in the yard.", "Rookery: 6 cliff-rooks and the old", "rook. Nest: spyglass, 3 eggs."]),
-        ("3", "THE MESS", ["About 15 goblins. The parade giant", "on the fountain (3 goblins inside).", "The house-crab in its tiny cottage.", "The chute goes down from here."]),
+        ("3", "THE MESS", ["About 15 goblins. The parade giant", "on the fountain (3 goblins inside).", "The house-crab in its tiny cottage.", "THE HOARD: a loose stone in the", "fountain's base. Chute starts here."]),
         ("2", "THE KENNELS", ["3 crease-wolves, 2 keepers.", "Opened on the alarm."]),
         ("1", "THE LOWEST GATE", ["4 goblins and the gong. The", "gatehouse is the house the crab wants."]),
     ]

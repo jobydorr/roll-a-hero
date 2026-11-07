@@ -195,6 +195,8 @@
 <text x="592" y="746" font-size="13.5" font-style="italic" fill="#6b4a23" text-anchor="middle">treadwheel</text>
 <text x="530" y="864" font-size="13.5" font-style="italic" fill="#6b4a23" text-anchor="middle">the float</text>
 <text x="305" y="938" font-size="13.5" font-style="italic" fill="#2b2118" text-anchor="middle">parade giant</text>
+<rect x="322" y="1045" width="12" height="9" fill="#c79a3a" stroke="#a3352a" stroke-width="2"/>
+<text x="305" y="1094" font-size="13.5" font-style="italic" fill="#a3352a" text-anchor="middle" font-weight="bold">the hoard, behind a loose stone</text>
 <text x="530" y="990" font-size="13.5" font-style="italic" fill="#2b2118" text-anchor="middle">house-crab</text>
 <text x="330" y="1324" font-size="13.5" font-style="italic" fill="#6b4a23" text-anchor="middle">the kennels</text>
 <text x="555" y="1554" font-size="13.5" font-style="italic" fill="#6b4a23" text-anchor="middle">gatehouse and gong</text>
@@ -229,27 +231,28 @@
 <text x="1176" y="642" font-size="13.5" fill="#2b2118">About 15 goblins. The parade giant</text>
 <text x="1176" y="659" font-size="13.5" fill="#2b2118">on the fountain (3 goblins inside).</text>
 <text x="1176" y="676" font-size="13.5" fill="#2b2118">The house-crab in its tiny cottage.</text>
-<text x="1176" y="693" font-size="13.5" fill="#2b2118">The chute goes down from here.</text>
-<circle cx="1154" cy="730" r="13" fill="#a3352a"/><text x="1154" y="735" font-size="15" font-weight="bold" fill="#fff" text-anchor="middle">2</text>
-<text x="1176" y="736" font-size="15" font-weight="bold" fill="#a3352a" letter-spacing="1">THE KENNELS</text>
-<text x="1176" y="756" font-size="13.5" fill="#2b2118">3 crease-wolves, 2 keepers.</text>
-<text x="1176" y="773" font-size="13.5" fill="#2b2118">Opened on the alarm.</text>
-<circle cx="1154" cy="810" r="13" fill="#a3352a"/><text x="1154" y="815" font-size="15" font-weight="bold" fill="#fff" text-anchor="middle">1</text>
-<text x="1176" y="816" font-size="15" font-weight="bold" fill="#a3352a" letter-spacing="1">THE LOWEST GATE</text>
-<text x="1176" y="836" font-size="13.5" fill="#2b2118">4 goblins and the gong. The</text>
-<text x="1176" y="853" font-size="13.5" fill="#2b2118">gatehouse is the house the crab wants.</text>
-<line x1="1140" y1="874" x2="1470" y2="874" stroke="#6b4a23" stroke-width="1"/>
-<text x="1140" y="894" font-size="14" font-weight="bold" fill="#a3352a">THE ALARM</text>
-<text x="1140" y="913" font-size="13.5" fill="#2b2118">Gong or horn: 1d4+2 goblins a round</text>
-<text x="1140" y="930" font-size="13.5" fill="#2b2118">for 3 rounds, then the kennels open.</text>
-<text x="1140" y="966" font-size="14" font-weight="bold" fill="#a3352a">IN</text>
-<text x="1140" y="985" font-size="13.5" fill="#2b2118">The delivery, the small door,</text>
-<text x="1140" y="1002" font-size="13.5" fill="#2b2118">or the front gate.</text>
-<text x="1140" y="1038" font-size="14" font-weight="bold" fill="#a3352a">OUT</text>
-<text x="1140" y="1057" font-size="13.5" fill="#2b2118">The big fight, back down the road.</text>
-<text x="1140" y="1074" font-size="13.5" fill="#2b2118">Shortcuts: the chute, the hoist</text>
-<text x="1140" y="1091" font-size="13.5" fill="#2b2118">basket, the float, the rook's eggs.</text>
-<text x="1140" y="1127" font-size="14" font-weight="bold" fill="#a3352a">LIGHT</text>
-<text x="1140" y="1146" font-size="13.5" fill="#2b2118">From everywhere and nowhere.</text>
-<text x="1140" y="1163" font-size="13.5" fill="#2b2118">Nothing casts a shadow.</text>
+<text x="1176" y="693" font-size="13.5" fill="#2b2118">THE HOARD: a loose stone in the</text>
+<text x="1176" y="710" font-size="13.5" fill="#2b2118">fountain's base. Chute starts here.</text>
+<circle cx="1154" cy="747" r="13" fill="#a3352a"/><text x="1154" y="752" font-size="15" font-weight="bold" fill="#fff" text-anchor="middle">2</text>
+<text x="1176" y="753" font-size="15" font-weight="bold" fill="#a3352a" letter-spacing="1">THE KENNELS</text>
+<text x="1176" y="773" font-size="13.5" fill="#2b2118">3 crease-wolves, 2 keepers.</text>
+<text x="1176" y="790" font-size="13.5" fill="#2b2118">Opened on the alarm.</text>
+<circle cx="1154" cy="827" r="13" fill="#a3352a"/><text x="1154" y="832" font-size="15" font-weight="bold" fill="#fff" text-anchor="middle">1</text>
+<text x="1176" y="833" font-size="15" font-weight="bold" fill="#a3352a" letter-spacing="1">THE LOWEST GATE</text>
+<text x="1176" y="853" font-size="13.5" fill="#2b2118">4 goblins and the gong. The</text>
+<text x="1176" y="870" font-size="13.5" fill="#2b2118">gatehouse is the house the crab wants.</text>
+<line x1="1140" y1="891" x2="1470" y2="891" stroke="#6b4a23" stroke-width="1"/>
+<text x="1140" y="911" font-size="14" font-weight="bold" fill="#a3352a">THE ALARM</text>
+<text x="1140" y="930" font-size="13.5" fill="#2b2118">Gong or horn: 1d4+2 goblins a round</text>
+<text x="1140" y="947" font-size="13.5" fill="#2b2118">for 3 rounds, then the kennels open.</text>
+<text x="1140" y="983" font-size="14" font-weight="bold" fill="#a3352a">IN</text>
+<text x="1140" y="1002" font-size="13.5" fill="#2b2118">The delivery, the small door,</text>
+<text x="1140" y="1019" font-size="13.5" fill="#2b2118">or the front gate.</text>
+<text x="1140" y="1055" font-size="14" font-weight="bold" fill="#a3352a">OUT</text>
+<text x="1140" y="1074" font-size="13.5" fill="#2b2118">The big fight, back down the road.</text>
+<text x="1140" y="1091" font-size="13.5" fill="#2b2118">Shortcuts: the chute, the hoist</text>
+<text x="1140" y="1108" font-size="13.5" fill="#2b2118">basket, the float, the rook's eggs.</text>
+<text x="1140" y="1144" font-size="14" font-weight="bold" fill="#a3352a">LIGHT</text>
+<text x="1140" y="1163" font-size="13.5" fill="#2b2118">From everywhere and nowhere.</text>
+<text x="1140" y="1180" font-size="13.5" fill="#2b2118">Nothing casts a shadow.</text>
 </svg>

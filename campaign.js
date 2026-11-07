@@ -3061,7 +3061,7 @@ window.DM_CAMPAIGN = {
       "title": "▶ RUN THESE IN ORDER — the town on the face",
       "parent": "f-town",
       "order": 10,
-      "rev": 7,
+      "rev": 8,
       "tags": [
         "act1",
         "fold",
@@ -3100,7 +3100,7 @@ window.DM_CAMPAIGN = {
         "map": "![[maps/town-side-dm.svg|The town on the face, side view (DM). Click to open it full size.]]\nThe player handout is [[map-town-side-player|the player version]], and every map is under MAPS in the sidebar.",
         "order": "1. [[t-gate|The lowest gate]] · 4 goblins and a gong, where the ledge road ends\n2. [[t-kennels|The kennels]] · 3 crease-wolves and 2 keepers, let out on the alarm\n3. [[t-mess|The mess]] · the old square, about 15 goblins, loud and cowardly, [[cr-parade-giant|the parade giant]] on the fountain, and [[cr-house-crab|the house-crab]] being bullied out of its home\n4. [[t-hoist|The hoist]] · a treadwheel crane walked by a tear-ogre, with [[cr-cliff-rook|the rooks]] and [[cr-old-rook|the old rook]] on the roofs above it\n5. [[t-cistern|The cistern]] · four of the Lastlight five, under [[cr-hatch-toad|the hatch-toad]]\n6. [[t-top|The top terrace]] · under the tower; Finch was taken up there, and nobody goes up this trip",
         "setting": "THE TOWN WAS BUILT FOR PEOPLE, which makes it the first thing in the Fold that is the right size: human doors, human stairs, window boxes gone wild. The goblins have cut a goblin-sized door into the bottom of every human door, like a cat flap, and that tells anyone at a glance who lives here now. It also means Jef and Mordrin are small enough to go where the goblins go.\n\nTHE TOWN WAS FOLDED AWAY IN THE MIDDLE OF A PARADE (Joby, 2026-11-04), and the remnants are everywhere: faded bunting strung between the terraces, paper streamers gone to pulp in the gutters, a parade float stuck in the hoist yard, and the parade giant standing on the fountain. ⚠ The particular remnants are filled in. What the parade was for does not matter (Joby).\n\nThe terraces climb the face and are joined by stairs, ladders, rope bridges and one great hoist. There is no day or night in the Fold and the light is the same soft, sourceless glow as everywhere else, so the goblins keep their own rhythm with a gong, eating and sleeping in shifts.",
-        "before": "THE NUMBERS. About 26 goblins in all, 3 crease-wolves, 1 tear-ogre, the hatch-toad, [[cr-parade-giant|the parade giant]] with three goblins inside it, [[cr-house-crab|the house-crab]], and 6 [[cr-cliff-rook|cliff-rooks]] with [[cr-old-rook|the old rook]] on the roofs, spread across the terraces, so the party never meets all of them at once. Goblins are frightened of everything (canon from Ganny's cellar), so noise, light and anything big will scatter them.\n\nTHE ALARM. Once the gong or a horn sounds, 1d4+2 goblins arrive each round for three rounds, and then the kennels are opened. The town is already uneasy, because the convoy's horn was answered and the convoy never arrived.\n\nTHE FOUR FROM THE CONVOY wait in the slot doorway the party came out of, which is safe. [[npc-bram|Bram]] insists on coming along and [[npc-annis|Annis]] flatly refuses.",
+        "before": "THE NUMBERS. About 26 goblins in all, 3 crease-wolves, 1 tear-ogre, the hatch-toad, [[cr-parade-giant|the parade giant]] with three goblins inside it, [[cr-house-crab|the house-crab]], and 6 [[cr-cliff-rook|cliff-rooks]] with [[cr-old-rook|the old rook]] on the roofs, spread across the terraces, so the party never meets all of them at once. Goblins are frightened of everything (canon from Ganny's cellar), so noise, light and anything big will scatter them.\n\nTHE ALARM. Once the gong or a horn sounds, 1d4+2 goblins arrive each round for three rounds, and then the kennels are opened. The town is already uneasy, because the convoy's horn was answered and the convoy never arrived.\n\nTHINGS TO FIND are on each terrace's sheet, under WHAT CAN BE FOUND. The goblin hoard is behind a loose stone in the base of the fountain in [[t-mess|the mess]].\n\nTHE FOUR FROM THE CONVOY wait in the slot doorway the party came out of, which is safe. [[npc-bram|Bram]] insists on coming along and [[npc-annis|Annis]] flatly refuses.",
         "ways": "IN, three ways, and the table picks.\n· THE DELIVERY. Heroes ride in the convoy's cages and the ogre walks them through the gate. This works only if the ogre was turned, and it gets them in quietly.\n· THE SMALL DOOR. Jef and Mordrin slip in through the goblin flaps, and Mordrin's illusions buy time.\n· THE FRONT GATE. A straight fight at the gatehouse, which gives Jef something to hit.\n\nOUT IS WHERE THE BIG FIGHT IS. The alarm goes, the kennels open, and the party retreats down the ledge road with four rescued people. Two shortcuts down are available: the goblins' rubbish chute, which runs down the face like a slide, and the hoist basket.",
         "after": "Back at the slot doorway with however many they got out, and without Finch, who was taken up to the top terrace before they arrived. The tower is above them and still out of reach, and they now know that the boy everyone came for is somewhere up there."
       },
@@ -3113,7 +3113,7 @@ window.DM_CAMPAIGN = {
       "title": "1 — The lowest gate",
       "parent": "f-town",
       "order": 20,
-      "rev": 3,
+      "rev": 4,
       "tags": [
         "act1",
         "fold",
@@ -3133,12 +3133,17 @@ window.DM_CAMPAIGN = {
         [
           "use",
           "What can be used"
+        ],
+        [
+          "finds",
+          "What can be found"
         ]
       ],
       "fields": {
         "looks": "The ledge road runs into a stone gatehouse built for people, with a heavy human gate and a goblin flap cut into the bottom of it. A gong hangs in the arch, and parade bunting is still strung across it, its colors gone soft.",
         "who_is_here": "4 [[cr-snatch-goblin|snatch-goblins]] on the gate. They are expecting the convoy, it is late, and they are watching the road.",
-        "use": "THE GONG is the alarm, so a goblin that reaches it brings the town. Get to it first, or muffle it. THE GOBLIN FLAP lets a Small hero through without opening the gate. THE GATEHOUSE ITSELF is the biggest building in town, and the house [[cr-house-crab|the house-crab]] wants: clear the goblins out and it moves in, which blocks the gate behind the party."
+        "use": "THE GONG is the alarm, so a goblin that reaches it brings the town. Get to it first, or muffle it. THE GOBLIN FLAP lets a Small hero through without opening the gate. THE GATEHOUSE ITSELF is the biggest building in town, and the house [[cr-house-crab|the house-crab]] wants: clear the goblins out and it moves in, which blocks the gate behind the party.",
+        "finds": "THE OLD TOLL BOX, set into the wall under the arch and rusted shut. Inside are coins from a mint nobody in Dunlath recognizes, because they are from before the Folding. They are worth money, and worth more as a mystery: [[npc-merrit|Merrit]] or [[npc-hask|Hask]] would pay double for them as curiosities.\n\nTHE GATEHOUSE LOFT, up a ladder: spare parade bunting, and the gong's mallet, which is heavy enough to use as a club.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the details of everything in this field."
       },
       "body": "Where the party arrives, whichever way they come in."
     },
@@ -3149,7 +3154,7 @@ window.DM_CAMPAIGN = {
       "title": "2 — The kennels",
       "parent": "f-town",
       "order": 30,
-      "rev": 1,
+      "rev": 2,
       "tags": [
         "act1",
         "fold",
@@ -3169,12 +3174,17 @@ window.DM_CAMPAIGN = {
         [
           "use",
           "What can be used"
+        ],
+        [
+          "finds",
+          "What can be found"
         ]
       ],
       "fields": {
         "looks": "A row of human stables on the second terrace, turned into kennels. Everything smells of wet dog, and the wolves pace in a way that looks flat when they turn.",
         "who_is_here": "3 [[cr-crease-wolf|crease-wolves]] in the pens and 2 goblin keepers.",
-        "use": "THE PENS are shut until the alarm, and then the keepers open them. A party that gets here first can bar the gate on the wolves and take them out of the fight entirely."
+        "use": "THE PENS are shut until the alarm, and then the keepers open them. A party that gets here first can bar the gate on the wolves and take them out of the fight entirely.",
+        "finds": "THE KEEPERS' POUCH OF WOLF TREATS, on a hook by the pens: five dried scraps that crease-wolves will do anything for. Throw one to a crease-wolf and it spends its next turn eating instead of fighting.\n\nTHE HAY LOFT above the stables, which is a good place to hide, and which usually has one goblin asleep in it when it ought to be working.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the details of everything in this field."
       },
       "body": "The town's reserve. Once the alarm has sounded and three rounds have passed, the wolves are loose."
     },
@@ -3185,7 +3195,7 @@ window.DM_CAMPAIGN = {
       "title": "3 — The mess",
       "parent": "f-town",
       "order": 40,
-      "rev": 3,
+      "rev": 4,
       "tags": [
         "act1",
         "fold",
@@ -3205,12 +3215,17 @@ window.DM_CAMPAIGN = {
         [
           "use",
           "What can be used"
+        ],
+        [
+          "finds",
+          "What can be found"
         ]
       ],
       "fields": {
         "looks": "The old town square, with a dry fountain and long tables dragged out of the houses. Goblins are eating, squabbling and gambling with stolen buttons, and some are wearing bits of parade costume: paper masks, a feathered hat, a drum worn as a helmet. A big figure stands on the fountain, and it looks like bronze.",
         "who_is_here": "About 15 [[cr-snatch-goblin|snatch-goblins]], and most of them are not fighters. They are off shift and nobody is in charge.\n\n[[cr-parade-giant|THE PARADE GIANT]] on the fountain, which is not a statue: three goblins are inside it, and it is the mess's champion.\n\n[[cr-house-crab|THE HOUSE-CRAB]], in a cottage it has outgrown, trying to squeeze into a bigger house while goblins drive it off with goads. It is a friend waiting to happen, and its sheet says how.",
-        "use": "IT IS THE LOUDEST PLACE IN TOWN and the easiest to throw into chaos. A Silent Image of something big, a roar, a flash of light or a table kicked over will empty the square in every direction, which is also a very good distraction for whatever the rest of the party is doing."
+        "use": "IT IS THE LOUDEST PLACE IN TOWN and the easiest to throw into chaos. A Silent Image of something big, a roar, a flash of light or a table kicked over will empty the square in every direction, which is also a very good distraction for whatever the rest of the party is doing.",
+        "finds": "THE WISHING FOUNTAIN. Before the Folding the dry fountain was a wishing fountain, and its basin is still scattered with old coins people threw in, along with a few folded paper wishes that can still be read. Reading one aloud is a small moment worth giving the table.\n\n★ THE GOBLIN HOARD IS HIDDEN IN THE FOUNTAIN'S BASE. One stone in the base is loose, and behind it is the goblins' treasure.\n• Their wages: a fistful of rag-tied pinches of raw sunsalt, which goblins will trade for and which the party can only spend. The pinches come in little pouches stamped with the mark from the convoy ogre's yoke, which is a first hint about who pays the goblins.\n• Buttons, spoons, and anything else that shines.\n• Coins from three places: Dunlath, the bath town, and one place nobody recognizes, which is a quiet clue to the tally's last three knots. ⚠ That place is Joby's to name.\n• A BAG OF HOLDING stuffed with goblin junk. Let the kids pull things out one at a time: a boot, a doorknob, a live frog, a teapot, and at last something good. ⚠ The something good is Joby's.\n• AN IMMOVABLE ROD. Press its button and it stays put in midair, holding up to 8,000 pounds. On a town built down a cliff it stops a sliding cage or makes a handhold over the drop.\n• TWO POTIONS OF HEALING, 2d4+2 each.\n• [[npc-finch|FINCH]]'S GLASS JAR, the reliquary he was carrying when he was taken. The goblins took it off him because it shines, before they carried him up. The party finds the jar without the boy.\n\nTHE COSTUME CHEST behind the long tables: paper masks, sashes and a feathered hat, enough to dress the party as parade performers and slip past goblins who are not looking closely. The drum one goblin is wearing as a helmet is [[npc-ivo|Ivo]]'s.\n\nTHE RUBBISH HEAP at the bottom of the chute that starts here. Goblins value only shiny things and throw away whatever they do not understand, so books, letters and maps end up in the heap, and something priceless is in there among the trash. ⚠ What it is, is Joby's, and the heap is a ready hiding place for any clue he wants later.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the details of everything in this field."
       },
       "body": "Most of the town's numbers are here, and most of them would rather run than fight."
     },
@@ -3221,7 +3236,7 @@ window.DM_CAMPAIGN = {
       "title": "4 — The hoist",
       "parent": "f-town",
       "order": 50,
-      "rev": 3,
+      "rev": 4,
       "tags": [
         "act1",
         "fold",
@@ -3241,12 +3256,17 @@ window.DM_CAMPAIGN = {
         [
           "use",
           "What can be used"
+        ],
+        [
+          "finds",
+          "What can be found"
         ]
       ],
       "fields": {
         "looks": "A great wooden treadwheel crane on the fourth terrace, hauling baskets of goods up and down between the terraces. A tear-ogre walks inside the wheel. A parade float, a painted wooden boat on wheels, sits jammed in the hoist yard where somebody abandoned it halfway up.",
         "who_is_here": "1 [[cr-tear-ogre|tear-ogre]] in the wheel and 2 goblins with goads minding it.\n\nON THE ROOFS ABOVE, 6 [[cr-cliff-rook|cliff-rooks]] and [[cr-old-rook|the old rook]], which dive at anybody on the rope bridges or in the basket, goblins included.",
-        "use": "THE BASKET goes up or down the whole face, and kids will want to ride it. It also reaches the old rook's nest on the tallest roof, which holds the rooks' hoard. THE FLOAT can be shoved loose and rolled down the stair at whatever is chasing them, which is a thing kids will absolutely want to do. THE OGRE hates its handlers, like the one on the convoy, and a hero who gets the goblins off it may find it stops walking and sits down. If it is let loose in a fight, it goes for the goblins first."
+        "use": "THE BASKET goes up or down the whole face, and kids will want to ride it. It also reaches the old rook's nest on the tallest roof, which holds the rooks' hoard. THE FLOAT can be shoved loose and rolled down the stair at whatever is chasing them, which is a thing kids will absolutely want to do. THE OGRE hates its handlers, like the one on the convoy, and a hero who gets the goblins off it may find it stops walking and sits down. If it is let loose in a fight, it goes for the goblins first.",
+        "finds": "A HIDDEN COMPARTMENT IN THE FLOAT, under the painted deck: the parade's prize, a festival crown and sash. It is treasure, and any goblin would kill to wear it.\n\nTHE TALL HOUSE below the rookery, a family home left in the middle of the celebration with the table still set for a meal nobody came back to. It is a safe place to rest and listen, and a quiet moment for the town's lost people.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the details of everything in this field."
       },
       "body": "The quick way between terraces, and the slow way if the ogre is angry."
     },
@@ -3257,7 +3277,7 @@ window.DM_CAMPAIGN = {
       "title": "5 — The cistern",
       "parent": "f-town",
       "order": 60,
-      "rev": 3,
+      "rev": 4,
       "tags": [
         "act1",
         "fold",
@@ -3277,12 +3297,17 @@ window.DM_CAMPAIGN = {
         [
           "use",
           "What can be used"
+        ],
+        [
+          "finds",
+          "What can be found"
         ]
       ],
       "fields": {
         "looks": "A dry, bell-shaped water tank cut into the rock, thirty feet deep, with a single hatch in the top. Food goes down to the prisoners in a bucket on a rope.",
         "who_is_here": "4 of the Lastlight five at the bottom, cold and frightened and unhurt: [[npc-tamsin|Tamsin Brede]], [[npc-pell|Pell Skell]], [[npc-ivy|Ivy Pyle]] and [[npc-ivo|Ivo Ganty]]. 3 goblin guards, and [[cr-hatch-toad|the hatch-toad]], which the goblins feed so that it will sit on the hatch.\n\nFINCH IS NOT HERE. The four say the goblins came down for the boy and took him up.",
-        "use": "THE LID IS A TOAD, so the toad has to be moved before the hatch can be opened (see its sheet). THE BUCKET ROPE is how the prisoners come up: hauling five people up thirty feet is a teamwork job, and [[npc-bram|Bram]]'s strength pays off here if he came along."
+        "use": "THE LID IS A TOAD, so the toad has to be moved before the hatch can be opened (see its sheet). THE BUCKET ROPE is how the prisoners come up: hauling four people up thirty feet is a teamwork job, and [[npc-bram|Bram]]'s strength pays off here if he came along.",
+        "finds": "THE GUARDS' POST beside the hatch: a dice game left mid-throw, and the guards' share of salt.\n\nTHE PRISONERS' OWN THINGS, in a sack hung at the guard post: [[npc-pell|Pell]]'s pie money and [[npc-ivy|Ivy]]'s carousel key. Ivo's drum is not in it, because a goblin in [[t-mess|the mess]] is wearing it as a helmet.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the details of everything in this field."
       },
       "body": "The rescue itself. Moving the toad is the puzzle, the guards are the fight, and the hauling is the clock if the alarm has gone."
     },
