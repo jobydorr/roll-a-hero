@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <!-- The mark: burned into the convoy ogre's yoke, scratched at the top of the
+       patrol's stair, stamped on the goblins' wage pouches, and to appear on the
+       tower. A sheet with its bottom corner folded up to the middle, and a point
+       above the fold. Simple enough to draw by hand or burn into wood. -->
+  <rect width="400" height="400" fill="#efe3c8"/>
+  <g fill="none" stroke="#2b2118" stroke-width="22" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M200 40 L360 200 L280 280 L120 280 L40 200 Z"/>
+    <path d="M120 280 L200 200 L280 280"/>
+  </g>
+  <circle cx="200" cy="128" r="20" fill="#2b2118"/>
+</svg>
