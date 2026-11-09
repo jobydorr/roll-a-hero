@@ -184,13 +184,45 @@ The party will not be able to buy any of this, which is deliberate. Early on the
 
 A crease gives, and something with teeth walks into a wheat field. Breaches are worsening every year, and everyone has an explanation for them.
 
-The ministry says the breaches are the settling's growing pains, that the Foldwright in his wisdom permits what he permits, and that with more fences, more wrinkles, and more patience the world will come to its rest. Then the Surveyors arrive, unfold to their full height in the village square, put the monster down with terrible efficiency, seal the gap, bow, and leave — which is precisely how they earn and keep their welcome. It allows them to appear as the world's reluctant shield, and it is a very good racket.
+The ministry says the breaches are the settling's growing pains, that the Foldwright in his wisdom permits what he permits, and that with more fences, more wrinkles, and more patience the world will come to its rest. When a breach is large, or comes anywhere near a city, the ministry gives it a second name, which is sabotage, and lays it at Red Flag's door; the charge sticks because Red Flag really has worked toward opening creases, and a lie with a grain of truth in it is very hard to argue with (Joby, 2026-11-09). Then the Surveyors arrive, unfold to their full height in the village square, put the monster down with terrible efficiency, seal the gap, bow, and leave — which is precisely how they earn and keep their welcome. It allows them to appear as the world's reluctant shield, and it is a very good racket.
 
 Green Fields says the breaches prove the point: a ministry that can seal a road at breakfast could seal a crease if human voices sat at the table where sealing is decided, and the world should stop being grateful and start being represented.
+
+Red Flag says the breaches are flaws in a fold that was never finished and is now failing, which is right about the failing and wrong about the reason, and it adds that every new crease is the Foldwright still at work and that the ministry lets breaches happen so as to be thanked for ending them. The first of those is exactly wrong and the second is half right.
 
 The truth is that the entity is making room for itself, and that every lamp in the world is helping it.
 
 Because breaches are visible, local, urgent, and fightable, they do four jobs at once: they supply the campaign's early pressure, they supply its monsters, they supply the taken — the people snatched or lost through a gap before it closes, whose absence, unlike the Folding's thefts, is remembered and mourned — and they supply its central irony, since the people thanking the Surveyors for their protection are being protected from the consequences of the Surveyors' own project.
+
+### Who Fights, and Why
+
+The craft of fighting monsters went into the pockets with the wild, which means the world forgot how to hold a spear-line and ward a village at the same moment it stopped needing to. That is why four strangers who stood their ground at Lastlight were given medals, a writ, and a confectioner's drawer apiece: real skill against monsters is rare now, and the world treats it as remarkable (Joby, 2026-11-09). It is not, however, absent, because breaches keep coming, a war was fought a generation ago, and a prosperous society always finds work for people who are good with a blade or a spell. Ten trades account for nearly everyone who can fight, and between them they explain where every kind of hero comes from.
+
+The breach brigades are the commonest. Most towns keep one, in the way that towns in our world keep a volunteer fire brigade: a bell, a handful of trained locals, perhaps a veteran, and the job of holding the line until the Surveyors arrive. The work is respected, a little sad, and usually outmatched, and it is where most of the world's fighters and rangers learned their trade.
+
+Expedition hands go into the creases under the right of search. Green Fields hires trackers, guards and keepers of lore for its expeditions, and the pay is good because the work is dangerous, although expeditions do come home. This is the party's own trade at present.
+
+The arena and the games make fighting skill into public entertainment, as befits a world built on the prosperity of Rome, and they keep fighters, wrestlers, and the bards who sing about them in steady work. Bram Tarrow is a retired champion of the games.
+
+The colleges train wizards. Magic is legal, the Surveyors fear nobody's spells because they can switch a mage off at will, and so the colleges are tolerated and even fashionable. Mordrin studied at one.
+
+The Draw wardens are the hardest fighters in the world and the newest problem in it. Every Draw cut down to the seams, where the creases ran close and things came up out of them, and so every Draw kept a guard company. The ministry retired the Draws one ceremony at a time, and the last of them, the Cinder Draw, closed at Lastlight, which has put a whole class of tough, unemployed people on the streets with a grievance at exactly the moment the breaches are getting worse. They are swords for hire, and they are a large part of what a rich city meeting its first limit looks like.
+
+Beast-catchers take breach creatures alive and sell them to the games and the menageries, as the Romans took animals for the arena. It is real money, and it is the one trade in which a monster is worth more breathing.
+
+Seam-poachers dig raw sunsalt out of the thin seams left in the scars of the old Draws, by night and against the law, and the ministry's salt-wardens hunt them. The poachers' routes are of great interest to Red Flag.
+
+Crease-walkers walk the roads for the ministry and report anything that does not line up: a stair with one step too many, a wall whose stones do not match across a course. That is precisely what a portal looks like, so the dullest job in the ministry trains people to notice the most important thing in the world.
+
+Root-crews clear the lower floors of the Reactors. A Reactor's roots run down for miles and nobody knows what they eat, so now and then something comes up them, and the crews deal with it in the way that rat-catchers deal with a mine. The pay is good and nobody asks questions, and the crews work beside the sealed deep floors where the faded are taken.
+
+Seekers are the believers in THE FOLDWRIGHT LIVES who wander the world looking for doors, much as some people dig for buried treasure. Most of them are cranks and a few have actually seen something, and the trade suits a wanderer looking for a purpose.
+
+### What Everybody Says About Breaches
+
+Breaches are the most visible thing in the world that nobody can explain, and so every faction has an account of them, and the accounts are part of the scenery the party moves through. The ministry runs several at once, aimed at different listeners. For small breaches it speaks of the settling, the growing pains of a world easing into its finished shape; for large ones it speaks of sabotage by Red Flag. Its posters tell citizens that A LIT LAMP IS A SHUT DOOR, which is exactly backward, since every lamp in the world feeds the thing at the center, and that EVERY POACHED PINCH IS A CRACK IN THE WALL, which gives the salt-wardens their reason. Its recruiting posters for the brigades say HOLD THE LINE TILL HELP ARRIVES, which honors the brigades and keeps them small and waiting at the same time. Red Flag says the fold is failing, that the Foldwright is still at work, and that the ministry lets breaches happen. Green Fields says the breaches prove that human beings need a seat at the table where sealing is decided. And children skip to a rhyme that warns against saying the name of a lost place aloud, or a crease will open, which is closer to the truth than anything the adults believe.
+
+The truth, which none of them holds, is in the section above: the thing at the center is eating slack to make room for itself.
 
 ### The Menders
 

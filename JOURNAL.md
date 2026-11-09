@@ -4,6 +4,22 @@
 
 ---
 
+## 2026-11-09 — who fights, and what everybody says about breaches
+
+### In brief
+
+Joby closed what looked like a hole in the world: if the monsters were shut away, why are there heroes at all. The answer, now in the bible, is that the craft of fighting monsters was forgotten with the wild, which is why the party is remarkable, while breaches, an old war and a prosperous society still give people with blades and spells ten kinds of work. A game was played on 2026-11-08 and is not yet recorded.
+
+### Rulings in this entry
+
+The ten trades are the breach brigades, expedition hands, the arena and the games, the colleges, the Draw wardens put out of work when the Cinder Draw closed, beast-catchers, seam-poachers and the salt-wardens who hunt them, crease-walkers, root-crews and seekers. The ministry now calls large breaches sabotage by Red Flag as well as calling small ones the settling, and its posters read A LIT LAMP IS A SHUT DOOR, EVERY POACHED PINCH IS A CRACK IN THE WALL, and HOLD THE LINE TILL HELP ARRIVES. Red Flag says the fold is failing. Children skip to a rhyme against saying the names of lost places, whose words are not yet written.
+
+### Next
+
+Joby wants player handouts on the world's lore that keep what the people know separate from what they do not, each tailored a little to its player's hero, and he has ideas to discuss first. After that comes his report on the 2026-11-08 game.
+
+---
+
 ## 2026-11-08 — the Folding moves back, and a letter for Ganny
 
 ### In brief

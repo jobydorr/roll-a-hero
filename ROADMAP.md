@@ -2,9 +2,24 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-11-05.*
+*Last updated: 2026-11-09.*
 
-> **⏸ PAUSED 2026-11-05 AT JOBY'S REQUEST.** Everything is committed and pushed (`HEAD` == `origin/main`); the only untracked files are Joby's three images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v111`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Last work: every NPC sheet got a WHO THEY ARE header. On resume, read the list below; nothing is mid-edit.
+> **▶▶▶ START HERE — FRESH CHAT, 2026-11-09. Newest block; read this first, then the TO DO list below it.**
+>
+> **STATE:** everything committed and pushed (`HEAD` == `origin/main`); the only untracked files are Joby's three images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v112`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Joby runs the OS at `localhost:8000` (`preview_start` on `roll-a-hero`; he reviews in his own Chrome with a hard refresh). The pane cannot get past the OS passcode, so verify data by fetching `campaign.js` and parsing it; Python edits must parse the JSON and re-dump one doc at a time (see the scripts pattern used this window).
+>
+> **A GAME WAS PLAYED ON 2026-11-08 and NOTHING ABOUT IT IS RECORDED YET.** Joby says it went really well and there is a lot to report. Do not infer what happened from what was built.
+>
+> **THE NEXT JOBS, IN THIS ORDER (Joby's):**
+> 1. **DISCUSS THE PLAYER LORE HANDOUTS.** Joby wants a write-up he can give the players that fills them in on the world's lore, and it must be strictly consistent about what "the people" know versus what they do not (the bible marks the difference: e.g. the world believes the settling and the ministry's posters; it does not know the Foldwright is the man who folded the world, that breaches are the Devouring making room, or what the faded are). He also wants each player's sheet custom-tailored with a little personalized info relevant to their own hero. **Joby has ideas for this; ask for them before drafting anything.** Players: Harlan (10) plays Aramil; Drew plays Sam; Rowan plays Jef; Ben plays Century; Brandon plays Mordrin (see memory `party-players`; player material on `▶ THE PARTY` outranks canon).
+> 2. **GET CAUGHT UP ON THE 2026-11-08 GAME.** Ask Joby for his report. Then log it in the OS under `SESSION LOGS` (pattern: `log-mordrin-cavern`), fold any player-stated facts into `▶ THE PARTY` word for word, add a dated `JOURNAL.md` entry, and update what changed in `enc-cavern`, `sc-town` and the terrace sheets if the table got that far.
+> 3. Then the TO DO list below.
+>
+> **DONE THIS WINDOW (2026-11-03 to 2026-11-09), for orientation:** the game log; the convoy's four prisoners and the 5-4-3 tally; the harder patrol (now `cr-patrol-boss` and `cr-salt-licker` sheets, so they can go on the initiative roster); the whole town on the face (`f-town`: index, six terraces with WHAT CAN BE FOUND, the hatch-toad, the house-crab who was Nell's pet Biscuit, the parade giant, cliff-rooks and the old rook, the hoard behind a loose stone in the fountain); NPC sheets for all eight prisoners and WHO THEY ARE on every NPC; picture support and a MAPS section in the OS (`![[path|caption]]`), with the town's side view; the mark (`symbols/the-mark.svg`) shown wherever it appears; sunsalt limits and magic-off in the bible; THE GREAT FOLDING MOVED TO CENTURIES AGO, with the town on the face swallowed two generations ago when the fold slipped, and Nell's letter to her sister Ganny in the rubbish heap; and, last of all, **`CAMPAIGN.md` §2 "Who Fights, and Why" and "What Everybody Says About Breaches"** (ten trades; the ministry's "sabotage" alongside "the settling"; posters; Red Flag's "the fold is failing"; a children's rhyme still to be written) with the table version at `Quick reference › ▶ WHO FIGHTS — trades and talk`.
+>
+> **HOUSE RULES:** brainstorm freely, write no canon without Joby's yes, flag every gap filled; read `STYLE.md` before OS prose; commit and push your own work and verify it; never count sessions or state elapsed time.
+>
+> **⏸ PAUSED 2026-11-05 AT JOBY'S REQUEST** (superseded by the block above).
 >
 > **▶▶ TO DO WITH JOBY — 2026-11-04. The live list; work it top down.**
 >

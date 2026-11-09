@@ -3960,6 +3960,46 @@ window.DM_CAMPAIGN = {
         "trick": "It eats one pinch of raw sunsalt from its pouch for each spell, and it carries three. SOFTEN: a 10-foot patch of ledge goes soft like a crease, and everyone on it beats 12 with Dexterity or slides 10 feet toward the drop, cages included. UNFASTEN: one hero beats 12 with Dexterity or a buckle, strap or pack comes undone, so a shield drops or a pack spills. ITS WEAKNESS IS THE POUCH: a hero who hits it can knock the pouch away instead of doing damage, and without salt it cannot cast. When the pouch is empty it spends its turn grabbing a pinch off the nearest goblin's rag."
       },
       "body": "The patrol's magic user on [[enc-cavern|the face]]. Its fingers and mouth are stained with a faint glow, its eyes are far too bright, and it fizzes when it talks. Because raw sunsalt unfolds, all of its magic undoes things, which keeps it inside the sunsalt limits in the bible.\n\nIT STAYS BEHIND THE BOSS with a goblin beside it, softening the ledge under whoever is winning and unfastening whoever gets close to the boss. A goblin standing next to it is a refill, so take that goblin out first.\n\nTo goblins, salt is wages, so the salt-licker is a big shot among them: it literally eats money. Its pouch, with whatever pinches it did not eat, is in the patrol's loot.\n\n⚠ Filled in, and Joby's to change: the stats and the three spells."
+    },
+    {
+      "schema": 1,
+      "id": "ref-whofights",
+      "type": "note",
+      "title": "▶ WHO FIGHTS — trades and talk",
+      "parent": "f-reference",
+      "order": 15,
+      "rev": 1,
+      "tags": [
+        "reference",
+        "world",
+        "breaches"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "trades",
+          "The ten trades, one line each"
+        ],
+        [
+          "posters",
+          "What the ministry says (posters and props)"
+        ],
+        [
+          "others",
+          "What everyone else says"
+        ],
+        [
+          "truth",
+          "The truth, for the DM"
+        ]
+      ],
+      "fields": {
+        "trades": "• BREACH BRIGADES. A town's volunteer fire brigade for monsters: a bell, a few locals, maybe a veteran, holding the line till the Surveyors come.\n• EXPEDITION HANDS. Trackers, guards and lore-keepers hired by Green Fields to go into the creases. The party's own trade right now.\n• THE ARENA AND THE GAMES. Fighting as public entertainment; fighters, wrestlers, and the bards who sing about them. [[npc-bram|Bram]] was a champion.\n• THE COLLEGES. Where wizards train. Legal and fashionable, because the Surveyors can switch any mage off.\n• DRAW WARDENS. The guard companies of the old Draws, out of work since the Cinder Draw closed at Lastlight. Hard, idle, aggrieved, and for hire.\n• BEAST-CATCHERS. Take breach creatures alive for the games and the menageries. The one trade where a monster is worth more breathing.\n• SEAM-POACHERS AND SALT-WARDENS. Poachers dig raw sunsalt from old Draw scars at night; the ministry's salt-wardens hunt them.\n• CREASE-WALKERS. Walk the roads for the ministry reporting anything that does not line up, which is exactly what a portal looks like.\n• ROOT-CREWS. Clear whatever comes up a Reactor's roots. Good pay, no questions, next to the sealed deep floors.\n• SEEKERS. Believers in THE FOLDWRIGHT LIVES who wander looking for doors. Mostly cranks; a few have seen something.\n\nWHY THE PARTY IS SPECIAL. The craft of fighting monsters went into the pockets with the wild, so real skill against monsters is rare and the world treats it as remarkable.",
+        "posters": "Hand these over as props, or have a crier shout them.\n\n\"A LIT LAMP IS A SHUT DOOR.\" (Exactly backward: every lamp feeds the thing at the center.)\n\n\"EVERY POACHED PINCH IS A CRACK IN THE WALL.\" (Blames the seam-poachers.)\n\n\"HOLD THE LINE TILL HELP ARRIVES.\" (Brigade recruiting. Honors them and keeps them waiting.)\n\nFor small breaches: \"the settling,\" growing pains of a world easing into its finished shape. For big ones, or near a city: \"sabotage,\" Red Flag's work.",
+        "others": "RED FLAG: the fold is failing; every new crease is the Foldwright still working; the ministry lets breaches happen so it can be thanked.\n\nGREEN FIELDS: breaches prove humans need a seat at the table where sealing is decided.\n\nTHE CHILDREN'S SKIPPING RHYME: never say the name of a lost place out loud, or a crease will open. ⚠ The words of the rhyme are not written yet.",
+        "truth": "The thing at the center is eating slack to make room for itself, and every lamp is helping. Nobody in the world holds this account. See CAMPAIGN.md §2, Breaches, Who Fights, and Why, and What Everybody Says About Breaches."
+      },
+      "body": "Joby's, 2026-11-09. The long version is in the bible, §2. This sheet is the version to glance at mid-session."
     }
   ]
 };
