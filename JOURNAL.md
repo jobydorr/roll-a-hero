@@ -4,6 +4,22 @@
 
 ---
 
+## 2026-11-09 — the heroes' Fold memories, and the wilderness stays
+
+### In brief
+
+When the heroes went into the Fold, each was struck by a strong memory they had never known existed and were certain was real, and Joby has now passed on all five. Aramil remembers an orc attack in which his family was taken; Sam remembers a wall at night lit by what seems to be firelight; Jef remembers his village destroyed in a fight between a black dragon and a blue one, with trolls and goblins carrying off people, and his warrior father killed by lightning; Mordrin remembers a pet lizard from wizard school and is shaken by what the discovery implies; and Century remembers playing chase with other children in the wild. Three players also said what their heroes make of THE FOLDWRIGHT LIVES. All of it is on ▶ THE PARTY in Joby's words, because player material outranks canon.
+
+### Rulings in this entry
+
+The wilderness still exists. The Folding shut away the monsters and evil things of the bad time, not forests, moors and mountains, and so the bible's lines saying the wild itself was folded away have been corrected. Century's memory of playing in the wild is therefore not impossible on its face, which withdraws the premise of the hook parked for him.
+
+### Next
+
+Joby's report on the game played on 2026-11-08, and then the player lore handouts.
+
+---
+
 ## 2026-11-09 — who fights, and what everybody says about breaches
 
 ### In brief
