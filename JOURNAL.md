@@ -4,6 +4,22 @@
 
 ---
 
+## 2026-11-09 — the game of 2026-11-08: the face cleared, the four freed, and an ogre called Bob
+
+### In brief
+
+The party finished the convoy and beat the patrol with ease, which says the town's goblins need more hit points or bigger numbers. They freed all four prisoners, took the mark on the ogre's yoke and on the goblins' sunsalt pouches as a clue, and caught the hint in the knotted cord. The ogre was subdued and is now Aramil's to manage, named Bob and still in its yoke, and Aramil carries the patrol boss's +1 shortsword. Mordrin took the salt-licker's instrument, an ornate metal cylinder with a ball of raw salt at its tip, which he cannot use until the party learns more about it. The game stopped on the face, with the party about to take cover and rest short of a town that has shown no reaction.
+
+### Rulings in this entry
+
+Brandon decided that Mordrin's family got him his Green Fields liaison posting only a couple of months ago, and that Wenna has held her post for nearly two years. Maud's last memory is a meeting with coworkers and a Surveyor, after which she woke in the dark, and so she has lost a great deal of time she cannot account for, which is now a mystery the campaign has to answer. Bram fears nothing, to his own detriment, and will fight. Osric is a wild magic sorcerer who never developed his powers, and he can no longer feel them.
+
+### Next
+
+Three things came out of the game to work out: more toughness for the mobs, how time passes for the put-away, and what Maud knows of Wenna. Annis still needs a role. Then the player lore handouts.
+
+---
+
 ## 2026-11-09 — the heroes' Fold memories, and the wilderness stays
 
 ### In brief
