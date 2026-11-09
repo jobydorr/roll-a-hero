@@ -4,6 +4,24 @@
 
 ---
 
+## 2026-11-08 — the Folding moves back, and a letter for Ganny
+
+### In brief
+
+The great Folding happened centuries ago rather than three generations ago, and the town on the face was swallowed much later, about two generations ago, when the fold slipped. That turns the town into evidence about the state of the world, and it gives the party a letter to carry home to Ganny Marle from the sister she believes never wrote.
+
+### Rulings in this entry
+
+The great Folding was centuries ago, and every dating in the bible now says so. The Foldwright has lived through all of it because the Armature keeps the man who holds the jam alive for as long as he holds it, which means he can neither die nor let go. Since the great Folding the fold has slipped often enough to swallow a place whole now and then, and about two generations ago it swallowed the town on the face in the middle of its parade. Those later swallowings do not take the world's memory, because only the great Folding creased those threads shut, so the people who knew such a place still remember it, and the ministry covers each one with a closed road, a notice of regret, and the settling.
+
+Ganny Marle's younger sister Nell lived in that town and owned the hermit crab that now wears her cottage. Her letter to Ganny, written on parade morning and never collected, lies in the goblins' rubbish heap beside a battered field guide to the monsters of the old wild. Earlier entries in this journal that speak of three generations are superseded by this one.
+
+### Still open
+
+The town's name, which is smudged on the letter, and whether losing Nell is part of why Ganny keeps a door for Red Flag.
+
+---
+
 ## 2026-11-04 — the town on the face
 
 ### In brief
