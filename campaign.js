@@ -3989,7 +3989,7 @@ window.DM_CAMPAIGN = {
       "title": "▶ WHO FIGHTS — trades and talk",
       "parent": "f-reference",
       "order": 15,
-      "rev": 2,
+      "rev": 3,
       "tags": [
         "reference",
         "world",
@@ -4020,7 +4020,7 @@ window.DM_CAMPAIGN = {
         "others": "RED FLAG: the fold is failing; every new crease is the Foldwright still working; the ministry lets breaches happen so it can be thanked.\n\nGREEN FIELDS: breaches prove humans need a seat at the table where sealing is decided.\n\nTHE CHILDREN'S SKIPPING RHYME: never say the name of a lost place out loud, or a crease will open. ⚠ The words of the rhyme are not written yet.",
         "truth": "The thing at the center is eating slack to make room for itself, and every lamp is helping. Nobody in the world holds this account. See CAMPAIGN.md §2, Breaches, Who Fights, and Why, and What Everybody Says About Breaches."
       },
-      "body": "Joby's, 2026-11-09. The long version is in the bible, §2. This sheet is the version to glance at mid-session."
+      "body": "NOT A MENU. The players never have to pick a trade or take a label. These are background facts they can borrow to fit their heroes into the world (Joby, 2026-11-15).\n\nJoby's, 2026-11-09. The long version is in the bible, §2. This sheet is the version to glance at mid-session."
     }
   ]
 };
