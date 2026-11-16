@@ -20,7 +20,7 @@ Centuries ago, the world was folded into this shape. The monsters and evil thing
 
 ## The Surveyors
 
-The Surveyors run the world, and they don't hide it. They're tall and narrow and look folded out of a single sheet of something between paper and porcelain. Their faces are made of creases, and their expressions show up about half a second late. They're always polite. There aren't many of them. They govern through **the Accord**, the agreement that ended the last war, and through **the ministry**, which is run day to day by human clerks. The ones who perform the great public foldings are called **Rectors**. You've met one.
+The Surveyors run the world, and they don't hide it. They're tall and narrow, and they look folded out of a great many sheets of something between paper and porcelain, layer on layer, so there's real depth and bulk to them. All of that folding lines up along one line running straight down through the middle of them. Their faces are made of creases, and their expressions show up about half a second late. They're always polite. There aren't many of them. They govern through **the Accord**, the agreement that ended the last war, and through **the ministry**, which is run day to day by human clerks. The ones who perform the great public foldings are called **Rectors**. You've met one.
 
 You've heard people say a Surveyor can't be killed, only knocked apart, and that it turns up again later somewhere else. You don't know anyone who has seen that happen.
 
