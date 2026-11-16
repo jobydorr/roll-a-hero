@@ -20,7 +20,7 @@ Centuries ago, the world was folded into this shape. The monsters and evil thing
 
 ## The Surveyors
 
-The Surveyors run the world, and they don't hide it. They're tall and narrow, and they look folded out of a great many sheets of something between paper and porcelain, layer on layer, so there's real depth and bulk to them. All of that folding lines up along one line running straight down through the middle of them. Their faces are made of creases, and their expressions show up about half a second late. They're always polite. There aren't many of them. They govern through **the Accord**, the agreement that ended the last war, and through **the ministry**, which is run day to day by human clerks. The ones who perform the great public foldings are called **Rectors**. You've met one.
+The Surveyors run the world, and they don't hide it. They're tall and narrow, and they look folded out of a great many sheets of something between paper and porcelain, layer on layer, so there's real depth and bulk to them. All of that folding lines up along one line running straight down through the middle of them. Their faces are made of creases, and their expressions show up about half a second late. They're always polite. There aren't many of them. They govern through **the Accord**, the agreement that ended the last war, and through **the Ministry**, which is run day to day by human clerks. The ones who perform the great public foldings are called **Rectors**. You've met one.
 
 You've heard people say a Surveyor can't be killed, only knocked apart, and that it turns up again later somewhere else. You don't know anyone who has seen that happen.
 
@@ -28,27 +28,27 @@ You've heard people say a Surveyor can't be killed, only knocked apart, and that
 
 Sunsalt is what makes everything work. It gives light and heat without fire, it goes into every potion, and somebody finds a new use for it every year.
 
-The ministry controls all of it, but it doesn't hand it out to ordinary people. It releases sunsalt to a few great trading houses and developers, and they sell it on to everyone else. The trading houses also write paper notes promising salt, and those notes get bought and sold like money. Everyone knows there are more notes out there than salt in the vaults. Nobody worries about it, as long as everyone doesn't come asking for their salt on the same day. Lately the price of lamps and potions has been creeping up, and people have started to grumble.
+The Ministry controls all of it, but it doesn't hand it out to ordinary people. It releases sunsalt to a few great trading houses and developers, and they sell it on to everyone else. The trading houses also write paper notes promising salt, and those notes get bought and sold like money. Everyone knows there are more notes out there than salt in the vaults. Nobody worries about it, as long as everyone doesn't come asking for their salt on the same day. Lately the price of lamps and potions has been creeping up, and people have started to grumble.
 
 Only refined salt is legal. Raw sunsalt is against the law.
 
-Salt used to be dug out of huge canyons called Draws. They left gray scars on the land that never heal, and the ministry blames an old blight. The Draws have been closed one at a time, and the last one, the Cinder Draw, closed at Lastlight. Now enormous towers called **Reactors** hum on the horizon instead. People who work too long in a tower sometimes come home "a little faded," and the ministry thanks them and retires them to quiet rest villages.
+Salt used to be dug out of huge canyons called Draws. They left gray scars on the land that never heal, and the Ministry blames an old blight. The Draws have been closed one at a time, and the last one, the Cinder Draw, closed at Lastlight. Now enormous towers called **Reactors** hum on the horizon instead. People who work too long in a tower sometimes come home "a little faded," and the Ministry thanks them and retires them to quiet rest villages.
 
 ## Breaches
 
-The pockets don't hold perfectly. Now and then a fold gives way and something with teeth comes through into a field or a street. The town bell rings, the town's brigade holds the monster off, and the Surveyors arrive, put it down and close the gap. The ministry says small breaches are "the settling," the world easing into its shape, and that big ones are **sabotage** by Red Flag. You've seen the posters: A LIT LAMP IS A SHUT DOOR. HOLD THE LINE TILL HELP ARRIVES. Breaches have been getting worse.
+The pockets don't hold perfectly. Now and then a fold gives way and something with teeth comes through into a field or a street. The town bell rings, the town's brigade holds the monster off, and the Surveyors arrive, put it down and close the gap. The Ministry says small breaches are "the settling," the world easing into its shape, and that big ones are **sabotage** by Red Flag. You've seen the posters: A LIT LAMP IS A SHUT DOOR. HOLD THE LINE TILL HELP ARRIVES. Breaches have been getting worse.
 
 ## Who's who
 
 - **The Fence War** was fought a generation ago, people against the Surveyors. It ended with the Accord, which gave everyone the right to petition and the right to send search parties into the folds after people who were lost.
 - **Green Fields** is the popular, legal movement that speaks up for people inside the Accord. It sends out the rescue expeditions. It hired you.
-- **Red Flag** is a small outlaw group that never accepted the Accord. The ministry says Red Flag broke the Hearthspire at Lastlight.
-- **The Registry** writes everything down.
-- The ministry never executes anyone. People who won't keep in line are **put away**, folded off somewhere out of sight, with polite regret. Most people think that shows how gentle the government is.
+- **Red Flag** is a small outlaw group that never accepted the Accord. The Ministry says Red Flag broke the Hearthspire at Lastlight.
+- **The Ministry** is the government you actually deal with. The Surveyors make the big decisions, but the Ministry does the work, and almost everyone in it is human: clerks, officials, criers, wardens. It keeps the roads open, and closes them with a polite printed notice when it decides a road isn't safe. It releases sunsalt to the trading houses, puts up the posters, sends out the criers, and posts the warrant boards. There's no king, and nobody at the top you could point to. Ask who's in charge and you'll get a careful explanation of how things are done. The Ministry asks to be judged on whether things work, and mostly they do. It never executes anyone. People who won't keep in line are **put away**, folded off somewhere out of sight with polite regret, and most people take that as proof of how gentle it is.
+- **The Registry** is the Ministry's great record office. Its clerks write down what comes and goes along the roads, what comes out of the Reactors, who lives where, and who was standing nearby when something happened. If you need to prove who you are, look something up, report what you know, or claim a reward, you go to the Registry. Outside it there's a brass rail where anyone who isn't allowed inside can leave a petition. Nobody thinks of the Registry as frightening. It's the most honest place in the city: it writes down exactly what happened and shows it to anyone with the right to ask.
 
 ## The Foldwright
 
-Everyone has heard the name, and nobody agrees on what it means. Some say it's an old title, or just something from a song. There's a story, and you've heard at least some version of it, that ties the name to the wizard who first made contact with the Surveyors and began the Folding. Nobody can prove it, and the ministry has never said one word about it. Lately someone has been painting **THE FOLDWRIGHT LIVES** on walls.
+Everyone has heard the name, and nobody agrees on what it means. Some say it's an old title, or just something from a song. There's a story, and you've heard at least some version of it, that ties the name to the wizard who first made contact with the Surveyors and began the Folding. Nobody can prove it, and the Ministry has never said one word about it. Lately someone has been painting **THE FOLDWRIGHT LIVES** on walls.
 
 ## Who fights, and why
 
@@ -60,15 +60,15 @@ When the monsters were shut away, most of the old know-how for fighting them wen
 
 **The arena and the games.** Every big city has its games: wrestling, fencing, races, bouts against beasts. A champion can be famous for a season and forgotten the next. Bards do well here too, because every big fight wants a song written about it.
 
-**The wizards' colleges.** Magic is allowed, and studying it is fashionable. The colleges are old, proud places with rival houses, and families send a clever child there to make the family look good. Graduates go to work for the ministry, as tutors and advisors to rich households, or for the trading houses.
+**The wizards' colleges.** Magic is allowed, and studying it is fashionable. The colleges are old, proud places with rival houses, and families send a clever child there to make the family look good. Graduates go to work for the Ministry, as tutors and advisors to rich households, or for the trading houses.
 
 **Draw wardens.** The Draws were deep canyons, and every so often something crawled up out of the bottom, so every Draw kept a company of guards. For a long time they were the only people anywhere who fought monsters as their everyday job. Now the Draws are closed and the wardens are out of work. They're the toughest people you'll find in a tavern, they'll hire out to anyone who pays, and some of them are angry about how they've been treated.
 
 **Beast-catchers.** The games pay very well for live monsters. Beast-catchers chase breaches with nets, poles and cage-wagons, trying to get there before the Surveyors finish the job. A live crease-wolf can be worth a season's wages.
 
-**Salt poachers and salt-wardens.** The old Draw scars still have thin veins of raw sunsalt in them. Poachers dig it out at night, which is against the law and dangerous, because raw salt fizzes, stings, and sometimes does things nobody wanted. The ministry's salt-wardens hunt them down. Both sides know every back road and ditch in the country.
+**Salt poachers and salt-wardens.** The old Draw scars still have thin veins of raw sunsalt in them. Poachers dig it out at night, which is against the law and dangerous, because raw salt fizzes, stings, and sometimes does things nobody wanted. The Ministry's salt-wardens hunt them down. Both sides know every back road and ditch in the country.
 
-**Crease-walkers.** The ministry pays people to walk the same stretch of road again and again and write down anything odd: a stair with one step too many, a wall where the stones don't line up, a stream that runs into a hill and never comes out the other side. It's lonely, boring and badly paid, and the people who do it get very, very good at noticing things.
+**Crease-walkers.** The Ministry pays people to walk the same stretch of road again and again and write down anything odd: a stair with one step too many, a wall where the stones don't line up, a stream that runs into a hill and never comes out the other side. It's lonely, boring and badly paid, and the people who do it get very, very good at noticing things.
 
 **Root-crews.** A Reactor's roots go down for miles, and sometimes something comes up them. Root-crews go down and deal with it. The pay is excellent, the hours are short, and part of what you're paid for is not asking questions.
 

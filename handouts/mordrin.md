@@ -4,7 +4,7 @@
 
 ## What you know
 
-Your family runs the Gilded Wheel Trading Company, one of the great trading houses the ministry releases sunsalt to. The Wheel sells it on and writes salt-notes against it, and like every house it has more notes out than salt in its vaults. Your grandfather backed the Surveyors early, and that's part of why the Wheel is where it is.
+Your family runs the Gilded Wheel Trading Company, one of the great trading houses the Ministry releases sunsalt to. The Wheel sells it on and writes salt-notes against it, and like every house it has more notes out than salt in its vaults. Your grandfather backed the Surveyors early, and that's part of why the Wheel is where it is.
 
 You trained at one of the wizards' colleges. To a scholar of magic, the Foldwright is a name from the history of your craft: a great and accomplished mage. You don't put much stock in his being alive.
 
