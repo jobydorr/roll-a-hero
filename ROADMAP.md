@@ -2,9 +2,17 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-11-09.*
+*Last updated: 2026-11-15.*
 
-> **▶▶▶ START HERE — FRESH CHAT, 2026-11-09. Newest block; read this first, then the TO DO list below it.**
+> **⏸ PAUSED FOR A LONG BREAK, 2026-11-15, AT JOBY'S REQUEST. READ THIS FIRST.** Everything is committed and pushed (`HEAD` == `origin/main`); the only untracked files are Joby's images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v119`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Nothing is mid-edit.
+>
+> **WHAT WAS FINISHED LAST:** the player handouts are complete and approved: `handouts/the-world-you-know.md` (shared, written TO the players, plain language, trades framed as background only) and one page each for Aramil, Jef, Sam (with "What Drew knows about Sam"), Century and Mordrin (Brandon only). The OS sheet `Quick reference › ▶ WHAT THE PLAYERS HAVE BEEN TOLD` (`ref-told`) holds all of them plus Joby's graffiti text, and is THE RECORD of what the players have been told outside play: check it before writing anything for the players, and add to it whenever they are told something new. The five bible fixes from the handout rulings are done, and Surveyors are now folded from many layered sheets along one central axis everywhere.
+>
+> **PARKED BY JOBY, leave alone until he raises them:** the clock tower in Dunlath's town above (still in an OS Lastlight sheet; CLAUDE.md's cautionary example); the second table prop (the Snarl as a crumpled paper map) may come back later; the portals tearing when opened wrongly stays canon for later. Also still open: whether Jef's page fits Rowan's sheet, and Ben's take on the graffiti.
+>
+> **ON RESUME:** ask Joby what he wants to work on; the TO DO list below is the backlog. Work in ONE chat window at a time (two windows editing the same files is how canon drifts).
+>
+> **▶▶▶ START HERE — FRESH CHAT, 2026-11-09** (superseded by the pause block above, kept for its detail).
 >
 > **STATE:** everything committed and pushed (`HEAD` == `origin/main`); the only untracked files are Joby's three images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v119`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Joby runs the OS at `localhost:8000` (`preview_start` on `roll-a-hero`; he reviews in his own Chrome with a hard refresh). The pane cannot get past the OS passcode, so verify data by fetching `campaign.js` and parsing it; Python edits must parse the JSON and re-dump one doc at a time (see the scripts pattern used this window).
 >
