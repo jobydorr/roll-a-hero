@@ -2,9 +2,19 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-11-15.*
+*Last updated: 2026-11-16.*
 
-> **⏸ PAUSED FOR A LONG BREAK, 2026-11-15, AT JOBY'S REQUEST. READ THIS FIRST.** Everything is committed and pushed (`HEAD` == `origin/main`); the only untracked files are Joby's images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v121`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Nothing is mid-edit.
+> **▶▶▶ START HERE — NEW WINDOW AFTER A LONG BREAK (paused 2026-11-16). READ THIS FIRST.**
+>
+> **STATE:** everything committed and pushed (`HEAD` == `origin/main`); the only untracked files are Joby's images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v121`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Nothing is mid-edit. Joby runs the OS at `localhost:8000` (`preview_start` on `roll-a-hero`); he reviews in his own Chrome with a hard refresh. The pane cannot pass the OS passcode, so verify by fetching `campaign.js` and parsing it. Edit `campaign.js` by parsing the JSON and re-dumping ONE doc at a time, bump `rev` on every doc changed, bump `campaign.js?v=` in `dm.html`, and check that all `[[links]]` resolve.
+>
+> **THE HANDOUTS ARE DONE AND JOBY IS HAPPY WITH THEM** (final as of `v121`, including a trimmed Ministry/Registry and "Ministry" capitalized everywhere). Do not reopen them unless he asks.
+>
+> **THE NEXT JOB IS PREP FOR THE NEXT GAME (Joby, 2026-11-16).** Where the table stands, from `SESSION LOGS › The face cleared, the four freed, an ogre called Bob` (`log-face-cleared`): the convoy and patrol are beaten, the four prisoners freed, the ogre is subdued and now Aramil's (Bob, still yoked), Bram is coming along and fighting, Mordrin holds the salt-licker's instrument, Aramil holds the +1 shortsword, and the party is resting on the face short of the town. **The next game is THE TOWN ON THE FACE** (`f-town`: run-order index `sc-town`, six terrace docs with WHAT CAN BE FOUND, the hatch-toad, the house-crab Biscuit with the gatehouse trough, the parade giant, cliff-rooks and the old rook, the hoard behind a loose stone in the fountain, Nell's letter and the field guide in the rubbish heap; Finch is NOT there, he was taken up toward the tower). Side-view map in `MAPS`. **Open from the last game, raise these with Joby first:** (a) he wants more HP or bigger numbers for the town's mobs, because the face was beaten easily; (b) Maud's lost time, since Wenna has held her post for nearly two years (Brandon), which needs lore on how time passes for the put-away; (c) what Maud knows of Wenna; (d) Annis has no role yet; (e) Bob the ogre is new to the party and changes the town plan (the "delivery" way in through the gate is now live).
+>
+> **HOW JOBY WORKS, from this window:** brainstorm, then he picks, then build; propose shape before restructuring; keep sheets short and table-usable (he will say "info overload"); write player-facing text plainly and not like AI; never invent canon or player material, and flag every gap filled; record anything told to the players on `ref-told`; work in ONE chat window at a time.
+>
+> **⏸ PAUSE OF 2026-11-15** (superseded by the block above):
 >
 > **WHAT WAS FINISHED LAST:** the player handouts are complete and approved: `handouts/the-world-you-know.md` (shared, written TO the players, plain language, trades framed as background only) and one page each for Aramil, Jef, Sam (with "What Drew knows about Sam"), Century and Mordrin (Brandon only). The OS sheet `Quick reference › ▶ WHAT THE PLAYERS HAVE BEEN TOLD` (`ref-told`) holds all of them plus Joby's graffiti text, and is THE RECORD of what the players have been told outside play: check it before writing anything for the players, and add to it whenever they are told something new. The five bible fixes from the handout rulings are done, and Surveyors are now folded from many layered sheets along one central axis everywhere.
 >
