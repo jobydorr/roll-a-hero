@@ -3082,7 +3082,7 @@ window.DM_CAMPAIGN = {
       "title": "▶ RUN THESE IN ORDER — the town on the face",
       "parent": "f-town",
       "order": 10,
-      "rev": 10,
+      "rev": 11,
       "tags": [
         "act1",
         "fold",
@@ -3119,9 +3119,9 @@ window.DM_CAMPAIGN = {
       ],
       "fields": {
         "map": "![[maps/town-side-dm.svg|The town on the face, side view (DM). Click to open it full size.]]\nThe player handout is [[map-town-side-player|the player version]], and every map is under MAPS in the sidebar.",
-        "order": "1. [[t-gate|The lowest gate]] · 4 goblins and a gong, where the ledge road ends\n2. [[t-kennels|The kennels]] · 3 crease-wolves and 2 keepers, let out on the alarm\n3. [[t-mess|The mess]] · the old square, about 15 goblins, loud and cowardly, [[cr-parade-giant|the parade giant]] on the fountain, and [[cr-house-crab|the house-crab]] being bullied out of its home\n4. [[t-hoist|The hoist]] · a treadwheel crane walked by a tear-ogre, with [[cr-cliff-rook|the rooks]] and [[cr-old-rook|the old rook]] on the roofs above it\n5. [[t-cistern|The cistern]] · four of the Lastlight five, under [[cr-hatch-toad|the hatch-toad]]\n6. [[t-top|The top terrace]] · under the tower; Finch was taken up there, and nobody goes up this trip",
+        "order": "1. [[t-gate|The lowest gate]] · 4 goblins, a gong and [[cr-goose|the goose]], where the ledge road ends\n2. [[t-kennels|The kennels]] · 3 crease-wolves and 2 keepers, let out on the alarm\n3. [[t-mess|The mess]] · the old square, about 15 goblins, loud and cowardly, [[cr-parade-giant|the parade giant]] on the fountain, and [[cr-house-crab|the house-crab]] being bullied out of its home\n4. [[t-hoist|The hoist]] · a treadwheel crane walked by a tear-ogre, with [[cr-cliff-rook|the rooks]] and [[cr-old-rook|the old rook]] on the roofs above it\n5. [[t-cistern|The cistern]] · four of the Lastlight five, under [[cr-hatch-toad|the hatch-toad]]\n6. [[t-top|The top terrace]] · under the tower; Finch was taken up there, and nobody goes up this trip",
         "setting": "THE TOWN WAS BUILT FOR PEOPLE, which makes it the first thing in the Fold that is the right size: human doors, human stairs, window boxes gone wild. The goblins have cut a goblin-sized door into the bottom of every human door, like a cat flap, and that tells anyone at a glance who lives here now. It also means Jef and Mordrin are small enough to go where the goblins go.\n\nTHE TOWN WAS FOLDED AWAY IN THE MIDDLE OF A PARADE (Joby, 2026-11-04), about two generations ago and long after the great Folding, when the fold slipped (Joby, 2026-11-08). The Ministry covered it with a closed road and a notice of regret, and people in Dunlath, [[npc-ganny|Ganny Marle]] among them, still remember the town. The parade's remnants are everywhere: faded bunting strung between the terraces, paper streamers gone to pulp in the gutters, a parade float stuck in the hoist yard, and the parade giant standing on the fountain. ⚠ The particular remnants are filled in. What the parade was for does not matter (Joby).\n\nThe terraces climb the face and are joined by stairs, ladders, rope bridges and one great hoist. There is no day or night in the Fold and the light is the same soft, sourceless glow as everywhere else, so the goblins keep their own rhythm with a gong, eating and sleeping in shifts.",
-        "before": "THE NUMBERS. About 26 goblins in all, 3 crease-wolves, 1 tear-ogre, the hatch-toad, [[cr-parade-giant|the parade giant]] with three goblins inside it, [[cr-house-crab|the house-crab]], and 6 [[cr-cliff-rook|cliff-rooks]] with [[cr-old-rook|the old rook]] on the roofs, spread across the terraces, so the party never meets all of them at once. Goblins are frightened of everything (canon from Ganny's cellar), so noise, light and anything big will scatter them.\n\nTHE ALARM. Once the gong or a horn sounds, 1d4+2 goblins arrive each round for three rounds, and then the kennels are opened. The town is already uneasy, because the convoy's horn was answered and the convoy never arrived.\n\nTHINGS TO FIND are on each terrace's sheet, under WHAT CAN BE FOUND. The goblin hoard is behind a loose stone in the base of the fountain in [[t-mess|the mess]].\n\nTHE FOUR FROM THE CONVOY wait in the slot doorway the party came out of, which is safe. [[npc-bram|Bram]] insists on coming along and [[npc-annis|Annis]] flatly refuses.",
+        "before": "THE NUMBERS. About 26 goblins in all and [[cr-bandmaster|the Bandmaster]] over them, [[cr-goose|the goose]] at the gate, 3 crease-wolves, 1 tear-ogre, the hatch-toad, [[cr-parade-giant|the parade giant]] with three goblins inside it, [[cr-house-crab|the house-crab]], and 6 [[cr-cliff-rook|cliff-rooks]] with [[cr-old-rook|the old rook]] on the roofs, spread across the terraces, so the party never meets all of them at once. Goblins are frightened of everything (canon from Ganny's cellar), so noise, light and anything big will scatter them.\n\nTHE ALARM. Once the gong, a horn or [[cr-goose|the goose]] sounds, 1d4+2 goblins arrive each round for three rounds, and then the kennels are opened. [[cr-bandmaster|The Bandmaster]] comes with the first wave, and from then on the goblins move together on his beat. The town is already uneasy, because the convoy's horn was answered and the convoy never arrived.\n\nTHINGS TO FIND are on each terrace's sheet, under WHAT CAN BE FOUND. The goblin hoard is behind a loose stone in the base of the fountain in [[t-mess|the mess]].\n\nTHE FOUR FROM THE CONVOY wait in the slot doorway the party came out of, which is safe. [[npc-bram|Bram]] insists on coming along and [[npc-annis|Annis]] flatly refuses.",
         "ways": "IN, three ways, and the table picks.\n· THE DELIVERY. Heroes ride in the convoy's cages and the ogre walks them through the gate. This works only if the ogre was turned, and it gets them in quietly.\n· THE SMALL DOOR. Jef and Mordrin slip in through the goblin flaps, and Mordrin's illusions buy time.\n· THE FRONT GATE. A straight fight at the gatehouse, which gives Jef something to hit.\n\nOUT IS WHERE THE BIG FIGHT IS. The alarm goes, the kennels open, and the party retreats down the ledge road with four rescued people. Two shortcuts down are available: the goblins' rubbish chute, which runs down the face like a slide, and the hoist basket.",
         "after": "Back at the slot doorway with however many they got out, and without Finch, who was taken up to the top terrace before they arrived. The tower is above them and still out of reach, and they now know that the boy everyone came for is somewhere up there."
       },
@@ -3134,7 +3134,7 @@ window.DM_CAMPAIGN = {
       "title": "1 — The lowest gate",
       "parent": "f-town",
       "order": 20,
-      "rev": 6,
+      "rev": 7,
       "tags": [
         "act1",
         "fold",
@@ -3162,8 +3162,8 @@ window.DM_CAMPAIGN = {
       ],
       "fields": {
         "looks": "The ledge road runs into a stone gatehouse built for people, with a heavy human gate and a goblin flap cut into the bottom of it. A gong hangs in the arch, and parade bunting is still strung across it, its colors gone soft.",
-        "who_is_here": "4 [[cr-snatch-goblin|snatch-goblins]] on the gate. They are expecting the convoy, it is late, and they are watching the road.",
-        "use": "THE GONG is the alarm, so a goblin that reaches it brings the town. Get to it first, or muffle it. THE GOBLIN FLAP lets a Small hero through without opening the gate. THE GATEHOUSE ITSELF is the biggest building in town, and the house [[cr-house-crab|the house-crab]] wants: clear the goblins out and it moves in, which blocks the gate behind the party. THE HORSE TROUGH by the gate is bone dry. It is where the party can leave [[cr-house-crab|the house-crab]] water when they take its decanter, and the crab's sheet says how.",
+        "who_is_here": "4 [[cr-snatch-goblin|snatch-goblins]] on the gate. They are expecting the convoy, it is late, and they are watching the road.\n\n[[cr-goose|THE GOOSE]], the real tyrant of the town, which guards the road in front of the gate. The goblins are frightened of it and give it a wide berth.",
+        "use": "THE GONG is the alarm, so a goblin that reaches it brings the town. Get to it first, or muffle it, and remember that [[cr-goose|the goose]]'s honk brings the town just the same. THE GOBLIN FLAP lets a Small hero through without opening the gate. THE GATEHOUSE ITSELF is the biggest building in town, and the house [[cr-house-crab|the house-crab]] wants: clear the goblins out and it moves in, which blocks the gate behind the party. THE HORSE TROUGH by the gate is bone dry. It is where the party can leave [[cr-house-crab|the house-crab]] water when they take its decanter, and the crab's sheet says how.",
         "finds": "THE OLD TOLL BOX, set into the wall under the arch and rusted shut. Inside are coins from the town's own mint, two generations out of date, which only the oldest people in Dunlath would still recognize. They are worth money, and worth more as a mystery: [[npc-merrit|Merrit]] or [[npc-hask|Hask]] would pay double for them as curiosities.\n\nTHE GATEHOUSE LOFT, up a ladder: spare parade bunting, and the gong's mallet, which is heavy enough to use as a club.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the details of everything in this field."
       },
       "body": "Where the party arrives, whichever way they come in."
@@ -3216,7 +3216,7 @@ window.DM_CAMPAIGN = {
       "title": "3 — The mess",
       "parent": "f-town",
       "order": 40,
-      "rev": 6,
+      "rev": 7,
       "tags": [
         "act1",
         "fold",
@@ -3244,7 +3244,7 @@ window.DM_CAMPAIGN = {
       ],
       "fields": {
         "looks": "The old town square, with a dry fountain and long tables dragged out of the houses. Goblins are eating, squabbling and gambling with stolen buttons, and some are wearing bits of parade costume: paper masks, a feathered hat, a drum worn as a helmet. A big figure stands on the fountain, and it looks like bronze.",
-        "who_is_here": "About 15 [[cr-snatch-goblin|snatch-goblins]], and most of them are not fighters. They are off shift and nobody is in charge.\n\n[[cr-parade-giant|THE PARADE GIANT]] on the fountain, which is not a statue: three goblins are inside it, and it is the mess's champion.\n\n[[cr-house-crab|THE HOUSE-CRAB]], in a cottage it has outgrown, trying to squeeze into a bigger house while goblins drive it off with goads. It is a friend waiting to happen, and its sheet says how.",
+        "who_is_here": "About 15 [[cr-snatch-goblin|snatch-goblins]], and most of them are not fighters. They are off shift and nobody is in charge until the alarm brings [[cr-bandmaster|the Bandmaster]].\n\n[[cr-parade-giant|THE PARADE GIANT]] on the fountain, which is not a statue: three goblins are inside it, and it is the mess's champion.\n\n[[cr-house-crab|THE HOUSE-CRAB]], in a cottage it has outgrown, trying to squeeze into a bigger house while goblins drive it off with goads. It is a friend waiting to happen, and its sheet says how.",
         "use": "IT IS THE LOUDEST PLACE IN TOWN and the easiest to throw into chaos. A Silent Image of something big, a roar, a flash of light or a table kicked over will empty the square in every direction, which is also a very good distraction for whatever the rest of the party is doing.",
         "finds": "THE WISHING FOUNTAIN. Before the town was folded away, the dry fountain was a wishing fountain, and its basin is still scattered with old coins people threw in, along with a few folded paper wishes that can still be read. Reading one aloud is a small moment worth giving the table.\n\n★ THE GOBLIN HOARD IS HIDDEN IN THE FOUNTAIN'S BASE. One stone in the base is loose, and behind it is the goblins' treasure.\n• Their wages: a fistful of rag-tied pinches of raw sunsalt, which goblins will trade for and which the party can only spend. The pinches come in little pouches stamped with the mark from the convoy ogre's yoke, which is a first hint about who pays the goblins.\n![[symbols/the-mark.svg|The mark stamped on the goblins' wage pouches]]\n• Buttons, spoons, and anything else that shines.\n• Coins from three places: Dunlath, the bath town, and one place nobody recognizes, which is a quiet clue to the tally's last three knots. ⚠ That place is Joby's to name.\n• A BAG OF HOLDING stuffed with goblin junk. Let the kids pull things out one at a time: a boot, a doorknob, a live frog, a teapot, and at last something good. ⚠ The something good is Joby's.\n• AN IMMOVABLE ROD. Press its button and it stays put in midair, holding up to 8,000 pounds. On a town built down a cliff it stops a sliding cage or makes a handhold over the drop.\n• TWO POTIONS OF HEALING, 2d4+2 each.\n• [[npc-finch|FINCH]]'S GLASS JAR, the reliquary he was carrying when he was taken. The goblins took it off him because it shines, before they carried him up. The party finds the jar without the boy.\n\nTHE COSTUME CHEST behind the long tables: paper masks, sashes and a feathered hat, enough to dress the party as parade performers and slip past goblins who are not looking closely. The drum one goblin is wearing as a helmet is [[npc-ivo|Ivo]]'s.\n\nTHE RUBBISH HEAP at the bottom of the chute that starts here. Goblins value only shiny things and throw away whatever they do not understand, so books, letters and maps end up in the heap, and two priceless things are in there among the trash. The heap is also a ready hiding place for any clue Joby wants later.\n\nNELL'S LETTER, sealed and never sent, and the most precious thing in the town. It was waiting in the post box by the gate for collection on parade day, and when the goblins emptied the box for anything shiny they threw the paper away. It is addressed to [[npc-ganny|Ganny Marle]] in Dunlath, from her younger sister Nell, who lived in the cottage [[cr-house-crab|the house-crab]] now wears. Ganny has believed ever since that Nell never wrote. Delivering it means walking back into Ganny's house with the proof that she did, and with the news that the town is still out there, folded, rather than lost to the settling. The return address is smudged. ⚠ The town's name is Joby's.\n\nRead it aloud or hand it over:\n\n\"To Ganny Marle, Dunlath.\n\nDear Gan,\n\nI am writing this on parade morning with the band already tuning under the window, so forgive the hand.\n\nI was wrong about Mother's house, and I have known it since the day you left. Keep it. I don't want it. I want my sister.\n\nCome for next year's parade. The children have saved you a place on the float, and Bry says you may sit at the crab end. Yes, we still have the crab. He is called Biscuit, he is the size of a teacup now, and he eats better than we do.\n\nWrite back. Even one line.\n\nYour sister,\nNell\"\n\nTHE FIELD GUIDE, a handbook to the monsters of the old wild and the bad time, centuries old and kept in the town as an heirloom. It is badly beaten up: water-stained, its spine split, and half its pages torn out or missing. When a hero looks up a creature, Joby decides whether its page survives. If it does, they learn one weakness; if it does not, describe the torn edge where it used to be. Snatch-goblins are the goblins of the bad time, so a goblin page surviving makes sense.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the details of everything in this field."
       },
@@ -3981,6 +3981,54 @@ window.DM_CAMPAIGN = {
         "trick": "It eats one pinch of raw sunsalt from its pouch for each spell, and it carries three. SOFTEN: a 10-foot patch of ledge goes soft like a crease, and everyone on it beats 12 with Dexterity or slides 10 feet toward the drop, cages included. UNFASTEN: one hero beats 12 with Dexterity or a buckle, strap or pack comes undone, so a shield drops or a pack spills. ITS WEAKNESS IS THE POUCH: a hero who hits it can knock the pouch away instead of doing damage, and without salt it cannot cast. When the pouch is empty it spends its turn grabbing a pinch off the nearest goblin's rag."
       },
       "body": "The patrol's magic user on [[enc-cavern|the face]]. Its fingers and mouth are stained with a faint glow, its eyes are far too bright, and it fizzes when it talks. Because raw sunsalt unfolds, all of its magic undoes things, which keeps it inside the sunsalt limits in the bible.\n\nIT STAYS BEHIND THE BOSS with a goblin beside it, softening the ledge under whoever is winning and unfastening whoever gets close to the boss. A goblin standing next to it is a refill, so take that goblin out first.\n\nTo goblins, salt is wages, so the salt-licker is a big shot among them: it literally eats money. Its pouch, with whatever pinches it did not eat, is in the patrol's loot.\n\nITS INSTRUMENT, as played (Joby): an ornate metal cylinder holding a ball of raw salt at one end, built like the tip of a ballpoint pen or a roll-on stick, which it rolls on its tongue. Mordrin took it, and he cannot use it, because it needs more information to be operable, like the object from [[loc-ganny|under Ganny's cellar]].\n\n⚠ Filled in, and Joby's to change: the stats and the three spells."
+    },
+    {
+      "schema": 1,
+      "id": "cr-goose",
+      "type": "creature",
+      "title": "The goose — the terror of the gate",
+      "parent": "f-monsters",
+      "order": 120,
+      "rev": 1,
+      "tags": [
+        "fold",
+        "town",
+        "boss",
+        "comedy"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hp": "55",
+        "ac": "13",
+        "speed": "30 feet, and it can flap up onto a wall or a roof",
+        "attack": "Two attacks a turn: a beak, +5 to hit, 1d8+3 damage, and a wing, +5 to hit, 1d6+3 damage",
+        "trick": "The honk: if it sees an intruder, it honks on its turn, and the honk sets off the alarm exactly as the gong does. The hiss: once a round, it can hiss at one hero within 10 feet, who must beat 12 or spend their next turn backing away from it."
+      },
+      "body": "An enormous goose, taller than a man at the neck, which guards [[t-gate|the lowest gate]] and is the real tyrant of [[sc-town|the town]]. It was a prize goose in the parade when the town was folded away, and like [[cr-house-crab|the house-crab]] it simply kept growing, because nothing in the town ever ate it. The goblins are frightened of everything and of the goose most of all, so they give it a wide berth.\n\nIT MAKES THE GONG NOT ENOUGH. A party that plans to reach the gong first or muffle it still has a goose to deal with, and a goose that honks has rung the alarm.\n\nFOOD IS THE WAY PAST IT. It ignores the wolf treats from [[t-kennels|the kennels]], but any food thrown to it buys a round of peace while it eats, and the party's own rations count. [[npc-pell|Pell]], who wants nothing more than to feed somebody, is the one most likely to think of it on the way out.\n\n⚠ JOBY'S (2026-11-20): the goose as the gate's boss, the goblins' fear of it, its honk as a second alarm, the hiss, and food rather than wolf treats as the way past it. Filled in, and his to change: the stats and damage, its size, its being a prize goose in the parade, and the rations counting as food."
+    },
+    {
+      "schema": 1,
+      "id": "cr-bandmaster",
+      "type": "creature",
+      "title": "The Bandmaster — the goblin who keeps the beat",
+      "parent": "f-monsters",
+      "order": 130,
+      "rev": 1,
+      "tags": [
+        "fold",
+        "town",
+        "boss",
+        "goblin"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hp": "60",
+        "ac": "15",
+        "speed": "30 feet",
+        "attack": "Two attacks a turn with his baton, each +5 to hit, 1d8+3 damage",
+        "trick": "The beat: once a round, he beats his drum, and every goblin that can hear it moves 15 feet at once, wherever he points. Take the hit: once a round, when a hero hits him, he can make a goblin standing next to him take the hit instead."
+      },
+      "body": "A goblin in the parade bandleader's coat, far too long for him, with a bass drum strapped to his front and the bandleader's baton for a club. He is the nearest thing [[sc-town|the town]] has to a boss, and he runs it by beating the drum, because goblins who are frightened of everything will follow a beat when they will not follow an order.\n\nHE ARRIVES WITH THE ALARM. Until the gong or [[cr-goose|the goose]] sounds, nobody is in charge, which is why [[t-mess|the mess]] is chaos. Once the alarm goes he comes with the first wave, and from then on the goblins move together on his beat instead of scattering.\n\nBREAK THE BEAT AND THE TOWN FALLS APART AGAIN. Take his drum, burst it, or drown it out, and the goblins go back to scattering at noise and light. [[npc-ivo|Ivo]] can drown it out with a drumroll of his own, and his drum is on a goblin's head in the mess.\n\n⚠ JOBY'S (2026-11-20): a goblin boss in the bandleader's coat with the baton, who runs the town by a drum beat, arrives with the alarm, uses the patrol boss's take-the-hit trick, and is undone when the beat is broken, which Ivo can do. Filled in, and his to change: the stats, the 15-foot move, the bass drum on his front, and taking or bursting the drum as ways to break the beat."
     },
     {
       "schema": 1,
