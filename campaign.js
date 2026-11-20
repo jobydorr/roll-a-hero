@@ -3537,7 +3537,7 @@ window.DM_CAMPAIGN = {
       "title": "Annis Crale — the stoker",
       "parent": "f-npcs",
       "order": 130,
-      "rev": 2,
+      "rev": 3,
       "tags": [
         "act1",
         "fold",
@@ -3574,7 +3574,7 @@ window.DM_CAMPAIGN = {
         "looks": "Small, quick and burn-scarred about the forearms, the baths' stoker, who runs the sunsalt beds under the hot room.",
         "wants": "To get back to her beds before somebody else ruins them.",
         "voice": "Blunt, and she apologizes for the state of the robes as though it were her fault.",
-        "secret": "SHE KNOWS SUNSALT BETTER THAN ANYONE IN THE PARTY. She can tell raw from refined by the smell, and she will not touch the goblins' pinches. She flatly refuses to go to [[sc-town|the town]].\n\n⚠ PROPOSED, NOT RULED: that she says the salt delivery smelled wrong on the morning of the tear, which would mean raw salt got into an ordinary delivery."
+        "secret": "SHE KNOWS SUNSALT BETTER THAN ANYONE IN THE PARTY. She can tell raw from refined by the smell, and she will not touch the goblins' pinches. She flatly refuses to go to [[sc-town|the town]].\n\nSHE IS AFRAID FOR A REASON (Joby, 2026-11-20). The scars on her forearms are raw-salt burns from one bad delivery years ago, because raw salt costs whoever handles it. To her nose the town reeks of raw salt, and that, not cowardice, is why she will not go in. Played well, she tells the table something true about the salt without anyone having to explain it.\n\nSHE KNOWS THE TRADE (Joby, 2026-11-20). A stoker deals with the delivery men, so she knows how salt comes to a bath house: the sacks, the seals, the carters, and which of the great trading houses supplies her baths. She does NOT recognize the mark on the yoke or the wage pouches.\n\n⚠ Filled in, and Joby's to change: the bad delivery years ago as the cause of the scars. Open: which house supplies her baths.\n\n⚠ TBD (Joby, 2026-11-20): what she does on her own while the party is in the town. Two options were offered: she builds a warm camp at the slot doorway for whoever comes back, or she follows the smell of salt somewhere and is gone when they return.\n\n⚠ PROPOSED, NOT RULED: that she says the salt delivery smelled wrong on the morning of the tear, which would mean raw salt got into an ordinary delivery."
       }
     },
     {

@@ -2,9 +2,17 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-11-16.*
+*Last updated: 2026-11-20.*
 
-> **▶▶▶ START HERE — NEW WINDOW AFTER A LONG BREAK (paused 2026-11-16). READ THIS FIRST.**
+> **▶▶▶ START HERE — PAUSED 2026-11-20 AT JOBY'S REQUEST. READ THIS FIRST.**
+>
+> **STATE:** everything committed and pushed; DM OS assets are campaign `v125`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Nothing is mid-edit. The working method in the block below (parse and re-dump `campaign.js`, bump `rev` and `?v=`, check links) still applies.
+>
+> **DONE THIS WINDOW (prep for THE TOWN ON THE FACE):** (a) the mobs: three new bosses rather than bigger numbers and no gang rules, namely `cr-goose` (gate), `cr-bandmaster` (comes with the alarm) and `cr-kennel-master` (a crease-wolf in goblin shape); (b) and (c) Maud's lost time and what she knows of Wenna, on `npc-maud` and marked TENTATIVE at Joby's request; (d) Annis, on `npc-annis`: her forearm scars are raw-salt burns and the town reeks of raw salt to her, which is why she will not go in, and she knows the salt trade but does NOT recognize the mark; what she does on her own while the party is in town is TBD; (e) Bob: closed with nothing to build, because Joby will not plan what the party does (memory `prep-the-world-not-the-party`).
+>
+> **ON RESUME, THE HIGH-PRIORITY JOB, BEFORE THE NEXT GAME:** decide who is taking people and what forces are siphoning life into sunsalt (who pays the goblins and stamps the mark, who takes the put-away off the shelf, what the tower does, where the salt goes and for whom). Canon already says the convoy goblins collected Maud and Osric from the holding-creases. Brainstorm first; Joby picks; nothing is canon without his yes.
+>
+> **▶▶▶ START HERE — NEW WINDOW AFTER A LONG BREAK (paused 2026-11-16)** (superseded by the block above, kept for its detail).
 >
 > **STATE:** everything committed and pushed (`HEAD` == `origin/main`); the only untracked files are Joby's images in `Folded world imagery/`, which stay untouched. DM OS assets: campaign `v124`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Nothing is mid-edit. Joby runs the OS at `localhost:8000` (`preview_start` on `roll-a-hero`); he reviews in his own Chrome with a hard refresh. The pane cannot pass the OS passcode, so verify by fetching `campaign.js` and parsing it. Edit `campaign.js` by parsing the JSON and re-dumping ONE doc at a time, bump `rev` on every doc changed, bump `campaign.js?v=` in `dm.html`, and check that all `[[links]]` resolve.
 >
