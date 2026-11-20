@@ -3082,7 +3082,7 @@ window.DM_CAMPAIGN = {
       "title": "▶ RUN THESE IN ORDER — the town on the face",
       "parent": "f-town",
       "order": 10,
-      "rev": 11,
+      "rev": 12,
       "tags": [
         "act1",
         "fold",
@@ -3119,9 +3119,9 @@ window.DM_CAMPAIGN = {
       ],
       "fields": {
         "map": "![[maps/town-side-dm.svg|The town on the face, side view (DM). Click to open it full size.]]\nThe player handout is [[map-town-side-player|the player version]], and every map is under MAPS in the sidebar.",
-        "order": "1. [[t-gate|The lowest gate]] · 4 goblins, a gong and [[cr-goose|the goose]], where the ledge road ends\n2. [[t-kennels|The kennels]] · 3 crease-wolves and 2 keepers, let out on the alarm\n3. [[t-mess|The mess]] · the old square, about 15 goblins, loud and cowardly, [[cr-parade-giant|the parade giant]] on the fountain, and [[cr-house-crab|the house-crab]] being bullied out of its home\n4. [[t-hoist|The hoist]] · a treadwheel crane walked by a tear-ogre, with [[cr-cliff-rook|the rooks]] and [[cr-old-rook|the old rook]] on the roofs above it\n5. [[t-cistern|The cistern]] · four of the Lastlight five, under [[cr-hatch-toad|the hatch-toad]]\n6. [[t-top|The top terrace]] · under the tower; Finch was taken up there, and nobody goes up this trip",
+        "order": "1. [[t-gate|The lowest gate]] · 4 goblins, a gong and [[cr-goose|the goose]], where the ledge road ends\n2. [[t-kennels|The kennels]] · 3 crease-wolves, 2 keepers and [[cr-kennel-master|the kennel master]], let out on the alarm\n3. [[t-mess|The mess]] · the old square, about 15 goblins, loud and cowardly, [[cr-parade-giant|the parade giant]] on the fountain, and [[cr-house-crab|the house-crab]] being bullied out of its home\n4. [[t-hoist|The hoist]] · a treadwheel crane walked by a tear-ogre, with [[cr-cliff-rook|the rooks]] and [[cr-old-rook|the old rook]] on the roofs above it\n5. [[t-cistern|The cistern]] · four of the Lastlight five, under [[cr-hatch-toad|the hatch-toad]]\n6. [[t-top|The top terrace]] · under the tower; Finch was taken up there, and nobody goes up this trip",
         "setting": "THE TOWN WAS BUILT FOR PEOPLE, which makes it the first thing in the Fold that is the right size: human doors, human stairs, window boxes gone wild. The goblins have cut a goblin-sized door into the bottom of every human door, like a cat flap, and that tells anyone at a glance who lives here now. It also means Jef and Mordrin are small enough to go where the goblins go.\n\nTHE TOWN WAS FOLDED AWAY IN THE MIDDLE OF A PARADE (Joby, 2026-11-04), about two generations ago and long after the great Folding, when the fold slipped (Joby, 2026-11-08). The Ministry covered it with a closed road and a notice of regret, and people in Dunlath, [[npc-ganny|Ganny Marle]] among them, still remember the town. The parade's remnants are everywhere: faded bunting strung between the terraces, paper streamers gone to pulp in the gutters, a parade float stuck in the hoist yard, and the parade giant standing on the fountain. ⚠ The particular remnants are filled in. What the parade was for does not matter (Joby).\n\nThe terraces climb the face and are joined by stairs, ladders, rope bridges and one great hoist. There is no day or night in the Fold and the light is the same soft, sourceless glow as everywhere else, so the goblins keep their own rhythm with a gong, eating and sleeping in shifts.",
-        "before": "THE NUMBERS. About 26 goblins in all and [[cr-bandmaster|the Bandmaster]] over them, [[cr-goose|the goose]] at the gate, 3 crease-wolves, 1 tear-ogre, the hatch-toad, [[cr-parade-giant|the parade giant]] with three goblins inside it, [[cr-house-crab|the house-crab]], and 6 [[cr-cliff-rook|cliff-rooks]] with [[cr-old-rook|the old rook]] on the roofs, spread across the terraces, so the party never meets all of them at once. Goblins are frightened of everything (canon from Ganny's cellar), so noise, light and anything big will scatter them.\n\nTHE ALARM. Once the gong, a horn or [[cr-goose|the goose]] sounds, 1d4+2 goblins arrive each round for three rounds, and then the kennels are opened. [[cr-bandmaster|The Bandmaster]] comes with the first wave, and from then on the goblins move together on his beat. The town is already uneasy, because the convoy's horn was answered and the convoy never arrived.\n\nTHINGS TO FIND are on each terrace's sheet, under WHAT CAN BE FOUND. The goblin hoard is behind a loose stone in the base of the fountain in [[t-mess|the mess]].\n\nTHE FOUR FROM THE CONVOY wait in the slot doorway the party came out of, which is safe. [[npc-bram|Bram]] insists on coming along and [[npc-annis|Annis]] flatly refuses.",
+        "before": "THE NUMBERS. About 26 goblins in all and [[cr-bandmaster|the Bandmaster]] over them, [[cr-goose|the goose]] at the gate, 3 crease-wolves and [[cr-kennel-master|the kennel master]], 1 tear-ogre, the hatch-toad, [[cr-parade-giant|the parade giant]] with three goblins inside it, [[cr-house-crab|the house-crab]], and 6 [[cr-cliff-rook|cliff-rooks]] with [[cr-old-rook|the old rook]] on the roofs, spread across the terraces, so the party never meets all of them at once. Goblins are frightened of everything (canon from Ganny's cellar), so noise, light and anything big will scatter them.\n\nTHE ALARM. Once the gong, a horn or [[cr-goose|the goose]] sounds, 1d4+2 goblins arrive each round for three rounds, and then the kennels are opened. [[cr-bandmaster|The Bandmaster]] comes with the first wave, and from then on the goblins move together on his beat. The town is already uneasy, because the convoy's horn was answered and the convoy never arrived.\n\nTHINGS TO FIND are on each terrace's sheet, under WHAT CAN BE FOUND. The goblin hoard is behind a loose stone in the base of the fountain in [[t-mess|the mess]].\n\nTHE FOUR FROM THE CONVOY wait in the slot doorway the party came out of, which is safe. [[npc-bram|Bram]] insists on coming along and [[npc-annis|Annis]] flatly refuses.",
         "ways": "IN, three ways, and the table picks.\n· THE DELIVERY. Heroes ride in the convoy's cages and the ogre walks them through the gate. This works only if the ogre was turned, and it gets them in quietly.\n· THE SMALL DOOR. Jef and Mordrin slip in through the goblin flaps, and Mordrin's illusions buy time.\n· THE FRONT GATE. A straight fight at the gatehouse, which gives Jef something to hit.\n\nOUT IS WHERE THE BIG FIGHT IS. The alarm goes, the kennels open, and the party retreats down the ledge road with four rescued people. Two shortcuts down are available: the goblins' rubbish chute, which runs down the face like a slide, and the hoist basket.",
         "after": "Back at the slot doorway with however many they got out, and without Finch, who was taken up to the top terrace before they arrived. The tower is above them and still out of reach, and they now know that the boy everyone came for is somewhere up there."
       },
@@ -3175,7 +3175,7 @@ window.DM_CAMPAIGN = {
       "title": "2 — The kennels",
       "parent": "f-town",
       "order": 30,
-      "rev": 2,
+      "rev": 3,
       "tags": [
         "act1",
         "fold",
@@ -3203,8 +3203,8 @@ window.DM_CAMPAIGN = {
       ],
       "fields": {
         "looks": "A row of human stables on the second terrace, turned into kennels. Everything smells of wet dog, and the wolves pace in a way that looks flat when they turn.",
-        "who_is_here": "3 [[cr-crease-wolf|crease-wolves]] in the pens and 2 goblin keepers.",
-        "use": "THE PENS are shut until the alarm, and then the keepers open them. A party that gets here first can bar the gate on the wolves and take them out of the fight entirely.",
+        "who_is_here": "3 [[cr-crease-wolf|crease-wolves]] in the pens and 2 goblin keepers, under [[cr-kennel-master|the kennel master]], who looks like a goblin and is really a fourth wolf.",
+        "use": "THE PENS are shut until the alarm, and then the keepers open them and the kennel master shows what he is. A party that gets here first can bar the gate on the wolves and take them out of the fight entirely.",
         "finds": "THE KEEPERS' POUCH OF WOLF TREATS, on a hook by the pens: five dried scraps that crease-wolves will do anything for. Throw one to a crease-wolf and it spends its next turn eating instead of fighting.\n\nTHE HAY LOFT above the stables, which is a good place to hide, and which usually has one goblin asleep in it when it ought to be working.\n\n⚠ FILLED IN, AND JOBY'S TO CHANGE: the details of everything in this field."
       },
       "body": "The town's reserve. Once the alarm has sounded and three rounds have passed, the wolves are loose."
@@ -4029,6 +4029,30 @@ window.DM_CAMPAIGN = {
         "trick": "The beat: once a round, he beats his drum, and every goblin that can hear it moves 15 feet at once, wherever he points. Take the hit: once a round, when a hero hits him, he can make a goblin standing next to him take the hit instead."
       },
       "body": "A goblin in the parade bandleader's coat, far too long for him, with a bass drum strapped to his front and the bandleader's baton for a club. He is the nearest thing [[sc-town|the town]] has to a boss, and he runs it by beating the drum, because goblins who are frightened of everything will follow a beat when they will not follow an order.\n\nHE ARRIVES WITH THE ALARM. Until the gong or [[cr-goose|the goose]] sounds, nobody is in charge, which is why [[t-mess|the mess]] is chaos. Once the alarm goes he comes with the first wave, and from then on the goblins move together on his beat instead of scattering.\n\nBREAK THE BEAT AND THE TOWN FALLS APART AGAIN. Take his drum, burst it, or drown it out, and the goblins go back to scattering at noise and light. [[npc-ivo|Ivo]] can drown it out with a drumroll of his own, and his drum is on a goblin's head in the mess.\n\n⚠ JOBY'S (2026-11-20): a goblin boss in the bandleader's coat with the baton, who runs the town by a drum beat, arrives with the alarm, uses the patrol boss's take-the-hit trick, and is undone when the beat is broken, which Ivo can do. Filled in, and his to change: the stats, the 15-foot move, the bass drum on his front, and taking or bursting the drum as ways to break the beat."
+    },
+    {
+      "schema": 1,
+      "id": "cr-kennel-master",
+      "type": "creature",
+      "title": "The kennel master — the goblin who is a wolf",
+      "parent": "f-monsters",
+      "order": 140,
+      "rev": 1,
+      "tags": [
+        "fold",
+        "town",
+        "boss",
+        "tear"
+      ],
+      "leadsTo": [],
+      "fields": {
+        "hp": "55, the same pool in either shape",
+        "ac": "13",
+        "speed": "30 feet as a goblin, 40 feet as a wolf",
+        "attack": "As a goblin: +5 to hit, 1d6+3 damage (a keeper's goad). As a wolf: two bites a turn, each +5 to hit, 2d6+3 damage",
+        "trick": "The reveal: when the pens are opened, or when he drops below half his hit points, he goes down on all fours and is a crease-wolf the size of a pony, and the other wolves follow him from then on. A bitten hero must beat 12 or be knocked down. Wolf treats work on him in either shape: throw him one and he spends his next turn eating it."
+      },
+      "body": "He runs [[t-kennels|the kennels]] and looks like a goblin, but he is a fourth [[cr-crease-wolf|crease-wolf]] wearing a goblin's shape, and even his two keepers do not know it. The point of him is the reveal, so give the table the clues before it comes and let the sharp ones guess.\n\nTHE CLUES are things a dog does. He sniffs everything and everyone, he scratches behind his ear with his foot, and he sneaks the wolf treats from the keepers' pouch when he thinks nobody is looking. A hero who throws him a treat while he is still in goblin shape will see him snatch it out of the air with his teeth.\n\nIN THE FIGHT he hangs back as a goblin until the pens open, and then he leads the pack. Take him down and the crease-wolves lose their nerve and scatter.\n\n⚠ JOBY'S (2026-11-20): a crease-wolf disguised as the goblin kennel master, unknown even to the keepers, with dog-like clues, who becomes a wolf and leads the pack when the pens open, and whom the wolf treats work on. Filled in, and his to change: the stats, the pony size, the half-hit-points trigger, the two bites, and the pack scattering when he falls. Open: how a crease-wolf came to wear a goblin's shape. Lycanthropy is deliberately left out, so his bite passes on no curse and ordinary weapons hurt him."
     },
     {
       "schema": 1,
