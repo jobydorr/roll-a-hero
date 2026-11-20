@@ -3397,7 +3397,7 @@ window.DM_CAMPAIGN = {
       "title": "Maud Hollam — the recruiter who retired",
       "parent": "f-npcs",
       "order": 100,
-      "rev": 3,
+      "rev": 4,
       "tags": [
         "act1",
         "fold",
@@ -3433,7 +3433,7 @@ window.DM_CAMPAIGN = {
         "looks": "Sixties, in a good coat gone filthy, and still wearing a Green Fields pin.",
         "wants": "To be taken back to find out what is going on. Joby's plan: once she realizes Mordrin is not going back, she insists on coming with the party.",
         "voice": "Warm and organizing, a practiced recruiter who cannot stop taking people's names. Muddled, she loses the thread of a sentence and picks up another one. She still feels and acts like a superior, which has put her at odds with Mordrin.",
-        "secret": "SHE WAS PUT AWAY FOR ASKING THE WRONG QUESTION AT A MEETING, and she does not remember asking it. ⚠ What the question was is Joby's. Whether her memory comes back, and whether the town holds clues to it, is still to be decided.\n\nHER LAST MEMORY, as played, is a meeting with coworkers and a Surveyor. After it she woke in the dark, searched for a way out, and was snatched by goblins. Wenna has held her post for nearly two years, so Maud has lost a great deal of time she cannot account for. ⚠ How time passes for the put-away is still to be worked out.\n\nShe has been told that Wenna took her place, and she knows of Wenna. ⚠ What she knows of her is open."
+        "secret": "SHE WAS PUT AWAY FOR ASKING THE WRONG QUESTION AT A MEETING, and she does not remember asking it. ⚠ What the question was is Joby's. Whether her memory comes back, and whether the town holds clues to it, is still to be decided.\n\nHER LAST MEMORY, as played, is a meeting with coworkers and a Surveyor. After it she woke in the dark, searched for a way out, and was snatched by goblins. Wenna has held her post for nearly two years, so Maud has lost a great deal of time she cannot account for. She has been told that Wenna took her place, and she knows of Wenna.\n\n⚠ TENTATIVE (Joby, 2026-11-20): WORTH REVIEWING, AND WORTH EXPANDING ON.\n· HOW TIME PASSES FOR THE PUT-AWAY. A holding-crease keeps a person the way a book keeps a pressed flower: nothing ages, and they come out exactly as they went in, in the same coat and with the same pin. That suits the Ministry, which keeps the put-away as hostages to be brought back out, and a hostage has to keep. The one loss is the last few moments before the fold, which wear through like the crease in an old letter, and that is why Maud cannot remember her question. To her the meeting was yesterday, and she has no idea how long she was gone until somebody tells her.\n· SHE DID NOT FALL OUT. Somebody took her off the shelf on purpose and left her in the dark, where the goblins found her. Who did it, and why, is open.\n· WHAT SHE KNOWS OF WENNA. Maud knew Wenna as one of her searchers on the roll, earnest and haunted, the woman who lays four places for three children, and she thought her far too soft to run an office. That is why she still treats the job as hers. At that last meeting Wenna's name was already on the paper as her successor, which means somebody had decided to replace Maud before she asked her question.\n· AN OPTION, NOT YET CHOSEN: because nothing on her changed, the paper from that meeting may still be folded in her coat pocket."
       }
     },
     {
