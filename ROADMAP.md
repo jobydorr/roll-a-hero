@@ -6,11 +6,13 @@
 
 > **▶▶▶ START HERE — PAUSED 2026-11-20 AT JOBY'S REQUEST. READ THIS FIRST.**
 >
-> **STATE:** everything committed and pushed; DM OS assets are campaign `v127`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Nothing is mid-edit. The working method in the block below (parse and re-dump `campaign.js`, bump `rev` and `?v=`, check links) still applies.
+> **STATE:** everything committed and pushed; DM OS assets are campaign `v128`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Nothing is mid-edit. The working method in the block below (parse and re-dump `campaign.js`, bump `rev` and `?v=`, check links) still applies.
 >
 > **DONE THIS WINDOW (prep for THE TOWN ON THE FACE):** (a) the mobs: three new bosses rather than bigger numbers and no gang rules, namely `cr-goose` (gate), `cr-bandmaster` (comes with the alarm) and `cr-kennel-master` (a crease-wolf in goblin shape); (b) and (c) Maud's lost time and what she knows of Wenna, on `npc-maud` and marked TENTATIVE at Joby's request; (d) Annis, on `npc-annis`: her forearm scars are raw-salt burns and the town reeks of raw salt to her, which is why she will not go in, and she knows the salt trade but does NOT recognize the mark; what she does on her own while the party is in town is TBD; (e) Bob: closed with nothing to build, because Joby will not plan what the party does (memory `prep-the-world-not-the-party`).
 >
 > **ON RESUME, THE HIGH-PRIORITY JOB, BEFORE THE NEXT GAME:** decide who is taking people and what forces are siphoning life into sunsalt (who pays the goblins and stamps the mark, who takes the put-away off the shelf, what the tower does, where the salt goes and for whom). Canon already says the convoy goblins collected Maud and Osric from the holding-creases. Brainstorm first; Joby picks; nothing is canon without his yes.
+>
+> **▶ PROGRESS ON IT, 2026-11-21 (campaign `v128`):** the answer so far is on a new OS sheet, `Quick reference › ▶ WHO TAKES PEOPLE` (`ref-search`), marked TENTATIVE at Joby's request, with a pointer from `bb-fold`'s tower field. Three layers: an unnamed villain (runs the tower; the mark is theirs, used as wages-money and as the one sign a mixed crew can read) > the Gilded Wheel (finances expeditions, part of the Foldwright search, paid in tower salt; a twist Mordrin discovers, no Brandon sign-off needed) > the Surveyors (searching for the Foldwright and the Armature). The tower's salt opens the Snarl's cells, pays the Wheel and the crew, and has a further use TBD. Extraction is near death and some die (Joby: the no-death rule covers the party killing humans, not villains). NOT in `CAMPAIGN.md`. Still open: the villain, how far in Maud was (three depths offered, "the money" recommended) and her question, and the rest of the sheet's STILL OPEN list.
 >
 > **▶▶▶ START HERE — NEW WINDOW AFTER A LONG BREAK (paused 2026-11-16)** (superseded by the block above, kept for its detail).
 >
