@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maud's Paper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Caveat:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3ead3;
+    --paper-edge: #e4d6b4;
+    --ink: #2b2622;
+    --pen: #1f3a6b;
+    --fold: rgba(80, 60, 30, 0.18);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: #8a8378;
+    font-family: "Special Elite", "Courier New", Courier, monospace;
+    color: var(--ink);
+    padding: 32px 16px;
+  }
+  .sheet {
+    position: relative;
+    width: 100%;
+    max-width: 6.5in;
+    margin: 0 auto;
+    padding: 0.7in 0.75in 0.8in;
+    background:
+      radial-gradient(ellipse at 20% 15%, rgba(255,255,255,0.35), transparent 60%),
+      radial-gradient(ellipse at 85% 90%, rgba(150,120,70,0.12), transparent 55%),
+      var(--paper);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.35), inset 0 0 40px var(--paper-edge);
+    overflow: hidden;
+  }
+  /* the vertical fold */
+  .sheet::before {
+    content: "";
+    position: absolute; top: 0; bottom: 0; left: 50%;
+    width: 2px;
+    background: linear-gradient(to right, var(--fold), rgba(255,255,255,0.4));
+  }
+  .head { text-align: center; margin-bottom: 0.35in; }
+  .org { font-size: 26px; letter-spacing: 0.18em; }
+  .sub { font-size: 15px; letter-spacing: 0.08em; margin-top: 6px; }
+  .rule { border: 0; border-top: 1.5px solid var(--ink); margin: 14px auto 0; width: 70%; opacity: 0.7; }
+  ol { margin: 0; padding-left: 1.6em; font-size: 15.5px; line-height: 1.55; }
+  li { margin-bottom: 18px; position: relative; }
+  .small { display: block; font-size: 13.5px; margin-top: 3px; }
+  .note {
+    font-family: "Caveat", "Segoe Print", "Bradley Hand", cursive;
+    color: var(--pen);
+    font-size: 23px;
+    line-height: 1.1;
+    display: block;
+    margin-top: 6px;
+    transform: rotate(-2deg);
+    transform-origin: left center;
+  }
+  .note.n2 { margin-left: 1.4in; transform: rotate(-1.5deg); }
+  /* the worn-through horizontal fold, right under item 5's note */
+  .wear {
+    position: relative;
+    height: 26px;
+    margin: 4px -0.75in 0;
+    background:
+      repeating-linear-gradient(90deg, rgba(120,95,55,0.0) 0 7px, rgba(120,95,55,0.10) 7px 9px),
+      linear-gradient(to bottom, var(--paper), #d9c79f 40%, #cdb88b 50%, #d9c79f 60%, var(--paper));
+    clip-path: polygon(0 30%, 4% 18%, 9% 34%, 15% 20%, 21% 38%, 28% 16%, 34% 30%, 41% 22%, 47% 36%, 53% 18%, 60% 32%, 66% 20%, 72% 35%, 79% 17%, 85% 31%, 91% 21%, 96% 33%, 100% 24%, 100% 76%, 95% 66%, 89% 82%, 83% 68%, 77% 80%, 70% 64%, 64% 79%, 57% 67%, 51% 83%, 44% 66%, 38% 78%, 31% 63%, 25% 81%, 18% 67%, 12% 80%, 6% 65%, 0 74%);
+  }
+  .below { height: 1.6in; }
+  @media screen and (max-width: 640px) {
+    .sheet { padding: 32px 20px 40px; }
+    .wear { margin-left: -20px; margin-right: -20px; }
+    .note.n2 { margin-left: 24px; }
+  }
+  @media print {
+    body { background: none; padding: 0; }
+    .sheet { box-shadow: none; max-width: 6.5in; margin: 0.4in auto; }
+    @page { margin: 0.4in; }
+  }
+</style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="head">
+      <div class="org">GREEN FIELDS</div>
+      <div class="sub">DUNLATH &middot; Order of business</div>
+      <hr class="rule">
+    </div>
+    <ol>
+      <li>Minutes of the last meeting.</li>
+      <li>The season's expeditions: routes as assigned.
+        <span class="small">Underwritten, with the movement's thanks, by the Gilded Wheel Trading Company.</span>
+        <span class="note">Same places again. Why these? Whose list?</span>
+      </li>
+      <li>The roll: new searchers.</li>
+      <li>Dunlath recruiter: Maud Hollam to retire to the country, with the movement's thanks.
+        <span class="small">Successor: Wenna Ash.</span>
+      </li>
+      <li>Any other business.
+        <span class="note n2">ASK &mdash; who are we actually lo</span>
+      </li>
+    </ol>
+    <div class="wear" aria-label="The paper is worn through along the fold here"></div>
+    <div class="below"></div>
+  </div>
+</body>
+</html>
