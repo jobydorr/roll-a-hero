@@ -6,7 +6,7 @@
 
 > **▶▶▶ START HERE — PAUSED 2026-11-20 AT JOBY'S REQUEST. READ THIS FIRST.**
 >
-> **STATE:** everything committed and pushed; DM OS assets are campaign `v125`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Nothing is mid-edit. The working method in the block below (parse and re-dump `campaign.js`, bump `rev` and `?v=`, check links) still applies.
+> **STATE:** everything committed and pushed; DM OS assets are campaign `v126`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Nothing is mid-edit. The working method in the block below (parse and re-dump `campaign.js`, bump `rev` and `?v=`, check links) still applies.
 >
 > **DONE THIS WINDOW (prep for THE TOWN ON THE FACE):** (a) the mobs: three new bosses rather than bigger numbers and no gang rules, namely `cr-goose` (gate), `cr-bandmaster` (comes with the alarm) and `cr-kennel-master` (a crease-wolf in goblin shape); (b) and (c) Maud's lost time and what she knows of Wenna, on `npc-maud` and marked TENTATIVE at Joby's request; (d) Annis, on `npc-annis`: her forearm scars are raw-salt burns and the town reeks of raw salt to her, which is why she will not go in, and she knows the salt trade but does NOT recognize the mark; what she does on her own while the party is in town is TBD; (e) Bob: closed with nothing to build, because Joby will not plan what the party does (memory `prep-the-world-not-the-party`).
 >
