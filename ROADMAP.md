@@ -14,6 +14,8 @@
 >
 > # ⚠️ HIGH PRIORITY (Joby, 2026-11-21): HOW MAUD CAME BY WHAT SHE KNEW. She may be the party's link to more of what is really going on, so the trail she followed needs depth: where she saw the routes and the Wheel's underwriting, whose neat handwriting was on the list, who she asked before the meeting. Her paper (campaign `v130`, on `npc-maud`) is NOT yet on `ref-told`; add it once it comes out at the table.
 >
+> # ⚠️ HIGH PRIORITY (Joby, 2026-11-21): SAM'S OPEN QUESTIONS, from `enc-other-sam`. What the glow on the far horizon is; what was burning; what the ticket was for (handout `handouts/sams-ticket.html`, stop names left illegible on purpose); whether Worm will fight the copy; where in the town it happens.
+>
 > **ON RESUME:** ask Joby what he wants; the two live threads are HOW FAR IN MAUD WAS (and her question; candidates: "Why are all my searchers missing someone they can't name?" and "Who are we actually looking for?") and THE UNNAMED VILLAIN who runs the tower.
 >
 > **ON RESUME, THE HIGH-PRIORITY JOB, BEFORE THE NEXT GAME:** decide who is taking people and what forces are siphoning life into sunsalt (who pays the goblins and stamps the mark, who takes the put-away off the shelf, what the tower does, where the salt goes and for whom). Canon already says the convoy goblins collected Maud and Osric from the holding-creases. Brainstorm first; Joby picks; nothing is canon without his yes.

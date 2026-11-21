@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sam's Ticket</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --card: #efe2c2;
+    --card-edge: #d8c393;
+    --ink: #3a2a1c;
+    --ink-faded: rgba(58, 42, 28, 0.55);
+    --rule: rgba(58, 42, 28, 0.45);
+    --hole: #3b352d;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: #6f685e;
+    font-family: "IM Fell English", Georgia, "Times New Roman", serif;
+    color: var(--ink);
+    padding: 32px 16px;
+  }
+  .ticket {
+    position: relative;
+    width: 100%;
+    max-width: 3.4in;
+    margin: 0 auto;
+    padding: 22px 22px 26px;
+    background:
+      radial-gradient(ellipse at 30% 10%, rgba(255,255,255,0.3), transparent 55%),
+      radial-gradient(ellipse at 80% 95%, rgba(120,80,30,0.16), transparent 50%),
+      var(--card);
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4), inset 0 0 30px var(--card-edge);
+  }
+  /* a dog-eared, soot-darkened corner */
+  .ticket::after {
+    content: "";
+    position: absolute; right: 0; bottom: 0;
+    width: 70px; height: 50px;
+    background: radial-gradient(ellipse at 100% 100%, rgba(40,25,10,0.35), transparent 70%);
+    border-bottom-right-radius: 6px;
+  }
+  .frame { border: 1.5px solid var(--rule); padding: 14px 14px 16px; border-radius: 3px; }
+  .title { font-family: "IM Fell English SC", Georgia, serif; text-align: center; font-size: 26px; letter-spacing: 0.12em; line-height: 1; }
+  .sub { text-align: center; font-style: italic; font-size: 14px; margin-top: 6px; }
+  .rule { border: 0; border-top: 1px solid var(--rule); margin: 12px 0; }
+  .stops { list-style: none; margin: 0; padding: 0; }
+  .stop {
+    display: flex; align-items: center; gap: 12px;
+    padding: 7px 0;
+    border-bottom: 1px dotted var(--rule);
+  }
+  .stop:last-child { border-bottom: 0; }
+  .num { font-family: "IM Fell English SC", Georgia, serif; width: 1.4em; text-align: right; font-size: 15px; }
+  .name {
+    flex: 1;
+    font-size: 16px;
+    color: var(--ink-faded);
+    filter: blur(1.6px);
+    letter-spacing: 0.04em;
+    user-select: none;
+  }
+  .punch {
+    width: 18px; height: 18px; border-radius: 50%;
+    border: 1.5px solid var(--rule);
+    flex: none;
+  }
+  .punch.done {
+    background: radial-gradient(circle at 40% 40%, #4a443a, var(--hole));
+    border-color: rgba(0,0,0,0.25);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
+  }
+  .last .name { filter: blur(3px); opacity: 0.5; }
+  .foot { text-align: center; font-style: italic; font-size: 13px; margin-top: 12px; }
+  .foot b { font-family: "IM Fell English SC", Georgia, serif; font-style: normal; letter-spacing: 0.08em; font-weight: normal; }
+  @media print {
+    body { background: none; padding: 0; }
+    .ticket { box-shadow: none; border: 1px solid #b9a77f; margin: 0.4in auto; }
+    @page { margin: 0.4in; }
+  }
+</style>
+</head>
+<body>
+  <div class="ticket">
+    <div class="frame">
+      <div class="title">PASSAGE</div>
+      <div class="sub">One traveller &middot; by the old way</div>
+      <hr class="rule">
+      <ol class="stops">
+        <li class="stop"><span class="num">I</span><span class="name" aria-hidden="true">Hmnrrwem Cnoss</span><span class="punch done" title="Punched"></span></li>
+        <li class="stop"><span class="num">II</span><span class="name" aria-hidden="true">Tlne Lnw Fmrds</span><span class="punch done" title="Punched"></span></li>
+        <li class="stop"><span class="num">III</span><span class="name" aria-hidden="true">Snltmell Stnir</span><span class="punch done" title="Punched"></span></li>
+        <li class="stop"><span class="num">IV</span><span class="name" aria-hidden="true">Gmnyhnlluw</span><span class="punch done" title="Punched"></span></li>
+        <li class="stop"><span class="num">V</span><span class="name" aria-hidden="true">Onlmnrch Gnte</span><span class="punch done" title="Punched"></span></li>
+        <li class="stop"><span class="num">VI</span><span class="name" aria-hidden="true">Tnmrnwick Rnmg</span><span class="punch done" title="Punched"></span></li>
+        <li class="stop last"><span class="num">VII</span><span class="name" aria-hidden="true">Emnwnter</span><span class="punch" title="Not punched"></span></li>
+      </ol>
+      <hr class="rule">
+      <div class="foot">Not transferable &middot; <b>Keep this ticket</b></div>
+    </div>
+  </div>
+</body>
+</html>
