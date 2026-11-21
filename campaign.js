@@ -3397,7 +3397,7 @@ window.DM_CAMPAIGN = {
       "title": "Maud Hollam — the recruiter who retired",
       "parent": "f-npcs",
       "order": 100,
-      "rev": 4,
+      "rev": 5,
       "tags": [
         "act1",
         "fold",
@@ -3433,7 +3433,11 @@ window.DM_CAMPAIGN = {
         "looks": "Sixties, in a good coat gone filthy, and still wearing a Green Fields pin.",
         "wants": "To be taken back to find out what is going on. Joby's plan: once she realizes Mordrin is not going back, she insists on coming with the party.",
         "voice": "Warm and organizing, a practiced recruiter who cannot stop taking people's names. Muddled, she loses the thread of a sentence and picks up another one. She still feels and acts like a superior, which has put her at odds with Mordrin.",
-        "secret": "SHE WAS PUT AWAY FOR ASKING THE WRONG QUESTION AT A MEETING, and she does not remember asking it. ⚠ What the question was is Joby's. Whether her memory comes back, and whether the town holds clues to it, is still to be decided.\n\nHER LAST MEMORY, as played, is a meeting with coworkers and a Surveyor. After it she woke in the dark, searched for a way out, and was snatched by goblins. Wenna has held her post for nearly two years, so Maud has lost a great deal of time she cannot account for. She has been told that Wenna took her place, and she knows of Wenna.\n\n⚠ TENTATIVE (Joby, 2026-11-20): WORTH REVIEWING, AND WORTH EXPANDING ON.\n· HOW TIME PASSES FOR THE PUT-AWAY. A holding-crease keeps a person the way a book keeps a pressed flower: nothing ages, and they come out exactly as they went in, in the same coat and with the same pin. That suits the Ministry, which keeps the put-away as hostages to be brought back out, and a hostage has to keep. The one loss is the last few moments before the fold, which wear through like the crease in an old letter, and that is why Maud cannot remember her question. To her the meeting was yesterday, and she has no idea how long she was gone until somebody tells her.\n· SHE DID NOT FALL OUT. Somebody took her off the shelf on purpose and left her in the dark, where the goblins found her. Who did it, and why, is open.\n· WHAT SHE KNOWS OF WENNA. Maud knew Wenna as one of her searchers on the roll, earnest and haunted, the woman who lays four places for three children, and she thought her far too soft to run an office. That is why she still treats the job as hers. At that last meeting Wenna's name was already on the paper as her successor, which means somebody had decided to replace Maud before she asked her question.\n· AN OPTION, NOT YET CHOSEN: because nothing on her changed, the paper from that meeting may still be folded in her coat pocket."
+        "secret": "SHE WAS PUT AWAY FOR ASKING THE WRONG QUESTION AT A MEETING, and she does not remember asking it. ⚠ What the question was is Joby's. Whether her memory comes back, and whether the town holds clues to it, is still to be decided.\n\nHER LAST MEMORY, as played, is a meeting with coworkers and a Surveyor. After it she woke in the dark, searched for a way out, and was snatched by goblins. Wenna has held her post for nearly two years, so Maud has lost a great deal of time she cannot account for. She has been told that Wenna took her place, and she knows of Wenna.\n\n⚠ TENTATIVE (Joby, 2026-11-20): WORTH REVIEWING, AND WORTH EXPANDING ON.\n· HOW TIME PASSES FOR THE PUT-AWAY. A holding-crease keeps a person the way a book keeps a pressed flower: nothing ages, and they come out exactly as they went in, in the same coat and with the same pin. That suits the Ministry, which keeps the put-away as hostages to be brought back out, and a hostage has to keep. The one loss is the last few moments before the fold, which wear through like the crease in an old letter, and that is why Maud cannot remember her question. To her the meeting was yesterday, and she has no idea how long she was gone until somebody tells her.\n· SHE DID NOT FALL OUT. Somebody took her off the shelf on purpose and left her in the dark, where the goblins found her. Who did it, and why, is open.\n· WHAT SHE KNOWS OF WENNA. Maud knew Wenna as one of her searchers on the roll, earnest and haunted, the woman who lays four places for three children, and she thought her far too soft to run an office. That is why she still treats the job as hers. At that last meeting Wenna's name was already on the paper as her successor, which means somebody had decided to replace Maud before she asked her question.\n· AN OPTION, NOT YET CHOSEN: because nothing on her changed, the paper from that meeting may still be folded in her coat pocket.",
+        "hp": "9",
+        "ac": "10",
+        "attack": "+1 to hit, 1d4 damage (whatever is to hand). She would much rather organize than fight.",
+        "special": "Initiative +1. Taking charge: once a fight, she barks a clear order at one ally, who gets +2 on their next roll."
       }
     },
     {
@@ -3443,7 +3447,7 @@ window.DM_CAMPAIGN = {
       "title": "Osric Vane — the magistrate who would not sign",
       "parent": "f-npcs",
       "order": 110,
-      "rev": 4,
+      "rev": 5,
       "tags": [
         "act1",
         "fold",
@@ -3480,7 +3484,11 @@ window.DM_CAMPAIGN = {
         "looks": "A magistrate's black, rumpled and torn.",
         "wants": "To go home. He is nearly immobilized by fear, and Century had to charm him to get him talking.",
         "voice": "Formal and procedural, and he insists on due process even with goblins.",
-        "secret": "HE REFUSED TO SIGN A PUT-AWAY ORDER AND WAS PUT AWAY HIMSELF, and he does not remember the order or the refusal.\n\nHIS MAGIC HAS BEEN SWITCHED OFF. The Surveyors can do that at will, and a human can bring it back only through a costly sunsalt ritual that is painful to the person being restored, in body and in mind (CAMPAIGN.md §3, The Surveyors). ⚠ That it was the Surveyors who switched his off is filled in and Joby's to change."
+        "secret": "HE REFUSED TO SIGN A PUT-AWAY ORDER AND WAS PUT AWAY HIMSELF, and he does not remember the order or the refusal.\n\nHIS MAGIC HAS BEEN SWITCHED OFF. The Surveyors can do that at will, and a human can bring it back only through a costly sunsalt ritual that is painful to the person being restored, in body and in mind (CAMPAIGN.md §3, The Surveyors). ⚠ That it was the Surveyors who switched his off is filled in and Joby's to change.",
+        "hp": "8",
+        "ac": "10",
+        "attack": "+0 to hit, 1d4 damage. He attacks only if he is cornered.",
+        "special": "Initiative +0. His magic is switched off, so he casts nothing. Frozen: at the start of each of his turns he beats 10 or spends the turn cowering."
       }
     },
     {
@@ -3490,7 +3498,7 @@ window.DM_CAMPAIGN = {
       "title": "Bram Tarrow — the champion nobody remembers",
       "parent": "f-npcs",
       "order": 120,
-      "rev": 4,
+      "rev": 5,
       "tags": [
         "act1",
         "fold",
@@ -3527,7 +3535,11 @@ window.DM_CAMPAIGN = {
         "looks": "Big, soft and old, a retired champion wrestler from the arena games who was taking the waters for his knees.",
         "wants": "To be recognized. He keeps telling people who he used to be, and nobody has ever heard of him.",
         "voice": "Loud, boastful, bold and brash, and nothing makes him go quiet.",
-        "secret": "HE IS NOT AFRAID OF ANYTHING, to his own detriment, and he will fight (Joby, as played). He is strong enough to lift a cage, hold a door or carry a hurt hero, and he insists on coming to [[sc-town|the town]], where his strength pays off hauling people out of [[t-cistern|the cistern]].\n\n⚠ PROPOSED, NOT RULED: the bath town's name, and that the Ministry closed the baths \"for repairs\" and told the families the bathers were scalded and sent to a rest village."
+        "secret": "HE IS NOT AFRAID OF ANYTHING, to his own detriment, and he will fight (Joby, as played). He is strong enough to lift a cage, hold a door or carry a hurt hero, and he insists on coming to [[sc-town|the town]], where his strength pays off hauling people out of [[t-cistern|the cistern]].\n\n⚠ PROPOSED, NOT RULED: the bath town's name, and that the Ministry closed the baths \"for repairs\" and told the families the bathers were scalded and sent to a rest village.",
+        "hp": "30",
+        "ac": "12",
+        "attack": "Two attacks a turn, each +5 to hit, 1d6+3 damage (fists)",
+        "special": "Initiative +1. The hold: instead of attacking, he grabs a goblin-sized foe, which beats 14 or is held and cannot act; next turn he can throw it 10 feet for 1d6. Fearless to a fault: he never backs off and goes for the biggest thing in the fight."
       }
     },
     {
@@ -3537,7 +3549,7 @@ window.DM_CAMPAIGN = {
       "title": "Annis Crale — the stoker",
       "parent": "f-npcs",
       "order": 130,
-      "rev": 3,
+      "rev": 4,
       "tags": [
         "act1",
         "fold",
@@ -3574,7 +3586,11 @@ window.DM_CAMPAIGN = {
         "looks": "Small, quick and burn-scarred about the forearms, the baths' stoker, who runs the sunsalt beds under the hot room.",
         "wants": "To get back to her beds before somebody else ruins them.",
         "voice": "Blunt, and she apologizes for the state of the robes as though it were her fault.",
-        "secret": "SHE KNOWS SUNSALT BETTER THAN ANYONE IN THE PARTY. She can tell raw from refined by the smell, and she will not touch the goblins' pinches. She flatly refuses to go to [[sc-town|the town]].\n\nSHE IS AFRAID FOR A REASON (Joby, 2026-11-20). The scars on her forearms are raw-salt burns from one bad delivery years ago, because raw salt costs whoever handles it. To her nose the town reeks of raw salt, and that, not cowardice, is why she will not go in. Played well, she tells the table something true about the salt without anyone having to explain it.\n\nSHE KNOWS THE TRADE (Joby, 2026-11-20). A stoker deals with the delivery men, so she knows how salt comes to a bath house: the sacks, the seals, the carters, and which of the great trading houses supplies her baths. She does NOT recognize the mark on the yoke or the wage pouches.\n\n⚠ Filled in, and Joby's to change: the bad delivery years ago as the cause of the scars. Open: which house supplies her baths.\n\n⚠ TBD (Joby, 2026-11-20): what she does on her own while the party is in the town. Two options were offered: she builds a warm camp at the slot doorway for whoever comes back, or she follows the smell of salt somewhere and is gone when they return.\n\n⚠ PROPOSED, NOT RULED: that she says the salt delivery smelled wrong on the morning of the tear, which would mean raw salt got into an ordinary delivery."
+        "secret": "SHE KNOWS SUNSALT BETTER THAN ANYONE IN THE PARTY. She can tell raw from refined by the smell, and she will not touch the goblins' pinches. She flatly refuses to go to [[sc-town|the town]].\n\nSHE IS AFRAID FOR A REASON (Joby, 2026-11-20). The scars on her forearms are raw-salt burns from one bad delivery years ago, because raw salt costs whoever handles it. To her nose the town reeks of raw salt, and that, not cowardice, is why she will not go in. Played well, she tells the table something true about the salt without anyone having to explain it.\n\nSHE KNOWS THE TRADE (Joby, 2026-11-20). A stoker deals with the delivery men, so she knows how salt comes to a bath house: the sacks, the seals, the carters, and which of the great trading houses supplies her baths. She does NOT recognize the mark on the yoke or the wage pouches.\n\n⚠ Filled in, and Joby's to change: the bad delivery years ago as the cause of the scars. Open: which house supplies her baths.\n\n⚠ TBD (Joby, 2026-11-20): what she does on her own while the party is in the town. Two options were offered: she builds a warm camp at the slot doorway for whoever comes back, or she follows the smell of salt somewhere and is gone when they return.\n\n⚠ PROPOSED, NOT RULED: that she says the salt delivery smelled wrong on the morning of the tear, which would mean raw salt got into an ordinary delivery.",
+        "hp": "12",
+        "ac": "12",
+        "attack": "+3 to hit, 1d4+1 damage (whatever is to hand)",
+        "special": "Initiative +3. She is quick and keeps out of reach, and she will not touch raw salt for any reason."
       }
     },
     {
@@ -3935,6 +3951,51 @@ window.DM_CAMPAIGN = {
         "voice": "Quiet and polite, and he drums on whatever is nearest without noticing he is doing it.",
         "secret": "HE IS LOUD WHEN HE WANTS TO BE, and goblins are frightened of noise. A drumroll on a gatehouse door or a cistern wall will scatter a stretch of goblins, and he can be talked into doing it at the right moment. He drummed on the cistern wall to keep the others' spirits up, which the guards hated."
       }
+    },
+    {
+      "schema": 1,
+      "id": "npc-bob",
+      "type": "npc",
+      "title": "Bob — the convoy's ogre, now the party's",
+      "parent": "f-npcs",
+      "order": 180,
+      "rev": 1,
+      "tags": [
+        "fold",
+        "ally",
+        "ogre"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "who",
+          "WHO THEY ARE"
+        ],
+        [
+          "looks",
+          "Looks like"
+        ],
+        [
+          "wants",
+          "Wants"
+        ],
+        [
+          "voice",
+          "Voice"
+        ],
+        [
+          "secret",
+          "Secret"
+        ]
+      ],
+      "fields": {
+        "who": "Bob is the [[cr-tear-ogre|tear-ogre]] that carried the convoy's cages on [[enc-cavern|the face]]. The party subdued him, named him Bob, and put Aramil in charge of him (as played). He still wears the yoke with the mark on it, he is eating the goblin remains and saving some for later, and Aramil knows he is a very dangerous pet that will take a great deal of food to keep in line.",
+        "hp": "45",
+        "ac": "13",
+        "attack": "+5 to hit, 1d8+3 damage (a fistful of fairground)",
+        "special": "Initiative -1. The Sweep: once a round, everything beside him beats 13 or is thrown 10 feet and knocked down, and that includes friends. Near zero hit points he is cowed, as every tear-ogre is."
+      },
+      "body": "His stats are the convoy ogre's from [[enc-cavern|the face]]: the tear-ogre sheet with HP 45. He was beaten down nearly to nothing there, so set his current hit points to however rested he is when the game opens.\n\n⚠ Filled in, and Joby's to change: the initiative modifier on every one of the five sheets with the party, and every stat on Maud, Osric, Bram and Annis, including their special moves."
     },
     {
       "schema": 1,
