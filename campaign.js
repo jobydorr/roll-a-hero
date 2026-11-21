@@ -3082,7 +3082,7 @@ window.DM_CAMPAIGN = {
       "title": "▶ RUN THESE IN ORDER — the town on the face",
       "parent": "f-town",
       "order": 10,
-      "rev": 12,
+      "rev": 13,
       "tags": [
         "act1",
         "fold",
@@ -3119,7 +3119,7 @@ window.DM_CAMPAIGN = {
       ],
       "fields": {
         "map": "![[maps/town-side-dm.svg|The town on the face, side view (DM). Click to open it full size.]]\nThe player handout is [[map-town-side-player|the player version]], and every map is under MAPS in the sidebar.",
-        "order": "1. [[t-gate|The lowest gate]] · 4 goblins, a gong and [[cr-goose|the goose]], where the ledge road ends\n2. [[t-kennels|The kennels]] · 3 crease-wolves, 2 keepers and [[cr-kennel-master|the kennel master]], let out on the alarm\n3. [[t-mess|The mess]] · the old square, about 15 goblins, loud and cowardly, [[cr-parade-giant|the parade giant]] on the fountain, and [[cr-house-crab|the house-crab]] being bullied out of its home\n4. [[t-hoist|The hoist]] · a treadwheel crane walked by a tear-ogre, with [[cr-cliff-rook|the rooks]] and [[cr-old-rook|the old rook]] on the roofs above it\n5. [[t-cistern|The cistern]] · four of the Lastlight five, under [[cr-hatch-toad|the hatch-toad]]\n6. [[t-top|The top terrace]] · under the tower; Finch was taken up there, and nobody goes up this trip",
+        "order": "1. [[t-gate|The lowest gate]] · 4 goblins, a gong and [[cr-goose|the goose]], where the ledge road ends\n2. [[t-kennels|The kennels]] · 3 crease-wolves, 2 keepers and [[cr-kennel-master|the kennel master]], let out on the alarm\n3. [[t-mess|The mess]] · the old square, about 15 goblins, loud and cowardly, [[cr-parade-giant|the parade giant]] on the fountain, and [[cr-house-crab|the house-crab]] being bullied out of its home\n4. [[t-hoist|The hoist]] · a treadwheel crane walked by a tear-ogre, with [[cr-cliff-rook|the rooks]] and [[cr-old-rook|the old rook]] on the roofs above it\n5. [[t-cistern|The cistern]] · four of the Lastlight five, under [[cr-hatch-toad|the hatch-toad]]\n6. [[t-top|The top terrace]] · under the tower; Finch was taken up there, and nobody goes up this trip\nANYWHERE IN TOWN · [[enc-other-sam|Sam meets himself]], wherever Joby chooses to put it",
         "setting": "THE TOWN WAS BUILT FOR PEOPLE, which makes it the first thing in the Fold that is the right size: human doors, human stairs, window boxes gone wild. The goblins have cut a goblin-sized door into the bottom of every human door, like a cat flap, and that tells anyone at a glance who lives here now. It also means Jef and Mordrin are small enough to go where the goblins go.\n\nTHE TOWN WAS FOLDED AWAY IN THE MIDDLE OF A PARADE (Joby, 2026-11-04), about two generations ago and long after the great Folding, when the fold slipped (Joby, 2026-11-08). The Ministry covered it with a closed road and a notice of regret, and people in Dunlath, [[npc-ganny|Ganny Marle]] among them, still remember the town. The parade's remnants are everywhere: faded bunting strung between the terraces, paper streamers gone to pulp in the gutters, a parade float stuck in the hoist yard, and the parade giant standing on the fountain. ⚠ The particular remnants are filled in. What the parade was for does not matter (Joby).\n\nThe terraces climb the face and are joined by stairs, ladders, rope bridges and one great hoist. There is no day or night in the Fold and the light is the same soft, sourceless glow as everywhere else, so the goblins keep their own rhythm with a gong, eating and sleeping in shifts.",
         "before": "THE NUMBERS. About 26 goblins in all and [[cr-bandmaster|the Bandmaster]] over them, [[cr-goose|the goose]] at the gate, 3 crease-wolves and [[cr-kennel-master|the kennel master]], 1 tear-ogre, the hatch-toad, [[cr-parade-giant|the parade giant]] with three goblins inside it, [[cr-house-crab|the house-crab]], and 6 [[cr-cliff-rook|cliff-rooks]] with [[cr-old-rook|the old rook]] on the roofs, spread across the terraces, so the party never meets all of them at once. Goblins are frightened of everything (canon from Ganny's cellar), so noise, light and anything big will scatter them.\n\nTHE ALARM. Once the gong, a horn or [[cr-goose|the goose]] sounds, 1d4+2 goblins arrive each round for three rounds, and then the kennels are opened. [[cr-bandmaster|The Bandmaster]] comes with the first wave, and from then on the goblins move together on his beat. The town is already uneasy, because the convoy's horn was answered and the convoy never arrived.\n\nTHINGS TO FIND are on each terrace's sheet, under WHAT CAN BE FOUND. The goblin hoard is behind a loose stone in the base of the fountain in [[t-mess|the mess]].\n\nTHE FOUR FROM THE CONVOY wait in the slot doorway the party came out of, which is safe. [[npc-bram|Bram]] insists on coming along and [[npc-annis|Annis]] flatly refuses.",
         "ways": "IN, three ways, and the table picks.\n· THE DELIVERY. Heroes ride in the convoy's cages and the ogre walks them through the gate. This works only if the ogre was turned, and it gets them in quietly.\n· THE SMALL DOOR. Jef and Mordrin slip in through the goblin flaps, and Mordrin's illusions buy time.\n· THE FRONT GATE. A straight fight at the gatehouse, which gives Jef something to hit.\n\nOUT IS WHERE THE BIG FIGHT IS. The alarm goes, the kennels open, and the party retreats down the ledge road with four rescued people. Two shortcuts down are available: the goblins' rubbish chute, which runs down the face like a slide, and the hoist basket.",
@@ -3367,6 +3367,47 @@ window.DM_CAMPAIGN = {
         "use": "THE PATROL'S STAIR, the one on the slate, passes above the town on the face and is the way to the tower for later. Nobody goes up this trip."
       },
       "body": "Seen and not reached. The tower stays out of reach on this trip."
+    },
+    {
+      "schema": 1,
+      "id": "enc-other-sam",
+      "type": "encounter",
+      "title": "Sam meets himself — the other Sam",
+      "parent": "f-town",
+      "order": 80,
+      "rev": 1,
+      "tags": [
+        "fold",
+        "town",
+        "sam",
+        "memory"
+      ],
+      "leadsTo": [],
+      "fieldDefs": [
+        [
+          "setup",
+          "Setup"
+        ],
+        [
+          "creatures",
+          "The other Sam"
+        ],
+        [
+          "unfolding",
+          "When he unfolds — what Sam sees"
+        ],
+        [
+          "open",
+          "Still open"
+        ]
+      ],
+      "fields": {
+        "setup": "SAM MEETS A COPY OF HIMSELF, and most likely they fight (Joby, 2026-11-21). Where in [[sc-town|the town]] it happens is Joby's call at the table. It is the first of the pieces of himself Sam meets in the Fold: when he fights one and wins, he gets some memory back (Joby).",
+        "creatures": "THE OTHER SAM uses Sam's own sheet, with the same hit points, armor and attacks. Put him on the initiative list as a one-off and set his hit points from Sam's.\n⚠ Filled in, and Joby's to change: copying Sam's sheet, which comes from the parked idea on the roadmap.",
+        "unfolding": "WHEN THE OTHER SAM IS DESTROYED, HE UNFOLDS, coming apart into flat planes, and things are visible on their surfaces as he goes (Joby). Drew decides one thing Sam sees, and Joby has these to offer (all Joby's, 2026-11-21).\n· A ROUTE DRAWN ACROSS THE PLANES, a faded dotted line like a path on an old map, which runs from one surface to the next and breaks wherever they come apart.\n· THE WALL AT NIGHT, with firelight moving on it, which is Sam's one memory. Then the view pans away from the wall and opens onto a vast landscape, and Sam is standing on one of his people's ancient routes. On the far horizon there is a faint glow of something.\n· SCORCHED EDGES on the last planes as they come apart.\n· A TICKET, punched for every stop but the last.\n· WORM, much younger and smaller, asleep in a coat pocket.\n\nWHERE THESE COME FROM. The wall and the firelight are Drew's (Sam's memory from entering the Fold), and so are the ancient routes his people lost in the Folding, which Drew gave on \"The Foldwright lives\". Both are on [[ref-party|▶ THE PARTY]]. Sam being nearly retired and only passing through is also Drew's, which is what the ticket answers.",
+        "open": "What the glow on the horizon is. What was burning. What the ticket was for. Whether Worm will fight the copy. Where in the town it happens.\n\n⚠ A NOTE ON THE IMAGE: the bible saves a Green Fields officer \"folding apart into a drift of panes\" for Act One's last image, the moment the table learns that folded Surveyors wear human shapes. If the other Sam comes apart the same way, the table may read Sam as a Surveyor, so it may be worth making his unfolding look different, more like a book falling open than a person breaking into panes."
+      },
+      "body": ""
     },
     {
       "schema": 1,
