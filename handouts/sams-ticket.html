@@ -74,6 +74,8 @@
     border-color: rgba(0,0,0,0.25);
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
   }
+  .name.clear { filter: none; color: var(--ink); }
+  .worn .name { filter: blur(2.4px); opacity: 0.7; }
   .last .name { filter: blur(3px); opacity: 0.5; }
   .foot { text-align: center; font-style: italic; font-size: 13px; margin-top: 12px; }
   .foot b { font-family: "IM Fell English SC", Georgia, serif; font-style: normal; letter-spacing: 0.08em; font-weight: normal; }
@@ -91,12 +93,12 @@
       <div class="sub">One traveller &middot; by the old way</div>
       <hr class="rule">
       <ol class="stops">
-        <li class="stop"><span class="num">I</span><span class="name" aria-hidden="true">Hmnrrwem Cnoss</span><span class="punch done" title="Punched"></span></li>
-        <li class="stop"><span class="num">II</span><span class="name" aria-hidden="true">Tlne Lnw Fmrds</span><span class="punch done" title="Punched"></span></li>
-        <li class="stop"><span class="num">III</span><span class="name" aria-hidden="true">Snltmell Stnir</span><span class="punch done" title="Punched"></span></li>
-        <li class="stop"><span class="num">IV</span><span class="name" aria-hidden="true">Gmnyhnlluw</span><span class="punch done" title="Punched"></span></li>
-        <li class="stop"><span class="num">V</span><span class="name" aria-hidden="true">Onlmnrch Gnte</span><span class="punch done" title="Punched"></span></li>
-        <li class="stop"><span class="num">VI</span><span class="name" aria-hidden="true">Tnmrnwick Rnmg</span><span class="punch done" title="Punched"></span></li>
+        <li class="stop"><span class="num">I</span><span class="name clear">Nine Wells</span><span class="punch done" title="Punched"></span></li>
+        <li class="stop"><span class="num">II</span><span class="name clear">The Lantern Oak</span><span class="punch done" title="Punched"></span></li>
+        <li class="stop"><span class="num">III</span><span class="name clear">Cold Ferry</span><span class="punch done" title="Punched"></span></li>
+        <li class="stop"><span class="num">IV</span><span class="name clear">The Drowned Bell</span><span class="punch done" title="Punched"></span></li>
+        <li class="stop"><span class="num">V</span><span class="name clear">Two Widows</span><span class="punch done" title="Punched"></span></li>
+        <li class="stop worn"><span class="num">VI</span><span class="name" aria-hidden="true">Tnmrnwick Rnmg</span><span class="punch done" title="Punched"></span></li>
         <li class="stop last"><span class="num">VII</span><span class="name" aria-hidden="true">Emnwnter</span><span class="punch" title="Not punched"></span></li>
       </ol>
       <hr class="rule">

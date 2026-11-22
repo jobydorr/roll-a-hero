@@ -6,7 +6,7 @@
 
 > **▶▶▶ START HERE — PAUSED 2026-11-21 AT JOBY'S REQUEST. READ THIS FIRST.**
 >
-> **STATE:** everything committed and pushed; DM OS assets are campaign `v131`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Nothing is mid-edit. The working method in the block below (parse and re-dump `campaign.js`, bump `rev` and `?v=`, check links) still applies.
+> **STATE:** everything committed and pushed; DM OS assets are campaign `v132`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Nothing is mid-edit. The working method in the block below (parse and re-dump `campaign.js`, bump `rev` and `?v=`, check links) still applies.
 >
 > **DONE THIS WINDOW (prep for THE TOWN ON THE FACE):** (a) the mobs: three new bosses rather than bigger numbers and no gang rules, namely `cr-goose` (gate), `cr-bandmaster` (comes with the alarm) and `cr-kennel-master` (a crease-wolf in goblin shape); (b) and (c) Maud's lost time and what she knows of Wenna, on `npc-maud` and marked TENTATIVE at Joby's request; (d) Annis, on `npc-annis`: her forearm scars are raw-salt burns and the town reeks of raw salt to her, which is why she will not go in, and she knows the salt trade but does NOT recognize the mark; what she does on her own while the party is in town is TBD; (e) Bob: closed with nothing to build, because Joby will not plan what the party does (memory `prep-the-world-not-the-party`).
 >
@@ -14,7 +14,7 @@
 >
 > # ⚠️ HIGH PRIORITY (Joby, 2026-11-21): HOW MAUD CAME BY WHAT SHE KNEW. She may be the party's link to more of what is really going on, so the trail she followed needs depth: where she saw the routes and the Wheel's underwriting, whose neat handwriting was on the list, who she asked before the meeting. Her paper (campaign `v130`, on `npc-maud`) is NOT yet on `ref-told`; add it once it comes out at the table.
 >
-> # ⚠️ HIGH PRIORITY (Joby, 2026-11-21): SAM'S OPEN QUESTIONS, from `enc-other-sam`. What the glow on the far horizon is; what was burning; what the ticket was for (handout `handouts/sams-ticket.html`, stop names left illegible on purpose); whether Worm will fight the copy; where in the town it happens.
+> # ⚠️ HIGH PRIORITY (Joby, 2026-11-21): SAM'S OPEN QUESTIONS, from `enc-other-sam`. What the glow on the far horizon is; what was burning; what the ticket was for (handout `handouts/sams-ticket.html`; stops I–V named in `v132`, VI and VII still worn and unchosen); whether Worm will fight the copy; where in the town it happens.
 >
 > **ON RESUME:** ask Joby what he wants; the two live threads are HOW FAR IN MAUD WAS (and her question; candidates: "Why are all my searchers missing someone they can't name?" and "Who are we actually looking for?") and THE UNNAMED VILLAIN who runs the tower.
 >
