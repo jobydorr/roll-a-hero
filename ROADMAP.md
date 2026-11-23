@@ -2,8 +2,14 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-11-23.*
+*Last updated: 2026-11-23 (paused).*
 
+> **⏸ PAUSED 2026-11-23 AT JOBY'S REQUEST.** Everything committed and pushed (campaign `v138`). Read the block below for state.
+>
+> **ON RESUME, TWO THINGS WAIT ON JOBY:** (1) the Mending's salt pinch vs his ruling that raw salt never heals except for machine-altered casters: cut the pinch (recommended) or "salt opens, the mender heals"; CAMPAIGN.md changes only after he picks. (2) Optional rulings offered on salt scale ("one pinch undoes one person-sized thing") and gray areas (breaking vs softening; undoing Surveyor disguises; memory only through the Compass Spirit).
+>
+> **BRAINSTORM ONLY, NOT CANON, NOT IN THE OS (Joby, 2026-11-23): THE TOWER'S HISTORY.** The tower is the home of an old follower of the Foldwright (name needed), who stayed loyal after the Foldwright fled into the Fold and secretly worked to help him, laying the groundwork for the tower's mechanisms and the salt objects. The Surveyors found out, cut him off from his magic, and folded him, the tower and its town away; the Foldwright used the Armature to land them somewhere secret and rescued him, and for a time the two worked together. The Surveyors found the place and sent a horde; the Foldwright escaped again and the friend was killed. The Surveyors posted a powerful servant in the tower to learn its secrets and start the worse experiments; that servant runs the tower now and is connected to the Gilded Wheel. Open: whether Mordrin's father is complicit or caught in the web. CLAUDE'S NOTES OFFERED: fits CAMPAIGN.md's undesigned "folded-away wizard's tower" and the enc-ganny candidate; the town's "the fold slipped" can be the cover story for the Foldwright's redirect; the servant cannot be a Surveyor (their kind do not come out of the Fold). Conflicts: the Foldwright "cannot spare the strength"; only his apprentices ever understood the craft (fork: a later follower who worked only with salt, or an original apprentice); the candidate says "since abandoned". Ideas: the machine was the switched-off wizard's way back to magic; the horde became the tower's crew and the mark is its army's sign; the salt ledgers gave him away; he may not be dead (extracted, or folded small in the foundations); the grandfather ("backed the Surveyors early") complicit two generations ago and the father inheriting it, uneasy and choosing not to ask, the mirror of Maud. Names offered: Ambrose Tull, Hollis Vane, Lemuel Cray, Jasper Marrow.
+>
 > **▶▶▶ START HERE — THE TOWN GAME IS UNDER WAY (logged 2026-11-23). READ THIS FIRST.**
 >
 > **STATE:** everything committed and pushed; DM OS assets are campaign `v138`, `dmos-ui.js` `v49`, `dmos.css` `v36`. The working method below still applies.
