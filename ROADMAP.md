@@ -2,11 +2,21 @@
 
 *What this is:* the single place that tracks where this project has been, where it is now, and what's next. If a plan ever feels "lost in a directory," it should be here. Plain language; update it as things change.
 
-*Last updated: 2026-11-21.*
+*Last updated: 2026-11-23.*
 
-> **▶▶▶ START HERE — PAUSED 2026-11-21 AT JOBY'S REQUEST. READ THIS FIRST.**
+> **▶▶▶ START HERE — THE TOWN GAME IS UNDER WAY (logged 2026-11-23). READ THIS FIRST.**
 >
-> **STATE:** everything committed and pushed; DM OS assets are campaign `v134`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Nothing is mid-edit. The working method in the block below (parse and re-dump `campaign.js`, bump `rev` and `?v=`, check links) still applies.
+> **STATE:** everything committed and pushed; DM OS assets are campaign `v135`, `dmos-ui.js` `v49`, `dmos.css` `v36`. The working method below still applies.
+>
+> **THE 2026-11-21 GAME IS LOGGED** at `SESSION LOGS › Maud's paper, the other Sam, the gate rushed` (`log-gate-rushed`). Ben has left the table for personal reasons, so Century is no longer played (how Century leaves the story is open). Maud drew out her paper, Mordrin wrested it from her, and her sparked memory of the polite thanks named the man as Mordrin's father (Brandon: bearded, a scar over one eye); this is on `npc-maud`, `ref-search`, `ref-party` and the paper is now on `ref-told` (new field: handouts given out at the table). Sam fought the other Sam and got the visions; Drew's chosen memory is not shared yet. The party rushed the gate posing as prisoners, the goose and the gong raised the alarm, and the next game opens MID-WAVES at `t-gate`. Joby added a goblin healer on the spot, now `cr-salt-smoother` (two healing spells, also written on `t-gate`); it healed Bob, thinking him a goblin ally.
+>
+> **GOBLIN NUMBERS ARE JOBY'S TO CHANGE ON THE FLY (2026-11-23):** the town's counts are a guide; the "waves can never bring more than 26" cap was removed from the terrace sheets.
+>
+> **ASKED OF JOBY, UNANSWERED:** Maud's other sparked memories; which of the unfolding visions Sam got and whether the ticket handout was given; where the Sam fight happened; the healer's name and look.
+>
+> **▶▶▶ START HERE — PAUSED 2026-11-21 AT JOBY'S REQUEST. (superseded by the block above)**
+>
+> **STATE:** everything committed and pushed; DM OS assets are campaign `v135`, `dmos-ui.js` `v49`, `dmos.css` `v36`. Nothing is mid-edit. The working method in the block below (parse and re-dump `campaign.js`, bump `rev` and `?v=`, check links) still applies.
 >
 > **DONE THIS WINDOW (prep for THE TOWN ON THE FACE):** (a) the mobs: three new bosses rather than bigger numbers and no gang rules, namely `cr-goose` (gate), `cr-bandmaster` (comes with the alarm) and `cr-kennel-master` (a crease-wolf in goblin shape); (b) and (c) Maud's lost time and what she knows of Wenna, on `npc-maud` and marked TENTATIVE at Joby's request; (d) Annis, on `npc-annis`: her forearm scars are raw-salt burns and the town reeks of raw salt to her, which is why she will not go in, and she knows the salt trade but does NOT recognize the mark; what she does on her own while the party is in town is TBD; (e) Bob: closed with nothing to build, because Joby will not plan what the party does (memory `prep-the-world-not-the-party`).
 >
