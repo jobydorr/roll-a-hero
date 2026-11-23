@@ -6,13 +6,13 @@
 
 > **▶▶▶ START HERE — THE TOWN GAME IS UNDER WAY (logged 2026-11-23). READ THIS FIRST.**
 >
-> **STATE:** everything committed and pushed; DM OS assets are campaign `v135`, `dmos-ui.js` `v49`, `dmos.css` `v36`. The working method below still applies.
+> **STATE:** everything committed and pushed; DM OS assets are campaign `v136`, `dmos-ui.js` `v49`, `dmos.css` `v36`. The working method below still applies.
 >
 > **THE 2026-11-21 GAME IS LOGGED** at `SESSION LOGS › Maud's paper, the other Sam, the gate rushed` (`log-gate-rushed`). Ben has left the table for personal reasons, so Century is no longer played (how Century leaves the story is open). Maud drew out her paper, Mordrin wrested it from her, and her sparked memory of the polite thanks named the man as Mordrin's father (Brandon: bearded, a scar over one eye); this is on `npc-maud`, `ref-search`, `ref-party` and the paper is now on `ref-told` (new field: handouts given out at the table). Sam fought the other Sam and got the visions; Drew's chosen memory is not shared yet. The party rushed the gate posing as prisoners, the goose and the gong raised the alarm, and the next game opens MID-WAVES at `t-gate`. Joby added a goblin healer on the spot, now `cr-salt-smoother` (two healing spells, also written on `t-gate`); it healed Bob, thinking him a goblin ally.
 >
 > **GOBLIN NUMBERS ARE JOBY'S TO CHANGE ON THE FLY (2026-11-23):** the town's counts are a guide; the "waves can never bring more than 26" cap was removed from the terrace sheets.
 >
-> **ASKED OF JOBY, UNANSWERED:** Maud's other sparked memories; which of the unfolding visions Sam got and whether the ticket handout was given; where the Sam fight happened; the healer's name and look.
+> **ANSWERED 2026-11-23 (`v136`):** Maud's other memories (the neat list copied at her kitchen table; the list was not "ours"); Sam's visions (dotted route, firelit wall to ancestral lands and the glow; the ticket handout given); the Sam fight happened ON THE FACE, not in town (`enc-other-sam` still sits in the town folder; moving it is Joby's call). The healer is unnamed and all its healing is now ranged. **OPEN, RAISED BY JOBY:** whether salt-as-magic-fuel is a NEW development of the powers siphoning salt from people; the bible's sunsalt limits (raw salt never heals) and the Mending (a pinch fed into a mend) bear on it. Not decided.
 >
 > **▶▶▶ START HERE — PAUSED 2026-11-21 AT JOBY'S REQUEST. (superseded by the block above)**
 >
